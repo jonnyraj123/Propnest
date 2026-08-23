@@ -72,13 +72,17 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload debug APK
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: duskhollow-debug-apk
           path: android-game/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: ignore
 
       - name: Upload Play Store bundle
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: duskhollow-release-aab
           path: android-game/app/build/outputs/bundle/release/*.aab
+          if-no-files-found: ignore

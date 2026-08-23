@@ -8,7 +8,21 @@ plugins {
 
 // Release signing comes from the environment so no key material lives in the repo.
 // Without it the release build is simply unsigned, which keeps local builds working.
-val keystorePath: String? = System.getenv("DUSKHOLLOW_KEYSTORE")
+// CI passes these through as empty strings when the secrets are not set, so blank
+// has to count as absent - an empty path would otherwise be taken as a real file.
+fun envOrNull(name: String): String? = System.getenv(name)?.takeIf { it.isNotBlank() }
+
+val keystorePath = envOrNull("DUSKHOLLOW_KEYSTORE")
+val keystorePassword = envOrNull("DUSKHOLLOW_KEYSTORE_PASSWORD")
+val keystoreAlias = envOrNull("DUSKHOLLOW_KEY_ALIAS")
+val keyPassword = envOrNull("DUSKHOLLOW_KEY_PASSWORD")
+
+// Partial credentials fail deep inside the packaging task with a poor message, so
+// only wire up signing when all four are present.
+val canSignRelease = keystorePath != null &&
+    keystorePassword != null &&
+    keystoreAlias != null &&
+    keyPassword != null
 
 android {
     namespace = "com.propnest.duskhollow"
@@ -18,17 +32,17 @@ android {
         applicationId = "com.propnest.duskhollow"
         minSdk = 24
         targetSdk = 35
-        versionCode = (System.getenv("DUSKHOLLOW_VERSION_CODE") ?: "1").toInt()
-        versionName = System.getenv("DUSKHOLLOW_VERSION_NAME") ?: "1.0"
+        versionCode = envOrNull("DUSKHOLLOW_VERSION_CODE")?.toIntOrNull() ?: 1
+        versionName = envOrNull("DUSKHOLLOW_VERSION_NAME") ?: "1.0"
     }
 
     signingConfigs {
-        if (keystorePath != null) {
+        if (canSignRelease) {
             create("release") {
-                storeFile = file(keystorePath)
-                storePassword = System.getenv("DUSKHOLLOW_KEYSTORE_PASSWORD")
-                keyAlias = System.getenv("DUSKHOLLOW_KEY_ALIAS")
-                keyPassword = System.getenv("DUSKHOLLOW_KEY_PASSWORD")
+                storeFile = file(keystorePath!!)
+                storePassword = keystorePassword
+                keyAlias = keystoreAlias
+                this.keyPassword = keyPassword
             }
         }
     }
