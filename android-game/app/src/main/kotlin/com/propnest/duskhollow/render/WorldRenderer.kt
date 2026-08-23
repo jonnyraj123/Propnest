@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
@@ -20,7 +21,6 @@ import com.propnest.duskhollow.core.Vec2
 import com.propnest.duskhollow.core.clamp
 import com.propnest.duskhollow.core.lerp
 import kotlin.math.PI
-import kotlin.math.cos
 import kotlin.math.sin
 
 /** How many tiles fit across the narrow side of the screen. */
