@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello World</title>
+  <meta name="description" content="A simple Hello World website." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128075;</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+    <span aria-hidden="true">&#9788;</span>
+  </button>
+
+  <main class="stage">
+    <p class="eyebrow">Propnest</p>
+    <h1 class="title">Hello, <span class="accent">World</span>!</h1>
+    <p class="subtitle" id="greeting">Welcome — this page is up and running.</p>
+
+    <div class="actions">
+      <button id="greet-btn" class="btn" type="button">Say hello</button>
+      <a class="btn btn-ghost" href="https://github.com/jonnyraj123/Propnest">View source</a>
+    </div>
+
+    <p class="clock" id="clock" aria-live="polite"></p>
+  </main>
+
+  <footer class="footer">
+    <p>Built with plain HTML, CSS &amp; JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
