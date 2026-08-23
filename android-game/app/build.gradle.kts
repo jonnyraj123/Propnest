@@ -26,12 +26,12 @@ val canSignRelease = keystorePath != null &&
 
 android {
     namespace = "com.propnest.duskhollow"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.propnest.duskhollow"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = envOrNull("DUSKHOLLOW_VERSION_CODE")?.toIntOrNull() ?: 1
         versionName = envOrNull("DUSKHOLLOW_VERSION_NAME") ?: "1.0"
     }

@@ -7,7 +7,7 @@ pluginManagement {
     // Plugin versions live here so the modules can apply them without a version.
     // Declaring them per-module makes Kotlin warn that its plugin is loaded twice.
     plugins {
-        id("com.android.application") version "8.7.3"
+        id("com.android.application") version "8.11.1"
         id("org.jetbrains.kotlin.android") version "2.0.21"
         id("org.jetbrains.kotlin.jvm") version "2.0.21"
         id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
