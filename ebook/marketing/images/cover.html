@@ -5,55 +5,94 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'NSB',sans-serif}
 .c{width:1280px;height:720px;position:relative;overflow:hidden;
-  background:linear-gradient(150deg,#0B3A2B 0%,#12583F 48%,#1B7D5A 100%);
-  display:flex;align-items:center;padding:0 78px;color:#fff}
-.glow{position:absolute;right:-160px;top:-160px;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(120% 100% at 78% 10%, #1E8A63 0%, #12583F 42%, #08301F 100%);
+  color:#fff}
+/* subtle texture rings */
+.ring{position:absolute;border:1.5px solid rgba(255,255,255,.055);border-radius:50%}
+.r1{width:900px;height:900px;right:-230px;top:-260px}
+.r2{width:640px;height:640px;right:-90px;top:-110px}
+.glow{position:absolute;right:-120px;bottom:-260px;width:640px;height:640px;border-radius:50%;
   background:radial-gradient(circle,#F59E0B 0%,transparent 62%);opacity:.20}
-.band{position:absolute;left:0;right:0;bottom:0;height:14px;
-  background:linear-gradient(90deg,#F59E0B 0%,#C2410C 100%)}
-.L{position:relative;z-index:2;width:700px}
-.kick{font-size:19px;letter-spacing:.22em;color:#8FD6BB;font-weight:700;margin-bottom:22px}
-h1{font-size:70px;line-height:1.18;font-weight:700;letter-spacing:-.5px}
-.rule{width:120px;height:7px;background:#F59E0B;border-radius:4px;margin:26px 0 24px}
-.sub{font-size:31px;line-height:1.5;color:#CFE8DA;font-weight:600}
-.pills{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.p{border:1.5px solid rgba(255,255,255,.42);border-radius:40px;padding:9px 22px;font-size:19px;color:#E4F3EC}
-.price{position:absolute;right:78px;bottom:66px;z-index:3;text-align:center}
-.price .amt{font-size:74px;font-weight:700;color:#F59E0B;line-height:1}
-.price .lbl{font-size:20px;color:#CFE8DA;margin-top:8px}
-.R{position:absolute;right:96px;top:78px;z-index:2;
-  width:330px;height:452px;border-radius:14px;overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,.45);transform:rotate(4deg);
-  background:linear-gradient(155deg,#0B3A2B,#1B7D5A);
-  padding:44px 30px;display:flex;flex-direction:column;justify-content:center;
-  border:1px solid rgba(255,255,255,.14)}
-.R .k{font-size:12px;letter-spacing:.2em;color:#8FD6BB;font-weight:700;margin-bottom:14px}
-.R .t{font-size:34px;font-weight:700;line-height:1.22}
-.R .r{width:56px;height:5px;background:#F59E0B;border-radius:3px;margin:16px 0 14px}
-.R .s{font-size:17px;color:#CFE8DA;line-height:1.5;font-weight:600}
-.R .b{position:absolute;left:0;right:0;bottom:0;height:9px;background:linear-gradient(90deg,#F59E0B,#C2410C)}
+.band{position:absolute;left:0;right:0;bottom:0;height:12px;
+  background:linear-gradient(90deg,#F59E0B 0%,#EA580C 55%,#C2410C 100%)}
+
+.L{position:absolute;left:76px;top:66px;width:640px;z-index:3}
+.kick{display:inline-block;font-size:16px;letter-spacing:.2em;color:#0B3A2B;font-weight:700;
+  background:#F5C451;padding:8px 18px;border-radius:30px;margin-bottom:26px}
+h1{font-size:84px;line-height:1.08;font-weight:700;letter-spacing:-2px}
+h1 em{font-style:normal;color:#FFC65C;display:block}
+.sub{font-size:26px;line-height:1.5;color:#C8E6D7;font-weight:600;margin-top:22px}
+.ticks{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
+.t{font-size:19px;color:#DDF0E6;display:flex;align-items:center;gap:10px;font-weight:600}
+.t i{width:22px;height:22px;border-radius:50%;background:#F5C451;flex:none;
+  display:flex;align-items:center;justify-content:center;font-style:normal}
+.t i svg{width:12px;height:12px}
+
+/* book */
+.book{position:absolute;right:104px;top:112px;z-index:3;width:318px;height:466px;
+  border-radius:6px 14px 14px 6px;transform:rotate(4.5deg);
+  background:linear-gradient(150deg,#0B3A2B,#1B7D5A);
+  box-shadow:0 36px 78px rgba(0,0,0,.5), inset 12px 0 22px -12px rgba(0,0,0,.55);
+  padding:44px 28px 28px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+.book:before{content:'';position:absolute;left:0;top:0;bottom:0;width:13px;
+  background:linear-gradient(90deg,rgba(0,0,0,.45),transparent)}
+.book .k{font-size:11px;letter-spacing:.2em;color:#8FD6BB;font-weight:700;margin-bottom:12px}
+.book .t2{font-size:31px;font-weight:700;line-height:1.2}
+.book .r{width:48px;height:5px;background:#F59E0B;border-radius:3px;margin:14px 0 12px}
+.book .s{font-size:15.5px;color:#C8E6D7;line-height:1.5;font-weight:600}
+.book .plate{position:absolute;right:22px;bottom:26px;width:126px;opacity:.9}
+.book .bb{position:absolute;left:0;right:0;bottom:0;height:8px;
+  background:linear-gradient(90deg,#F59E0B,#C2410C)}
+
+/* price block */
+.price{position:absolute;left:76px;bottom:66px;z-index:4;display:flex;align-items:center;gap:20px}
+.price .now{font-size:76px;font-weight:700;color:#FFC65C;line-height:.94;letter-spacing:-1px}
+.price .col{display:flex;flex-direction:column;gap:7px}
+.price .old{font-size:29px;color:#9FC6B4;font-weight:600;position:relative;align-self:flex-start}
+.price .old:after{content:'';position:absolute;left:-5px;right:-5px;top:44%;height:3px;
+  background:#EF6C4A;transform:rotate(-6deg);border-radius:2px}
+.price .lbl{font-size:16px;color:#C8E6D7;letter-spacing:.03em;font-weight:600}
+.off{background:linear-gradient(135deg,#F59E0B,#DC2626);color:#fff;font-size:19px;font-weight:700;
+  padding:9px 20px;border-radius:30px;align-self:flex-start;
+  box-shadow:0 10px 26px rgba(220,38,38,.4)}
 </style></head><body>
 <div class="c">
-  <div class="glow"></div>
+  <div class="ring r1"></div><div class="ring r2"></div><div class="glow"></div>
+
   <div class="L">
     <div class="kick">বাঙালিদের জন্য</div>
-    <h1>৩০ দিনের<br>বাঙালি ডায়েট প্ল্যান</h1>
-    <div class="rule"></div>
-    <div class="sub">ভাত, মাছ আর রুটি খেয়েই<br>ওজন কমান — না খেয়ে নয়</div>
-    <div class="pills">
-      <span class="p">৬১ পাতা</span>
-      <span class="p">৩০ দিনের চার্ট</span>
-      <span class="p">১৫টি রেসিপি</span>
-      <span class="p">ট্র্যাকার</span>
+    <h1>ভাত ছাড়তে<em>হবে না।</em></h1>
+    <div class="sub">বাড়ির রোজকার রান্না খেয়েই ওজন কমানোর<br>৩০ দিনের বাংলা প্ল্যান</div>
+    <div class="ticks">
+      <div class="t"><i><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#0B3A2B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>৩০ দিনের চার্ট</div>
+      <div class="t"><i><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#0B3A2B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>১৫টি রেসিপি</div>
+      <div class="t"><i><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#0B3A2B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>বাজারের লিস্ট</div>
+      <div class="t"><i><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#0B3A2B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>প্রিন্টেবল ট্র্যাকার</div>
     </div>
   </div>
-  <div class="R">
+
+  <div class="book">
     <div class="k">বাঙালিদের জন্য</div>
-    <div class="t">৩০ দিনের বাঙালি ডায়েট প্ল্যান</div>
+    <div class="t2">ভাত ছাড়তে<br>হবে না।</div>
     <div class="r"></div>
-    <div class="s">ভাত-মাছ খেয়েই<br>ওজন কমান</div>
-    <div class="b"></div>
+    <div class="s">৩০ দিনের<br>বাঙালি ডায়েট প্ল্যান</div>
+    <svg class="plate" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="86" fill="#fff" opacity=".14"/>
+      <path d="M100 14 A86 86 0 0 0 100 186 Z" fill="#8FD6BB" opacity=".5"/>
+      <path d="M100 14 A86 86 0 0 1 186 100 L100 100 Z" fill="#F59E0B" opacity=".55"/>
+      <path d="M100 186 A86 86 0 0 0 186 100 L100 100 Z" fill="#fff" opacity=".28"/>
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#fff" stroke-width="3" opacity=".35"/>
+    </svg>
+    <div class="bb"></div>
   </div>
-  <div class="price"><div class="amt">₹২৯৯</div><div class="lbl">একবারই</div></div>
+
+  <div class="price">
+    <div class="now">₹২৯৯</div>
+    <div class="col">
+      <div class="old">₹৪৪৯</div>
+      <div class="off">৩৩% ছাড়</div>
+    </div>
+    <div class="lbl">একবারই<br>আজীবন অ্যাক্সেস</div>
+  </div>
   <div class="band"></div>
 </div></body></html>
