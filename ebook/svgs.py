@@ -3,7 +3,7 @@
 G='#15654A'; GD='#0E4433'; GL='#CFE6DA'; T='#C2410C'; TL='#F7D9C6'
 GO='#B45309'; GOL='#F6E2BE'; CR='#FDFBF7'; IN='#44403C'; W='#FFFFFF'
 
-def wrap(inner, vb="0 0 480 150"):
+def wrap(inner, vb="0 0 480 168"):
     return f'<svg viewBox="{vb}" xmlns="http://www.w3.org/2000/svg" role="img">{inner}</svg>'
 
 SVG = {}
@@ -30,7 +30,7 @@ SVG['plate'] = wrap(f'''
 <line x1="310" y1="110" x2="292" y2="104" stroke="{GOL}" stroke-width="2"/>''')
 
 # ---------- hand measures ----------
-def _lab(x,t,c=IN): return f'<text x="{x}" y="140" font-size="12" fill="{c}" text-anchor="middle" font-weight="600">{t}</text>'
+def _lab(x,t,c=IN): return f'<text x="{x}" y="152" font-size="12" fill="{c}" text-anchor="middle" font-weight="600">{t}</text>'
 SVG['hands'] = wrap(f'''
 <g>
  <rect x="30" y="52" width="52" height="56" rx="14" fill="{GL}" stroke="{G}" stroke-width="2.5"/>
@@ -121,7 +121,7 @@ SVG['water'] = wrap(f'''
 <g>
  {''.join(f'<g><path d="M{x} 76 l6 46 h26 l6 -46 Z" fill="{GL}" stroke="{G}" stroke-width="2.5"/><path d="M{x+3} 94 l4 28 h20 l4 -28 Z" fill="{G}" opacity=".35"/></g>' for x in (238,300,362))}
 </g>
-<text x="240" y="146" font-size="12.5" fill="{G}" font-weight="700">দিনে ৩ লিটার — বোতলে দাগ দিন</text>''')
+<text x="240" y="158" font-size="12.5" fill="{G}" font-weight="700">দিনে ৩ লিটার — বোতলে দাগ দিন</text>''')
 
 # ---------- fish plate ----------
 SVG['fish'] = wrap(f'''
@@ -140,7 +140,7 @@ SVG['fish'] = wrap(f'''
  <path d="M286 100 q12 -12 24 0 q-12 10 -24 0 Z" fill="{G}"/>
  <path d="M298 96 v10" stroke="{GD}" stroke-width="1.4"/>
 </g>
-<text x="240" y="146" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">ভাজার বদলে ভাপা — ৮০ ক্যালরি কম</text>''')
+<text x="240" y="158" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">ভাজার বদলে ভাপা — ৮০ ক্যালরি কম</text>''')
 
 # ---------- walking ----------
 SVG['walk'] = wrap(f'''
@@ -157,7 +157,7 @@ SVG['walk'] = wrap(f'''
 <g fill="{TL}">
  <circle cx="322" cy="52" r="16"/><circle cx="356" cy="76" r="11"/><circle cx="336" cy="98" r="8"/>
 </g>
-<text x="240" y="150" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রোজ ২০–৩০ মিনিট — একটানা নয়, ভেঙে ভেঙেও চলবে</text>''')
+<text x="240" y="160" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রোজ ২০–৩০ মিনিট — একটানা নয়, ভেঙে ভেঙেও চলবে</text>''')
 
 # ---------- tape + scale ----------
 SVG['tape'] = wrap(f'''
@@ -174,7 +174,7 @@ SVG['tape'] = wrap(f'''
  <text x="319" y="99" font-size="15" fill="{GD}" font-weight="700" text-anchor="middle">— · — kg</text>
  <path d="M290 66 l0 -8 h58 l0 8" stroke="{G}" stroke-width="2.5" fill="none"/>
 </g>
-<text x="240" y="150" font-size="12.5" fill="{IN}" font-weight="600" text-anchor="middle">সপ্তাহে একদিন — রবিবার সকালে, খালি পেটে, দুটোই মাপুন</text>''')
+<text x="240" y="160" font-size="12.5" fill="{IN}" font-weight="600" text-anchor="middle">সপ্তাহে একদিন — রবিবার সকালে, খালি পেটে, দুটোই মাপুন</text>''')
 
 # ---------- 30 day calendar ----------
 def _cal():
@@ -189,7 +189,7 @@ def _cal():
             else: c.append(f'<text x="{x+22}" y="{y+14}" font-size="11" fill="{IN}" text-anchor="middle">{n}</text>')
             n+=1
     return ''.join(c)
-SVG['calendar'] = wrap(_cal()+f'<text x="240" y="150" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রোজ একটা করে টিক — ৩০ দিনে অভ্যাস</text>')
+SVG['calendar'] = wrap(_cal()+f'<text x="240" y="160" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রোজ একটা করে টিক — ৩০ দিনে অভ্যাস</text>')
 
 # ---------- measured oil ----------
 SVG['oil'] = wrap(f'''
@@ -206,7 +206,7 @@ SVG['oil'] = wrap(f'''
  <text x="330" y="106" font-size="13" fill="{GO}" font-weight="700" text-anchor="middle">১ চা-চামচ</text>
  <text x="330" y="122" font-size="11" fill="{IN}" text-anchor="middle">= ১২০ ক্যালরি</text>
 </g>
-<text x="190" y="150" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">তেল ঢালবেন না — মেপে দিন</text>''')
+<text x="190" y="160" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">তেল ঢালবেন না — মেপে দিন</text>''')
 
 # ---------- tea ----------
 SVG['tea'] = wrap(f'''
@@ -223,7 +223,7 @@ SVG['tea'] = wrap(f'''
  <line x1="294" y1="106" x2="358" y2="42" stroke="{T}" stroke-width="4" stroke-linecap="round"/>
  <text x="326" y="126" font-size="12" fill="{T}" font-weight="700" text-anchor="middle">চিনি অর্ধেক</text>
 </g>
-<text x="192" y="150" font-size="12" fill="{IN}" font-weight="600" text-anchor="middle">লিকার চা — ০ ক্যালরি</text>''')
+<text x="192" y="160" font-size="12" fill="{IN}" font-weight="600" text-anchor="middle">লিকার চা — ০ ক্যালরি</text>''')
 
 # ---------- tracker notebook ----------
 SVG['note'] = wrap(f'''
@@ -238,7 +238,7 @@ SVG['note'] = wrap(f'''
  <path d="M352 108 l52 -66 l16 12 l-52 66 l-20 6 Z" fill="{GOL}" stroke="{GO}" stroke-width="2.5"/>
  <path d="M348 126 l4 -18 l20 -6 Z" fill="{GO}"/>
 </g>
-<text x="240" y="150" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রাতে ৩০ সেকেন্ড — শুধু টিক দিন</text>''')
+<text x="240" y="160" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">রাতে ৩০ সেকেন্ড — শুধু টিক দিন</text>''')
 
 # ---------- festival plate ----------
 SVG['festival'] = wrap(f'''
@@ -251,8 +251,8 @@ SVG['festival'] = wrap(f'''
  <path d="M312 108 q26 -14 52 0 q-8 16 -26 16 q-18 0 -26 -16 Z" fill="{GOL}" stroke="{GO}" stroke-width="2.5"/>
  <path d="M338 94 q-8 -14 0 -26 q10 12 0 26 Z" fill="{T}"/>
 </g>
-<text x="338" y="146" font-size="12" fill="{GO}" font-weight="700" text-anchor="middle">একটা নিন, ধীরে খান</text>
-<text x="200" y="150" font-size="12" fill="{IN}" font-weight="600" text-anchor="middle">প্লেট একবারই — দ্বিতীয়বার নয়</text>''')
+<text x="338" y="158" font-size="12" fill="{GO}" font-weight="700" text-anchor="middle">একটা নিন, ধীরে খান</text>
+<text x="200" y="160" font-size="12" fill="{IN}" font-weight="600" text-anchor="middle">প্লেট একবারই — দ্বিতীয়বার নয়</text>''')
 
 # ---------- plateau chart ----------
 SVG['chart'] = wrap(f'''
@@ -263,36 +263,34 @@ SVG['chart'] = wrap(f'''
 {''.join(f'<circle cx="{x}" cy="{y}" r="4.5" fill="{T}"/>' for x,y in [(115,24),(253,60),(391,74)])}
 <rect x="238" y="30" width="126" height="22" rx="11" fill="{GOL}"/>
 <text x="301" y="45" font-size="12" fill="{GO}" font-weight="700" text-anchor="middle">এখানে আটকে যায়</text>
-<text x="240" y="150" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">স্বাভাবিক — কম খাবেন না, নড়াচড়া বাড়ান</text>''')
+<text x="240" y="160" font-size="12.5" fill="{G}" font-weight="700" text-anchor="middle">স্বাভাবিক — কম খাবেন না, নড়াচড়া বাড়ান</text>''')
 
 # ---------- sunrise routine ----------
 SVG['sun'] = wrap(f'''
-<line x1="60" y1="112" x2="420" y2="112" stroke="{GL}" stroke-width="3"/>
-<circle cx="200" cy="112" r="42" fill="{GOL}"/>
-<circle cx="200" cy="112" r="42" fill="none" stroke="{GO}" stroke-width="2.5"/>
-<rect x="152" y="112" width="96" height="20" fill="{CR}"/>
-<line x1="152" y1="112" x2="248" y2="112" stroke="{GO}" stroke-width="2.5"/>
-{''.join(f'<line x1="{200+58*__import__("math").cos(a)}" y1="{112-58*__import__("math").sin(a)}" x2="{200+72*__import__("math").cos(a)}" y2="{112-72*__import__("math").sin(a)}" stroke="{GO}" stroke-width="3" stroke-linecap="round"/>' for a in [0.35,0.75,1.15,1.57,1.99,2.39,2.79])}
+<line x1="52" y1="116" x2="428" y2="116" stroke="{G}" stroke-width="3" stroke-linecap="round"/>
+<path d="M158 116 A42 42 0 0 1 242 116 Z" fill="{GOL}" stroke="{GO}" stroke-width="2.8" stroke-linejoin="round"/>
+<line x1="249.5" y1="99.9" x2="264.7" y2="95.0" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/><line x1="236.1" y1="78.6" x2="247.2" y2="67.1" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/><line x1="214.3" y1="66.0" x2="218.7" y2="50.6" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/><line x1="189.2" y1="65.1" x2="185.9" y2="49.5" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/><line x1="166.6" y1="76.2" x2="156.3" y2="63.9" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/><line x1="151.8" y1="96.5" x2="137.0" y2="90.5" stroke="{GO}" stroke-width="3.4" stroke-linecap="round"/>
 <g>
- <path d="M320 46 l8 66 h34 l8 -66 Z" fill="{GL}" stroke="{G}" stroke-width="2.5"/>
- <path d="M324 74 l6 38 h26 l6 -38 Z" fill="{G}" opacity=".35"/>
+ <path d="M322 44 l7 68 h36 l7 -68 Z" fill="{W}" stroke="{G}" stroke-width="2.8" stroke-linejoin="round"/>
+ <path d="M327 74 l4 38 h26 l4 -38 Z" fill="{GL}"/>
 </g>
-<text x="345" y="136" font-size="12" fill="{G}" font-weight="700" text-anchor="middle">১ গ্লাস জল</text>
-<text x="200" y="150" font-size="12.5" fill="{GO}" font-weight="700" text-anchor="middle">দিন শুরু হোক একই ভাবে</text>''')
+<text x="345" y="136" font-size="13" fill="{G}" font-weight="700" text-anchor="middle">১ গ্লাস জল</text>
+<text x="200" y="136" font-size="13" fill="{GO}" font-weight="700" text-anchor="middle">সকাল</text>
+''')
 
 # ---------- myth: cross / tick ----------
 SVG['myth'] = wrap(f'''
 <g>
  <circle cx="150" cy="72" r="46" fill="{TL}" stroke="{T}" stroke-width="3"/>
  <path d="M132 54 l36 36 M168 54 l-36 36" stroke="{T}" stroke-width="6" stroke-linecap="round"/>
- <text x="150" y="140" font-size="13" fill="{T}" font-weight="700" text-anchor="middle">যা শুনে এসেছেন</text>
+ <text x="150" y="152" font-size="13" fill="{T}" font-weight="700" text-anchor="middle">যা শুনে এসেছেন</text>
 </g>
 <path d="M216 72 h48" stroke="{GL}" stroke-width="4" stroke-linecap="round"/>
 <path d="M256 62 l12 10 l-12 10" stroke="{GL}" stroke-width="4" fill="none" stroke-linecap="round"/>
 <g>
  <circle cx="330" cy="72" r="46" fill="{GL}" stroke="{G}" stroke-width="3"/>
  <path d="M310 72 l14 16 l26 -32" stroke="{G}" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
- <text x="330" y="140" font-size="13" fill="{G}" font-weight="700" text-anchor="middle">যা আসলে সত্যি</text>
+ <text x="330" y="152" font-size="13" fill="{G}" font-weight="700" text-anchor="middle">যা আসলে সত্যি</text>
 </g>''')
 
 # ---------- calorie balance scale ----------
@@ -311,4 +309,4 @@ SVG['balance'] = wrap(f'''
  <path d="M316 82 h64 l-12 30 h-40 Z" fill="{GL}" stroke="{G}" stroke-width="2.5"/>
  <text x="348" y="104" font-size="12" fill="{G}" font-weight="700" text-anchor="middle">খরচ</text>
 </g>
-<text x="240" y="150" font-size="12.5" fill="{GD}" font-weight="700" text-anchor="middle">খরচ বেশি হলেই ওজন কমে — এটুকুই পুরো বিজ্ঞান</text>''')
+<text x="240" y="160" font-size="12.5" fill="{GD}" font-weight="700" text-anchor="middle">খরচ বেশি হলেই ওজন কমে — এটুকুই পুরো বিজ্ঞান</text>''')
