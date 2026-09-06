@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>৩০ দিনের বাঙালি ডায়েট প্ল্যান</title>
+<style>
+@font-face{font-family:'NSB';src:url('assets/NotoSansBengali-400.ttf') format('truetype');font-weight:400;}
+@font-face{font-family:'NSB';src:url('assets/NotoSansBengali-600.ttf') format('truetype');font-weight:600;}
+@font-face{font-family:'NSB';src:url('assets/NotoSansBengali-700.ttf') format('truetype');font-weight:700;}
+
+:root{
+  --green:#15654A; --green-d:#0E4433; --green-l:#E7F2EC;
+  --terra:#C2410C; --terra-l:#FEF0E7;
+  --gold:#B45309; --gold-l:#FEF6E7;
+  --ink:#1C1917; --ink-2:#44403C; --ink-3:#78716C;
+  --cream:#FDFBF7; --line:#E7E2DA;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'NSB',sans-serif;color:var(--ink);background:#8a8a8a;font-size:10pt;line-height:1.6;}
+
+.page{
+  width:210mm;min-height:297mm;background:var(--cream);
+  margin:0 auto 8mm;padding:15mm 16mm 13mm;position:relative;
+  display:flex;flex-direction:column;
+}
+@page{size:A4;margin:0;}
+@media print{
+  body{background:#fff;}
+  .page{margin:0;box-shadow:none;page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+}
+
+/* running header + footer */
+.page::before{
+  content:attr(data-sec);position:absolute;top:8mm;left:16mm;right:16mm;
+  font-size:7.5pt;letter-spacing:.08em;color:var(--ink-3);
+  text-transform:uppercase;border-bottom:.4pt solid var(--line);padding-bottom:2.5mm;
+}
+.page::after{
+  content:attr(data-pg);position:absolute;bottom:7mm;left:0;right:0;
+  text-align:center;font-size:8.5pt;color:var(--ink-3);
+}
+.page.plain::before,.page.plain::after{content:none;}
+
+h1{font-size:21pt;line-height:1.25;font-weight:700;color:var(--green-d);margin:0 0 3mm;letter-spacing:-.01em;}
+h2{font-size:14pt;font-weight:700;color:var(--green-d);margin:0 0 3mm;line-height:1.35;}
+h3{font-size:11pt;font-weight:700;color:var(--green);margin:4.5mm 0 1.5mm;}
+p{margin:0 0 2.6mm;}
+strong{font-weight:700;color:var(--ink);}
+ul,ol{margin:0 0 3mm;padding-left:5mm;}
+li{margin-bottom:1mm;}
+
+.eyebrow{font-size:8pt;font-weight:700;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;margin-bottom:2mm;}
+.chapno{display:inline-flex;align-items:center;justify-content:center;
+  width:11mm;height:11mm;border-radius:50%;background:var(--green);color:#fff;
+  font-weight:700;font-size:12pt;margin-bottom:3mm;}
+.rule{height:1.2mm;width:22mm;background:var(--terra);border-radius:1mm;margin:0 0 5mm;}
+
+.box{border-radius:2.5mm;padding:4mm 5mm;margin:3.5mm 0;border-left:1.6mm solid var(--green);background:var(--green-l);}
+.box.warn{border-left-color:var(--terra);background:var(--terra-l);}
+.box.tip{border-left-color:var(--gold);background:var(--gold-l);}
+.box .bt{font-weight:700;font-size:10pt;margin-bottom:1.5mm;display:block;}
+.box p:last-child{margin-bottom:0;}
+
+table{width:100%;border-collapse:collapse;margin:3.5mm 0;font-size:9pt;}
+th{background:var(--green);color:#fff;font-weight:600;text-align:left;padding:2.2mm 3mm;font-size:8.5pt;}
+td{padding:1.9mm 3mm;border-bottom:.4pt solid var(--line);vertical-align:top;}
+tbody tr:nth-child(even){background:#F6F2EB;}
+td.num{text-align:right;white-space:nowrap;font-weight:600;color:var(--green-d);}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm;margin:3.5mm 0;}
+.card{background:#fff;border:.4pt solid var(--line);border-radius:2.5mm;padding:3.5mm 4mm;}
+.card .ct{font-weight:700;color:var(--green-d);font-size:10pt;margin-bottom:1.5mm;}
+
+.big{font-size:20pt;font-weight:700;color:var(--terra);line-height:1;}
+.lede{font-size:11pt;color:var(--ink-2);line-height:1.6;margin-bottom:4mm;}
+
+.myth{border:.4pt solid var(--line);border-radius:2.5mm;overflow:hidden;margin:3.5mm 0;background:#fff;}
+.myth .m{background:#FBE9E4;padding:3mm 4.5mm;font-weight:700;color:#9A3412;font-size:10pt;}
+.myth .t{padding:3.5mm 4.5mm;}
+.myth .t p{margin:0;}
+
+/* meal day card */
+.day{border:.5pt solid var(--line);border-radius:3mm;overflow:hidden;margin-bottom:4mm;background:#fff;}
+.day .dh{background:var(--green-d);color:#fff;padding:2.4mm 4mm;display:flex;justify-content:space-between;
+  align-items:center;font-weight:700;font-size:10pt;}
+.day .dh .kc{background:rgba(255,255,255,.18);border-radius:1.5mm;padding:.6mm 2.5mm;font-size:8.5pt;font-weight:600;}
+.day table{margin:0;font-size:9pt;}
+.day td{padding:2mm 4mm;}
+.day td:first-child{width:32mm;color:var(--ink-3);font-weight:600;font-size:8.5pt;}
+.day .tipline{background:var(--gold-l);padding:2.2mm 4mm;font-size:8.5pt;color:#78350F;border-top:.4pt solid #F5E3C8;}
+
+/* cover */
+.cover{background:linear-gradient(160deg,#0E4433 0%,#15654A 55%,#1B7D5A 100%);color:#fff;
+  justify-content:center;padding:24mm 20mm;}
+.cover .kicker{font-size:9.5pt;letter-spacing:.2em;text-transform:uppercase;color:#8FD6BB;font-weight:700;margin-bottom:6mm;}
+.cover h1{font-size:34pt;color:#fff;line-height:1.2;margin-bottom:5mm;}
+.cover .sub{font-size:14pt;color:#C9E9DA;line-height:1.6;margin-bottom:10mm;font-weight:600;}
+.cover .divider{height:1.4mm;width:32mm;background:#F59E0B;border-radius:1mm;margin-bottom:10mm;}
+.cover .pills{display:flex;gap:3mm;flex-wrap:wrap;margin-bottom:14mm;}
+.cover .pill{border:.5pt solid rgba(255,255,255,.4);border-radius:20mm;padding:2mm 5mm;font-size:9.5pt;color:#E4F3EC;}
+.cover .foot{font-size:10pt;color:#8FD6BB;}
+
+.toc-row{display:flex;align-items:baseline;gap:2mm;padding:1.6mm 0;border-bottom:.4pt dotted var(--line);}
+.toc-row .n{width:8mm;font-weight:700;color:var(--terra);font-size:9.5pt;}
+.toc-row .t{flex:1;}
+.toc-row .p{color:var(--ink-3);font-size:9.5pt;font-weight:600;}
+.toc-part{font-size:8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin:3.5mm 0 .5mm;}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page plain cover">
+  <div class="kicker">বাঙালিদের জন্য</div>
+  <h1>৩০ দিনের<br>বাঙালি ডায়েট প্ল্যান</h1>
+  <div class="divider"></div>
+  <div class="sub">ভাত, মাছ আর রুটি খেয়েই<br>ওজন কমান — না খেয়ে নয়</div>
+  <div class="pills">
+    <span class="pill">দিন-ভিত্তিক চার্ট</span>
+    <span class="pill">১৫টি রেসিপি</span>
+    <span class="pill">বাজারের লিস্ট</span>
+    <span class="pill">প্রিন্টেবল ট্র্যাকার</span>
+  </div>
+  <div class="foot">জিম নেই · দামি খাবার নেই · আপনার রান্নাঘরেই সব আছে</div>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<section class="page" data-sec="জরুরি নোটিশ" data-pg="২">
+  <div class="eyebrow">পড়া শুরুর আগে</div>
+  <h2>একটি জরুরি কথা</h2>
+  <div class="rule"></div>
+
+  <p>এই বইটি <strong>শিক্ষামূলক তথ্য</strong> — চিকিৎসা পরামর্শ নয়। এখানে যা আছে তা সাধারণ পুষ্টিবিজ্ঞানের প্রচলিত নীতির ভিত্তিতে সাজানো, এবং সুস্থ প্রাপ্তবয়স্ক মানুষের কথা ভেবে তৈরি।</p>
+
+  <div class="box warn">
+    <span class="bt">এই অবস্থাগুলোতে আগে ডাক্তারের সঙ্গে কথা বলুন</span>
+    <ul>
+      <li>ডায়াবেটিস বা রক্তে শর্করার ওষুধ চলছে</li>
+      <li>উচ্চ রক্তচাপ, হৃদরোগ, বা কিডনির সমস্যা</li>
+      <li>থাইরয়েড বা PCOS-এর ওষুধ চলছে</li>
+      <li>গর্ভবতী বা সন্তানকে বুকের দুধ খাওয়াচ্ছেন</li>
+      <li>বয়স ১৮-এর নিচে বা ৬৫-র উপরে</li>
+      <li>কোনও দীর্ঘমেয়াদি অসুখ বা নিয়মিত ওষুধ</li>
+    </ul>
+    <p>এসব ক্ষেত্রে এই প্ল্যান বন্ধ করার দরকার নেই — শুধু আপনার ডাক্তারকে চার্টটা একবার দেখিয়ে নিন।</p>
+  </div>
+
+  <h3>যেকোনো সময় থামুন, যদি —</h3>
+  <p>খুব দুর্বল লাগে, মাথা ঘোরে, বুক ধড়ফড় করে, বা টানা তিন দিনের বেশি ঘুম না হয়। শরীর সংকেত দিলে শোনা বুদ্ধিমানের কাজ, জেদ নয়।</p>
+
+  <div class="box">
+    <span class="bt">আমরা যা প্রতিশ্রুতি দিই না</span>
+    <p>এই বই আপনাকে "১০ দিনে ১০ কেজি" কমানোর কথা বলবে না। ওরকম কিছু হয় না, আর হলে সেটা শরীরের জন্য ক্ষতিকর। এখানে যা আছে তা ধীর, নিরাপদ, এবং <strong>ধরে রাখার মতো</strong> পথ — মাসে ২ থেকে ৪ কেজি, স্বাভাবিক খাবার খেয়ে।</p>
+  </div>
+
+  <p style="margin-top:auto;font-size:9pt;color:var(--ink-3);border-top:.4pt solid var(--line);padding-top:3mm;">
+  এই বইয়ের কোনও অংশ অনুমতি ছাড়া পুনঃপ্রকাশ বা বিতরণ করা যাবে না। ব্যক্তিগত ব্যবহারের জন্য প্রিন্ট করতে পারেন।</p>
+</section>
+
+<!-- ============ TOC ============ -->
+<section class="page" data-sec="সূচিপত্র" data-pg="৩">
+  <div class="eyebrow">এই বইয়ে যা পাবেন</div>
+  <h2>সূচিপত্র</h2>
+  <div class="rule"></div>
+
+  <div class="toc-part">শুরুর কথা</div>
+  <div class="toc-row"><span class="n">০১</span><span class="t">এই বইটা কীভাবে ব্যবহার করবেন</span><span class="p">৫</span></div>
+
+  <div class="toc-part">পার্ট ১ — ভিত্তি</div>
+  <div class="toc-row"><span class="n">০২</span><span class="t">ওজন কমার আসল নিয়ম — সহজ ভাষায়</span><span class="p">৭</span></div>
+  <div class="toc-row"><span class="n">০৩</span><span class="t">৭টি ভুল ধারণা যা আপনাকে আটকে রেখেছে</span><span class="p">১০</span></div>
+  <div class="toc-row"><span class="n">০৪</span><span class="t">আপনার নিজের সংখ্যাটা বের করুন</span><span class="p">১৩</span></div>
+
+  <div class="toc-part">পার্ট ২ — প্রস্তুতি</div>
+  <div class="toc-row"><span class="n">০৫</span><span class="t">রান্নাঘর গোছানো — কী রাখবেন, কী সরাবেন</span><span class="p">১৬</span></div>
+  <div class="toc-row"><span class="n">০৬</span><span class="t">হাতের মাপে পরিমাণ — মাপার যন্ত্র লাগবে না</span><span class="p">১৮</span></div>
+  <div class="toc-row"><span class="n">০৭</span><span class="t">সাপ্তাহিক বাজারের লিস্ট</span><span class="p">২১</span></div>
+
+  <div class="toc-part">পার্ট ৩ — ৩০ দিনের প্ল্যান</div>
+  <div class="toc-row"><span class="n">০৮</span><span class="t">সপ্তাহ ১ — শরীরকে অভ্যস্ত করা (দিন ১–৭)</span><span class="p">২৪</span></div>
+  <div class="toc-row"><span class="n">০৯</span><span class="t">সপ্তাহ ২ — গতি আসা (দিন ৮–১৪)</span><span class="p">৩০</span></div>
+  <div class="toc-row"><span class="n">১০</span><span class="t">সপ্তাহ ৩ — আসল পরীক্ষা (দিন ১৫–২১)</span><span class="p">৩৬</span></div>
+  <div class="toc-row"><span class="n">১১</span><span class="t">সপ্তাহ ৪ — অভ্যাসে পরিণত করা (দিন ২২–৩০)</span><span class="p">৪২</span></div>
+
+  <div class="toc-part">পার্ট ৪ — রান্নাঘর</div>
+  <div class="toc-row"><span class="n">১২</span><span class="t">১৫টি রেসিপি — প্রতিটি ১৫ মিনিটে</span><span class="p">৪৯</span></div>
+
+  <div class="toc-part">পার্ট ৫ — বাস্তব জীবন</div>
+  <div class="toc-row"><span class="n">১৩</span><span class="t">বাইরে খেলে কী করবেন</span><span class="p">৫৬</span></div>
+  <div class="toc-row"><span class="n">১৪</span><span class="t">বিয়েবাড়ি, পুজো, নেমন্তন্ন</span><span class="p">৫৮</span></div>
+  <div class="toc-row"><span class="n">১৫</span><span class="t">ওজন আটকে গেলে কী করবেন</span><span class="p">৬০</span></div>
+  <div class="toc-row"><span class="n">১৬</span><span class="t">বদলের চার্ট — ভেজ, ডায়াবেটিক, থাইরয়েড</span><span class="p">৬২</span></div>
+
+  <div class="toc-part">পার্ট ৬ — হিসাব রাখা</div>
+  <div class="toc-row"><span class="n">১৭</span><span class="t">৩০ দিনের ট্র্যাকার (প্রিন্ট করে নিন)</span><span class="p">৬৫</span></div>
+  <div class="toc-row"><span class="n">১৮</span><span class="t">২০টি প্রশ্ন ও উত্তর</span><span class="p">৬৮</span></div>
+  <div class="toc-row"><span class="n">১৯</span><span class="t">৩০ দিনের পর — এবার কী?</span><span class="p">৭২</span></div>
+</section>
+
+<!-- ============ CH 01 ============ -->
+<section class="page" data-sec="শুরুর কথা" data-pg="৫">
+  <div class="chapno">১</div>
+  <h1>এই বইটা কীভাবে<br>ব্যবহার করবেন</h1>
+  <div class="rule"></div>
+
+  <p class="lede">এটা পড়ার বই নয় — এটা করার বই। এক বসায় পুরোটা পড়ে ফেলার দরকার নেই।</p>
+
+  <h3>আজই যা করবেন (৩০ মিনিট)</h3>
+  <table>
+    <tr><td class="num">১</td><td>পার্ট ১ পড়ুন (অধ্যায় ২–৪) — বুঝে নিন কেন এটা কাজ করে</td></tr>
+    <tr><td class="num">২</td><td>অধ্যায় ৪-এ নিজের ক্যালরির সংখ্যাটা বের করুন</td></tr>
+    <tr><td class="num">৩</td><td>পৃষ্ঠা ৬৫-এর ট্র্যাকারটা প্রিন্ট করুন, বা খাতায় নকল করুন</td></tr>
+    <tr><td class="num">৪</td><td>আজকের ওজন আর কোমরের মাপ লিখে রাখুন</td></tr>
+  </table>
+
+  <h3>এই সপ্তাহে যা করবেন</h3>
+  <table>
+    <tr><td class="num">৫</td><td>অধ্যায় ৫ দেখে রান্নাঘর গুছিয়ে নিন</td></tr>
+    <tr><td class="num">৬</td><td>অধ্যায় ৬-এর হাতের মাপ শিখে নিন — এটাই বইয়ের সবচেয়ে দামি অংশ</td></tr>
+    <tr><td class="num">৭</td><td>অধ্যায় ৭-এর লিস্ট নিয়ে বাজার করুন</td></tr>
+    <tr><td class="num">৮</td><td>সোমবার থেকে দিন ১ শুরু করুন</td></tr>
+  </table>
+
+  <div class="box tip">
+    <span class="bt">তারপর প্রতিদিন</span>
+    <p>শুধু সেই দিনের পাতাটা খুলুন। ওখানেই সব লেখা আছে — সকালে কী, দুপুরে কী, রাতে কী। ভাবার কিছু নেই। রাতে শুতে যাওয়ার আগে ট্র্যাকারে টিক দিন। ব্যস।</p>
+  </div>
+
+</section>
+
+<section class="page" data-sec="শুরুর কথা" data-pg="৬">
+  <h2>তিনটি নিয়ম, শুরু থেকেই</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">১ · নিখুঁত হওয়ার চেষ্টা নয়</div>
+      <p style="margin:0;font-size:9.5pt;">৩০ দিনের মধ্যে ২৪ দিন ঠিকমতো চললেই ফল পাবেন। একদিন এদিক-ওদিক হলে সব শেষ হয়ে যায় না।</p>
+    </div>
+    <div class="card">
+      <div class="ct">২ · ক্ষুধা লাগলে খান</div>
+      <p style="margin:0;font-size:9.5pt;">এটা উপোসের প্ল্যান নয়। খুব খিদে পেলে অধ্যায় ৬-এর "ফ্রি ফুড" তালিকা থেকে খান।</p>
+    </div>
+    <div class="card">
+      <div class="ct">৩ · রোজ ওজন মাপবেন না</div>
+      <p style="margin:0;font-size:9.5pt;">সপ্তাহে একদিন — রবিবার সকালে, বাথরুম সেরে, খালি পেটে। রোজকার ওঠানামা মিথ্যে কথা বলে।</p>
+    </div>
+    <div class="card">
+      <div class="ct">যদি একদিন বাদ যায়</div>
+      <p style="margin:0;font-size:9.5pt;">পরের দিন থেকে আবার শুরু। আগের দিনের "ক্ষতিপূরণ" দিতে না খেয়ে থাকবেন না — ওটাই সবচেয়ে বড় ভুল।</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="bt">এই ৩০ দিনে বাস্তবে কী আশা করবেন</span>
+    <p><strong>২ থেকে ৪ কেজি</strong> ওজন কমা, কোমরের মাপে <strong>১–২ ইঞ্চি</strong> কম, আর সবচেয়ে বড় কথা — দুপুরের পর যে ঝিমুনিটা আসে, সেটা অনেকটা কমে যাওয়া। প্রথম সপ্তাহে একটু বেশি কমতে পারে, সেটা মূলত জল। ঘাবড়াবেন না, দ্বিতীয় সপ্তাহে গতি স্বাভাবিক হবে।</p>
+  </div>
+</section>
+
+<!-- ============ CH 02 ============ -->
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="৭">
+  <div class="chapno">২</div>
+  <h1>ওজন কমার আসল নিয়ম</h1>
+  <div class="rule"></div>
+
+  <p class="lede">পুরো ব্যাপারটা একটা লাইনে ধরা যায়। বাকি সব — কোন খাবার, কখন খাবেন, কী রান্না — এই একটা লাইনকে সহজ করার জন্য।</p>
+
+  <div class="box">
+    <span class="bt">নিয়মটা এই</span>
+    <p style="font-size:12pt;font-weight:700;color:var(--green-d);">শরীর যত শক্তি খরচ করে, তার চেয়ে একটু কম শক্তি খাবারে ঢুকলে — শরীর ঘাটতিটা জমানো চর্বি থেকে মেটায়। তখনই ওজন কমে।</p>
+  </div>
+
+  <p>এই শক্তি মাপা হয় <strong>ক্যালরি</strong> দিয়ে। ভাবুন এটা টাকার মতো — রোজ আপনার একটা বাজেট আছে। বাজেটের চেয়ে কম খরচ করলে সঞ্চয় (এখানে চর্বি) কমতে থাকে।</p>
+
+  <h3>তিনটে সংখ্যা, ব্যস</h3>
+  <table>
+    <thead><tr><th>যা</th><th>মানে</th><th>উদাহরণ</th></tr></thead>
+    <tbody>
+      <tr><td><strong>খরচ</strong></td><td>আপনার শরীর সারাদিনে যত ক্যালরি পোড়ায়</td><td>১৮০০</td></tr>
+      <tr><td><strong>আয়</strong></td><td>আপনি যত ক্যালরি খান</td><td>১৪০০</td></tr>
+      <tr><td><strong>ঘাটতি</strong></td><td>এই দুটোর ফারাক — এখান থেকেই চর্বি কমে</td><td>৪০০</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>১ কেজি চর্বি ≈ ৭,৭০০ ক্যালরি।</strong> রোজ ৪০০ ক্যালরির ঘাটতি রাখলে ১৯ দিনে ১ কেজি, মাসে দেড় কেজির মতো। রোজ ৫০০ রাখলে মাসে ২ কেজি। এই প্ল্যানটা ঠিক এই জায়গাতেই বসানো — <strong>রোজ ৪০০–৫০০ ক্যালরির ঘাটতি</strong>, তার বেশি নয়।</p>
+
+  <div class="box warn">
+    <span class="bt">আরও বেশি ঘাটতি করলে কী হয়?</span>
+    <p>রোজ ১০০০ ক্যালরির ঘাটতি করলে প্রথম দুই সপ্তাহে দ্রুত কমবে — তারপর তিনটে জিনিস ঘটে। শরীর খরচ কমিয়ে দেয় (মেটাবলিজম ধীর হয়), পেশি ভাঙতে শুরু করে, আর খিদে এত বাড়ে যে একদিন সব ভেঙে পড়ে। এরপর ওজন আগের চেয়ে বেশি হয়ে ফিরে আসে। এটাকেই বলে <strong>ইয়ো-ইয়ো</strong>। বেশিরভাগ ডায়েট এখানেই ফেল করে।</p>
+  </div>
+</section>
+
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="৮">
+  <h2>তাহলে ভাত-রুটি বাদ দিতে হবে না কেন?</h2>
+
+  <p>কারণ ওজন কমা নির্ভর করে <strong>মোট ক্যালরির উপর</strong>, কোনও একটা বিশেষ খাবারের উপর নয়। ভাত নিজে মোটা করে না — বেশি পরিমাণে যেকোনো কিছু খেলেই মোটা করে।</p>
+
+  <p>আসল সমস্যাটা <strong>পরিমাণ</strong>। বাঙালি বাড়িতে ভাত সাধারণত তিন-চার হাতা দেওয়া হয়। সেটা কমিয়ে দেড় হাতা করলে, আর পাতে ডাল-সবজি-মাছের ভাগ বাড়িয়ে দিলে — একই খাবার, প্রায় অর্ধেক ক্যালরি, এবং পেটও ভরা থাকে।</p>
+
+  <div class="box tip">
+    <span class="bt">এই বইয়ের পুরো কৌশলটা এক কথায়</span>
+    <p>খাবার বাদ দেওয়া নয় — <strong>প্লেটের ভাগ বদলানো</strong>। ভাতের জায়গা কমিয়ে সবজি আর প্রোটিনের জায়গা বাড়ানো। এতে ক্যালরি কমে, কিন্তু পেট ভরে, তাই লেগে থাকা যায়।</p>
+  </div>
+
+  <h3>চেনা খাবারে কত ক্যালরি</h3>
+  <table>
+    <thead><tr><th>খাবার</th><th>পরিমাণ</th><th style="text-align:right">আনুমানিক ক্যালরি</th></tr></thead>
+    <tbody>
+      <tr><td>ভাত</td><td>১ হাতা (~৭৫ গ্রাম রান্না)</td><td class="num">১০০</td></tr>
+      <tr><td>আটার রুটি</td><td>১টি মাঝারি</td><td class="num">১১০</td></tr>
+      <tr><td>মুসুর ডাল</td><td>১ বাটি</td><td class="num">১২০</td></tr>
+      <tr><td>রুই মাছের ঝোল</td><td>১ পিস (~৭৫ গ্রাম)</td><td class="num">১৩০</td></tr>
+      <tr><td>রুই মাছ ভাজা</td><td>১ পিস</td><td class="num">১৯০</td></tr>
+      <tr><td>ডিম সেদ্ধ</td><td>১টি</td><td class="num">৭৮</td></tr>
+      <tr><td>মুরগির ঝোল</td><td>১০০ গ্রাম</td><td class="num">১৮০</td></tr>
+      <tr><td>টক দই</td><td>১ বাটি (~১৫০ গ্রাম)</td><td class="num">১০০</td></tr>
+      <tr><td>মুড়ি</td><td>১ কাপ</td><td class="num">৫৫</td></tr>
+      <tr><td>লুচি</td><td>১টি</td><td class="num">১১৫</td></tr>
+      <tr><td>সিঙাড়া</td><td>১টি</td><td class="num">২৬০</td></tr>
+      <tr><td>রসগোল্লা</td><td>১টি</td><td class="num">১৫০</td></tr>
+      <tr><td>চিনি-দুধ চা</td><td>১ কাপ</td><td class="num">৯০</td></tr>
+      <tr><td>শসা / লাউ / ঝিঙে</td><td>১ বাটি</td><td class="num">২৫</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:9pt;color:var(--ink-3);">সংখ্যাগুলি আনুমানিক — রান্নার তেল ও পরিমাণ অনুযায়ী কিছুটা বদলায়। নিখুঁত হিসাব দরকার নেই, ধারণাটাই যথেষ্ট।</p>
+
+  <div class="box">
+    <span class="bt">লক্ষ্য করুন</span>
+    <p>দিনে দুটো সিঙাড়া আর দুটো চিনি-চা = <strong>৭০০ ক্যালরি</strong>। এটাই বেশিরভাগ মানুষের পুরো ঘাটতিটা খেয়ে ফেলে। বড় বদল নয় — এই ছোট জায়গাগুলোই আসল।</p>
+  </div>
+</section>
+
+<!-- ============ CH 03 — MYTHS ============ -->
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="১০">
+  <div class="chapno">৩</div>
+  <h1>৭টি ভুল ধারণা</h1>
+  <div class="rule"></div>
+  <p class="lede">এগুলোর প্রায় সবকটাই আপনি কারও না কারও মুখে শুনেছেন। কোনটা সত্যি, দেখে নিন।</p>
+
+  <div class="myth">
+    <div class="m">১ · "ভাত খেলে মোটা হয়, রুটি খেলে হয় না"</div>
+    <div class="t"><p>এক হাতা ভাতে ~১০০ ক্যালরি, একটা রুটিতে ~১১০। প্রায় সমান। পার্থক্য শুধু এই — রুটি গুনে খাওয়া যায়, ভাত হাতা দিয়ে দেওয়া হয় বলে পরিমাণ বেশি হয়ে যায়। <strong>ভাত দোষী নয়, হাতা দোষী।</strong></p></div>
+  </div>
+
+  <div class="myth">
+    <div class="m">২ · "রাতে ভাত খেলে মোটা হয়"</div>
+    <div class="t"><p>শরীর ঘড়ি দেখে ক্যালরি জমায় না। রাত ৯টায় খাওয়া ২০০ ক্যালরি আর দুপুর ১টায় খাওয়া ২০০ ক্যালরি একই। রাতে সমস্যা হয় অন্য কারণে — রাতে মানুষ বেশি খায়, আর খাওয়ার পরপরই শুয়ে পড়ে বলে হজমে অস্বস্তি হয়। এই প্ল্যানে রাতের খাবার একটু হালকা রাখা হয়েছে সেই কারণেই, ভাত নিষিদ্ধ বলে নয়।</p></div>
+  </div>
+
+  <div class="myth">
+    <div class="m">৩ · "সকালে খালি পেটে লেবু-মধু জল খেলে চর্বি গলে"</div>
+    <div class="t"><p>গলে না। এক গ্লাস লেবু-মধু জলে ~৬০ ক্যালরি (মধুর জন্য) — অর্থাৎ এটা চর্বি কমানোর বদলে সামান্য বাড়ায়। গরম জল খেতে ভালো লাগলে খান, কিন্তু ওটা ওষুধ নয়। <strong>সাধারণ জলই যথেষ্ট।</strong></p></div>
+  </div>
+
+  <div class="myth">
+    <div class="m">৪ · "ঘি / তেল একদম বাদ দিতে হবে"</div>
+    <div class="t"><p>না। শরীরের কিছু ভিটামিন (A, D, E, K) তেল ছাড়া শোষিতই হয় না। সমস্যা পরিমাণে — এক চামচ তেলে ~১২০ ক্যালরি, যা এক হাতা ভাতের চেয়ে বেশি। <strong>দিনে ৩–৪ চা-চামচ তেল যথেষ্ট</strong> পুরো পরিবারের রান্নার হিসাবে আপনার ভাগ ধরে।</p></div>
+  </div>
+
+</section>
+
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="১১">
+  <h2>ভুল ধারণা — বাকিগুলো</h2>
+  <div class="myth">
+    <div class="m">৫ · "না খেয়ে থাকলে তাড়াতাড়ি কমবে"</div>
+    <div class="t"><p>প্রথম কয়েকদিন কমবে, তারপর উল্টো হবে। শরীর বুঝে যায় খাবার কম আসছে, তাই খরচ কমিয়ে দেয় আর পেশি ভাঙতে শুরু করে। পেশি কমলে মেটাবলিজম স্থায়ীভাবে ধীর হয়ে যায় — অর্থাৎ পরে অল্প খেলেও মোটা হবেন। <strong>এটা ওজন কমানোর সবচেয়ে ক্ষতিকর পথ।</strong></p></div>
+  </div>
+
+  <div class="myth">
+    <div class="m">৬ · "পেটের চর্বি আলাদা করে কমানো যায়"</div>
+    <div class="t"><p>যায় না। শুধু পেটের ব্যায়াম করলে পেটের পেশি শক্ত হয়, কিন্তু উপরের চর্বির স্তর সরে না। শরীর সারা গা থেকে একসঙ্গে চর্বি কমায় — পেট সাধারণত সবার শেষে সাড়া দেয়। ধৈর্য লাগে, কিন্তু কমে।</p></div>
+  </div>
+
+  <div class="myth">
+    <div class="m">৭ · "ডায়েট মানেই স্যালাড আর ওটস"</div>
+    <div class="t"><p>এই ধারণাটাই বেশিরভাগ মানুষকে হারিয়ে দেয়। যে খাবার আপনার ভালো লাগে না, বাড়ির কেউ খায় না, আর যেটা রোজ আলাদা করে বানাতে হয় — সেটা তিন সপ্তাহের বেশি চলে না। <strong>এই বইয়ের পুরো চার্ট আপনার রোজকার বাঙালি রান্না দিয়েই বানানো।</strong></p></div>
+  </div>
+</section>
+
+<!-- ============ CH 04 — YOUR NUMBER ============ -->
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="১৩">
+  <div class="chapno">৪</div>
+  <h1>আপনার নিজের সংখ্যাটা</h1>
+  <div class="rule"></div>
+  <p class="lede">সবার শরীর এক নয়, তাই সবার ক্যালরির হিসাবও এক নয়। নিচের টেবিল থেকে নিজেরটা বেছে নিন — অঙ্ক কষতে হবে না।</p>
+
+  <h3>ধাপ ১ · টেবিলে নিজের ঘর খুঁজুন</h3>
+  <p style="font-size:9.5pt;">নিজের বর্তমান ওজনের সারি ধরুন, আর দিনে কতটা নড়াচড়া করেন সেই কলাম। সংখ্যাটাই আপনার <strong>দৈনিক খরচ</strong>।</p>
+
+  <table>
+    <thead><tr><th>এখনকার ওজন</th><th>বেশিরভাগ সময় বসে</th><th>ঘরের কাজ, হাঁটাচলা</th><th>দৌড়ঝাঁপ / ব্যায়াম</th></tr></thead>
+    <tbody>
+      <tr><td><strong>৫৫ কেজি</strong></td><td class="num">১৪৫০</td><td class="num">১৬৫০</td><td class="num">১৮৫০</td></tr>
+      <tr><td><strong>৬০ কেজি</strong></td><td class="num">১৫৫০</td><td class="num">১৭৫০</td><td class="num">১৯৫০</td></tr>
+      <tr><td><strong>৬৫ কেজি</strong></td><td class="num">১৬৫০</td><td class="num">১৮৫০</td><td class="num">২১০০</td></tr>
+      <tr><td><strong>৭০ কেজি</strong></td><td class="num">১৭৫০</td><td class="num">১৯৫০</td><td class="num">২২০০</td></tr>
+      <tr><td><strong>৭৫ কেজি</strong></td><td class="num">১৮৫০</td><td class="num">২১০০</td><td class="num">২৩৫০</td></tr>
+      <tr><td><strong>৮০ কেজি</strong></td><td class="num">১৯৫০</td><td class="num">২২০০</td><td class="num">২৫০০</td></tr>
+      <tr><td><strong>৮৫ কেজি</strong></td><td class="num">২০৫০</td><td class="num">২৩০০</td><td class="num">২৬০০</td></tr>
+      <tr><td><strong>৯০ কেজি +</strong></td><td class="num">২১৫০</td><td class="num">২৪৫০</td><td class="num">২৭৫০</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8.5pt;color:var(--ink-3);">টেবিলটি প্রাপ্তবয়স্ক মহিলাদের গড় হিসাবে তৈরি। পুরুষ হলে প্রতিটি সংখ্যায় ~২০০ যোগ করুন। এগুলি আনুমানিক — শরীর কেমন সাড়া দিচ্ছে দেখে দ্বিতীয় সপ্তাহে সামান্য বদলে নেবেন।</p>
+
+  <h3>ধাপ ২ · ৫০০ বিয়োগ করুন</h3>
+  <div class="box">
+    <p style="font-size:11.5pt;font-weight:700;color:var(--green-d);margin:0;">আপনার দৈনিক খরচ − ৫০০ = আপনার রোজকার লক্ষ্য</p>
+    <p style="margin:2mm 0 0;">যেমন ৭০ কেজি ওজন, ঘরের কাজ করেন → খরচ ১৯৫০ → <strong>লক্ষ্য ১৪৫০ ক্যালরি</strong>।</p>
+  </div>
+
+  <div class="box warn">
+    <span class="bt">একটা সীমা মনে রাখুন</span>
+    <p>মহিলাদের জন্য দিনে <strong>১২০০ ক্যালরির নিচে</strong> আর পুরুষদের <strong>১৫০০-র নিচে</strong> নামবেন না, ডাক্তারের তত্ত্বাবধান ছাড়া। হিসাব করে এর নিচে এলে ৫০০-র বদলে ৩০০ বিয়োগ করুন — একটু ধীরে কমবে, কিন্তু নিরাপদে।</p>
+  </div>
+</section>
+
+<section class="page" data-sec="পার্ট ১ — ভিত্তি" data-pg="১৪">
+  <h2>এই বইয়ের চার্ট কোন হিসাবে বানানো</h2>
+  <p>পার্ট ৩-এর ৩০ দিনের চার্টটি <strong>প্রায় ১৪০০–১৫০০ ক্যালরি</strong> ধরে সাজানো — যা বেশিরভাগ মহিলার জন্য ঠিকঠাক বসে যায়।</p>
+
+  <table>
+    <thead><tr><th>আপনার লক্ষ্য</th><th>চার্টে যা বদলাবেন</th></tr></thead>
+    <tbody>
+      <tr><td><strong>১২০০–১৩০০</strong></td><td>দুপুরে ভাত ১ হাতা কম, বিকেলের খাবার বাদ</td></tr>
+      <tr><td><strong>১৪০০–১৫০০</strong></td><td>চার্ট যেমন আছে, তেমনই চলুন</td></tr>
+      <tr><td><strong>১৬০০–১৮০০</strong></td><td>দুপুরে ১ হাতা ভাত বেশি + রাতে ১টা রুটি বেশি</td></tr>
+      <tr><td><strong>১৯০০+</strong></td><td>উপরেরটা + সকালে ১টা ডিম ও ১ মুঠো বাদাম বেশি</td></tr>
+    </tbody>
+  </table>
+
+  <h3>শুরুর দিনে এই চারটে লিখে রাখুন</h3>
+  <table>
+    <tbody>
+      <tr><td>আজকের তারিখ</td><td style="border-bottom:.7pt solid var(--ink-3);"></td></tr>
+      <tr><td>ওজন (সকালে, খালি পেটে)</td><td style="border-bottom:.7pt solid var(--ink-3);"></td></tr>
+      <tr><td>কোমরের মাপ (নাভির উপর দিয়ে)</td><td style="border-bottom:.7pt solid var(--ink-3);"></td></tr>
+      <tr><td>আমার দৈনিক লক্ষ্য (ক্যালরি)</td><td style="border-bottom:.7pt solid var(--ink-3);"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="box tip">
+    <span class="bt">কোমরের মাপটা ওজনের চেয়েও দামি</span>
+    <p>অনেক সময় ওজন আটকে থাকে, অথচ কোমর কমতে থাকে — কারণ চর্বি কমছে আর পেশি বাড়ছে। তাই সপ্তাহে একবার <strong>দুটোই</strong> মাপুন। ওজনের কাঁটা নড়ছে না বলে হাল ছাড়ার আগে ফিতেটা দেখুন।</p>
+  </div>
+</section>
+
+<!-- ============ CH 05 — KITCHEN ============ -->
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="১৬">
+  <div class="chapno">৫</div>
+  <h1>রান্নাঘর গোছানো</h1>
+  <div class="rule"></div>
+  <p class="lede">ইচ্ছাশক্তির উপর ভরসা করবেন না। যা হাতের কাছে থাকে, তা-ই খাওয়া হয় — এটাই মানুষের স্বভাব। তাই খাবার সরানোই সবচেয়ে সহজ কৌশল।</p>
+
+  <h3>যা সামনে রাখবেন</h3>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">চোখের সামনে, টেবিলে</div>
+      <p style="margin:0;font-size:9.5pt;">ফল (আপেল, পেয়ারা, কলা) · ছোলা ভেজানো · শসা-গাজর কেটে রাখা · জলের বোতল</p>
+    </div>
+    <div class="card">
+      <div class="ct">ফ্রিজে সামনের তাকে</div>
+      <p style="margin:0;font-size:9.5pt;">টক দই · ডিম · কাটা সবজি · লেবু · ধনেপাতা-পুদিনা</p>
+    </div>
+  </div>
+
+  <h3>যা উপরের তাকে সরাবেন (ফেলে দিতে হবে না)</h3>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">নাগালের বাইরে</div>
+      <p style="margin:0;font-size:9.5pt;">বিস্কুট · চানাচুর · চিপস · মিষ্টি · কোল্ড ড্রিঙ্ক · প্যাকেটের জুস</p>
+    </div>
+    <div class="card">
+      <div class="ct">কেন ফেলবেন না</div>
+      <p style="margin:0;font-size:9.5pt;">বাড়ির অন্যদের চলবে। শুধু জায়গা বদলান — টেবিল থেকে উপরের তাকে। এটুকুতেই খাওয়া অনেক কমে যায়।</p>
+    </div>
+  </div>
+
+  <h3>তিনটে জিনিস কিনে নিন (একবারের খরচ)</h3>
+  <table>
+    <thead><tr><th>জিনিস</th><th>কেন</th><th style="text-align:right">আনুমানিক দাম</th></tr></thead>
+    <tbody>
+      <tr><td>ছোট প্লেট (৮ ইঞ্চি)</td><td>বড় থালায় কম খাবার ফাঁকা লাগে, ছোট প্লেটে ভরা লাগে — মন ভরে যায়</td><td class="num">₹১০০</td></tr>
+      <tr><td>মাপার চামচ / চা-চামচ</td><td>তেল মাপার জন্য — শুধু এইটুকুতেই দিনে ২০০ ক্যালরি বাঁচে</td><td class="num">₹৮০</td></tr>
+      <tr><td>১ লিটারের জলের বোতল</td><td>দিনে ৩ বোতল = ৩ লিটার, হিসাব রাখা সহজ</td><td class="num">₹১৫০</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box tip">
+    <span class="bt">রান্নার একটা বদল, সবচেয়ে বড় ফল</span>
+    <p>কড়াইতে তেল <strong>ঢালবেন না, চামচে মেপে দেবেন।</strong> বাঙালি রান্নায় সাধারণত ৪–৫ চামচ তেল যায়। ৩ চামচে নামিয়ে আনলে স্বাদ প্রায় একই থাকে, কিন্তু দিনে ২৪০ ক্যালরি কমে — যা আপনার অর্ধেক ঘাটতি।</p>
+  </div>
+
+  <div class="box">
+    <span class="bt">যা বদলাতে হবে না</span>
+    <p>মশলা, পেঁয়াজ-রসুন-আদা, সর্ষে, পাঁচফোড়ন, লঙ্কা, তেজপাতা — সব যেমন আছে তেমনই। স্বাদ কমানোর দরকার নেই, শুধু তেল আর পরিমাণ মাপা।</p>
+  </div>
+</section>
+
+<!-- ============ CH 06 — HAND PORTIONS ============ -->
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="১৮">
+  <div class="chapno">৬</div>
+  <h1>হাতের মাপে পরিমাণ</h1>
+  <div class="rule"></div>
+  <p class="lede">ওজন মাপার যন্ত্র লাগবে না, ক্যালরি গুনতেও হবে না। আপনার নিজের হাতই মাপকাঠি — আর সেটা আপনার শরীরের মাপের সঙ্গেই মানানসই।</p>
+
+  <table>
+    <thead><tr><th>হাতের অংশ</th><th>যা মাপে</th><th>কতটা</th></tr></thead>
+    <tbody>
+      <tr><td><strong>হাতের তালু</strong><br><span style="font-size:8.5pt;color:var(--ink-3)">(আঙুল বাদে)</span></td><td>প্রোটিন — মাছ, মাংস, পনির, ডিম</td><td>প্রতি বেলায় <strong>১ তালু</strong></td></tr>
+      <tr><td><strong>মুঠো</strong><br><span style="font-size:8.5pt;color:var(--ink-3)">(বন্ধ হাত)</span></td><td>সবজি — সব রকম</td><td>প্রতি বেলায় <strong>১–২ মুঠো</strong></td></tr>
+      <tr><td><strong>কোষ করা হাত</strong><br><span style="font-size:8.5pt;color:var(--ink-3)">(জল খাওয়ার ভঙ্গি)</span></td><td>ভাত, রুটি, আলু, ডাল</td><td>প্রতি বেলায় <strong>১ কোষ</strong></td></tr>
+      <tr><td><strong>বুড়ো আঙুল</strong></td><td>তেল, ঘি, বাদাম, মাখন</td><td>প্রতি বেলায় <strong>১ আঙুল</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <span class="bt">বাঙালি পাতে এটা দেখতে কেমন হবে</span>
+    <p><strong>দুপুরের থালা:</strong> এক কোষ ভাত (মোটামুটি দেড় হাতা) · এক তালু মাছ (এক পিস) · দুই মুঠো সবজি বা শাক · আধ বাটি ডাল · এক আঙুল তেলে রান্না।</p>
+    <p style="margin-bottom:0;">দেখতে কম লাগবে প্রথম দু-তিন দিন। এক সপ্তাহেই চোখ অভ্যস্ত হয়ে যাবে।</p>
+  </div>
+
+  <h3>প্লেট সাজানোর সহজ নিয়ম</h3>
+  <table>
+    <thead><tr><th>প্লেটের ভাগ</th><th>কী দেবেন</th></tr></thead>
+    <tbody>
+      <tr><td><strong>অর্ধেক</strong></td><td>সবজি, শাক, স্যালাড — যত খুশি</td></tr>
+      <tr><td><strong>এক-চতুর্থাংশ</strong></td><td>মাছ / ডিম / মাংস / পনির / ডাল</td></tr>
+      <tr><td><strong>এক-চতুর্থাংশ</strong></td><td>ভাত বা রুটি</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:9.5pt;">আগে ভাত নিয়ে তারপর তরকারি না দিয়ে — <strong>উল্টো করুন</strong>। প্রথমে সবজি দিয়ে অর্ধেক প্লেট ভরুন, তারপর মাছ, শেষে ভাত। অভ্যাসটা বদলালেই পরিমাণ নিজে থেকে ঠিক হয়ে যায়।</p>
+</section>
+
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="১৯">
+  <h2>খিদে পেলে যা খুশি খেতে পারেন</h2>
+  <p>এই তালিকার জিনিসগুলোতে ক্যালরি এত কম যে হিসাবে ধরার দরকার নেই। খিদে পেলে বা মুখ চালানোর ইচ্ছে হলে এখান থেকে খান — কোনও অপরাধবোধ নেই।</p>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">সবজি — যত খুশি</div>
+      <p style="margin:0;font-size:9.5pt;">শসা · লাউ · ঝিঙে · পটল · উচ্ছে · টমেটো · গাজর · মুলো · ক্যাপসিকাম · বাঁধাকপি · ফুলকপি · পালং ও অন্য শাক</p>
+    </div>
+    <div class="card">
+      <div class="ct">পানীয় — যত খুশি</div>
+      <p style="margin:0;font-size:9.5pt;">জল · চিনি ছাড়া লিকার চা · গ্রিন টি · লেবু জল (চিনি ছাড়া) · ঘোল / চিনি ছাড়া লস্যি · ডাবের জল (দিনে ১টা)</p>
+    </div>
+  </div>
+
+  <h3>মেপে খাওয়ার জিনিস</h3>
+  <table>
+    <thead><tr><th>খাবার</th><th>দিনে কতটা</th></tr></thead>
+    <tbody>
+      <tr><td>ফল</td><td>২টি মাঝারি (আম, কাঁঠাল, কলা হলে ১টি)</td></tr>
+      <tr><td>বাদাম / চিনাবাদাম</td><td>১ বুড়ো আঙুল পরিমাণ (~১০–১২টি)</td></tr>
+      <tr><td>টক দই</td><td>১ বাটি</td></tr>
+      <tr><td>মুড়ি</td><td>১ কাপ, সবজি-লঙ্কা মিশিয়ে</td></tr>
+      <tr><td>রান্নার তেল</td><td>৩ চা-চামচ (আপনার নিজের ভাগ)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box warn">
+    <span class="bt">এই তিনটে জিনিসে সবচেয়ে বেশি লুকোনো ক্যালরি</span>
+    <p><strong>১. চিনি-দুধ চা</strong> — দিনে ৪ কাপ = ৩৬০ ক্যালরি। লিকার চা করলে ~০।<br>
+    <strong>২. রান্নার তেল</strong> — ঢালার বদলে মাপলে দিনে ২৪০ ক্যালরি কম।<br>
+    <strong>৩. রাতের খাবারের পর "একটু মিষ্টি মুখ"</strong> — একটা রসগোল্লা ১৫০ ক্যালরি, রোজ খেলে মাসে প্রায় ৬০০ গ্রাম চর্বি।</p>
+  </div>
+
+  <div class="box tip">
+    <span class="bt">চা ছাড়তে কষ্ট হলে</span>
+    <p>একবারে ছাড়বেন না। প্রথম সপ্তাহে চিনি অর্ধেক করুন, দ্বিতীয় সপ্তাহে সিকি, তৃতীয় সপ্তাহে বাদ। ধীরে করলে জিভ মানিয়ে নেয়, একবারে করলে তিন দিনে হাল ছেড়ে দেবেন।</p>
+  </div>
+</section>
+
+<!-- ============ CH 07 — GROCERY ============ -->
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="২১">
+  <div class="chapno">৭</div>
+  <h1>সাপ্তাহিক বাজারের লিস্ট</h1>
+  <div class="rule"></div>
+  <p class="lede">একজনের এক সপ্তাহের হিসাব। বাড়ির অন্যরাও একই রান্না খাবেন — শুধু আপনার পাতের পরিমাণটা আলাদা।</p>
+
+  <h3>প্রোটিন</h3>
+  <table>
+    <thead><tr><th>জিনিস</th><th>পরিমাণ</th><th style="text-align:right">আনুমানিক দাম</th></tr></thead>
+    <tbody>
+      <tr><td>ডিম</td><td>১২টি</td><td class="num">₹৯০</td></tr>
+      <tr><td>রুই বা কাতলা মাছ</td><td>৭০০ গ্রাম</td><td class="num">₹২৫০</td></tr>
+      <tr><td>ছোট মাছ (মৌরলা / পুঁটি)</td><td>৩০০ গ্রাম</td><td class="num">₹১২০</td></tr>
+      <tr><td>মুরগির মাংস</td><td>৫০০ গ্রাম</td><td class="num">₹১৩০</td></tr>
+      <tr><td>মুসুর ও মুগ ডাল</td><td>৫০০ গ্রাম</td><td class="num">₹৭০</td></tr>
+      <tr><td>ছোলা / রাজমা</td><td>২৫০ গ্রাম</td><td class="num">₹৩০</td></tr>
+      <tr><td>টক দই</td><td>১ কেজি</td><td class="num">₹৮০</td></tr>
+      <tr><td>পনির</td><td>২০০ গ্রাম</td><td class="num">₹৮০</td></tr>
+    </tbody>
+  </table>
+
+  <h3>সবজি ও শাক</h3>
+  <table>
+    <tbody>
+      <tr><td>লাউ / ঝিঙে / পটল</td><td>১ কেজি</td><td class="num">₹৬০</td></tr>
+      <tr><td>পালং / লাল শাক / নটে</td><td>৩ আঁটি</td><td class="num">₹৪৫</td></tr>
+      <tr><td>ফুলকপি / বাঁধাকপি</td><td>১টি</td><td class="num">₹৪০</td></tr>
+      <tr><td>শসা</td><td>৭টি</td><td class="num">₹৪০</td></tr>
+      <tr><td>টমেটো</td><td>৫০০ গ্রাম</td><td class="num">₹৩০</td></tr>
+      <tr><td>গাজর</td><td>৫০০ গ্রাম</td><td class="num">₹৩৫</td></tr>
+      <tr><td>পেঁয়াজ, রসুন, আদা, লঙ্কা</td><td>প্রয়োজনমতো</td><td class="num">₹৮০</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="২২">
+  <h2>বাজারের লিস্ট — বাকি সব</h2>
+  <table>
+    <tbody>
+      <tr><td>আটা</td><td>১ কেজি</td><td class="num">₹৪৫</td></tr>
+      <tr><td>চাল</td><td>১ কেজি</td><td class="num">₹৫৫</td></tr>
+      <tr><td>মুড়ি</td><td>৫০০ গ্রাম</td><td class="num">₹৪০</td></tr>
+      <tr><td>ওটস (থাকলে ভালো, না হলে চলবে)</td><td>৫০০ গ্রাম</td><td class="num">₹৯০</td></tr>
+      <tr><td>ফল (আপেল, পেয়ারা, কলা)</td><td>মিলিয়ে ২ কেজি</td><td class="num">₹১৮০</td></tr>
+      <tr><td>চিনাবাদাম</td><td>২৫০ গ্রাম</td><td class="num">₹৪০</td></tr>
+      <tr><td>সরষের তেল</td><td>৫০০ মিলি</td><td class="num">₹৮০</td></tr>
+      <tr><td>লেবু, ধনেপাতা, পুদিনা</td><td>প্রয়োজনমতো</td><td class="num">₹৩০</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <span class="bt">সপ্তাহে মোট আনুমানিক ₹১,৭০০</span>
+    <p>দাম এলাকা ও মরসুম অনুযায়ী বদলাবে। বাড়ির সবাই মিলে খেলে মাথাপিছু খরচ আরও কমবে। <strong>দামি কোনও "ডায়েট ফুড" এই লিস্টে নেই</strong> — সবই আপনার রোজকার বাজার।</p>
+  </div>
+</section>
+
+<section class="page" data-sec="পার্ট ২ — প্রস্তুতি" data-pg="২৩">
+  <h2>রবিবারের এক ঘণ্টা</h2>
+  <p class="lede">সপ্তাহে একদিন এক ঘণ্টা প্রস্তুতি নিলে বাকি ছ'দিন প্রায় ভাবতেই হয় না। এটাই লেগে থাকার আসল রহস্য।</p>
+
+  <table>
+    <thead><tr><th>সময়</th><th>কাজ</th></tr></thead>
+    <tbody>
+      <tr><td><strong>১৫ মিনিট</strong></td><td>সবজি ধুয়ে, কেটে বাক্সে ভরে ফ্রিজে রাখুন — লাউ, ঝিঙে, গাজর, ক্যাপসিকাম</td></tr>
+      <tr><td><strong>১০ মিনিট</strong></td><td>শসা-গাজর লম্বা করে কেটে জলে ডুবিয়ে ফ্রিজে — খিদে পেলে হাতের কাছে</td></tr>
+      <tr><td><strong>১০ মিনিট</strong></td><td>৬টা ডিম সেদ্ধ করে রাখুন</td></tr>
+      <tr><td><strong>১০ মিনিট</strong></td><td>ছোলা ভিজিয়ে দিন, পরদিন সেদ্ধ করে বাক্সে</td></tr>
+      <tr><td><strong>১০ মিনিট</strong></td><td>মাছ-মাংস ভাগ করে আলাদা প্যাকেটে ফ্রিজারে — রোজ একটা করে নামাবেন</td></tr>
+      <tr><td><strong>৫ মিনিট</strong></td><td>এই সপ্তাহের ট্র্যাকারটা প্রিন্ট/লিখে ফ্রিজে আটকান</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box tip">
+    <span class="bt">কেন এটা এত কাজে দেয়</span>
+    <p>ডায়েট বেশিরভাগ সময় ভাঙে <strong>ক্লান্ত অবস্থায়</strong> — অফিস থেকে ফিরে, রান্নার ইচ্ছে নেই, তখনই বিস্কুট বা বাইরের খাবার। কাটা সবজি আর সেদ্ধ ডিম ফ্রিজে থাকলে ওই মুহূর্তে সিদ্ধান্তটা সহজ হয়ে যায়।</p>
+  </div>
+
+  <div class="box">
+    <span class="bt">এবার আপনি তৈরি</span>
+    <p>ভিত্তি বোঝা হয়েছে, নিজের সংখ্যা জানা হয়েছে, রান্নাঘর গোছানো হয়েছে, বাজার হয়েছে। <strong>পরের পাতা থেকে দিন ১।</strong> রোজ শুধু সেই দিনের পাতাটা খুলুন — আর কিছু ভাবতে হবে না।</p>
+  </div>
+</section>
