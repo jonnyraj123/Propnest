@@ -2,9 +2,8 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from svgs2 import SVG
-import base64
 _B = os.path.dirname(os.path.abspath(__file__))
-PHOTO = base64.b64encode(open(os.path.join(_B,'img/model.png'),'rb').read()).decode()
+from coverart import HERO
 
 CSS = '''
 @font-face{font-family:'NSB';src:url('../assets/NotoSansBengali-400.ttf');font-weight:400;}
@@ -89,39 +88,40 @@ tbody tr:nth-child(even) td{background:#F7F3EC}
 tbody tr:last-child td{border-bottom:none}
 td.n{text-align:right;font-weight:700;color:var(--rust);white-space:nowrap}
 
-/* A4 cover — photo feathered into a light page */
-.cv{padding:0;overflow:hidden;justify-content:flex-start;color:#0C3A30;
-  background:linear-gradient(170deg,#FFFFFF 0%,#F5FAF5 44%,#E9F4EB 100%)}
-.cv .blob{position:absolute;right:-40mm;top:120mm;width:150mm;height:150mm;border-radius:50%;
-  background:radial-gradient(circle,#CDE8D2,transparent 66%);opacity:.55}
-.cv .top{position:relative;height:172mm;overflow:hidden;flex:none}
-.cv .top img{width:100%;height:100%;object-fit:cover;object-position:47% 24%;display:block;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,rgba(0,0,0,.35) 88%,transparent 100%)}
-.cv .top:after{content:'';position:absolute;left:0;right:0;bottom:0;height:70mm;pointer-events:none;
-  background:linear-gradient(180deg,rgba(240,248,241,0),rgba(240,248,241,.55) 62%,rgba(240,248,241,.92) 100%)}
-.cv .kick{position:absolute;left:18mm;top:14mm;z-index:2;font-size:9pt;letter-spacing:.22em;
-  font-weight:700;color:#fff;background:#0E7A55;padding:2.4mm 6mm;border-radius:20mm;
-  box-shadow:0 2mm 5mm rgba(14,122,85,.22)}
-.cv .body{padding:0 18mm 15mm;margin-top:-18mm;position:relative;z-index:2;
-  display:flex;flex-direction:column;flex:1}
-.cv h1{font-size:34pt;line-height:1.1;color:#0C3A30;letter-spacing:-.015em}
-.cv h1 em{font-style:normal;color:#0E7A55;display:block}
-.cv .bar{width:30mm;height:1.6mm;background:#C2410C;border-radius:1mm;margin:6mm 0 5.5mm}
-.cv .sub{font-size:13.5pt;line-height:1.6;color:#3C5C51;font-weight:600}
-.cv .sub b{color:#0C3A30}
-.cvcard{margin-top:auto;background:#fff;border:.5pt solid #CFE6D6;border-radius:4mm;
-  padding:6.5mm 7mm;box-shadow:0 3mm 10mm rgba(12,58,48,.055)}
+/* A4 cover — নিজস্ব আঁকা ছবি, কোনো ফটো নয় */
+.cv{padding:20mm 18mm 14mm;overflow:hidden;color:#fff;justify-content:flex-start;
+  background:radial-gradient(120% 88% at 76% 6%,#14727C 0%,#0C4A52 46%,#052227 100%)}
+.cv .ring{position:absolute;border:.6mm solid rgba(255,255,255,.06);border-radius:50%}
+.cv .r1{width:230mm;height:230mm;right:-70mm;top:-78mm}
+.cv .r2{width:160mm;height:160mm;right:-30mm;top:-34mm}
+.cv .glow{position:absolute;left:-60mm;bottom:-70mm;width:170mm;height:170mm;border-radius:50%;
+  background:radial-gradient(circle,#E8B455,transparent 62%);opacity:.16}
+.cv .kick{display:inline-block;align-self:flex-start;font-size:9pt;letter-spacing:.22em;
+  font-weight:700;color:#062B31;background:#8FD0CE;padding:2.4mm 6mm;border-radius:20mm;
+  margin-bottom:9mm;position:relative;z-index:2}
+.cv h1{font-size:36pt;line-height:1.1;color:#fff;letter-spacing:-.02em;position:relative;z-index:2}
+.cv h1 em{font-style:normal;color:#F0C673;display:block}
+.cv .bar{width:30mm;height:1.6mm;background:#E8B455;border-radius:1mm;margin:6mm 0 5.5mm;
+  position:relative;z-index:2}
+.cv .sub{font-size:13.5pt;line-height:1.6;color:#B9D9DA;font-weight:600;position:relative;z-index:2}
+.cv .sub b{color:#EAF6F5}
+.cv .art{position:relative;z-index:2;margin:9mm 0 0}
+.cv .art svg{display:block;width:100%;height:auto;max-height:88mm}
+.cvcard{margin-top:auto;position:relative;z-index:2;
+  background:rgba(255,255,255,.055);border:.5pt solid rgba(143,208,206,.28);
+  border-radius:4mm;padding:6.5mm 7mm}
 .cvcard .ct{font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
-  color:#0E7A55;margin-bottom:4mm}
+  color:#8FD0CE;margin-bottom:4mm}
 .cv .ticks{display:grid;grid-template-columns:1fr 1fr;gap:3.2mm 6mm}
-.cv .t{display:flex;align-items:center;gap:3mm;font-size:11pt;color:#1E4A3D;font-weight:600}
-.cv .t i{width:5.4mm;height:5.4mm;border-radius:50%;background:#0E7A55;flex:none;
+.cv .t{display:flex;align-items:center;gap:3mm;font-size:11pt;color:#DCEEED;font-weight:600}
+.cv .t i{width:5.4mm;height:5.4mm;border-radius:50%;background:#8FD0CE;flex:none;
   display:flex;align-items:center;justify-content:center;font-style:normal;
-  color:#fff;font-size:7.5pt;font-weight:700}
-.cv .foot{margin-top:auto;font-size:10.5pt;color:#4A6A5D;line-height:1.6;
-  border-top:.5pt solid #CFE6D6;padding-top:5mm}
+  color:#062B31;font-size:7.5pt;font-weight:700}
+.cv .foot{margin-top:6mm;position:relative;z-index:2;font-size:10.5pt;color:#9FC6C9;line-height:1.6;
+  border-top:.4pt solid rgba(143,208,206,.25);padding-top:5mm}
+.cv .foot b{color:#EAF6F5}
 .cv .band{position:absolute;left:0;right:0;bottom:0;height:5mm;
-  background:linear-gradient(90deg,#0E7A55,#4E9B3E 55%,#C2410C)}
+  background:linear-gradient(90deg,#E8B455,#D0803C 55%,#B4531F)}
 
 /* cover */
 .cover{background:linear-gradient(158deg,#083E44 0%,#0F5C63 52%,#15757E 100%);
@@ -149,27 +149,26 @@ BODY = []
 
 # ---------- 1 · COVER ----------
 BODY.append(page(f'''
-  <div class="blob"></div>
-  <div class="top"><img src="data:image/png;base64,{PHOTO}"><div class="kick">বাঙালিদের জন্য</div></div>
-  <div class="body">
-    <h1>ডায়াবেটিস<em>নিয়ন্ত্রণে রাখুন</em></h1>
-    <div class="bar"></div>
-    <div class="sub">সঠিক খাবার · নিয়মিত জীবনযাপন · কম ঝুঁকি<br>
-    <b>বাড়ির রোজকার রান্নাতেই ৩০ দিনের প্ল্যান</b></div>
-    <div class="cvcard">
-      <div class="ct">বইটিতে যা পাবেন</div>
-      <div class="ticks">
-        <div class="t"><i>✓</i>৩০ দিনের দিন-ভিত্তিক চার্ট</div>
-        <div class="t"><i>✓</i>বাঙালি খাবারের GI তালিকা</div>
-        <div class="t"><i>✓</i>১৫টি সহজ রেসিপি</div>
-        <div class="t"><i>✓</i>বিপদে কী করবেন — জরুরি নির্দেশ</div>
-        <div class="t"><i>✓</i>সুগার ট্র্যাকার ও প্রশ্নোত্তর</div>
-        <div class="t"><i>✓</i>উৎসব, বাইরে খাওয়া ও ভ্রমণ</div>
-      </div>
+  <div class="ring r1"></div><div class="ring r2"></div><div class="glow"></div>
+  <div class="kick">বাঙালিদের জন্য</div>
+  <h1>ডায়াবেটিস<em>নিয়ন্ত্রণে রাখুন</em></h1>
+  <div class="bar"></div>
+  <div class="sub">সঠিক খাবার · নিয়মিত জীবনযাপন · কম ঝুঁকি<br>
+  <b>বাড়ির রোজকার রান্নাতেই ৩০ দিনের প্ল্যান</b></div>
+  <div class="art">{HERO}</div>
+  <div class="cvcard">
+    <div class="ct">বইটিতে যা পাবেন</div>
+    <div class="ticks">
+      <div class="t"><i>✓</i>৩০ দিনের দিন-ভিত্তিক চার্ট</div>
+      <div class="t"><i>✓</i>বাঙালি খাবারের GI তালিকা</div>
+      <div class="t"><i>✓</i>১৫টি সহজ রেসিপি</div>
+      <div class="t"><i>✓</i>বিপদে কী করবেন — জরুরি নির্দেশ</div>
+      <div class="t"><i>✓</i>সুগার ট্র্যাকার ও প্রশ্নোত্তর</div>
+      <div class="t"><i>✓</i>উৎসব, বাইরে খাওয়া ও ভ্রমণ</div>
     </div>
-    <div class="foot"><b style="color:#0C3A30">সুস্থ বাংলা</b> · ৭০ পাতা · সম্পূর্ণ বাংলায়<br>
-    ওষুধের বিকল্প নয় — ওষুধের সঙ্গে চলার সঙ্গী।</div>
   </div>
+  <div class="foot"><b>সুস্থ বাংলা</b> · ৭০ পাতা · সম্পূর্ণ বাংলায়<br>
+  ওষুধের বিকল্প নয় — ওষুধের সঙ্গে চলার সঙ্গী।</div>
   <div class="band"></div>''', cls="plain cv"))
 
 # ---------- 2 · CHAPTER OPENER ----------
