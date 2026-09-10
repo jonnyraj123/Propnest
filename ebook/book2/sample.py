@@ -2,6 +2,9 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from svgs2 import SVG
+import base64
+_B = os.path.dirname(os.path.abspath(__file__))
+PHOTO = base64.b64encode(open(os.path.join(_B,'img/model.png'),'rb').read()).decode()
 
 CSS = '''
 @font-face{font-family:'NSB';src:url('../assets/NotoSansBengali-400.ttf');font-weight:400;}
@@ -86,6 +89,30 @@ tbody tr:nth-child(even) td{background:#F7F3EC}
 tbody tr:last-child td{border-bottom:none}
 td.n{text-align:right;font-weight:700;color:var(--rust);white-space:nowrap}
 
+/* A4 cover — photo top, panel bottom */
+.cv{padding:0;overflow:hidden;background:#062E26;color:#fff;justify-content:flex-start}
+.cv .top{position:relative;height:150mm;overflow:hidden;flex:none}
+.cv .top img{width:100%;height:100%;object-fit:cover;object-position:34% 26%}
+.cv .top:after{content:'';position:absolute;left:0;right:0;bottom:0;height:64mm;
+  background:linear-gradient(180deg,rgba(6,46,38,0),#062E26 82%)}
+.cv .kick{position:absolute;left:18mm;top:15mm;z-index:2;font-size:9pt;letter-spacing:.22em;
+  font-weight:700;color:#08322A;background:#F0C980;padding:2.4mm 6mm;border-radius:20mm}
+.cv .body{padding:0 18mm 16mm;margin-top:-26mm;position:relative;z-index:2;
+  display:flex;flex-direction:column;flex:1}
+.cv h1{font-size:33pt;line-height:1.12;color:#fff;letter-spacing:-.01em}
+.cv h1 em{font-style:normal;color:#F5C451;display:block}
+.cv .bar{width:32mm;height:1.5mm;background:#F5C451;border-radius:1mm;margin:6mm 0 6mm}
+.cv .sub{font-size:13.5pt;line-height:1.6;color:#BEDCD2;font-weight:600}
+.cv .ticks{margin-top:8mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm 6mm}
+.cv .t{display:flex;align-items:center;gap:3mm;font-size:11pt;color:#E3F2EB;font-weight:600}
+.cv .t i{width:5.4mm;height:5.4mm;border-radius:50%;background:#F5C451;flex:none;
+  display:flex;align-items:center;justify-content:center;font-style:normal;
+  color:#08322A;font-size:8pt;font-weight:700}
+.cv .foot{margin-top:auto;font-size:10.5pt;color:#9FC6B8;line-height:1.6;
+  border-top:.4pt solid rgba(245,196,81,.3);padding-top:5mm}
+.cv .band{position:absolute;left:0;right:0;bottom:0;height:5mm;
+  background:linear-gradient(90deg,#F5C451,#D9863A 55%,#B4531F)}
+
 /* cover */
 .cover{background:linear-gradient(158deg,#083E44 0%,#0F5C63 52%,#15757E 100%);
   color:#fff;justify-content:center;padding:26mm 20mm;overflow:hidden}
@@ -111,22 +138,23 @@ def page(body, pg=None, cls=""):
 BODY = []
 
 # ---------- 1 · COVER ----------
-BODY.append(page('''
-  <div class="ring" style="width:760px;height:760px;right:-230px;top:-200px"></div>
-  <div class="ring" style="width:520px;height:520px;right:-110px;top:-70px"></div>
-  <div class="kick">বাঙালিদের জন্য</div>
-  <h1>ভাত খেয়েও<em>সুগার নিয়ন্ত্রণে।</em></h1>
-  <div class="bar"></div>
-  <div class="sub">বাড়ির রোজকার রান্নাতেই<br>৩০ দিনের ডায়াবেটিস প্ল্যান</div>
-  <div class="pills">
-    <span class="pill">৩০ দিনের চার্ট</span>
-    <span class="pill">বাঙালি খাবারের GI তালিকা</span>
-    <span class="pill">১৫টি রেসিপি</span>
-    <span class="pill">সুগার ট্র্যাকার</span>
+BODY.append(page(f'''
+  <div class="top"><img src="data:image/png;base64,{PHOTO}"><div class="kick">বাঙালিদের জন্য</div></div>
+  <div class="body">
+    <h1>ডায়াবেটিস<em>নিয়ন্ত্রণে রাখুন</em></h1>
+    <div class="bar"></div>
+    <div class="sub">সঠিক খাবার · নিয়মিত জীবনযাপন · কম ঝুঁকি<br>
+    বাড়ির রোজকার রান্নাতেই ৩০ দিনের প্ল্যান</div>
+    <div class="ticks">
+      <div class="t"><i>✓</i>৩০ দিনের দিন-ভিত্তিক চার্ট</div>
+      <div class="t"><i>✓</i>বাঙালি খাবারের GI তালিকা</div>
+      <div class="t"><i>✓</i>১৫টি সহজ রেসিপি</div>
+      <div class="t"><i>✓</i>সুগার ট্র্যাকার ও প্রশ্নোত্তর</div>
+    </div>
+    <div class="foot">ওষুধের বিকল্প নয় — ওষুধের সঙ্গে চলার সঙ্গী।<br>
+    ৭০ পাতা · সম্পূর্ণ বাংলায়</div>
   </div>
-  <div class="foot">ওষুধের বিকল্প নয় — ওষুধের সঙ্গে চলার সঙ্গী।<br>
-  ৭০ পাতা · সম্পূর্ণ বাংলায়</div>
-  <div class="band"></div>''', cls="plain cover"))
+  <div class="band"></div>''', cls="plain cv"))
 
 # ---------- 2 · CHAPTER OPENER ----------
 BODY.append(page(f'''
