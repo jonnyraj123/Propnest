@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 # Diabetes book — calmer, more editorial illustration set.
-T='#0F5C63'   # deep teal (primary)
-TD='#083E44'
-TL='#D6EAEC'
-A='#B4531F'   # warm rust accent
-AL='#F7E4D8'
+T='#17325C'   # deep navy (primary)
+TD='#0E2140'
+TL='#DBE5F2'
+A='#C2700B'   # amber accent
+AL='#F6E7CE'
 G='#5B7C3A'   # olive (safe/good)
 GL='#E6EDDC'
-W='#FFFFFF'; IN='#3F3A34'; MU='#8A8078'; CR='#FCFAF6'
+W='#FFFFFF'; IN='#3F3A34'; MU='#8A8078'; CR='#F8F5EE'
 
 def wrap(inner, vb="0 0 480 200"):
     return f'<svg viewBox="{vb}" xmlns="http://www.w3.org/2000/svg" role="img">{inner}</svg>'

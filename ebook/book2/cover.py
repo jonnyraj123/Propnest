@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from coverart import MINI
+from coverart import EMBLEM
 B = os.path.dirname(os.path.abspath(__file__))
 
-TICK = ('<svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#062B31" '
-        'stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-items = ['৩০ দিনের দিন-ভিত্তিক চার্ট', 'বাঙালি খাবারের GI তালিকা',
-         '১৫টি সহজ রেসিপি', 'সুগার ট্র্যাকার ও প্রশ্নোত্তর']
-ticks = ''.join(f'<div class="t"><i>{TICK}</i>{t}</div>' for t in items)
+items = [('১','৩০ দিনের দিন-ভিত্তিক চার্ট'), ('২','বাঙালি খাবারের GI তালিকা'),
+         ('৩','১৫টি সহজ রেসিপি'),          ('৪','সুগার ট্র্যাকার ও প্রশ্নোত্তর')]
+rows = ''.join(f'<div class="t"><span class="n">{n}</span>{x}</div>' for n,x in items)
 
 HTML = '''<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:'NSB';src:url('../assets/NotoSansBengali-400.ttf');font-weight:400;}
@@ -17,97 +15,84 @@ HTML = '''<!doctype html><html><head><meta charset="utf-8"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'NSB',sans-serif}
 
-.c{width:1280px;height:720px;position:relative;overflow:hidden;color:#fff;
-  background:radial-gradient(118%% 100%% at 78%% 8%%,#14727C 0%%,#0C4A52 44%%,#052227 100%%)}
-.ring{position:absolute;border:1.5px solid rgba(255,255,255,.06);border-radius:50%%}
-.r1{width:920px;height:920px;right:-250px;top:-280px}
-.r2{width:660px;height:660px;right:-110px;top:-130px}
-.glow{position:absolute;right:-130px;bottom:-270px;width:660px;height:660px;border-radius:50%%;
-  background:radial-gradient(circle,#E8B455,transparent 62%%);opacity:.18}
-.band{position:absolute;left:0;right:0;bottom:0;height:12px;
-  background:linear-gradient(90deg,#E8B455,#D0803C 55%%,#B4531F)}
+.c{width:1280px;height:720px;position:relative;overflow:hidden;color:#22201C;
+   background:#F8F5EE;padding:44px 58px 0}
+/* কাগজের বিন্দু-জাল */
+.c:before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(#22201C 1px,transparent 1px);background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.16),transparent 62%%)}
+/* বাঁ কিনারার নেভি মেরুদণ্ড */
+.spine{position:absolute;left:0;top:0;bottom:0;width:16px;background:#17325C}
+.amber{position:absolute;left:16px;top:0;bottom:0;width:5px;background:#C2700B}
 
-.L{position:absolute;left:74px;top:62px;width:620px;z-index:3}
-.kick{display:inline-block;font-size:16px;letter-spacing:.2em;font-weight:700;
-  color:#062B31;background:#8FD0CE;padding:8px 20px;border-radius:30px;margin-bottom:24px}
-h1{font-size:76px;line-height:1.07;font-weight:700;letter-spacing:-2px}
-h1 em{font-style:normal;color:#F0C673;display:block}
-.rule{width:104px;height:7px;background:#E8B455;border-radius:4px;margin:22px 0 18px}
-.sub{font-size:23px;line-height:1.5;color:#B9D9DA;font-weight:600}
-.sub b{color:#EAF6F5;font-weight:700}
+.hd{display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1.5px solid #17325C;padding-bottom:13px;position:relative;z-index:2}
+.hd .l{font-size:14px;letter-spacing:.26em;font-weight:700;color:#17325C}
+.hd .r{font-size:13px;letter-spacing:.2em;color:#6E675E;font-weight:600}
 
-.ticks{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;width:600px}
-.t{display:flex;align-items:center;gap:10px;font-size:18px;color:#DCEEED;font-weight:600}
-.t i{width:23px;height:23px;border-radius:50%%;background:#8FD0CE;flex:none;
-  display:flex;align-items:center;justify-content:center;font-style:normal}
-.t i svg{width:12.5px;height:12.5px}
+.mid{display:flex;gap:36px;margin-top:30px;position:relative;z-index:2}
+.L{width:640px;flex:none}
+h1{font-size:72px;line-height:1.04;font-weight:700;letter-spacing:-2.4px;color:#17325C}
+h1 em{font-style:normal;display:block;color:#0E2140}
+.uline{width:158px;height:9px;background:#C2700B;margin:18px 0 16px}
+.sub{font-size:21px;line-height:1.55;color:#4A443D;font-weight:600;max-width:612px}
+.sub b{color:#17325C;font-weight:700;
+  box-shadow:inset 0 -10px 0 #F6E7CE}
 
-/* বইয়ের মকআপ */
-.book{position:absolute;right:96px;top:104px;z-index:3;width:322px;height:472px;
-  border-radius:6px 15px 15px 6px;transform:rotate(4deg);
-  background:linear-gradient(150deg,#052227,#12666F);
-  box-shadow:0 38px 82px rgba(0,0,0,.52), inset 13px 0 24px -13px rgba(0,0,0,.6);
-  padding:44px 28px 30px;overflow:hidden;border:1px solid rgba(255,255,255,.13)}
-.book:before{content:'';position:absolute;left:0;top:0;bottom:0;width:14px;
-  background:linear-gradient(90deg,rgba(0,0,0,.48),transparent)}
-.book .k{font-size:11px;letter-spacing:.22em;color:#8FD0CE;font-weight:700;margin-bottom:13px}
-.book .t2{font-size:33px;font-weight:700;line-height:1.16}
-.book .t2 em{font-style:normal;color:#F0C673;display:block}
-.book .r{width:46px;height:5px;background:#E8B455;border-radius:3px;margin:14px 0 12px}
-.book .s{font-size:15px;color:#B9D9DA;line-height:1.5;font-weight:600}
-.book .mk{position:absolute;left:24px;right:24px;bottom:26px;opacity:.97}
-.book .bb{position:absolute;left:0;right:0;bottom:0;height:8px;
-  background:linear-gradient(90deg,#E8B455,#B4531F)}
+.list{margin-top:24px;border-top:1px solid #CFC8BB;width:612px}
+.t{display:flex;align-items:center;gap:14px;font-size:18.5px;color:#22201C;font-weight:600;
+   border-bottom:1px solid #CFC8BB;padding:7.5px 0}
+.t .n{font-size:13px;letter-spacing:.1em;font-weight:700;color:#C2700B;min-width:30px}
 
-.price{position:absolute;left:74px;bottom:60px;z-index:4;display:flex;align-items:center;gap:20px}
-.price .now{font-size:72px;font-weight:700;color:#F0C673;line-height:.94;letter-spacing:-1px}
-.price .col{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.price .old{font-size:29px;color:#D9EAE9;font-weight:700;position:relative}
-.price .old:after{content:'';position:absolute;left:-5px;right:-5px;top:47%%;height:2.6px;
-  background:#F0704A;transform:rotate(-6deg);border-radius:2px}
-.off{background:linear-gradient(135deg,#E8B455,#B4531F);color:#fff;font-size:17px;font-weight:700;
-  padding:7px 17px;border-radius:30px;box-shadow:0 8px 22px rgba(180,83,31,.4)}
-.lbl{font-size:15px;color:#B9D9DA;font-weight:600;line-height:1.45;
-  border-left:2px solid rgba(143,208,206,.35);padding-left:16px}
+.R{flex:1;display:flex;align-items:flex-start;justify-content:center;padding-top:26px}
+.R svg{width:376px;height:auto}
 
-.note{position:absolute;right:40px;bottom:34px;z-index:4;text-align:right;
-  font-size:14.5px;color:#DCEEED;line-height:1.55;font-weight:600;
-  background:rgba(5,34,39,.6);padding:12px 18px;border-radius:12px;
-  border:1px solid rgba(143,208,206,.28)}
+/* নিচের সারি */
+.ft{position:absolute;left:58px;right:58px;bottom:40px;z-index:2;
+    display:flex;align-items:stretch;gap:26px;border-top:1.5px solid #17325C;padding-top:20px}
+.tag{background:#17325C;color:#fff;padding:12px 24px 13px;display:flex;align-items:baseline;gap:12px}
+.tag .now{font-size:48px;font-weight:700;letter-spacing:-1px;line-height:1}
+.tag .cur{font-size:19px;color:#B9C9E2;font-weight:600}
+.meta{display:flex;flex-direction:column;justify-content:center;gap:5px}
+.meta .o{font-size:22px;color:#4A443D;font-weight:700}
+.meta .o s{text-decoration-color:#C2700B;text-decoration-thickness:2.5px}
+.meta .d{font-size:16px;font-weight:700;color:#C2700B;letter-spacing:.06em}
+.acc{margin-left:auto;text-align:right;display:flex;flex-direction:column;
+     justify-content:center;gap:5px;font-size:15px;color:#4A443D;font-weight:600;line-height:1.5}
+.acc b{color:#17325C}
+.bar{position:absolute;left:0;right:0;bottom:0;height:14px;background:#17325C}
+.bar:after{content:'';position:absolute;left:0;bottom:0;height:14px;width:34%%;background:#C2700B}
 </style></head><body>
 <div class="c">
-  <div class="ring r1"></div><div class="ring r2"></div><div class="glow"></div>
+  <div class="spine"></div><div class="amber"></div>
 
-  <div class="L">
-    <div class="kick">বাঙালিদের জন্য</div>
-    <h1>ডায়াবেটিস<em>নিয়ন্ত্রণে রাখুন</em></h1>
-    <div class="rule"></div>
-    <div class="sub">সঠিক খাবার · নিয়মিত জীবনযাপন · কম ঝুঁকি<br>
-      <b>বাড়ির রোজকার রান্নাতেই ৩০ দিনের প্ল্যান</b></div>
-    <div class="ticks">%s</div>
+  <div class="hd">
+    <div class="l">সুস্থ বাংলা</div>
+    <div class="r">বাংলা স্বাস্থ্য গাইড · ০২</div>
   </div>
 
-  <div class="book">
-    <div class="k">বাঙালিদের জন্য</div>
-    <div class="t2">ডায়াবেটিস<em>নিয়ন্ত্রণে</em></div>
-    <div class="r"></div>
-    <div class="s">৩০ দিনের<br>বাংলা প্ল্যান</div>
-    <div class="mk">%s</div>
-    <div class="bb"></div>
-  </div>
-
-  <div class="price">
-    <div class="now">₹২৯৯</div>
-    <div class="col">
-      <div class="old">₹৩৯৯</div>
-      <div class="off">২৫%% ছাড়</div>
+  <div class="mid">
+    <div class="L">
+      <h1>ডায়াবেটিস<em>নিয়ন্ত্রণে রাখুন</em></h1>
+      <div class="uline"></div>
+      <div class="sub">ভাত-রুটি বাদ নয় — <b>মাপ, সময় আর সঙ্গী খাবার</b> বদলালেই
+        সুগার নামতে শুরু করে। বাড়ির রোজকার রান্নাতেই ৩০ দিনের প্ল্যান।</div>
+      <div class="list">%s</div>
     </div>
-    <div class="lbl">একবারই<br>আজীবন অ্যাক্সেস</div>
+    <div class="R">%s</div>
   </div>
 
-  <div class="note">ওষুধের বিকল্প নয় —<br>ওষুধের সঙ্গে চলার সঙ্গী।</div>
-  <div class="band"></div>
+  <div class="ft">
+    <div class="tag"><span class="now">₹২৯৯</span><span class="cur">একবারই</span></div>
+    <div class="meta">
+      <div class="o"><s>₹৩৯৯</s></div>
+      <div class="d">২৫%% ছাড়</div>
+    </div>
+    <div class="acc"><b>ওষুধের বিকল্প নয় — ওষুধের সঙ্গে চলার সঙ্গী।</b>
+      ৭০ পাতা · সম্পূর্ণ বাংলায় · আজীবন অ্যাক্সেস</div>
+  </div>
+  <div class="bar"></div>
 </div></body></html>'''
 
-open(os.path.join(B,'cover.html'),'w').write(HTML % (ticks, MINI))
+open(os.path.join(B,'cover.html'),'w').write(HTML % (rows, EMBLEM))
 print('cover.html written')
