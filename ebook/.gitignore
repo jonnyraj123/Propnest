@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+shot*.png
+preview.pdf
+space.json
+
+# ব্যক্তিগত KYC নথি — কখনও কমিট করা হবে না
+kyc/
+kyc/

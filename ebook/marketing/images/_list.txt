@@ -1,0 +1,10 @@
+marketing/images/ad-01-vat-1x1.html|marketing/images/ad-01-vat-1x1.png|1080|1080
+marketing/images/ad-01-vat-9x16.html|marketing/images/ad-01-vat-9x16.png|1080|1920
+marketing/images/ad-02-ranna-1x1.html|marketing/images/ad-02-ranna-1x1.png|1080|1080
+marketing/images/ad-02-ranna-9x16.html|marketing/images/ad-02-ranna-9x16.png|1080|1920
+marketing/images/ad-03-tel-1x1.html|marketing/images/ad-03-tel-1x1.png|1080|1080
+marketing/images/ad-03-tel-9x16.html|marketing/images/ad-03-tel-9x16.png|1080|1920
+marketing/images/ad-04-haat-1x1.html|marketing/images/ad-04-haat-1x1.png|1080|1080
+marketing/images/ad-04-haat-9x16.html|marketing/images/ad-04-haat-9x16.png|1080|1920
+marketing/images/ad-05-sot-1x1.html|marketing/images/ad-05-sot-1x1.png|1080|1080
+marketing/images/ad-05-sot-9x16.html|marketing/images/ad-05-sot-9x16.png|1080|1920
