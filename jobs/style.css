@@ -1,7 +1,7 @@
 /* WorkAbroad Hub — ডেমো সাইট */
 :root{
-  --navy:#0E2B4D; --navy-d:#08192E; --navy-l:#1B4576; --navy-xl:#EAF0F7;
-  --gold:#B8822B; --gold-l:#F6EDDC;
+  --navy:#15305E; --navy-d:#0B1D3D; --navy-l:#2A4E8A; --navy-xl:#E9EFF8;
+  --gold:#EFA51C; --gold-d:#C8860C; --gold-l:#FDF0D6;
   --green:#1E7A4B; --green-l:#E4F3EA;
   --ink:#1C2430; --ink2:#4B5665; --mut:#7B8697;
   --paper:#FFFFFF; --wash:#F5F7FA; --line:#DDE3EC;
@@ -28,8 +28,7 @@ a{color:inherit;text-decoration:none}
 header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .hd{display:flex;align-items:center;gap:16px;padding:12px 0}
 .logo{display:flex;align-items:center;gap:11px;margin-right:auto}
-.mark{width:42px;height:42px;border-radius:9px;background:var(--navy);color:#fff;
-  display:grid;place-items:center;font-weight:700;font-size:19px;flex:none}
+.mark{width:46px;height:46px;flex:none;display:block;object-fit:contain}
 .logo .nm{display:block;font-weight:700;font-size:18px;color:var(--navy);line-height:1.25}
 .logo .sub{display:block;font-size:12px;color:var(--mut);letter-spacing:.02em}
 nav{display:flex;gap:22px;font-size:15px;color:var(--ink2)}
