@@ -149,46 +149,64 @@
   <!-- রসিদ -->
   <div id="receipt" class="receipt">
     <div class="rcard">
+
+      <div class="rhead">
+        <img src="logo.png" alt="WorkAbroad Hub">
+        <span class="bnd"><b>WorkAbroad Hub</b><span>CONNECTING YOU TO GLOBAL OPPORTUNITIES</span></span>
+        <span class="doc"><b>আবেদন রসিদ</b><span id="r-date2">—</span></span>
+      </div>
+      <div class="goldrule"></div>
+
       <div class="rtop">
         <div class="rtick">✓</div>
         <h2>আপনার আবেদন জমা পড়েছে</h2>
         <p>আমাদের সঙ্গে যুক্ত হওয়ার জন্য ধন্যবাদ। ফাইল প্রসেসিংয়ে গেছে।</p>
       </div>
+
       <div class="rbody">
+        <div class="wmark"><img src="logo.png" alt=""></div>
+
         <div class="rno">
           <small>আবেদন নম্বর</small>
           <b id="r-no">WAH-000000-0000</b>
+          <span class="hint">নম্বরটি লিখে রাখুন — ফোনে জানতে চাওয়া হবে</span>
         </div>
 
-        <table class="rt">
-          <tr><td>নাম</td><td id="r-name">—</td></tr>
-          <tr><td>মোবাইল</td><td id="r-phone">—</td></tr>
-          <tr><td>দেশ</td><td id="r-country">—</td></tr>
-          <tr><td>কাজ</td><td id="r-job">—</td></tr>
-          <tr><td>আবেদনের তারিখ</td><td id="r-date">—</td></tr>
-          <tr><td>অবস্থা</td><td style="color:var(--gold)">যাচাই চলছে</td></tr>
-        </table>
+        <div class="rgrid">
+          <div class="rw"><div class="k">নাম</div><div class="v" id="r-name">—</div></div>
+          <div class="rw"><div class="k">মোবাইল</div><div class="v" id="r-phone">—</div></div>
+          <div class="rw"><div class="k">দেশ</div><div class="v" id="r-country">—</div></div>
+          <div class="rw"><div class="k">কাজ</div><div class="v" id="r-job">—</div></div>
+          <div class="rw"><div class="k">আবেদনের তারিখ</div><div class="v" id="r-date">—</div></div>
+          <div class="rw"><div class="k">অবস্থা</div><div class="v"><span class="chip"><i></i> যাচাই চলছে</span></div></div>
+        </div>
 
         <div class="nextbox">
           <h3>এরপর কী হবে</h3>
           <ol>
             <li>নিচের বোতাম থেকে ₹৫০০ আবেদন ফি জমা দিন — তবেই ফাইল খোলা হবে।</li>
+            <li>রসিদটি WhatsApp-এ আমাদের পাঠিয়ে দিন, যোগাযোগ সহজ হবে।</li>
             <li>২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে আপনার নম্বরে ফোন যাবে।</li>
             <li>আপনার অভিজ্ঞতা অনুযায়ী কোন কোন ভ্যাকান্সিতে আবেদন যাবে, জানানো হবে।</li>
-            <li>এই আবেদন নম্বরটি লিখে রাখুন — ফোনে জানতে চাওয়া হবে।</li>
           </ol>
         </div>
 
         <div class="paybox noprint">
-          <div class="amt">₹৫০০<small>আবেদন ফি (একবারই)</small></div>
+          <div class="amt">₹৫০০<small>আবেদন ফি · একবারই</small></div>
           <p>নিরাপদ পেমেন্ট পেজে যাবেন। UPI, কার্ড বা নেট ব্যাঙ্কিং — যেটা সুবিধা।</p>
           <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener">₹৫০০ জমা দিন →</a>
-          <p style="font-size:13px;color:var(--mut);margin:10px 0 0">চাকরি বা ভিসার গ্যারান্টি নয় · ফেরতযোগ্য নয়</p>
+          <div class="paysafe"><span>🔒 নিরাপদ পেমেন্ট</span><span>📄 রসিদ দেওয়া হয়</span><span>↩️ ফেরতযোগ্য নয়</span></div>
         </div>
 
         <div class="rbtns noprint">
-          <button class="btn gh" id="r-print">রসিদ ডাউনলোড</button>
-          <a class="btn wa" id="r-wa" href="index.html">হোমে ফিরুন</a>
+          <a class="btn wa lg" id="r-wa" href="#" target="_blank" rel="noopener">💬 রসিদ WhatsApp-এ পাঠান</a>
+          <button class="btn gh" id="r-print">রসিদ ডাউনলোড / প্রিন্ট</button>
+        </div>
+
+        <div class="rfoot">
+          <span class="fl">WorkAbroad Hub · কলকাতা · <span id="r-ph2">—</span><br>
+            সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী</span>
+          <span class="seal">আবেদন<span>গৃহীত</span>WORKABROAD HUB</span>
         </div>
       </div>
     </div>
