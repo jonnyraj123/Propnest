@@ -1,0 +1,263 @@
+/* সেতু ওভারসিজ — ডেমো সাইট */
+:root{
+  --navy:#0E2B4D; --navy-d:#08192E; --navy-l:#1B4576; --navy-xl:#EAF0F7;
+  --gold:#B8822B; --gold-l:#F6EDDC;
+  --green:#1E7A4B; --green-l:#E4F3EA;
+  --ink:#1C2430; --ink2:#4B5665; --mut:#7B8697;
+  --paper:#FFFFFF; --wash:#F5F7FA; --line:#DDE3EC;
+  --rad:10px; --wrap:1120px;
+  --shadow:0 1px 2px rgba(14,43,77,.06),0 8px 24px rgba(14,43,77,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans Bengali','Hind Siliguri',system-ui,'Segoe UI',sans-serif;
+  color:var(--ink); background:var(--paper); line-height:1.72; font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+
+/* ---------- টপবার ---------- */
+.topbar{background:var(--navy-d);color:#C9D6E6;font-size:13.5px;padding:7px 0}
+.topbar .wrap{display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.topbar b{color:#fff;font-weight:600}
+
+/* ---------- হেডার ---------- */
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.hd{display:flex;align-items:center;gap:16px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:11px;margin-right:auto}
+.mark{width:42px;height:42px;border-radius:9px;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:19px;flex:none}
+.logo .nm{display:block;font-weight:700;font-size:18px;color:var(--navy);line-height:1.25}
+.logo .sub{display:block;font-size:12px;color:var(--mut);letter-spacing:.02em}
+nav{display:flex;gap:22px;font-size:15px;color:var(--ink2)}
+nav a:hover{color:var(--navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--gold);color:#fff;font-weight:600;font-size:16px;
+  padding:11px 22px;border-radius:var(--rad);border:0;cursor:pointer;
+  font-family:inherit;transition:filter .15s}
+.btn:hover{filter:brightness(1.07)}
+.btn.nv{background:var(--navy)}
+.btn.gh{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+.btn.lg{padding:14px 30px;font-size:17px}
+.btn.wide{width:100%}
+.btn.wa{background:var(--green)}
+
+/* ---------- হিরো ---------- */
+.hero{background:linear-gradient(170deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;
+  padding:58px 0 64px;position:relative;overflow:hidden}
+.hero:after{content:'';position:absolute;right:-90px;top:-90px;width:380px;height:380px;
+  border-radius:50%;background:rgba(184,130,43,.14)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);color:#F2D9A8;font-size:13.5px;font-weight:600;
+  padding:5px 13px;border-radius:99px;margin-bottom:18px}
+.hero h1{font-size:40px;line-height:1.28;font-weight:700;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:#F0C878}
+.hero p.led{font-size:17.5px;color:#C7D6E8;margin:16px 0 26px;max-width:540px}
+.hcta{display:flex;gap:12px;flex-wrap:wrap}
+.hnote{margin-top:18px;font-size:14px;color:#9FB4CC}
+
+/* হিরো কার্ড */
+.hcard{background:#fff;color:var(--ink);border-radius:14px;padding:22px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.hcard h3{font-size:17px;color:var(--navy);margin-bottom:4px}
+.hcard .cap{font-size:13.5px;color:var(--mut);margin-bottom:14px}
+.hcard label{display:block;font-size:13.5px;font-weight:600;color:var(--ink2);margin:0 0 5px}
+.hcard select{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;
+  font-family:inherit;font-size:15.5px;color:var(--ink);background:#fff;margin-bottom:13px}
+.hcard select:focus{outline:0;border-color:var(--navy-l)}
+
+/* ---------- ট্রাস্ট স্ট্রিপ ---------- */
+.trust{background:var(--wash);border-bottom:1px solid var(--line);padding:20px 0}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.trust .n{font-size:24px;font-weight:700;color:var(--navy);line-height:1.2}
+.trust .l{font-size:13.5px;color:var(--ink2)}
+
+/* ---------- সেকশন ---------- */
+section{padding:56px 0}
+.sec-h{text-align:center;max-width:640px;margin:0 auto 34px}
+.sec-h .kick{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.sec-h h2{font-size:29px;line-height:1.35;color:var(--navy);margin:7px 0 9px;font-weight:700}
+.sec-h p{color:var(--ink2);font-size:16px}
+.alt{background:var(--wash)}
+
+/* ধাপ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:22px 20px;position:relative}
+.step .num{width:34px;height:34px;border-radius:50%;background:var(--navy-xl);color:var(--navy);
+  font-weight:700;display:grid;place-items:center;margin-bottom:12px;font-size:16px}
+.step h3{font-size:17px;color:var(--navy);margin-bottom:5px}
+.step p{font-size:14.8px;color:var(--ink2);line-height:1.66}
+
+/* দেশ */
+.countries{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cy{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
+  padding:16px;display:flex;gap:13px;align-items:center;transition:.15s;cursor:pointer}
+.cy:hover{border-color:var(--navy-l);box-shadow:var(--shadow);transform:translateY(-2px)}
+.cy .fl{font-size:30px;line-height:1;flex:none}
+.cy .nm{font-weight:600;font-size:16px;color:var(--navy);line-height:1.3}
+.cy .mt{font-size:13px;color:var(--mut)}
+.regionlbl{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--gold);
+  text-transform:uppercase;margin:26px 0 12px;display:flex;align-items:center;gap:12px}
+.regionlbl:after{content:'';flex:1;height:1px;background:var(--line)}
+.regionlbl:first-child{margin-top:0}
+
+/* কাজ */
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.jb{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
+  padding:14px 16px;display:flex;align-items:center;gap:12px;transition:.15s;cursor:pointer}
+.jb:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.jb .ic{width:38px;height:38px;border-radius:8px;background:var(--gold-l);display:grid;
+  place-items:center;font-size:19px;flex:none}
+.jb .t{font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.35}
+.jb .s{font-size:13px;color:var(--mut)}
+.jb .ar{margin-left:auto;color:var(--mut);font-size:18px}
+
+/* কেন আমরা */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ft{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:var(--rad);padding:20px}
+.ft h3{font-size:16.5px;color:var(--navy);margin-bottom:5px}
+.ft p{font-size:14.8px;color:var(--ink2)}
+
+/* রিভিউ */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rv{background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);padding:20px}
+.rv .st{color:var(--gold);letter-spacing:2px;font-size:14px}
+.rv p{font-size:15px;color:var(--ink2);margin:8px 0 14px}
+.rv .who{display:flex;align-items:center;gap:10px}
+.rv .av{width:38px;height:38px;border-radius:50%;background:var(--navy-xl);color:var(--navy);
+  display:grid;place-items:center;font-weight:700;font-size:15px}
+.rv .who b{font-size:14.5px;color:var(--ink);font-weight:600;display:block;line-height:1.3}
+.rv .who span{font-size:12.8px;color:var(--mut)}
+
+/* ফি বক্স */
+.feebox{background:var(--gold-l);border:1px solid #E6D2AC;border-radius:12px;padding:24px 26px;
+  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.feebox .amt{font-size:34px;font-weight:700;color:var(--navy);line-height:1.1;white-space:nowrap}
+.feebox .amt small{display:block;font-size:13px;color:var(--ink2);font-weight:600;letter-spacing:.02em}
+.feebox h3{font-size:18px;color:var(--navy);margin-bottom:6px}
+.feebox ul{list-style:none;font-size:14.8px;color:var(--ink2)}
+.feebox li{padding-left:22px;position:relative;margin-bottom:3px}
+.feebox li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.feebox .warn{margin-top:11px;font-size:13.8px;color:#8A5A12;background:#fff;
+  border-radius:8px;padding:9px 12px;border:1px solid #E6D2AC}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:var(--rad);margin-bottom:10px;background:var(--paper)}
+.faq summary{padding:15px 18px;font-weight:600;font-size:16px;color:var(--navy);cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:'+';color:var(--gold);font-size:21px;line-height:1;font-weight:400}
+.faq details[open] summary:after{content:'−'}
+.faq .ans{padding:0 18px 16px;font-size:15.3px;color:var(--ink2)}
+
+/* CTA ব্যান্ড */
+.band{background:var(--navy);color:#fff;text-align:center;padding:48px 0}
+.band h2{font-size:28px;margin-bottom:8px}
+.band p{color:#C0D2E6;margin-bottom:22px}
+
+/* ফুটার */
+footer{background:var(--navy-d);color:#93A6BD;font-size:14.5px;padding:38px 0 26px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:26px}
+footer h4{color:#fff;font-size:15.5px;margin-bottom:10px;font-weight:600}
+footer a{display:block;margin-bottom:5px}
+footer a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;font-size:13.2px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.demoflag{background:#7A2E2E;color:#FFD9D9;text-align:center;font-size:13.5px;padding:7px 14px}
+
+/* ---------- ফর্ম পেজ ---------- */
+.formwrap{max-width:780px;margin:0 auto;padding:34px 20px 56px}
+.crumb{font-size:13.8px;color:var(--mut);margin-bottom:16px}
+.crumb a{color:var(--navy-l)}
+.prog{display:flex;gap:8px;margin-bottom:26px}
+.prog div{flex:1;height:5px;border-radius:99px;background:var(--line)}
+.prog div.on{background:var(--gold)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:26px 28px;box-shadow:var(--shadow)}
+.card h1{font-size:25px;color:var(--navy);line-height:1.35;margin-bottom:6px}
+.card .led{color:var(--ink2);font-size:15.5px;margin-bottom:22px}
+fieldset{border:0;margin-bottom:22px}
+legend{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:12px;width:100%;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:14.2px;font-weight:600;color:var(--ink2);margin-bottom:5px}
+.fld label .req{color:#C0392B}
+.fld input,.fld select,.fld textarea{width:100%;padding:11px 13px;border:1.5px solid var(--line);
+  border-radius:8px;font-family:inherit;font-size:15.5px;color:var(--ink);background:#fff}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--navy-l);
+  box-shadow:0 0 0 3px rgba(27,69,118,.1)}
+.fld .hint{font-size:13px;color:var(--mut);margin-top:4px}
+.fld.err input,.fld.err select{border-color:#C0392B}
+.fld .emsg{display:none;font-size:13px;color:#C0392B;margin-top:4px}
+.fld.err .emsg{display:block}
+.file{border:1.5px dashed var(--line);border-radius:8px;padding:16px;text-align:center;background:var(--wash)}
+.file input{border:0;padding:0;background:transparent;font-size:14px}
+.file .ttl{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:3px}
+.chkline{display:flex;gap:10px;align-items:flex-start;font-size:14.3px;color:var(--ink2);margin-bottom:8px}
+.chkline input{width:17px;height:17px;flex:none;margin-top:4px}
+.feesm{background:var(--navy-xl);border-radius:8px;padding:13px 15px;font-size:14.3px;
+  color:var(--ink2);margin-bottom:18px}
+.feesm b{color:var(--navy)}
+.hp{position:absolute;left:-9999px}
+
+/* রসিদ */
+.receipt{display:none}
+.receipt.on{display:block}
+.rcard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.rtop{background:var(--green-l);border-bottom:1px solid #BFE0CD;padding:24px 26px;text-align:center}
+.rtick{width:54px;height:54px;border-radius:50%;background:var(--green);color:#fff;
+  display:grid;place-items:center;font-size:27px;margin:0 auto 12px}
+.rtop h2{font-size:23px;color:var(--navy);margin-bottom:4px}
+.rtop p{font-size:15.3px;color:var(--ink2)}
+.rbody{padding:24px 26px}
+.rno{background:var(--navy);color:#fff;border-radius:10px;padding:14px 18px;text-align:center;margin-bottom:20px}
+.rno small{display:block;font-size:12.6px;color:#B6CAE0;letter-spacing:.1em;text-transform:uppercase}
+.rno b{font-size:24px;letter-spacing:.06em;font-weight:700}
+table.rt{width:100%;border-collapse:collapse;font-size:15px}
+table.rt td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.rt td:first-child{color:var(--mut);width:42%;font-size:14.3px}
+table.rt td:last-child{font-weight:600;color:var(--ink)}
+table.rt tr:last-child td{border-bottom:0}
+.nextbox{background:var(--wash);border-radius:10px;padding:18px 20px;margin-top:20px}
+.nextbox h3{font-size:16.5px;color:var(--navy);margin-bottom:9px}
+.nextbox ol{padding-left:20px;font-size:14.8px;color:var(--ink2)}
+.nextbox li{margin-bottom:5px}
+.paybox{border:2px solid var(--gold);border-radius:10px;padding:20px;margin-top:20px;text-align:center}
+.paybox .amt{font-size:32px;font-weight:700;color:var(--navy);line-height:1.15}
+.paybox .amt small{font-size:14px;color:var(--ink2);font-weight:600;display:block}
+.paybox p{font-size:14.3px;color:var(--ink2);margin:8px 0 14px}
+.rbtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+
+@media print{
+  .noprint{display:none!important}
+  body{font-size:12pt}
+  .rcard{border:1px solid #999;box-shadow:none}
+}
+
+/* ---------- মোবাইল ---------- */
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}
+  .hero h1{font-size:31px}
+  .steps,.countries,.jobs,.feats,.revs,footer .cols{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+}
+@media(max-width:600px){
+  body{font-size:16px}
+  .hero{padding:40px 0 46px}
+  .hero h1{font-size:27px}
+  .hero p.led{font-size:16px}
+  .trust .wrap{grid-template-columns:repeat(2,1fr);gap:14px}
+  .steps,.countries,.jobs,.feats,.revs,footer .cols,.row,.rbtns{grid-template-columns:1fr}
+  .sec-h h2{font-size:24px}
+  section{padding:42px 0}
+  .feebox{grid-template-columns:1fr;gap:12px}
+  .card{padding:20px 18px}
+  .topbar .wrap{justify-content:center;gap:10px;text-align:center}
+  .btn.lg{width:100%}
+}
