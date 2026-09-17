@@ -3,7 +3,7 @@ window.SETU = {
   agency: {
     name: 'WorkAbroad Hub',
     nameBn: 'ওয়ার্কঅ্যাব্রড হাব',
-    license: 'B-XXXX/XXX/XXXX/XXXX',      // দাদার আসল RA লাইসেন্স নম্বর বসবে
+    // লাইসেন্স নম্বর ইচ্ছে করেই সাইটে দেখানো হয় না
     phone: '+91 74396 63211',
     whatsapp: '917439663211',
     email: 'info@workabroadhub.in',

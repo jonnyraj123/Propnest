@@ -12,7 +12,7 @@
   function fill() {
     var tel = 'tel:' + A.phone.replace(/\s/g, '');
     var wa = 'https://wa.me/' + A.whatsapp;
-    [['#tb-phone', A.phone], ['#tb-lic', A.license], ['#ft-lic', A.license]].forEach(function (p) {
+    [['#tb-phone', A.phone]].forEach(function (p) {
       var el = $(p[0]); if (el) el.textContent = p[1];
     });
     var fp = $('#ft-phone'); if (fp) { fp.textContent = '📞 ' + A.phone; fp.href = tel; }
@@ -167,7 +167,6 @@
       $('#r-country').textContent = countryName(sc.value);
       $('#r-job').textContent = jobName(sj.value);
       $('#r-date').textContent = dt;
-      $('#r-lic').textContent = A.license;
       var pay = $('#r-pay');
       if (A.payLink && A.payLink !== '#') pay.href = A.payLink;
       else pay.addEventListener('click', function (e) {
