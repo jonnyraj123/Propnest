@@ -17,6 +17,8 @@
     });
     var fp = $('#ft-phone'); if (fp) { fp.textContent = '📞 ' + A.phone; fp.href = tel; }
     var fw = $('#ft-wa'); if (fw) fw.href = wa;
+    var hw = $('#hero-wa');
+    if (hw) hw.href = wa + '?text=' + encodeURIComponent('নমস্কার, আমি বিদেশে কাজের ব্যাপারে জানতে চাই।');
     var fm = $('#ft-mail'); if (fm) { fm.textContent = '✉️ ' + A.email; fm.href = 'mailto:' + A.email; }
   }
 

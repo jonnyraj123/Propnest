@@ -4,8 +4,8 @@ window.SETU = {
     name: 'WorkAbroad Hub',
     nameBn: 'ওয়ার্কঅ্যাব্রড হাব',
     license: 'B-XXXX/XXX/XXXX/XXXX',      // দাদার আসল RA লাইসেন্স নম্বর বসবে
-    phone: '+91 00000 00000',              // আসল নম্বর বসবে
-    whatsapp: '910000000000',
+    phone: '+91 74396 63211',
+    whatsapp: '917439663211',
     email: 'info@workabroadhub.in',
     address: 'কলকাতা, পশ্চিমবঙ্গ',
     fee: 500,
