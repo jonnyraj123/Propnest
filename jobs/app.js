@@ -1,4 +1,4 @@
-/* সেতু ওভারসিজ — সাইটের স্ক্রিপ্ট */
+/* WorkAbroad Hub — সাইটের স্ক্রিপ্ট */
 (function () {
   var S = window.SETU, A = S.agency;
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -151,7 +151,7 @@
       var s = String(d.getFullYear()).slice(2) +
         ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2);
       var r = String(Math.floor(1000 + Math.random() * 9000));
-      return 'SO-' + s + '-' + r;
+      return 'WAH-' + s + '-' + r;
     }
 
     /* রসিদ দেখানো */

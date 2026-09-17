@@ -1,12 +1,12 @@
-/* সেতু ওভারসিজ — দেশ ও কাজের তালিকা (ডেমো ডেটা) */
+/* WorkAbroad Hub — দেশ ও কাজের তালিকা (ডেমো ডেটা) */
 window.SETU = {
   agency: {
-    name: 'সেতু ওভারসিজ',
-    nameEn: 'SETU OVERSEAS',
+    name: 'WorkAbroad Hub',
+    nameBn: 'ওয়ার্কঅ্যাব্রড হাব',
     license: 'B-XXXX/XXX/XXXX/XXXX',      // দাদার আসল RA লাইসেন্স নম্বর বসবে
     phone: '+91 00000 00000',              // আসল নম্বর বসবে
     whatsapp: '910000000000',
-    email: 'info@setuoverseas.in',
+    email: 'info@workabroadhub.in',
     address: 'কলকাতা, পশ্চিমবঙ্গ',
     fee: 500,
     payLink: '#'                           // SuperProfile লিঙ্ক বসবে
