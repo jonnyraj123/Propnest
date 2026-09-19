@@ -259,6 +259,12 @@ section{padding:72px 0}
 .rv-c:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
 .rv-c .st{color:var(--gold);letter-spacing:3px;font-size:14px}
 .rv-c p{font-size:15.2px;color:var(--ink-2);margin:10px 0 16px;font-style:italic}
+.rv-c.pledge{border-top:3px solid var(--gold)}
+.rv-c.pledge p{font-style:normal;margin:8px 0 0;font-size:14.9px}
+.rv-c.pledge h3{font-size:17.5px;color:var(--navy);font-weight:700;line-height:1.35}
+.pn{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;
+  background:var(--navy);color:#fff;font-weight:800;font-size:15px;margin-bottom:12px;
+  font-family:var(--en),sans-serif}
 .who{display:flex;align-items:center;gap:11px}
 .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,var(--navy-3),var(--navy));
   color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}

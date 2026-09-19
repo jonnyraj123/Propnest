@@ -47,10 +47,10 @@ en: {
         ['The fee is non-refundable','because work begins the moment it is paid.'] ],
     warn:'Do not pay if anything is unclear — call us first on <b>+91 70638 24707</b>. Every payment gets a receipt.' },
 
-  rev:{ kick:'Experiences', title:'People we have sent',
-    r:[ ['They called the very next day after I filled the form. Which company, what salary — everything was told upfront. I am on site in Dubai now.','Raju Mondal','Dubai · Construction'],
-        ['I had lost money to an agent before. Here I got a receipt for every rupee and my documents stayed with me.','Sk Imran','Russia · Welder'],
-        ['They explained it in my own language, so I trusted them. Eight months in a warehouse in Poland now.','Bikash Ghosh','Poland · Warehouse'] ] },
+  rev:{ kick:'Our promise', title:'Three things we put in writing',
+    r:[ ['Real vacancies only','Your application goes to companies that are actually hiring. If there is nothing for your trade this month, we say so instead of taking your file and going quiet.'],
+        ['Every rupee gets a receipt','You are told what each stage costs before you pay it, and you get a receipt for every payment. Nothing is collected in cash without paper.'],
+        ['A straight answer, always','If a company rejects you, or a country closes, you hear it from us the same week. We would rather lose a customer than keep one on false hope.'] ] },
 
   faq:{ kick:'Questions', title:'What everyone asks',
     q:[ ['Can I apply without a passport?','You can register, but the process cannot move forward without one. We will explain how to get a passport on the call.'],
@@ -169,10 +169,10 @@ hi: {
         ['यह फीस वापस नहीं होती','क्योंकि पेमेंट होते ही काम शुरू हो जाता है।'] ],
     warn:'कुछ भी समझ न आए तो पैसा मत दीजिए — पहले कॉल कीजिए <b>+91 70638 24707</b> पर। हर पेमेंट की रसीद मिलती है।' },
 
-  rev:{ kick:'अनुभव', title:'जो जा चुके हैं',
-    r:[ ['फॉर्म भरने के अगले ही दिन कॉल आ गया था। कौन सी कंपनी, कितनी सैलरी — सब पहले बता दिया था। अभी दुबई में साइट पर हूँ।','राजू मंडल','दुबई · कंस्ट्रक्शन'],
-        ['पहले एक दलाल को पैसे देकर ठगा जा चुका था। यहाँ हर रुपये की रसीद मिली, कागज़ भी मेरे पास ही रहे।','शेख़ इमरान','रूस · वेल्डर'],
-        ['अपनी भाषा में समझाया, इसलिए भरोसा हुआ। पोलैंड में वेयरहाउस में आठ महीने हो गए।','बिकाश घोष','पोलैंड · वेयरहाउस'] ] },
+  rev:{ kick:'हमारा वादा', title:'तीन बातें, लिखित में',
+    r:[ ['सिर्फ़ असली वैकेंसी','आपकी अप्लीकेशन उन्हीं कंपनियों में जाती है जो सच में लोग रख रही हैं। इस महीने आपके ट्रेड में कुछ न हो तो साफ़ बता देते हैं — फाइल लेकर चुप नहीं हो जाते।'],
+        ['हर रुपये की रसीद','किस स्टेप पर कितना लगेगा, पैसे लेने से पहले बता दिया जाता है, और हर पेमेंट की रसीद मिलती है। बिना कागज़ के नकद नहीं लिया जाता।'],
+        ['जवाब हमेशा सीधा','कंपनी ने मना किया हो या देश बंद हो गया हो — उसी हफ़्ते आपको बता दिया जाता है। झूठी उम्मीद पर ग्राहक रखने से अच्छा है ग्राहक चला जाए।'] ] },
 
   faq:{ kick:'सवाल-जवाब', title:'जो सब पूछते हैं',
     q:[ ['पासपोर्ट नहीं है, अप्लाई कर सकते हैं?','रजिस्टर कर सकते हैं, लेकिन आगे बढ़ने के लिए पासपोर्ट चाहिए ही। पासपोर्ट कैसे बनवाना है, कॉल पर बता देंगे।'],
@@ -289,10 +289,10 @@ bn: {
         ['এই ফি ফেরতযোগ্য নয়','কারণ পেমেন্ট হলেই কাজ শুরু হয়ে যায়।'] ],
     warn:'না বুঝে দেবেন না — আগে ফোন করুন <b>+91 70638 24707</b> নম্বরে। প্রতিটা টাকার রসিদ দেওয়া হয়।' },
 
-  rev:{ kick:'অভিজ্ঞতা', title:'যাঁরা গেছেন',
-    r:[ ['ফর্ম ভরার পরের দিনই ফোন এসেছিল। কোন কোম্পানি, কত মাইনে — সব আগে বলে দিয়েছিল। এখন দুবাইয়ে সাইটে আছি।','রাজু মণ্ডল','দুবাই · কনস্ট্রাকশন'],
-        ['আগে এক দালালকে টাকা দিয়ে ঠকেছিলাম। এখানে প্রতিটা টাকার রসিদ পেয়েছি, কাগজও নিজের হাতে ছিল।','সেখ ইমরান','রাশিয়া · ওয়েল্ডার'],
-        ['নিজের ভাষায় বুঝিয়ে বলেছিল বলে ভরসা পেয়েছিলাম। পোল্যান্ডে ওয়্যারহাউসে আট মাস হল।','বিকাশ ঘোষ','পোল্যান্ড · ওয়্যারহাউস'] ] },
+  rev:{ kick:'আমাদের কথা', title:'তিনটে কথা, লিখে দিচ্ছি',
+    r:[ ['শুধু সত্যিকারের ভ্যাকান্সি','আপনার আবেদন সেই কোম্পানিতেই যায় যারা সত্যিই লোক নিচ্ছে। এই মাসে আপনার কাজে কিছু না থাকলে সোজা বলে দিই — ফাইল নিয়ে চুপ করে বসে থাকি না।'],
+        ['প্রতিটা টাকার রসিদ','কোন ধাপে কত লাগবে, টাকা নেওয়ার আগেই বলা হয়, আর প্রতিটা পেমেন্টের রসিদ দেওয়া হয়। কাগজ ছাড়া নগদ নেওয়া হয় না।'],
+        ['উত্তর সবসময় সোজা','কোম্পানি বাতিল করলে বা দেশ বন্ধ হয়ে গেলে সেই সপ্তাহেই জানিয়ে দেওয়া হয়। মিথ্যে আশায় কাস্টমার ধরে রাখার চেয়ে কাস্টমার চলে যাওয়া ভালো।'] ] },
 
   faq:{ kick:'প্রশ্ন-উত্তর', title:'যা সবাই জানতে চান',
     q:[ ['পাসপোর্ট না থাকলে আবেদন করা যাবে?','করে রাখতে পারেন, কিন্তু কাজ এগোতে পাসপোর্ট লাগবেই। পাসপোর্ট করার প্রসেসটাও ফোনে বুঝিয়ে দেওয়া হবে।'],

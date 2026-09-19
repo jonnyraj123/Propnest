@@ -162,10 +162,9 @@
 
     /* reviews */
     var rl = $('#revlist');
-    if (rl) rl.innerHTML = t('rev.r').map(function (r) {
-      return '<div class="rv-c"><div class="st">★★★★★</div><p>“' + r[0] + '”</p>' +
-        '<div class="who"><span class="av">' + r[1].trim().charAt(0) + '</span>' +
-        '<span><b>' + r[1] + '</b><span>' + r[2] + '</span></span></div></div>';
+    if (rl) rl.innerHTML = t('rev.r').map(function (r, i) {
+      return '<div class="rv-c pledge"><span class="pn">' + num(i + 1) + '</span>' +
+        '<h3>' + r[0] + '</h3><p>' + r[1] + '</p></div>';
     }).join('');
 
     /* faq */
