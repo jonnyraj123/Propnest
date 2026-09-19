@@ -48,9 +48,87 @@
 <!-- ============ HERO ============ -->
 <div class="hero">
   <div class="stars" id="stars"></div>
-  <div class="wrap">
 
-    <div>
+  <div class="wmap">
+        <svg class="wmapsvg" viewBox="140 16 330 148" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <pattern id="dotp" width="2.9" height="2.9" patternUnits="userSpaceOnUse">
+              <circle cx="1.45" cy="1.45" r="0.82" fill="#6FA6EE"/>
+            </pattern>
+            <clipPath id="land">
+      <path d="M12.0,25.0 20.0,19.0 40.0,20.0 55.0,20.0 70.0,21.0 85.0,18.0 98.0,22.0 116.0,30.0 124.0,38.0 114.0,42.0 110.0,47.0 106.0,51.0 99.0,59.0 100.0,65.0 90.0,61.0 83.0,64.0 74.0,69.0 65.0,61.0 58.0,53.0 55.0,45.0 49.0,35.0 39.0,30.0 25.0,30.0 12.0,25.0Z"/>
+      <path d="M135.0,30.0 158.0,20.0 160.0,14.0 148.0,7.0 122.0,8.0 110.0,14.0 125.0,24.0 135.0,30.0Z"/>
+      <path d="M102.0,81.0 108.0,78.0 119.0,79.0 130.0,89.0 145.0,95.0 142.0,104.0 140.0,112.0 132.0,115.0 127.0,123.0 122.0,128.0 117.0,132.0 112.0,140.0 106.0,143.0 107.0,135.0 109.0,120.0 109.0,108.0 103.0,95.0 100.0,90.0 102.0,81.0Z"/>
+      <path d="M163.0,75.0 164.0,69.0 170.0,62.0 180.0,58.0 190.0,57.0 200.0,58.0 208.0,59.0 214.0,59.0 218.0,68.0 223.0,78.0 231.0,78.0 231.0,86.0 223.0,91.0 220.0,100.0 216.0,107.0 213.0,116.0 208.0,123.0 200.0,125.0 195.0,118.0 192.0,108.0 189.0,92.0 185.0,86.0 176.0,85.0 170.0,86.0 167.0,81.0 163.0,75.0Z"/>
+      <path d="M170.0,54.0 171.0,47.0 178.0,42.0 182.0,39.0 185.0,37.0 188.0,36.0 191.0,35.0 190.0,32.0 192.0,30.0 198.0,24.0 202.0,20.0 208.0,19.0 220.0,22.0 232.0,20.0 246.0,20.0 260.0,16.0 276.0,12.0 292.0,14.0 308.0,17.0 325.0,18.0 340.0,21.0 350.0,24.0 343.0,29.0 336.0,33.0 327.0,38.0 322.0,43.0 315.0,46.0 310.0,51.0 307.0,55.0 302.0,60.0 293.0,68.0 286.0,72.0 281.0,78.0 284.0,88.0 278.0,82.0 275.0,74.0 272.0,69.0 268.0,68.0 263.0,73.0 257.0,82.0 253.0,73.0 249.0,67.0 242.0,65.0 237.0,67.0 232.0,73.0 225.0,77.0 223.0,70.0 215.0,62.0 214.0,55.0 208.0,54.0 203.0,53.0 196.0,51.0 192.0,53.0 188.0,46.0 183.0,47.0 179.0,52.0 174.0,54.0 170.0,54.0Z"/>
+      <path d="M293.0,112.0 298.0,110.0 304.0,106.0 310.0,102.0 316.0,102.0 322.0,100.0 325.0,105.0 328.0,110.0 333.0,116.0 333.0,122.0 329.0,127.0 323.0,129.0 316.0,125.0 309.0,122.0 300.0,124.0 295.0,124.0 293.0,116.0 293.0,112.0Z"/>
+      <path d="M175.0,40.0 177.0,37.0 177.0,32.0 175.0,32.0 174.0,35.0 175.0,40.0Z"/>
+      <path d="M170.0,38.0 174.0,38.0 174.0,35.0 170.0,36.0 170.0,38.0Z"/>
+      <path d="M310.0,58.0 315.0,56.0 320.0,54.0 322.0,49.0 325.0,46.0 321.0,45.0 318.0,52.0 313.0,56.0 310.0,58.0Z"/>
+      <path d="M275.0,85.0 284.0,89.0 290.0,93.0 296.0,98.0 300.0,99.0 293.0,98.0 285.0,96.0 278.0,88.0 275.0,85.0Z"/>
+      <path d="M290.0,89.0 297.0,86.0 299.0,92.0 295.0,94.0 290.0,92.0 290.0,89.0Z"/>
+      <path d="M300.0,72.0 304.0,77.0 306.0,82.0 302.0,83.0 300.0,77.0 300.0,72.0Z"/>
+      <path d="M223.0,102.0 230.0,105.0 228.0,114.0 224.0,112.0 223.0,102.0Z"/>
+      <path d="M352.0,124.0 358.0,128.0 354.0,131.0 350.0,135.0 347.0,136.0 350.0,131.0 352.0,124.0Z"/>
+      <path d="M260.0,81.0 262.0,82.0 261.0,84.0 260.0,83.0 260.0,81.0Z"/>
+      <path d="M156.0,25.0 166.0,24.0 166.0,26.0 158.0,27.0 156.0,25.0Z"/>
+      <path d="M225.0,30.0 235.0,28.0 230.0,35.0 225.0,33.0 225.0,30.0Z"/>
+            </clipPath>
+            <linearGradient id="arcg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="#F0A81E" stop-opacity=".15"/>
+              <stop offset="55%" stop-color="#FFD98A"/>
+              <stop offset="100%" stop-color="#F0A81E" stop-opacity=".35"/>
+            </linearGradient>
+          </defs>
+
+          <g id="wmapc">
+          <g clip-path="url(#land)">
+            <rect x="0" y="0" width="360" height="180" fill="#2B5BA8" opacity=".30"/>
+            <rect x="0" y="0" width="360" height="180" fill="url(#dotp)" opacity=".85"/>
+          </g>
+
+          <g class="arcs" fill="none" stroke="url(#arcg)" stroke-width="0.9" stroke-linecap="round">
+      <path class="arc a0" d="M268.4,67.4 Q251.8,52.7 235.3,64.7"/>
+      <path class="arc a1" d="M268.4,67.4 Q247.5,51.2 226.7,65.3"/>
+      <path class="arc a2" d="M268.4,67.4 Q249.9,51.9 231.5,64.7"/>
+      <path class="arc a3" d="M268.4,67.4 Q243.0,31.4 217.6,34.2"/>
+      <path class="arc a0" d="M268.4,67.4 Q234.7,30.4 201.0,37.8"/>
+      <path class="arc a1" d="M268.4,67.4 Q219.6,31.6 170.9,51.3"/>
+      <path class="arc a2" d="M268.4,67.4 Q184.5,13.6 100.6,46.3"/>
+      <path class="arc a3" d="M268.4,67.4 Q187.2,16.4 106.0,49.3"/>
+      <path class="arc a0" d="M268.4,67.4 Q276.1,66.2 283.8,88.6"/>
+      <path class="arc a1" d="M268.4,67.4 Q275.0,66.0 281.7,86.9"/>
+      <path class="arc a2" d="M268.4,67.4 Q294.0,43.2 319.7,54.3"/>
+          </g>
+
+          <g class="pins" fill="#FFD98A">
+      <circle class="pin p0" cx="235.3" cy="64.7" r="1.5"/>
+      <circle class="pin p1" cx="226.7" cy="65.3" r="1.5"/>
+      <circle class="pin p2" cx="231.5" cy="64.7" r="1.5"/>
+      <circle class="pin p0" cx="217.6" cy="34.2" r="1.5"/>
+      <circle class="pin p1" cx="201.0" cy="37.8" r="1.5"/>
+      <circle class="pin p2" cx="170.9" cy="51.3" r="1.5"/>
+      <circle class="pin p0" cx="100.6" cy="46.3" r="1.5"/>
+      <circle class="pin p1" cx="106.0" cy="49.3" r="1.5"/>
+      <circle class="pin p2" cx="283.8" cy="88.6" r="1.5"/>
+      <circle class="pin p0" cx="281.7" cy="86.9" r="1.5"/>
+      <circle class="pin p1" cx="319.7" cy="54.3" r="1.5"/>
+          </g>
+
+          <g class="kol">
+            <circle cx="268.4" cy="67.4" r="2.6" fill="#F0A81E"/>
+            <circle class="ripple" cx="268.4" cy="67.4" r="2.6" fill="none" stroke="#F0A81E" stroke-width="0.8"/>
+            <text x="259.4" y="75.4" fill="#FFE3AC" font-size="4.6" font-weight="700"
+                  font-family="Inter,sans-serif">KOLKATA</text>
+          </g>
+          </g>
+          <use href="#wmapc" transform="translate(-360 0)"/>
+          <use href="#wmapc" transform="translate(360 0)"/>
+        </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="hcopy">
       <span class="badge"><span class="dot"></span><span data-t="hero.badge"></span></span>
       <h1><span data-t="hero.t1"></span><span class="l2" data-t="hero.t2"></span></h1>
       <p class="lede" data-t="hero.sub"></p>
@@ -61,91 +139,14 @@
       <p class="hnote"><span>✈️</span><span data-t="hero.note"></span></p>
     </div>
 
-    <div class="globewrap">
-      <div class="glow"></div>
-      <div class="globe">
-        <svg viewBox="0 0 400 400" aria-hidden="true">
-          <defs>
-            <radialGradient id="gSea" cx="36%" cy="30%">
-              <stop offset="0%" stop-color="#3E74C8"/>
-              <stop offset="60%" stop-color="#1B4488"/>
-              <stop offset="100%" stop-color="#0A2352"/>
-            </radialGradient>
-            <linearGradient id="gRing" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#F0A81E"/>
-              <stop offset="55%" stop-color="#FFD98A"/>
-              <stop offset="100%" stop-color="#F0A81E" stop-opacity=".25"/>
-            </linearGradient>
-            <clipPath id="ball"><circle cx="200" cy="200" r="122"/></clipPath>
-            <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
-          </defs>
-
-          <circle cx="200" cy="200" r="150" fill="#5D98FF" opacity=".12" filter="url(#soft)"/>
-          <circle cx="200" cy="200" r="122" fill="url(#gSea)"/>
-
-          <!-- rotating surface -->
-          <g clip-path="url(#ball)" class="spin" opacity=".95">
-            <g fill="#8FD6B0" opacity=".92">
-              <path d="M96 128c18-14 44-16 60-6s10 26 24 32 34-2 40 12-14 24-30 22-26-10-42-8-30 8-44 0-26-38-8-52z"/>
-              <path d="M188 208c16-6 34 2 40 16s-4 30 6 40 30 8 32 24-18 24-34 18-24-22-38-28-28-6-32-22 10-42 26-48z"/>
-              <path d="M286 120c16 2 30 16 28 30s-16 18-24 12-12-20-10-30z"/>
-              <path d="M320 232c14 4 22 18 18 30s-20 16-28 8-6-26 10-38z"/>
-              <path d="M58 236c12-4 24 6 24 18s-12 22-22 18-14-32-2-36z"/>
-            </g>
-            <g stroke="#BFE0FF" stroke-width="1" fill="none" opacity=".3">
-              <ellipse cx="200" cy="200" rx="122" ry="42"/>
-              <ellipse cx="200" cy="200" rx="122" ry="82"/>
-              <ellipse cx="200" cy="200" rx="42" ry="122"/>
-              <ellipse cx="200" cy="200" rx="82" ry="122"/>
-              <line x1="78" y1="200" x2="322" y2="200"/>
-            </g>
-          </g>
-
-          <!-- gloss -->
-          <circle cx="200" cy="200" r="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>
-          <ellipse cx="158" cy="152" rx="52" ry="34" fill="#fff" opacity=".13" transform="rotate(-28 158 152)"/>
-
-          <!-- orbits -->
-          <g class="orbit">
-            <ellipse cx="200" cy="200" rx="168" ry="66" fill="none"
-                     stroke="url(#gRing)" stroke-width="2.4" stroke-dasharray="7 9"
-                     transform="rotate(-22 200 200)"/>
-          </g>
-          <g class="orbit-2">
-            <ellipse cx="200" cy="200" rx="152" ry="150" fill="none"
-                     stroke="rgba(255,255,255,.16)" stroke-width="1.4" stroke-dasharray="3 12"/>
-          </g>
-
-          <!-- plane riding the orbit -->
-          <g class="plane">
-            <g transform="rotate(-22 200 200)">
-              <g transform="translate(368 200) rotate(96)">
-                <path d="M3 0L-13-5.5 -9.5-1.4 -19.5-1.4 -22.5-5 -25-5 -22.8 0 -25 5 -22.5 5 -19.5 1.4 -9.5 1.4 -13 5.5Z"
-                      fill="#FFFFFF"/>
-                <circle cx="-26" cy="0" r="1.6" fill="#FFD98A" opacity=".9"/>
-              </g>
-            </g>
-          </g>
-
-          <!-- destination pins -->
-          <circle class="pin" cx="248" cy="150" r="3" fill="#FFD98A"/>
-          <circle class="pin" cx="152" cy="238" r="3" fill="#FFD98A"/>
-          <circle class="pin" cx="266" cy="246" r="3" fill="#FFD98A"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- picker card sits under the copy on desktop grid flow -->
-  </div>
-
-  <div class="wrap" style="position:relative;z-index:2;margin-top:34px;max-width:1180px">
-    <div class="pick" style="max-width:560px;margin:0 auto" id="pickcard">
+    <div class="pick" id="pickcard">
       <h3 data-t="picker.title"></h3>
       <p class="cap" data-t="picker.sub"></p>
       <label data-t="picker.country" for="hc-country"></label>
       <select id="hc-country"></select>
       <label data-t="picker.job" for="hc-job"></label>
       <select id="hc-job"></select>
+      <p class="pickerr" id="hc-err"></p>
       <button class="btn nv wide lg" id="hc-go" data-t="picker.go"></button>
       <p class="free" data-t="picker.free"></p>
     </div>

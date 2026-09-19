@@ -130,20 +130,20 @@
     /* jobs */
     var jl = $('#joblist');
     if (jl) jl.innerHTML = D.jobs.map(function (j) {
-      return '<a class="jb" href="apply.html?job=' + j.id + '">' +
+      return '<div class="jb">' +
         '<span class="ic">' + j.ic + '</span>' +
         '<span><span class="t">' + loc(j.n) + '</span><span class="s">' + loc(j.d) + '</span></span>' +
-        '<span class="ar">›</span></a>';
+        '</div>';
     }).join('');
 
     /* countries */
     var cl = $('#countrylist');
     if (cl) cl.innerHTML = D.countries.map(function (c) {
-      return '<a class="cy" href="apply.html?country=' + c.id + '">' +
+      return '<div class="cy">' +
         '<span class="top"><span class="fl">' + c.fl + '</span>' +
         '<span class="code">' + c.code + '</span></span>' +
         '<span class="nm">' + loc(c.n) + '</span>' +
-        '<span class="mt">' + loc(c.d) + '</span></a>';
+        '<span class="mt">' + loc(c.d) + '</span></div>';
     }).join('');
 
     /* why us */
@@ -182,11 +182,20 @@
       hc.value = cv; hj.value = jv;
       if (!hc.dataset.wired) {
         hc.dataset.wired = '1';
+        var er = $('#hc-err');
+        function clear() { er.classList.remove('on'); hc.classList.remove('bad'); hj.classList.remove('bad'); }
+        hc.addEventListener('change', clear);
+        hj.addEventListener('change', clear);
         $('#hc-go').addEventListener('click', function () {
-          var q = [];
-          if (hc.value) q.push('country=' + hc.value);
-          if (hj.value) q.push('job=' + hj.value);
-          location.href = 'apply.html' + (q.length ? '?' + q.join('&') : '');
+          if (!hc.value || !hj.value) {
+            er.textContent = t('picker.err');
+            er.classList.add('on');
+            hc.classList.toggle('bad', !hc.value);
+            hj.classList.toggle('bad', !hj.value);
+            (!hc.value ? hc : hj).focus();
+            return;
+          }
+          location.href = 'apply.html?country=' + hc.value + '&job=' + hj.value;
         });
       }
     }
@@ -255,7 +264,7 @@
     sp.addEventListener('change', function () {
       var on = this.value === 'yes';
       $('#f-passport').disabled = !on;
-      $('#f-passport').placeholder = on ? 'M1234567' : t('ap.ppPh2');
+      $('#f-passport').placeholder = on ? '' : t('ap.ppPh2');
       if (!on) $('#f-passport').value = '';
     });
 
