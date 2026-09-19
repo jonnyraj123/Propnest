@@ -1,92 +1,85 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>পেমেন্ট কনফার্মেশন — WorkAbroad Hub</title>
+<title>Payment confirmation — WorkAbroad Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'NSB';src:url('../ebook/assets/NotoSansBengali-400.ttf');font-weight:400}
-@font-face{font-family:'NSB';src:url('../ebook/assets/NotoSansBengali-600.ttf');font-weight:600}
-@font-face{font-family:'NSB';src:url('../ebook/assets/NotoSansBengali-700.ttf');font-weight:700}
 :root{
-  --navy:#15305E; --navy-d:#0B1D3D; --navy-xl:#E9EFF8;
-  --gold:#EFA51C; --gold-l:#FDF0D6; --gold-d:#C8860C;
-  --green:#1E7A4B; --green-l:#E4F3EA;
-  --ink:#1C2430; --ink2:#4B5665; --mut:#7B8697;
-  --line:#DDE3EC; --wash:#F5F7FA;
+  --navy:#0B1F44; --navy-2:#122C5E; --deep:#050E22;
+  --gold:#F0A81E; --gold-w:#FDF2DC; --gold-d:#C9820C;
+  --green:#149A5A; --green-w:#E4F5EC;
+  --ink:#141B29; --ink-2:#48536A; --mut:#7C8AA3; --line:#DFE6F1; --wash:#F4F7FC;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 @page{size:A4;margin:0}
-body{font-family:'NSB',sans-serif;color:var(--ink);background:#8a8a8a;font-size:10.6pt;line-height:1.72}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#8a8a8a;
+  font-size:10.4pt;line-height:1.62}
 .page{width:210mm;height:297mm;background:#fff;margin:0 auto;position:relative;
   display:flex;flex-direction:column;overflow:hidden}
 
-/* লেটারহেড */
-.head{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;
+.head{background:linear-gradient(150deg,var(--navy-2),var(--deep));color:#fff;
   padding:9mm 16mm 7.5mm;display:flex;align-items:center;gap:6mm;position:relative;overflow:hidden}
 .head:after{content:'';position:absolute;right:-22mm;top:-26mm;width:70mm;height:70mm;
-  border-radius:50%;background:rgba(239,165,28,.14)}
-.head img{width:20mm;height:20mm;border-radius:50%;background:#fff;padding:1mm;flex:none;position:relative;z-index:1}
+  border-radius:50%;background:rgba(240,168,30,.15)}
+.head img{width:20mm;height:20mm;border-radius:50%;background:#fff;padding:1mm;flex:none;
+  position:relative;z-index:1}
 .bnd{position:relative;z-index:1}
-.bnd b{display:block;font-size:19pt;line-height:1.2;letter-spacing:-.01em}
-.bnd span{font-size:8.4pt;color:#B9CBE2;letter-spacing:.09em}
+.bnd b{display:block;font-size:20pt;line-height:1.15;letter-spacing:-.02em;font-weight:800}
+.bnd span{font-size:8pt;color:#B9CBE2;letter-spacing:.14em;font-weight:600}
 .doc{margin-left:auto;text-align:right;position:relative;z-index:1}
-.doc b{display:block;font-size:9.6pt;color:#F0C878;letter-spacing:.14em}
+.doc b{display:block;font-size:9.4pt;color:#F2C97E;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
 .doc span{font-size:8.6pt;color:#B9CBE2}
 .rule{height:1.6mm;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-d) 55%,var(--navy) 100%)}
 
 .body{padding:8mm 16mm 0;flex:1;position:relative}
-
-/* জলছাপ */
-.wm{position:absolute;left:0;right:0;top:32mm;display:flex;justify-content:center;opacity:.035;z-index:0}
+.wm{position:absolute;left:0;right:0;top:30mm;display:flex;justify-content:center;opacity:.035;z-index:0}
 .wm img{width:110mm;transform:rotate(-12deg)}
-
 .inner{position:relative;z-index:1}
 
-/* ধন্যবাদ */
-.hero{background:var(--green-l);border:1px solid #C3E2D1;border-radius:4mm;
+.hero{background:var(--green-w);border:1px solid #C3E2D1;border-radius:4mm;
   padding:6mm 8mm 5.5mm;text-align:center;margin-bottom:6mm}
 .tick{width:16mm;height:16mm;border-radius:50%;background:var(--green);color:#fff;
   display:grid;place-items:center;font-size:20pt;margin:0 auto 4mm;line-height:1}
-.hero h1{font-size:19pt;color:var(--navy);line-height:1.34;margin-bottom:2.5mm;font-weight:700}
-.hero p{font-size:11.2pt;color:var(--ink2);max-width:135mm;margin:0 auto}
+.hero h1{font-size:19pt;color:var(--navy);line-height:1.25;margin-bottom:2.5mm;font-weight:800;
+  letter-spacing:-.02em}
+.hero p{font-size:11pt;color:var(--ink-2);max-width:140mm;margin:0 auto}
 
-h2{font-size:12.4pt;color:var(--navy);margin-bottom:3.5mm;font-weight:700;
-  display:flex;align-items:center;gap:3mm}
+h2{font-size:12pt;color:var(--navy);margin-bottom:3.5mm;font-weight:700;
+  display:flex;align-items:center;gap:3mm;letter-spacing:-.01em}
 h2:after{content:'';flex:1;height:.3mm;background:var(--line)}
 
-/* ধাপ */
 .steps{margin-bottom:6mm}
 .st{display:flex;gap:4mm;margin-bottom:3mm}
 .st:last-child{margin-bottom:0}
 .st .n{width:7mm;height:7mm;border-radius:50%;background:var(--navy);color:#fff;flex:none;
-  display:grid;place-items:center;font-size:9pt;font-weight:700;line-height:1;margin-top:.6mm}
-.st b{display:block;font-size:11pt;color:var(--ink);line-height:1.5}
-.st span{font-size:10pt;color:var(--ink2)}
+  display:grid;place-items:center;font-size:9pt;font-weight:700;line-height:1;margin-top:.8mm}
+.st b{display:block;font-size:10.8pt;color:var(--ink);line-height:1.45;font-weight:700}
+.st span{font-size:9.8pt;color:var(--ink-2)}
 
-/* WhatsApp বাক্স */
-.wabox{background:var(--green-l);border:1px solid #C3E2D1;border-radius:4mm;padding:5mm 7mm;
+.wabox{background:var(--green-w);border:1px solid #C3E2D1;border-radius:4mm;padding:5mm 7mm;
   margin-bottom:5mm;display:flex;gap:5mm;align-items:center}
 .wabox .ic{width:13mm;height:13mm;border-radius:50%;background:var(--green);color:#fff;flex:none;
   display:grid;place-items:center;font-size:15pt;line-height:1}
-.wabox b{display:block;font-size:11.4pt;color:var(--navy);margin-bottom:1mm}
-.wabox p{font-size:10pt;color:var(--ink2)}
-.wabox .num{font-size:13pt;font-weight:700;color:var(--navy);letter-spacing:.02em;white-space:nowrap}
+.wabox b{display:block;font-size:11pt;color:var(--navy);margin-bottom:1mm;font-weight:700}
+.wabox p{font-size:9.8pt;color:var(--ink-2)}
+.wabox .num{font-size:13pt;font-weight:800;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
 
-/* মনে রাখবেন */
-.note{background:var(--gold-l);border:1px solid #EAD4A6;border-radius:4mm;padding:5mm 7mm}
-.note b.t{display:block;font-size:11.4pt;color:var(--navy);margin-bottom:3mm}
-.note ul{list-style:none;font-size:10pt;color:var(--ink2);line-height:1.68}
+.note{background:var(--gold-w);border:1px solid #EAD4A6;border-radius:4mm;padding:5mm 7mm}
+.note b.t{display:block;font-size:11pt;color:var(--navy);margin-bottom:3mm;font-weight:700}
+.note ul{list-style:none;font-size:9.8pt;color:var(--ink-2);line-height:1.6}
 .note li{padding-left:5mm;position:relative;margin-bottom:1.8mm}
 .note li:last-child{margin-bottom:0}
-.note li:before{content:'';position:absolute;left:1mm;top:2.6mm;width:1.6mm;height:1.6mm;
+.note li:before{content:'';position:absolute;left:1mm;top:2.4mm;width:1.6mm;height:1.6mm;
   border-radius:50%;background:var(--gold)}
 
-/* ফুটার */
 .foot{margin-top:auto;border-top:.4mm solid var(--line);padding:5mm 16mm 7mm;
   display:flex;justify-content:space-between;align-items:flex-end;gap:8mm}
-.foot .l{font-size:9.6pt;color:var(--ink2);line-height:1.8}
+.foot .l{font-size:9.4pt;color:var(--ink-2);line-height:1.75}
 .foot .l b{color:var(--navy)}
-.foot .r{text-align:right;font-size:8.6pt;color:var(--mut);line-height:1.7;min-width:66mm}
+.foot .r{text-align:right;font-size:8.4pt;color:var(--mut);line-height:1.7;min-width:62mm}
 </style>
 </head>
 <body>
@@ -95,7 +88,7 @@ h2:after{content:'';flex:1;height:.3mm;background:var(--line)}
   <div class="head">
     <img src="logo.png" alt="">
     <span class="bnd"><b>WorkAbroad Hub</b><span>CONNECTING YOU TO GLOBAL OPPORTUNITIES</span></span>
-    <span class="doc"><b>পেমেন্ট কনফার্মেশন</b><span>প্রসেসিং ফি ₹৫০০</span></span>
+    <span class="doc"><b>Payment confirmation</b><span>Processing fee ₹500</span></span>
   </div>
   <div class="rule"></div>
 
@@ -105,43 +98,43 @@ h2:after{content:'';flex:1;height:.3mm;background:var(--line)}
 
       <div class="hero">
         <div class="tick">✓</div>
-        <h1>পেমেন্ট পেয়েছি — ধন্যবাদ</h1>
-        <p>আপনার ₹৫০০ প্রসেসিং ফি আমাদের কাছে পৌঁছেছে। আপনার ফাইল খোলা হয়েছে, কাজ শুরু হয়ে গেছে।</p>
+        <h1>Payment received — thank you</h1>
+        <p>Your ₹500 processing fee has reached us. Your file is now open and work has started.</p>
       </div>
 
-      <h2>এরপর কী হবে</h2>
+      <h2>What happens next</h2>
       <div class="steps">
-        <div class="st"><span class="n">১</span><span>
-          <b>২৪ ঘণ্টার মধ্যে ফোন</b>
-          <span>আমাদের অফিস থেকে আপনার নম্বরে ফোন যাবে। ফোনটা ধরবেন — অচেনা নম্বর দেখে কেটে দেবেন না।</span></span></div>
-        <div class="st"><span class="n">২</span><span>
-          <b>ডকুমেন্ট ভেরিফাই</b>
-          <span>পাসপোর্ট, এক্সপেরিয়েন্সের কাগজ আর ছবি WhatsApp-এ চাওয়া হবে। শুধু ছবি তুলে পাঠালেই হবে।</span></span></div>
-        <div class="st"><span class="n">৩</span><span>
-          <b>ভ্যাকান্সিতে আবেদন</b>
-          <span>আপনার প্রোফাইল অনুযায়ী যে যে কোম্পানিতে হবে, CV পাঠানো হবে। কোথায় পাঠানো হল, জানিয়ে দেওয়া হবে।</span></span></div>
-        <div class="st"><span class="n">৪</span><span>
-          <b>ইন্টারভিউ ও অফার লেটার</b>
-          <span>কোম্পানি পছন্দ করলে ইন্টারভিউ ও মেডিক্যাল। মাইনে, থাকা-খাওয়া, ছুটি — সব লিখিত অফারে দেখে তবে সিদ্ধান্ত নেবেন।</span></span></div>
+        <div class="st"><span class="n">1</span><span>
+          <b>A call within 24 hours</b>
+          <span>Our office will call the number you gave us. Please answer — do not cut the call because the number is unfamiliar.</span></span></div>
+        <div class="st"><span class="n">2</span><span>
+          <b>Document verification</b>
+          <span>We will ask for your passport, experience papers and photograph on WhatsApp. Clear photos are enough.</span></span></div>
+        <div class="st"><span class="n">3</span><span>
+          <b>Application to vacancies</b>
+          <span>Your CV goes to the companies that match your profile, and we tell you exactly where it was sent.</span></span></div>
+        <div class="st"><span class="n">4</span><span>
+          <b>Interview &amp; offer letter</b>
+          <span>If the company shortlists you: interview and medical. Salary, food, accommodation and leave come in writing before you decide.</span></span></div>
       </div>
 
       <div class="wabox">
         <span class="ic">💬</span>
         <span style="flex:1">
-          <b>এখনই একটা কাজ করে রাখুন</b>
-          <p>আপনার আবেদন নম্বরটা আমাদের WhatsApp-এ পাঠিয়ে দিন। তাহলে আপনার ফাইল খুঁজে পেতে সময় লাগবে না।</p>
+          <b>One thing to do right now</b>
+          <p>Send us your application number on WhatsApp. It lets us find your file the moment you call.</p>
         </span>
         <span class="num">+91 70638 24707</span>
       </div>
 
       <div class="note">
-        <b class="t">যা মনে রাখবেন</b>
+        <b class="t">Please keep in mind</b>
         <ul>
-          <li>এই ₹৫০০ ফাইল খোলা, ডকুমেন্ট ভেরিফাই ও কোম্পানিতে CV পাঠানোর ফি — <b>চাকরির গ্যারান্টি নয়</b>। লোক নেওয়ার সিদ্ধান্ত কোম্পানির।</li>
-          <li>ভিসা, মেডিক্যাল ও টিকিটের খরচ এর মধ্যে নেই। সেগুলো অফার লেটার হাতে পাওয়ার পর, আর পুরো হিসাব আগেই লিখে দেওয়া হয়।</li>
-          <li>কাজ না হলে সোজাসুজি জানিয়ে দেওয়া হয় — মিথ্যে আশা দেওয়া হয় না।</li>
-          <li>কাজ শুরু হয়ে যায় বলে এই ফি ফেরতযোগ্য নয়।</li>
-          <li>কোনও ধাপে কিছু বুঝতে অসুবিধা হলে সরাসরি ফোন করুন। বাংলাতেই কথা হবে।</li>
+          <li>This ₹500 covers opening your file, verifying documents and sending your CV to companies — it is <b>not a job guarantee</b>. Hiring is the company's decision.</li>
+          <li>Visa, medical and ticket costs are not included. Those come after the offer letter, and the full amount is written down in advance.</li>
+          <li>If it does not work out, we tell you straight — no false hope.</li>
+          <li>The fee is non-refundable, because work begins the moment it is paid.</li>
+          <li>If anything is unclear at any stage, call us directly. We speak Bengali, Hindi and English.</li>
         </ul>
       </div>
 
@@ -150,12 +143,12 @@ h2:after{content:'';flex:1;height:.3mm;background:var(--line)}
 
   <div class="foot">
     <span class="l">
-      <b>WorkAbroad Hub</b> · কলকাতা, পশ্চিমবঙ্গ<br>
-      ফোন / WhatsApp: <b>+91 70638 24707</b> · ইমেল: workabroadhub1@gmail.com
+      <b>WorkAbroad Hub</b> · Kolkata, West Bengal<br>
+      Phone / WhatsApp: <b>+91 70638 24707</b> · Email: workabroadhub1@gmail.com
     </span>
     <span class="r">
-      সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী এজেন্সি<br>
-      এই কাগজটি রেখে দিন — যোগাযোগের সময় কাজে লাগবে
+      Government-licensed recruiting agency<br>
+      Keep this page — it helps when you contact us
     </span>
   </div>
 

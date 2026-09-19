@@ -1,231 +1,224 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>আবেদন ফর্ম — WorkAbroad Hub</title>
+<title>Application form — WorkAbroad Hub</title>
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body style="background:var(--wash)">
+<body data-lang="en" style="background:var(--wash)">
 
-<div class="demoflag noprint">⚠️ ডেমো ফর্ম — জমা দিলে এখনও কোথাও তথ্য যাবে না।</div>
+
+<div class="langbar noprint" id="langbar">
+  <button data-lang-btn="en">English</button>
+  <button data-lang-btn="hi">हिंदी</button>
+  <button data-lang-btn="bn">বাংলা</button>
+</div>
 
 <header class="noprint"><div class="wrap hd">
-  <a class="logo" href="index.html">
-    <img class="mark" src="logo.png" alt="WorkAbroad Hub">
-    <span><span class="nm">WorkAbroad Hub</span><span class="sub">ওয়ার্কঅ্যাব্রড হাব · কলকাতা</span></span>
+  <a class="callpill" id="callpill" href="#">📞 <span></span></a>
+  <a class="brand" href="index.html">
+    <img src="logo.png" alt="WorkAbroad Hub">
+    <span>
+      <span class="nm">Work<em>Abroad</em> Hub</span>
+      <span class="sub">CONNECTING YOU TO GLOBAL OPPORTUNITIES</span>
+    </span>
   </a>
-  <a class="btn gh" href="index.html">← হোম</a>
+  <a class="btn gh hdcta" href="index.html" data-t="ap.home"></a>
 </div></header>
 
 <div class="formwrap">
 
-  <div class="crumb noprint"><a href="index.html">হোম</a> › আবেদন</div>
+  <div class="crumb noprint"><a href="index.html" data-t="ap.home"></a> › <span data-t="ap.crumb"></span></div>
   <div class="prog noprint"><div class="on"></div><div class="on"></div><div></div></div>
 
-  <!-- ফর্ম -->
+  <!-- ============ FORM ============ -->
   <div id="formzone">
     <div class="card">
-      <h1>আবেদন ফর্ম</h1>
-      <p class="led">৩ মিনিটেই হয়ে যাবে। জমা দিলে সঙ্গে সঙ্গে আবেদন নম্বরসহ রসিদ পাবেন।</p>
+      <h1 data-t="ap.title"></h1>
+      <p class="led" data-t="ap.lead"></p>
 
       <div class="feesm">
-        <b>মনে রাখবেন:</b> ফর্ম ভরতে কোনও টাকা লাগে না। জমা দেওয়ার পর ₹৫০০ প্রসেসিং ফি দিতে হয় — সেটি ফাইল খোলা ও ভ্যাকান্সি খোঁজার ফি, <b>চাকরির গ্যারান্টি নয়</b> এবং ফেরতযোগ্য নয়।
-        <a href="index.html#kharoch" target="_blank" style="color:var(--navy-l);text-decoration:underline">বিস্তারিত পড়ুন</a>
+        <span data-t="ap.note"></span>
+        <a href="index.html#fees" target="_blank" data-t="ap.more"></a>
       </div>
 
       <form id="applyform" name="job-application" method="POST"
             data-netlify="true" netlify-honeypot="company-name" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="job-application">
-        <input type="hidden" name="আবেদন-নম্বর" id="f-appno">
-        <p class="hp"><label>এটা ফাঁকা রাখুন <input name="company-name"></label></p>
+        <input type="hidden" name="application-no" id="f-appno">
+        <input type="hidden" name="language" id="f-lang">
+        <p class="hp"><label>Leave this empty <input name="company-name"></label></p>
 
         <fieldset>
-          <legend>১ · কোথায়, কী কাজ</legend>
+          <legend data-t="ap.s1"></legend>
           <div class="row">
             <div class="fld">
-              <label for="f-country">কোন দেশে যেতে চান <span class="req">*</span></label>
-              <select id="f-country" name="দেশ"></select>
+              <label for="f-country"><span data-t="ap.country"></span> <span class="req">*</span></label>
+              <select id="f-country" name="country"></select>
               <span class="emsg"></span>
             </div>
             <div class="fld">
-              <label for="f-job">কী কাজ <span class="req">*</span></label>
-              <select id="f-job" name="কাজ"></select>
+              <label for="f-job"><span data-t="ap.job"></span> <span class="req">*</span></label>
+              <select id="f-job" name="trade"></select>
               <span class="emsg"></span>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>২ · আপনার পরিচয়</legend>
+          <legend data-t="ap.s2"></legend>
           <div class="row">
             <div class="fld">
-              <label for="f-name">পুরো নাম (পাসপোর্ট অনুযায়ী) <span class="req">*</span></label>
-              <input id="f-name" name="নাম" type="text" autocomplete="name" placeholder="যেমন: রাজু মণ্ডল">
+              <label for="f-name"><span data-t="ap.name"></span> <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" data-ph="ap.namePh">
               <span class="emsg"></span>
             </div>
             <div class="fld">
-              <label for="f-phone">মোবাইল নম্বর (WhatsApp) <span class="req">*</span></label>
-              <input id="f-phone" name="ফোন" type="tel" inputmode="numeric" autocomplete="tel" placeholder="9XXXXXXXXX">
+              <label for="f-phone"><span data-t="ap.phone"></span> <span class="req">*</span></label>
+              <input id="f-phone" name="mobile" type="tel" inputmode="numeric" autocomplete="tel" data-ph="ap.phonePh">
               <span class="emsg"></span>
             </div>
           </div>
           <div class="row">
             <div class="fld">
-              <label for="f-age">বয়স <span class="req">*</span></label>
-              <input id="f-age" name="বয়স" type="number" min="18" max="60" placeholder="২৮">
+              <label for="f-age"><span data-t="ap.age"></span> <span class="req">*</span></label>
+              <input id="f-age" name="age" type="number" min="18" max="60" placeholder="28">
               <span class="emsg"></span>
             </div>
             <div class="fld">
-              <label for="f-dist">জেলা</label>
-              <input id="f-dist" name="জেলা" type="text" placeholder="যেমন: মুর্শিদাবাদ">
+              <label for="f-dist" data-t="ap.dist"></label>
+              <input id="f-dist" name="district" type="text" data-ph="ap.distPh">
             </div>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>৩ · এক্সপেরিয়েন্স ও ডকুমেন্ট</legend>
+          <legend data-t="ap.s3"></legend>
           <div class="row">
             <div class="fld">
-              <label for="f-exp">এই কাজে এক্সপেরিয়েন্স <span class="req">*</span></label>
-              <select id="f-exp" name="এক্সপেরিয়েন্স">
-                <option value="">— বাছুন —</option>
-                <option>এক্সপেরিয়েন্স নেই</option>
-                <option>১ বছরের কম</option>
-                <option>১–৩ বছর</option>
-                <option>৩–৫ বছর</option>
-                <option>৫ বছরের বেশি</option>
-              </select>
+              <label for="f-exp"><span data-t="ap.exp"></span> <span class="req">*</span></label>
+              <select id="f-exp" name="experience"></select>
               <span class="emsg"></span>
             </div>
             <div class="fld">
-              <label for="f-haspp">পাসপোর্ট আছে? <span class="req">*</span></label>
-              <select id="f-haspp" name="পাসপোর্ট-আছে">
-                <option value="ho">হ্যাঁ, আছে</option>
-                <option value="na">না, এখনও করাইনি</option>
-              </select>
+              <label for="f-haspp"><span data-t="ap.hasPp"></span> <span class="req">*</span></label>
+              <select id="f-haspp" name="has-passport"></select>
             </div>
           </div>
           <div class="fld">
-            <label for="f-passport">পাসপোর্ট নম্বর</label>
-            <input id="f-passport" name="পাসপোর্ট-নম্বর" type="text" placeholder="M1234567" maxlength="8" style="text-transform:uppercase">
-            <div class="hint">নম্বরটা শুধু ফাইল খোলার জন্য। পাসপোর্ট বইটি আমাদের কাছে জমা রাখতে হয় না।</div>
+            <label for="f-passport" data-t="ap.pp"></label>
+            <input id="f-passport" name="passport-no" type="text" placeholder="M1234567" maxlength="8"
+                   style="text-transform:uppercase">
+            <div class="hint" data-t="ap.ppHint"></div>
             <span class="emsg"></span>
           </div>
           <div class="fld">
-            <label for="f-cv">CV / বায়োডাটা আপলোড করুন</label>
+            <label for="f-cv" data-t="ap.cv"></label>
             <div class="file">
-              <div class="ttl">📄 PDF বা ছবি তুলে দিন</div>
-              <div class="hint" style="margin-bottom:8px">CV না থাকলে ছেড়ে দিন — ফোনে কথা বলে আমরাই বানিয়ে দেব।</div>
-              <input id="f-cv" name="সিভি" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+              <div class="ttl" data-t="ap.cvT"></div>
+              <div class="hint" style="margin-bottom:9px" data-t="ap.cvHint"></div>
+              <input id="f-cv" name="cv" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
             </div>
           </div>
           <div class="fld">
-            <label for="f-note">আর কিছু বলার থাকলে</label>
-            <textarea id="f-note" name="মন্তব্য" rows="3" placeholder="যেমন: আগে ২ বছর সৌদিতে ছিলাম, ড্রাইভিং লাইসেন্স আছে"></textarea>
+            <label for="f-note" data-t="ap.msg"></label>
+            <textarea id="f-note" name="message" rows="3" data-ph="ap.msgPh"></textarea>
           </div>
         </fieldset>
 
         <label class="chkline">
-          <input type="checkbox" id="f-agree" name="সম্মতি" value="হ্যাঁ">
-          <span>আমি বুঝেছি যে ₹৫০০ প্রসেসিং ফি ফাইল খোলা ও ভ্যাকান্সি খোঁজার জন্য, এটি চাকরি বা ভিসার গ্যারান্টি নয় এবং ফেরতযোগ্য নয়।</span>
+          <input type="checkbox" id="f-agree" name="terms-accepted" value="yes">
+          <span data-t="ap.agree"></span>
         </label>
-        <label class="chkline" style="margin-bottom:18px">
-          <input type="checkbox" id="f-call" name="ফোনে-সম্মতি" value="হ্যাঁ" checked>
-          <span>আমার দেওয়া নম্বরে ফোন ও WhatsApp-এ যোগাযোগ করা যেতে পারে।</span>
+        <label class="chkline" style="margin-bottom:20px">
+          <input type="checkbox" id="f-call" name="contact-consent" value="yes" checked>
+          <span data-t="ap.callOk"></span>
         </label>
 
-        <button type="submit" class="btn wide lg" id="f-submit">আবেদন জমা দিন</button>
-        <p style="text-align:center;font-size:13.5px;color:var(--mut);margin-top:10px">আপনার ডিটেইলস শুধু এই আবেদনের কাজে ব্যবহার হবে</p>
+        <button type="submit" class="btn wide lg" id="f-submit" data-t="ap.submit"></button>
+        <p style="text-align:center;font-size:13.5px;color:var(--mut);margin-top:11px" data-t="ap.priv"></p>
       </form>
     </div>
   </div>
 
-  <!-- রসিদ -->
+  <!-- ============ RECEIPT ============ -->
   <div id="receipt" class="receipt">
     <div class="rcard">
 
       <div class="rhead">
         <img src="logo.png" alt="WorkAbroad Hub">
         <span class="bnd"><b>WorkAbroad Hub</b><span>CONNECTING YOU TO GLOBAL OPPORTUNITIES</span></span>
-        <span class="doc"><b>আবেদন রসিদ</b><span id="r-date2">—</span></span>
+        <span class="doc"><b data-t="rc.doc"></b><span id="r-date2">—</span></span>
       </div>
       <div class="goldrule"></div>
 
       <div class="rtop">
         <div class="rtick">✓</div>
-        <h2>আপনার আবেদন জমা পড়েছে</h2>
-        <p>আমাদের সঙ্গে যুক্ত হওয়ার জন্য ধন্যবাদ। ফাইল প্রসেসিংয়ে গেছে।</p>
+        <h2 data-t="rc.ok"></h2>
+        <p data-t="rc.okSub"></p>
       </div>
 
       <div class="rbody">
         <div class="wmark"><img src="logo.png" alt=""></div>
 
         <div class="rno">
-          <small>আবেদন নম্বর</small>
+          <small data-t="rc.no"></small>
           <b id="r-no">WAH-000000-0000</b>
-          <span class="hint">নম্বরটি লিখে রাখুন — ফোনে জানতে চাওয়া হবে</span>
+          <span class="hint" data-t="rc.hint"></span>
         </div>
 
         <div class="rgrid">
-          <div class="rw"><div class="k">নাম</div><div class="v" id="r-name">—</div></div>
-          <div class="rw"><div class="k">মোবাইল</div><div class="v" id="r-phone">—</div></div>
-          <div class="rw"><div class="k">দেশ</div><div class="v" id="r-country">—</div></div>
-          <div class="rw"><div class="k">কাজ</div><div class="v" id="r-job">—</div></div>
-          <div class="rw"><div class="k">আবেদনের তারিখ</div><div class="v" id="r-date">—</div></div>
-          <div class="rw"><div class="k">স্ট্যাটাস</div><div class="v"><span class="chip"><i></i> প্রসেসিং চলছে</span></div></div>
+          <div class="rw"><div class="k" data-t="rc.name"></div><div class="v" id="r-name">—</div></div>
+          <div class="rw"><div class="k" data-t="rc.phone"></div><div class="v" id="r-phone">—</div></div>
+          <div class="rw"><div class="k" data-t="rc.country"></div><div class="v" id="r-country">—</div></div>
+          <div class="rw"><div class="k" data-t="rc.job"></div><div class="v" id="r-job">—</div></div>
+          <div class="rw"><div class="k" data-t="rc.date"></div><div class="v" id="r-date">—</div></div>
+          <div class="rw"><div class="k" data-t="rc.status"></div>
+            <div class="v"><span class="chip"><i></i> <span data-t="rc.processing"></span></span></div></div>
         </div>
 
         <div class="nextbox">
-          <h3>এরপর কী হবে</h3>
-          <ol>
-            <li>নিচের বোতাম থেকে ₹৫০০ প্রসেসিং ফি জমা দিন — তবেই ফাইল খোলা হবে।</li>
-            <li>পেমেন্টের পর রসিদটা WhatsApp-এ পাঠিয়ে দিন — এক চাপেই হয়ে যাবে।</li>
-            <li>২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে আপনার নম্বরে ফোন যাবে।</li>
-            <li>আপনার এক্সপেরিয়েন্স অনুযায়ী কোন কোন ভ্যাকান্সিতে আবেদন যাবে, জানানো হবে।</li>
-          </ol>
+          <h3 data-t="rc.nextT"></h3>
+          <ol id="r-next"></ol>
         </div>
 
         <div class="paysteps noprint">
 
           <div class="pstep" id="ps1">
-            <div class="pshead"><span class="psn">১</span><h3>প্রসেসিং ফি জমা দিন</h3></div>
+            <div class="pshead"><span class="psn">1</span><h3 data-t="rc.step1"></h3></div>
             <div class="psbody">
-              <div class="amt">₹৫০০<small>একবারই · ফাইল খোলার ফি</small></div>
-              <p>নিরাপদ পেমেন্ট পেজে যাবেন। UPI, কার্ড বা নেট ব্যাঙ্কিং — যেটা সুবিধা।</p>
-              <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener">₹৫০০ জমা দিন →</a>
-              <div class="paysafe"><span>🔒 নিরাপদ পেমেন্ট</span><span>📄 রসিদ দেওয়া হয়</span><span>↩️ ফেরতযোগ্য নয়</span></div>
+              <div class="amt">₹500<small data-t="rc.once"></small></div>
+              <p data-t="rc.payLine"></p>
+              <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener" data-t="rc.pay"></a>
+              <div class="paysafe" id="r-safe"></div>
               <div class="feenote">
-                <b>₹৫০০ দেওয়ার আগে এটুকু জেনে নিন</b>
-                <ul>
-                  <li>এই ফি-তে হয় — ফাইল খোলা, ডকুমেন্ট ভেরিফাই, ভ্যাকান্সি খোঁজা, কোম্পানির ফরম্যাটে CV পাঠানো।</li>
-                  <li><b>এটা চাকরির গ্যারান্টি নয়।</b> লোক নেওয়ার সিদ্ধান্ত কোম্পানির।</li>
-                  <li>ভিসা, মেডিক্যাল, টিকিটের খরচ এর মধ্যে নেই — সেগুলো অফার লেটারের পর।</li>
-                  <li>কাজ না হলে সোজাসুজি জানিয়ে দেওয়া হয়।</li>
-                  <li>কাজ শুরু হয়ে যায় বলে <b>ফি ফেরতযোগ্য নয়</b>। না বুঝে দেবেন না — আগে ফোনে কথা বলে নিতে পারেন।</li>
-                </ul>
+                <b data-t="fee.title2"></b>
+                <ul id="r-feelist"></ul>
               </div>
             </div>
           </div>
 
           <div class="pstep lock" id="ps2">
-            <div class="pshead"><span class="psn">২</span><h3>রসিদ WhatsApp-এ পাঠান</h3><span class="lockb" id="ps2-lock">🔒 বন্ধ</span></div>
+            <div class="pshead"><span class="psn">2</span><h3 data-t="rc.step2"></h3>
+              <span class="lockb" id="ps2-lock" data-t="rc.locked"></span></div>
             <div class="psbody">
-              <p class="lockmsg" id="ps2-msg">পেমেন্ট হয়ে গেলে এই ধাপটা নিজে থেকেই খুলে যাবে। তারপর এক চাপে রসিদ আমাদের কাছে চলে আসবে।</p>
-              <div class="unlocked" id="ps2-open">
-                <p>পেমেন্ট হয়ে গেছে? রসিদটা আমাদের পাঠিয়ে দিন — ফাইল তখনই খোলা হবে।</p>
-                <div class="fld" style="margin-bottom:12px">
-                  <label for="r-txn">পেমেন্টের Transaction / UTR নম্বর <span style="color:var(--mut);font-weight:400">(থাকলে)</span></label>
-                  <input id="r-txn" type="text" placeholder="যেমন: 4587XXXXXX23">
-                  <div class="hint">UPI অ্যাপে পেমেন্টের পর যে নম্বরটা দেখায়। না থাকলে ছেড়ে দিন।</div>
+              <p class="lockmsg" data-t="rc.lockMsg"></p>
+              <div class="unlocked">
+                <p data-t="rc.openMsg"></p>
+                <div class="fld" style="margin-bottom:13px">
+                  <label for="r-txn"><span data-t="rc.txn"></span>
+                    <span style="color:var(--mut);font-weight:400" data-t="rc.txnOpt"></span></label>
+                  <input id="r-txn" type="text" data-ph="rc.txnPh">
+                  <div class="hint" data-t="rc.txnHint"></div>
                 </div>
-                <a class="btn wa wide lg" id="r-wa" href="#" target="_blank" rel="noopener">💬 রসিদ WhatsApp-এ পাঠান</a>
+                <a class="btn wa wide lg" id="r-wa" href="#" target="_blank" rel="noopener" data-t="rc.wa"></a>
               </div>
             </div>
           </div>
@@ -233,13 +226,13 @@
         </div>
 
         <div class="rbtns noprint">
-          <button class="btn gh" id="r-print">রসিদ ডাউনলোড / প্রিন্ট</button>
-          <a class="btn gh" id="r-new" href="apply.html">নতুন আবেদন করুন</a>
+          <button class="btn gh" id="r-print" data-t="rc.print"></button>
+          <a class="btn gh" id="r-new" href="apply.html" data-t="rc.again"></a>
         </div>
 
         <div class="rfoot">
-          <span class="fl">WorkAbroad Hub · কলকাতা · <span id="r-ph2">—</span><br>
-            সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী</span>
+          <span><span data-t="rc.footL"></span> <span id="r-ph2">—</span></span>
+          <span data-t="rc.footR"></span>
         </div>
       </div>
     </div>
@@ -247,6 +240,7 @@
 
 </div>
 
+<script src="i18n.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>

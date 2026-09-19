@@ -1,271 +1,400 @@
-/* WorkAbroad Hub — সাইটের স্ক্রিপ্ট */
+/* WorkAbroad Hub — site engine (3 languages) */
 (function () {
-  var S = window.SETU, A = S.agency;
-  var $ = function (s, r) { return (r || document).querySelector(s); };
-  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var D = window.WAH, A = D.agency;
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
 
-  /* বাংলা সংখ্যা */
-  var BN = '০১২৩৪৫৬৭৮৯';
-  function bn(x) { return String(x).replace(/[0-9]/g, function (d) { return BN[+d]; }); }
+  /* ---------------- language ---------------- */
+  var LKEY = 'wah_lang';
+  var lang = (function () {
+    try { var s = localStorage.getItem(LKEY); if (window.T[s]) return s; } catch (e) {}
+    var n = (navigator.language || 'en').toLowerCase();
+    if (n.indexOf('bn') === 0) return 'bn';
+    if (n.indexOf('hi') === 0) return 'hi';
+    return 'en';
+  })();
 
-  /* ---------- এজেন্সির তথ্য সব পাতায় বসানো ---------- */
-  function fill() {
-    var tel = 'tel:' + A.phone.replace(/\s/g, '');
-    var wa = 'https://wa.me/' + A.whatsapp;
-    [['#tb-phone', A.phone]].forEach(function (p) {
-      var el = $(p[0]); if (el) el.textContent = p[1];
-    });
-    var fp = $('#ft-phone'); if (fp) { fp.textContent = '📞 ' + A.phone; fp.href = tel; }
-    var fw = $('#ft-wa'); if (fw) fw.href = wa;
-    var hw = $('#hero-wa');
-    if (hw) hw.href = wa + '?text=' + encodeURIComponent('নমস্কার, আমি বিদেশে কাজের ব্যাপারে জানতে চাই।');
-    var fm = $('#ft-mail'); if (fm) { fm.textContent = '✉️ ' + A.email; fm.href = 'mailto:' + A.email; }
-    var tm = $('#tb-mail'); if (tm) tm.textContent = A.email;
+  function t(path) {
+    var v = window.T[lang];
+    path.split('.').forEach(function (k) { v = (v == null) ? v : v[k]; });
+    return (v == null) ? '' : v;
+  }
+  function loc(o) { return (o && (o[lang] || o.en)) || ''; }
+
+  /* Bengali / Hindi digits where it reads naturally */
+  var DIG = { bn:'০১২৩৪৫৬৭৮৯', hi:'0123456789', en:'0123456789' };
+  function num(x) {
+    var map = DIG[lang] || DIG.en;
+    return String(x).replace(/[0-9]/g, function (d) { return map[+d]; });
   }
 
-  /* ---------- সব দেশ ও কাজ এক তালিকায় ---------- */
-  function allCountries() {
-    var out = [];
-    S.regions.forEach(function (r) { r.countries.forEach(function (c) { out.push(c); }); });
-    return out;
+  /* ---------------- shared bits ---------------- */
+  function contacts() {
+    var tel = 'tel:' + A.phone.replace(/\s/g, '');
+    var wa  = 'https://wa.me/' + A.whatsapp;
+    var cp = $('#callpill');
+    if (cp) { cp.href = tel; $('span', cp).textContent = t('call') + ' ' + A.phone.replace('+91 ', ''); }
+    var fp = $('#ft-phone'); if (fp) { fp.textContent = '📞 ' + A.phone; fp.href = tel; }
+    var fm = $('#ft-mail');  if (fm) { fm.textContent = '✉️ ' + A.email; fm.href = 'mailto:' + A.email; }
+    var fc = $('#ft-city');  if (fc) fc.textContent = '📍 ' + loc(A.city);
+    var fw = $('#ft-wa');    if (fw) fw.href = wa;
+    var hw = $('#hero-wa');
+    var greet = { en:'Hello, I want to know about work abroad.',
+                  hi:'नमस्ते, मुझे विदेश में काम के बारे में जानना है।',
+                  bn:'নমস্কার, আমি বিদেশে কাজের ব্যাপারে জানতে চাই।' }[lang];
+    if (hw) hw.href = wa + '?text=' + encodeURIComponent(greet);
+    var fab = $('#fab'); if (fab) fab.href = wa + '?text=' + encodeURIComponent(greet);
+  }
+
+  /* ---------------- render everything ---------------- */
+  function paint() {
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+
+    $$('[data-t]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-t')); });
+    $$('[data-ph]').forEach(function (el) { el.placeholder = t(el.getAttribute('data-ph')); });
+    $$('[data-lang-btn]').forEach(function (b) {
+      b.classList.toggle('on', b.getAttribute('data-lang-btn') === lang);
+    });
+
+    contacts();
+    home();
+    applyPage();
+  }
+
+  function setLang(l) {
+    if (!window.T[l] || l === lang) return;
+    lang = l;
+    try { localStorage.setItem(LKEY, l); } catch (e) {}
+    paint();
+  }
+  $$('[data-lang-btn]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang-btn')); });
+  });
+
+  /* ================= HOME ================= */
+  function countryOptions() {
+    return '<option value="">' + t('picker.pickC') + '</option>' + D.countries.map(function (c) {
+      return '<option value="' + c.id + '">' + c.fl + '  ' + loc(c.n) + '</option>';
+    }).join('');
+  }
+  function jobOptions() {
+    return '<option value="">' + t('picker.pickJ') + '</option>' + D.jobs.map(function (j) {
+      return '<option value="' + j.id + '">' + loc(j.n) + '</option>';
+    }).join('');
   }
   function countryName(id) {
-    var c = allCountries().filter(function (x) { return x.id === id; })[0];
-    return c ? c.name : '';
+    var c = D.countries.filter(function (x) { return x.id === id; })[0];
+    return c ? loc(c.n) : '';
   }
   function jobName(id) {
-    var j = S.jobs.filter(function (x) { return x.id === id; })[0];
-    return j ? j.t : '';
+    var j = D.jobs.filter(function (x) { return x.id === id; })[0];
+    return j ? loc(j.n) : '';
   }
 
-  /* ---------- হোম পেজ ---------- */
   function home() {
-    /* কাজের তালিকা */
+    /* starfield */
+    var st = $('#stars');
+    if (st && !st.children.length) {
+      var h = '';
+      for (var i = 0; i < 70; i++) {
+        h += '<i style="left:' + (Math.random() * 100).toFixed(2) + '%;top:' +
+             (Math.random() * 100).toFixed(2) + '%;animation-delay:' +
+             (Math.random() * 4).toFixed(2) + 's;opacity:' + (0.2 + Math.random() * 0.6).toFixed(2) + '"></i>';
+      }
+      st.innerHTML = h;
+    }
+
+    /* stats */
+    var sw = $('#stats');
+    if (sw) sw.innerHTML = t('stats').map(function (s) {
+      return '<div><div class="n">' + s[0] + '</div><div class="l">' + s[1] + '</div></div>';
+    }).join('');
+
+    /* marquee */
+    var tr = $('#track');
+    if (tr) {
+      var one = D.countries.filter(function (c) { return c.id !== 'any'; }).map(function (c) {
+        return '<span>' + c.fl + ' ' + loc(c.n) + ' <b>' + c.code + '</b></span>';
+      }).join('');
+      tr.innerHTML = one + one;
+    }
+
+    /* process */
+    var sp = $('#steps');
+    if (sp) sp.innerHTML = t('process.s').map(function (s, i) {
+      return '<div class="step"><div class="num">' + num(i + 1) + '</div>' +
+             '<h3>' + s[0] + '</h3><p>' + s[1] + '</p></div>';
+    }).join('');
+
+    /* jobs */
     var jl = $('#joblist');
-    if (jl) {
-      jl.innerHTML = S.jobs.map(function (j) {
-        return '<a class="jb" href="apply.html?job=' + j.id + '">' +
-          '<span class="ic">' + j.ic + '</span>' +
-          '<span><span class="t">' + j.t + '</span><br><span class="s">' + j.s + '</span></span>' +
-          '<span class="ar">›</span></a>';
-      }).join('');
-    }
+    if (jl) jl.innerHTML = D.jobs.map(function (j) {
+      return '<a class="jb" href="apply.html?job=' + j.id + '">' +
+        '<span class="ic">' + j.ic + '</span>' +
+        '<span><span class="t">' + loc(j.n) + '</span><span class="s">' + loc(j.d) + '</span></span>' +
+        '<span class="ar">›</span></a>';
+    }).join('');
 
-    /* দেশের তালিকা */
+    /* countries */
     var cl = $('#countrylist');
-    if (cl) {
-      cl.innerHTML = S.regions.map(function (r) {
-        return '<div class="regionlbl">' + r.name + '</div><div class="countries">' +
-          r.countries.map(function (c) {
-            return '<a class="cy" href="apply.html?country=' + c.id + '">' +
-              '<span class="fl">' + c.fl + '</span>' +
-              '<span><span class="nm">' + c.name + '</span><br><span class="mt">' + c.note + '</span></span></a>';
-          }).join('') + '</div>';
-      }).join('');
-    }
+    if (cl) cl.innerHTML = D.countries.map(function (c) {
+      return '<a class="cy" href="apply.html?country=' + c.id + '">' +
+        '<span class="top"><span class="fl">' + c.fl + '</span>' +
+        '<span class="code">' + c.code + '</span></span>' +
+        '<span class="nm">' + loc(c.n) + '</span>' +
+        '<span class="mt">' + loc(c.d) + '</span></a>';
+    }).join('');
 
-    /* হিরো কার্ডের ড্রপডাউন */
+    /* why us */
+    var fw = $('#feats');
+    if (fw) fw.innerHTML = t('why.c').map(function (c) {
+      return '<div class="ft"><div class="bar"></div><h3>' + c[0] + '</h3><p>' + c[1] + '</p></div>';
+    }).join('');
+
+    /* fee list */
+    var fl = $('#feelist');
+    if (fl) fl.innerHTML = t('fee.p').map(function (p) {
+      return '<li><b>' + p[0] + '</b> ' + p[1] + '</li>';
+    }).join('');
+    var fa = $('#feeAmt');
+    if (fa) fa.firstChild.nodeValue = '₹' + num(A.fee);
+
+    /* reviews */
+    var rl = $('#revlist');
+    if (rl) rl.innerHTML = t('rev.r').map(function (r) {
+      return '<div class="rv-c"><div class="st">★★★★★</div><p>“' + r[0] + '”</p>' +
+        '<div class="who"><span class="av">' + r[1].trim().charAt(0) + '</span>' +
+        '<span><b>' + r[1] + '</b><span>' + r[2] + '</span></span></div></div>';
+    }).join('');
+
+    /* faq */
+    var ql = $('#faqlist');
+    if (ql) ql.innerHTML = t('faq.q').map(function (q, i) {
+      return '<details' + (i === 0 ? ' open' : '') + '><summary>' + q[0] + '</summary>' +
+        '<div class="ans">' + q[1] + '</div></details>';
+    }).join('');
+
+    /* picker */
     var hc = $('#hc-country'), hj = $('#hc-job');
     if (hc && hj) {
-      hc.innerHTML = '<option value="">— দেশ বাছুন —</option>' + S.regions.map(function (r) {
-        return '<optgroup label="' + r.name + '">' + r.countries.map(function (c) {
-          return '<option value="' + c.id + '">' + c.fl + ' ' + c.name + '</option>';
-        }).join('') + '</optgroup>';
-      }).join('');
-      hj.innerHTML = '<option value="">— কাজ বাছুন —</option>' + S.jobs.map(function (j) {
-        return '<option value="' + j.id + '">' + j.t + '</option>';
-      }).join('');
-      $('#hc-go').addEventListener('click', function () {
-        var q = [];
-        if (hc.value) q.push('country=' + hc.value);
-        if (hj.value) q.push('job=' + hj.value);
-        location.href = 'apply.html' + (q.length ? '?' + q.join('&') : '');
-      });
+      var cv = hc.value, jv = hj.value;
+      hc.innerHTML = countryOptions(); hj.innerHTML = jobOptions();
+      hc.value = cv; hj.value = jv;
+      if (!hc.dataset.wired) {
+        hc.dataset.wired = '1';
+        $('#hc-go').addEventListener('click', function () {
+          var q = [];
+          if (hc.value) q.push('country=' + hc.value);
+          if (hj.value) q.push('job=' + hj.value);
+          location.href = 'apply.html' + (q.length ? '?' + q.join('&') : '');
+        });
+      }
     }
   }
 
-  /* ---------- আবেদন পাতা ---------- */
-  function apply() {
+  /* header shadow + scroll reveal */
+  var hdr = $('#hdr');
+  if (hdr) window.addEventListener('scroll', function () {
+    hdr.classList.toggle('stuck', window.scrollY > 8);
+  }, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    $$('.rv').forEach(function (el) { io.observe(el); });
+  } else {
+    $$('.rv').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ================= APPLICATION PAGE ================= */
+  var rec = null;                       /* current receipt */
+  var KEY = 'wah_receipt';
+  function save(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
+  function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+  function wipe() { try { localStorage.removeItem(KEY); } catch (e) {} }
+
+  function applyPage() {
     var form = $('#applyform');
     if (!form) return;
 
-    /* ড্রপডাউন ভরা */
-    var sc = $('#f-country'), sj = $('#f-job');
-    sc.innerHTML = '<option value="">— দেশ বাছুন —</option>' + S.regions.map(function (r) {
-      return '<optgroup label="' + r.name + '">' + r.countries.map(function (c) {
-        return '<option value="' + c.id + '">' + c.fl + ' ' + c.name + '</option>';
-      }).join('') + '</optgroup>';
-    }).join('');
-    sj.innerHTML = '<option value="">— কাজ বাছুন —</option>' + S.jobs.map(function (j) {
-      return '<option value="' + j.id + '">' + j.t + '</option>';
-    }).join('');
+    var sc = $('#f-country'), sj = $('#f-job'), se = $('#f-exp'), sp = $('#f-haspp');
 
-    /* লিঙ্ক থেকে আগে বাছা দেশ/কাজ বসানো */
+    /* selects (keep current choice through a language switch) */
+    var keep = [sc.value, sj.value, se.selectedIndex, sp.value];
+    sc.innerHTML = countryOptions();
+    sj.innerHTML = jobOptions();
+    se.innerHTML = '<option value="">' + t('ap.expPick') + '</option>' +
+      t('ap.expOpts').map(function (o, i) { return '<option value="' + (i + 1) + '">' + o + '</option>'; }).join('');
+    sp.innerHTML = '<option value="yes">' + t('ap.ppYes') + '</option>' +
+                   '<option value="no">' + t('ap.ppNo') + '</option>';
+    sc.value = keep[0]; sj.value = keep[1];
+    if (keep[2] > 0) se.selectedIndex = keep[2];
+    sp.value = keep[3] || 'yes';
+
+    /* preselect from the link */
     var p = new URLSearchParams(location.search);
-    if (p.get('country')) sc.value = p.get('country');
-    if (p.get('job')) sj.value = p.get('job');
+    if (!keep[0] && p.get('country')) sc.value = p.get('country');
+    if (!keep[1] && p.get('job')) sj.value = p.get('job');
 
-    /* যাচাই */
+    /* receipt static lists */
+    var nx = $('#r-next');
+    if (nx) nx.innerHTML = t('rc.next').map(function (s) { return '<li>' + s + '</li>'; }).join('');
+    var sf = $('#r-safe');
+    if (sf) sf.innerHTML = t('rc.safe').map(function (s) { return '<span>' + s + '</span>'; }).join('');
+    var rf = $('#r-feelist');
+    if (rf) rf.innerHTML = t('fee.p').map(function (x) {
+      return '<li><b>' + x[0] + '</b> ' + x[1] + '</li>';
+    }).join('');
+    $('#f-lang').value = lang;
+
+    if (form.dataset.wired) { if (rec) fillReceipt(rec); return; }
+    form.dataset.wired = '1';
+
+    /* passport toggle */
+    sp.addEventListener('change', function () {
+      var on = this.value === 'yes';
+      $('#f-passport').disabled = !on;
+      $('#f-passport').placeholder = on ? 'M1234567' : t('ap.ppPh2');
+      if (!on) $('#f-passport').value = '';
+    });
+
+    /* validation */
     function bad(id, msg) {
       var f = $('#' + id).closest('.fld');
       f.classList.add('err');
-      if (msg) $('.emsg', f).textContent = msg;
+      $('.emsg', f).textContent = msg;
       return false;
     }
     function check() {
       var ok = true;
       $$('.fld').forEach(function (f) { f.classList.remove('err'); });
-
-      if (!sc.value) ok = bad('f-country', 'দেশ বেছে নিন');
-      if (!sj.value) ok = bad('f-job', 'কাজ বেছে নিন');
-      if ($('#f-name').value.trim().length < 3) ok = bad('f-name', 'পুরো নাম লিখুন');
-
-      var ph = $('#f-phone').value.replace(/\D/g, '');
-      if (ph.length < 10) ok = bad('f-phone', '১০ সংখ্যার মোবাইল নম্বর লিখুন');
-
-      if (!$('#f-age').value || +$('#f-age').value < 18 || +$('#f-age').value > 60)
-        ok = bad('f-age', 'বয়স ১৮ থেকে ৬০-এর মধ্যে হতে হবে');
-
-      if ($('#f-exp').value === '') ok = bad('f-exp', 'এক্সপেরিয়েন্স বাছুন');
-
+      if (!sc.value) ok = bad('f-country', t('ap.err.country'));
+      if (!sj.value) ok = bad('f-job', t('ap.err.job'));
+      if ($('#f-name').value.trim().length < 3) ok = bad('f-name', t('ap.err.name'));
+      if ($('#f-phone').value.replace(/\D/g, '').length < 10) ok = bad('f-phone', t('ap.err.phone'));
+      var age = +$('#f-age').value;
+      if (!age || age < 18 || age > 60) ok = bad('f-age', t('ap.err.age'));
+      if (!se.value) ok = bad('f-exp', t('ap.err.exp'));
       var pp = $('#f-passport').value.trim();
-      if (pp && !/^[A-Za-z][0-9]{7}$/.test(pp))
-        ok = bad('f-passport', 'পাসপোর্ট নম্বর এরকম হয় — একটি অক্ষর ও ৭টি সংখ্যা (যেমন M1234567)');
-      if (!pp && $('#f-haspp').value === 'ho')
-        ok = bad('f-passport', 'পাসপোর্ট নম্বর লিখুন');
-
-      if (!$('#f-agree').checked) { alert('শর্তে সম্মতি দিতে হবে।'); ok = false; }
-
-      if (!ok) { var e = $('.fld.err'); if (e) e.scrollIntoView({ block: 'center' }); }
+      if (pp && !/^[A-Za-z][0-9]{7}$/.test(pp)) ok = bad('f-passport', t('ap.err.pp'));
+      if (!pp && sp.value === 'yes') ok = bad('f-passport', t('ap.err.ppReq'));
+      if (!$('#f-agree').checked) { alert(t('ap.err.agreeA')); ok = false; }
+      if (!ok) { var e = $('.fld.err'); if (e) e.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
       return ok;
     }
 
-    /* পাসপোর্ট আছে/নেই */
-    $('#f-haspp').addEventListener('change', function () {
-      var on = this.value === 'ho';
-      $('#f-passport').disabled = !on;
-      $('#f-passport').placeholder = on ? 'M1234567' : 'পাসপোর্ট হলে পরে দেবেন';
-      if (!on) $('#f-passport').value = '';
-    });
-
-    /* আবেদন নম্বর */
     function appNo() {
       var d = new Date();
       var s = String(d.getFullYear()).slice(2) +
         ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2);
-      var r = String(Math.floor(1000 + Math.random() * 9000));
-      return 'WAH-' + s + '-' + r;
+      return 'WAH-' + s + '-' + Math.floor(1000 + Math.random() * 9000);
     }
 
-    /* ব্রাউজারে রসিদ জমা রাখা — ফি দিয়ে ফিরে এলেও যেন হারিয়ে না যায় */
-    var KEY = 'wah_receipt';
-    function save(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
-    function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
-    function wipe() { try { localStorage.removeItem(KEY); } catch (e) {} }
+    $('#r-txn').addEventListener('input', function () { if (rec) $('#r-wa').href = waLink(rec); });
 
-    /* WhatsApp-এ যে মেসেজটা তৈরি হবে */
-    function waLink(r) {
-      var txn = $('#r-txn').value.trim();
-      var msg = '*WorkAbroad Hub — আবেদন রসিদ*\n\n' +
-        'আবেদন নম্বর: ' + r.no + '\n' +
-        'নাম: ' + r.nm + '\n' +
-        'মোবাইল: ' + r.ph + '\n' +
-        'দেশ: ' + r.cy + '\n' +
-        'কাজ: ' + r.jb + '\n' +
-        'তারিখ: ' + r.dt + '\n\n' +
-        '✅ ₹৫০০ প্রসেসিং ফি জমা দিয়েছি।' +
-        (txn ? '\nTransaction / UTR: ' + txn : '') +
-        '\n\nপরের ধাপ জানাবেন।';
-      return 'https://wa.me/' + A.whatsapp + '?text=' + encodeURIComponent(msg);
-    }
-
-    /* ২য় ধাপ খুলে দেওয়া */
-    function unlock(r) {
-      $('#ps1').classList.add('paid');
-      $('#ps2').classList.remove('lock');
-      $('#ps2').classList.add('done');
-      $('#ps2-lock').textContent = '✓ খোলা';
-      $('#r-wa').href = waLink(r);
-      r.paid = true; save(r);
-    }
-
-    /* রসিদ দেখানো */
-    function receipt(r) {
-      $('#r-no').textContent = r.no;
-      $('#r-name').textContent = r.nm;
-      $('#r-phone').textContent = r.ph;
-      $('#r-country').textContent = r.cy;
-      $('#r-job').textContent = r.jb;
-      $('#r-date').textContent = r.dt;
-      $('#r-date2').textContent = r.day;
-      $('#r-ph2').textContent = A.phone;
-
-      var pay = $('#r-pay');
-      if (A.payLink && A.payLink !== '#') pay.href = A.payLink;
-      pay.addEventListener('click', function (e) {
-        if (!A.payLink || A.payLink === '#') {
-          e.preventDefault();
-          alert('ডেমো — এখানে SuperProfile-এর ₹৫০০ পেজ খুলবে।');
-        }
-        setTimeout(function () { unlock(r); }, 600);
-      });
-
-      $('#r-txn').addEventListener('input', function () { $('#r-wa').href = waLink(r); });
-
-      if (r.paid) unlock(r);
-
-      $('#formzone').style.display = 'none';
-      $('#receipt').classList.add('on');
-      $$('.prog div').forEach(function (d) { d.classList.add('on'); });
-      window.scrollTo(0, 0);
-    }
-
-    /* নতুন আবেদন */
-    $('#r-new').addEventListener('click', function (e) {
-      e.preventDefault(); wipe(); location.href = 'apply.html';
+    $('#r-pay').addEventListener('click', function (e) {
+      if (!A.payLink || A.payLink === '#') { e.preventDefault(); alert(t('rc.demoPay')); }
+      setTimeout(function () { if (rec) unlock(rec); }, 600);
     });
 
-    /* আগের রসিদ থাকলে সেটাই দেখাও (২৪ ঘণ্টা) */
-    var prev = load();
-    if (prev && prev.t && (Date.now() - prev.t) < 864e5) receipt(prev);
+    $('#r-print').addEventListener('click', function () { window.print(); });
+    $('#r-new').addEventListener('click', function (e) {
+      e.preventDefault(); wipe(); rec = null; location.href = 'apply.html';
+    });
 
-    /* জমা */
+    /* submit */
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       if (!check()) return;
 
       var btn = $('#f-submit');
-      btn.disabled = true; btn.textContent = 'জমা হচ্ছে…';
+      btn.disabled = true; btn.textContent = t('ap.submitting');
 
       var no = appNo();
       $('#f-appno').value = no;
 
       var d = new Date();
-      var day = bn(d.getDate()) + '/' + bn(d.getMonth() + 1) + '/' + bn(d.getFullYear());
-      var rec = {
+      rec = {
         no: no,
         nm: $('#f-name').value.trim(),
         ph: $('#f-phone').value.trim(),
-        cy: countryName(sc.value),
-        jb: jobName(sj.value),
-        day: day,
-        dt: day + ', ' + bn(('0' + d.getHours()).slice(-2)) + ':' + bn(('0' + d.getMinutes()).slice(-2)),
+        ci: sc.value,
+        ji: sj.value,
+        iso: d.toISOString(),
         paid: false,
         t: Date.now()
       };
 
       var fd = new FormData(form);
       fetch('/', { method: 'POST', body: fd })
-        .then(function () {})
-        .catch(function () {})   /* ডেমোতে সার্ভার নেই */
+        .then(function () {}).catch(function () {})
         .then(function () {
-          save(rec); receipt(rec);
-          btn.disabled = false; btn.textContent = 'আবেদন জমা দিন';
+          save(rec); fillReceipt(rec);
+          btn.disabled = false; btn.textContent = t('ap.submit');
         });
     });
 
-    $('#r-print').addEventListener('click', function () { window.print(); });
+    /* an earlier receipt (24 h) */
+    var prev = load();
+    if (prev && prev.t && (Date.now() - prev.t) < 864e5) { rec = prev; fillReceipt(rec); }
   }
 
-  fill(); home(); apply();
+  /* WhatsApp message */
+  function waLink(r) {
+    var m = t('rc.waMsg');
+    var txn = ($('#r-txn') && $('#r-txn').value.trim()) || '';
+    var d = new Date(r.iso);
+    var msg = m.head + '\n\n' +
+      m.no + ': ' + r.no + '\n' +
+      m.name + ': ' + r.nm + '\n' +
+      m.phone + ': ' + r.ph + '\n' +
+      m.country + ': ' + countryName(r.ci) + '\n' +
+      m.job + ': ' + jobName(r.ji) + '\n' +
+      m.date + ': ' + fmtDate(d) + '\n\n' +
+      m.paid + (txn ? '\n' + m.txn + ': ' + txn : '') + '\n\n' + m.end;
+    return 'https://wa.me/' + A.whatsapp + '?text=' + encodeURIComponent(msg);
+  }
+
+  function fmtDate(d, withTime) {
+    var s = num(d.getDate()) + '/' + num(d.getMonth() + 1) + '/' + num(d.getFullYear());
+    if (withTime) s += ', ' + num(('0' + d.getHours()).slice(-2)) + ':' + num(('0' + d.getMinutes()).slice(-2));
+    return s;
+  }
+
+  function unlock(r) {
+    $('#ps1').classList.add('paid');
+    $('#ps2').classList.remove('lock');
+    $('#ps2').classList.add('done');
+    $('#ps2-lock').textContent = t('rc.open');
+    $('#r-wa').href = waLink(r);
+    r.paid = true; save(r);
+  }
+
+  function fillReceipt(r) {
+    var d = new Date(r.iso);
+    $('#r-no').textContent = r.no;
+    $('#r-name').textContent = r.nm;
+    $('#r-phone').textContent = r.ph;
+    $('#r-country').textContent = countryName(r.ci);
+    $('#r-job').textContent = jobName(r.ji);
+    $('#r-date').textContent = fmtDate(d, true);
+    $('#r-date2').textContent = fmtDate(d);
+    $('#r-ph2').textContent = A.phone;
+
+    if (r.paid) unlock(r);
+    else {
+      $('#ps1').classList.remove('paid');
+      $('#ps2').classList.add('lock');
+      $('#ps2').classList.remove('done');
+      $('#ps2-lock').textContent = t('rc.locked');
+    }
+
+    $('#formzone').style.display = 'none';
+    $('#receipt').classList.add('on');
+    $$('.prog div').forEach(function (x) { x.classList.add('on'); });
+  }
+
+  paint();
 })();

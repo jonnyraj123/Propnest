@@ -1,210 +1,273 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WorkAbroad Hub — লাইসেন্সপ্রাপ্ত এজেন্টের মাধ্যমে বিদেশে কাজ</title>
-<meta name="description" content="রাশিয়া, দুবাই ও ইউরোপের দেশে কাজের আবেদন। সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী এজেন্সি। অনলাইনে আবেদন করুন, ২৪ ঘণ্টায় ফোন।">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<title>WorkAbroad Hub — Licensed overseas recruitment from Kolkata</title>
+<meta name="description" content="Licensed recruiting agency placing workers in Dubai, Saudi Arabia, Qatar, Kuwait, Russia, Europe, Canada, Singapore and more. Construction, driving, factory, hotel and technical trades. Apply online in 3 minutes.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-lang="en">
 
-<div class="demoflag">⚠️ ডেমো — রিভিউগুলো এখনও নমুনা, আর পেমেন্ট লিঙ্ক বসানো বাকি।</div>
 
-<div class="topbar"><div class="wrap">
-  <span>📞 ফোন / WhatsApp: <b id="tb-phone">+91 74396 63211</b></span>
-  <span>✉️ <b id="tb-mail">workabroadhub1@gmail.com</b> · 🏢 সরকার-অনুমোদিত রিক্রুটিং এজেন্সি</span>
-</div></div>
+<!-- language switcher -->
+<div class="langbar" id="langbar">
+  <button data-lang-btn="en">English</button>
+  <button data-lang-btn="hi">हिंदी</button>
+  <button data-lang-btn="bn">বাংলা</button>
+</div>
 
-<header><div class="wrap hd">
-  <a class="logo" href="index.html">
-    <img class="mark" src="logo.png" alt="WorkAbroad Hub">
-    <span><span class="nm">WorkAbroad Hub</span><span class="sub">ওয়ার্কঅ্যাব্রড হাব · কলকাতা</span></span>
-  </a>
-  <nav>
-    <a href="#kaj">কাজ</a>
-    <a href="#desh">দেশ</a>
-    <a href="#kivabe">কীভাবে হয়</a>
-    <a href="#kharoch">খরচ</a>
-    <a href="#faq">প্রশ্ন</a>
-  </nav>
-  <a class="btn" href="apply.html">আবেদন করুন</a>
-</div></header>
-
-<!-- হিরো -->
-<div class="hero"><div class="wrap">
-  <div>
-    <span class="tag">✅ সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী</span>
-    <h1>বিদেশে কাজ — <em>দালাল নয়</em>, লাইসেন্সপ্রাপ্ত এজেন্টের হাত ধরে</h1>
-    <p class="led">রাশিয়া, দুবাই ও ইউরোপের ২০+ দেশে কনস্ট্রাকশন, ড্রাইভিং, ফ্যাক্টরি, হোটেল ও টেকনিক্যাল কাজের ভ্যাকান্সি। নিজের ডকুমেন্ট নিজের হাতে জমা দিন — মাঝখানে কেউ নেই।</p>
-    <div class="hcta">
-      <a class="btn lg" href="apply.html">এখনই আবেদন করুন →</a>
-      <a class="btn lg wa" id="hero-wa" href="#" target="_blank" rel="noopener">💬 WhatsApp-এ কথা বলুন</a>
-    </div>
-    <p class="hnote">আবেদন সম্পূর্ণ অনলাইনে · ২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে ফোন</p>
+<header id="hdr">
+  <div class="wrap hd">
+    <a class="callpill" id="callpill" href="#">📞 <span></span></a>
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="WorkAbroad Hub">
+      <span>
+        <span class="nm">Work<em>Abroad</em> Hub</span>
+        <span class="sub">CONNECTING YOU TO GLOBAL OPPORTUNITIES</span>
+      </span>
+    </a>
+    <a class="btn hdcta" href="apply.html" data-t="nav.apply"></a>
   </div>
+  <div class="navrow"><div class="wrap">
+    <nav>
+      <a href="#jobs" data-t="nav.jobs"></a>
+      <a href="#countries" data-t="nav.countries"></a>
+      <a href="#process" data-t="nav.process"></a>
+      <a href="#fees" data-t="nav.fees"></a>
+      <a href="#faq" data-t="nav.faq"></a>
+    </nav>
+  </div></div>
+</header>
 
-  <div class="hcard">
-    <h3>কোন দেশে যেতে চান?</h3>
-    <p class="cap">দুটো বেছে নিন — বাকিটা পরের পাতায়।</p>
-    <label for="hc-country">দেশ</label>
-    <select id="hc-country"></select>
-    <label for="hc-job">কী কাজ</label>
-    <select id="hc-job"></select>
-    <button class="btn nv wide" id="hc-go">আবেদন শুরু করুন</button>
-    <p style="font-size:13px;color:var(--mut);margin-top:10px;text-align:center">কোনও টাকা এখন লাগবে না</p>
-  </div>
-</div></div>
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="stars" id="stars"></div>
+  <div class="wrap">
 
-<!-- ট্রাস্ট -->
-<div class="trust"><div class="wrap">
-  <div><div class="n">২০+</div><div class="l">দেশে ভ্যাকান্সি</div></div>
-  <div><div class="n">২৪+</div><div class="l">রকমের কাজ</div></div>
-  <div><div class="n">২৪ ঘণ্টা</div><div class="l">-য় ফোন করা হয়</div></div>
-  <div><div class="n">১০০%</div><div class="l">অনলাইনে আবেদন</div></div>
-</div></div>
-
-<!-- কীভাবে -->
-<section id="kivabe"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">প্রসেস</div>
-    <h2>চারটে ধাপ, পুরোটাই খোলাখুলি</h2>
-    <p>কোন ধাপে কী হয়, আগেই জেনে নিন। লুকোনো কিছু নেই।</p>
-  </div>
-  <div class="steps">
-    <div class="step"><div class="num">১</div><h3>অনলাইনে আবেদন</h3><p>দেশ ও কাজ বেছে নাম, ফোন, পাসপোর্ট নম্বর ও CV জমা দিন। সঙ্গে সঙ্গে আবেদন নম্বরসহ রসিদ পাবেন।</p></div>
-    <div class="step"><div class="num">২</div><h3>ভেরিফিকেশন ও ফোন</h3><p>২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে ফোন। আপনার এক্সপেরিয়েন্স অনুযায়ী কোন কোন ভ্যাকান্সিতে হবে, বলে দেওয়া হবে।</p></div>
-    <div class="step"><div class="num">৩</div><h3>ইন্টারভিউ ও অফার</h3><p>কোম্পানির ইন্টারভিউ, মেডিক্যাল ও অফার লেটার। মাইনে, থাকা-খাওয়া, ছুটি — সব লিখিতভাবে দেখানো হয়।</p></div>
-    <div class="step"><div class="num">৪</div><h3>ভিসা ও টিকিট</h3><p>ভিসা স্ট্যাম্পিং, eMigrate ছাড়পত্র ও টিকিট। যাওয়ার আগে সব ডকুমেন্টের কপি আপনার হাতে।</p></div>
-  </div>
-</div></section>
-
-<!-- কাজ -->
-<section class="alt" id="kaj"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">ভ্যাকান্সি</div>
-    <h2>কী কাজ পাওয়া যাচ্ছে</h2>
-    <p>যেটায় আপনার এক্সপেরিয়েন্স আছে সেটায় চাপ দিন — আবেদন পাতা খুলে যাবে।</p>
-  </div>
-  <div class="jobs" id="joblist"></div>
-</div></section>
-
-<!-- দেশ -->
-<section id="desh"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">দেশ</div>
-    <h2>কোন কোন দেশে পাঠানো হয়</h2>
-    <p>প্রতিটি দেশের নিয়ম আলাদা। ফোনে আপনার জন্য কোনটা ঠিক হবে, বুঝিয়ে বলা হবে।</p>
-  </div>
-  <div id="countrylist"></div>
-</div></section>
-
-<!-- কেন -->
-<section class="alt"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">কেন আমরা</div>
-    <h2>দালালের সঙ্গে তফাত কোথায়</h2>
-  </div>
-  <div class="feats">
-    <div class="ft"><h3>লাইসেন্সপ্রাপ্ত এজেন্সি</h3><p>আমরা সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী। অফিসে এসে বা ফোনে চাইলে লাইসেন্সের কাগজ দেখানো হয়।</p></div>
-    <div class="ft"><h3>টাকার হিসাব লিখিত</h3><p>কোন ধাপে কত খরচ, আগেই লিখে দেওয়া হয়। প্রতিটি টাকার রসিদ দেওয়া হয়।</p></div>
-    <div class="ft"><h3>অফার লেটার হাতে</h3><p>মাইনে, ওভারটাইম, থাকা-খাওয়া — সব কোম্পানির লিখিত অফারে দেখে তবে সিদ্ধান্ত নেবেন।</p></div>
-    <div class="ft"><h3>ডকুমেন্ট আপনার হাতেই</h3><p>পাসপোর্ট আমরা আটকে রাখি না। স্ক্যান কপিতেই কাজ হয়।</p></div>
-    <div class="ft"><h3>eMigrate নিয়ম মেনে</h3><p>যে দেশে ECR ছাড়পত্র লাগে, সেখানে নিয়ম মেনেই পাঠানো হয়।</p></div>
-    <div class="ft"><h3>ফোনে বাংলায় কথা</h3><p>পুরো প্রসেসে বাংলায় কথা বলা হয়। না বুঝে কোথাও সই করতে হবে না।</p></div>
-  </div>
-</div></section>
-
-<!-- খরচ -->
-<section id="kharoch"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">খরচ</div>
-    <h2>আবেদনের খরচ কত</h2>
-  </div>
-  <div class="feebox">
-    <div class="amt">₹৫০০<small>প্রসেসিং ফি</small></div>
     <div>
-      <h3>₹৫০০ দেওয়ার আগে এটুকু জেনে নিন</h3>
-      <ul>
-        <li><b>এই ফি-তে যা হয়</b> — ফাইল খোলা, ডকুমেন্ট ভেরিফাই, আপনার প্রোফাইলে ভ্যাকান্সি খোঁজা, কোম্পানির ফরম্যাটে CV তৈরি ও পাঠানো।</li>
-        <li><b>এটা চাকরির গ্যারান্টি নয়।</b> লোক নেওয়ার সিদ্ধান্ত কোম্পানির, আমাদের নয়।</li>
-        <li>ভিসা, মেডিক্যাল, টিকিটের খরচ এর মধ্যে নেই। সেগুলো অফার লেটার হাতে পাওয়ার পর, আর পুরো হিসাব আগেই লিখে দেওয়া হয়।</li>
-        <li>কাজ না হলে সোজাসুজি জানিয়ে দেওয়া হয় — মিথ্যে আশা দেওয়া হয় না।</li>
-        <li>কাজ শুরু হয়ে যায় বলে <b>এই ₹৫০০ ফেরতযোগ্য নয়।</b></li>
-      </ul>
-      <div class="warn">না বুঝে দেবেন না — আগে ফোনে কথা বলে নিতে পারেন। নম্বর: <b>+91 70638 24707</b>। প্রতিটি টাকার রসিদ দেওয়া হয়।</div>
+      <span class="badge"><span class="dot"></span><span data-t="hero.badge"></span></span>
+      <h1><span data-t="hero.t1"></span><span class="l2" data-t="hero.t2"></span></h1>
+      <p class="lede" data-t="hero.sub"></p>
+      <div class="hcta">
+        <a class="btn lg" href="apply.html" data-t="hero.cta"></a>
+        <a class="btn lg glass" id="hero-wa" href="#" target="_blank" rel="noopener" data-t="hero.cta2"></a>
+      </div>
+      <p class="hnote"><span>✈️</span><span data-t="hero.note"></span></p>
+    </div>
+
+    <div class="globewrap">
+      <div class="glow"></div>
+      <div class="globe">
+        <svg viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <radialGradient id="gSea" cx="36%" cy="30%">
+              <stop offset="0%" stop-color="#3E74C8"/>
+              <stop offset="60%" stop-color="#1B4488"/>
+              <stop offset="100%" stop-color="#0A2352"/>
+            </radialGradient>
+            <linearGradient id="gRing" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#F0A81E"/>
+              <stop offset="55%" stop-color="#FFD98A"/>
+              <stop offset="100%" stop-color="#F0A81E" stop-opacity=".25"/>
+            </linearGradient>
+            <clipPath id="ball"><circle cx="200" cy="200" r="122"/></clipPath>
+            <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+          </defs>
+
+          <circle cx="200" cy="200" r="150" fill="#5D98FF" opacity=".12" filter="url(#soft)"/>
+          <circle cx="200" cy="200" r="122" fill="url(#gSea)"/>
+
+          <!-- rotating surface -->
+          <g clip-path="url(#ball)" class="spin" opacity=".95">
+            <g fill="#8FD6B0" opacity=".92">
+              <path d="M96 128c18-14 44-16 60-6s10 26 24 32 34-2 40 12-14 24-30 22-26-10-42-8-30 8-44 0-26-38-8-52z"/>
+              <path d="M188 208c16-6 34 2 40 16s-4 30 6 40 30 8 32 24-18 24-34 18-24-22-38-28-28-6-32-22 10-42 26-48z"/>
+              <path d="M286 120c16 2 30 16 28 30s-16 18-24 12-12-20-10-30z"/>
+              <path d="M320 232c14 4 22 18 18 30s-20 16-28 8-6-26 10-38z"/>
+              <path d="M58 236c12-4 24 6 24 18s-12 22-22 18-14-32-2-36z"/>
+            </g>
+            <g stroke="#BFE0FF" stroke-width="1" fill="none" opacity=".3">
+              <ellipse cx="200" cy="200" rx="122" ry="42"/>
+              <ellipse cx="200" cy="200" rx="122" ry="82"/>
+              <ellipse cx="200" cy="200" rx="42" ry="122"/>
+              <ellipse cx="200" cy="200" rx="82" ry="122"/>
+              <line x1="78" y1="200" x2="322" y2="200"/>
+            </g>
+          </g>
+
+          <!-- gloss -->
+          <circle cx="200" cy="200" r="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>
+          <ellipse cx="158" cy="152" rx="52" ry="34" fill="#fff" opacity=".13" transform="rotate(-28 158 152)"/>
+
+          <!-- orbits -->
+          <g class="orbit">
+            <ellipse cx="200" cy="200" rx="168" ry="66" fill="none"
+                     stroke="url(#gRing)" stroke-width="2.4" stroke-dasharray="7 9"
+                     transform="rotate(-22 200 200)"/>
+          </g>
+          <g class="orbit-2">
+            <ellipse cx="200" cy="200" rx="152" ry="150" fill="none"
+                     stroke="rgba(255,255,255,.16)" stroke-width="1.4" stroke-dasharray="3 12"/>
+          </g>
+
+          <!-- plane riding the orbit -->
+          <g class="plane">
+            <g transform="rotate(-22 200 200)">
+              <g transform="translate(368 200) rotate(96)">
+                <path d="M3 0L-13-5.5 -9.5-1.4 -19.5-1.4 -22.5-5 -25-5 -22.8 0 -25 5 -22.5 5 -19.5 1.4 -9.5 1.4 -13 5.5Z"
+                      fill="#FFFFFF"/>
+                <circle cx="-26" cy="0" r="1.6" fill="#FFD98A" opacity=".9"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- destination pins -->
+          <circle class="pin" cx="248" cy="150" r="3" fill="#FFD98A"/>
+          <circle class="pin" cx="152" cy="238" r="3" fill="#FFD98A"/>
+          <circle class="pin" cx="266" cy="246" r="3" fill="#FFD98A"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- picker card sits under the copy on desktop grid flow -->
+  </div>
+
+  <div class="wrap" style="position:relative;z-index:2;margin-top:34px;max-width:1180px">
+    <div class="pick" style="max-width:560px;margin:0 auto" id="pickcard">
+      <h3 data-t="picker.title"></h3>
+      <p class="cap" data-t="picker.sub"></p>
+      <label data-t="picker.country" for="hc-country"></label>
+      <select id="hc-country"></select>
+      <label data-t="picker.job" for="hc-job"></label>
+      <select id="hc-job"></select>
+      <button class="btn nv wide lg" id="hc-go" data-t="picker.go"></button>
+      <p class="free" data-t="picker.free"></p>
+    </div>
+  </div>
+</div>
+
+<!-- destination marquee -->
+<div class="strip"><div class="track" id="track"></div></div>
+
+<!-- stats -->
+<div class="stats"><div class="wrap" id="stats"></div></div>
+
+<!-- ============ PROCESS ============ -->
+<section id="process"><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="process.kick"></div>
+    <h2 data-t="process.title"></h2>
+    <p data-t="process.sub"></p>
+  </div>
+  <div class="steps rv" id="steps"></div>
+</div></section>
+
+<!-- ============ JOBS ============ -->
+<section class="alt" id="jobs"><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="jobs.kick"></div>
+    <h2 data-t="jobs.title"></h2>
+    <p data-t="jobs.sub"></p>
+  </div>
+  <div class="jobs rv" id="joblist"></div>
+</div></section>
+
+<!-- ============ COUNTRIES ============ -->
+<section class="dark" id="countries"><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="countries.kick"></div>
+    <h2 data-t="countries.title"></h2>
+    <p data-t="countries.sub"></p>
+  </div>
+  <div class="countries rv" id="countrylist"></div>
+</div></section>
+
+<!-- ============ WHY ============ -->
+<section><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="why.kick"></div>
+    <h2 data-t="why.title"></h2>
+  </div>
+  <div class="feats rv" id="feats"></div>
+</div></section>
+
+<!-- ============ FEES ============ -->
+<section class="alt" id="fees"><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="fee.kick"></div>
+    <h2 data-t="fee.title"></h2>
+  </div>
+  <div class="feebox rv">
+    <div class="amt" id="feeAmt">₹500<small data-t="fee.label"></small></div>
+    <div>
+      <h3 data-t="fee.title2"></h3>
+      <ul id="feelist"></ul>
+      <div class="warn" data-t="fee.warn"></div>
     </div>
   </div>
 </div></section>
 
-<!-- রিভিউ -->
-<section class="alt"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">রিভিউ</div>
-    <h2>যাঁরা গেছেন</h2>
+<!-- ============ REVIEWS ============ -->
+<section><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="rev.kick"></div>
+    <h2 data-t="rev.title"></h2>
   </div>
-  <div class="revs">
-    <div class="rv"><div class="st">★★★★★</div><p>“ফর্ম ভরার পরের দিনই ফোন এসেছিল। কোন কোম্পানি, কত মাইনে — সব আগে বলে দিয়েছিল। এখন দুবাইয়ে সাইটে আছি।”</p><div class="who"><span class="av">রা</span><span><b>রাজু মণ্ডল</b><span>দুবাই · কনস্ট্রাকশন</span></span></div></div>
-    <div class="rv"><div class="st">★★★★★</div><p>“আগে এক দালালকে টাকা দিয়ে ঠকেছিলাম। এখানে প্রতিটা টাকার রসিদ পেয়েছি, কাগজও সব নিজের হাতে ছিল।”</p><div class="who"><span class="av">সে</span><span><b>সেখ ইমরান</b><span>রাশিয়া · ওয়েল্ডার</span></span></div></div>
-    <div class="rv"><div class="st">★★★★★</div><p>“বাংলায় বুঝিয়ে বলেছিল বলে ভরসা পেয়েছিলাম। পোল্যান্ডে ওয়্যারহাউসে আছি, আট মাস হল।”</p><div class="who"><span class="av">বি</span><span><b>বিকাশ ঘোষ</b><span>পোল্যান্ড · ওয়্যারহাউস</span></span></div></div>
-  </div>
+  <div class="revs rv" id="revlist"></div>
 </div></section>
 
-<!-- FAQ -->
-<section id="faq"><div class="wrap">
-  <div class="sec-h">
-    <div class="kick">প্রশ্ন-উত্তর</div>
-    <h2>যা সবাই জানতে চান</h2>
+<!-- ============ FAQ ============ -->
+<section class="alt" id="faq"><div class="wrap">
+  <div class="sec-h rv">
+    <div class="kick" data-t="faq.kick"></div>
+    <h2 data-t="faq.title"></h2>
   </div>
-  <div class="faq">
-    <details open><summary>পাসপোর্ট না থাকলে আবেদন করা যাবে?</summary><div class="ans">আবেদন করে রাখতে পারেন, কিন্তু কাজ এগোতে পাসপোর্ট লাগবেই। পাসপোর্ট করার প্রক্রিয়াটাও ফোনে বুঝিয়ে দেওয়া হবে।</div></details>
-    <details><summary>একদম এক্সপেরিয়েন্স নেই, হবে?</summary><div class="ans">হ্যাঁ। হেল্পার, ক্লিনার, ফ্যাক্টরি ও প্যাকিংয়ের অনেক ভ্যাকান্সিতে এক্সপেরিয়েন্স ছাড়াই নেওয়া হয়। মাইনে স্কিলড কাজের চেয়ে কম হয়।</div></details>
-    <details><summary>মোট কত টাকা লাগবে?</summary><div class="ans">দেশ ও কাজ অনুযায়ী আলাদা। আবেদনের সময় ₹৫০০। তারপর ভিসা, মেডিক্যাল ও টিকিটের খরচ — সেটা অফার লেটার হাতে পাওয়ার পরেই, এবং পুরো হিসাব লিখিতভাবে আগে দেখানো হয়।</div></details>
-    <details><summary>কতদিনে যাওয়া যায়?</summary><div class="ans">সাধারণত ৪৫ থেকে ৯০ দিন। কোম্পানির ভিসা কোটা ও দূতাবাসের উপর নির্ভর করে কম-বেশি হয়।</div></details>
-    <details><summary>চাকরির গ্যারান্টি দেন?</summary><div class="ans">না। যে এজেন্ট গ্যারান্টি দেয়, তাকে এড়িয়ে চলুন। আমরা ভ্যাকান্সিতে আপনার আবেদন পাঠাই — নির্বাচন কোম্পানি করে। কোথাও আটকে গেলে সেটাও সোজাসুজি জানিয়ে দেওয়া হয়।</div></details>
-    <details><summary>মেয়েরা আবেদন করতে পারেন?</summary><div class="ans">পারেন। গার্মেন্টস, হাউসকিপিং, কেয়ারগিভার ও হোটেলের কাজ আছে। তবে কিছু দেশে মহিলাদের জন্য বয়স ও ছাড়পত্রের আলাদা নিয়ম আছে, সেটা ফোনে জানানো হবে।</div></details>
-  </div>
+  <div class="faq rv" id="faqlist"></div>
 </div></section>
 
+<!-- ============ CTA ============ -->
 <div class="band"><div class="wrap">
-  <h2>আজই ফাইল খুলুন</h2>
-  <p>ফর্ম ভরতে ৩ মিনিট। ২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে ফোন।</p>
-  <a class="btn lg" href="apply.html">আবেদন করুন →</a>
+  <h2 data-t="band.title"></h2>
+  <p data-t="band.sub"></p>
+  <a class="btn lg" href="apply.html" data-t="band.cta"></a>
 </div></div>
 
 <footer><div class="wrap">
   <div class="cols">
     <div>
-      <h4>WorkAbroad Hub</h4>
-      <p>সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী এজেন্সি। রাশিয়া, উপসাগরীয় ও ইউরোপের দেশে কর্মী নিয়োগ।</p>
-      <p style="margin-top:10px">সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী</p>
+      <div class="fbrand"><img src="logo.png" alt=""><b>WorkAbroad Hub</b></div>
+      <p data-t="foot.about"></p>
     </div>
     <div>
-      <h4>যোগাযোগ</h4>
-      <a id="ft-phone" href="#">📞 +91 74396 63211</a>
-      <a id="ft-wa" href="#">💬 WhatsApp</a>
-      <a id="ft-mail" href="#">✉️ workabroadhub1@gmail.com</a>
-      <a>📍 কলকাতা, পশ্চিমবঙ্গ</a>
+      <h4 data-t="foot.contact"></h4>
+      <a id="ft-phone" href="#"></a>
+      <a id="ft-wa" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a id="ft-mail" href="#"></a>
+      <a id="ft-city"></a>
     </div>
     <div>
-      <h4>দরকারি</h4>
-      <a href="apply.html">আবেদন ফর্ম</a>
-      <a href="#kharoch">খরচের হিসাব</a>
-      <a href="#faq">প্রশ্ন-উত্তর</a>
-      <a href="#kivabe">প্রসেস</a>
+      <h4 data-t="foot.links"></h4>
+      <a href="apply.html" data-t="foot.l.0"></a>
+      <a href="#fees" data-t="foot.l.1"></a>
+      <a href="#faq" data-t="foot.l.2"></a>
+      <a href="#process" data-t="foot.l.3"></a>
     </div>
   </div>
   <div class="fbot">
-    <span>© ২০২৬ WorkAbroad Hub</span>
-    <span>আমরা চাকরির গ্যারান্টি দিই না। প্রসেসিং ফি ফেরতযোগ্য নয়।</span>
+    <span data-t="foot.rights"></span>
+    <span data-t="foot.disc"></span>
   </div>
 </div></footer>
 
+<a class="fab noprint" id="fab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script src="i18n.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>
