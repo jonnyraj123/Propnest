@@ -157,48 +157,77 @@
       return 'WAH-' + s + '-' + r;
     }
 
-    /* রসিদ দেখানো */
-    function receipt(no) {
-      var d = new Date();
-      var day = bn(d.getDate()) + '/' + bn(d.getMonth() + 1) + '/' + bn(d.getFullYear());
-      var dt = day + ', ' + bn(('0' + d.getHours()).slice(-2)) + ':' + bn(('0' + d.getMinutes()).slice(-2));
-      var nm = $('#f-name').value.trim();
-      var ph = $('#f-phone').value.trim();
-      var cy = countryName(sc.value);
-      var jb = jobName(sj.value);
+    /* ব্রাউজারে রসিদ জমা রাখা — ফি দিয়ে ফিরে এলেও যেন হারিয়ে না যায় */
+    var KEY = 'wah_receipt';
+    function save(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
+    function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+    function wipe() { try { localStorage.removeItem(KEY); } catch (e) {} }
 
-      $('#r-no').textContent = no;
-      $('#r-name').textContent = nm;
-      $('#r-phone').textContent = ph;
-      $('#r-country').textContent = cy;
-      $('#r-job').textContent = jb;
-      $('#r-date').textContent = dt;
-      $('#r-date2').textContent = day;
+    /* WhatsApp-এ যে মেসেজটা তৈরি হবে */
+    function waLink(r) {
+      var txn = $('#r-txn').value.trim();
+      var msg = '*WorkAbroad Hub — আবেদন রসিদ*\n\n' +
+        'আবেদন নম্বর: ' + r.no + '\n' +
+        'নাম: ' + r.nm + '\n' +
+        'মোবাইল: ' + r.ph + '\n' +
+        'দেশ: ' + r.cy + '\n' +
+        'কাজ: ' + r.jb + '\n' +
+        'তারিখ: ' + r.dt + '\n\n' +
+        '✅ ₹৫০০ প্রসেসিং ফি জমা দিয়েছি।' +
+        (txn ? '\nTransaction / UTR: ' + txn : '') +
+        '\n\nপরের ধাপ জানাবেন।';
+      return 'https://wa.me/' + A.whatsapp + '?text=' + encodeURIComponent(msg);
+    }
+
+    /* ২য় ধাপ খুলে দেওয়া */
+    function unlock(r) {
+      $('#ps1').classList.add('paid');
+      $('#ps2').classList.remove('lock');
+      $('#ps2').classList.add('done');
+      $('#ps2-lock').textContent = '✓ খোলা';
+      $('#r-wa').href = waLink(r);
+      r.paid = true; save(r);
+    }
+
+    /* রসিদ দেখানো */
+    function receipt(r) {
+      $('#r-no').textContent = r.no;
+      $('#r-name').textContent = r.nm;
+      $('#r-phone').textContent = r.ph;
+      $('#r-country').textContent = r.cy;
+      $('#r-job').textContent = r.jb;
+      $('#r-date').textContent = r.dt;
+      $('#r-date2').textContent = r.day;
       $('#r-ph2').textContent = A.phone;
 
-      /* WhatsApp-এ রসিদ পাঠানোর লিঙ্ক */
-      var msg = '*WorkAbroad Hub — আবেদন রসিদ*\n\n' +
-        'আবেদন নম্বর: ' + no + '\n' +
-        'নাম: ' + nm + '\n' +
-        'মোবাইল: ' + ph + '\n' +
-        'দেশ: ' + cy + '\n' +
-        'কাজ: ' + jb + '\n' +
-        'তারিখ: ' + dt + '\n\n' +
-        'আমার আবেদনটি জমা দিয়েছি। পরের ধাপ জানাবেন।';
-      $('#r-wa').href = 'https://wa.me/' + A.whatsapp + '?text=' + encodeURIComponent(msg);
-
-      /* পেমেন্ট লিঙ্ক */
       var pay = $('#r-pay');
       if (A.payLink && A.payLink !== '#') pay.href = A.payLink;
-      else pay.addEventListener('click', function (e) {
-        e.preventDefault(); alert('ডেমো — এখানে SuperProfile-এর ₹৫০০ পেমেন্ট লিঙ্ক বসবে।');
+      pay.addEventListener('click', function (e) {
+        if (!A.payLink || A.payLink === '#') {
+          e.preventDefault();
+          alert('ডেমো — এখানে SuperProfile-এর ₹৫০০ পেজ খুলবে।');
+        }
+        setTimeout(function () { unlock(r); }, 600);
       });
+
+      $('#r-txn').addEventListener('input', function () { $('#r-wa').href = waLink(r); });
+
+      if (r.paid) unlock(r);
 
       $('#formzone').style.display = 'none';
       $('#receipt').classList.add('on');
       $$('.prog div').forEach(function (d) { d.classList.add('on'); });
       window.scrollTo(0, 0);
     }
+
+    /* নতুন আবেদন */
+    $('#r-new').addEventListener('click', function (e) {
+      e.preventDefault(); wipe(); location.href = 'apply.html';
+    });
+
+    /* আগের রসিদ থাকলে সেটাই দেখাও (২৪ ঘণ্টা) */
+    var prev = load();
+    if (prev && prev.t && (Date.now() - prev.t) < 864e5) receipt(prev);
 
     /* জমা */
     form.addEventListener('submit', function (ev) {
@@ -211,11 +240,28 @@
       var no = appNo();
       $('#f-appno').value = no;
 
+      var d = new Date();
+      var day = bn(d.getDate()) + '/' + bn(d.getMonth() + 1) + '/' + bn(d.getFullYear());
+      var rec = {
+        no: no,
+        nm: $('#f-name').value.trim(),
+        ph: $('#f-phone').value.trim(),
+        cy: countryName(sc.value),
+        jb: jobName(sj.value),
+        day: day,
+        dt: day + ', ' + bn(('0' + d.getHours()).slice(-2)) + ':' + bn(('0' + d.getMinutes()).slice(-2)),
+        paid: false,
+        t: Date.now()
+      };
+
       var fd = new FormData(form);
       fetch('/', { method: 'POST', body: fd })
-        .then(function () { receipt(no); })
-        .catch(function () { receipt(no); })   /* ডেমোতে সার্ভার নেই — রসিদ দেখানো হবে */
-        .then(function () { btn.disabled = false; btn.textContent = 'আবেদন জমা দিন'; });
+        .then(function () {})
+        .catch(function () {})   /* ডেমোতে সার্ভার নেই */
+        .then(function () {
+          save(rec); receipt(rec);
+          btn.disabled = false; btn.textContent = 'আবেদন জমা দিন';
+        });
     });
 
     $('#r-print').addEventListener('click', function () { window.print(); });

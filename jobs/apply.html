@@ -185,22 +185,45 @@
           <h3>এরপর কী হবে</h3>
           <ol>
             <li>নিচের বোতাম থেকে ₹৫০০ প্রসেসিং ফি জমা দিন — তবেই ফাইল খোলা হবে।</li>
-            <li>রসিদটি WhatsApp-এ আমাদের পাঠিয়ে দিন, যোগাযোগ সহজ হবে।</li>
+            <li>পেমেন্টের পর রসিদটা WhatsApp-এ পাঠিয়ে দিন — এক চাপেই হয়ে যাবে।</li>
             <li>২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে আপনার নম্বরে ফোন যাবে।</li>
             <li>আপনার এক্সপেরিয়েন্স অনুযায়ী কোন কোন ভ্যাকান্সিতে আবেদন যাবে, জানানো হবে।</li>
           </ol>
         </div>
 
-        <div class="paybox noprint">
-          <div class="amt">₹৫০০<small>প্রসেসিং ফি · একবারই</small></div>
-          <p>নিরাপদ পেমেন্ট পেজে যাবেন। UPI, কার্ড বা নেট ব্যাঙ্কিং — যেটা সুবিধা।</p>
-          <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener">₹৫০০ জমা দিন →</a>
-          <div class="paysafe"><span>🔒 নিরাপদ পেমেন্ট</span><span>📄 রসিদ দেওয়া হয়</span><span>↩️ ফেরতযোগ্য নয়</span></div>
+        <div class="paysteps noprint">
+
+          <div class="pstep" id="ps1">
+            <div class="pshead"><span class="psn">১</span><h3>প্রসেসিং ফি জমা দিন</h3></div>
+            <div class="psbody">
+              <div class="amt">₹৫০০<small>একবারই · ফাইল খোলার ফি</small></div>
+              <p>নিরাপদ পেমেন্ট পেজে যাবেন। UPI, কার্ড বা নেট ব্যাঙ্কিং — যেটা সুবিধা।</p>
+              <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener">₹৫০০ জমা দিন →</a>
+              <div class="paysafe"><span>🔒 নিরাপদ পেমেন্ট</span><span>📄 রসিদ দেওয়া হয়</span><span>↩️ ফেরতযোগ্য নয়</span></div>
+            </div>
+          </div>
+
+          <div class="pstep lock" id="ps2">
+            <div class="pshead"><span class="psn">২</span><h3>রসিদ WhatsApp-এ পাঠান</h3><span class="lockb" id="ps2-lock">🔒 বন্ধ</span></div>
+            <div class="psbody">
+              <p class="lockmsg" id="ps2-msg">পেমেন্ট হয়ে গেলে এই ধাপটা নিজে থেকেই খুলে যাবে। তারপর এক চাপে রসিদ আমাদের কাছে চলে আসবে।</p>
+              <div class="unlocked" id="ps2-open">
+                <p>পেমেন্ট হয়ে গেছে? রসিদটা আমাদের পাঠিয়ে দিন — ফাইল তখনই খোলা হবে।</p>
+                <div class="fld" style="margin-bottom:12px">
+                  <label for="r-txn">পেমেন্টের Transaction / UTR নম্বর <span style="color:var(--mut);font-weight:400">(থাকলে)</span></label>
+                  <input id="r-txn" type="text" placeholder="যেমন: 4587XXXXXX23">
+                  <div class="hint">UPI অ্যাপে পেমেন্টের পর যে নম্বরটা দেখায়। না থাকলে ছেড়ে দিন।</div>
+                </div>
+                <a class="btn wa wide lg" id="r-wa" href="#" target="_blank" rel="noopener">💬 রসিদ WhatsApp-এ পাঠান</a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div class="rbtns noprint">
-          <a class="btn wa lg" id="r-wa" href="#" target="_blank" rel="noopener">💬 রসিদ WhatsApp-এ পাঠান</a>
           <button class="btn gh" id="r-print">রসিদ ডাউনলোড / প্রিন্ট</button>
+          <a class="btn gh" id="r-new" href="apply.html">নতুন আবেদন করুন</a>
         </div>
 
         <div class="rfoot">
