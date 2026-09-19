@@ -36,7 +36,7 @@
       <p class="led">৩ মিনিটেই হয়ে যাবে। জমা দিলে সঙ্গে সঙ্গে আবেদন নম্বরসহ রসিদ পাবেন।</p>
 
       <div class="feesm">
-        <b>মনে রাখবেন:</b> ফর্ম ভরতে কোনও টাকা লাগে না। জমা দেওয়ার পর ₹৫০০ আবেদন ফি দিতে হয় — সেটি ফাইল খোলা ও ভ্যাকান্সি খোঁজার ফি, চাকরির গ্যারান্টি নয়।
+        <b>মনে রাখবেন:</b> ফর্ম ভরতে কোনও টাকা লাগে না। জমা দেওয়ার পর ₹৫০০ প্রসেসিং ফি দিতে হয় — সেটি ফাইল খোলা ও ভ্যাকান্সি খোঁজার ফি, চাকরির গ্যারান্টি নয়।
       </div>
 
       <form id="applyform" name="job-application" method="POST"
@@ -89,13 +89,13 @@
         </fieldset>
 
         <fieldset>
-          <legend>৩ · অভিজ্ঞতা ও নথি</legend>
+          <legend>৩ · এক্সপেরিয়েন্স ও ডকুমেন্ট</legend>
           <div class="row">
             <div class="fld">
-              <label for="f-exp">এই কাজে অভিজ্ঞতা <span class="req">*</span></label>
-              <select id="f-exp" name="অভিজ্ঞতা">
+              <label for="f-exp">এই কাজে এক্সপেরিয়েন্স <span class="req">*</span></label>
+              <select id="f-exp" name="এক্সপেরিয়েন্স">
                 <option value="">— বাছুন —</option>
-                <option>অভিজ্ঞতা নেই</option>
+                <option>এক্সপেরিয়েন্স নেই</option>
                 <option>১ বছরের কম</option>
                 <option>১–৩ বছর</option>
                 <option>৩–৫ বছর</option>
@@ -114,7 +114,7 @@
           <div class="fld">
             <label for="f-passport">পাসপোর্ট নম্বর</label>
             <input id="f-passport" name="পাসপোর্ট-নম্বর" type="text" placeholder="M1234567" maxlength="8" style="text-transform:uppercase">
-            <div class="hint">নম্বরটি শুধু ফাইল খোলার জন্য। পাসপোর্ট বইটি আমাদের কাছে জমা রাখতে হয় না।</div>
+            <div class="hint">নম্বরটা শুধু ফাইল খোলার জন্য। পাসপোর্ট বইটি আমাদের কাছে জমা রাখতে হয় না।</div>
             <span class="emsg"></span>
           </div>
           <div class="fld">
@@ -133,7 +133,7 @@
 
         <label class="chkline">
           <input type="checkbox" id="f-agree" name="সম্মতি" value="হ্যাঁ">
-          <span>আমি বুঝেছি যে ₹৫০০ আবেদন ফি ফাইল খোলা ও ভ্যাকান্সি খোঁজার জন্য, এটি চাকরি বা ভিসার গ্যারান্টি নয় এবং ফেরতযোগ্য নয়।</span>
+          <span>আমি বুঝেছি যে ₹৫০০ প্রসেসিং ফি ফাইল খোলা ও ভ্যাকান্সি খোঁজার জন্য, এটি চাকরি বা ভিসার গ্যারান্টি নয় এবং ফেরতযোগ্য নয়।</span>
         </label>
         <label class="chkline" style="margin-bottom:18px">
           <input type="checkbox" id="f-call" name="ফোনে-সম্মতি" value="হ্যাঁ" checked>
@@ -141,7 +141,7 @@
         </label>
 
         <button type="submit" class="btn wide lg" id="f-submit">আবেদন জমা দিন</button>
-        <p style="text-align:center;font-size:13.5px;color:var(--mut);margin-top:10px">আপনার তথ্য শুধু এই আবেদনের কাজে ব্যবহার হবে</p>
+        <p style="text-align:center;font-size:13.5px;color:var(--mut);margin-top:10px">আপনার ডিটেইলস শুধু এই আবেদনের কাজে ব্যবহার হবে</p>
       </form>
     </div>
   </div>
@@ -178,21 +178,21 @@
           <div class="rw"><div class="k">দেশ</div><div class="v" id="r-country">—</div></div>
           <div class="rw"><div class="k">কাজ</div><div class="v" id="r-job">—</div></div>
           <div class="rw"><div class="k">আবেদনের তারিখ</div><div class="v" id="r-date">—</div></div>
-          <div class="rw"><div class="k">অবস্থা</div><div class="v"><span class="chip"><i></i> যাচাই চলছে</span></div></div>
+          <div class="rw"><div class="k">স্ট্যাটাস</div><div class="v"><span class="chip"><i></i> প্রসেসিং চলছে</span></div></div>
         </div>
 
         <div class="nextbox">
           <h3>এরপর কী হবে</h3>
           <ol>
-            <li>নিচের বোতাম থেকে ₹৫০০ আবেদন ফি জমা দিন — তবেই ফাইল খোলা হবে।</li>
+            <li>নিচের বোতাম থেকে ₹৫০০ প্রসেসিং ফি জমা দিন — তবেই ফাইল খোলা হবে।</li>
             <li>রসিদটি WhatsApp-এ আমাদের পাঠিয়ে দিন, যোগাযোগ সহজ হবে।</li>
             <li>২৪ ঘণ্টার মধ্যে আমাদের অফিস থেকে আপনার নম্বরে ফোন যাবে।</li>
-            <li>আপনার অভিজ্ঞতা অনুযায়ী কোন কোন ভ্যাকান্সিতে আবেদন যাবে, জানানো হবে।</li>
+            <li>আপনার এক্সপেরিয়েন্স অনুযায়ী কোন কোন ভ্যাকান্সিতে আবেদন যাবে, জানানো হবে।</li>
           </ol>
         </div>
 
         <div class="paybox noprint">
-          <div class="amt">₹৫০০<small>আবেদন ফি · একবারই</small></div>
+          <div class="amt">₹৫০০<small>প্রসেসিং ফি · একবারই</small></div>
           <p>নিরাপদ পেমেন্ট পেজে যাবেন। UPI, কার্ড বা নেট ব্যাঙ্কিং — যেটা সুবিধা।</p>
           <a class="btn wide lg" id="r-pay" href="#" target="_blank" rel="noopener">₹৫০০ জমা দিন →</a>
           <div class="paysafe"><span>🔒 নিরাপদ পেমেন্ট</span><span>📄 রসিদ দেওয়া হয়</span><span>↩️ ফেরতযোগ্য নয়</span></div>
@@ -206,7 +206,6 @@
         <div class="rfoot">
           <span class="fl">WorkAbroad Hub · কলকাতা · <span id="r-ph2">—</span><br>
             সরকার-অনুমোদিত রিক্রুটিং লাইসেন্সধারী</span>
-          <span class="seal">আবেদন<span>গৃহীত</span>WORKABROAD HUB</span>
         </div>
       </div>
     </div>

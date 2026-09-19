@@ -125,7 +125,7 @@
       if (!$('#f-age').value || +$('#f-age').value < 18 || +$('#f-age').value > 60)
         ok = bad('f-age', 'বয়স ১৮ থেকে ৬০-এর মধ্যে হতে হবে');
 
-      if ($('#f-exp').value === '') ok = bad('f-exp', 'অভিজ্ঞতা বাছুন');
+      if ($('#f-exp').value === '') ok = bad('f-exp', 'এক্সপেরিয়েন্স বাছুন');
 
       var pp = $('#f-passport').value.trim();
       if (pp && !/^[A-Za-z][0-9]{7}$/.test(pp))

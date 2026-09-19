@@ -260,14 +260,6 @@ legend{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--gold);
   border:1px solid #EAD4A6;border-radius:99px;padding:2px 11px;font-size:13.5px;font-weight:600}
 .chip i{width:7px;height:7px;border-radius:50%;background:var(--gold);font-style:normal}
 
-/* সিল */
-.seal{position:relative;flex:none;width:96px;height:96px;border-radius:50%;
-  border:2.5px solid rgba(21,48,94,.3);color:rgba(21,48,94,.42);display:grid;place-items:center;
-  text-align:center;transform:rotate(-11deg);font-size:10.5px;font-weight:700;line-height:1.35;
-  letter-spacing:.04em;pointer-events:none}
-.seal:before{content:'';position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(21,48,94,.22)}
-.seal span{display:block;font-size:15px;letter-spacing:0}
-
 /* পরের ধাপ */
 .nextbox{background:var(--navy-xl);border-radius:11px;padding:19px 21px;margin-top:22px;position:relative;z-index:1}
 .nextbox h3{font-size:16.5px;color:var(--navy);margin-bottom:10px}
