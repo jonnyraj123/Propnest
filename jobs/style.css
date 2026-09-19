@@ -139,8 +139,9 @@ section{padding:56px 0}
 .feebox .amt small{display:block;font-size:13px;color:var(--ink2);font-weight:600;letter-spacing:.02em}
 .feebox h3{font-size:18px;color:var(--navy);margin-bottom:6px}
 .feebox ul{list-style:none;font-size:14.8px;color:var(--ink2)}
-.feebox li{padding-left:22px;position:relative;margin-bottom:3px}
-.feebox li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.feebox li{padding-left:20px;position:relative;margin-bottom:7px;line-height:1.7}
+.feebox li:before{content:'';position:absolute;left:3px;top:11px;width:6px;height:6px;
+  border-radius:50%;background:var(--gold)}
 .feebox .warn{margin-top:11px;font-size:13.8px;color:#8A5A12;background:#fff;
   border-radius:8px;padding:9px 12px;border:1px solid #E6D2AC}
 
@@ -288,6 +289,13 @@ legend{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--gold);
 .psbody .fld{text-align:left}
 .paysafe{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;
   font-size:12.6px;color:var(--mut)}
+.feenote{text-align:left;background:var(--wash);border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;margin-top:16px}
+.feenote > b{display:block;font-size:14.3px;color:var(--navy);margin-bottom:7px}
+.feenote ul{list-style:none;font-size:13.6px;color:var(--ink2);line-height:1.66}
+.feenote li{padding-left:16px;position:relative;margin-bottom:5px}
+.feenote li:last-child{margin-bottom:0}
+.feenote li:before{content:'·';position:absolute;left:4px;color:var(--gold);font-weight:700}
 
 /* বন্ধ অবস্থা */
 .pstep.lock{border-color:var(--line)}
