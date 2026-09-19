@@ -20,6 +20,7 @@
     var hw = $('#hero-wa');
     if (hw) hw.href = wa + '?text=' + encodeURIComponent('নমস্কার, আমি বিদেশে কাজের ব্যাপারে জানতে চাই।');
     var fm = $('#ft-mail'); if (fm) { fm.textContent = '✉️ ' + A.email; fm.href = 'mailto:' + A.email; }
+    var tm = $('#tb-mail'); if (tm) tm.textContent = A.email;
   }
 
   /* ---------- সব দেশ ও কাজ এক তালিকায় ---------- */

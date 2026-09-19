@@ -6,7 +6,7 @@ window.SETU = {
     // লাইসেন্স নম্বর ইচ্ছে করেই সাইটে দেখানো হয় না
     phone: '+91 70638 24707',
     whatsapp: '917063824707',
-    email: 'info@workabroadhub.in',
+    email: 'workabroadhub1@gmail.com',
     address: 'কলকাতা, পশ্চিমবঙ্গ',
     fee: 500,
     payLink: '#'                           // SuperProfile লিঙ্ক বসবে
