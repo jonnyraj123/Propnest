@@ -1,0 +1,116 @@
+<title>Sohag Exclusive Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+  /* Single brand look (maroon / gold / cream) — matches the store itself in both themes. */
+  :root {
+    --maroon: #7a1230; --maroon-deep: #4a0a1c; --gold: #b8893b; --gold-soft: #ecd9b4;
+    --cream: #fbf6ee; --paper: #ffffff; --ink: #2a1a1f; --muted: #76656b; --line: #eadfd0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--cream); color: var(--ink); margin: 0;
+    font: 16px/1.65 "Hind Siliguri", "Segoe UI", system-ui, sans-serif;
+    padding-inline: 16px; padding-block: 0 56px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  header.top { display: flex; align-items: center; gap: 16px; padding-block: 28px 8px; }
+  header.top img { width: 72px; height: 72px; border-radius: 50%; box-shadow: 0 0 0 2px var(--gold-soft); }
+  .script { font-family: "Great Vibes", cursive; color: var(--gold); font-size: 28px; line-height: 1; }
+  h1 { font-family: "Playfair Display", "Hind Siliguri", serif; color: var(--maroon-deep); font-size: clamp(28px, 5vw, 42px); margin: 2px 0 0; line-height: 1.15; text-wrap: balance; }
+  h2 { font-family: "Hind Siliguri", sans-serif; color: var(--maroon-deep); font-size: 22px; margin: 0 0 12px; }
+  .lead { color: var(--muted); max-width: 62ch; margin: 12px 0 24px; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .fact { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .fact b { display: block; color: var(--maroon); font-size: 15.5px; }
+  .fact span { color: var(--muted); font-size: 14.5px; }
+
+  .domain { background: var(--maroon-deep); color: #f6e7cc; border-radius: 14px; padding: 18px 20px; margin-bottom: 32px; display: grid; gap: 6px; }
+  .domain strong { color: #fff; font-size: 17px; }
+  .domain code { background: rgba(255,255,255,.1); padding: 1px 7px; border-radius: 6px; font-size: 14px; color: #fff; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .tabs button {
+    font: 600 15px "Hind Siliguri", sans-serif; padding: 9px 18px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--maroon); background: transparent; color: var(--maroon);
+  }
+  .tabs button[aria-selected="true"] { background: var(--maroon); color: #fff; }
+  .tabs button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .shots { display: grid; gap: 28px; }
+  .shots--mobile { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: start; }
+  figure { margin: 0; }
+  figure .frame { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 16px 36px -22px rgba(74, 10, 28, .45); }
+  .shots--mobile .frame { border-radius: 26px; border: 6px solid #2b0d17; max-height: 760px; overflow-y: auto; }
+  .shots--desktop .frame { max-height: 820px; overflow-y: auto; }
+  figure img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 14.5px; color: var(--muted); margin-top: 8px; }
+  figcaption b { color: var(--maroon-deep); }
+
+  .note { font-size: 14px; color: var(--muted); margin-top: 28px; border-top: 1px dashed var(--line); padding-top: 14px; }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <img src="logo.jpg" alt="Sohag Exclusive logo">
+    <div>
+      <div class="script">Wear Your Story</div>
+      <h1>Sohag Exclusive অনলাইন স্টোর</h1>
+    </div>
+  </header>
+  <p class="lead">এটা WordPress + WooCommerce থিমের আসল স্ক্রিনশট। একটা টেস্ট সাইটে থিম ইনস্টল করে, নমুনা প্রোডাক্ট দিয়ে পুরো অর্ডার প্রক্রিয়া চালিয়ে দেখা হয়েছে: প্রোডাক্ট থেকে এখনই অর্ডার, চেকআউট, তারপর অর্ডার সম্পন্ন। প্রোডাক্টের নাম আর দামগুলো শুধু নমুনা।</p>
+
+  <div class="domain">
+    <strong>sohag.com পাওয়া যাবে না</strong>
+    <span>ডোমেইনটা আগে থেকেই অন্য কারো নামে রেজিস্টার করা (DNS সক্রিয় আছে)। বিকল্প হিসেবে দেখতে পারেন: <code>sohagexclusive.com</code> <code>sohagexclusive.com.bd</code> <code>sohagexclusive.shop</code>। কেনার আগে রেজিস্ট্রারের সাইটে নামটা খালি আছে কিনা দেখে নিন।</span>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><b>ক্যাশ অন ডেলিভারি</b><span>সারা বাংলাদেশে। টেস্টে অর্ডার সরাসরি "Processing"-এ গেছে</span></div>
+    <div class="fact"><b>বিকাশ / নগদ / রকেট</b><span>গ্রাহক TrxID দেন, অর্ডার "On hold" থাকে যতক্ষণ না আপনি মিলিয়ে দেখেন</span></div>
+    <div class="fact"><b>নিজে থেকে ডেলিভারি চার্জ</b><span>জেলা ঢাকা হলে ৳৭০, অন্য জেলা হলে ৳১৩০</span></div>
+    <div class="fact"><b>এক পাতায় বাংলা চেকআউট</b><span>নাম, মোবাইল, জেলা, থানা, ঠিকানা। অ্যাকাউন্ট খুলতে হয় না</span></div>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="স্ক্রিনশট">
+    <button id="tab-mobile" role="tab" aria-selected="true" aria-controls="panel-mobile">মোবাইল</button>
+    <button id="tab-desktop" role="tab" aria-selected="false" aria-controls="panel-desktop">ডেস্কটপ</button>
+  </div>
+
+  <section id="panel-mobile" role="tabpanel" aria-labelledby="tab-mobile">
+    <div class="shots shots--mobile">
+      <figure><div class="frame"><img src="m-home.jpg" alt="মোবাইলে হোমপেজ" loading="lazy"></div><figcaption><b>হোমপেজ</b>: ভেতরে স্ক্রল করুন</figcaption></figure>
+      <figure><div class="frame"><img src="m-product.jpg" alt="মোবাইলে প্রোডাক্ট পেজ" loading="lazy"></div><figcaption><b>প্রোডাক্ট</b>: কার্টে যোগ ও এখনই অর্ডার</figcaption></figure>
+      <figure><div class="frame"><img src="m-checkout.jpg" alt="মোবাইলে চেকআউট" loading="lazy"></div><figcaption><b>চেকআউট</b>: ক্যাশ অন ডেলিভারি</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="panel-desktop" role="tabpanel" aria-labelledby="tab-desktop" hidden>
+    <div class="shots shots--desktop">
+      <figure><div class="frame"><img src="d-home.jpg" alt="ডেস্কটপে হোমপেজ" loading="lazy"></div><figcaption><b>হোমপেজ</b>: হিরো, ক্যাটাগরি, নতুন কালেকশন, বেস্ট সেলার, অর্ডার করার নিয়ম</figcaption></figure>
+      <figure><div class="frame"><img src="d-shop.jpg" alt="ডেস্কটপে শপ পেজ" loading="lazy"></div><figcaption><b>শপ</b>: প্রোডাক্ট লিস্টিং, ছাড়ের ব্যাজ, সাজানোর অপশন</figcaption></figure>
+      <figure><div class="frame"><img src="d-product.jpg" alt="ডেস্কটপে প্রোডাক্ট পেজ" loading="lazy"></div><figcaption><b>প্রোডাক্ট</b>: ডেলিভারি তথ্য ও WhatsApp অর্ডার</figcaption></figure>
+      <figure><div class="frame"><img src="d-checkout-mpay.jpg" alt="ডেস্কটপে বিকাশ পেমেন্টসহ চেকআউট" loading="lazy"></div><figcaption><b>চেকআউট</b>: বিকাশ/নগদ নম্বর কপি করা যায়, প্রেরকের নম্বর আর TrxID দেওয়ার ঘর</figcaption></figure>
+      <figure><div class="frame"><img src="d-thanks.jpg" alt="অর্ডার সম্পন্ন পাতা" loading="lazy"></div><figcaption><b>অর্ডার সম্পন্ন</b>: অর্ডারের সারাংশ ও ডেলিভারি ঠিকানা</figcaption></figure>
+    </div>
+  </section>
+
+  <p class="note">ইনস্টল করার ফাইল আর বাংলা সেটআপ গাইড GitHub রিপোজিটরিতে আছে: <b>sohag-exclusive/sohag-exclusive-theme.zip</b> ও <b>sohag-exclusive/README.md</b>। WordPress-এ থিম Activate করে <b>Appearance → Sohag স্টোর সেটআপ</b> পাতার বাটনে একবার চাপ দিলেই দোকান চালু হয়ে যায়।</p>
+</div>
+
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('[role="tab"]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        });
+      });
+    });
+  })();
+</script>
