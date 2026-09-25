@@ -25,7 +25,7 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = 'sohag_mobile_pay';
 		$this->method_title       = __( 'bKash / Nagad / Rocket (Send Money)', 'sohag-exclusive' );
-		$this->method_description = __( 'গ্রাহক আপনার নম্বরে টাকা পাঠিয়ে Transaction ID দেবে। অর্ডার "On hold" থাকবে — টাকা মিলিয়ে "Processing" করুন।', 'sohag-exclusive' );
+		$this->method_description = __( 'Customer sends money to your number and enters the Transaction ID. Orders are placed "On hold" — verify the payment, then mark them "Processing".', 'sohag-exclusive' );
 		$this->has_fields         = true;
 		$this->supports           = array( 'products' );
 
@@ -44,23 +44,23 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'       => array(
-				'title'   => __( 'চালু/বন্ধ', 'sohag-exclusive' ),
+				'title'   => __( 'Enable/Disable', 'sohag-exclusive' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'মোবাইল ব্যাংকিং পেমেন্ট চালু করুন', 'sohag-exclusive' ),
+				'label'   => __( 'Enable mobile banking payment', 'sohag-exclusive' ),
 				'default' => 'no',
 			),
 			'title'         => array(
-				'title'   => __( 'চেকআউটে নাম', 'sohag-exclusive' ),
+				'title'   => __( 'Title at checkout', 'sohag-exclusive' ),
 				'type'    => 'text',
-				'default' => __( 'বিকাশ / নগদ / রকেট', 'sohag-exclusive' ),
+				'default' => __( 'bKash / Nagad / Rocket', 'sohag-exclusive' ),
 			),
 			'description'   => array(
-				'title'   => __( 'চেকআউটে বর্ণনা', 'sohag-exclusive' ),
+				'title'   => __( 'Description at checkout', 'sohag-exclusive' ),
 				'type'    => 'textarea',
-				'default' => __( 'নিচের নম্বরে মোট টাকা Send Money করে Transaction ID দিন।', 'sohag-exclusive' ),
+				'default' => __( 'Send the total amount to the number below, then enter your Transaction ID.', 'sohag-exclusive' ),
 			),
 			'account_type'  => array(
-				'title'   => __( 'অ্যাকাউন্টের ধরন', 'sohag-exclusive' ),
+				'title'   => __( 'Account type', 'sohag-exclusive' ),
 				'type'    => 'select',
 				'options' => array(
 					'Personal' => 'Personal (Send Money)',
@@ -70,27 +70,27 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 				'default' => 'Personal',
 			),
 			'bkash_number'  => array(
-				'title'       => __( 'bKash নম্বর', 'sohag-exclusive' ),
+				'title'       => __( 'bKash number', 'sohag-exclusive' ),
 				'type'        => 'text',
-				'description' => __( 'খালি রাখলে bKash অপশন দেখাবে না।', 'sohag-exclusive' ),
+				'description' => __( 'Leave empty to hide bKash.', 'sohag-exclusive' ),
 				'default'     => '',
 			),
 			'nagad_number'  => array(
-				'title'       => __( 'Nagad নম্বর', 'sohag-exclusive' ),
+				'title'       => __( 'Nagad number', 'sohag-exclusive' ),
 				'type'        => 'text',
-				'description' => __( 'খালি রাখলে Nagad অপশন দেখাবে না।', 'sohag-exclusive' ),
+				'description' => __( 'Leave empty to hide Nagad.', 'sohag-exclusive' ),
 				'default'     => '',
 			),
 			'rocket_number' => array(
-				'title'       => __( 'Rocket নম্বর', 'sohag-exclusive' ),
+				'title'       => __( 'Rocket number', 'sohag-exclusive' ),
 				'type'        => 'text',
-				'description' => __( 'খালি রাখলে Rocket অপশন দেখাবে না।', 'sohag-exclusive' ),
+				'description' => __( 'Leave empty to hide Rocket.', 'sohag-exclusive' ),
 				'default'     => '',
 			),
 			'instructions'  => array(
-				'title'   => __( 'ধন্যবাদ পাতা ও ইমেইলে বার্তা', 'sohag-exclusive' ),
+				'title'   => __( 'Message on thank-you page and email', 'sohag-exclusive' ),
 				'type'    => 'textarea',
-				'default' => __( 'আপনার পেমেন্ট যাচাই করে খুব শীঘ্রই অর্ডার কনফার্ম করা হবে।', 'sohag-exclusive' ),
+				'default' => __( 'We will verify your payment and confirm your order shortly.', 'sohag-exclusive' ),
 			),
 		);
 	}
@@ -155,17 +155,17 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 				<div>
 					<span data-mpay-label><?php echo esc_html( $providers[ $chosen ][0] ); ?></span> <?php echo esc_html( $type ); ?>:
 					<span class="sohag-mpay__number" data-mpay-number><?php echo esc_html( $providers[ $chosen ][2] ); ?></span>
-					<button type="button" class="sohag-mpay__copy" data-mpay-copy><?php esc_html_e( 'কপি', 'sohag-exclusive' ); ?></button>
+					<button type="button" class="sohag-mpay__copy" data-mpay-copy><?php esc_html_e( 'Copy', 'sohag-exclusive' ); ?></button>
 				</div>
 				<ol>
-					<li><?php echo esc_html( sprintf( 'অ্যাপ থেকে "%s" অপশনে যান', $verb ) ); ?></li>
-					<li><?php echo wp_kses_post( sprintf( 'উপরের নম্বরে মোট <strong>%s</strong> পাঠান', wc_price( $total ) ) ); ?></li>
-					<li><?php esc_html_e( 'যে নম্বর থেকে পাঠিয়েছেন ও Transaction ID নিচে লিখুন', 'sohag-exclusive' ); ?></li>
+					<li><?php echo esc_html( sprintf( 'Open your app and choose "%s"', $verb ) ); ?></li>
+					<li><?php echo wp_kses_post( sprintf( 'Send <strong>%s</strong> to the number above', wc_price( $total ) ) ); ?></li>
+					<li><?php esc_html_e( 'Enter the number you sent from and the Transaction ID below', 'sohag-exclusive' ); ?></li>
 				</ol>
 			</div>
 
 			<p class="form-row form-row-wide">
-				<label for="sohag_mpay_sender"><?php esc_html_e( 'যে নম্বর থেকে টাকা পাঠিয়েছেন', 'sohag-exclusive' ); ?> <abbr class="required" title="required">*</abbr></label>
+				<label for="sohag_mpay_sender"><?php esc_html_e( 'Sent from (your number)', 'sohag-exclusive' ); ?> <abbr class="required" title="required">*</abbr></label>
 				<input id="sohag_mpay_sender" class="input-text" type="tel" inputmode="numeric" name="sohag_mpay_sender" placeholder="01XXXXXXXXX" autocomplete="off">
 			</p>
 			<p class="form-row form-row-wide">
@@ -185,15 +185,15 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 
 		$ok = true;
 		if ( ! isset( $this->active_providers()[ $method ] ) ) {
-			wc_add_notice( __( 'বিকাশ / নগদ / রকেট — একটি বেছে নিন।', 'sohag-exclusive' ), 'error' );
+			wc_add_notice( __( 'Please choose bKash, Nagad or Rocket.', 'sohag-exclusive' ), 'error' );
 			$ok = false;
 		}
 		if ( ! function_exists( 'sohag_normalize_bd_phone' ) || ! sohag_normalize_bd_phone( $sender ) ) {
-			wc_add_notice( __( 'যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি সঠিকভাবে লিখুন।', 'sohag-exclusive' ), 'error' );
+			wc_add_notice( __( 'Please enter the mobile number you sent the money from.', 'sohag-exclusive' ), 'error' );
 			$ok = false;
 		}
 		if ( ! preg_match( '/^[A-Za-z0-9]{6,20}$/', $trx ) ) {
-			wc_add_notice( __( 'সঠিক Transaction ID লিখুন।', 'sohag-exclusive' ), 'error' );
+			wc_add_notice( __( 'Please enter a valid Transaction ID.', 'sohag-exclusive' ), 'error' );
 			$ok = false;
 		}
 		return $ok;
@@ -219,7 +219,7 @@ class Sohag_Mobile_Payment_Gateway extends WC_Payment_Gateway {
 		$order->update_status(
 			'on-hold',
 			/* translators: 1: provider, 2: sender, 3: trx id */
-			sprintf( __( '%1$s পেমেন্ট যাচাই বাকি — প্রেরক: %2$s, TrxID: %3$s', 'sohag-exclusive' ), $label, $sender, $trx )
+			sprintf( __( 'Awaiting %1$s payment check — sender: %2$s, TrxID: %3$s', 'sohag-exclusive' ), $label, $sender, $trx )
 		);
 
 		wc_reduce_stock_levels( $order_id );
@@ -262,10 +262,10 @@ function sohag_mpay_details( $order ) {
 	}
 	printf(
 		'<p><strong>%s</strong><br>%s: %s<br>%s: %s<br>TrxID: <code>%s</code></p>',
-		esc_html__( 'মোবাইল ব্যাংকিং পেমেন্ট', 'sohag-exclusive' ),
-		esc_html__( 'মাধ্যম', 'sohag-exclusive' ),
+		esc_html__( 'Mobile banking payment', 'sohag-exclusive' ),
+		esc_html__( 'Method', 'sohag-exclusive' ),
 		esc_html( $order->get_meta( '_sohag_mpay_method' ) ),
-		esc_html__( 'প্রেরক', 'sohag-exclusive' ),
+		esc_html__( 'Sender', 'sohag-exclusive' ),
 		esc_html( $order->get_meta( '_sohag_mpay_sender' ) ),
 		esc_html( $trx )
 	);

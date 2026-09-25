@@ -15,11 +15,11 @@ get_header();
 			<?php
 			if ( is_search() ) {
 				/* translators: %s: search query. */
-				printf( esc_html__( '"%s" এর ফলাফল', 'sohag-exclusive' ), esc_html( get_search_query() ) );
+				printf( esc_html__( 'Results for "%s"', 'sohag-exclusive' ), esc_html( get_search_query() ) );
 			} elseif ( is_archive() ) {
 				the_archive_title();
 			} else {
-				esc_html_e( 'ব্লগ', 'sohag-exclusive' );
+				esc_html_e( 'Blog', 'sohag-exclusive' );
 			}
 			?>
 		</h1>
@@ -39,8 +39,8 @@ get_header();
 		<?php the_posts_pagination(); ?>
 	<?php else : ?>
 		<div class="not-found">
-			<p><?php esc_html_e( 'কিছু পাওয়া যায়নি।', 'sohag-exclusive' ); ?></p>
-			<a class="btn" href="<?php echo esc_url( sohag_shop_url() ); ?>"><?php esc_html_e( 'শপে যান', 'sohag-exclusive' ); ?></a>
+			<p><?php esc_html_e( 'Nothing found.', 'sohag-exclusive' ); ?></p>
+			<a class="btn" href="<?php echo esc_url( sohag_shop_url() ); ?>"><?php esc_html_e( 'Go to Shop', 'sohag-exclusive' ); ?></a>
 		</div>
 	<?php endif; ?>
 </div>

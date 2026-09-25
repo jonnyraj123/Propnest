@@ -11,32 +11,32 @@ function sohag_customize_register( $wp_customize ) {
 	$wp_customize->add_panel(
 		'sohag_panel',
 		array(
-			'title'    => __( 'Sohag Exclusive সেটিংস', 'sohag-exclusive' ),
+			'title'    => __( 'Sohag Exclusive Settings', 'sohag-exclusive' ),
 			'priority' => 25,
 		)
 	);
 
 	$sections = array(
 		'sohag_contact' => array(
-			'title'  => __( 'যোগাযোগ ও সোশ্যাল', 'sohag-exclusive' ),
+			'title'  => __( 'Contact & Social', 'sohag-exclusive' ),
 			'fields' => array(
-				'phone'     => array( __( 'ফোন নম্বর', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
-				'whatsapp'  => array( __( 'WhatsApp নম্বর (দেশের কোডসহ, যেমন 8801712345678)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
-				'email'     => array( __( 'ইমেইল', 'sohag-exclusive' ), 'email', 'sanitize_email' ),
-				'address'   => array( __( 'ঠিকানা', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
-				'facebook'  => array( __( 'Facebook পেজ লিংক', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
-				'messenger' => array( __( 'Messenger লিংক (খালি রাখলে Facebook লিংক থেকে বানানো হবে)', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
-				'instagram' => array( __( 'Instagram লিংক', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
+				'phone'     => array( __( 'Phone number', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
+				'whatsapp'  => array( __( 'WhatsApp number with country code (e.g. 8801712345678)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
+				'email'     => array( __( 'Email', 'sohag-exclusive' ), 'email', 'sanitize_email' ),
+				'address'   => array( __( 'Address', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
+				'facebook'  => array( __( 'Facebook page URL', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
+				'messenger' => array( __( 'Messenger link (leave empty to build it from the Facebook URL)', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
+				'instagram' => array( __( 'Instagram URL', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
 			),
 		),
 		'sohag_home'    => array(
-			'title'  => __( 'হোমপেজ', 'sohag-exclusive' ),
+			'title'  => __( 'Homepage', 'sohag-exclusive' ),
 			'fields' => array(
-				'announcement' => array( __( 'উপরের ঘোষণা বার (প্রতি লাইনে একটি বার্তা)', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
-				'hero_script'  => array( __( 'হিরো — স্ক্রিপ্ট লেখা', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
-				'hero_title'   => array( __( 'হিরো — শিরোনাম (<em> দিয়ে সোনালি শব্দ)', 'sohag-exclusive' ), 'text', 'sohag_sanitize_inline_html' ),
-				'hero_text'    => array( __( 'হিরো — বর্ণনা', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
-				'about'        => array( __( 'ফুটারে ব্র্যান্ড পরিচিতি', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
+				'announcement' => array( __( 'Announcement bar (one message per line)', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
+				'hero_script'  => array( __( 'Hero — script line', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
+				'hero_title'   => array( __( 'Hero — title (wrap a word in <em> to make it gold)', 'sohag-exclusive' ), 'text', 'sohag_sanitize_inline_html' ),
+				'hero_text'    => array( __( 'Hero — description', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
+				'about'        => array( __( 'Footer — about text', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
 			),
 		),
 	);
@@ -82,7 +82,7 @@ function sohag_customize_register( $wp_customize ) {
 			$wp_customize,
 			'sohag_hero_image',
 			array(
-				'label'   => __( 'হিরো ছবি / ব্যানার', 'sohag-exclusive' ),
+				'label'   => __( 'Hero image / banner', 'sohag-exclusive' ),
 				'section' => 'sohag_home',
 			)
 		)

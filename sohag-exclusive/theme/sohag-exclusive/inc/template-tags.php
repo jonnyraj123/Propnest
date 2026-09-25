@@ -44,9 +44,9 @@ function sohag_shop_url() {
  * Menu fallback when no menu is assigned yet.
  */
 function sohag_fallback_menu( $args = array() ) {
-	$items = array( home_url( '/' ) => __( 'হোম', 'sohag-exclusive' ) );
+	$items = array( home_url( '/' ) => __( 'Home', 'sohag-exclusive' ) );
 	if ( sohag_is_wc() ) {
-		$items[ sohag_shop_url() ] = __( 'সব প্রোডাক্ট', 'sohag-exclusive' );
+		$items[ sohag_shop_url() ] = __( 'All Products', 'sohag-exclusive' );
 		foreach ( sohag_categories( 5 ) as $cat ) {
 			if ( null === $cat['count'] ) {
 				continue; // Theme placeholder, not a real category yet.
@@ -67,12 +67,12 @@ function sohag_fallback_menu( $args = array() ) {
  */
 function sohag_default_categories() {
 	return array(
-		'earrings'     => array( 'Earrings', 'কানের দুল' ),
-		'bangles'      => array( 'Bangles', 'চুড়ি' ),
-		'necklaces'    => array( 'Necklaces', 'নেকলেস' ),
-		'bags'         => array( 'Bags', 'ব্যাগ' ),
-		'western-wear' => array( 'Western Wear', 'ওয়েস্টার্ন' ),
-		'indian-wear'  => array( 'Indian Wear', 'ইন্ডিয়ান' ),
+		'earrings'     => array( 'Earrings' ),
+		'bangles'      => array( 'Bangles' ),
+		'necklaces'    => array( 'Necklaces' ),
+		'bags'         => array( 'Bags' ),
+		'western-wear' => array( 'Western Wear' ),
+		'indian-wear'  => array( 'Indian Wear' ),
 	);
 }
 
@@ -128,8 +128,8 @@ function sohag_categories( $limit = 6 ) {
 
 function sohag_pay_badges() {
 	?>
-	<div class="pay-badges" aria-label="<?php esc_attr_e( 'পেমেন্ট মাধ্যম', 'sohag-exclusive' ); ?>">
-		<span class="pay-badge pay-badge--cod"><i></i><?php esc_html_e( 'ক্যাশ অন ডেলিভারি', 'sohag-exclusive' ); ?></span>
+	<div class="pay-badges" aria-label="<?php esc_attr_e( 'Payment methods', 'sohag-exclusive' ); ?>">
+		<span class="pay-badge pay-badge--cod"><i></i><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></span>
 		<span class="pay-badge pay-badge--bkash"><i></i>bKash</span>
 		<span class="pay-badge pay-badge--nagad"><i></i>Nagad</span>
 		<span class="pay-badge pay-badge--rocket"><i></i>Rocket</span>
@@ -150,4 +150,8 @@ function sohag_delivery_charges() {
 function sohag_announcements() {
 	$lines = preg_split( '/\r\n|\r|\n/', (string) sohag_opt( 'announcement' ) );
 	return array_values( array_filter( array_map( 'trim', $lines ) ) );
+}
+
+function sohag_tel_url() {
+	return 'tel:' . preg_replace( '/[^\d+]/', '', sohag_opt( 'phone' ) );
 }

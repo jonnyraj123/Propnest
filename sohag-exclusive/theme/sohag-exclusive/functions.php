@@ -52,8 +52,8 @@ function sohag_setup() {
 
 	register_nav_menus(
 		array(
-			'primary' => __( 'প্রধান মেনু', 'sohag-exclusive' ),
-			'footer'  => __( 'ফুটার — পলিসি মেনু', 'sohag-exclusive' ),
+			'primary' => __( 'Main menu', 'sohag-exclusive' ),
+			'footer'  => __( 'Footer — policy links', 'sohag-exclusive' ),
 		)
 	);
 }
@@ -65,7 +65,7 @@ add_action( 'after_setup_theme', 'sohag_setup' );
 function sohag_assets() {
 	wp_enqueue_style(
 		'sohag-fonts',
-		'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap',
+		'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap',
 		array(),
 		null
 	);
@@ -87,21 +87,21 @@ add_filter( 'wp_resource_hints', 'sohag_preconnect', 10, 2 );
  */
 function sohag_opt( $key ) {
 	$defaults = array(
-		'phone'           => '01XXXXXXXXX',
-		'whatsapp'        => '8801XXXXXXXXX',
-		'email'           => '',
-		'address'         => 'ঢাকা, বাংলাদেশ',
-		'facebook'        => 'https://www.facebook.com/',
-		'instagram'       => '',
-		'messenger'       => '',
-		'announcement'    => "সারা বাংলাদেশে ক্যাশ অন ডেলিভারি\nঢাকার ভিতরে ১–২ দিনে, ঢাকার বাইরে ২–৪ দিনে ডেলিভারি\n১০০% হ্যান্ডমেড — ভালোবাসা দিয়ে তৈরি\nবিকাশ / নগদ / রকেটে পেমেন্ট করা যায়",
-		'hero_image'      => SOHAG_URI . '/assets/img/banner.jpg',
-		'hero_script'     => 'Crafted with Love',
-		'hero_title'      => 'হ্যান্ডমেড <em>জুয়েলারি</em> ও ফ্যাশন',
-		'hero_text'       => 'নিজের হাতে যত্ন করে বানানো কানের দুল, চুড়ি, নেকলেস, ব্যাগ আর পোশাক — আপনার গল্প পরে নিন।',
-		'delivery_inside' => 70,
-		'delivery_outside'=> 130,
-		'about'           => 'Sohag Exclusive — হ্যান্ডমেড প্রোডাক্ট, যা শুধু একটি পণ্য নয়, একটি অনুভূতি। Unique • Artistic • For You.',
+		'phone'            => '',
+		'whatsapp'         => '',
+		'email'            => '',
+		'address'          => 'Dhaka, Bangladesh',
+		'facebook'         => 'https://www.facebook.com/',
+		'instagram'        => '',
+		'messenger'        => '',
+		'announcement'     => "Cash on Delivery all over Bangladesh\nDelivery in 1–2 days inside Dhaka, 2–4 days outside\n100% handmade — crafted with love\nPay with bKash, Nagad or Rocket",
+		'hero_image'       => SOHAG_URI . '/assets/img/banner.jpg',
+		'hero_script'      => 'Crafted with Love',
+		'hero_title'       => 'Handmade <em>Jewellery</em> &amp; Fashion',
+		'hero_text'        => 'Earrings, bangles, necklaces, bags and outfits — each piece made by hand with care. Wear your story.',
+		'delivery_inside'  => 70,
+		'delivery_outside' => 130,
+		'about'            => 'Sohag Exclusive — handmade products that are more than a product, they are a feeling. Unique • Artistic • For You.',
 	);
 	$value = get_theme_mod( 'sohag_' . $key, null );
 	if ( null === $value || '' === $value ) {
@@ -110,12 +110,6 @@ function sohag_opt( $key ) {
 	return $value;
 }
 
-/**
- * Convert English digits to Bangla digits for display.
- */
-function sohag_bn_num( $value ) {
-	return strtr( (string) $value, array( '0' => '০', '1' => '১', '2' => '২', '3' => '৩', '4' => '৪', '5' => '৫', '6' => '৬', '7' => '৭', '8' => '৮', '9' => '৯' ) );
-}
 
 function sohag_is_wc() {
 	return class_exists( 'WooCommerce' );
@@ -123,6 +117,9 @@ function sohag_is_wc() {
 
 function sohag_whatsapp_url( $text = '' ) {
 	$number = preg_replace( '/\D+/', '', sohag_opt( 'whatsapp' ) );
+	if ( '' === $number ) {
+		return '';
+	}
 	$url    = 'https://wa.me/' . $number;
 	return $text ? $url . '?text=' . rawurlencode( $text ) : $url;
 }

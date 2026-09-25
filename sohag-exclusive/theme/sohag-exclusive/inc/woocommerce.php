@@ -1,7 +1,7 @@
 <?php
 /**
  * WooCommerce customisations for a Bangladeshi store:
- * simple Bangla checkout, phone validation, Buy Now, delivery info, cart badge fragments.
+ * short checkout, BD phone validation, Order Now button, delivery info, cart badge fragments.
  *
  * @package Sohag_Exclusive
  */
@@ -12,14 +12,13 @@ defined( 'ABSPATH' ) || exit;
  * Layout
  * ---------------------------------------------------------------------- */
 
-// Theme provides its own wrappers (woocommerce.php), so remove sidebar and default wrappers.
+// Theme provides its own wrappers (woocommerce.php), so remove sidebar and default breadcrumb position.
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 
 add_filter(
 	'woocommerce_breadcrumb_defaults',
 	function ( $d ) {
-		$d['home']      = __( 'হোম', 'sohag-exclusive' );
 		$d['delimiter'] = ' <span aria-hidden="true">›</span> ';
 		return $d;
 	}
@@ -52,27 +51,23 @@ add_action( 'woocommerce_before_shop_loop_item_title', fn() => print '</span>', 
 add_filter(
 	'woocommerce_product_add_to_cart_text',
 	function ( $text, $product ) {
-		if ( $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() ) {
-			return __( 'কার্টে যোগ করুন', 'sohag-exclusive' );
-		}
 		if ( $product->is_type( 'variable' ) ) {
-			return __( 'অপশন দেখুন', 'sohag-exclusive' );
+			return __( 'Choose Options', 'sohag-exclusive' );
 		}
 		return $text;
 	},
 	10,
 	2
 );
-add_filter( 'woocommerce_product_single_add_to_cart_text', fn() => __( 'কার্টে যোগ করুন', 'sohag-exclusive' ) );
 
 add_filter(
 	'woocommerce_sale_flash',
 	function ( $html, $post, $product ) {
 		if ( $product->is_type( 'simple' ) && $product->get_regular_price() > 0 ) {
 			$pct = round( 100 - ( (float) $product->get_sale_price() / (float) $product->get_regular_price() * 100 ) );
-			return '<span class="onsale">-' . esc_html( sohag_bn_num( $pct ) ) . '%</span>';
+			return '<span class="onsale">-' . esc_html( $pct ) . '%</span>';
 		}
-		return '<span class="onsale">' . esc_html__( 'অফার', 'sohag-exclusive' ) . '</span>';
+		return '<span class="onsale">' . esc_html__( 'Sale', 'sohag-exclusive' ) . '</span>';
 	},
 	10,
 	3
@@ -99,7 +94,7 @@ add_action(
 );
 
 /* -------------------------------------------------------------------------
- * Single product: Buy Now, WhatsApp order, delivery info
+ * Single product: Order Now, WhatsApp order, delivery info
  * ---------------------------------------------------------------------- */
 add_action(
 	'woocommerce_after_add_to_cart_button',
@@ -115,7 +110,7 @@ add_action(
 			'<button type="submit" class="button alt sohag-buy-now" formaction="%s"%s>%s</button>',
 			esc_url( $action ),
 			$name, // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above.
-			esc_html__( 'এখনই অর্ডার করুন', 'sohag-exclusive' )
+			esc_html__( 'Order Now', 'sohag-exclusive' )
 		);
 	}
 );
@@ -144,19 +139,24 @@ add_action(
 	function () {
 		global $product;
 		$charges = sohag_delivery_charges();
-		/* translators: %s: product name. */
-		$wa_text = sprintf( __( 'আমি এই প্রোডাক্টটি অর্ডার করতে চাই: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() );
+		/* translators: 1: product name, 2: product URL. */
+		$wa_text = sprintf( __( 'Hi, I would like to order: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() );
+		$wa_url  = sohag_whatsapp_url( $wa_text );
 		?>
-		<div class="buy-extra">
-			<a class="btn btn--wa btn--block" href="<?php echo esc_url( sohag_whatsapp_url( $wa_text ) ); ?>" target="_blank" rel="noopener">
-				<?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?> <?php esc_html_e( 'WhatsApp-এ অর্ডার করুন', 'sohag-exclusive' ); ?>
-			</a>
-		</div>
+		<?php if ( $wa_url ) : ?>
+			<div class="buy-extra">
+				<a class="btn btn--wa btn--block" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener">
+					<?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?> <span><?php esc_html_e( 'Order on WhatsApp', 'sohag-exclusive' ); ?></span>
+				</a>
+			</div>
+		<?php endif; ?>
 		<div class="delivery-box">
-			<div class="delivery-box__row"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?><span><strong><?php esc_html_e( 'ক্যাশ অন ডেলিভারি', 'sohag-exclusive' ); ?></strong> — <?php esc_html_e( 'পণ্য হাতে পেয়ে টাকা দিন', 'sohag-exclusive' ); ?></span></div>
-			<div class="delivery-box__row"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?><span><?php echo esc_html( sprintf( 'ঢাকার ভিতরে ৳%s (১–২ দিন) • ঢাকার বাইরে ৳%s (২–৪ দিন)', sohag_bn_num( $charges['inside'] ), sohag_bn_num( $charges['outside'] ) ) ); ?></span></div>
-			<div class="delivery-box__row"><?php echo sohag_icon( 'shield' ); // phpcs:ignore ?><span><?php esc_html_e( 'ডেলিভারির সময় পণ্য দেখে নিন — ত্রুটি থাকলে এক্সচেঞ্জ', 'sohag-exclusive' ); ?></span></div>
-			<div class="delivery-box__row"><?php echo sohag_icon( 'phone' ); // phpcs:ignore ?><span><?php esc_html_e( 'প্রশ্ন আছে? কল করুন:', 'sohag-exclusive' ); ?> <a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', sohag_opt( 'phone' ) ) ); ?>"><strong><?php echo esc_html( sohag_opt( 'phone' ) ); ?></strong></a></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?><span><strong><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></strong> — <?php esc_html_e( 'pay when you receive it', 'sohag-exclusive' ); ?></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?><span><?php echo esc_html( sprintf( 'Inside Dhaka ৳%d (1–2 days) • Outside Dhaka ৳%d (2–4 days)', $charges['inside'], $charges['outside'] ) ); ?></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'shield' ); // phpcs:ignore ?><span><?php esc_html_e( 'Check the item at delivery — exchange if anything is faulty', 'sohag-exclusive' ); ?></span></div>
+			<?php if ( sohag_opt( 'phone' ) ) : ?>
+				<div class="delivery-box__row"><?php echo sohag_icon( 'phone' ); // phpcs:ignore ?><span><?php esc_html_e( 'Questions? Call us:', 'sohag-exclusive' ); ?> <a href="<?php echo esc_url( sohag_tel_url() ); ?>"><strong><?php echo esc_html( sohag_opt( 'phone' ) ); ?></strong></a></span></div>
+			<?php endif; ?>
 		</div>
 		<?php
 	},
@@ -164,7 +164,7 @@ add_action(
 );
 
 /* -------------------------------------------------------------------------
- * Checkout: short Bangla form (name, mobile, district, area, address)
+ * Checkout: short form (name, mobile, district, area, address)
  * ---------------------------------------------------------------------- */
 add_filter(
 	'woocommerce_checkout_fields',
@@ -173,19 +173,19 @@ add_filter(
 
 		unset( $b['billing_last_name'], $b['billing_company'], $b['billing_address_2'], $b['billing_postcode'] );
 
-		$b['billing_first_name']['label']       = __( 'আপনার নাম', 'sohag-exclusive' );
-		$b['billing_first_name']['placeholder'] = __( 'পূর্ণ নাম লিখুন', 'sohag-exclusive' );
+		$b['billing_first_name']['label']       = __( 'Full name', 'sohag-exclusive' );
+		$b['billing_first_name']['placeholder'] = __( 'Your full name', 'sohag-exclusive' );
 		$b['billing_first_name']['class']       = array( 'form-row-wide' );
 		$b['billing_first_name']['priority']    = 10;
 
-		$b['billing_phone']['label']       = __( 'মোবাইল নম্বর', 'sohag-exclusive' );
+		$b['billing_phone']['label']       = __( 'Mobile number', 'sohag-exclusive' );
 		$b['billing_phone']['placeholder'] = '01XXXXXXXXX';
 		$b['billing_phone']['required']    = true;
 		$b['billing_phone']['class']       = array( 'form-row-wide' );
 		$b['billing_phone']['priority']    = 20;
 
 		if ( isset( $b['billing_email'] ) ) {
-			$b['billing_email']['label']    = __( 'ইমেইল', 'sohag-exclusive' );
+			$b['billing_email']['label']    = __( 'Email', 'sohag-exclusive' );
 			$b['billing_email']['required'] = false;
 			$b['billing_email']['priority'] = 90;
 		}
@@ -194,24 +194,24 @@ add_filter(
 			$b['billing_country']['priority'] = 25;
 		}
 		if ( isset( $b['billing_state'] ) ) {
-			$b['billing_state']['label']    = __( 'জেলা', 'sohag-exclusive' );
+			$b['billing_state']['label']    = __( 'District', 'sohag-exclusive' );
 			$b['billing_state']['required'] = true;
 			$b['billing_state']['class']    = array( 'form-row-first', 'address-field' );
 			$b['billing_state']['priority'] = 30;
 		}
 		if ( isset( $b['billing_city'] ) ) {
-			$b['billing_city']['label']       = __( 'থানা / উপজেলা', 'sohag-exclusive' );
-			$b['billing_city']['placeholder'] = __( 'যেমন: মিরপুর', 'sohag-exclusive' );
+			$b['billing_city']['label']       = __( 'Area / Thana', 'sohag-exclusive' );
+			$b['billing_city']['placeholder'] = __( 'e.g. Mirpur', 'sohag-exclusive' );
 			$b['billing_city']['class']       = array( 'form-row-last', 'address-field' );
 			$b['billing_city']['priority']    = 40;
 		}
-		$b['billing_address_1']['label']       = __( 'সম্পূর্ণ ঠিকানা', 'sohag-exclusive' );
-		$b['billing_address_1']['placeholder'] = __( 'বাসা/রোড নম্বর, এলাকা', 'sohag-exclusive' );
+		$b['billing_address_1']['label']       = __( 'Full address', 'sohag-exclusive' );
+		$b['billing_address_1']['placeholder'] = __( 'House / road no., area', 'sohag-exclusive' );
 		$b['billing_address_1']['priority']    = 50;
 
 		if ( isset( $fields['order']['order_comments'] ) ) {
-			$fields['order']['order_comments']['label']       = __( 'অর্ডার নোট', 'sohag-exclusive' );
-			$fields['order']['order_comments']['placeholder'] = __( 'রঙ/সাইজ বা ডেলিভারি নিয়ে কিছু বলার থাকলে লিখুন', 'sohag-exclusive' );
+			$fields['order']['order_comments']['label']       = __( 'Order note', 'sohag-exclusive' );
+			$fields['order']['order_comments']['placeholder'] = __( 'Anything about colour, size or delivery?', 'sohag-exclusive' );
 		}
 
 		return $fields;
@@ -223,16 +223,16 @@ add_filter(
 add_filter(
 	'woocommerce_get_country_locale',
 	function ( $locale ) {
-		$locale['BD']['state'] = array(
-			'label'    => __( 'জেলা', 'sohag-exclusive' ),
+		$locale['BD']['state']     = array(
+			'label'    => __( 'District', 'sohag-exclusive' ),
 			'required' => true,
 		);
-		$locale['BD']['city']      = array( 'label' => __( 'থানা / উপজেলা', 'sohag-exclusive' ) );
+		$locale['BD']['city']      = array( 'label' => __( 'Area / Thana', 'sohag-exclusive' ) );
 		$locale['BD']['address_1'] = array(
-			'label'       => __( 'সম্পূর্ণ ঠিকানা', 'sohag-exclusive' ),
-			'placeholder' => __( 'বাসা/রোড নম্বর, এলাকা', 'sohag-exclusive' ),
+			'label'       => __( 'Full address', 'sohag-exclusive' ),
+			'placeholder' => __( 'House / road no., area', 'sohag-exclusive' ),
 		);
-		$locale['BD']['postcode'] = array(
+		$locale['BD']['postcode']  = array(
 			'required' => false,
 			'hidden'   => true,
 		);
@@ -255,9 +255,11 @@ add_filter(
 
 /**
  * Normalise a Bangladeshi mobile number to 01XXXXXXXXX, or return '' when invalid.
+ * Accepts +880 / 880 prefixes, spaces, dashes and Bangla digits.
  */
 function sohag_normalize_bd_phone( $raw ) {
-	$digits = preg_replace( '/\D+/', '', strtr( (string) $raw, array( '০' => '0', '১' => '1', '২' => '2', '৩' => '3', '৪' => '4', '৫' => '5', '৬' => '6', '৭' => '7', '৮' => '8', '৯' => '9' ) ) );
+	$bn     = array( "\u{09E6}", "\u{09E7}", "\u{09E8}", "\u{09E9}", "\u{09EA}", "\u{09EB}", "\u{09EC}", "\u{09ED}", "\u{09EE}", "\u{09EF}" );
+	$digits = preg_replace( '/\D+/', '', str_replace( $bn, range( 0, 9 ), (string) $raw ) );
 	if ( 0 === strpos( $digits, '880' ) ) {
 		$digits = substr( $digits, 2 );
 	}
@@ -268,7 +270,7 @@ add_action(
 	'woocommerce_after_checkout_validation',
 	function ( $data, $errors ) {
 		if ( isset( $data['billing_phone'] ) && '' !== $data['billing_phone'] && ! sohag_normalize_bd_phone( $data['billing_phone'] ) ) {
-			$errors->add( 'billing_phone_validation', __( 'সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (যেমন 017XXXXXXXX)।', 'sohag-exclusive' ) );
+			$errors->add( 'billing_phone_validation', __( 'Please enter a valid 11-digit mobile number (e.g. 017XXXXXXXX).', 'sohag-exclusive' ) );
 		}
 	},
 	10,
@@ -285,33 +287,35 @@ add_action(
 	}
 );
 
-add_filter( 'woocommerce_order_button_text', fn() => __( 'অর্ডার কনফার্ম করুন', 'sohag-exclusive' ) );
+add_filter( 'woocommerce_order_button_text', fn() => __( 'Confirm Order', 'sohag-exclusive' ) );
 
 add_action(
 	'woocommerce_review_order_after_submit',
 	function () {
-		echo '<div class="checkout-assurance"><span>' . esc_html__( 'নিরাপদ অর্ডার', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'ক্যাশ অন ডেলিভারি', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'কনফার্মেশন কল পাবেন', 'sohag-exclusive' ) . '</span></div>';
+		echo '<div class="checkout-assurance"><span>' . esc_html__( 'Secure order', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Cash on Delivery', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Confirmation call', 'sohag-exclusive' ) . '</span></div>';
 	}
 );
 
 add_filter(
 	'woocommerce_thankyou_order_received_text',
-	fn() => __( 'ধন্যবাদ! আপনার অর্ডারটি পেয়েছি। খুব শীঘ্রই কল করে কনফার্ম করা হবে। ♥', 'sohag-exclusive' )
+	fn() => __( 'Thank you! We have received your order and will call you shortly to confirm it. ♥', 'sohag-exclusive' )
 );
 
+add_filter( 'woocommerce_shipping_package_name', fn() => __( 'Delivery', 'sohag-exclusive' ) );
+
 /**
- * Progress indicator above cart / checkout.
+ * Progress indicator above cart / checkout / thank-you.
  */
 function sohag_checkout_steps( $current ) {
 	$steps = array(
-		1 => __( 'কার্ট', 'sohag-exclusive' ),
-		2 => __( 'তথ্য ও পেমেন্ট', 'sohag-exclusive' ),
-		3 => __( 'অর্ডার সম্পন্ন', 'sohag-exclusive' ),
+		1 => __( 'Cart', 'sohag-exclusive' ),
+		2 => __( 'Details & Payment', 'sohag-exclusive' ),
+		3 => __( 'Order Complete', 'sohag-exclusive' ),
 	);
 	echo '<ol class="checkout-steps">';
 	foreach ( $steps as $n => $label ) {
 		$class = $n < $current ? 'is-done' : ( $n === $current ? 'is-active' : '' );
-		printf( '<li class="%s"><span>%s</span>%s</li>', esc_attr( $class ), esc_html( sohag_bn_num( $n ) ), esc_html( $label ) );
+		printf( '<li class="%s"><span>%d</span>%s</li>', esc_attr( $class ), (int) $n, esc_html( $label ) );
 	}
 	echo '</ol>';
 }
@@ -324,108 +328,23 @@ add_action(
 );
 
 /**
- * Bangla wording for the WooCommerce strings customers see most, so the store reads
- * naturally even when the site language is English. (A full Bangla translation pack
- * from Settings → General → Site Language also works and takes precedence where it exists.)
+ * Clearer wording for a few WooCommerce defaults (billing-only store, so "billing" means delivery).
  */
 add_filter(
 	'gettext_woocommerce',
 	function ( $translation, $text ) {
-		static $map = null;
-		if ( null === $map ) {
-			$map = array(
-				'Billing &amp; Shipping'               => 'ডেলিভারি তথ্য',
-				'Billing details'                      => 'ডেলিভারি তথ্য',
-				'Additional information'               => 'অতিরিক্ত তথ্য',
-				'Your order'                           => 'আপনার অর্ডার',
-				'Product'                              => 'প্রোডাক্ট',
-				'Subtotal'                             => 'সাবটোটাল',
-				'Subtotal:'                            => 'সাবটোটাল:',
-				'Shipping'                             => 'ডেলিভারি চার্জ',
-				'Total'                                => 'সর্বমোট',
-				'Total:'                               => 'সর্বমোট:',
-				'Price'                                => 'দাম',
-				'Quantity'                             => 'পরিমাণ',
-				'Cart totals'                          => 'কার্টের হিসাব',
-				'Proceed to checkout'                  => 'চেকআউট করুন',
-				'Update cart'                          => 'কার্ট আপডেট',
-				'Apply coupon'                         => 'কুপন ব্যবহার করুন',
-				'Coupon code'                          => 'কুপন কোড',
-				'Coupon:'                              => 'কুপন:',
-				'Have a coupon?'                       => 'কুপন আছে?',
-				'Click here to enter your code'        => 'এখানে ক্লিক করে কোড দিন',
-				'Returning customer?'                  => 'আগে অ্যাকাউন্ট খুলেছেন?',
-				'Click here to login'                  => 'লগইন করুন',
-				'Your cart is currently empty.'        => 'আপনার কার্ট এখন খালি।',
-				'Return to shop'                       => 'শপে ফিরে যান',
-				'optional'                             => 'ঐচ্ছিক',
-				'Description'                          => 'বিবরণ',
-				'Related products'                     => 'এরকম আরও প্রোডাক্ট',
-				'You may also like&hellip;'            => 'আপনার পছন্দ হতে পারে',
-				'Category:'                            => 'ক্যাটাগরি:',
-				'Categories:'                          => 'ক্যাটাগরি:',
-				'SKU:'                                 => 'কোড:',
-				'Out of stock'                         => 'স্টক শেষ',
-				'Default sorting'                      => 'সাজানো: ডিফল্ট',
-				'Sort by popularity'                   => 'জনপ্রিয়তা অনুযায়ী',
-				'Sort by average rating'               => 'রেটিং অনুযায়ী',
-				'Sort by latest'                       => 'নতুন আগে',
-				'Sort by price: low to high'           => 'দাম: কম থেকে বেশি',
-				'Sort by price: high to low'           => 'দাম: বেশি থেকে কম',
-				'Order number:'                        => 'অর্ডার নম্বর:',
-				'Date:'                                => 'তারিখ:',
-				'Payment method:'                      => 'পেমেন্ট মাধ্যম:',
-				'Order details'                        => 'অর্ডারের বিবরণ',
-				'Billing address'                      => 'ডেলিভারি ঠিকানা',
-				'View cart'                            => 'কার্ট দেখুন',
-				'Choose an option'                     => 'একটি বেছে নিন',
-				'Clear'                                => 'মুছুন',
-				'Showing the single result'            => '১ টি প্রোডাক্ট',
-				'Shipping:'                            => 'ডেলিভারি চার্জ:',
-				'Order received'                       => 'অর্ডার সম্পন্ন',
-				'Country / Region'                     => 'দেশ',
-				'Place order'                          => 'অর্ডার কনফার্ম করুন',
-				'Add to cart'                          => 'কার্টে যোগ করুন',
-				'Search results: &ldquo;%s&rdquo;'     => '"%s" এর ফলাফল',
-				'Shop'                                 => 'শপ',
-				'Home'                                 => 'হোম',
-				'Remove this item'                     => 'মুছে ফেলুন',
-			);
-		}
+		static $map = array(
+			'Billing &amp; Shipping' => 'Delivery Details',
+			'Billing %s'             => '%s',
+			'Billing details'        => 'Delivery Details',
+			'Billing address'        => 'Delivery Address',
+			'Shipping:'              => 'Delivery:',
+			'Proceed to checkout'    => 'Proceed to Checkout',
+			'Your order'             => 'Your Order',
+			'Cart totals'            => 'Order Summary',
+		);
 		return isset( $map[ $text ] ) ? $map[ $text ] : $translation;
 	},
 	10,
 	2
 );
-
-add_filter(
-	'ngettext_woocommerce',
-	function ( $translation, $single, $plural, $number ) {
-		if ( 'Showing all %1$d results' === $plural ) {
-			return 'মোট %1$d টি প্রোডাক্ট';
-		}
-		if ( 'Shipping' === $single ) {
-			return 'ডেলিভারি চার্জ';
-		}
-		if ( '%s in stock' === $single ) {
-			return 'স্টকে আছে %s টি';
-		}
-		return $translation;
-	},
-	10,
-	4
-);
-
-add_filter(
-	'ngettext_with_context_woocommerce',
-	function ( $translation, $single ) {
-		if ( 'Showing %1$d&ndash;%2$d of %3$d result' === $single ) {
-			return '%3$d টির মধ্যে %1$d–%2$d দেখানো হচ্ছে';
-		}
-		return $translation;
-	},
-	10,
-	2
-);
-
-add_filter( 'woocommerce_shipping_package_name', fn() => __( 'ডেলিভারি চার্জ', 'sohag-exclusive' ) );

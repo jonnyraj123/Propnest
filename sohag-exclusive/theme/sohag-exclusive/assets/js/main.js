@@ -27,6 +27,8 @@
 
     var searchBtn = t.closest('[data-search-toggle]');
     if (searchBtn) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       var box = document.getElementById('sohag-search');
       var open = box.classList.toggle('is-open');
       searchBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
