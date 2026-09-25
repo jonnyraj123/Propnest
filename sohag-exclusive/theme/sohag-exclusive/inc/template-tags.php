@@ -130,21 +130,19 @@ function sohag_pay_badges() {
 	?>
 	<div class="pay-badges" aria-label="<?php esc_attr_e( 'Payment methods', 'sohag-exclusive' ); ?>">
 		<span class="pay-badge pay-badge--cod"><i></i><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></span>
-		<span class="pay-badge pay-badge--bkash"><i></i>bKash</span>
-		<span class="pay-badge pay-badge--nagad"><i></i>Nagad</span>
-		<span class="pay-badge pay-badge--rocket"><i></i>Rocket</span>
+		<span class="pay-badge pay-badge--upi"><i></i>UPI</span>
+		<span class="pay-badge pay-badge--gpay"><i></i>Google Pay</span>
+		<span class="pay-badge pay-badge--phonepe"><i></i>PhonePe</span>
+		<span class="pay-badge pay-badge--paytm"><i></i>Paytm</span>
 	</div>
 	<?php
 }
 
 /**
- * Delivery charges shown in info boxes — kept in sync with the shipping zones by the setup page.
+ * Delivery time shown in info boxes (Appearance → Customize → Sohag Exclusive Settings).
  */
-function sohag_delivery_charges() {
-	return array(
-		'inside'  => (int) get_theme_mod( 'sohag_delivery_inside', 70 ),
-		'outside' => (int) get_theme_mod( 'sohag_delivery_outside', 130 ),
-	);
+function sohag_delivery_days() {
+	return (string) sohag_opt( 'delivery_days' );
 }
 
 function sohag_announcements() {

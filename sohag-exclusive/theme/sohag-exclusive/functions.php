@@ -69,6 +69,8 @@ function sohag_assets() {
 		array(),
 		null
 	);
+	// Only the ₹ glyph, from a face drawn for Indian scripts, so the rupee sign is crisp in every browser.
+	wp_enqueue_style( 'sohag-rupee', 'https://fonts.googleapis.com/css2?family=Hind:wght@600&text=%E2%82%B9&display=swap', array(), null );
 	wp_enqueue_style( 'sohag-main', SOHAG_URI . '/assets/css/main.css', array(), SOHAG_VERSION );
 	wp_enqueue_script( 'sohag-main', SOHAG_URI . '/assets/js/main.js', array(), SOHAG_VERSION, true );
 }
@@ -90,17 +92,17 @@ function sohag_opt( $key ) {
 		'phone'            => '',
 		'whatsapp'         => '',
 		'email'            => '',
-		'address'          => 'Dhaka, Bangladesh',
+		'address'          => 'India',
 		'facebook'         => 'https://www.facebook.com/',
 		'instagram'        => '',
 		'messenger'        => '',
-		'announcement'     => "Cash on Delivery all over Bangladesh\nDelivery in 1–2 days inside Dhaka, 2–4 days outside\n100% handmade — crafted with love\nPay with bKash, Nagad or Rocket",
+		'announcement'     => "Free delivery all over India\nFree Cash on Delivery — no extra charge\n100% handmade — crafted with love\nEasy 7-day exchange on damaged items",
 		'hero_image'       => SOHAG_URI . '/assets/img/banner.jpg',
 		'hero_script'      => 'Crafted with Love',
 		'hero_title'       => 'Handmade <em>Jewellery</em> &amp; Fashion',
 		'hero_text'        => 'Earrings, bangles, necklaces, bags and outfits — each piece made by hand with care. Wear your story.',
-		'delivery_inside'  => 70,
-		'delivery_outside' => 130,
+		'delivery_days'    => '4–7 working days',
+		'grievance'        => 'Sohag Exclusive Customer Care',
 		'about'            => 'Sohag Exclusive — handmade products that are more than a product, they are a feeling. Unique • Artistic • For You.',
 	);
 	$value = get_theme_mod( 'sohag_' . $key, null );
@@ -147,7 +149,7 @@ if ( sohag_is_wc() ) {
 
 // Themes load after plugins, so WooCommerce classes are already available here.
 if ( class_exists( 'WC_Payment_Gateway' ) ) {
-	require_once SOHAG_DIR . '/inc/class-sohag-mobile-payment.php';
+	require_once SOHAG_DIR . '/inc/class-sohag-upi-payment.php';
 }
 
 if ( is_admin() ) {

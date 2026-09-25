@@ -36,10 +36,10 @@
       return;
     }
 
-    // Mobile banking gateway: copy number.
-    var copy = t.closest('[data-mpay-copy]');
+    // UPI gateway: copy the UPI ID.
+    var copy = t.closest('[data-upi-copy]');
     if (copy) {
-      var num = copy.parentNode.querySelector('[data-mpay-number]');
+      var num = copy.parentNode.querySelector('[data-upi-id]');
       if (num && navigator.clipboard) {
         navigator.clipboard.writeText(num.textContent.trim()).then(function () {
           var old = copy.textContent;
@@ -54,14 +54,4 @@
     if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) setDrawer(false);
   });
 
-  // Mobile banking gateway: switch displayed number with the chosen provider.
-  // Checkout HTML is re-rendered by AJAX, so listen on document.
-  document.addEventListener('change', function (e) {
-    var r = e.target;
-    if (!r.matches || !r.matches('input[name="sohag_mpay_method"]')) return;
-    var wrap = r.closest('.sohag-mpay');
-    if (!wrap) return;
-    wrap.querySelector('[data-mpay-number]').textContent = r.getAttribute('data-number');
-    wrap.querySelector('[data-mpay-label]').textContent = r.getAttribute('data-label');
-  });
 })();

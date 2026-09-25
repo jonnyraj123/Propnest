@@ -1,7 +1,7 @@
 <?php
 /**
- * WooCommerce customisations for a Bangladeshi store:
- * short checkout, BD phone validation, Order Now button, delivery info, cart badge fragments.
+ * WooCommerce customisations for an Indian store:
+ * short checkout, Indian mobile + PIN code validation, Order Now button, delivery info, cart badge fragments.
  *
  * @package Sohag_Exclusive
  */
@@ -138,7 +138,6 @@ add_action(
 	'woocommerce_single_product_summary',
 	function () {
 		global $product;
-		$charges = sohag_delivery_charges();
 		/* translators: 1: product name, 2: product URL. */
 		$wa_text = sprintf( __( 'Hi, I would like to order: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() );
 		$wa_url  = sohag_whatsapp_url( $wa_text );
@@ -151,9 +150,9 @@ add_action(
 			</div>
 		<?php endif; ?>
 		<div class="delivery-box">
-			<div class="delivery-box__row"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?><span><strong><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></strong> — <?php esc_html_e( 'pay when you receive it', 'sohag-exclusive' ); ?></span></div>
-			<div class="delivery-box__row"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?><span><?php echo esc_html( sprintf( 'Inside Dhaka ৳%d (1–2 days) • Outside Dhaka ৳%d (2–4 days)', $charges['inside'], $charges['outside'] ) ); ?></span></div>
-			<div class="delivery-box__row"><?php echo sohag_icon( 'shield' ); // phpcs:ignore ?><span><?php esc_html_e( 'Check the item at delivery — exchange if anything is faulty', 'sohag-exclusive' ); ?></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?><span><strong><?php esc_html_e( 'Free Cash on Delivery', 'sohag-exclusive' ); ?></strong> — <?php esc_html_e( 'no extra charge, pay when you receive it', 'sohag-exclusive' ); ?></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?><span><strong><?php esc_html_e( 'Free delivery all over India', 'sohag-exclusive' ); ?></strong> — <?php echo esc_html( sohag_delivery_days() ); ?></span></div>
+			<div class="delivery-box__row"><?php echo sohag_icon( 'shield' ); // phpcs:ignore ?><span><?php esc_html_e( 'Easy 7-day exchange if the item arrives damaged or wrong', 'sohag-exclusive' ); ?></span></div>
 			<?php if ( sohag_opt( 'phone' ) ) : ?>
 				<div class="delivery-box__row"><?php echo sohag_icon( 'phone' ); // phpcs:ignore ?><span><?php esc_html_e( 'Questions? Call us:', 'sohag-exclusive' ); ?> <a href="<?php echo esc_url( sohag_tel_url() ); ?>"><strong><?php echo esc_html( sohag_opt( 'phone' ) ); ?></strong></a></span></div>
 			<?php endif; ?>
@@ -164,14 +163,14 @@ add_action(
 );
 
 /* -------------------------------------------------------------------------
- * Checkout: short form (name, mobile, district, area, address)
+ * Checkout: short form (name, mobile, address, city, state, PIN code)
  * ---------------------------------------------------------------------- */
 add_filter(
 	'woocommerce_checkout_fields',
 	function ( $fields ) {
 		$b = &$fields['billing'];
 
-		unset( $b['billing_last_name'], $b['billing_company'], $b['billing_address_2'], $b['billing_postcode'] );
+		unset( $b['billing_last_name'], $b['billing_company'] );
 
 		$b['billing_first_name']['label']       = __( 'Full name', 'sohag-exclusive' );
 		$b['billing_first_name']['placeholder'] = __( 'Your full name', 'sohag-exclusive' );
@@ -179,7 +178,7 @@ add_filter(
 		$b['billing_first_name']['priority']    = 10;
 
 		$b['billing_phone']['label']       = __( 'Mobile number', 'sohag-exclusive' );
-		$b['billing_phone']['placeholder'] = '01XXXXXXXXX';
+		$b['billing_phone']['placeholder'] = __( '10-digit mobile number', 'sohag-exclusive' );
 		$b['billing_phone']['required']    = true;
 		$b['billing_phone']['class']       = array( 'form-row-wide' );
 		$b['billing_phone']['priority']    = 20;
@@ -193,21 +192,38 @@ add_filter(
 		if ( isset( $b['billing_country'] ) ) {
 			$b['billing_country']['priority'] = 25;
 		}
-		if ( isset( $b['billing_state'] ) ) {
-			$b['billing_state']['label']    = __( 'District', 'sohag-exclusive' );
-			$b['billing_state']['required'] = true;
-			$b['billing_state']['class']    = array( 'form-row-first', 'address-field' );
-			$b['billing_state']['priority'] = 30;
+
+		$b['billing_address_1']['label']       = __( 'Address', 'sohag-exclusive' );
+		$b['billing_address_1']['placeholder'] = __( 'House / flat no., street, area', 'sohag-exclusive' );
+		$b['billing_address_1']['priority']    = 30;
+
+		if ( isset( $b['billing_address_2'] ) ) {
+			$b['billing_address_2']['label']       = __( 'Landmark', 'sohag-exclusive' );
+			$b['billing_address_2']['label_class'] = array();
+			$b['billing_address_2']['placeholder'] = __( 'Near… (optional)', 'sohag-exclusive' );
+			$b['billing_address_2']['required']    = false;
+			$b['billing_address_2']['priority']    = 35;
 		}
 		if ( isset( $b['billing_city'] ) ) {
-			$b['billing_city']['label']       = __( 'Area / Thana', 'sohag-exclusive' );
-			$b['billing_city']['placeholder'] = __( 'e.g. Mirpur', 'sohag-exclusive' );
-			$b['billing_city']['class']       = array( 'form-row-last', 'address-field' );
+			$b['billing_city']['label']       = __( 'City / Town', 'sohag-exclusive' );
+			$b['billing_city']['placeholder'] = '';
+			$b['billing_city']['class']       = array( 'form-row-first', 'address-field' );
 			$b['billing_city']['priority']    = 40;
 		}
-		$b['billing_address_1']['label']       = __( 'Full address', 'sohag-exclusive' );
-		$b['billing_address_1']['placeholder'] = __( 'House / road no., area', 'sohag-exclusive' );
-		$b['billing_address_1']['priority']    = 50;
+		if ( isset( $b['billing_postcode'] ) ) {
+			$b['billing_postcode']['label']       = __( 'PIN code', 'sohag-exclusive' );
+			$b['billing_postcode']['placeholder'] = __( '6 digits', 'sohag-exclusive' );
+			$b['billing_postcode']['required']    = true;
+			$b['billing_postcode']['class']       = array( 'form-row-last', 'address-field' );
+			$b['billing_postcode']['priority']    = 45;
+			$b['billing_postcode']['custom_attributes'] = array( 'inputmode' => 'numeric', 'maxlength' => '6' );
+		}
+		if ( isset( $b['billing_state'] ) ) {
+			$b['billing_state']['label']    = __( 'State', 'sohag-exclusive' );
+			$b['billing_state']['required'] = true;
+			$b['billing_state']['class']    = array( 'form-row-wide', 'address-field' );
+			$b['billing_state']['priority'] = 50;
+		}
 
 		if ( isset( $fields['order']['order_comments'] ) ) {
 			$fields['order']['order_comments']['label']       = __( 'Order note', 'sohag-exclusive' );
@@ -219,22 +235,35 @@ add_filter(
 	20
 );
 
-// Country locale JS re-applies labels on page load; keep ours for Bangladesh.
+// Country locale JS re-applies labels and order on page load; keep ours for India.
 add_filter(
 	'woocommerce_get_country_locale',
 	function ( $locale ) {
-		$locale['BD']['state']     = array(
-			'label'    => __( 'District', 'sohag-exclusive' ),
+		$locale['IN']['address_1'] = array(
+			'label'       => __( 'Address', 'sohag-exclusive' ),
+			'placeholder' => __( 'House / flat no., street, area', 'sohag-exclusive' ),
+			'priority'    => 30,
+		);
+		$locale['IN']['address_2'] = array(
+			'label'       => __( 'Landmark', 'sohag-exclusive' ),
+			'label_class' => array(),
+			'placeholder' => __( 'Near… (optional)', 'sohag-exclusive' ),
+			'required'    => false,
+			'priority'    => 35,
+		);
+		$locale['IN']['city']      = array(
+			'label'    => __( 'City / Town', 'sohag-exclusive' ),
+			'priority' => 40,
+		);
+		$locale['IN']['postcode']  = array(
+			'label'    => __( 'PIN code', 'sohag-exclusive' ),
 			'required' => true,
+			'priority' => 45,
 		);
-		$locale['BD']['city']      = array( 'label' => __( 'Area / Thana', 'sohag-exclusive' ) );
-		$locale['BD']['address_1'] = array(
-			'label'       => __( 'Full address', 'sohag-exclusive' ),
-			'placeholder' => __( 'House / road no., area', 'sohag-exclusive' ),
-		);
-		$locale['BD']['postcode']  = array(
-			'required' => false,
-			'hidden'   => true,
+		$locale['IN']['state']     = array(
+			'label'    => __( 'State', 'sohag-exclusive' ),
+			'required' => true,
+			'priority' => 50,
 		);
 		return $locale;
 	}
@@ -246,32 +275,31 @@ add_filter(
 		if ( isset( $fields['last_name'] ) ) {
 			$fields['last_name']['required'] = false;
 		}
-		if ( isset( $fields['postcode'] ) ) {
-			$fields['postcode']['required'] = false;
-		}
 		return $fields;
 	}
 );
 
 /**
- * Normalise a Bangladeshi mobile number to 01XXXXXXXXX, or return '' when invalid.
- * Accepts +880 / 880 prefixes, spaces, dashes and Bangla digits.
+ * Normalise an Indian mobile number to 10 digits, or return '' when invalid.
+ * Accepts +91 / 91 / 0 prefixes, spaces and dashes.
  */
-function sohag_normalize_bd_phone( $raw ) {
-	$bn     = array( "\u{09E6}", "\u{09E7}", "\u{09E8}", "\u{09E9}", "\u{09EA}", "\u{09EB}", "\u{09EC}", "\u{09ED}", "\u{09EE}", "\u{09EF}" );
-	$digits = preg_replace( '/\D+/', '', str_replace( $bn, range( 0, 9 ), (string) $raw ) );
-	if ( 0 === strpos( $digits, '880' ) ) {
+function sohag_normalize_in_phone( $raw ) {
+	$digits = preg_replace( '/\D+/', '', (string) $raw );
+	if ( 12 === strlen( $digits ) && 0 === strpos( $digits, '91' ) ) {
 		$digits = substr( $digits, 2 );
+	} elseif ( 11 === strlen( $digits ) && '0' === $digits[0] ) {
+		$digits = substr( $digits, 1 );
 	}
-	return preg_match( '/^01[3-9]\d{8}$/', $digits ) ? $digits : '';
+	return preg_match( '/^[6-9]\d{9}$/', $digits ) ? $digits : '';
 }
 
 add_action(
 	'woocommerce_after_checkout_validation',
 	function ( $data, $errors ) {
-		if ( isset( $data['billing_phone'] ) && '' !== $data['billing_phone'] && ! sohag_normalize_bd_phone( $data['billing_phone'] ) ) {
-			$errors->add( 'billing_phone_validation', __( 'Please enter a valid 11-digit mobile number (e.g. 017XXXXXXXX).', 'sohag-exclusive' ) );
+		if ( isset( $data['billing_phone'] ) && '' !== $data['billing_phone'] && ! sohag_normalize_in_phone( $data['billing_phone'] ) ) {
+			$errors->add( 'billing_phone_validation', __( 'Please enter a valid 10-digit Indian mobile number.', 'sohag-exclusive' ) );
 		}
+		// PIN codes are validated by WooCommerce itself (6 digits for India).
 	},
 	10,
 	2
@@ -280,7 +308,7 @@ add_action(
 add_action(
 	'woocommerce_checkout_create_order',
 	function ( $order ) {
-		$phone = sohag_normalize_bd_phone( $order->get_billing_phone() );
+		$phone = sohag_normalize_in_phone( $order->get_billing_phone() );
 		if ( $phone ) {
 			$order->set_billing_phone( $phone );
 		}
@@ -292,7 +320,7 @@ add_filter( 'woocommerce_order_button_text', fn() => __( 'Confirm Order', 'sohag
 add_action(
 	'woocommerce_review_order_after_submit',
 	function () {
-		echo '<div class="checkout-assurance"><span>' . esc_html__( 'Secure order', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Cash on Delivery', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Confirmation call', 'sohag-exclusive' ) . '</span></div>';
+		echo '<div class="checkout-assurance"><span>' . esc_html__( 'Secure order', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Free delivery', 'sohag-exclusive' ) . '</span><span>' . esc_html__( 'Free Cash on Delivery', 'sohag-exclusive' ) . '</span></div>';
 	}
 );
 
@@ -336,6 +364,7 @@ add_filter(
 		static $map = array(
 			'Billing &amp; Shipping' => 'Delivery Details',
 			'Billing %s'             => '%s',
+			'%s is not a valid postcode / ZIP.' => 'Please enter a valid 6-digit PIN code.',
 			'Billing details'        => 'Delivery Details',
 			'Billing address'        => 'Delivery Address',
 			'Shipping:'              => 'Delivery:',
@@ -344,6 +373,16 @@ add_filter(
 			'Cart totals'            => 'Order Summary',
 		);
 		return isset( $map[ $text ] ) ? $map[ $text ] : $translation;
+	},
+	10,
+	2
+);
+
+// "Billing %s" in checkout error messages uses a context string, so it needs its own filter.
+add_filter(
+	'gettext_with_context_woocommerce',
+	function ( $translation, $text ) {
+		return 'Billing %s' === $text ? '%s' : $translation;
 	},
 	10,
 	2

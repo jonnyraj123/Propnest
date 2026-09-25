@@ -21,12 +21,13 @@ function sohag_customize_register( $wp_customize ) {
 			'title'  => __( 'Contact & Social', 'sohag-exclusive' ),
 			'fields' => array(
 				'phone'     => array( __( 'Phone number', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
-				'whatsapp'  => array( __( 'WhatsApp number with country code (e.g. 8801712345678)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
+				'whatsapp'  => array( __( 'WhatsApp number with country code (e.g. 919876543210)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
 				'email'     => array( __( 'Email', 'sohag-exclusive' ), 'email', 'sanitize_email' ),
 				'address'   => array( __( 'Address', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
 				'facebook'  => array( __( 'Facebook page URL', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
 				'messenger' => array( __( 'Messenger link (leave empty to build it from the Facebook URL)', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
 				'instagram' => array( __( 'Instagram URL', 'sohag-exclusive' ), 'url', 'esc_url_raw' ),
+				'grievance' => array( __( 'Grievance officer name (shown on policy pages)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
 			),
 		),
 		'sohag_home'    => array(
@@ -37,6 +38,7 @@ function sohag_customize_register( $wp_customize ) {
 				'hero_title'   => array( __( 'Hero — title (wrap a word in <em> to make it gold)', 'sohag-exclusive' ), 'text', 'sohag_sanitize_inline_html' ),
 				'hero_text'    => array( __( 'Hero — description', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
 				'about'        => array( __( 'Footer — about text', 'sohag-exclusive' ), 'textarea', 'sanitize_textarea_field' ),
+				'delivery_days' => array( __( 'Delivery time (e.g. 4–7 working days)', 'sohag-exclusive' ), 'text', 'sanitize_text_field' ),
 			),
 		),
 	);

@@ -8,7 +8,6 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-$sohag_charges = sohag_delivery_charges();
 $sohag_wa      = sohag_whatsapp_url();
 ?>
 
@@ -30,7 +29,7 @@ $sohag_wa      = sohag_whatsapp_url();
 			</a>
 			<div class="hero__badge">
 				<span class="hero__badge-icon"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?></span>
-				<span><strong><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></strong><?php esc_html_e( 'Pay when you receive it', 'sohag-exclusive' ); ?></span>
+				<span><strong><?php esc_html_e( 'Free Cash on Delivery', 'sohag-exclusive' ); ?></strong><?php esc_html_e( 'Free delivery all over India', 'sohag-exclusive' ); ?></span>
 			</div>
 		</div>
 	</div>
@@ -39,12 +38,12 @@ $sohag_wa      = sohag_whatsapp_url();
 <section class="trust" aria-label="<?php esc_attr_e( 'Why shop with us', 'sohag-exclusive' ); ?>">
 	<div class="container trust__grid">
 		<div class="trust__item">
-			<span class="trust__icon"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?></span>
-			<div><strong><?php esc_html_e( 'Cash on Delivery', 'sohag-exclusive' ); ?></strong><span><?php esc_html_e( 'All over Bangladesh', 'sohag-exclusive' ); ?></span></div>
+			<span class="trust__icon"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?></span>
+			<div><strong><?php esc_html_e( 'Free Delivery', 'sohag-exclusive' ); ?></strong><span><?php esc_html_e( 'All over India', 'sohag-exclusive' ); ?></span></div>
 		</div>
 		<div class="trust__item">
-			<span class="trust__icon"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?></span>
-			<div><strong><?php esc_html_e( 'Fast Home Delivery', 'sohag-exclusive' ); ?></strong><span><?php echo esc_html( sprintf( 'Dhaka ৳%d • Outside ৳%d', $sohag_charges['inside'], $sohag_charges['outside'] ) ); ?></span></div>
+			<span class="trust__icon"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?></span>
+			<div><strong><?php esc_html_e( 'Free Cash on Delivery', 'sohag-exclusive' ); ?></strong><span><?php esc_html_e( 'No extra charge', 'sohag-exclusive' ); ?></span></div>
 		</div>
 		<div class="trust__item">
 			<span class="trust__icon"><?php echo sohag_icon( 'heart' ); // phpcs:ignore ?></span>
@@ -52,7 +51,7 @@ $sohag_wa      = sohag_whatsapp_url();
 		</div>
 		<div class="trust__item">
 			<span class="trust__icon"><?php echo sohag_icon( 'refresh' ); // phpcs:ignore ?></span>
-			<div><strong><?php esc_html_e( 'Easy Exchange', 'sohag-exclusive' ); ?></strong><span><?php esc_html_e( 'If anything is faulty', 'sohag-exclusive' ); ?></span></div>
+			<div><strong><?php esc_html_e( 'Easy Returns', 'sohag-exclusive' ); ?></strong><span><?php esc_html_e( '7-day exchange on damage', 'sohag-exclusive' ); ?></span></div>
 		</div>
 	</div>
 </section>
@@ -141,12 +140,12 @@ $sohag_wa      = sohag_whatsapp_url();
 				<p><?php esc_html_e( 'Tap "Order Now" or "Add to Cart" on any product.', 'sohag-exclusive' ); ?></p>
 			</div>
 			<div class="step">
-				<h3><?php esc_html_e( 'Enter name, phone & address', 'sohag-exclusive' ); ?></h3>
-				<p><?php esc_html_e( 'No account needed — checkout is a single page.', 'sohag-exclusive' ); ?></p>
+				<h3><?php esc_html_e( 'Enter your delivery details', 'sohag-exclusive' ); ?></h3>
+				<p><?php esc_html_e( 'Name, phone, address and PIN code — no account needed.', 'sohag-exclusive' ); ?></p>
 			</div>
 			<div class="step">
 				<h3><?php esc_html_e( 'Pay on delivery', 'sohag-exclusive' ); ?></h3>
-				<p><?php esc_html_e( 'Cash on Delivery, or pay in advance with bKash, Nagad or Rocket.', 'sohag-exclusive' ); ?></p>
+				<p><?php esc_html_e( 'Free Cash on Delivery, or pay by UPI — delivery is free all over India.', 'sohag-exclusive' ); ?></p>
 			</div>
 		</div>
 		<?php sohag_pay_badges(); ?>

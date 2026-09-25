@@ -44,6 +44,14 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--maroon); text-decoration: none; transition: color .2s; }
 a:hover { color: var(--gold); }
+
+/* Rupee sign: drawn from a face made for Indian scripts (subset loaded in functions.php), slightly heavier so it reads clearly. */
+.woocommerce-Price-currencySymbol, .rupee {
+  font-family: "Hind", "Noto Sans", "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-right: 1px;
+}
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--maroon-deep); line-height: 1.2; margin: 0 0 .5em; font-weight: 700; }
 p { margin: 0 0 1em; }
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -296,9 +304,10 @@ input[type="submit"],
   background: var(--paper); border: 1px solid var(--line); font-weight: 600; font-size: 14px;
 }
 .pay-badge i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.pay-badge--bkash i { background: #e2136e; }
-.pay-badge--nagad i { background: #f7941d; }
-.pay-badge--rocket i { background: #8c3494; }
+.pay-badge--upi i { background: #f47b20; }
+.pay-badge--gpay i { background: #1a73e8; }
+.pay-badge--phonepe i { background: #5f259f; }
+.pay-badge--paytm i { background: #00b9f1; }
 .pay-badge--cod i { background: var(--success); }
 
 /* ---------- Social CTA ---------- */
@@ -589,23 +598,25 @@ label, .woocommerce form .form-row label { font-weight: 600; font-size: 14.5px; 
 .checkout-assurance span::before { content: "✓"; color: var(--success); font-weight: 700; margin-right: 5px; }
 
 /* Mobile banking gateway */
-.sohag-mpay { display: grid; gap: 12px; }
-.sohag-mpay__methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(68px, 1fr)); gap: 8px; }
-.sohag-mpay__methods label {
-  margin: 0; display: flex !important; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px;
-  border: 1.5px solid #e0cdd3; border-radius: 10px; background: #fff; cursor: pointer; font-size: 14.5px; text-align: center;
+.sohag-upi { display: grid; gap: 12px; }
+.sohag-upi__desc { margin: 0; }
+.sohag-upi__info { background: #fff; border-radius: 10px; padding: 14px; border: 1px dashed #d8b6c0; display: grid; gap: 10px; }
+.sohag-upi__row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.sohag-upi__label { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); min-width: 64px; }
+.sohag-upi__id { font-size: 17px; font-weight: 600; color: var(--maroon); overflow-wrap: anywhere; }
+.sohag-upi__copy { font-size: 12.5px; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--maroon); background: transparent; color: var(--maroon); cursor: pointer; }
+.sohag-upi__qr { width: 180px; max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
+.sohag-upi__app {
+  display: inline-flex; justify-content: center; padding: 10px 16px; border-radius: 999px; background: var(--maroon); color: #fff !important;
+  font-weight: 600; font-size: 14.5px; text-align: center;
 }
-.sohag-mpay__methods input { position: absolute; opacity: 0; pointer-events: none; }
-.sohag-mpay__methods label:has(input:checked) { border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122, 18, 48, .12); }
-.sohag-mpay__dot { width: 12px; height: 12px; border-radius: 50%; }
-.sohag-mpay__info { background: #fff; border-radius: 10px; padding: 12px 14px; border: 1px dashed #d8b6c0; }
-.sohag-mpay__info ol { margin: 6px 0 0; padding-left: 20px; line-height: 1.5; }
-.sohag-mpay__info ol li { border: 0 !important; background: none !important; padding: 2px 0 !important; box-shadow: none !important; list-style: decimal !important; display: list-item !important; }
-.sohag-mpay__info ol li::before, .sohag-mpay__info ol li::after { content: none !important; display: none !important; }
-.sohag-mpay__number { font-size: 18px; font-weight: 700; color: var(--maroon); letter-spacing: .5px; }
-.sohag-mpay__copy { font-size: 12.5px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--maroon); background: transparent; color: var(--maroon); cursor: pointer; margin-left: 6px; }
-.sohag-mpay .form-row { margin: 0 !important; padding: 0 !important; }
-.sohag-mpay input.input-text { background: #fff; }
+.sohag-upi__app:hover { background: var(--maroon-deep); }
+@media (hover: hover) and (pointer: fine) { .sohag-upi__app { display: none; } } /* UPI apps live on phones */
+.sohag-upi__info ol { margin: 0; padding-left: 20px; line-height: 1.5; font-size: 14.5px; }
+.sohag-upi__info ol li { border: 0 !important; background: none !important; padding: 2px 0 !important; box-shadow: none !important; list-style: decimal !important; display: list-item !important; }
+.sohag-upi__info ol li::before, .sohag-upi__info ol li::after { content: none !important; display: none !important; }
+.sohag-upi .form-row { margin: 0 !important; padding: 0 !important; }
+.sohag-upi input.input-text { background: #fff; }
 
 /* Thank you / order */
 .woocommerce-order { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; }
