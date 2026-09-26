@@ -89,8 +89,8 @@ add_filter( 'wp_resource_hints', 'sohag_preconnect', 10, 2 );
  */
 function sohag_opt( $key ) {
 	$defaults = array(
-		'phone'            => '',
-		'whatsapp'         => '',
+		'phone'            => '+91 90737 66083',
+		'whatsapp'         => '919073766083',
 		'email'            => '',
 		'address'          => 'India',
 		'facebook'         => 'https://www.facebook.com/',

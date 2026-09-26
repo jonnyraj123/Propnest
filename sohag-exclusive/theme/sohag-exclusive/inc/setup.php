@@ -104,14 +104,14 @@ function sohag_setup_page() {
 
 			<h2><?php esc_html_e( 'UPI payment (optional)', 'sohag-exclusive' ); ?></h2>
 			<table class="form-table" role="presentation">
-				<tr><th><label for="upi_id"><?php esc_html_e( 'UPI ID', 'sohag-exclusive' ); ?></label></th><td><input id="upi_id" name="upi_id" type="text" class="regular-text" placeholder="yourname@okaxis" value="<?php echo esc_attr( $gw['upi_id'] ?? '' ); ?>"><p class="description"><?php esc_html_e( 'Leave empty to offer Cash on Delivery only.', 'sohag-exclusive' ); ?></p></td></tr>
+				<tr><th><label for="upi_id"><?php esc_html_e( 'UPI ID', 'sohag-exclusive' ); ?></label></th><td><input id="upi_id" name="upi_id" type="text" class="regular-text" placeholder="yourname@okaxis" value="<?php echo esc_attr( $gw['upi_id'] ?? 'swarnalibanerjee0217@oksbi' ); ?>"><p class="description"><?php esc_html_e( 'Leave empty to offer Cash on Delivery only.', 'sohag-exclusive' ); ?></p></td></tr>
 				<tr><th><label for="upi_name"><?php esc_html_e( 'Payee name', 'sohag-exclusive' ); ?></label></th><td><input id="upi_name" name="upi_name" type="text" class="regular-text" value="<?php echo esc_attr( $gw['payee_name'] ?? 'Sohag Exclusive' ); ?>"></td></tr>
 			</table>
 
 			<h2><?php esc_html_e( 'Contact', 'sohag-exclusive' ); ?></h2>
 			<table class="form-table" role="presentation">
-				<tr><th><label for="phone"><?php esc_html_e( 'Phone', 'sohag-exclusive' ); ?></label></th><td><input id="phone" name="phone" type="text" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_phone', '' ) ); ?>" placeholder="+91 98XXX XXXXX"></td></tr>
-				<tr><th><label for="whatsapp">WhatsApp</label></th><td><input id="whatsapp" name="whatsapp" type="text" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_whatsapp', '' ) ); ?>" placeholder="919876543210"></td></tr>
+				<tr><th><label for="phone"><?php esc_html_e( 'Phone', 'sohag-exclusive' ); ?></label></th><td><input id="phone" name="phone" type="text" class="regular-text" value="<?php echo esc_attr( sohag_opt( 'phone' ) ); ?>" placeholder="+91 98XXX XXXXX"></td></tr>
+				<tr><th><label for="whatsapp">WhatsApp</label></th><td><input id="whatsapp" name="whatsapp" type="text" class="regular-text" value="<?php echo esc_attr( sohag_opt( 'whatsapp' ) ); ?>" placeholder="919876543210"></td></tr>
 				<tr><th><label for="email">Email</label></th><td><input id="email" name="email" type="email" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_email', '' ) ); ?>" placeholder="info@sohagexclusive.com"></td></tr>
 				<tr><th><label for="facebook">Facebook</label></th><td><input id="facebook" name="facebook" type="url" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_facebook', '' ) ); ?>" placeholder="https://www.facebook.com/..."></td></tr>
 				<tr><th><label for="address"><?php esc_html_e( 'Address', 'sohag-exclusive' ); ?></label></th><td><input id="address" name="address" type="text" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_address', '' ) ); ?>" placeholder="City, State, India"></td></tr>
@@ -284,14 +284,18 @@ function sohag_run_setup( $args ) {
 		$existing = get_page_by_path( $slug );
 		if ( $existing ) {
 			$page_ids[ $slug ] = $existing->ID;
-			// Refresh the text only if the owner hasn't edited the page since the theme wrote it.
-			$stored = get_post_meta( $existing->ID, '_sohag_content_hash', true );
-			if ( $stored && md5( $existing->post_content ) === $stored ) {
+			// Refresh the text if the owner hasn't edited the page since the theme wrote it, or if it is
+			// an unpublished page the theme didn't write (e.g. WordPress's own draft "Privacy Policy").
+			$stored    = get_post_meta( $existing->ID, '_sohag_content_hash', true );
+			$untouched = $stored && md5( $existing->post_content ) === $stored;
+			$wp_draft  = ! $stored && 'publish' !== $existing->post_status;
+			if ( $untouched || $wp_draft ) {
 				wp_update_post(
 					array(
 						'ID'           => $existing->ID,
 						'post_title'   => $page[0],
 						'post_content' => $page[1],
+						'post_status'  => 'publish',
 					)
 				);
 				update_post_meta( $existing->ID, '_sohag_content_hash', md5( get_post( $existing->ID )->post_content ) );

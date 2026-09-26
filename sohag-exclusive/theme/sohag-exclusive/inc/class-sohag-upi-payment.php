@@ -56,7 +56,7 @@ class Sohag_UPI_Payment_Gateway extends WC_Payment_Gateway {
 				'title'       => __( 'UPI ID', 'sohag-exclusive' ),
 				'type'        => 'text',
 				'description' => __( 'e.g. sohagexclusive@okaxis. The UPI option is hidden until this is set.', 'sohag-exclusive' ),
-				'default'     => '',
+				'default'     => 'swarnalibanerjee0217@oksbi',
 			),
 			'payee_name'   => array(
 				'title'   => __( 'Payee name', 'sohag-exclusive' ),
