@@ -75,7 +75,7 @@ function sohag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'sohag_hero_image',
 		array(
-			'default'           => SOHAG_URI . '/assets/img/banner.jpg',
+			'default'           => SOHAG_URI . '/assets/img/hero-puja.jpg',
 			'sanitize_callback' => 'esc_url_raw',
 		)
 	);

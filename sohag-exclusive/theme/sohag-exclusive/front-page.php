@@ -17,7 +17,7 @@ $sohag_wa      = sohag_whatsapp_url();
 			<span class="hero__script"><?php echo esc_html( sohag_opt( 'hero_script' ) ); ?></span>
 			<h1><?php echo wp_kses( sohag_opt( 'hero_title' ), array( 'em' => array(), 'strong' => array(), 'br' => array() ) ); ?></h1>
 			<p class="hero__lead"><?php echo esc_html( sohag_opt( 'hero_text' ) ); ?></p>
-			<div class="hero__tags"><span>Unique</span><span>Artistic</span><span>For You</span></div>
+			<div class="hero__tags"><span>Handmade</span><span>Traditional</span><span>Only from <b class="rupee">₹</b>199</span></div>
 			<div class="hero__cta">
 				<a class="btn" href="<?php echo esc_url( sohag_shop_url() ); ?>"><?php esc_html_e( 'Shop Now', 'sohag-exclusive' ); ?> →</a>
 				<a class="btn btn--ghost" href="#categories"><?php esc_html_e( 'Browse Categories', 'sohag-exclusive' ); ?></a>
@@ -25,7 +25,7 @@ $sohag_wa      = sohag_whatsapp_url();
 		</div>
 		<div class="hero__media">
 			<a class="hero__frame" href="<?php echo esc_url( sohag_shop_url() ); ?>">
-				<img src="<?php echo esc_url( sohag_opt( 'hero_image' ) ); ?>" alt="<?php esc_attr_e( 'Sohag Exclusive handmade products', 'sohag-exclusive' ); ?>" width="1080" height="720" fetchpriority="high">
+				<img src="<?php echo esc_url( sohag_opt( 'hero_image' ) ); ?>" alt="<?php esc_attr_e( 'Red and white puja saree with Bangaliana jewellery by Sohag Exclusive', 'sohag-exclusive' ); ?>" width="720" height="960" fetchpriority="high">
 			</a>
 			<div class="hero__badge">
 				<span class="hero__badge-icon"><?php echo sohag_icon( 'cash' ); // phpcs:ignore ?></span>
@@ -86,7 +86,7 @@ $sohag_wa      = sohag_whatsapp_url();
 			<h2><?php esc_html_e( 'Fresh from Our Hands', 'sohag-exclusive' ); ?></h2>
 			<p><?php esc_html_e( 'Newly made pieces — limited stock', 'sohag-exclusive' ); ?></p>
 		</div>
-		<?php echo do_shortcode( '[products limit="8" columns="4" orderby="date" order="DESC" visibility="visible"]' ); ?>
+		<?php echo do_shortcode( '[products limit="4" columns="4" orderby="date" order="DESC" visibility="visible"]' ); ?>
 		<div class="section-foot">
 			<a class="btn btn--ghost" href="<?php echo esc_url( sohag_shop_url() ); ?>"><?php esc_html_e( 'View All Products', 'sohag-exclusive' ); ?> →</a>
 		</div>

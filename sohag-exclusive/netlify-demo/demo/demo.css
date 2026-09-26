@@ -16,3 +16,8 @@
 .demo-notice .woocommerce-error { margin: 0; }
 .demo-footnote { margin-top: 24px; font-size: 14px; color: var(--muted, #76656b); text-align: center; }
 .woocommerce-customer-details address { border: 1px solid var(--line, #eadfd0); border-radius: 12px; padding: 16px; font-style: normal; line-height: 1.7; }
+/* Static gallery: whichever photo is shown fills the frame (WooCommerce styles photos 2+ as small tiles). */
+.woocommerce div.product div.images .woocommerce-product-gallery__wrapper .woocommerce-product-gallery__image:not([style*="none"]) {
+  display: block !important; width: 100% !important; float: none !important; padding: 0 !important;
+}
+.woocommerce div.product div.images .flex-control-thumbs img { cursor: pointer; }

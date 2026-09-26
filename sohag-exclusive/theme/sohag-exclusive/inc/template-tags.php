@@ -88,7 +88,7 @@ function sohag_categories( $limit = 6 ) {
 		$terms = get_terms(
 			array(
 				'taxonomy'   => 'product_cat',
-				'hide_empty' => false,
+				'hide_empty' => true, // Only categories that have products.
 				'parent'     => 0,
 				'number'     => $limit,
 				'orderby'    => 'term_order',

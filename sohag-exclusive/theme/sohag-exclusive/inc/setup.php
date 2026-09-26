@@ -71,7 +71,7 @@ function sohag_setup_page() {
 				'whatsapp' => isset( $_POST['whatsapp'] ) ? sanitize_text_field( wp_unslash( $_POST['whatsapp'] ) ) : '',
 				'facebook' => isset( $_POST['facebook'] ) ? esc_url_raw( wp_unslash( $_POST['facebook'] ) ) : '',
 				'email'    => isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '',
-				'demo'     => ! empty( $_POST['demo'] ),
+				'starter'  => ! empty( $_POST['starter'] ),
 			)
 		);
 	}
@@ -117,7 +117,7 @@ function sohag_setup_page() {
 				<tr><th><label for="address"><?php esc_html_e( 'Address', 'sohag-exclusive' ); ?></label></th><td><input id="address" name="address" type="text" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_address', '' ) ); ?>" placeholder="City, State, India"></td></tr>
 			</table>
 
-			<p><label><input type="checkbox" name="demo" value="1"> <?php esc_html_e( 'Create 6 sample products for testing (as drafts — edit photos/prices, then publish)', 'sohag-exclusive' ); ?></label></p>
+			<p><label><input type="checkbox" name="starter" value="1" checked> <?php esc_html_e( 'Add the Sohag starter products (5 products with photos: Bangaliana necklaces, choker set, oxidised cuff, puja saree)', 'sohag-exclusive' ); ?></label></p>
 
 			<p><button class="button button-primary button-hero" name="sohag_run_setup" value="1" <?php disabled( ! sohag_is_wc() ); ?>><?php esc_html_e( 'Run Store Setup', 'sohag-exclusive' ); ?></button></p>
 			<p class="description"><?php esc_html_e( 'Safe to run again — existing settings are updated, nothing is duplicated.', 'sohag-exclusive' ); ?></p>
@@ -267,7 +267,9 @@ function sohag_run_setup( $args ) {
 			$term_id = $term->term_id;
 		}
 		update_term_meta( $term_id, 'order', $i++ );
-		if ( ! get_term_meta( $term_id, 'thumbnail_id', true ) ) {
+		$thumb = (int) get_term_meta( $term_id, 'thumbnail_id', true );
+		if ( ! $thumb || get_post_meta( $thumb, '_sohag_theme_image', true ) ) {
+			// Empty, or still the theme's own picture: use the theme's current version.
 			$att = sohag_import_theme_image( 'cat-' . $slug . '.jpg', $names[0] );
 			if ( $att ) {
 				update_term_meta( $term_id, 'thumbnail_id', $att );
@@ -321,7 +323,13 @@ function sohag_run_setup( $args ) {
 	// Terms page is linked in the footer; no mandatory checkbox at checkout (keeps ordering quick).
 	$log[] = 'Pages: About Us, Contact, Shipping Policy, Returns & Refunds, Cancellation Policy, Privacy Policy, Terms & Conditions';
 
-	// 8. Menus.
+	// 8. Starter products (before menus, so the menu can list the categories that have products).
+	if ( ! empty( $args['starter'] ) ) {
+		$made  = sohag_create_starter_products( $cat_ids );
+		$log[] = sprintf( '%d starter products added (Products → All Products)', $made );
+	}
+
+	// 9. Menus.
 	sohag_build_menus( $cat_ids, $page_ids );
 	$log[] = 'Main menu and footer menu assigned';
 
@@ -337,11 +345,6 @@ function sohag_run_setup( $args ) {
 	}
 	flush_rewrite_rules();
 
-	// 10. Demo products.
-	if ( $args['demo'] ) {
-		$made  = sohag_create_demo_products( $cat_ids );
-		$log[] = sprintf( '%d sample products created as drafts (Products → Drafts)', $made );
-	}
 
 	update_option( 'sohag_setup_done', time() );
 	delete_transient( 'sohag_setup_notice' );
@@ -400,24 +403,28 @@ function sohag_upsert_zone( $name, $locations, $method_title ) {
  * Copy an image from the theme into the Media Library (once) and return its attachment ID.
  */
 function sohag_import_theme_image( $file, $title ) {
+	$path = SOHAG_DIR . '/assets/img/' . $file;
+	if ( ! file_exists( $path ) ) {
+		return 0;
+	}
+	// Re-use the Media Library copy unless the theme ships a newer version of the image.
+	$hash     = md5_file( $path );
 	$existing = get_posts(
 		array(
 			'post_type'   => 'attachment',
-			'meta_key'    => '_sohag_theme_image', // phpcs:ignore WordPress.DB.SlowDBQuery
-			'meta_value'  => $file, // phpcs:ignore WordPress.DB.SlowDBQuery
 			'numberposts' => 1,
 			'fields'      => 'ids',
+			'meta_query'  => array( // phpcs:ignore WordPress.DB.SlowDBQuery
+				array( 'key' => '_sohag_theme_image', 'value' => $file ),
+				array( 'key' => '_sohag_theme_hash', 'value' => $hash ),
+			),
 		)
 	);
 	if ( $existing ) {
 		return (int) $existing[0];
 	}
 
-	$path = SOHAG_DIR . '/assets/img/' . $file;
-	if ( ! file_exists( $path ) ) {
-		return 0;
-	}
-	$upload = wp_upload_bits( $file, null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+	$upload = wp_upload_bits( basename( $file ), null, file_get_contents( $path ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 	if ( ! empty( $upload['error'] ) ) {
 		return 0;
 	}
@@ -436,6 +443,7 @@ function sohag_import_theme_image( $file, $title ) {
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 	wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $upload['file'] ) );
 	update_post_meta( $id, '_sohag_theme_image', $file );
+	update_post_meta( $id, '_sohag_theme_hash', $hash );
 	return (int) $id;
 }
 
@@ -457,19 +465,14 @@ function sohag_build_menus( $cat_ids, $page_ids ) {
 					'menu-item-status'    => 'publish',
 				)
 			);
-			$jewellery = wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'Jewellery', 'menu-item-url' => '#', 'menu-item-status' => 'publish' ) );
-			foreach ( array( 'earrings', 'bangles', 'necklaces' ) as $slug ) {
+			// Only categories that have products, so no menu link leads to an empty page.
+			// Add more under Appearance → Menus when you start selling in other categories.
+			foreach ( array( 'necklaces', 'earrings', 'bangles', 'bags', 'western-wear', 'indian-wear' ) as $slug ) {
 				if ( isset( $cat_ids[ $slug ] ) ) {
-					sohag_menu_cat( $menu_id, $cat_ids[ $slug ], $jewellery );
-				}
-			}
-			if ( isset( $cat_ids['bags'] ) ) {
-				sohag_menu_cat( $menu_id, $cat_ids['bags'], 0 );
-			}
-			$fashion = wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'Clothing', 'menu-item-url' => '#', 'menu-item-status' => 'publish' ) );
-			foreach ( array( 'western-wear', 'indian-wear' ) as $slug ) {
-				if ( isset( $cat_ids[ $slug ] ) ) {
-					sohag_menu_cat( $menu_id, $cat_ids[ $slug ], $fashion );
+					$term = get_term( $cat_ids[ $slug ], 'product_cat' );
+					if ( $term && ! is_wp_error( $term ) && $term->count > 0 ) {
+						sohag_menu_cat( $menu_id, $cat_ids[ $slug ], 0 );
+					}
 				}
 			}
 			if ( ! empty( $page_ids['contact'] ) ) {
@@ -721,24 +724,75 @@ function sohag_info_pages() {
 }
 
 /**
- * Draft sample products so the owner can see the layout, then edit and publish.
+ * The first products from the Sohag Exclusive Facebook page, with photos bundled in the theme.
+ * Skips any product whose name already exists, so running setup again adds nothing twice.
  */
-function sohag_create_demo_products( $cat_ids ) {
-	$demo = array(
-		array( 'Maroon Pearl Jhumka Earrings', 'earrings', 499, 349 ),
-		array( 'Pink & Green Silk Thread Bangles (Set of 6)', 'bangles', 399, 0 ),
-		array( 'Maroon Bead Pendant Necklace Set', 'necklaces', 899, 699 ),
-		array( 'Handmade Crochet Flower Bag', 'bags', 1299, 0 ),
-		array( 'Mauve Cotton Midi Dress', 'western-wear', 1499, 1199 ),
-		array( 'Maroon Banarasi Style Saree', 'indian-wear', 2499, 0 ),
+function sohag_create_starter_products( $cat_ids ) {
+	$cat = function ( $slugs ) use ( $cat_ids ) {
+		return array_values( array_filter( array_map( fn( $s ) => $cat_ids[ $s ] ?? 0, $slugs ) ) );
+	};
+	$products = array(
+		array(
+			'name'    => 'Bangaliana Handcraft Oxidised Pendant Necklace',
+			'price'   => '239',
+			'cats'    => array( 'necklaces' ),
+			'image'   => 'products/pendant-necklace.jpg',
+			'gallery' => array( 'products/poster-pendant-necklace.jpg' ),
+			'short'   => 'A bold Bangaliana statement piece — handmade red and black thread beads, cowrie shells and a large oxidised silver-tone pendant.',
+			'desc'    => "<ul>\n<li>Handmade thread-wrapped beads in red and black</li>\n<li>Natural cowrie shells and hand-painted beads</li>\n<li>Large oxidised silver-tone pendant with ghungroo drops</li>\n<li>Adjustable dori tie at the back</li>\n<li>Pairs beautifully with red-and-white sarees and kurtas</li>\n</ul>\n<p>Each piece is made by hand, so small variations make yours one of a kind.</p>",
+		),
+		array(
+			'name'    => 'Bangaliana Handcraft Choker Set with Earrings',
+			'price'   => '299',
+			'cats'    => array( 'necklaces', 'earrings' ),
+			'image'   => 'products/choker-set.jpg',
+			'gallery' => array( 'products/poster-choker-set.jpg' ),
+			'short'   => 'Pink and marigold thread-bead choker with oxidised filigree pieces and matching round jhumka studs.',
+			'desc'    => "<ul>\n<li>Set includes: choker necklace + pair of earrings</li>\n<li>Oxidised finish filigree pieces with ghungroo drops</li>\n<li>Handmade pink and marigold-yellow thread beads</li>\n<li>Adjustable thread tie with tassel</li>\n<li>Trendy and traditional — perfect for Puja, weddings and festive days</li>\n</ul>\n<p>Purely handcrafted with love.</p>",
+		),
+		array(
+			'name'      => 'Bangaliana Handcraft Necklace & Earrings Set',
+			'price'     => '199',
+			'cats'      => array( 'necklaces', 'earrings' ),
+			'image'     => 'products/necklace-set-maroon.jpg',
+			'gallery'   => array( 'products/necklace-set-green.jpg', 'products/poster-necklace-sets.jpg' ),
+			'short'     => 'Oxidised cone-bead necklace with a round pendant and matching drop earrings. Choose maroon or green.',
+			'desc'      => "<ul>\n<li>Set includes: necklace + pair of earrings</li>\n<li>Oxidised silver-tone cone beads and round pendant with bead drops</li>\n<li>Available in Maroon and Green</li>\n<li>Traditional, elegant and handmade</li>\n</ul>",
+			'variation' => array(
+				'attribute' => 'Colour',
+				'options'   => array(
+					'Maroon' => 'products/necklace-set-maroon.jpg',
+					'Green'  => 'products/necklace-set-green.jpg',
+				),
+			),
+		),
+		array(
+			'name'    => 'Pure Oxidised Cuff Bangle (One Piece)',
+			'price'   => '299',
+			'cats'    => array( 'bangles' ),
+			'image'   => 'products/oxidised-cuff.jpg',
+			'gallery' => array( 'products/poster-oxidised-cuff.jpg' ),
+			'short'   => 'A wide oxidised cuff with finely embossed traditional figures and floral borders. Price is for one piece.',
+			'desc'    => "<ul>\n<li>Pure oxidised finish</li>\n<li>Embossed traditional motifs with floral borders</li>\n<li>Wide statement cuff with an opening, easy to wear</li>\n<li>Price is for one piece</li>\n</ul>",
+		),
+		array(
+			'name'    => 'Red & White Frill Border Puja Saree',
+			'price'   => '',
+			'cats'    => array( 'indian-wear' ),
+			'image'   => 'products/puja-saree.jpg',
+			'gallery' => array( 'products/poster-puja-saree.jpg' ),
+			'short'   => 'Puja means red and white — a white saree with red floral print and red frill borders. Bengal\'s tradition, our pride.',
+			'desc'    => "<ul>\n<li>White saree with bold red floral print</li>\n<li>Red ruffle (frill) borders on the pallu and hem</li>\n<li>Made for Durga Puja and festive days</li>\n</ul>\n<p>Message us on WhatsApp for the price and availability.</p>",
+		),
 	);
+
 	$made = 0;
-	foreach ( $demo as $d ) {
+	foreach ( $products as $d ) {
 		$exists = get_posts(
 			array(
 				'post_type'   => 'product',
 				'post_status' => 'any',
-				'title'       => $d[0],
+				'title'       => $d['name'],
 				'numberposts' => 1,
 				'fields'      => 'ids',
 			)
@@ -746,25 +800,39 @@ function sohag_create_demo_products( $cat_ids ) {
 		if ( $exists ) {
 			continue;
 		}
-		$p = new WC_Product_Simple();
-		$p->set_name( $d[0] );
-		$p->set_status( 'draft' );
-		$p->set_regular_price( (string) $d[2] );
-		if ( $d[3] ) {
-			$p->set_sale_price( (string) $d[3] );
+
+		$p = isset( $d['variation'] ) ? new WC_Product_Variable() : new WC_Product_Simple();
+		$p->set_name( $d['name'] );
+		$p->set_status( 'publish' );
+		$p->set_short_description( $d['short'] );
+		$p->set_description( $d['desc'] );
+		$p->set_category_ids( $cat( $d['cats'] ) );
+		$p->set_image_id( sohag_import_theme_image( $d['image'], $d['name'] ) );
+		$p->set_gallery_image_ids( array_filter( array_map( fn( $g ) => sohag_import_theme_image( $g, $d['name'] ), $d['gallery'] ) ) );
+		if ( isset( $d['variation'] ) ) {
+			$attr = new WC_Product_Attribute();
+			$attr->set_name( $d['variation']['attribute'] );
+			$attr->set_options( array_keys( $d['variation']['options'] ) );
+			$attr->set_visible( true );
+			$attr->set_variation( true );
+			$p->set_attributes( array( $attr ) );
+		} else {
+			$p->set_regular_price( $d['price'] );
 		}
-		$p->set_short_description( 'Handmade by Sohag Exclusive. (Sample text — replace with your own description.)' );
-		$p->set_description( 'This is a sample product. Update the photos, price, size and description, then publish it.' );
-		$p->set_manage_stock( true );
-		$p->set_stock_quantity( 10 );
-		if ( isset( $cat_ids[ $d[1] ] ) ) {
-			$p->set_category_ids( array( $cat_ids[ $d[1] ] ) );
+		$id = $p->save();
+
+		if ( isset( $d['variation'] ) ) {
+			$key = sanitize_title( $d['variation']['attribute'] );
+			foreach ( $d['variation']['options'] as $option => $img ) {
+				$v = new WC_Product_Variation();
+				$v->set_parent_id( $id );
+				$v->set_attributes( array( $key => $option ) );
+				$v->set_regular_price( $d['price'] );
+				$v->set_image_id( sohag_import_theme_image( $img, $d['name'] . ' — ' . $option ) );
+				$v->save();
+			}
+			WC_Product_Variable::sync( $id );
 		}
-		$img = sohag_import_theme_image( 'cat-' . $d[1] . '.jpg', $d[0] );
-		if ( $img ) {
-			$p->set_image_id( $img );
-		}
-		$p->save();
 		++$made;
 	}
 	return $made;

@@ -228,7 +228,7 @@
       return Object.keys(chosen).every(function (k) { return !v.attributes[k] || v.attributes[k] === chosen[k]; });
     })[0];
     if (!match) return null;
-    return { label: labels.join(', '), price: match.display_price };
+    return { label: labels.join(', '), price: match.display_price, image: match.image };
   }
   document.querySelectorAll('form.variations_form').forEach(function (form) {
     var out = form.querySelector('.single_variation');
@@ -237,6 +237,25 @@
       var v = selectedVariation(form);
       if (out) out.innerHTML = v ? '<div class="woocommerce-variation-price"><span class="price">' + money(v.price) + '</span></div>' : '';
       if (reset) reset.style.visibility = v ? 'visible' : 'hidden';
+      var g = document.querySelector('.woocommerce-product-gallery');
+      if (v && v.image && v.image.src && g) {
+        // Show the photo of the chosen colour (matched by file, else swapped into the first slide).
+        var file = v.image.src.split('/').pop().replace(/-\d+x\d+(?=\.)/, '');
+        var slides = g.querySelectorAll('.woocommerce-product-gallery__image');
+        var hit = -1;
+        slides.forEach(function (d, i) {
+          var im = d.querySelector('img');
+          if (hit < 0 && im && im.getAttribute('src').replace(/-\d+x\d+(?=\.)/, '').split('/').pop() === file) hit = i;
+        });
+        if (hit >= 0 && g.querySelector('.flex-control-thumbs')) {
+          galleryShow(g, hit);
+        } else if (slides[0]) {
+          var first = slides[0].querySelector('img');
+          first.removeAttribute('srcset');
+          first.src = v.image.src;
+          galleryShow(g, 0);
+        }
+      }
     }
     form.addEventListener('change', update);
     if (reset) {
@@ -247,6 +266,32 @@
       });
     }
     update();
+  });
+
+  /* ---------- product gallery (thumbnails; WooCommerce's slider script isn't on the static site) ---------- */
+  function galleryShow(g, index) {
+    var slides = g.querySelectorAll('.woocommerce-product-gallery__image');
+    slides.forEach(function (d, i) { d.style.display = i === index ? '' : 'none'; });
+    g.querySelectorAll('.flex-control-thumbs img').forEach(function (img, i) { img.classList.toggle('flex-active', i === index); });
+  }
+  document.querySelectorAll('.woocommerce-product-gallery').forEach(function (g) {
+    var slides = g.querySelectorAll('.woocommerce-product-gallery__image');
+    if (slides.length < 2) return;
+    var ol = document.createElement('ol');
+    ol.className = 'flex-control-nav flex-control-thumbs';
+    slides.forEach(function (d, i) {
+      var li = document.createElement('li');
+      var img = document.createElement('img');
+      img.src = d.getAttribute('data-thumb') || (d.querySelector('img') || {}).src;
+      img.alt = 'Photo ' + (i + 1);
+      img.width = 100;
+      img.height = 100;
+      img.addEventListener('click', function () { galleryShow(g, i); });
+      li.appendChild(img);
+      ol.appendChild(li);
+    });
+    g.appendChild(ol);
+    galleryShow(g, 0);
   });
 
   /* ---------- product tabs ---------- */
@@ -292,8 +337,10 @@
     if (sort) {
       sort.addEventListener('change', function () {
         var sorted = items.slice();
-        if (sort.value === 'price') sorted.sort(function (a, b) { return priceOf(a) - priceOf(b); });
-        if (sort.value === 'price-desc') sorted.sort(function (a, b) { return priceOf(b) - priceOf(a); });
+        // "Price on request" items (price 0) always go last.
+        var key = function (li, desc) { var v = priceOf(li); return v ? (desc ? -v : v) : Infinity; };
+        if (sort.value === 'price') sorted.sort(function (a, b) { return key(a) - key(b); });
+        if (sort.value === 'price-desc') sorted.sort(function (a, b) { return key(a, true) - key(b, true); });
         sorted.forEach(function (li) { list.appendChild(li); });
       });
     }

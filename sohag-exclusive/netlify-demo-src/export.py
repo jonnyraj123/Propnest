@@ -20,12 +20,11 @@ PAGES = [
     "/", "/shop/", "/cart/", "/checkout/", "/my-account/",
     "/about-us/", "/contact/", "/shipping-policy/", "/return-refund-policy/",
     "/cancellation-policy/", "/privacy-policy/", "/terms-and-conditions/",
-    "/product/silk-thread-bangles-choose-your-colour/", "/product/maroon-banarasi-style-saree/",
-    "/product/mauve-cotton-midi-dress/", "/product/handmade-crochet-flower-bag/",
-    "/product/maroon-bead-pendant-necklace-set/", "/product/pink-green-silk-thread-bangles-set-of-6/",
-    "/product/maroon-pearl-jhumka-earrings/",
+    "/product/bangaliana-handcraft-oxidised-pendant-necklace/", "/product/bangaliana-handcraft-choker-set-with-earrings/",
+    "/product/bangaliana-handcraft-necklace-earrings-set/", "/product/pure-oxidised-cuff-bangle-one-piece/",
+    "/product/red-white-frill-border-puja-saree/",
     "/product-category/earrings/", "/product-category/bangles/", "/product-category/necklaces/",
-    "/product-category/bags/", "/product-category/western-wear/", "/product-category/indian-wear/",
+    "/product-category/indian-wear/",
 ]
 
 jar = http.cookiejar.CookieJar()
@@ -50,7 +49,13 @@ ASSET_RE = re.compile(r"""(?:href|src)=["'](?:http://localhost:8089)?(/wp-(?:con
 SRCSET_RE = re.compile(r"""srcset=["']([^"']+)["']""")
 
 
+UPLOAD_RE = re.compile(r"(/wp-content/uploads/[^\"'\s&)<>]+?\.(?:jpe?g|png|webp|gif))")
+
+
 def collect_assets(html):
+    # Images referenced anywhere, incl. data-thumb and the variations JSON (which escapes slashes).
+    for m in UPLOAD_RE.finditer(html.replace("\\/", "/")):
+        assets.add(m.group(1))
     for m in ASSET_RE.finditer(html):
         assets.add(m.group(1).split("?")[0])
     for m in SRCSET_RE.finditer(html):
@@ -99,7 +104,7 @@ if os.path.exists(OUT):
 os.makedirs(OUT)
 
 # Put one item in the cart so the cart and checkout templates render their full layout.
-get(BASE + "/?add-to-cart=43")
+get(BASE + "/?add-to-cart=207")
 get(BASE + "/cart/")  # consume the "added to cart" notice so it doesn't appear on exported pages
 
 for path in PAGES:

@@ -54,6 +54,9 @@ add_filter(
 		if ( $product->is_type( 'variable' ) ) {
 			return __( 'Choose Options', 'sohag-exclusive' );
 		}
+		if ( ! $product->is_purchasable() ) {
+			return __( 'View Details', 'sohag-exclusive' );
+		}
 		return $text;
 	},
 	10,
@@ -139,13 +142,17 @@ add_action(
 	function () {
 		global $product;
 		/* translators: 1: product name, 2: product URL. */
-		$wa_text = sprintf( __( 'Hi, I would like to order: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() );
+		$ask     = ! $product->is_purchasable();
+		$wa_text = $ask
+			/* translators: 1: product name, 2: product URL. */
+			? sprintf( __( 'Hi, what is the price of: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() )
+			: sprintf( __( 'Hi, I would like to order: %1$s — %2$s', 'sohag-exclusive' ), $product->get_name(), $product->get_permalink() );
 		$wa_url  = sohag_whatsapp_url( $wa_text );
 		?>
 		<?php if ( $wa_url ) : ?>
 			<div class="buy-extra">
 				<a class="btn btn--wa btn--block" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener">
-					<?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?> <span><?php esc_html_e( 'Order on WhatsApp', 'sohag-exclusive' ); ?></span>
+					<?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?> <span><?php $ask ? esc_html_e( 'Ask for Price on WhatsApp', 'sohag-exclusive' ) : esc_html_e( 'Order on WhatsApp', 'sohag-exclusive' ); ?></span>
 				</a>
 			</div>
 		<?php endif; ?>
@@ -386,4 +393,10 @@ add_filter(
 	},
 	10,
 	2
+);
+
+// Products saved without a price (e.g. a saree priced on enquiry).
+add_filter(
+	'woocommerce_empty_price_html',
+	fn() => '<span class="price-on-request">' . esc_html__( 'Price on request', 'sohag-exclusive' ) . '</span>'
 );
