@@ -8,6 +8,23 @@
 
 **ইনস্টল করার ফাইল:** [`sohag-exclusive-theme.zip`](sohag-exclusive-theme.zip)
 
+**Netlify-তে দেখার ফাইল:** [`sohag-netlify-demo.zip`](sohag-netlify-demo.zip)
+
+---
+
+## আগে Netlify-তে দেখে নিন
+
+Netlify-তে শুধু সাধারণ HTML ফাইল চলে, WordPress চলে না। তাই `sohag-netlify-demo.zip`-এ আসল থিমের পাতাগুলো HTML হিসেবে রাখা আছে। দেখতে হুবহু আসল সাইটের মতো, কার্ট আর চেকআউটও কাজ করে। শুধু অর্ডার কোথাও জমা হয় না, আর উপরে একটা "Preview site" লেখা থাকে।
+
+1. `sohag-netlify-demo.zip` আনজিপ করুন (ভেতরে `index.html` সহ একটা ফোল্ডার পাবেন)
+2. **https://app.netlify.com/drop** খুলুন (ফ্রি অ্যাকাউন্টে লগইন করে নিন)
+3. আনজিপ করা ফোল্ডারটা টেনে এনে পাতায় ছেড়ে দিন
+4. কয়েক সেকেন্ডে একটা লিংক পাবেন (যেমন `https://xxxx.netlify.app`)। ফোনে খুলে দেখুন
+
+যা যা পরীক্ষা করতে পারবেন: হোমপেজ, শপ, ক্যাটাগরি, প্রোডাক্ট পেজ (রঙ বাছাইসহ), Add to cart, Order Now, কার্টে সংখ্যা বদলানো, চেকআউটের ভুল ধরা (মোবাইল, PIN, UTR), Cash on Delivery ও UPI দিয়ে অর্ডার, Order Received পাতা, সার্চ, দাম অনুযায়ী সাজানো, সব পলিসি পেজ।
+
+ডেমোতে ফোন নম্বর `+91 XXXXX XXXXX` আর UPI ID `yourname@upi` দেওয়া আছে। WhatsApp/ফোন বাটনে চাপলে শুধু একটা বার্তা দেখায়। আসল সাইটে আপনার নম্বর বসবে।
+
 ---
 
 ## কী কী আছে
@@ -108,6 +125,9 @@ WordPress Admin → **Plugins → Add New** → "WooCommerce" খুঁজে **
 ```
 sohag-exclusive/
 ├── sohag-exclusive-theme.zip        ← WordPress-এ এটা আপলোড করুন
+├── sohag-netlify-demo.zip           ← Netlify Drop-এ দেখার জন্য (স্ট্যাটিক কপি)
+├── netlify-demo/                    ← ওই ZIP-এর ভেতরের ফাইলগুলো
+├── netlify-demo-src/                ← ডেমোর কার্ট/চেকআউট স্ক্রিপ্ট ও এক্সপোর্ট টুল
 └── theme/sohag-exclusive/
     ├── style.css                    থিমের হেডার
     ├── functions.php                সেটআপ, স্টাইল ও স্ক্রিপ্ট লোড, হেল্পার ফাংশন

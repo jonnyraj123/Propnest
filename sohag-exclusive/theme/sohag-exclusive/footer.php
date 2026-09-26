@@ -73,7 +73,7 @@ $sohag_wa = sohag_whatsapp_url();
 					<li><?php echo sohag_icon( 'mail' ); // phpcs:ignore ?><a href="mailto:<?php echo esc_attr( sohag_opt( 'email' ) ); ?>"><?php echo esc_html( sohag_opt( 'email' ) ); ?></a></li>
 				<?php endif; ?>
 				<li><?php echo sohag_icon( 'pin' ); // phpcs:ignore ?><span><?php echo esc_html( sohag_opt( 'address' ) ); ?></span></li>
-				<li><?php echo sohag_icon( 'clock' ); // phpcs:ignore ?><span><?php esc_html_e( 'Every day, 10am – 10pm', 'sohag-exclusive' ); ?></span></li>
+				<li><?php echo sohag_icon( 'clock' ); // phpcs:ignore ?><span><?php esc_html_e( 'Every day, 10am – 8pm IST', 'sohag-exclusive' ); ?></span></li>
 			</ul>
 		</div>
 	</div>

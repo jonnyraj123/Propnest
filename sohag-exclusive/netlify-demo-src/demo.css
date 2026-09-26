@@ -1,0 +1,18 @@
+/* Preview-only additions for the static Netlify demo. */
+.demo-ribbon {
+  background: #2b0d17; color: #f3dfb6; text-align: center; font-size: 13px; line-height: 1.4;
+  padding: 7px 16px; letter-spacing: .01em;
+}
+.demo-toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 200; transform: translate(-50%, 140%);
+  max-width: calc(100% - 32px); background: #2b0d17; color: #fff; padding: 12px 18px; border-radius: 12px;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .45); font-size: 15px; line-height: 1.4; transition: transform .25s ease;
+}
+.demo-toast.is-shown { transform: translate(-50%, 0); }
+.demo-toast a { color: #e9d3a8; text-decoration: underline; }
+@media (max-width: 900px) { .demo-toast { bottom: 84px; } }
+@media (prefers-reduced-motion: reduce) { .demo-toast { transition: none; } }
+.demo-notice { grid-column: 1 / -1; margin-bottom: 20px; }
+.demo-notice .woocommerce-error { margin: 0; }
+.demo-footnote { margin-top: 24px; font-size: 14px; color: var(--muted, #76656b); text-align: center; }
+.woocommerce-customer-details address { border: 1px solid var(--line, #eadfd0); border-radius: 12px; padding: 16px; font-style: normal; line-height: 1.7; }
