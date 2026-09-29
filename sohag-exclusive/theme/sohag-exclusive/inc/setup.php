@@ -112,7 +112,7 @@ function sohag_setup_page() {
 			<table class="form-table" role="presentation">
 				<tr><th><label for="phone"><?php esc_html_e( 'Phone', 'sohag-exclusive' ); ?></label></th><td><input id="phone" name="phone" type="text" class="regular-text" value="<?php echo esc_attr( sohag_opt( 'phone' ) ); ?>" placeholder="+91 98XXX XXXXX"></td></tr>
 				<tr><th><label for="whatsapp">WhatsApp</label></th><td><input id="whatsapp" name="whatsapp" type="text" class="regular-text" value="<?php echo esc_attr( sohag_opt( 'whatsapp' ) ); ?>" placeholder="919876543210"></td></tr>
-				<tr><th><label for="email">Email</label></th><td><input id="email" name="email" type="email" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_email', '' ) ); ?>" placeholder="info@sohagexclusive.com"></td></tr>
+				<tr><th><label for="email">Email</label></th><td><input id="email" name="email" type="email" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_email', '' ) ); ?>" placeholder="info@shopsohag.com"></td></tr>
 				<tr><th><label for="facebook">Facebook</label></th><td><input id="facebook" name="facebook" type="url" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_facebook', '' ) ); ?>" placeholder="https://www.facebook.com/..."></td></tr>
 				<tr><th><label for="address"><?php esc_html_e( 'Address', 'sohag-exclusive' ); ?></label></th><td><input id="address" name="address" type="text" class="regular-text" value="<?php echo esc_attr( get_theme_mod( 'sohag_address', '' ) ); ?>" placeholder="City, State, India"></td></tr>
 			</table>
@@ -554,6 +554,7 @@ function sohag_info_pages() {
 	$contact   = sohag_contact_html();
 	$grievance = esc_html( sohag_opt( 'grievance' ) );
 	$updated   = esc_html( wp_date( 'j F Y' ) );
+	$site      = esc_html( wp_parse_url( home_url(), PHP_URL_HOST ) );
 
 	return array(
 		'about-us'             => array(
@@ -651,7 +652,7 @@ function sohag_info_pages() {
 		'privacy-policy'       => array(
 			'Privacy Policy',
 			"<p><em>Last updated: {$updated}</em></p>
-<p>This policy explains how Sohag Exclusive (\"we\", \"us\") collects and uses your personal data when you use sohagexclusive.com, in line with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.</p>
+<p>This policy explains how Sohag Exclusive (\"we\", \"us\") collects and uses your personal data when you use {$site}, in line with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.</p>
 <h3>What we collect</h3>
 <ul>
 <li>Name, mobile number, email (optional), delivery address and PIN code, when you place an order.</li>
@@ -683,7 +684,7 @@ function sohag_info_pages() {
 		'terms-and-conditions' => array(
 			'Terms & Conditions',
 			"<p><em>Last updated: {$updated}</em></p>
-<p>By using sohagexclusive.com and placing an order, you agree to these terms.</p>
+<p>By using {$site} and placing an order, you agree to these terms.</p>
 <h3>Products</h3>
 <ul>
 <li>Our products are handmade. Small variations in colour, size and finish are part of their character and are not defects.</li>

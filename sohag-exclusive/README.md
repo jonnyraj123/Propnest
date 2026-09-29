@@ -4,7 +4,7 @@
 
 - **ওয়েবসাইটের সব লেখা ইংরেজিতে।** এই গাইডটা শুধু আপনার সুবিধার জন্য বাংলায় লেখা।
 - **দেশ:** ভারত। টাকা **₹ (INR)**।
-- **ডোমেইন:** `sohagexclusive.com`
+- **ডোমেইন:** `shopsohag.com`
 
 **ইনস্টল করার ফাইল:** [`sohag-exclusive-theme.zip`](sohag-exclusive-theme.zip)
 
@@ -51,7 +51,7 @@ Netlify-তে শুধু সাধারণ HTML ফাইল চলে, Word
 ## সেটআপ (১৫ মিনিট)
 
 ### ১. ডোমেইন ও হোস্টিং
-- **sohagexclusive.com** কিনে নিন।
+- **shopsohag.com** কিনে নিন।
 - cPanel আর "1-click WordPress install" আছে এমন হোস্টিং নিন (ভারতীয় সার্ভার হলে সাইট দ্রুত খুলবে)। সাথে **SSL (https)** অবশ্যই চালু করবেন।
 - WordPress বসানোর সময় **Site Language: English (India)** বা English (United States) রাখুন।
 

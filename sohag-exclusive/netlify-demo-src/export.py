@@ -81,7 +81,7 @@ def clean(html, path):
     # Product gallery is hidden until WooCommerce JS runs — show it.
     html = html.replace("opacity: 0; transition: opacity .25s ease-in-out;", "")
     # Absolute URLs -> root-relative; drop ?ver= on local assets.
-    html = html.replace("http%3A%2F%2Flocalhost%3A8089", "https%3A%2F%2Fsohagexclusive.com")
+    html = html.replace("http%3A%2F%2Flocalhost%3A8089", "https%3A%2F%2Fshopsohag.com")
     html = html.replace("http://localhost:8089", "").replace("http:\\/\\/localhost:8089", "")
     html = re.sub(r"(/wp-(?:content|includes)/[^\"'\s>?]+)\?ver=[^\"'\s>&]*", r"\1", html)
     html = re.sub(r"(/wp-(?:content|includes)/[^\"'\s>?]+)\?[^\"'\s>]*", r"\1", html)
