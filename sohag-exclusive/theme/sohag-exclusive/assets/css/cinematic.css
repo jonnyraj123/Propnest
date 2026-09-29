@@ -196,8 +196,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 .site-footer { background: var(--night); margin-top: 0; }
 
 /* ---------- Scroll reveal (only when JS is running; content is visible without it) ---------- */
-.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--d, 0) * 90ms); }
-.js .reveal.is-in { opacity: 1; transform: none; }
+.sh-reveal .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--d, 0) * 90ms); }
+.sh-reveal .reveal.is-in { opacity: 1; transform: none; }
 
 @keyframes sh-kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
 @keyframes sh-breathe { 0%, 100% { opacity: .7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
@@ -207,6 +207,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  /* Phones: keep the look, drop the costly effects so scrolling stays smooth. */
+  .hero::before { display: none; }
+  .hero__glow, .hero__frame img { animation: none; }
+  .hero__badge { backdrop-filter: none; background: rgba(26, 5, 9, .9); }
+  .sh-reveal .reveal { transform: translateY(14px); transition-duration: .55s; transition-delay: 0s; }
   .hero__inner { grid-template-columns: minmax(0, 1fr); padding: 44px 20px 84px; gap: 44px; }
   .hero__frame::before { inset: 12px -12px -12px 12px; }
   .hero__badge { left: 50%; transform: translateX(-50%); bottom: -22px; white-space: nowrap; }
@@ -235,5 +240,5 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__frame img, .hero__glow, .hero__scroll span, .hero__copy > *, .hero__media { animation: none !important; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .sh-reveal .reveal { opacity: 1; transform: none; transition: none; }
 }

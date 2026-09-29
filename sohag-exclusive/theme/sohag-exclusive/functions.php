@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SOHAG_VERSION', '1.0.0' );
+define( 'SOHAG_VERSION', '1.1.0' );
 define( 'SOHAG_DIR', get_template_directory() );
 define( 'SOHAG_URI', get_template_directory_uri() );
 
@@ -60,6 +60,14 @@ function sohag_setup() {
 add_action( 'after_setup_theme', 'sohag_setup' );
 
 /**
+ * Asset version from the file's modified time, so browsers and page caches fetch fresh files after every theme upload.
+ */
+function sohag_asset_ver( $file ) {
+	$path = SOHAG_DIR . '/assets/' . $file;
+	return file_exists( $path ) ? SOHAG_VERSION . '.' . filemtime( $path ) : SOHAG_VERSION;
+}
+
+/**
  * Styles & scripts.
  */
 function sohag_assets() {
@@ -71,9 +79,9 @@ function sohag_assets() {
 	);
 	// Only the ₹ glyph, from a face drawn for Indian scripts, so the rupee sign is crisp in every browser.
 	wp_enqueue_style( 'sohag-rupee', 'https://fonts.googleapis.com/css2?family=Hind:wght@600&text=%E2%82%B9&display=swap', array(), null );
-	wp_enqueue_style( 'sohag-main', SOHAG_URI . '/assets/css/main.css', array(), SOHAG_VERSION );
-	wp_enqueue_style( 'sohag-cinematic', SOHAG_URI . '/assets/css/cinematic.css', array( 'sohag-main' ), SOHAG_VERSION );
-	wp_enqueue_script( 'sohag-main', SOHAG_URI . '/assets/js/main.js', array(), SOHAG_VERSION, true );
+	wp_enqueue_style( 'sohag-main', SOHAG_URI . '/assets/css/main.css', array(), sohag_asset_ver( 'css/main.css' ) );
+	wp_enqueue_style( 'sohag-cinematic', SOHAG_URI . '/assets/css/cinematic.css', array( 'sohag-main' ), sohag_asset_ver( 'css/cinematic.css' ) );
+	wp_enqueue_script( 'sohag-main', SOHAG_URI . '/assets/js/main.js', array(), sohag_asset_ver( 'js/main.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'sohag_assets', 20 );
 

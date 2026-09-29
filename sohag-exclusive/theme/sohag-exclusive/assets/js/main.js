@@ -54,11 +54,11 @@
     if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) setDrawer(false);
   });
 
-  // Scroll reveal: sections drift up into view once. Without IntersectionObserver everything simply shows.
+  // Scroll reveal: sections drift up into view once. The hiding class is only added here, so if this
+  // script is late, cached or blocked the page simply shows everything.
   var reveals = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    reveals.forEach(function (el) { el.classList.add('is-in'); });
-  } else {
+  if (reveals.length && 'IntersectionObserver' in window) {
+    var vh = window.innerHeight || 800;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -66,8 +66,13 @@
           io.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    reveals.forEach(function (el) { io.observe(el); });
+    }, { rootMargin: '0px 0px -5% 0px', threshold: 0.01 });
+    reveals.forEach(function (el) {
+      // Already on screen: show at once, no flash.
+      if (el.getBoundingClientRect().top < vh) el.classList.add('is-in');
+      else io.observe(el);
+    });
+    document.documentElement.classList.add('sh-reveal');
   }
 
 })();
