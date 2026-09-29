@@ -35,9 +35,9 @@ defined( 'ABSPATH' ) || exit;
 				?>
 			</div>
 		</div>
-		<?php if ( sohag_opt( 'phone' ) ) : ?>
+		<?php if ( sohag_whatsapp_url() ) : ?>
 			<div class="topbar__contact">
-				<a href="<?php echo esc_url( sohag_tel_url() ); ?>">☎ <?php echo esc_html( sohag_opt( 'phone' ) ); ?></a>
+				<a class="topbar__call" href="<?php echo esc_url( sohag_whatsapp_url() ); ?>" target="_blank" rel="noopener"><?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php esc_html_e( 'Call or Chat', 'sohag-exclusive' ); ?></span></a>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -68,6 +68,12 @@ defined( 'ABSPATH' ) || exit;
 		</nav>
 
 		<div class="header__actions">
+			<?php if ( sohag_whatsapp_url() ) : ?>
+				<a class="icon-btn header-call" href="<?php echo esc_url( sohag_whatsapp_url() ); ?>" target="_blank" rel="noopener">
+					<?php echo sohag_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+					<span class="screen-reader-text"><?php esc_html_e( 'Call or chat on WhatsApp', 'sohag-exclusive' ); ?></span>
+				</a>
+			<?php endif; ?>
 			<button class="icon-btn" type="button" data-search-toggle aria-expanded="false" aria-controls="sohag-search">
 				<?php echo sohag_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<span class="screen-reader-text"><?php esc_html_e( 'Search', 'sohag-exclusive' ); ?></span>
@@ -123,8 +129,8 @@ defined( 'ABSPATH' ) || exit;
 			?>
 		</nav>
 		<div class="drawer__foot">
-			<?php if ( sohag_opt( 'phone' ) ) : ?>
-				<p>☎ <?php echo esc_html( sohag_opt( 'phone' ) ); ?></p>
+			<?php if ( sohag_whatsapp_url() ) : ?>
+				<a class="drawer__call" href="<?php echo esc_url( sohag_whatsapp_url() ); ?>" target="_blank" rel="noopener"><?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <?php esc_html_e( 'Call or Chat', 'sohag-exclusive' ); ?></a>
 			<?php endif; ?>
 			<?php sohag_pay_badges(); ?>
 		</div>

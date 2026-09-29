@@ -98,11 +98,11 @@ add_filter( 'wp_resource_hints', 'sohag_preconnect', 10, 2 );
  */
 function sohag_opt( $key ) {
 	$defaults = array(
-		'phone'            => '+91 90737 66083',
-		'whatsapp'         => '919073766083',
+		'phone'            => '+91 82820 22581',
+		'whatsapp'         => '918282022581',
 		'email'            => '',
-		'address'          => 'India',
-		'facebook'         => 'https://www.facebook.com/',
+		'address'          => 'Amtala, D. H. Road, Kolkata, West Bengal 743398, India',
+		'facebook'         => 'https://www.facebook.com/profile.php?id=100095053184804',
 		'instagram'        => '',
 		'messenger'        => '',
 		'announcement'     => "Free delivery all over India\nFree Cash on Delivery — no extra charge\n100% handmade — crafted with love\nEasy 7-day exchange on damaged items",
@@ -121,6 +121,35 @@ function sohag_opt( $key ) {
 	return $value;
 }
 
+
+/**
+ * One-time move of the customer-care contact to the Facebook page number (the UPI ID stays as it is).
+ * Only replaces values that are empty or still the old number/placeholder.
+ */
+function sohag_migrate_contact() {
+	if ( get_option( 'sohag_contact_v2' ) ) {
+		return;
+	}
+	$old   = '9073766083';
+	$phone = preg_replace( '/\D+/', '', (string) get_theme_mod( 'sohag_phone', '' ) );
+	if ( '' === $phone || false !== strpos( $phone, $old ) ) {
+		set_theme_mod( 'sohag_phone', '+91 82820 22581' );
+	}
+	$wa = preg_replace( '/\D+/', '', (string) get_theme_mod( 'sohag_whatsapp', '' ) );
+	if ( '' === $wa || false !== strpos( $wa, $old ) ) {
+		set_theme_mod( 'sohag_whatsapp', '918282022581' );
+	}
+	$fb = untrailingslashit( (string) get_theme_mod( 'sohag_facebook', '' ) );
+	if ( '' === $fb || preg_match( '#^https?://(www\.)?facebook\.com$#', $fb ) ) {
+		set_theme_mod( 'sohag_facebook', 'https://www.facebook.com/profile.php?id=100095053184804' );
+	}
+	$address = trim( (string) get_theme_mod( 'sohag_address', '' ) );
+	if ( '' === $address || 'India' === $address ) {
+		set_theme_mod( 'sohag_address', 'Amtala, D. H. Road, Kolkata, West Bengal 743398, India' );
+	}
+	update_option( 'sohag_contact_v2', 1 );
+}
+add_action( 'after_setup_theme', 'sohag_migrate_contact', 20 );
 
 function sohag_is_wc() {
 	return class_exists( 'WooCommerce' );
