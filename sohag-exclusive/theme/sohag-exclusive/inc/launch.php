@@ -39,7 +39,41 @@ function sohag_launch_settings() {
 
 function sohag_launch_update( $changes ) {
 	update_option( 'sohag_launch', array_merge( sohag_launch_settings(), $changes ) );
+	sohag_launch_purge_caches();
 }
+
+/**
+ * Clear page caches (LiteSpeed, Hostinger) so a new date or the opening shows at once.
+ */
+function sohag_launch_purge_caches() {
+	do_action( 'litespeed_purge_all' );
+	if ( function_exists( 'wp_cache_flush' ) ) {
+		wp_cache_flush();
+	}
+}
+
+/*
+ * While the curtain is on, the same URL shows the curtain to visitors and the store to the team,
+ * so no page may be stored by a page cache or CDN.
+ */
+add_action(
+	'template_redirect',
+	function () {
+		if ( is_admin() || sohag_store_is_open() ) {
+			return;
+		}
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+			define( 'DONOTCACHEPAGE', true );
+		}
+		do_action( 'litespeed_control_set_nocache', 'Sohag Grand Opening curtain is on' );
+		if ( ! headers_sent() ) {
+			nocache_headers();
+			header( 'X-LiteSpeed-Cache-Control: no-cache' );
+			header( 'CDN-Cache-Control: no-store' );
+		}
+	},
+	-1
+);
 
 function sohag_store_is_open() {
 	return 'open' === sohag_launch_settings()['mode'];
