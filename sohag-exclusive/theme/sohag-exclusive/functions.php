@@ -103,8 +103,8 @@ function sohag_opt( $key ) {
 		'hero_title'       => 'Bangaliana <em>Handcraft</em>',
 		'hero_text'        => 'Handmade thread-bead necklaces, oxidised jewellery and red-and-white puja sarees — rooted in Bengali tradition, made with love.',
 		'delivery_days'    => '4–7 working days',
-		'grievance'        => 'Sohag Customer Care',
-		'about'            => 'Sohag — handmade Bangaliana jewellery and puja fashion. More than a product, it is a feeling. Wear your story.',
+		'grievance'        => 'Sohag Exclusive Customer Care',
+		'about'            => 'Sohag Exclusive — handmade Bangaliana jewellery and puja fashion. More than a product, it is a feeling. Wear your story.',
 	);
 	$value = get_theme_mod( 'sohag_' . $key, null );
 	if ( null === $value || '' === $value ) {

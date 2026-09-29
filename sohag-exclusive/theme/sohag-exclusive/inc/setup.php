@@ -47,7 +47,7 @@ add_action(
 			return;
 		}
 		printf(
-			'<div class="notice notice-info"><p><strong>Sohag:</strong> %s <a class="button button-primary" href="%s">%s</a></p></div>',
+			'<div class="notice notice-info"><p><strong>Sohag Exclusive:</strong> %s <a class="button button-primary" href="%s">%s</a></p></div>',
 			esc_html__( 'Set up your store (currency, delivery charges, payments, categories, pages) in one click.', 'sohag-exclusive' ),
 			esc_url( admin_url( 'themes.php?page=sohag-setup' ) ),
 			esc_html__( 'Start setup', 'sohag-exclusive' )
@@ -79,7 +79,7 @@ function sohag_setup_page() {
 	$gw = get_option( 'woocommerce_sohag_upi_settings', array() );
 	?>
 	<div class="wrap">
-		<h1><?php esc_html_e( 'Sohag — Store Setup', 'sohag-exclusive' ); ?></h1>
+		<h1><?php esc_html_e( 'Sohag Exclusive — Store Setup', 'sohag-exclusive' ); ?></h1>
 
 		<?php if ( ! sohag_is_wc() ) : ?>
 			<div class="notice notice-warning"><p>
@@ -105,7 +105,7 @@ function sohag_setup_page() {
 			<h2><?php esc_html_e( 'UPI payment (optional)', 'sohag-exclusive' ); ?></h2>
 			<table class="form-table" role="presentation">
 				<tr><th><label for="upi_id"><?php esc_html_e( 'UPI ID', 'sohag-exclusive' ); ?></label></th><td><input id="upi_id" name="upi_id" type="text" class="regular-text" placeholder="yourname@okaxis" value="<?php echo esc_attr( $gw['upi_id'] ?? 'swarnalibanerjee0217@oksbi' ); ?>"><p class="description"><?php esc_html_e( 'Leave empty to offer Cash on Delivery only.', 'sohag-exclusive' ); ?></p></td></tr>
-				<tr><th><label for="upi_name"><?php esc_html_e( 'Payee name', 'sohag-exclusive' ); ?></label></th><td><input id="upi_name" name="upi_name" type="text" class="regular-text" value="<?php echo esc_attr( $gw['payee_name'] ?? 'Sohag' ); ?>"></td></tr>
+				<tr><th><label for="upi_name"><?php esc_html_e( 'Payee name', 'sohag-exclusive' ); ?></label></th><td><input id="upi_name" name="upi_name" type="text" class="regular-text" value="<?php echo esc_attr( $gw['payee_name'] ?? 'Sohag Exclusive' ); ?>"></td></tr>
 			</table>
 
 			<h2><?php esc_html_e( 'Contact', 'sohag-exclusive' ); ?></h2>
@@ -165,7 +165,7 @@ function sohag_run_setup( $args ) {
 		'woocommerce_registration_privacy_policy_text'   => 'Your details are only used to manage your account and orders. See our [privacy_policy].',
 		// WooCommerce 9+ starts new stores in "Coming soon" mode — go live.
 		'woocommerce_coming_soon'                        => 'no',
-		'blogname'                                       => 'Sohag',
+		'blogname'                                       => 'Sohag Exclusive',
 		'blogdescription'                                => 'Wear Your Story',
 	);
 	foreach ( $options as $k => $v ) {
@@ -244,7 +244,7 @@ function sohag_run_setup( $args ) {
 	$gw               = get_option( 'woocommerce_sohag_upi_settings', array() );
 	$gw               = is_array( $gw ) ? $gw : array();
 	$gw['upi_id']     = $args['upi_id'];
-	$gw['payee_name'] = $args['upi_name'] ? $args['upi_name'] : 'Sohag';
+	$gw['payee_name'] = $args['upi_name'] ? $args['upi_name'] : 'Sohag Exclusive';
 	$gw['enabled']    = $args['upi_id'] ? 'yes' : 'no';
 	update_option( 'woocommerce_sohag_upi_settings', $gw );
 	$log[] = $args['upi_id'] ? 'UPI payment enabled' : 'No UPI ID given — UPI stays off (Cash on Delivery only)';
@@ -337,7 +337,7 @@ function sohag_run_setup( $args ) {
 
 	// 9. Site icon + permalinks.
 	if ( ! get_option( 'site_icon' ) ) {
-		$icon = sohag_import_theme_image( 'site-icon.png', 'Sohag' );
+		$icon = sohag_import_theme_image( 'site-icon.png', 'Sohag Exclusive' );
 		if ( $icon ) {
 			update_option( 'site_icon', $icon );
 		}
@@ -561,8 +561,8 @@ function sohag_info_pages() {
 	return array(
 		'about-us'             => array(
 			'About Us',
-			"<h2>Sohag — Wear Your Story</h2>
-<p>Sohag is a handmade fashion brand from India. We make earrings, bangles, necklaces and bags by hand, and bring you carefully chosen western and Indian wear.</p>
+			"<h2>Sohag Exclusive — Wear Your Story</h2>
+<p>Sohag Exclusive is a handmade fashion brand from India. We make earrings, bangles, necklaces and bags by hand, and bring you carefully chosen western and Indian wear.</p>
 <p><em>Handmade is not just a product, it's a feeling.</em> Every piece is made with care, so each one is a little different — just like you.</p>
 <h3>Why shop with us</h3>
 <ul>
@@ -654,7 +654,7 @@ function sohag_info_pages() {
 		'privacy-policy'       => array(
 			'Privacy Policy',
 			"<p><em>Last updated: {$updated}</em></p>
-<p>This policy explains how Sohag (\"we\", \"us\") collects and uses your personal data when you use {$site}, in line with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.</p>
+<p>This policy explains how Sohag Exclusive (\"we\", \"us\") collects and uses your personal data when you use {$site}, in line with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.</p>
 <h3>What we collect</h3>
 <ul>
 <li>Name, mobile number, email (optional), delivery address and PIN code, when you place an order.</li>
@@ -706,7 +706,7 @@ function sohag_info_pages() {
 <h3>Shipping, returns and cancellation</h3>
 <p>Please read our Shipping Policy, Returns &amp; Refunds and Cancellation Policy, which form part of these terms.</p>
 <h3>Intellectual property</h3>
-<p>All designs, photos, logos and text on this website belong to Sohag and may not be copied or reused without our written permission.</p>
+<p>All designs, photos, logos and text on this website belong to Sohag Exclusive and may not be copied or reused without our written permission.</p>
 <h3>Liability</h3>
 <p>Our liability for any order is limited to the amount you paid for that order.</p>
 <h3>Governing law</h3>

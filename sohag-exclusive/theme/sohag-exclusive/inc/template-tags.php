@@ -23,7 +23,7 @@ function sohag_brand() {
 		?>
 		<span class="brand__text">
 			<span class="brand__name">Sohag</span>
-			<span class="brand__tag">Wear Your Story</span>
+			<span class="brand__tag">Exclusive</span>
 		</span>
 	</a>
 	<?php

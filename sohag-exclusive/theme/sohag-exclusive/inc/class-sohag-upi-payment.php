@@ -61,7 +61,7 @@ class Sohag_UPI_Payment_Gateway extends WC_Payment_Gateway {
 			'payee_name'   => array(
 				'title'   => __( 'Payee name', 'sohag-exclusive' ),
 				'type'    => 'text',
-				'default' => 'Sohag',
+				'default' => 'Sohag Exclusive',
 			),
 			'qr_image'     => array(
 				'title'       => __( 'UPI QR code image URL (optional)', 'sohag-exclusive' ),
@@ -83,7 +83,7 @@ class Sohag_UPI_Payment_Gateway extends WC_Payment_Gateway {
 
 	public function payment_fields() {
 		$upi   = trim( (string) $this->get_option( 'upi_id' ) );
-		$name  = (string) $this->get_option( 'payee_name', 'Sohag' );
+		$name  = (string) $this->get_option( 'payee_name', 'Sohag Exclusive' );
 		$qr    = trim( (string) $this->get_option( 'qr_image' ) );
 		$total = WC()->cart ? (float) WC()->cart->get_total( 'edit' ) : 0;
 		// Standard UPI intent link — on phones it opens the customer's UPI app with the amount filled in.
@@ -93,7 +93,7 @@ class Sohag_UPI_Payment_Gateway extends WC_Payment_Gateway {
 				'pn' => $name,
 				'am' => number_format( $total, 2, '.', '' ),
 				'cu' => 'INR',
-				'tn' => 'Sohag order',
+				'tn' => 'Sohag Exclusive order',
 			),
 			'',
 			'&',

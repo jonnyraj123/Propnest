@@ -197,9 +197,9 @@ function sohag_launch_ribbon() {
  */
 function sohag_render_curtain( $preview = false ) {
 	$opening = sohag_launch_timestamp();
-	$wa      = sohag_whatsapp_url( __( 'Hi Sohag! I would like to know when the store opens.', 'sohag-exclusive' ) );
+	$wa      = sohag_whatsapp_url( __( 'Hi Sohag Exclusive! I would like to know when the store opens.', 'sohag-exclusive' ) );
 	$fb      = sohag_opt( 'facebook' );
-	$title   = __( 'Sohag — Grand Opening Soon', 'sohag-exclusive' );
+	$title   = __( 'Sohag Exclusive — Grand Opening Soon', 'sohag-exclusive' );
 	$desc    = __( 'Bangaliana Handcraft — handmade jewellery and puja fashion. Our online store opens soon with free delivery and free Cash on Delivery all over India.', 'sohag-exclusive' );
 	?><!doctype html>
 <html <?php language_attributes(); ?>>
@@ -228,8 +228,8 @@ function sohag_render_curtain( $preview = false ) {
 		<?php sohag_launch_stage_parts(); ?>
 
 		<div class="go-content">
-			<img class="go-logo" src="<?php echo esc_url( SOHAG_URI . '/assets/img/logo-sm.jpg' ); ?>" alt="Sohag" width="120" height="120">
-			<p class="go-eyebrow">Sohag</p>
+			<img class="go-logo" src="<?php echo esc_url( SOHAG_URI . '/assets/img/logo-sm.jpg' ); ?>" alt="Sohag Exclusive" width="120" height="120">
+			<p class="go-eyebrow">Sohag Exclusive</p>
 			<h1 class="go-title"><span class="go-title__script">Grand Opening</span><span class="go-title__sub">Coming Soon</span></h1>
 		</div>
 
@@ -305,7 +305,7 @@ add_action(
 		<div class="go-stage go-stage--ceremony" id="sohag-ceremony" role="dialog" aria-label="<?php esc_attr_e( 'Grand opening', 'sohag-exclusive' ); ?>" data-force="<?php echo $force ? '1' : ''; ?>">
 			<?php sohag_launch_stage_parts(); ?>
 			<?php sohag_launch_ribbon(); ?>
-			<p class="go-open-text"><span>We're Open!</span><small><?php esc_html_e( 'Welcome to Sohag', 'sohag-exclusive' ); ?></small></p>
+			<p class="go-open-text"><span>We're Open!</span><small><?php esc_html_e( 'Welcome to Sohag Exclusive', 'sohag-exclusive' ); ?></small></p>
 			<button type="button" class="go-skip" data-go-skip><?php esc_html_e( 'Skip', 'sohag-exclusive' ); ?></button>
 		</div>
 		<script>

@@ -90,7 +90,7 @@ $sohag_wa = sohag_whatsapp_url();
 		<a class="float-chat__ms" href="<?php echo esc_url( $sohag_ms ); ?>" target="_blank" rel="noopener" aria-label="Messenger"><?php echo sohag_icon( 'messenger' ); // phpcs:ignore ?></a>
 	<?php endif; ?>
 	<?php if ( $sohag_wa ) : ?>
-		<a class="float-chat__wa" href="<?php echo esc_url( sohag_whatsapp_url( __( 'Hi Sohag, I would like to place an order.', 'sohag-exclusive' ) ) ); ?>" target="_blank" rel="noopener" aria-label="WhatsApp"><?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?></a>
+		<a class="float-chat__wa" href="<?php echo esc_url( sohag_whatsapp_url( __( 'Hi Sohag Exclusive, I would like to place an order.', 'sohag-exclusive' ) ) ); ?>" target="_blank" rel="noopener" aria-label="WhatsApp"><?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?></a>
 	<?php endif; ?>
 </div>
 

@@ -27,7 +27,7 @@ $sohag_wa = sohag_whatsapp_url();
 		</div>
 		<div class="hero__media">
 			<a class="hero__frame" href="<?php echo esc_url( sohag_shop_url() ); ?>">
-				<img src="<?php echo esc_url( sohag_opt( 'hero_image' ) ); ?>" alt="<?php esc_attr_e( 'Red and white puja saree with Bangaliana jewellery by Sohag', 'sohag-exclusive' ); ?>" width="720" height="960" fetchpriority="high">
+				<img src="<?php echo esc_url( sohag_opt( 'hero_image' ) ); ?>" alt="<?php esc_attr_e( 'Red and white puja saree with Bangaliana jewellery by Sohag Exclusive', 'sohag-exclusive' ); ?>" width="720" height="960" fetchpriority="high">
 			</a>
 			<div class="hero__badge">
 				<span class="hero__badge-icon"><?php echo sohag_icon( 'truck' ); // phpcs:ignore ?></span>
@@ -116,7 +116,7 @@ $sohag_wa = sohag_whatsapp_url();
 <section class="section">
 	<div class="container story">
 		<div class="story__media reveal">
-			<img src="<?php echo esc_url( SOHAG_URI . '/assets/img/logo.jpg' ); ?>" alt="Sohag" width="600" height="600" loading="lazy">
+			<img src="<?php echo esc_url( SOHAG_URI . '/assets/img/logo.jpg' ); ?>" alt="Sohag Exclusive" width="600" height="600" loading="lazy">
 		</div>
 		<div class="reveal">
 			<span class="eyebrow">Our Story</span>

@@ -11,7 +11,7 @@ function sohag_customize_register( $wp_customize ) {
 	$wp_customize->add_panel(
 		'sohag_panel',
 		array(
-			'title'    => __( 'Sohag Settings', 'sohag-exclusive' ),
+			'title'    => __( 'Sohag Exclusive Settings', 'sohag-exclusive' ),
 			'priority' => 25,
 		)
 	);
