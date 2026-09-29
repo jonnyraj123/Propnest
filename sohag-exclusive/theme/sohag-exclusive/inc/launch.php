@@ -193,6 +193,37 @@ function sohag_launch_ribbon() {
 }
 
 /**
+ * A few pieces for the "sneak peek" under the curtain: newest products with photos, or the bundled photos.
+ */
+function sohag_launch_peek_items() {
+	$items = array();
+	if ( function_exists( 'wc_get_products' ) ) {
+		foreach ( wc_get_products( array( 'status' => 'publish', 'limit' => 12, 'orderby' => 'date', 'order' => 'DESC' ) ) as $product ) {
+			$img = $product->get_image_id() ? wp_get_attachment_image_url( $product->get_image_id(), 'woocommerce_thumbnail' ) : '';
+			if ( $img ) {
+				$terms   = get_the_terms( $product->get_id(), 'product_cat' );
+				$items[] = array(
+					'img' => $img,
+					'cat' => ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '',
+				);
+			}
+			if ( count( $items ) >= 4 ) {
+				break;
+			}
+		}
+	}
+	if ( count( $items ) < 4 ) {
+		$items = array(
+			array( 'img' => SOHAG_URI . '/assets/img/products/pendant-necklace.jpg', 'cat' => 'Necklaces' ),
+			array( 'img' => SOHAG_URI . '/assets/img/products/puja-saree.jpg', 'cat' => 'Puja Sarees' ),
+			array( 'img' => SOHAG_URI . '/assets/img/products/choker-set.jpg', 'cat' => 'Earrings' ),
+			array( 'img' => SOHAG_URI . '/assets/img/products/oxidised-cuff.jpg', 'cat' => 'Bangles' ),
+		);
+	}
+	return $items;
+}
+
+/**
  * The Grand Opening page shown to the public while the store is closed.
  */
 function sohag_render_curtain( $preview = false ) {
@@ -242,6 +273,9 @@ function sohag_render_curtain( $preview = false ) {
 				<div class="go-count__cell"><span data-u="m">00</span><small>Minutes</small></div>
 				<div class="go-count__cell"><span data-u="s">00</span><small>Seconds</small></div>
 			</div>
+			<?php if ( $opening ) : ?>
+				<p class="go-date"><?php echo esc_html( sprintf( /* translators: opening date */ __( 'Opening %s', 'sohag-exclusive' ), wp_date( 'j F Y · g:i A', $opening ) ) ); ?></p>
+			<?php endif; ?>
 			<p class="go-soon" <?php echo $opening ? 'hidden' : ''; ?>><?php esc_html_e( 'The ribbon will be cut very soon', 'sohag-exclusive' ); ?></p>
 			<p class="go-tagline">Bangaliana Handcraft <span aria-hidden="true">·</span> Wear Your Story</p>
 			<p class="go-perks"><?php esc_html_e( 'Free delivery & free Cash on Delivery all over India', 'sohag-exclusive' ); ?></p>
@@ -253,7 +287,34 @@ function sohag_render_curtain( $preview = false ) {
 					<a class="go-btn" href="<?php echo esc_url( $fb ); ?>" target="_blank" rel="noopener"><?php echo sohag_icon( 'facebook' ); // phpcs:ignore ?> <?php esc_html_e( 'Follow on Facebook', 'sohag-exclusive' ); ?></a>
 				<?php endif; ?>
 			</div>
+			<a class="go-peek-cue" href="#go-peek"><?php esc_html_e( 'A glimpse behind the curtain', 'sohag-exclusive' ); ?> <span aria-hidden="true">↓</span></a>
 		</div>
+
+		<section class="go-peek" id="go-peek" aria-label="<?php esc_attr_e( 'Sneak peek', 'sohag-exclusive' ); ?>">
+			<p class="go-eyebrow"><?php esc_html_e( 'Sneak Peek', 'sohag-exclusive' ); ?></p>
+			<h2 class="go-peek__title"><?php esc_html_e( 'A glimpse of what is coming', 'sohag-exclusive' ); ?></h2>
+			<p class="go-peek__lead"><?php esc_html_e( 'Handmade thread-bead necklaces, oxidised silver and red-and-white puja sarees — the full collection is unveiled when the ribbon is cut.', 'sohag-exclusive' ); ?></p>
+			<div class="go-peek__row">
+				<?php foreach ( sohag_launch_peek_items() as $i => $item ) : ?>
+					<figure class="go-peek__card<?php echo $i ? ' is-veiled' : ''; ?>">
+						<img src="<?php echo esc_url( $item['img'] ); ?>" alt="" width="300" height="300" loading="lazy" decoding="async">
+						<figcaption>
+							<?php if ( $item['cat'] ) : ?><span><?php echo esc_html( $item['cat'] ); ?></span><?php endif; ?>
+							<small><?php echo $i ? esc_html__( 'Unveiling soon', 'sohag-exclusive' ) : esc_html__( 'First look', 'sohag-exclusive' ); ?></small>
+						</figcaption>
+					</figure>
+				<?php endforeach; ?>
+			</div>
+			<ul class="go-peek__promise">
+				<li><?php esc_html_e( '100% handmade', 'sohag-exclusive' ); ?></li>
+				<li><?php esc_html_e( 'Free delivery all over India', 'sohag-exclusive' ); ?></li>
+				<li><?php esc_html_e( 'Free Cash on Delivery', 'sohag-exclusive' ); ?></li>
+				<li><?php esc_html_e( 'Pay by UPI', 'sohag-exclusive' ); ?></li>
+			</ul>
+			<?php if ( $wa ) : ?>
+				<a class="go-btn go-btn--gold" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener"><?php echo sohag_icon( 'whatsapp' ); // phpcs:ignore ?> <?php esc_html_e( 'Tell me when it opens', 'sohag-exclusive' ); ?></a>
+			<?php endif; ?>
+		</section>
 	</main>
 	<?php if ( $preview ) : ?>
 		<a class="go-preview-note" href="<?php echo esc_url( admin_url( 'themes.php?page=sohag-launch' ) ); ?>"><?php esc_html_e( 'Preview of what visitors see — back to Grand Opening settings', 'sohag-exclusive' ); ?></a>
