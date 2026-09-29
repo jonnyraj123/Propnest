@@ -132,7 +132,7 @@ add_action(
 );
 
 function sohag_launch_assets_url( $file ) {
-	return SOHAG_URI . '/assets/' . $file . '?ver=' . SOHAG_VERSION;
+	return SOHAG_URI . '/assets/' . $file . '?ver=' . sohag_asset_ver( $file );
 }
 
 /**
@@ -344,11 +344,11 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		if ( sohag_show_ceremony() ) {
-			wp_enqueue_style( 'sohag-launch', SOHAG_URI . '/assets/css/launch.css', array(), SOHAG_VERSION );
-			wp_enqueue_script( 'sohag-launch', SOHAG_URI . '/assets/js/launch.js', array(), SOHAG_VERSION, true );
+			wp_enqueue_style( 'sohag-launch', SOHAG_URI . '/assets/css/launch.css', array(), sohag_asset_ver( 'css/launch.css' ) );
+			wp_enqueue_script( 'sohag-launch', SOHAG_URI . '/assets/js/launch.js', array(), sohag_asset_ver( 'js/launch.js' ), true );
 		}
 		if ( ! sohag_store_is_open() && sohag_is_team_member() ) {
-			wp_enqueue_style( 'sohag-launch', SOHAG_URI . '/assets/css/launch.css', array(), SOHAG_VERSION );
+			wp_enqueue_style( 'sohag-launch', SOHAG_URI . '/assets/css/launch.css', array(), sohag_asset_ver( 'css/launch.css' ) );
 		}
 	},
 	40

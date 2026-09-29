@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SOHAG_VERSION', '1.1.0' );
+define( 'SOHAG_VERSION', '1.2.0' );
 define( 'SOHAG_DIR', get_template_directory() );
 define( 'SOHAG_URI', get_template_directory_uri() );
 
