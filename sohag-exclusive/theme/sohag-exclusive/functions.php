@@ -142,6 +142,7 @@ function sohag_messenger_url() {
 require SOHAG_DIR . '/inc/icons.php';
 require SOHAG_DIR . '/inc/customizer.php';
 require SOHAG_DIR . '/inc/template-tags.php';
+require SOHAG_DIR . '/inc/launch.php';
 
 if ( sohag_is_wc() ) {
 	require SOHAG_DIR . '/inc/woocommerce.php';
