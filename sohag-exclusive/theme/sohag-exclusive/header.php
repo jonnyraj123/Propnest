@@ -11,7 +11,8 @@ defined( 'ABSPATH' ) || exit;
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<meta name="theme-color" content="#7a1230">
+	<meta name="theme-color" content="#1a0509">
+	<script>document.documentElement.classList.add('js');</script>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

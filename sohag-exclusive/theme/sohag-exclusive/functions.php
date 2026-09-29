@@ -65,13 +65,14 @@ add_action( 'after_setup_theme', 'sohag_setup' );
 function sohag_assets() {
 	wp_enqueue_style(
 		'sohag-fonts',
-		'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap',
+		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap',
 		array(),
 		null
 	);
 	// Only the ₹ glyph, from a face drawn for Indian scripts, so the rupee sign is crisp in every browser.
 	wp_enqueue_style( 'sohag-rupee', 'https://fonts.googleapis.com/css2?family=Hind:wght@600&text=%E2%82%B9&display=swap', array(), null );
 	wp_enqueue_style( 'sohag-main', SOHAG_URI . '/assets/css/main.css', array(), SOHAG_VERSION );
+	wp_enqueue_style( 'sohag-cinematic', SOHAG_URI . '/assets/css/cinematic.css', array( 'sohag-main' ), SOHAG_VERSION );
 	wp_enqueue_script( 'sohag-main', SOHAG_URI . '/assets/js/main.js', array(), SOHAG_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'sohag_assets', 20 );
@@ -102,8 +103,8 @@ function sohag_opt( $key ) {
 		'hero_title'       => 'Bangaliana <em>Handcraft</em>',
 		'hero_text'        => 'Handmade thread-bead necklaces, oxidised jewellery and red-and-white puja sarees — rooted in Bengali tradition, made with love.',
 		'delivery_days'    => '4–7 working days',
-		'grievance'        => 'Sohag Exclusive Customer Care',
-		'about'            => 'Sohag Exclusive — handmade products that are more than a product, they are a feeling. Unique • Artistic • For You.',
+		'grievance'        => 'Sohag Customer Care',
+		'about'            => 'Sohag — handmade Bangaliana jewellery and puja fashion. More than a product, it is a feeling. Wear your story.',
 	);
 	$value = get_theme_mod( 'sohag_' . $key, null );
 	if ( null === $value || '' === $value ) {

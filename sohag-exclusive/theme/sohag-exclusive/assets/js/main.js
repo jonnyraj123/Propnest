@@ -54,4 +54,20 @@
     if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) setDrawer(false);
   });
 
+  // Scroll reveal: sections drift up into view once. Without IntersectionObserver everything simply shows.
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
 })();

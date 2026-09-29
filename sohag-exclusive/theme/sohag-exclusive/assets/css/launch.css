@@ -13,7 +13,7 @@
   --go-drape-w: clamp(38px, 13vw, 190px);
   --go-ribbon-h: clamp(30px, 4.6vh, 50px);
   --go-script: "Great Vibes", cursive;
-  --go-display: "Playfair Display", Georgia, serif;
+  --go-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --go-body: "Jost", "Segoe UI", system-ui, sans-serif;
 }
 
