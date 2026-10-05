@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Second Opinion Electric · Tampa</title>
+<meta name="description" content="Second Opinion Electric — licensed electrician in Tampa, FL. EC13014172.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Concept: the inspector's report. Clean paper, a checklist that ticks itself, red-pen marks. */
+:root{--paper:#fbfaf6;--ink:#1b1b1b;--mut:#6b6a64;--rule:#e4e1d6;--red:#d7263d;--blue:#1f4fd1;
+--display:"DM Serif Display",Georgia,serif;--body:"Space Grotesk",system-ui,sans-serif;--hand:"Caveat",cursive}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);
+background-image:linear-gradient(transparent 31px,var(--rule) 32px);background-size:100% 32px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:12px;background:var(--paper)}
+.logo{font:400 24px var(--display)}
+.logo small{font:600 11px var(--body);letter-spacing:.18em;color:var(--mut);margin-left:8px;text-transform:uppercase}
+.btn{background:var(--ink);color:var(--paper);text-decoration:none;font:600 15px var(--body);padding:12px 20px;border-radius:2px;transition:background .2s}
+.btn:hover{background:var(--red)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:56px 0 80px}
+.hero h1{font:400 clamp(44px,7vw,92px)/1 var(--display);letter-spacing:-.01em}
+.mark{position:relative;white-space:nowrap}
+.mark svg{position:absolute;left:-6%;top:-14%;width:112%;height:128%;overflow:visible}
+.mark path{fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:pen 1.4s .5s ease-out forwards}
+@keyframes pen{to{stroke-dashoffset:0}}
+.hero p{color:var(--mut);font-size:18px;max-width:42ch;margin:26px 0 30px}
+.note{font:600 26px var(--hand);color:var(--red);rotate:-3deg;display:inline-block;margin-left:14px}
+.report{background:#fff;border:1px solid var(--rule);padding:26px 26px 20px;box-shadow:8px 8px 0 var(--ink);rotate:1.5deg}
+.report h3{font:600 12px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:8px}
+.row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--rule);font-weight:600}
+.box{width:22px;height:22px;border:2px solid var(--ink);flex:none;position:relative}
+.box::after{content:"";position:absolute;left:5px;top:0;width:7px;height:13px;border:solid var(--blue);border-width:0 3px 3px 0;rotate:45deg;scale:0;transition:scale .25s cubic-bezier(.5,1.8,.5,1)}
+.row.ok .box::after{scale:1}
+.row span:last-child{margin-left:auto;font:600 12px var(--body);letter-spacing:.12em;color:var(--blue);opacity:0;transition:opacity .3s}
+.row.ok span:last-child{opacity:1}
+.sign{font:600 30px var(--hand);color:var(--blue);margin-top:12px;text-align:right}
+section{padding:80px 0;background:var(--paper)}
+h2{font:400 clamp(32px,5vw,58px)/1.05 var(--display);margin-bottom:40px;max-width:18ch}
+h2 em{color:var(--red)}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.svc div{padding:28px 24px 28px 0;border-bottom:1px solid var(--rule)}
+.svc div+div{padding-left:24px;border-left:1px solid var(--rule)}
+.svc b{font:400 26px var(--display);display:block;margin-bottom:6px}
+.svc p{color:var(--mut)}
+.final{text-align:center;padding:90px 0}
+.final .num{font:400 clamp(40px,8vw,96px) var(--display);text-decoration:none;display:block;margin:6px 0 24px}
+.final .num:hover{color:var(--red)}
+footer{padding:26px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:13px;border-top:1px solid var(--rule);background:var(--paper)}
+@media (max-width:820px){.hero{grid-template-columns:1fr}.report{rotate:0deg}.svc{grid-template-columns:1fr}.svc div+div{padding-left:0;border-left:0}.logo small{display:none}}
+@media (prefers-reduced-motion:reduce){.mark path{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Second Opinion Electric<small>Tampa · EC13014172</small></div>
+  <a class="btn" href="tel:+18137166020">(813) 716-6020</a>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Before you pay for it, get a <span class="mark">second opinion.<svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><path d="M20 60 C30 10 270 0 285 45 C298 90 60 100 25 70 C5 52 40 28 90 22"/></svg></span></h1>
+    <p>Honest inspections, clear answers and fair repairs for Tampa homes. Licensed and on your side.</p>
+    <a class="btn" href="tel:+18137166020">Book an inspection</a><span class="note">no upselling ✓</span>
+  </div>
+  <div class="report" aria-label="Sample inspection report">
+    <h3><span>Inspection report</span><span>Tampa, FL</span></h3>
+    <div class="row"><span class="box"></span>Panel & breakers<span>PASS</span></div>
+    <div class="row"><span class="box"></span>Outlets & GFCI<span>PASS</span></div>
+    <div class="row"><span class="box"></span>Wiring & grounding<span>PASS</span></div>
+    <div class="row"><span class="box"></span>Lighting & fans<span>PASS</span></div>
+    <div class="sign">— Second Opinion</div>
+  </div>
+</div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The truth about your wiring, <em>then</em> the fix.</h2>
+    <div class="svc">
+      <div><b>Inspections</b><p>Buying, selling or just unsure. Know what you have.</p></div>
+      <div><b>Repairs</b><p>Dead outlets, tripping breakers, flickering lights.</p></div>
+      <div><b>Upgrades</b><p>Panels, lighting, fans and EV chargers.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 style="margin:0 auto">Got a quote that feels wrong?</h2>
+    <a class="num" href="tel:+18137166020">(813) 716-6020</a>
+    <a class="btn" href="tel:+18137166020">Call for a second opinion</a>
+  </div>
+</section>
+
+<div class="wrap"><footer><span>© Second Opinion Electric · Tampa, FL</span><span>Demo design by Plastrix Studio</span></footer></div>
+<script>
+const rows=[...document.querySelectorAll('.row')],rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+rows.forEach((r,i)=>rm?r.classList.add('ok'):setTimeout(()=>r.classList.add('ok'),1300+i*450));
+</script>
+</body>
+</html>
