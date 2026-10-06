@@ -10,3 +10,9 @@
 3. Offer a free sample homepage. Send Loom link by email.
 Subject: I made a 1-min video about [Business]'s website
 Only 2-3 per day, best leads only. Never invent problems.
+
+# Email format (must follow every time)
+- ALWAYS send with htmlBody. Never plain-text body (Gmail shows ugly google.com/url links).
+- Link text = plastrixstudio.com via <a href="https://plastrixstudio.com">plastrixstudio.com</a>.
+- First email: no demo link (spam). Send demo link only after they reply.
+- Sender: hello@plastrixstudio.com (default). 5 min gap, max 10-15 new/day.
