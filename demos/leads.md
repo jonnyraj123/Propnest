@@ -12,3 +12,16 @@
 | 8 | ARCORE Electric (Robert Macias) | Phoenix AZ | ARCOREelectric@gmail.com | - | arcore-electric |
 | 9 | The Plumbing Wizard | Jacksonville FL | theplumbingwizardllc23@gmail.com | 904-544-2826 | plumbing-wizard |
 | 10 | Losco Plumbing | Jacksonville FL | loscoplumbing@comcast.net | - | losco-plumbing |
+
+## Batch 3 (no-link first email, sent from hello@plastrixstudio.com)
+| Business | City | Email | Type |
+|---|---|---|---|
+| Hey Larry Handyman | Toronto | heylarry55@gmail.com | no site → homepage |
+| Nimble Plumbing | Toronto | NimblePlumbingLtd@gmail.com | no site → homepage |
+| HandyCGY | Calgary | handycgy@gmail.com | no site → homepage |
+| Daily Plumbing & Drains | Toronto | majidgh645@gmail.com | no site → homepage |
+| Dubai Pure Clean | Dubai | dubaipureclean@gmail.com | has site → WhatsApp AI |
+| Dubai Deep Clean | Dubai | dubaideepclean24@gmail.com | has site → WhatsApp AI |
+| Super Dream Pest Control | Dubai | info@superdreampestcontrol.ae | has site → WhatsApp AI |
+| Expert Pest Control | Dubai | info@expertpestcontrol.ae | has site → WhatsApp AI |
+| Al Waha Hygiene | Dubai | info@alwahahygiene.ae | has site → WhatsApp AI |
