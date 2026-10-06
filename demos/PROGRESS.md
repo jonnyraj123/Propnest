@@ -16,3 +16,6 @@
 - Next: send new msg after publish; Meta webhook "Test" -> Send to My Server; if only test arrives, subscribe WABA to app (POST /{WABA_ID}/subscribed_apps via Graph API Explorer).
 - Access token is temporary (24h) -> regenerate / make permanent System User token.
 - Later: wait-and-batch multi-messages, persistent memory.
+
+## Tomorrow
+- Find 10 Etsy sellers (US/Canada/UK) with no own website. Etsy blocked here -> use web search, find their Instagram/Facebook email. Do NOT pitch via Etsy messages (against Etsy rules).
