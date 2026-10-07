@@ -19,3 +19,10 @@
 
 ## Tomorrow
 - Find 10 Etsy sellers (US/Canada/UK) with no own website. Etsy blocked here -> use web search, find their Instagram/Facebook email. Do NOT pitch via Etsy messages (against Etsy rules).
+
+## Network (environment "Default", Custom)
+- Allowed: etsy, nextdoor (+apex), hotfrog, threeui, github, reactbits, aceternity, magicui, 21st.dev, godly, graph.facebook.com, *.n8n.cloud.
+- Etsy (DataDome) and Hotfrog block bots (403) -> use web search for those.
+- New allowlist applies to NEW sessions only.
+
+## Sent 7 Oct: Mile-End Soap (mileendsoap@gmail.com), Carr's Creek Soaps (carrscreeksoaps@gmail.com).
