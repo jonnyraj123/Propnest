@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aaron Electrician · Phoenix</title>
+<meta name="description" content="Aaron Electrician — dependable electrical work across Phoenix, AZ.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: flip the switch. The page starts as a Phoenix night; the visitor's first tap lights up the desert. */
+:root{--sky:#14102a;--sky2:#2a1d4d;--fg:#f4ece4;--mut:#b8acc9;--sun:#ffb347;--clay:#d9603b;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);
+--display:"Bricolage Grotesque",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif}
+body.on{--sky:#ffd9a8;--sky2:#ff9f6e;--fg:#2a160c;--mut:#6b4330;--card:rgba(255,255,255,.55);--line:rgba(42,22,12,.15)}
+*{box-sizing:border-box;margin:0}
+body{color:var(--fg);font:400 16px/1.6 var(--body);background:linear-gradient(180deg,var(--sky),var(--sky2));min-height:100vh;transition:background 1s,color .6s}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:12px}
+.logo{font:800 22px var(--display);letter-spacing:-.03em}
+.call{font:600 15px var(--body);text-decoration:none;border:1.5px solid var(--fg);padding:10px 18px;border-radius:12px;transition:background .3s,color .3s}
+.call:hover{background:var(--fg);color:var(--sky)}
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;padding:48px 0 30px;position:relative}
+.hero h1{font:800 clamp(44px,8vw,110px)/.92 var(--display);letter-spacing:-.05em;text-wrap:balance}
+.hero p{max-width:40ch;color:var(--mut);font-size:18px;margin-top:22px}
+.switch{display:flex;flex-direction:column;align-items:center;gap:14px}
+.plate{width:120px;height:190px;border-radius:22px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;backdrop-filter:blur(6px)}
+.toggle{width:52px;height:110px;border-radius:14px;border:0;cursor:pointer;background:#3b3256;position:relative;box-shadow:inset 0 -50px 0 rgba(0,0,0,.25);transition:background .4s}
+.toggle::after{content:"";position:absolute;left:6px;right:6px;height:46px;top:56px;border-radius:10px;background:#cfc6e0;transition:top .35s cubic-bezier(.5,1.6,.4,1),background .4s}
+body.on .toggle{background:var(--clay)}
+body.on .toggle::after{top:8px;background:#fff}
+.hint{font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.scene{position:relative;height:200px;margin-top:10px;overflow:hidden}
+.sun{position:absolute;left:50%;width:180px;height:180px;margin-left:-90px;border-radius:50%;background:radial-gradient(circle,#fff6d6,var(--sun) 60%);top:200px;transition:top 1.2s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 80px 30px rgba(255,179,71,.35)}
+body.on .sun{top:40px}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 30% 60%,#fff,transparent),radial-gradient(2px 2px at 70% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 85% 55%,#fff,transparent),radial-gradient(1.5px 1.5px at 50% 15%,#fff,transparent);transition:opacity .8s}
+body.on .stars{opacity:0}
+.mesa{position:absolute;bottom:0;left:0;width:100%;height:120px}
+.mesa path{transition:fill 1s}
+section{padding:72px 0}
+h2{font:800 clamp(30px,5vw,58px)/1 var(--display);letter-spacing:-.04em;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;backdrop-filter:blur(6px);transition:transform .3s}
+.card:hover{transform:rotate(-1deg) translateY(-4px)}
+.card .e{font-size:30px;margin-bottom:14px;display:block}
+.card h3{font:800 22px var(--display);letter-spacing:-.02em;margin-bottom:6px}
+.card p{color:var(--mut);font-size:15px}
+.final{text-align:center}
+.final .num{font:800 clamp(36px,7vw,84px) var(--display);letter-spacing:-.04em;text-decoration:none;display:block;margin:10px 0 18px}
+.final .call{display:inline-block}
+footer{padding:30px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:13px}
+@media (max-width:780px){.hero{grid-template-columns:1fr}.switch{flex-direction:row}.plate{width:90px;height:140px}.toggle{width:40px;height:84px}.toggle::after{height:34px;top:44px}body.on .toggle::after{top:6px}.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Aaron Electrician</div>
+  <a class="call" href="tel:+16024188518">(602) 418-8518</a>
+</header>
+
+<div class="hero">
+  <div>
+    <h1 id="headline">Phoenix nights need power you can trust.</h1>
+    <p>Repairs, panels, lighting and ceiling fans for homes across Phoenix. Honest work, fair prices.</p>
+  </div>
+  <div class="switch">
+    <div class="plate"><button class="toggle" id="sw" aria-label="Turn the lights on" aria-pressed="false"></button></div>
+    <span class="hint" id="hint">Flip it</span>
+  </div>
+</div>
+<div class="scene" aria-hidden="true">
+  <div class="stars"></div>
+  <div class="sun"></div>
+  <svg class="mesa" viewBox="0 0 1100 120" preserveAspectRatio="none"><path id="m1" d="M0 120V70l120-10 40-30h140l30 30 200 10 60-40h160l40 40 210 5 100-20v65z" fill="#0d0a1c"/></svg>
+</div>
+
+<section>
+  <h2>Done right, from panel to porch light.</h2>
+  <div class="grid">
+    <div class="card"><span class="e">⚡</span><h3>Electrical repairs</h3><p>Dead outlets, flickers and tripping breakers fixed.</p></div>
+    <div class="card"><span class="e">🌀</span><h3>Ceiling fans</h3><p>Stay cool in Phoenix summers. Installed fast.</p></div>
+    <div class="card"><span class="e">💡</span><h3>Lighting & panels</h3><p>Upgrades for safer, brighter homes.</p></div>
+  </div>
+</section>
+
+<section class="final">
+  <h2>Call Aaron today.</h2>
+  <a class="num" href="tel:+16024188518">(602) 418-8518</a>
+  <a class="call" href="tel:+16024188518">Get a free quote</a>
+</section>
+
+<footer><span>© Aaron Electrician · Phoenix, AZ</span><span>Demo design by Plastrix Studio</span></footer>
+</div>
+<script>
+const sw=document.getElementById('sw'),h=document.getElementById('headline'),hint=document.getElementById('hint'),m=document.getElementById('m1');
+sw.addEventListener('click',()=>{const on=document.body.classList.toggle('on');sw.setAttribute('aria-pressed',on);
+h.textContent=on?'Lights on. Phoenix is powered.':'Phoenix nights need power you can trust.';hint.textContent=on?'Powered by Aaron':'Flip it';m.setAttribute('fill',on?'#b5532f':'#0d0a1c')});
+</script>
+</body>
+</html>

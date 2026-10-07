@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cannon Electric · San Antonio Electrician</title>
+<meta name="description" content="Cannon Electric — residential and commercial electrical work in San Antonio, TX.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Concept: a live electrical blueprint. Navy drafting grid, current that travels the wires. */
+:root{--ink:#0b1730;--ink2:#10224a;--line:#2b4a86;--paper:#e9f0ff;--dim:#8fa6d6;--volt:#ffd23f;--hot:#ff6b35;
+--display:"Chakra Petch",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:400 16px/1.6 var(--body);
+background-image:linear-gradient(var(--ink2) 1px,transparent 1px),linear-gradient(90deg,var(--ink2) 1px,transparent 1px);background-size:32px 32px}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:12px}
+.logo{font:700 20px var(--display);letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border:2px solid var(--volt);border-radius:50%;display:grid;place-items:center;font-style:normal;color:var(--volt);font-size:14px}
+.tag{font:500 12px var(--mono);color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+.call{background:var(--volt);color:var(--ink);font:700 15px var(--display);padding:12px 20px;text-decoration:none;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:transform .2s}
+.call:hover{transform:translateY(-2px)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 72px}
+.hero h1{font:700 clamp(40px,6.4vw,78px)/1 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--volt);text-shadow:0 0 24px rgba(255,210,63,.45)}
+.hero p{color:var(--dim);font-size:18px;max-width:46ch;margin:20px 0 28px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ghost{font:500 14px var(--mono);color:var(--paper);text-decoration:none;border-bottom:1px dashed var(--dim);padding-bottom:2px}
+.board{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:end}
+.board svg{width:100%;height:100%}
+.wire{fill:none;stroke:var(--line);stroke-width:3}
+.pulse{fill:none;stroke:var(--volt);stroke-width:4;stroke-linecap:round;stroke-dasharray:40 520;animation:run 3.2s linear infinite;filter:drop-shadow(0 0 6px var(--volt))}
+.pulse.b{animation-delay:-1.6s;stroke:var(--hot);filter:drop-shadow(0 0 6px var(--hot))}
+@keyframes run{to{stroke-dashoffset:-560}}
+.node{fill:var(--ink);stroke:var(--volt);stroke-width:3}
+.bulb{fill:var(--volt);animation:glow 3.2s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:1}}
+.lbl{font:500 11px var(--mono);fill:var(--dim);letter-spacing:.1em}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}
+.strip div{padding:22px 20px;font:500 13px var(--mono);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.strip div+div{border-left:1px solid var(--line)}
+.strip b{display:block;font:700 26px var(--display);color:var(--paper);letter-spacing:0;text-transform:none}
+section{padding:80px 0}
+h2{font:700 clamp(28px,4vw,42px)/1.1 var(--display);margin-bottom:36px;text-wrap:balance}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid var(--line);background:rgba(16,34,74,.6);padding:24px;position:relative;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--volt);transform:translateY(-4px)}
+.card .sym{width:44px;height:44px;margin-bottom:18px;stroke:var(--volt);fill:none;stroke-width:2}
+.card h3{font:700 19px var(--display);margin-bottom:8px}
+.card p{color:var(--dim);font-size:14px}
+.card .no{position:absolute;top:14px;right:16px;font:500 11px var(--mono);color:var(--line)}
+.final{text-align:center;border:1px solid var(--line);padding:56px 24px;background:rgba(11,23,48,.8)}
+.final h2{margin-bottom:12px}
+.final p{color:var(--dim);margin-bottom:28px}
+.big{font:700 clamp(28px,5vw,48px) var(--display);color:var(--volt);text-decoration:none;display:inline-block;margin-bottom:8px}
+footer{padding:28px 0 40px;font:500 12px var(--mono);color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.reveal{opacity:1;transform:none;transition:opacity .7s,transform .7s}
+.js .reveal{opacity:0;transform:translateY(24px)}
+.js .reveal.in{opacity:1;transform:none}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.board{justify-self:center;max-width:340px}.svc{grid-template-columns:1fr 1fr}.strip{grid-template-columns:1fr}.strip div+div{border-left:0;border-top:1px solid var(--line)}}
+@media (max-width:520px){.svc{grid-template-columns:1fr}.tag{display:none}}
+@media (prefers-reduced-motion:reduce){.pulse,.bulb{animation:none}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo"><i>⚡</i>CANNON ELECTRIC</div>
+  <span class="tag">San Antonio · TX</span>
+  <a class="call" href="tel:+12107722669">Call (210) 772-2669</a>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>San Antonio's wiring, <em>done right</em> the first time.</h1>
+    <p>Panels, outlets, lighting and repairs for homes and businesses. One call, a clear quote, clean work.</p>
+    <div class="ctas">
+      <a class="call" href="tel:+12107722669">Get a Free Quote</a>
+      <a class="ghost" href="#services">See services ↓</a>
+    </div>
+  </div>
+  <div class="board" aria-hidden="true">
+    <svg viewBox="0 0 400 400">
+      <path class="wire" d="M40 60 H200 V140 H340 V260 H220 V340 H60 V200 H40 Z"/>
+      <path class="pulse" d="M40 60 H200 V140 H340 V260 H220 V340 H60 V200 H40 Z"/>
+      <path class="pulse b" d="M40 60 H200 V140 H340 V260 H220 V340 H60 V200 H40 Z"/>
+      <circle class="node" cx="200" cy="140" r="8"/><circle class="node" cx="340" cy="260" r="8"/><circle class="node" cx="60" cy="200" r="8"/>
+      <circle class="bulb" cx="220" cy="300" r="22"/>
+      <path d="M210 324h20M212 332h16" stroke="#ffd23f" stroke-width="3"/>
+      <text class="lbl" x="48" y="50">MAIN PANEL</text><text class="lbl" x="250" y="130">KITCHEN</text><text class="lbl" x="70" y="190">GARAGE</text><text class="lbl" x="250" y="300">LIGHTING</text>
+    </svg>
+  </div>
+</div>
+</div>
+
+<div class="strip wrap">
+  <div><b>Same-day</b>service calls</div>
+  <div><b>Upfront</b>pricing, no surprises</div>
+  <div><b>Homes & shops</b>across San Antonio</div>
+</div>
+
+<div class="wrap">
+<section id="services">
+  <h2 class="reveal">What we wire, fix and upgrade</h2>
+  <div class="svc">
+    <div class="card reveal"><span class="no">01</span><svg class="sym" viewBox="0 0 44 44"><rect x="8" y="4" width="28" height="36"/><path d="M14 12h16M14 20h16M14 28h16"/></svg><h3>Panel Upgrades</h3><p>Old or overloaded panels replaced safely.</p></div>
+    <div class="card reveal"><span class="no">02</span><svg class="sym" viewBox="0 0 44 44"><circle cx="22" cy="18" r="10"/><path d="M17 30h10M18 36h8"/></svg><h3>Lighting</h3><p>Indoor, outdoor, recessed and fixtures.</p></div>
+    <div class="card reveal"><span class="no">03</span><svg class="sym" viewBox="0 0 44 44"><rect x="10" y="6" width="24" height="32" rx="3"/><circle cx="17" cy="18" r="2"/><circle cx="27" cy="18" r="2"/><path d="M18 28h8"/></svg><h3>Outlets & Switches</h3><p>New circuits, GFCI and smart switches.</p></div>
+    <div class="card reveal"><span class="no">04</span><svg class="sym" viewBox="0 0 44 44"><path d="M24 4L10 24h12l-2 16 14-20H22z"/></svg><h3>Repairs</h3><p>Flickering, tripping or dead circuits found fast.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="final reveal">
+    <h2>Power out? Breaker tripping?</h2>
+    <p>Call Timothy and the Cannon Electric team today.</p>
+    <a class="big" href="tel:+12107722669">(210) 772-2669</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Cannon Electric · San Antonio, TX</span>
+  <span>Demo design by Plastrix Studio</span>
+</footer>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

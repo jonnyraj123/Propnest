@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Losco Plumbing · Jacksonville</title>
+<meta name="description" content="Losco Plumbing Repair Services — bathroom faucets, valves, shower pans and water heaters in Jacksonville, FL.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: a fresh bathroom. White subway tile, a chrome faucet that drips and splashes, mint grout lines. */
+:root{--tile:#ffffff;--grout:#e3ece9;--ink:#15302b;--mut:#5b716c;--mint:#2bb39a;--mint2:#d8f3ec;--chrome1:#f4f7f8;--chrome2:#9aa7ad;
+--display:"Young Serif",Georgia,serif;--body:"Work Sans",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{color:var(--ink);font:400 16px/1.6 var(--body);background-color:var(--tile);
+background-image:linear-gradient(var(--grout) 2px,transparent 2px),linear-gradient(90deg,var(--grout) 2px,transparent 2px),linear-gradient(90deg,var(--grout) 2px,transparent 2px);
+background-size:100% 44px,88px 88px,88px 88px;background-position:0 0,0 0,44px 44px}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:12px}
+.logo{font:400 24px var(--display)}
+.logo span{color:var(--mint)}
+.btn{background:var(--ink);color:#fff;text-decoration:none;font:600 15px var(--body);padding:13px 22px;border-radius:14px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--mint);transform:translateY(-2px)}
+.btn.m{background:var(--mint)}.btn.m:hover{background:var(--ink)}
+.panel{background:rgba(255,255,255,.92);border-radius:30px;box-shadow:0 30px 60px -40px rgba(21,48,43,.4);border:1px solid var(--grout)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px;padding:50px 50px;margin-top:10px}
+.hero h1{font:400 clamp(40px,6.4vw,82px)/1.02 var(--display);letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--mint)}
+.hero p{color:var(--mut);font-size:18px;max-width:40ch;margin:20px 0 28px}
+.tap{width:100%;max-width:300px;justify-self:center}
+.tap svg{width:100%;overflow:visible}
+.d{fill:var(--mint);animation:drip 2.6s cubic-bezier(.55,0,1,.45) infinite}
+@keyframes drip{0%{transform:translateY(0) scale(.2);opacity:0}20%{transform:translateY(0) scale(1);opacity:1}55%{transform:translateY(0) scale(1)}85%{transform:translateY(170px) scale(1);opacity:1}86%,100%{transform:translateY(170px) scale(1);opacity:0}}
+.d{transform-box:fill-box;transform-origin:50% 0}
+.sp{fill:none;stroke:var(--mint);stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:splash 2.6s ease-out infinite}
+@keyframes splash{0%,84%{opacity:0;transform:scale(.3)}88%{opacity:1}100%{opacity:0;transform:scale(1.4)}}
+section{padding:70px 0}
+h2{font:400 clamp(30px,4.6vw,52px)/1.08 var(--display);margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.t{background:#fff;border:1px solid var(--grout);border-radius:22px;padding:26px 22px;transform:perspective(600px) rotateX(0);transition:transform .5s,box-shadow .3s}
+.t:hover{box-shadow:0 18px 30px -20px rgba(21,48,43,.5)}
+.js .t{transform:perspective(600px) rotateX(-80deg);opacity:0}
+.js .t.in{transform:perspective(600px) rotateX(0);opacity:1;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.t b{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--mint2);color:var(--mint);font:400 20px var(--display);margin-bottom:16px}
+.t h3{font:400 21px var(--display);margin-bottom:6px}
+.t p{color:var(--mut);font-size:15px}
+.final{padding:56px 40px;text-align:center}
+.final a.mail{font:400 clamp(22px,4vw,40px) var(--display);color:var(--mint);text-decoration:none;display:block;margin:6px 0 24px;word-break:break-all}
+footer{padding:26px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:13px}
+footer span{background:#fff;padding:2px 8px;border-radius:6px}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding:34px 24px}.tap{max-width:200px}.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.d,.sp{animation:none}.js .t{transform:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Losco<span>.</span> Plumbing</div>
+  <a class="btn" href="mailto:loscoplumbing@comcast.net">Get a quote</a>
+</header>
+
+<div class="panel hero">
+  <div>
+    <h1>That drip ends <em>today.</em></h1>
+    <p>Bathroom faucets, valves, shower leaks and water heaters for Jacksonville homes. Neat work, fair prices.</p>
+    <a class="btn m" href="mailto:loscoplumbing@comcast.net">Request a free quote</a>
+  </div>
+  <div class="tap" aria-hidden="true">
+    <svg viewBox="0 0 300 320">
+      <defs><linearGradient id="c" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f4f7f8"/><stop offset=".5" stop-color="#c3ccd0"/><stop offset="1" stop-color="#8d9aa0"/></linearGradient></defs>
+      <rect x="40" y="40" width="40" height="70" rx="8" fill="url(#c)"/>
+      <path d="M60 50h120a40 40 0 0 1 40 40v14h-30V96a12 12 0 0 0-12-12H60z" fill="url(#c)"/>
+      <rect x="186" y="104" width="38" height="12" rx="4" fill="#7d8a90"/>
+      <rect x="44" y="18" width="70" height="14" rx="7" fill="url(#c)"/><rect x="74" y="28" width="10" height="20" fill="#9aa7ad"/>
+      <path class="d" d="M205 118c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17z"/>
+      <ellipse class="sp" cx="205" cy="300" rx="34" ry="8"/>
+      <path class="sp" d="M188 296l-10-14M222 296l10-14M205 294v-16"/>
+      <ellipse cx="205" cy="304" rx="70" ry="10" fill="#d8f3ec"/>
+    </svg>
+  </div>
+</div>
+
+<section>
+  <h2>Bathroom work, done neat.</h2>
+  <div class="grid">
+    <div class="t"><b>1</b><h3>Faucets</h3><p>Leaky bathroom and kitchen taps replaced.</p></div>
+    <div class="t"><b>2</b><h3>Valves</h3><p>Shut-off and shower valves repaired.</p></div>
+    <div class="t"><b>3</b><h3>Shower pans</h3><p>Hidden leaks found and sealed.</p></div>
+    <div class="t"><b>4</b><h3>Water heaters</h3><p>Repairs and replacements.</p></div>
+  </div>
+</section>
+
+<div class="panel final">
+  <h2 style="margin-bottom:6px">Tell us what's leaking.</h2>
+  <a class="mail" href="mailto:loscoplumbing@comcast.net">loscoplumbing@comcast.net</a>
+  <a class="btn" href="mailto:loscoplumbing@comcast.net">Email Losco Plumbing</a>
+</div>
+
+<footer><span>© Losco Plumbing Repair Services · Jacksonville, FL</span><span>Demo design by Plastrix Studio</span></footer>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(e=>e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('in'),[...x.target.parentNode.children].indexOf(x.target)*120);io.unobserve(x.target)}}),{threshold:.2});
+document.querySelectorAll('.t').forEach(t=>io.observe(t));
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Advance Plumbing Service · Charlotte</title>
+<meta name="description" content="Advance Plumbing Service — skilled plumbing for Charlotte, NC homes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: craftsman's copper. Forest green ground, a copper pipe that draws itself down the page and connects every section. */
+:root{--green:#12291f;--green2:#1a3a2c;--copper:#d0874b;--brass:#e9b872;--paper:#f3eadb;--mut:#b9b39f;--line:rgba(243,234,219,.14);
+--display:"Fraunces",Georgia,serif;--body:"Karla",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--green);color:var(--paper);font:400 17px/1.6 var(--body)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;position:relative}
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;gap:12px;border-bottom:1px solid var(--line)}
+.logo{font:800 22px var(--display);letter-spacing:-.01em}
+.logo span{display:block;font:600 11px var(--body);letter-spacing:.3em;color:var(--copper);text-transform:uppercase}
+.btn{background:var(--copper);color:var(--green);text-decoration:none;font:600 15px var(--body);padding:13px 22px;border-radius:4px;transition:background .25s}
+.btn:hover{background:var(--brass)}
+.btn.line{background:transparent;color:var(--paper);border:1px solid var(--copper)}
+.pipe{position:absolute;left:20px;top:0;width:60px;height:100%;pointer-events:none}
+.pipe path{fill:none;stroke:var(--copper);stroke-width:10;stroke-linecap:round}
+.pipe .shine{stroke:var(--brass);stroke-width:3;opacity:.7}
+.content{padding-left:90px}
+.hero{padding:80px 0 90px}
+.eyebrow{font:600 12px var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--copper);margin-bottom:18px}
+.hero h1{font:800 clamp(42px,7vw,92px)/.98 var(--display);letter-spacing:-.02em;max-width:13ch;text-wrap:balance}
+.hero h1 em{color:var(--copper);font-style:italic}
+.hero p{max-width:44ch;color:var(--mut);font-size:19px;margin:24px 0 32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:70px 0;border-top:1px solid var(--line);position:relative}
+.joint{position:absolute;left:-74px;top:72px;width:28px;height:28px;border-radius:50%;background:var(--green2);border:4px solid var(--copper)}
+h2{font:800 clamp(30px,4.6vw,54px)/1.05 var(--display);margin-bottom:34px;text-wrap:balance}
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px}
+.svc h3{font:600 24px var(--display);margin-bottom:6px;display:flex;gap:12px;align-items:baseline}
+.svc h3 small{font:600 13px var(--body);color:var(--copper)}
+.svc p{color:var(--mut)}
+.quote{background:var(--green2);border-left:4px solid var(--copper);padding:32px 34px;font:600 clamp(22px,3vw,30px)/1.3 var(--display);font-style:italic}
+.quote span{display:block;font:400 14px var(--body);font-style:normal;color:var(--mut);margin-top:14px}
+.final h2{margin-bottom:10px}
+.final .num{font:800 clamp(34px,6vw,70px) var(--display);color:var(--copper);text-decoration:none;display:block;margin:10px 0 24px}
+footer{padding:30px 0 44px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:13px}
+@media (max-width:720px){.content{padding-left:48px}.pipe{left:6px;width:40px}.joint{left:-50px}.svc{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Advance Plumbing<span>Service · Charlotte</span></div>
+  <a class="btn" href="tel:+17047838676">(704) 783-8676</a>
+</header>
+<svg class="pipe" id="pipe" aria-hidden="true" preserveAspectRatio="none"><path id="pp"/><path id="ps" class="shine"/></svg>
+<div class="content">
+  <div class="hero">
+    <div class="eyebrow">Charlotte, North Carolina</div>
+    <h1>Plumbing done with a <em>craftsman's</em> hand.</h1>
+    <p>Repairs, installs and water heaters for Charlotte homes. Careful work that's built to last.</p>
+    <div class="ctas"><a class="btn" href="tel:+17047838676">Call for a free estimate</a><a class="btn line" href="#work">Our services</a></div>
+  </div>
+
+  <section id="work"><span class="joint"></span>
+    <h2>The work we take pride in</h2>
+    <div class="svc">
+      <div><h3><small>I.</small>Leak & pipe repair</h3><p>Found quickly, fixed properly, walls left clean.</p></div>
+      <div><h3><small>II.</small>Water heaters</h3><p>Repair, replace or upgrade to tankless.</p></div>
+      <div><h3><small>III.</small>Fixtures</h3><p>Faucets, toilets, showers and sinks installed.</p></div>
+      <div><h3><small>IV.</small>Drains & sewer</h3><p>Clogs cleared and lines inspected.</p></div>
+    </div>
+  </section>
+
+  <section><span class="joint"></span>
+    <div class="quote">"Show up on time, explain the problem, charge a fair price."<span>— How Scott runs every job</span></div>
+  </section>
+
+  <section class="final"><span class="joint"></span>
+    <h2>Ready when you are.</h2>
+    <a class="num" href="tel:+17047838676">(704) 783-8676</a>
+    <a class="btn" href="tel:+17047838676">Call Advance Plumbing</a>
+  </section>
+
+  <footer><span>© Advance Plumbing Service · Charlotte, NC</span><span>Demo design by Plastrix Studio</span></footer>
+</div>
+</div>
+<script>
+const svg=document.getElementById('pipe'),pp=document.getElementById('pp'),ps=document.getElementById('ps');
+function draw(){const h=svg.parentElement.scrollHeight;svg.setAttribute('viewBox',`0 0 60 ${h}`);svg.style.height=h+'px';
+const d=`M30 120 V${h-60}`;pp.setAttribute('d',d);ps.setAttribute('d',`M26 120 V${h-60}`);
+const L=h;[pp,ps].forEach(p=>{p.style.strokeDasharray=L;p.style.strokeDashoffset=L});update()}
+function update(){const h=svg.parentElement.scrollHeight;const prog=Math.min(1,(scrollY+innerHeight*.9)/h);[pp,ps].forEach(p=>p.style.strokeDashoffset=h*(1-prog))}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){draw();[pp,ps].forEach(p=>p.style.strokeDashoffset=0)}else{draw();addEventListener('scroll',update,{passive:true})}
+addEventListener('resize',draw);
+</script>
+</body>
+</html>
