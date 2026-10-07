@@ -26,3 +26,11 @@
 - New allowlist applies to NEW sessions only.
 
 ## Sent 7 Oct: Mile-End Soap (mileendsoap@gmail.com), Carr's Creek Soaps (carrscreeksoaps@gmail.com).
+
+## 7 Oct evening: WhatsApp bot WORKED, then stopped
+- Fixed by: POST /1662851395263771/subscribed_apps (Graph API Explorer) + new access token in n8n "WhatsApp account" credential.
+- Stopped after ~2h: Graph Explorer token is temporary. NEXT: create permanent System User token (business.facebook.com/settings/system-users), assign app + WhatsApp account, never-expire, paste in n8n.
+- System prompt v3 in demos/whatsapp-agent-prompt.md. Memory key suffix -v3.
+- TODO: 20s wait/debounce for multi-messages.
+- Services: website, FB/Google ads, WhatsApp AI agent. Focus US clients.
+- No client replies yet (7 Oct evening).
