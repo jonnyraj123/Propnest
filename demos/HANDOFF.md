@@ -30,3 +30,18 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 - threeui Pro is paid ($299 lifetime) - DO NOT copy/resell their assets. Build original 3D scenes with Three.js/R3F, same quality.
 - Free: small 3D buttons, animated backgrounds, hero sections (email capture for leads).
 - Paid ($29-79 on Gumroad): full 3D site templates - real estate (rotating 3D house), product shop (rotating product), agency, restaurant, SaaS landing.
+
+## Status 9 Oct (00:25)
+- Outscraper task "Plumber in Dallas" = Success (100 places, 67 filtered out, cost $0). Joni to download file and send it; then pick leads (no website first), build demos, email.
+- Template samples published (private artifacts): paid = 3D real-estate "Halden Residence" https://claude.ai/artifact/KN4jtL3K1meY8v46evXDD1 ; free = plumber hero with water shader https://claude.ai/artifact/X8hNRNaMm1H2rBqSGRheCX . Joni liked them but wants REALISTIC 3D (not cartoon box models).
+- Realism plan: real CC0/commercial-OK models from Poly Haven / Sketchfab / Fab + Poly Haven HDRI lighting; optionally Higgsfield (costs credits). Joni to add allowlist: sketchfab.com, polyhaven.com, dl.polyhaven.org, fab.com.
+- Hostinger forwarder misses some mail (bounce from Txrangerplumbing@outlook.com and Gjin auto-reply only in Hostinger inbox). Check hello@ inbox in Hostinger webmail too; fix forwarder later. Drop Txrangerplumbing lead.
+
+## TODO list (in order, Joni's pace)
+1. Process Outscraper Dallas plumber file -> lead list -> demos -> emails.
+2. Follow-ups: remaining ~47 (see above) + 6-Oct batch on 9 Oct.
+3. Redesign PlastrixStudio.com (premium, 3 services, templates store).
+4. Realistic 3D templates (free + paid) after allowlist update.
+5. Gumroad account when templates are ready.
+6. Fix Hostinger forwarder; Meta FB account phone verify.
+7. WhatsApp bot later: optional short general answers; 20s wait/debounce; persistent memory.
