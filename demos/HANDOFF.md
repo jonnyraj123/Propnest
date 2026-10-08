@@ -21,6 +21,6 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 - Fast on mobile, minimal text, US-client copy.
 
 ## Other pending
-- Follow-up emails: see PROGRESS.md. 6-Oct hello@ batch (14) due 9 Oct. 47 more 2-3 Oct threads still need follow-up (oldest first, 5 min gap, reply in thread, footer per RULES.md).
+- Follow-ups still to send (oldest first): rest of 2 Oct page-2 threads (atsbplumbing, westfortworthplumber, texflexftw, 123plumbingzack, texheatingandac, dispatch@hacetx, floridaplumbersllc, fgreatservices, wade@blueskyplumbingfl, herrellplumbing, electricelj, bobbylynn81, Honestyelectricllc, BeacoolAC, bethkursch) + all 2 Oct (Momentum AC..Quality HVAC) and 3 Oct threads (search Gmail in:sent from rajjonim 2026/10/02-03, only threads with 1 message). Then 6-Oct hello@ batch (14) on 9 Oct. Max ~25/day, 5 min gap, reply in thread, footer per RULES.md.
 - Joni setting up Outscraper (Google Maps leads) and Gumroad.
 - Meta "verify account" pending (old FB phone). Token works anyway.

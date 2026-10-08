@@ -39,6 +39,6 @@
 - WhatsApp bot: permanent System User token done (system user "n8n-bot", Admin, app + all 6 WABAs assigned, expiry Never). n8n credential "WhatsApp account" tested OK. Bot replying.
 - Model switched gpt-5-mini -> gpt-4o-mini (faster replies). n8n gateway credits ~$1.87.
 - Meta "verify account" for the token request pending: asks old FB phone (0700...0072) which Joni doesn't have. Token works anyway; fix FB account phone later.
-- Follow-ups 7 Oct: 14 of 25 sent (cruzleonora .. atsplumbingservice). Stopped at Andresproplumbing (auto-permission block). Remaining 11 + 47 others to send; 6-Oct hello@ batch (14) due 9 Oct.
+- Follow-ups: first 25 (2 Oct batch, cruzleonora .. fortworthplumber67) ALL SENT 7-8 Oct. Last 11 include CAN-SPAM footer.
 - Leads: Nextdoor/Etsy/Hotfrog blocked or against ToS. Plan: Google Maps via Outscraper/Apify -> CSV -> Claude picks leads, builds demos, emails.
 - Bot scope: business-focused (Meta 2026 policy bans general-purpose AI chatbots on WhatsApp Business API). Joni may ask later to allow short general answers.
