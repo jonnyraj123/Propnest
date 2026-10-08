@@ -24,3 +24,9 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 - Follow-ups still to send (oldest first): rest of 2 Oct page-2 threads (atsbplumbing, westfortworthplumber, texflexftw, 123plumbingzack, texheatingandac, dispatch@hacetx, floridaplumbersllc, fgreatservices, wade@blueskyplumbingfl, herrellplumbing, electricelj, bobbylynn81, Honestyelectricllc, BeacoolAC, bethkursch) + all 2 Oct (Momentum AC..Quality HVAC) and 3 Oct threads (search Gmail in:sent from rajjonim 2026/10/02-03, only threads with 1 message). Then 6-Oct hello@ batch (14) on 9 Oct. Max ~25/day, 5 min gap, reply in thread, footer per RULES.md.
 - Joni setting up Outscraper (Google Maps leads) and Gumroad.
 - Meta "verify account" pending (old FB phone). Token works anyway.
+
+## Templates store plan (Joni's choice: threeui.com style, 3D)
+- Joni wants threeui.com-level 3D (Three.js) templates; plain/aceternity-style rejected as "anyone can make with AI".
+- threeui Pro is paid ($299 lifetime) - DO NOT copy/resell their assets. Build original 3D scenes with Three.js/R3F, same quality.
+- Free: small 3D buttons, animated backgrounds, hero sections (email capture for leads).
+- Paid ($29-79 on Gumroad): full 3D site templates - real estate (rotating 3D house), product shop (rotating product), agency, restaurant, SaaS landing.
