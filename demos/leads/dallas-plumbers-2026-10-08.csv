@@ -1,0 +1,101 @@
+segment,name,rating,reviews,phone,website,emails,first_name,city
+A-no-website (phone only),Atlas Plumbing & Heating Co,4.5,210,+1 972-243-8051,,,,Dallas
+A-no-website (phone only),Echols & Sons Plumbing,3.2,51,+1 214-398-8165,,,,Dallas
+A-no-website (phone only),Dallas Plumbing Pros Service,5,14,+1 214-272-2966,,,,Dallas
+A-no-website (phone only),Jet Precision Restoration,5,13,+1 469-895-2530,,,,Dallas
+A-no-website (phone only),S K Plumbing,4.4,7,+1 214-357-2222,,,,Dallas
+A-no-website (phone only),Ron Stanley & Son Plumbing Inc,3.2,6,+1 214-426-2252,,,,Dallas
+A-no-website (phone only),Perfect 10 contracting,4.8,4,+1 214-679-6395,,,,Dallas
+A-no-website (phone only),Astro Plumbing,3,2,+1 214-566-9737,,,,Dallas
+A-no-website (phone only),"HSC- Hopson Services Company, Inc.",4.5,2,+1 214-219-4813,,,,Dallas
+A-no-website (phone only),Hayes Plumbing,5,1,+1 214-343-1427,,,,Dallas
+A-no-website (phone only),"6110 Lemmon Ave Plumbing, Kitchen and Bath",,0,,,,,Dallas
+A-no-website (phone only),Plumber Plumbing Service,,0,+1 469-482-3070,,,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Workman Plumbing,5,472,+1 817-818-7813,https://www.workman-plumbing.com/,workmanplumbingdfw@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),"Tribeca Plumbing, Inc.",4.8,441,+1 214-402-5454,https://www.tribecaplumbinginc.com/,richard@tribecaplumbinginc.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Anchor Plumbing Company,5,302,+1 214-380-1579,https://anchorplumbingcompany.com/,admin@anchorplumbingcompany.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Tide Turners Plumbing,4.9,237,+1 972-521-1701,http://www.calltideturners.com/,contact@calltideturners.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Reliant Plumbing - Dallas,4.5,235,+1 214-550-0028,https://reliantplumbing.com/areas-we-serve/dallas,office@reliantplumbing.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Pete the Plumbing Pro,4.8,178,+1 214-751-8743,https://peteplumbingdallas.com/,info@peteplumbingdallas.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Reeves Family Plumbing,4.7,168,+1 972-247-3763,https://www.reevesfamilyplumbing.com/,info@reevesfamilyplumbing.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Blue Moon Plumbing,5,136,+1 469-328-3243,https://www.bluemoonplumbingdfw.com/,bluemoonplumbingdfw@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),CMH Plumbing Solutions,5,105,+1 469-972-6679,https://www.cmhdfw.com/,cmhplumbingsolutions@gmail.com; info@cmhdfw.com,,Richardson
+B-small-with-site (redesign/WhatsApp AI),DFW Bathroom & Kitchen Solution,5,98,+1 817-697-0335,http://www.dfwbathandkitchensolution.com/,reach@dfwbathandkitchensolution.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),"Koen Plumbing, Inc.",4.9,85,+1 972-406-8076,https://www.koenplumbing.com/,koenplumbing@sbcglobal.net,,Richardson
+B-small-with-site (redesign/WhatsApp AI),Mai Plumbing Co Inc,4.7,68,+1 214-878-1062,https://maiplumbing.com/,service@watermarkplumbing.com; klayton@maiplumbing.com,John,Dallas
+B-small-with-site (redesign/WhatsApp AI),Bluestone Bathroom Remodeling,5,52,+1 214-203-1030,https://callbluestone.com/,contact@callbluestone.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),homepros remodeling and handyman service,4.8,50,+1 214-956-4545,https://homeproservicesdfw.com/,homerepairman@gmail.com; customerservice@homeprotech.com,Chris,Dallas
+B-small-with-site (redesign/WhatsApp AI),Du-West Total Plumbing,4.7,49,+1 972-406-0912,https://www.du-west.com/plumbing-services/,kenny@du-west.com; jim@du-west.com,Kenny,Dallas
+B-small-with-site (redesign/WhatsApp AI),Double A Pros,5,42,+1 469-407-5370,http://doubleapros.com/,info@doubleapros.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),New Generation Mechanical,4.3,41,+1 972-830-9900,http://www.newgenm.com/,dannyolnhausen@hotmail.com,Danny,Dallas
+B-small-with-site (redesign/WhatsApp AI),Lone Star Home Remodeling Pros of Dallas,5,37,+1 214-751-6984,https://www.lonestarhomeremodelingpros.com/locations-dallas-texas-usa,elihasi@icloud.com; lonestarhomeremodelling@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),FTR SERVICE COMPANY,4.2,33,+1 214-875-1574,http://ftrservicecompany.com/,agustinamingote@gmail.com; micah@micahrich.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),NOMI - Bathroom Remodeling Dallas TX,5,23,+1 800-371-8970,https://nomibath.com/location/bathroom-remodel-dallas/,joseph@nomibath.com; info@nomibath.com,Joseph,Dallas
+B-small-with-site (redesign/WhatsApp AI),Agave Plumbing Inc.,4,21,+1 214-689-0496,https://agaveplumbing.com/,olga@agaveplumbing.com; julio@agaveplumbing.com,Olga,Dallas
+B-small-with-site (redesign/WhatsApp AI),Hydrotemp LLC,4.8,20,+1 214-630-1984,http://www.hydrotemp.com/,ejohnson@hydrotemp.com; jjohnson@hydrotemp.com,Eric,Dallas
+B-small-with-site (redesign/WhatsApp AI),TCS Plumbing,4.5,20,+1 972-783-1362,http://www.tcsplumbing.com/,tcsplumbing@yahoo.com,,Richardson
+B-small-with-site (redesign/WhatsApp AI),Colvex Plumbing,5,16,+1 972-267-3423,https://www.colvexplumbing.com/,admin@colvexplumbing.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Elite Plumbers Dallas,5,14,+1 214-429-4887,http://eliteplumbersdallas.com/,elite@eliteplumbersdallas.com; eliteplumbing12@yahoo.com,Elite,Dallas
+B-small-with-site (redesign/WhatsApp AI),Precision Emergency Plumber Dallas,5,14,+1 469-771-0997,https://precisionemergencyplumber.com/dallas/,clomoteyseo@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Plumbing Services,3.5,13,+1 214-937-4675,http://www.24hrplumber.org/,hectorgrc41982@yahoo.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Precision Plumbing Solutions,5,13,+1 972-521-1635,https://www.precision-plumbing-solutions.com/home,precisionplumbinghtx@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Phantom Plumbing,4.3,12,+1 469-416-1055,https://phantomplumbing.com/,phantom@phantomplumbing.com; plaula@phantomplumbing.com,Phantom,Dallas
+B-small-with-site (redesign/WhatsApp AI),Eagle Plumbing,4.9,12,+1 469-261-5396,https://www.eagleplumbing.us/,alopez@eagleplumbing.us,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Saffell Plumbing & Heating Inc,4.4,8,+1 214-426-2355,http://saffellplumbing.com/,lthompson@saffellplumbing.com; dherrera-crest@saffellplumbing.com,Larry,Dallas
+B-small-with-site (redesign/WhatsApp AI),Decorative Plumbing Pros,2.6,5,+1 800-361-7144,https://decorativeplumbingpros.com/,sales@decorativeplumbingpros.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Top Tech Electric & Plumbing,5,3,+1 682-399-8782,https://www.calltoptech.com/,info@calltoptech.com,,Richardson
+B-small-with-site (redesign/WhatsApp AI),hot waterheater-people,4.5,2,+1 945-292-2304,https://hotwaterheaterpeople.com/contact-us.html,lilianfernandez91991@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Home Services Plus,1,1,+1 469-238-2030,https://homeservicesplus.pro/locations/tx/dallas-remodeling/,sam@homeservicesplus.pro; xxxxxxx@xxxxxxxx.com,Sam,Dallas
+B-small-with-site (redesign/WhatsApp AI),Solutions HVAC and Plumbing,,0,+1 214-919-0873,https://www.solutionshp.com/,handel@solutionshp.net,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Nikki’s Plumbing,,0,+1 469-644-8025,https://nikkisplumbingcompany.com/,nerplumbingservices@gmail.com,,Dallas
+B-small-with-site (redesign/WhatsApp AI),Texas Plumbing Solutions LLC,,0,+1 214-418-4964,http://friscotxplumbers.com/,help@friscotxplumbers.com; elizbeth@friscotxplumbers.com,,Dallas
+C-other,AAA AUGER Plumbing Services,4.8,1425,+1 972-222-2843,https://www.aaa-auger.com/,andrea.rheinlander@yahoo.com; scotty_house@msn.com,Andrea,Irving
+C-other,Same Day Water Heaters,4.8,882,+1 866-616-2004,https://www.samedaywaterheaters.com/,netadmin@samedaywh.com,Kyle,Dallas
+C-other,Jake the Plumbing Pro,4.8,200,+1 214-751-8381,https://jakeplumbingpro.com/,,,Dallas
+C-other,Accurate Leak and Line - Dallas,4.8,167,+1 214-302-7907,https://www.accurateleak.com/dallas/,,,Dallas
+C-other,Loop Plumbing,5,92,+1 214-775-9973,https://www.loop-plumbing.com/,,,Dallas
+C-other,Unclog My Drains,5,17,+1 469-310-3500,http://www.unclogmydrains.com/,,,Dallas
+C-other,Healthy Home Plumbing,5,12,+1 214-794-3374,https://healthyhomeplumbing.net/,,,Dallas
+C-other,"Final Fix Renovations, LLC",5,10,+1 469-781-1079,http://www.finalfixreno.com/,,,Dallas
+C-other,On Call Plumber in Dallas,5,9,+1 972-810-7307,http://www.plumberoncalldfw.com/dallas,,,Dallas
+C-other,Sohip Services,5,8,+1 214-455-5553,https://www.sohip.biz/,,,Dallas
+C-other,Metro North Plumbing,5,6,+1 972-247-3595,http://metronorthplumbing.com/,,,Dallas
+C-other,Dallas 24 PLUMBER,5,5,+1 844-313-1397,https://24plumber.online/,,,Dallas
+C-other,1 Source Plumbing,5,3,+1 214-509-7324,http://www.onesourceplumbers.com/,,,Dallas
+C-other,Metro North Plumbing,5,3,+1 972-247-3595,http://metronorthplumbing.com/,,,Dallas
+C-other,Infinite Plumbing,3.3,3,+1 469-951-4225,https://ch56vfdw.pages.infusionsoft.net/,,,Dallas
+C-other,.plumbingcoppellrepairtx.,5,2,+1 469-977-2242,https://coppell.plumbingrepairtx.com/,,,Dallas
+C-other,waterheaters-plumbingdallas,5,2,+1 945-292-2301,https://waterheatersplumbingdallas.com/contact-us.html,,,Dallas
+C-other,Handy Leaks & Re-Piping,1,1,+1 972-850-6999,https://sites.google.com/view/handy-leaks--re-piping/home,,,Dallas
+C-other,Splash Showers & Water Heater,,0,+1 972-646-1687,http://splashshowerswaterheater.com/contact-us.html,,,Dallas
+C-other,Mayfair Plumbing,,0,+1 469-457-8240,https://mayfairplumbing.online/,,,Dallas
+C-other,Flush Hour Plumber in Dallas,,0,+1 972-627-4158,http://flushhourplumbingtx.com/dallas,,,Dallas
+C-other,Dallas Plumbing Rapid Response,,0,+1 682-238-5113,https://rapidresponseplumbertx.com/dallas,,,Dallas
+C-other,Tankless Water Heater,,0,+1 972-379-7577,https://tankless--waterheater.com/,,,Dallas
+C-other,5Star Plumbing New Construction,,0,+1 972-200-8340,https://5starplumbingnewconstruction.com/,,,Dallas
+skip-chain/supplier,"Baker Brothers Plumbing, Air & Electric",4.8,24612,+1 972-961-3447,https://bakerbrothersplumbing.com/,,,Mesquite
+skip-chain/supplier,"Milestone Electric, A/C, & Plumbing",4.9,19540,+1 214-717-6708,https://callmilestone.com/dallas/plumbing/,channing@callmilestone.com; contact-us@callmilestone.com,,Dallas
+skip-chain/supplier,Rescue Air and Plumbing,4.8,4084,+1 972-201-3253,https://www.rescueairtx.com/,r@gmail.com; tfizer123@gmail.com,Andrew,Dallas
+skip-chain/supplier,"Berkeys Plumbing, A/C & Electrical",4.9,3349,+1 214-612-0133,https://www.berkeys.com/,,,Dallas
+skip-chain/supplier,"Cody & Sons Plumbing, Heating & Air",4.9,2397,+1 469-200-3366,http://www.codyandsons.com/,info@codyandsons.com; robin@codyandsons.com,,Dallas
+skip-chain/supplier,Public Service Plumbers,4.9,1986,+1 214-831-1959,https://publicserviceplumbers.com/,margaret@publicserviceplumbers.com; joseph@publicserviceplumbers.com,Margaret,Dallas
+skip-chain/supplier,Mr. Rooter Plumbing of Farmers Branch,4.7,1697,+1 972-254-5600,https://www.mrrooterdallas.com/plumber-farmers-branch-tx-plumbing-repair-service,service@mrrooterdfw.com,,Farmers Branch
+skip-chain/supplier,Metro Flow Plumbing - Dallas Emergency Plumbers,4.9,1424,+1 214-328-7371,https://metroflowplumbing.com/,rickjromero@yahoo.com,Rick,Dallas
+skip-chain/supplier,Dallas Plumbing & Air Conditioning,4.6,1314,+1 469-489-1061,https://www.dallasplumbing.com/dallas/,cdowns@dallasplumbing.com,Cindy,Dallas
+skip-chain/supplier,Roto-Rooter Plumbing & Water Cleanup,4.8,1139,+1 972-822-2200,https://www.rotorooter.com/dallas/,paul.abrams@rrsc.com; kirkb@preceptbrands.com,Paul,Dallas
+skip-chain/supplier,Barbosa Plumbing & Air Conditioning,4.8,587,+1 972-846-8513,https://www.barbosamechanical.com/location/dallas/,drew@barbosamechanical.com,Drew,Dallas
+skip-chain/supplier,Mr. Rooter Plumbing of Dallas,4.8,585,+1 214-339-9027,https://www.mrrooterdallas.com/,service@mrrooterdfw.com,,Dallas
+skip-chain/supplier,Hooper Plumbing & Air Conditioning Dallas,4.8,465,+1 214-761-6820,https://www.hooperplumbing.com/,cosmas@hooperplumbing.com; toni@hooperplumbing.com,Cosmas,Dallas
+skip-chain/supplier,"Mother Modern Plumbing, Sewer & Drain",4.9,362,+1 469-206-9515,https://www.callmother.com/locations/dallas,info@callmother.com; matthew@callmother.com,,Dallas
+skip-chain/supplier,Plumbing Unit,5,321,+1 469-310-8161,https://www.plumbingunit.com/,plumbingunitdallas@gmail.com; tom@evpromarketing.com,,Dallas
+skip-chain/supplier,Apex Supply Company,4.5,163,+1 214-741-5463,https://apexsupplyco.com/pages/location/dallas-design-district,slc3@att.net; trp95@yahoo.com,Suzanne,Dallas
+skip-chain/supplier,"Mother Modern Plumbing, Sewer & Drain",5,69,+1 469-284-8811,https://www.callmother.com/locations/highland-park,info@callmother.com; matthew@callmother.com,,Dallas
+skip-chain/supplier,Gpfs Plumbing & Fire Supply,4.8,66,+1 469-771-1800,,,,Dallas
+skip-chain/supplier,Winston Water Cooler Ltd,4.5,60,+1 214-748-1484,http://www.winstonwatercooler.com/,lsmcdonaldatwork@live.com; wwcwest@sbcglobal.net,Linda,Dallas
+skip-chain/supplier,Reece Plumbing,4.8,53,+1 469-804-0643,https://www.reece.com/plumbing,reece@reece.com,Reece,Dallas
+skip-chain/supplier,Poolie,4.9,29,+1 972-779-9606,https://poolie.com/cities/highland-park/,service@poolie.com; swim@poolie.com,,Dallas
+skip-chain/supplier,All-Tex Pipe & Supply,4.2,27,+1 214-350-5886,http://www.alltexsupply.com/,marlont@alltexsupply.com; jmerriman300@yahoo.com,Marlon,Dallas
+skip-chain/supplier,Reece Plumbing,5,17,+1 469-293-4520,https://www.reece.com/plumbing,reece@reece.com,Reece,Dallas
+skip-chain/supplier,Home Services at The Home Depot,3.6,14,+1 844-476-2140,https://www.homedepot.com/l/Lemmon-Ave/TX/Dallas/75209/589/services,SHAY_CLEMENTSON@HOMEDEPOT.COM; KEITH_GOEHRI@HOMEDEPOT.COM,Shay,Dallas
+skip-chain/supplier,JCR Distributors,3.7,10,+1 214-353-0647,https://jcrdistributors.com/,,,Dallas
+skip-chain/supplier,Epic Supply Company,4.4,7,+1 214-276-0944,,,,Dallas

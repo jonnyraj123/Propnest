@@ -45,3 +45,9 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 5. Gumroad account when templates are ready.
 6. Fix Hostinger forwarder; Meta FB account phone verify.
 7. WhatsApp bot later: optional short general answers; 20s wait/debounce; persistent memory.
+
+## Dallas plumber leads (Outscraper, 8 Oct) -> demos/leads/dallas-plumbers-2026-10-08.csv
+- 100 businesses. A = 12 with NO website but NO email either (Outscraper finds emails only from websites) -> phone/WhatsApp/Loom only.
+- B = 38 small shops WITH website + verified (RECEIVING) email -> pitch: site redesign / Loom audit / WhatsApp AI. Best first picks: Workman, Tide Turners, Pete the Plumbing Pro, Reeves Family, Blue Moon, CMH, Koen, TCS, Double A Pros, Colvex, Elite Plumbers, Eagle, Phantom.
+- Skip chains/suppliers (26). Websites can't be opened from this env (not in allowlist) - check sites in Joni's browser before pitching; never invent problems.
+- Next Outscraper runs: to get no-website leads WITH email is rare; better categories may be handymen, cleaners, salons, landscapers in smaller US cities.
