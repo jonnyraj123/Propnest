@@ -52,3 +52,4 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 - Skip chains/suppliers (26). Websites can't be opened from this env (not in allowlist) - check sites in Joni's browser before pitching; never invent problems.
 - Next Outscraper runs: to get no-website leads WITH email is rare; better categories may be handymen, cleaners, salons, landscapers in smaller US cities.
 - 9 Oct: emailed Workman Plumbing (workmanplumbingdfw@gmail.com) from hello@ - mobile site hides Call/Text button; offered free mobile homepage sample. Follow up ~12 Oct.
+- 9 Oct: emailed Pete the Plumbing Pro (info@peteplumbingdallas.com) from hello@ with 2 screenshots (grey hero, broken footer images); offered free sample homepage. Skipped Tide Turners (agency-built site, no real issues). Follow up ~12 Oct.
