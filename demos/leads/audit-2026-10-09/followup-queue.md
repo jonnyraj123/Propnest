@@ -20,3 +20,7 @@ Next (oldest first): thread | email | subject
 1a0fc89276703680 | info@totalairfl.com | More AC repair calls for Total Air Solutions
 1a0fc89280aa4d63 | ac@momentumflorida.com | More AC repair calls for Momentum AC Services
 (3 Oct batch: Barsha360 .. Mazaya, 22 threads - next day)
+
+## Progress 9 Oct (UTC)
+Sent follow-ups: atsbplumbing 13:11, westfortworthplumber, texflexftw, 123plumbingzack, texheatingandac, dispatch@hacetx, floridaplumbersllc, fgreatservices, wade@blueskyplumbingfl, herrellplumbing, electricelj, bobbylynn81 (~14:05). 12 done.
+Remaining from 2 Oct: Honestyelectricllc, BeacoolAC, bethkursch, qualityhvacservice, kenv, totalairfl, ac@momentumflorida. Then 3 Oct batch.
