@@ -51,3 +51,4 @@ Plastrix Studio (PlastrixStudio.com), Joni Raj Mollick, Kolkata. Services: websi
 - B = 38 small shops WITH website + verified (RECEIVING) email -> pitch: site redesign / Loom audit / WhatsApp AI. Best first picks: Workman, Tide Turners, Pete the Plumbing Pro, Reeves Family, Blue Moon, CMH, Koen, TCS, Double A Pros, Colvex, Elite Plumbers, Eagle, Phantom.
 - Skip chains/suppliers (26). Websites can't be opened from this env (not in allowlist) - check sites in Joni's browser before pitching; never invent problems.
 - Next Outscraper runs: to get no-website leads WITH email is rare; better categories may be handymen, cleaners, salons, landscapers in smaller US cities.
+- 9 Oct: emailed Workman Plumbing (workmanplumbingdfw@gmail.com) from hello@ - mobile site hides Call/Text button; offered free mobile homepage sample. Follow up ~12 Oct.
