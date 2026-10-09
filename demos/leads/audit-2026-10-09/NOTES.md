@@ -10,3 +10,6 @@ Lead sites now open from this env (network test 9 Oct: nextdoor OK, sketchfab OK
 ## No real issues (skip)
 Reeves Family, Blue Moon, TCS, Double A Pros, Colvex - modern/agency sites.
 Koen: blank area under header in headless capture, NOT verified in real browser -> do not claim.
+
+## Sent 9 Oct (from hello@, text only, no demo link)
+- 12:46 UTC Elite Plumbers Dallas -> elite@eliteplumbersdallas.com + eliteplumbing12@yahoo.com ("Your website isn't opening for some visitors"). Follow up ~12 Oct.
