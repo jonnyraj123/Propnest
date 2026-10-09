@@ -24,3 +24,5 @@ Next (oldest first): thread | email | subject
 ## Progress 9 Oct (UTC)
 Sent follow-ups: atsbplumbing 13:11, westfortworthplumber, texflexftw, 123plumbingzack, texheatingandac, dispatch@hacetx, floridaplumbersllc, fgreatservices, wade@blueskyplumbingfl, herrellplumbing, electricelj, bobbylynn81 (~14:05). 12 done.
 Remaining from 2 Oct: Honestyelectricllc, BeacoolAC, bethkursch, qualityhvacservice, kenv, totalairfl, ac@momentumflorida. Then 3 Oct batch.
+Later 9 Oct: Honestyelectricllc, BeacoolAC, bethkursch, qualityhvacservice, kenv, totalairfl, ac@momentumflorida - ALL SENT. 2 Oct batch complete (19 follow-ups today).
+NEXT (10 Oct): 3 Oct batch (22 threads, Barsha360 .. Mazaya) then 6-Oct hello@ batch (14). Fetch exact subjects first.
