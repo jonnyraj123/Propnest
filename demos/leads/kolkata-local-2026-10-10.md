@@ -16,3 +16,8 @@
 - Instagram DMs: follow up secretsalon_316 (Lead), alchemysalon_houston, bellarinova
 - Later: PlastrixStudio.com redesign, 3D templates, Gumroad, Hostinger forwarder, Meta phone verify, n8n trial (~16 Oct)
 - 10 Oct: emailed White Zone (drpandawhitezone@gmail.com) + Nu Smile (outlook) from hello@. WhatsApp file: demos/whatsapp/kolkata-2026-10-10.html
+
+# Site redesign decisions (Joni, 10 Oct)
+- /start page = separate file plastrixstudio.com/start/index.html; link from main site nav + contact + Instagram bio. No example names in fields.
+- Remove client-feedback screenshot section ("Real clients, real results" / "All client conversations"); replace with trust section (free sample first, process, response time, guarantees, tools).
+- Portfolio ("Websites we've built") must look high-profile: tiers from basic to premium (3D/animated), proper case-study cards.
