@@ -1,0 +1,66 @@
+<title>Plastrix Logo Options</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap">
+<style>
+/* layout: three numbered logo options stacked; each shown on dark and light tiles, plus app-icon size */
+:root{--bg:#f3f4f8;--card:#ffffff;--fg:#0c1022;--mut:#5d6480;--line:#e2e5ee;--dark:#070a16;--light:#ffffff;
+--display:'Space Grotesk',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f1d;--card:#121829;--fg:#eef1fb;--mut:#98a1bd;--line:#232b42;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0f1d;--card:#121829;--fg:#eef1fb;--mut:#98a1bd;--line:#232b42;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:400 15px/1.55 var(--body)}
+main{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:24px 56px;display:grid;gap:18px}
+h1{font:700 26px var(--display);margin:0} .sub{color:var(--mut);margin:4px 0 0}
+.opt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:14px}
+.opt h2{font:600 18px var(--display);margin:0} .opt p{margin:0;color:var(--mut);font-size:14px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:600px){.tiles{grid-template-columns:1fr}}
+.tile{border-radius:14px;padding:26px 18px;display:flex;align-items:center;justify-content:center;min-height:120px}
+.tile.d{background:var(--dark)} .tile.l{background:var(--light);border:1px solid #e6e8f0}
+.tile svg{max-width:100%;height:auto}
+.icons{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.icons span{color:var(--mut);font-size:13px}
+</style>
+<main>
+  <div><h1>Plastrix Studio · নতুন লোগো</h1><p class="sub">৩টা অপশন। প্রতিটা অন্ধকার আর সাদা ব্যাকগ্রাউন্ডে, আর ছোট আইকন সাইজে (Instagram / WhatsApp প্রোফাইল)।</p></div>
+
+  <!-- shared gradient defs -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3B82F6"/><stop offset=".35" stop-color="#8B5CF6"/><stop offset=".65" stop-color="#EC4899"/><stop offset="1" stop-color="#FB7A2E"/></linearGradient>
+      <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBC02D"/><stop offset=".5" stop-color="#FB7A2E"/><stop offset="1" stop-color="#EC4899"/></linearGradient>
+      <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+    </defs>
+  </svg>
+
+  <!-- OPTION 1: folded ribbon P -->
+  <section class="opt">
+    <h2>অপশন ১ · Ribbon P</h2>
+    <p>তোমার এখনকার লোগোরই আরও পরিষ্কার, প্রিমিয়াম রূপ। একটা ভাঁজ করা ফিতে দিয়ে "P", একই রঙিন gradient।</p>
+    <div class="tiles">
+      <div class="tile d"><svg viewBox="0 0 360 80" width="320"><g transform="translate(6,8)"><path d="M14 64V10a6 6 0 0 1 6-6h20c14 0 24 9.5 24 22s-10 22-24 22H30" fill="none" stroke="url(#g1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 48l-16 16" stroke="url(#g2)" stroke-width="11" stroke-linecap="round"/></g><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#fff" letter-spacing=".5">Plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#98a1bd" letter-spacing="6">STUDIO</text></svg></div>
+      <div class="tile l"><svg viewBox="0 0 360 80" width="320"><g transform="translate(6,8)"><path d="M14 64V10a6 6 0 0 1 6-6h20c14 0 24 9.5 24 22s-10 22-24 22H30" fill="none" stroke="url(#g1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 48l-16 16" stroke="url(#g2)" stroke-width="11" stroke-linecap="round"/></g><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#0c1022" letter-spacing=".5">Plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#5d6480" letter-spacing="6">STUDIO</text></svg></div>
+    </div>
+    <div class="icons"><svg viewBox="0 0 96 96" width="72"><rect width="96" height="96" rx="22" fill="#070a16"/><g transform="translate(16,14)"><path d="M14 64V10a6 6 0 0 1 6-6h20c14 0 24 9.5 24 22s-10 22-24 22H30" fill="none" stroke="url(#g1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 48l-16 16" stroke="url(#g2)" stroke-width="11" stroke-linecap="round"/></g></svg><span>আইকন সাইজ</span></div>
+  </section>
+
+  <!-- OPTION 2: prism -->
+  <section class="opt">
+    <h2>অপশন ২ · Prism</h2>
+    <p>"Plastrix" নামের সাথে মিলিয়ে একটা ত্রিমাত্রিক প্রিজম। আলো ভেঙে রং ছড়ানোর মতো, ডিজাইন আর 3D কাজের ইঙ্গিত দেয়।</p>
+    <div class="tiles">
+      <div class="tile d"><svg viewBox="0 0 360 80" width="320"><g transform="translate(8,6)"><path d="M34 2L66 20V56L34 74L2 56V20Z" fill="url(#g3)"/><path d="M34 2L66 20L34 38L2 20Z" fill="url(#g2)" opacity=".95"/><path d="M34 38L66 20V56L34 74Z" fill="url(#g1)"/><path d="M34 38V74" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/></g><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#fff">plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#98a1bd" letter-spacing="6">STUDIO</text></svg></div>
+      <div class="tile l"><svg viewBox="0 0 360 80" width="320"><g transform="translate(8,6)"><path d="M34 2L66 20V56L34 74L2 56V20Z" fill="url(#g3)"/><path d="M34 2L66 20L34 38L2 20Z" fill="url(#g2)" opacity=".95"/><path d="M34 38L66 20V56L34 74Z" fill="url(#g1)"/><path d="M34 38V74" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/></g><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#0c1022">plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#5d6480" letter-spacing="6">STUDIO</text></svg></div>
+    </div>
+    <div class="icons"><svg viewBox="0 0 96 96" width="72"><rect width="96" height="96" rx="22" fill="#070a16"/><g transform="translate(14,10)"><path d="M34 2L66 20V56L34 74L2 56V20Z" fill="url(#g3)"/><path d="M34 2L66 20L34 38L2 20Z" fill="url(#g2)" opacity=".95"/><path d="M34 38L66 20V56L34 74Z" fill="url(#g1)"/></g></svg><span>আইকন সাইজ</span></div>
+  </section>
+
+  <!-- OPTION 3: gradient tile monogram -->
+  <section class="opt">
+    <h2>অপশন ৩ · Bold Monogram</h2>
+    <p>রঙিন গোল-কোণা বাক্সের ভেতরে সাদা মোটা "P"। সবচেয়ে সহজ আর ছোট সাইজেও খুব পরিষ্কার দেখায়, অ্যাপ আইকনের মতো।</p>
+    <div class="tiles">
+      <div class="tile d"><svg viewBox="0 0 360 80" width="320"><rect x="6" y="6" width="68" height="68" rx="18" fill="url(#g1)"/><path d="M28 58V22h14c8 0 13 5 13 11.5S50 45 42 45h-6" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#fff">Plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#98a1bd" letter-spacing="6">STUDIO</text></svg></div>
+      <div class="tile l"><svg viewBox="0 0 360 80" width="320"><rect x="6" y="6" width="68" height="68" rx="18" fill="url(#g1)"/><path d="M28 58V22h14c8 0 13 5 13 11.5S50 45 42 45h-6" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><text x="92" y="40" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#0c1022">Plastrix</text><text x="93" y="64" font-family="Space Grotesk" font-weight="500" font-size="13" fill="#5d6480" letter-spacing="6">STUDIO</text></svg></div>
+    </div>
+    <div class="icons"><svg viewBox="0 0 96 96" width="72"><rect width="96" height="96" rx="22" fill="url(#g1)"/><path d="M34 72V26h17c10 0 16 6.5 16 14.5S61 55 51 55h-7" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><span>আইকন সাইজ</span></div>
+  </section>
+</main>
