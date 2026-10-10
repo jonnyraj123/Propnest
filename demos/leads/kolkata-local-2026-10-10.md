@@ -15,3 +15,4 @@
 - Demos for Elite/CMH/Pete; Loom scripts
 - Instagram DMs: follow up secretsalon_316 (Lead), alchemysalon_houston, bellarinova
 - Later: PlastrixStudio.com redesign, 3D templates, Gumroad, Hostinger forwarder, Meta phone verify, n8n trial (~16 Oct)
+- 10 Oct: emailed White Zone (drpandawhitezone@gmail.com) + Nu Smile (outlook) from hello@. WhatsApp file: demos/whatsapp/kolkata-2026-10-10.html
