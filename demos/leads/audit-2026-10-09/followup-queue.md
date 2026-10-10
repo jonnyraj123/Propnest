@@ -26,3 +26,10 @@ Sent follow-ups: atsbplumbing 13:11, westfortworthplumber, texflexftw, 123plumbi
 Remaining from 2 Oct: Honestyelectricllc, BeacoolAC, bethkursch, qualityhvacservice, kenv, totalairfl, ac@momentumflorida. Then 3 Oct batch.
 Later 9 Oct: Honestyelectricllc, BeacoolAC, bethkursch, qualityhvacservice, kenv, totalairfl, ac@momentumflorida - ALL SENT. 2 Oct batch complete (19 follow-ups today).
 NEXT (10 Oct): 3 Oct batch (22 threads, Barsha360 .. Mazaya) then 6-Oct hello@ batch (14). Fetch exact subjects first.
+
+## 10 Oct
+- 3 Oct batch: 20 follow-ups SENT (Barsha360 .. krsbizop), from hello@, via drafts.
+- Also sent personal mail to a contact (not a lead).
+- Still to do: 3 Oct leftovers (Al Hajjaj, Cosmos, Mazaya, All Done AC, Dubai Maintenance, Royal Shahnaz, Glitz N Glam, Miracle Touch) + 6 Oct hello@ batch (14).
+- New pitch emails ready to send: Saffell (site down), Hot Water Heater People (not mobile-friendly, screenshot) -> see audit-2026-10-10/NOTES.md.
+- Local plan: Joni runs Outscraper for Amtala (parlour, gym, coaching, clinic, restaurant, sweet shop) -> send file -> WhatsApp list.
