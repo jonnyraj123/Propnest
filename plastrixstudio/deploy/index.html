@@ -348,7 +348,7 @@ form.enq{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px}
 }
 
 /* WebGL work list */
-#gl{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+#gl{position:absolute;left:0;top:0;width:100%;z-index:5;pointer-events:none;will-change:transform}
 .gl-on .item{position:relative;z-index:6}
 .gl-on .frame{will-change:auto;transform:none!important}
 .gl-on .frame.glr{background:transparent;box-shadow:none}
@@ -674,7 +674,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 const items=[...document.querySelectorAll('.item')].map(it=>({f:it.querySelector('.frame'),s:it.querySelector('.shade')}));
 function frame(){
   nav.classList.toggle('solid',scrollY>innerHeight*.6);
-  if(reduce)return;
+  if(reduce||document.documentElement.classList.contains('gl-on'))return;
   const edge=(isPhone?150:190);
   for(const {f,s} of items){
     const r=f.parentElement.getBoundingClientRect();
@@ -823,13 +823,13 @@ const RING=[["Iyurved", "Wellness", "https://iyurved.com"], ["ArtyCera", "Handma
 })();
 /* ---------- WebGL work cards: paper curl at the top + wave while scrolling ---------- */
 (()=>{
-  if(!window.THREE||reduce||isTouch)return;
+  if(!window.THREE||reduce)return;
   const glc=document.getElementById('gl');let R;
   try{R=new THREE.WebGLRenderer({canvas:glc,antialias:true,alpha:true});}catch(e){return;}
-  glc.hidden=false;R.setPixelRatio(Math.min(devicePixelRatio,isPhone?1.5:2));
+  glc.hidden=false;R.setPixelRatio(Math.min(devicePixelRatio,isPhone?1.25:1.75));
   const scene=new THREE.Scene();const FOV=45;const cam=new THREE.PerspectiveCamera(FOV,1,10,6000);
   const geo=new THREE.PlaneGeometry(1,1,48,36);const loader=new THREE.TextureLoader();
-  const VS=`uniform vec2 uView;uniform vec4 uRect;uniform float uVel,uTime;varying vec2 vUv;varying float vCurl,vFold,vT;
+  const VS=`uniform vec2 uView;uniform vec4 uRect;uniform float uVel,uTime,uOff,uCH;varying vec2 vUv;varying float vCurl,vFold,vT;
   void main(){vUv=uv;vec3 p=position;vec2 sz=uRect.zw;
     float sy=uRect.y+(0.5-uv.y)*sz.y;            // vertex y on screen, px from top
     float edge=uView.y*${isPhone?'0.34':'0.38'};
@@ -849,7 +849,7 @@ const RING=[["Iyurved", "Wellness", "https://iyurved.com"], ["ArtyCera", "Handma
     // a soft breeze even at rest, stronger while scrolling
     float bend=sin(uv.x*3.14159);
     p.z+= bend*uVel*16.+sin(uv.x*4.+uv.y*2.+uTime*1.4)*(2.+abs(uVel)*10.);
-    p.x+= uRect.x+sz.x*.5-uView.x*.5;p.y+= uView.y*.5-(uRect.y+sz.y*.5);
+    p.x+= uRect.x+sz.x*.5-uView.x*.5;p.y+= uCH*.5-(uRect.y+uOff+sz.y*.5);
     gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`;
   const FS=`uniform sampler2D uTex;uniform vec2 uImg;uniform vec4 uRect;uniform float uHover,uTime,uRad;uniform vec2 uMouse;varying vec2 vUv;varying float vCurl,vFold,vT;
   float sdr(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.))+min(max(q.x,q.y),0.)-r;}
@@ -862,19 +862,20 @@ const RING=[["Iyurved", "Wellness", "https://iyurved.com"], ["ArtyCera", "Handma
     a*=1.-smoothstep(.45,.95,vT);
     gl_FragColor=vec4(c.rgb,a);}`;
   const cards=[...document.querySelectorAll('.item')].map(it=>{const img=it.querySelector('.frame img'),frame=it.querySelector('.frame'),tag=it.querySelector('.tag');
-    const u={uView:{value:new THREE.Vector2()},uRect:{value:new THREE.Vector4()},uVel:{value:0},uTime:{value:0},uTex:{value:null},uImg:{value:new THREE.Vector2(16,9)},uHover:{value:0},uMouse:{value:new THREE.Vector2(.5,.5)},uRad:{value:22}};
+    const u={uOff:{value:0},uCH:{value:0},uView:{value:new THREE.Vector2()},uRect:{value:new THREE.Vector4()},uVel:{value:0},uTime:{value:0},uTex:{value:null},uImg:{value:new THREE.Vector2(16,9)},uHover:{value:0},uMouse:{value:new THREE.Vector2(.5,.5)},uRad:{value:22}};
     const m=new THREE.Mesh(geo,new THREE.ShaderMaterial({uniforms:u,vertexShader:VS,fragmentShader:FS,transparent:true}));m.visible=false;scene.add(m);
     let asked=false;const load=()=>{if(asked)return;asked=true;loader.load(img.currentSrc||img.src,tx=>{tx.minFilter=THREE.LinearFilter;tx.generateMipmaps=false;u.uTex.value=tx;u.uImg.value.set(tx.image.width,tx.image.height);R.initTexture?R.initTexture(tx):0;requestAnimationFrame(()=>frame.classList.add('glr'));});};
     let hov=0;it.addEventListener('pointerenter',()=>hov=1);it.addEventListener('pointerleave',()=>hov=0);
     it.addEventListener('pointermove',e=>{const b=frame.getBoundingClientRect();u.uMouse.value.set((e.clientX-b.left)/b.width,1-(e.clientY-b.top)/b.height);});
     return {frame,tag,u,m,load,get hov(){return hov}};});
   document.documentElement.classList.add('gl-on');
-  let vw=0,vh=0;const size=()=>{vw=document.documentElement.clientWidth;const nh=document.documentElement.clientHeight;if(Math.abs(nh-vh)<120&&vh&&vw===R.domElement.width/R.getPixelRatio())return;vh=nh;R.setSize(vw,vh,false);cam.aspect=vw/vh;cam.position.z=(vh/2)/Math.tan(FOV*Math.PI/360);cam.updateProjectionMatrix();};size();addEventListener('resize',size);
+  let vw=0,vh=0,M=0,CH=0;const size=()=>{const nw=document.documentElement.clientWidth,nh=document.documentElement.clientHeight;if(vh&&nw===vw&&Math.abs(nh-vh)<120)return;vw=nw;vh=nh;M=Math.round(vh*.3);CH=vh+2*M;R.setSize(vw,CH,false);glc.style.height=CH+'px';cam.aspect=vw/CH;cam.position.z=(CH/2)/Math.tan(FOV*Math.PI/360);cam.updateProjectionMatrix();};size();addEventListener('resize',size);
   let lastY=scrollY,vel=0;const t0=performance.now();
-  function tick(now){const T=(now-t0)/1000;const y=lenis?lenis.scroll:scrollY;const dy=y-lastY;lastY=y;vel+=(Math.max(-60,Math.min(60,dy))/60-vel)*.1;
+  const list=document.querySelector('.list');let listOn=true;new IntersectionObserver(e=>{listOn=e[0].isIntersecting;glc.style.display=listOn?'':'none';},{rootMargin:'50% 0px'}).observe(list);
+  function tick(now){if(!listOn)return;const sy0=window.scrollY;glc.style.transform=`translate3d(0,${sy0-M}px,0)`;const T=(now-t0)/1000;const y=lenis?lenis.scroll:scrollY;const dy=y-lastY;lastY=y;vel+=(Math.max(-60,Math.min(60,dy))/60-vel)*.1;
     let any=false;
-    for(const c of cards){const b=c.frame.getBoundingClientRect();if(b.top<vh*2.5&&b.bottom>-vh)c.load();const on=b.bottom>-vh*.8&&b.top<vh*1.1;c.m.visible=on&&!!c.u.uTex.value;if(!on)continue;any=true;
-      c.u.uView.value.set(vw,vh);c.u.uRect.value.set(b.left,b.top,b.width,b.height);c.u.uVel.value=vel;c.u.uTime.value=T;c.u.uHover.value+=(c.hov-c.u.uHover.value)*.08;c.u.uRad.value=Math.min(22,b.width*.02);
+    for(const c of cards){const b=c.frame.getBoundingClientRect();if(b.top<vh*2.5&&b.bottom>-vh)c.load();const on=b.bottom>-M&&b.top<vh+M*.6;c.m.visible=on&&!!c.u.uTex.value;if(!on)continue;any=true;
+      c.u.uView.value.set(vw,vh);c.u.uOff.value=M;c.u.uCH.value=CH;c.u.uRect.value.set(b.left,b.top,b.width,b.height);c.u.uVel.value=vel;c.u.uTime.value=T;c.u.uHover.value+=(c.hov-c.u.uHover.value)*.08;c.u.uRad.value=Math.min(22,b.width*.02);
       const edge=vh*(isPhone?.34:.38);const p=Math.min(Math.max((edge-b.top)/(edge+b.height*.35),0),1);c.tag.style.opacity=(1-p*2.5).toFixed(2);}
     if(any||glc.dataset.drawn!=='0'){R.render(scene,cam);glc.dataset.drawn=any?'1':'0';}}
   if(lenis)window.__glTick=tick;else (function loop(now){requestAnimationFrame(loop);tick(now);})(0);
