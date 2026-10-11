@@ -299,33 +299,47 @@ form.enq{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px}
 }
 
 
-/* project ring */
-.ringsec{overflow:hidden;padding-block:10vh 30px}
-.ringwrap{position:relative;height:clamp(320px,38vw,520px);perspective:1050px;perspective-origin:50% 30%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
-.ringwrap:active{cursor:grabbing}
-.ringwrap:after{content:"";position:absolute;left:10%;right:10%;bottom:4%;height:30px;background:radial-gradient(closest-side,#8b5cf655,transparent);filter:blur(12px);pointer-events:none}
-.ring3d{position:absolute;left:50%;top:36%;width:0;height:0;transform-style:preserve-3d}
-.rc{all:unset;box-sizing:border-box;position:absolute;width:var(--cw);aspect-ratio:16/10;left:calc(var(--cw)/-2);top:calc(var(--cw)*-.3125);border-radius:16px;overflow:hidden;background:#fff;backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:pointer;box-shadow:0 30px 60px -30px #000,0 0 0 1px #ffffff22;transition:box-shadow .5s}
-.rc.mk{background:var(--ink-3)}
-.rc img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none}
-.rc .bar{position:absolute;inset:0 0 auto;z-index:1;height:22px;display:flex;align-items:center;gap:5px;padding:0 10px;background:#f1eef6;border-bottom:1px solid #00000014}
-.rc .bar i{width:7px;height:7px;border-radius:50%;background:#d8d2e2}.rc .bar i:first-child{background:#ff5f57}.rc .bar i:nth-child(2){background:#febc2e}.rc .bar i:nth-child(3){background:#28c840}
-.rc .bar span{margin:0 auto;font:500 10px var(--mono);color:#6f6a85;background:#fff;padding:3px 12px;border-radius:6px;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rc .bar~img{padding-top:22px}
-.rc.front{box-shadow:0 40px 80px -30px #000,0 0 0 1px #ffffff55,0 0 60px -10px #8b5cf6aa}
-@media (hover:hover){.rc.front:hover img{filter:url(#ripple)}}
-.ringui{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:22px;margin-top:clamp(10px,3vw,30px)}
-.rb{all:unset;cursor:pointer;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid #ffffff33;font-size:18px;transition:border-color .3s,background .3s}
-.rb:hover{border-color:#fff;background:#ffffff10}
-.rnow{min-width:220px;text-align:center}.rnow b{display:block;font:700 22px var(--display)}.rnow small{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.lb{position:fixed;inset:0;z-index:95;background:#07060cee;backdrop-filter:blur(16px);display:grid;place-items:center;align-content:center;gap:22px;padding:calc(env(safe-area-inset-top,0px) + 60px) var(--gut) calc(env(safe-area-inset-bottom,0px) + 30px);animation:lbin .45s cubic-bezier(.2,.8,.2,1)}
-@keyframes lbin{from{opacity:0}}
-.lbimg{display:block;width:min(1100px,100%);border-radius:18px;overflow:hidden;box-shadow:0 60px 120px -40px #000,0 0 0 1px #ffffff2a;animation:lbzoom .6s cubic-bezier(.2,.8,.2,1);cursor:pointer}
-@keyframes lbzoom{from{transform:scale(.7) rotateX(12deg);opacity:0}}
-.lbimg img{width:100%;max-height:68vh;object-fit:cover;object-position:top}
-.lbinfo{width:min(1100px,100%);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
-.lbinfo h3{font-size:clamp(26px,3vw,40px)}.lbinfo small{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.lbx{all:unset;cursor:pointer;position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:var(--gut);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid #ffffff44}
+/* project archive: glass coverflow over an ambient, image-tinted background */
+.ringsec{padding-block:clamp(70px,10vw,130px) 20px}
+.archive{position:relative;margin-inline:var(--gut);border-radius:clamp(22px,3vw,40px);overflow:hidden;isolation:isolate;padding:clamp(28px,4vw,52px) 0 clamp(22px,3vw,34px);display:grid;gap:clamp(18px,2.6vw,30px);background:#120d18;box-shadow:0 0 0 1px #ffffff14}
+.amb{position:absolute;inset:0;width:100%;height:100%;z-index:-1;filter:blur(38px) saturate(1.25);transform:scale(1.25)}
+.archive:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 80% at 50% 0%,transparent 40%,#07060c99),linear-gradient(180deg,#07060c22,#07060c66);pointer-events:none}
+.a-top{display:grid;justify-items:center;gap:6px;text-align:center;padding-inline:16px}
+.a-brand{display:inline-flex;align-items:center;gap:10px;font:800 clamp(22px,2.6vw,30px)/1 var(--display);letter-spacing:-.02em;color:#ffffffd9;text-shadow:0 2px 20px #0005}
+.a-brand img{width:clamp(26px,2.6vw,34px);height:auto}
+.a-brand em{font:400 1.08em/1 var(--serif);font-style:italic;margin-left:4px;color:#ffffffb3}
+.a-top p{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#ffffffa6}
+.flow{position:relative;height:calc(var(--cw)*.66 + 104px);perspective:1200px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;--cw:clamp(220px,26vw,360px)}
+.flow:active{cursor:grabbing}
+.ac{all:unset;box-sizing:border-box;position:absolute;left:50%;top:10px;width:var(--cw);margin-left:calc(var(--cw)/-2);padding:10px 10px 0;border-radius:22px;background:linear-gradient(160deg,#ffffff38,#ffffff14);border:1px solid #ffffff40;backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 30px 60px -24px #000a,inset 0 1px 0 #ffffff40;cursor:pointer;will-change:transform,opacity;transform-origin:50% 50%}
+.ac-img{display:block;border-radius:14px;overflow:hidden;aspect-ratio:16/10.5;background:#0003}
+.ac-img img{width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none}
+.ac-cap{display:grid;justify-items:center;gap:3px;padding:12px 8px 14px;text-align:center}
+.ac-cap b{font:600 clamp(15px,1.4vw,19px)/1.15 var(--body);color:#fff}
+.ac-cap small{font:400 12px var(--body);color:#ffffffb0}
+.ac .shade{position:absolute;inset:0;border-radius:inherit;background:#0a0710;pointer-events:none}
+.ac.on{box-shadow:0 40px 80px -24px #000c,0 0 0 1px #ffffff66,inset 0 1px 0 #ffffff66,0 0 70px -10px var(--glow,#ffffff55)}
+.player{justify-self:center;width:min(880px,calc(100% - 2*var(--gut)));display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(10px,2vw,22px);padding:10px clamp(12px,2vw,18px);border-radius:999px;background:linear-gradient(180deg,#ffffff2e,#ffffff12);border:1px solid #ffffff38;backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);box-shadow:0 24px 50px -24px #000a,inset 0 1px 0 #ffffff33}
+.pc{display:flex;gap:4px}
+.pb{all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:background .3s}
+.pb:hover{background:#ffffff22}.pb svg{width:18px;height:18px;fill:currentColor}
+.now{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:7px 14px 9px 7px;border-radius:14px;background:#0b0810cc;border:1px solid #ffffff1f;overflow:hidden;min-width:0}
+.now img{width:44px;height:44px;border-radius:9px;object-fit:cover;object-position:top}
+.now b{display:block;font:600 14px/1.2 var(--body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.now small{display:block;font:400 12px/1.3 var(--mono);color:#ffffff99;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eq{display:flex;gap:2px;align-items:flex-end;height:14px}.eq i{width:3px;height:4px;border-radius:2px;background:#fff;animation:eq .9s ease-in-out infinite}.eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}.eq i:nth-child(4){animation-delay:-.15s}
+.paused .eq i{animation-play-state:paused}
+.prog{position:absolute;left:10px;right:10px;bottom:3px;height:2px;border-radius:2px;background:#ffffff1f;overflow:hidden}.prog i{display:block;height:100%;width:0;background:#fff}
+.pr{display:flex;align-items:center;gap:14px}
+.cnt{font:500 12px var(--mono);letter-spacing:.08em;color:#ffffffb3;font-variant-numeric:tabular-nums}
+.visit{font:600 13px var(--body);padding:10px 16px;border-radius:999px;background:#fff;color:#0b0810;white-space:nowrap}
+.a-foot{text-align:center;font:400 12px var(--body);color:#ffffff99;padding-inline:16px}
+@media (max-width:700px){
+  .player{grid-template-columns:minmax(0,1fr) auto;border-radius:24px;gap:10px}
+  .pc{grid-column:1/-1;grid-row:2;justify-content:center}
+  .cnt{display:none}
+  .flow{--cw:62vw;perspective:800px}
+}
 
 /* WebGL work list */
 #gl{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
@@ -419,30 +433,19 @@ form.enq{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px}
   </div>
 
 <div class="ringsec">
-    <div class="head wrap" style="padding-top:60px"><h2 style="font-size:clamp(32px,4.4vw,60px)">More <span class="it">projects</span></h2><p>20 more stores, brands and concepts. Drag to spin, tap the front one to open it.</p></div>
-    <div class="ringwrap" id="ringwrap"><div class="ring3d" id="ring">
-      <button type="button" class="rc mk" data-i="0" aria-label="Iyurved, Wellness"><img src="img/work/iyurved.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="1" aria-label="ArtyCera, Handmade ceramics"><div class="bar"><i></i><i></i><i></i><span>artycera.com</span></div><img src="img/ring/artycera.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="2" aria-label="Brightline Dental, Studio concept · US dental clinic"><div class="bar"><i></i><i></i><i></i><span>concept · plastrix studio</span></div><img src="img/ring/dental.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="3" aria-label="Selique6, Skincare"><div class="bar"><i></i><i></i><i></i><span>selique6.com</span></div><img src="img/ring/selique6.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc mk" data-i="4" aria-label="Nevaah, Streetwear"><img src="img/work/nevaah.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="5" aria-label="Meenakaari, Handloom sarees"><div class="bar"><i></i><i></i><i></i><span>meenakaaribypriyanka.com</span></div><img src="img/ring/meenakaaribypriyanka.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="6" aria-label="Real Veggies, Healthy snacks"><div class="bar"><i></i><i></i><i></i><span>realveggies.in</span></div><img src="img/ring/realveggies.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="7" aria-label="Maison Ora, Studio concept · Fine jewellery"><div class="bar"><i></i><i></i><i></i><span>concept · plastrix studio</span></div><img src="img/ring/jewellery.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc mk" data-i="8" aria-label="Nutty Harvest, Food"><img src="img/work/nuttyharvest.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="9" aria-label="Greenspore, Organic teas"><div class="bar"><i></i><i></i><i></i><span>greensporeorganic.com</span></div><img src="img/ring/greensporeorganic.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="10" aria-label="Glozo Cases, Phone accessories"><div class="bar"><i></i><i></i><i></i><span>glozo.in</span></div><img src="img/ring/glozo.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="11" aria-label="Greenwood School, Studio concept · School"><div class="bar"><i></i><i></i><i></i><span>concept · plastrix studio</span></div><img src="img/ring/school.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="12" aria-label="Syroxx, Sneakers"><div class="bar"><i></i><i></i><i></i><span>syroxx.in</span></div><img src="img/ring/syroxx.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="13" aria-label="Chaaya, Women’s fashion"><div class="bar"><i></i><i></i><i></i><span>chaayafashion.com</span></div><img src="img/ring/chaayafashion.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="14" aria-label="Swadmantra, Indian snacks"><div class="bar"><i></i><i></i><i></i><span>swadmantraindia.com</span></div><img src="img/ring/swadmantraindia.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="15" aria-label="Flowmetric, Studio concept · SaaS"><div class="bar"><i></i><i></i><i></i><span>concept · plastrix studio</span></div><img src="img/ring/flowmetric.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="16" aria-label="Anjulrajam, Ayurveda"><div class="bar"><i></i><i></i><i></i><span>anjulrajam.com</span></div><img src="img/ring/anjulrajam.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="17" aria-label="Vanyat, Makhana & dry fruits"><div class="bar"><i></i><i></i><i></i><span>vanyat.in</span></div><img src="img/ring/vanyat.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="18" aria-label="Zeekea, Electronics"><div class="bar"><i></i><i></i><i></i><span>zeekea.in</span></div><img src="img/ring/zeekea.webp" alt="" loading="lazy" draggable="false"></button>
-      <button type="button" class="rc" data-i="19" aria-label="EcoKaari, Upcycled handwoven"><div class="bar"><i></i><i></i><i></i><span>ecokaari.org</span></div><img src="img/ring/ecokaari.webp" alt="" loading="lazy" draggable="false"></button>
-    </div></div>
-    <div class="ringui wrap"><button type="button" class="rb" id="rprev" aria-label="Previous project">←</button><div class="rnow"><b id="rname">Iyurved</b><small id="rcat">Wellness</small></div><button type="button" class="rb" id="rnext" aria-label="Next project">→</button></div>
+  <div class="archive" id="archive">
+    <canvas class="amb" id="amb" aria-hidden="true"></canvas>
+    <div class="a-top"><span class="a-brand"><img src="img/logo.png" alt="">plastrix<em>archive</em></span><p>20 more stores, brands and concepts</p></div>
+    <div class="flow" id="flow" aria-roledescription="carousel" aria-label="More projects">
+      <button type="button" class="ac" data-i="0" aria-label="Iyurved, Wellness"><span class="ac-img"><img src="img/work/iyurved.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Iyurved</b><small>Wellness</small></span></button><button type="button" class="ac" data-i="1" aria-label="ArtyCera, Handmade ceramics"><span class="ac-img"><img src="img/ring/artycera.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>ArtyCera</b><small>Handmade ceramics</small></span></button><button type="button" class="ac" data-i="2" aria-label="Brightline Dental, Studio concept · US dental clinic"><span class="ac-img"><img src="img/ring/dental.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Brightline Dental</b><small>Studio concept · US dental clinic</small></span></button><button type="button" class="ac" data-i="3" aria-label="Selique6, Skincare"><span class="ac-img"><img src="img/ring/selique6.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Selique6</b><small>Skincare</small></span></button><button type="button" class="ac" data-i="4" aria-label="Nevaah, Streetwear"><span class="ac-img"><img src="img/work/nevaah.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Nevaah</b><small>Streetwear</small></span></button><button type="button" class="ac" data-i="5" aria-label="Meenakaari, Handloom sarees"><span class="ac-img"><img src="img/ring/meenakaaribypriyanka.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Meenakaari</b><small>Handloom sarees</small></span></button><button type="button" class="ac" data-i="6" aria-label="Real Veggies, Healthy snacks"><span class="ac-img"><img src="img/ring/realveggies.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Real Veggies</b><small>Healthy snacks</small></span></button><button type="button" class="ac" data-i="7" aria-label="Maison Ora, Studio concept · Fine jewellery"><span class="ac-img"><img src="img/ring/jewellery.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Maison Ora</b><small>Studio concept · Fine jewellery</small></span></button><button type="button" class="ac" data-i="8" aria-label="Nutty Harvest, Food"><span class="ac-img"><img src="img/work/nuttyharvest.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Nutty Harvest</b><small>Food</small></span></button><button type="button" class="ac" data-i="9" aria-label="Greenspore, Organic teas"><span class="ac-img"><img src="img/ring/greensporeorganic.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Greenspore</b><small>Organic teas</small></span></button><button type="button" class="ac" data-i="10" aria-label="Glozo Cases, Phone accessories"><span class="ac-img"><img src="img/ring/glozo.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Glozo Cases</b><small>Phone accessories</small></span></button><button type="button" class="ac" data-i="11" aria-label="Greenwood School, Studio concept · School"><span class="ac-img"><img src="img/ring/school.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Greenwood School</b><small>Studio concept · School</small></span></button><button type="button" class="ac" data-i="12" aria-label="Syroxx, Sneakers"><span class="ac-img"><img src="img/ring/syroxx.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Syroxx</b><small>Sneakers</small></span></button><button type="button" class="ac" data-i="13" aria-label="Chaaya, Women’s fashion"><span class="ac-img"><img src="img/ring/chaayafashion.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Chaaya</b><small>Women’s fashion</small></span></button><button type="button" class="ac" data-i="14" aria-label="Swadmantra, Indian snacks"><span class="ac-img"><img src="img/ring/swadmantraindia.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Swadmantra</b><small>Indian snacks</small></span></button><button type="button" class="ac" data-i="15" aria-label="Flowmetric, Studio concept · SaaS"><span class="ac-img"><img src="img/ring/flowmetric.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Flowmetric</b><small>Studio concept · SaaS</small></span></button><button type="button" class="ac" data-i="16" aria-label="Anjulrajam, Ayurveda"><span class="ac-img"><img src="img/ring/anjulrajam.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Anjulrajam</b><small>Ayurveda</small></span></button><button type="button" class="ac" data-i="17" aria-label="Vanyat, Makhana & dry fruits"><span class="ac-img"><img src="img/ring/vanyat.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Vanyat</b><small>Makhana & dry fruits</small></span></button><button type="button" class="ac" data-i="18" aria-label="Zeekea, Electronics"><span class="ac-img"><img src="img/ring/zeekea.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>Zeekea</b><small>Electronics</small></span></button><button type="button" class="ac" data-i="19" aria-label="EcoKaari, Upcycled handwoven"><span class="ac-img"><img src="img/ring/ecokaari.webp" alt="" loading="lazy" draggable="false" crossorigin="anonymous"></span><span class="ac-cap"><b>EcoKaari</b><small>Upcycled handwoven</small></span></button>
+    </div>
+    <div class="player" role="group" aria-label="Project controls">
+      <div class="pc"><button type="button" class="pb" id="aprev" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M11 6 3 12l8 6zM21 6l-8 6 8 6z"/></svg></button><button type="button" class="pb" id="aplay" aria-label="Pause autoplay"><svg viewBox="0 0 24 24" id="aplayi"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button><button type="button" class="pb" id="anext" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="m13 6 8 6-8 6zM3 6l8 6-8 6z"/></svg></button></div>
+      <a class="now" id="anow" target="_blank" rel="noopener"><img id="athumb" alt=""><span><b id="aname"></b><small id="adom"></small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="prog"><i id="aprog"></i></span></a>
+      <div class="pr"><span class="cnt" id="acnt">01 / 20</span><a class="visit" id="avisit" target="_blank" rel="noopener">Visit site ↗</a></div>
+    </div>
+    <p class="a-foot">© 2026 · Archive by Plastrix Studio · Swipe or drag to explore</p>
+  </div>
   </div>
   <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbname">
     <button type="button" class="lbx" id="lbx" aria-label="Close">✕</button>
@@ -771,47 +774,68 @@ if(!reduce)setInterval(()=>{if(!stVis)return;reach+=Math.floor(20+Math.random()*
 
 const RING=[["Iyurved", "Wellness", "https://iyurved.com"], ["ArtyCera", "Handmade ceramics", "https://artycera.com"], ["Brightline Dental", "Studio concept · US dental clinic", null], ["Selique6", "Skincare", "https://selique6.com"], ["Nevaah", "Streetwear", "https://nevaah.com"], ["Meenakaari", "Handloom sarees", "https://meenakaaribypriyanka.com"], ["Real Veggies", "Healthy snacks", "https://realveggies.in"], ["Maison Ora", "Studio concept · Fine jewellery", null], ["Nutty Harvest", "Food", "https://nuttyharvest.in"], ["Greenspore", "Organic teas", "https://greensporeorganic.com"], ["Glozo Cases", "Phone accessories", "https://glozo.in"], ["Greenwood School", "Studio concept · School", null], ["Syroxx", "Sneakers", "https://syroxx.in"], ["Chaaya", "Women’s fashion", "https://chaayafashion.com"], ["Swadmantra", "Indian snacks", "https://swadmantraindia.com"], ["Flowmetric", "Studio concept · SaaS", null], ["Anjulrajam", "Ayurveda", "https://anjulrajam.com"], ["Vanyat", "Makhana & dry fruits", "https://vanyat.in"], ["Zeekea", "Electronics", "https://zeekea.in"], ["EcoKaari", "Upcycled handwoven", "https://ecokaari.org"]];
 
-/* ---------- project ring: 3D carousel ---------- */
+/* ---------- project archive: glass coverflow ---------- */
 (()=>{
-  const wrap=document.getElementById('ringwrap'),ring=document.getElementById('ring'),cs=[...ring.children],N=cs.length,STEP=360/N;
-  let CW=0,RAD=0,rot=0,vel=0,target=null,drag=false,lx=0,moved=0,front=-1,ringVis=false;
-  const nameEl=document.getElementById('rname'),catEl=document.getElementById('rcat');
-  function size(){CW=Math.min(Math.max(innerWidth*(isPhone?.6:.26),210),420);ring.style.setProperty('--cw',CW+'px');RAD=Math.round((CW+28)/(2*Math.tan(Math.PI/N)));}
-  size();addEventListener('resize',size);
-  new IntersectionObserver(e=>ringVis=e[0].isIntersecting).observe(wrap);
-  const norm=a=>((a%360)+540)%360-180;
-  function render(){
-    ring.style.transform=`translateZ(${-RAD}px) rotateX(-9deg) rotateY(${-rot}deg)`;
-    let best=0,bd=999;
-    cs.forEach((c,i)=>{const rel=norm(i*STEP-rot),ar=Math.abs(rel);if(ar<bd){bd=ar;best=i;}
-      c.style.transform=`rotateY(${i*STEP}deg) translateZ(${RAD}px)`;
-      c.style.opacity=ar>100?0:(1-Math.max(0,ar-20)/80*.75).toFixed(3);
-      c.style.filter=`brightness(${(1-Math.min(ar,90)/90*.55).toFixed(3)})`;});
-    if(best!==front){cs[front]?.classList.remove('front');front=best;cs[front].classList.add('front');nameEl.textContent=RING[front][0];catEl.textContent=RING[front][1];}
-  }
-  (function tick(){requestAnimationFrame(tick);if(!ringVis)return;
-    if(target!==null){const d=norm(target-rot);rot+=d*.09;if(Math.abs(d)<.05){rot=target;target=null;}}
-    else if(!drag){vel*=.94;rot+=vel+(reduce||Math.abs(vel)>.05?0:.06);}
-    render();})();
-  const goTo=i=>{target=rot+norm(i*STEP-rot);vel=0;};
-  document.getElementById('rprev').onclick=()=>goTo((front-1+N)%N);
-  document.getElementById('rnext').onclick=()=>goTo((front+1)%N);
-  wrap.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;moved=0;target=null;vel=0;wrap.setPointerCapture(e.pointerId);});
-  wrap.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;moved+=Math.abs(dx);const d=-dx*(STEP/(CW*.9));rot+=d;vel=d;});
-  const up=e=>{if(!drag)return;drag=false;
-    if(moved<6){const el=document.elementFromPoint(e.clientX,e.clientY)?.closest('.rc');if(el){const i=+el.dataset.i;if(i===front)openLB(i);else goTo(i);}}
-    else{vel=Math.max(-4,Math.min(4,vel));}};
-  wrap.addEventListener('pointerup',up);wrap.addEventListener('pointercancel',()=>drag=false);
-  cs.forEach(c=>c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();const i=+c.dataset.i;i===front?openLB(i):goTo(i);}}));
-  // lightbox: first tap opens big, second tap visits the site
-  const lb=document.getElementById('lb'),go=document.getElementById('lbgo'),lim=document.getElementById('lbimg');
+  const flow=document.getElementById('flow'),cs=[...flow.children],N=cs.length,arch=document.getElementById('archive');
+  cs.forEach(c=>{const sh=document.createElement('span');sh.className='shade';c.appendChild(sh);});
+  let pos=0,target=0,drag=false,lx=0,moved=0,dv=0,cur=-1,vis=false,playing=!reduce,t0=performance.now(),DUR=3800;
+  const wrapI=i=>((i%N)+N)%N;
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(arch);
+  // colours from each image, used for the ambient background
+  const pal=cs.map(()=>[[90,60,140],[200,90,60],[40,30,60]]);
+  const cvs=document.createElement('canvas');cvs.width=24;cvs.height=16;const cx=cvs.getContext('2d',{willReadFrequently:true});
+  cs.forEach((c,i)=>{const im=c.querySelector('img');const grab=()=>{try{cx.drawImage(im,0,0,24,16);const d=cx.getImageData(0,0,24,16).data;
+      const avg=(x0,x1,y0,y1)=>{let r=0,g=0,b=0,n=0;for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){const k=(y*24+x)*4;r+=d[k];g+=d[k+1];b+=d[k+2];n++;}return [r/n,g/n,b/n];};
+      const vivid=c=>{const m=(c[0]+c[1]+c[2])/3;return c.map(v=>Math.max(0,Math.min(255,m+(v-m)*1.7)));};
+      pal[i]=[vivid(avg(0,12,0,8)),vivid(avg(12,24,4,12)),vivid(avg(4,20,8,16))];}catch(e){}};
+    im.loading='eager';im.complete&&im.naturalWidth?grab():im.addEventListener('load',grab,{once:true});});
+  const amb=document.getElementById('amb'),ax=amb.getContext('2d');amb.width=96;amb.height=64;
+  const col=[[90,60,140],[200,90,60],[40,30,60]].map(c=>c.slice());
+  const blobs=[[.25,.3,.55],[.75,.35,.5],[.5,.85,.6],[.15,.8,.4]];
+  function drawAmb(T){for(let k=0;k<3;k++){const tc=pal[cur<0?0:cur][k];for(let j=0;j<3;j++)col[k][j]+=(tc[j]-col[k][j])*.035;}
+    ax.fillStyle=`rgb(${col[2].map(v=>v*.45|0)})`;ax.fillRect(0,0,96,64);
+    blobs.forEach((b,i)=>{const c=col[i%3];const x=(b[0]+Math.sin(T*.25+i*1.7)*.12)*96,y=(b[1]+Math.cos(T*.2+i*2.3)*.1)*64,r=b[2]*80;
+      const g=ax.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(${c.map(v=>v|0)},.95)`);g.addColorStop(1,`rgba(${c.map(v=>v|0)},0)`);ax.fillStyle=g;ax.fillRect(0,0,96,64);});}
+  // layout
+  const nameEl=document.getElementById('aname'),domEl=document.getElementById('adom'),th=document.getElementById('athumb'),cnt=document.getElementById('acnt'),visit=document.getElementById('avisit'),now=document.getElementById('anow'),prog=document.getElementById('aprog');
+  function setCur(i){cur=i;const [n,cat,url]=RING[i];nameEl.textContent=n;domEl.textContent=url?url.replace('https://',''):cat;th.src=cs[i].querySelector('img').src;cnt.textContent=String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+    if(url){visit.href=now.href=url;visit.target=now.target='_blank';visit.textContent='Visit site ↗';}else{visit.href=now.href='#contact';visit.removeAttribute('target');now.removeAttribute('target');visit.textContent=isPhone?'Enquire →':'Want one like this →';}
+    const p=pal[i][1];cs.forEach((c,k)=>c.classList.toggle('on',k===i));cs[i].style.setProperty('--glow',`rgba(${p.map(v=>v|0)},.55)`);}
+  function layout(){const W=flow.clientWidth,cw=cs[0].offsetWidth;const gap=Math.min(cw*.42,W*.2);
+    cs.forEach((c,i)=>{let off=i-pos;off=((off%N)+N+N/2)%N-N/2;const a=Math.abs(off);
+      const x=Math.sign(off)*(a<1?a*cw*.62:cw*.62+(a-1)*gap);
+      const z=-Math.min(a,4)*140,ry=-Math.sign(off)*Math.min(a,1)*28,sc=1-Math.min(a,4)*.06;
+      c.style.transform=`translateX(${x}px) translateZ(${z}px) rotateY(${ry}deg) scale(${sc})`;
+      c.style.zIndex=100-Math.round(a*10);c.style.opacity=a>3.6?0:1;c.style.pointerEvents=a>3.2?'none':'';
+      c.lastChild.style.opacity=Math.min(a*.32,.72).toFixed(3);});
+    const i=wrapI(Math.round(pos));if(i!==cur)setCur(i);}
+  function tick(now){requestAnimationFrame(tick);if(!vis)return;const T=now/1000;
+    if(!drag){if(playing&&now-t0>DUR){target=Math.round(target)+1;t0=now;}pos+=(target-pos)*.085;}
+    prog.style.width=(playing?Math.min((now-t0)/DUR,1)*100:0)+'%';
+    layout();drawAmb(T);}
+  setCur(0);layout();requestAnimationFrame(tick);
+  const go=d=>{target=Math.round(target)+d;t0=performance.now();};
+  document.getElementById('aprev').onclick=()=>go(-1);document.getElementById('anext').onclick=()=>go(1);
+  const pb=document.getElementById('aplay'),pi=document.getElementById('aplayi');
+  const setPlay=p=>{playing=p;t0=performance.now();arch.classList.toggle('paused',!p);pb.setAttribute('aria-label',p?'Pause autoplay':'Play autoplay');pi.innerHTML=p?'<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>':'<path d="M7 5v14l12-7z"/>';};
+  setPlay(playing);pb.onclick=()=>setPlay(!playing);
+  flow.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;moved=0;dv=0;flow.setPointerCapture(e.pointerId);});
+  flow.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;moved+=Math.abs(dx);const d=-dx/(cs[0].offsetWidth*.62);pos+=d;dv=d;});
+  const up=e=>{if(!drag)return;drag=false;t0=performance.now();
+    if(moved<6){const el=document.elementFromPoint(e.clientX,e.clientY)?.closest('.ac');if(el){const i=+el.dataset.i;if(i===cur)openLB(i);else{let d=i-cur;d=((d%N)+N+N/2)%N-N/2;target=Math.round(pos)+d;}}}
+    else target=Math.round(pos+dv*6);};
+  flow.addEventListener('pointerup',up);flow.addEventListener('pointercancel',()=>{drag=false;target=Math.round(pos);});
+  arch.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+  cs.forEach(c=>c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();const i=+c.dataset.i;i===cur?openLB(i):(target=Math.round(pos)+(((i-cur)%N)+N+N/2)%N-N/2);}}));
+  // lightbox: first tap on the front card opens it big, second tap visits the site
+  const lb=document.getElementById('lb'),lgo=document.getElementById('lbgo'),lim=document.getElementById('lbimg');
   function openLB(i){const [n,cat,url]=RING[i];document.getElementById('lbpic').src=cs[i].querySelector('img').src;document.getElementById('lbname').textContent=n;document.getElementById('lbcat').textContent=cat;
-    if(url){go.href=url;lim.href=url;go.textContent='Visit live site ↗';go.target=lim.target='_blank';}else{go.href=lim.href='#contact';go.textContent='Want one like this →';go.removeAttribute('target');lim.removeAttribute('target');}
-    lb.hidden=false;lenis?.stop();document.getElementById('lbx').focus();}
+    if(url){lgo.href=lim.href=url;lgo.textContent='Visit live site ↗';lgo.target=lim.target='_blank';}else{lgo.href=lim.href='#contact';lgo.textContent='Want one like this →';lgo.removeAttribute('target');lim.removeAttribute('target');}
+    lb.hidden=false;setPlay(false);lenis?.stop();document.getElementById('lbx').focus();}
   const close=()=>{lb.hidden=true;lenis?.start();};
   document.getElementById('lbx').onclick=close;lb.addEventListener('click',e=>{if(e.target===lb)close();});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close();});
-  [go,lim].forEach(a=>a.addEventListener('click',()=>{if(a.getAttribute('href')==='#contact')close();}));
+  [lgo,lim].forEach(a=>a.addEventListener('click',()=>{if(a.getAttribute('href')==='#contact')close();}));
 })();
 
 /* ---------- WebGL work cards: paper curl at the top + wave while scrolling ---------- */
