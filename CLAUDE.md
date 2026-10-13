@@ -2,6 +2,8 @@
 
 The owner (Joni) builds sample homepages for clients they have emailed.
 Follow this workflow for every client site. Reply to the owner in Bengali.
+**Keep replies short and in simple everyday language. No technical words
+unless needed, and explain them in one line if used.**
 
 ## 1. Inputs from the owner
 - A design **prompt** copied from a site they like (e.g. motionsites.ai).
