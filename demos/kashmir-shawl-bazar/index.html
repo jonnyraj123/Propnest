@@ -28,7 +28,21 @@ header{position:sticky;top:0;z-index:10;background:rgba(28,18,16,.86);backdrop-f
 .wa svg{width:18px;height:18px}
 .ghost{color:var(--ivory);text-decoration:none;border-bottom:1px solid var(--saffron);padding-bottom:2px;font-weight:600}
 
-/* Hero */
+/* Hero: full-bleed shawl film with text rising over it */
+.vhero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.vbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:-2;transform:scale(1.04);animation:breathe 14s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.1)}}
+.vshade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(28,18,16,.88) 0%,rgba(28,18,16,.45) 45%,rgba(28,18,16,.1) 75%),linear-gradient(0deg,var(--walnut) 0%,rgba(28,18,16,0) 40%)}
+.vhero .hero{width:100%;padding-block:90px 70px}
+.line{display:block;overflow:hidden;padding-bottom:.08em}
+.rise{display:inline-block;opacity:0;transform:translateY(105%);animation:up 1.1s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
+p.rise,div.rise{display:block;transform:translateY(24px)}
+.ctas.rise{display:flex}
+@keyframes up{to{opacity:1;transform:none}}
+.scroll{position:absolute;left:50%;bottom:18px;width:22px;height:36px;border:1.5px solid rgba(245,236,220,.5);border-radius:12px;transform:translateX(-50%)}
+.scroll span{position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--saffron);animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+@media (max-width:700px){.vhero{min-height:82vh}.vbg{object-position:40% 50%}.vshade{background:linear-gradient(0deg,var(--walnut) 8%,rgba(28,18,16,.55) 55%,rgba(28,18,16,.25) 100%)}.scroll{display:none}}
 .hero{padding-block:44px 20px;display:grid;gap:22px}
 .eyebrow{font:600 12px var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--saffron)}
 .hero h1{font:400 clamp(40px,7.4vw,92px)/1 var(--display);letter-spacing:-.01em;max-width:13ch;text-wrap:balance}
@@ -103,7 +117,7 @@ footer{padding-block:28px 90px;color:var(--mut);font-size:13px;display:flex;just
 
 @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}.band,.visit{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 @media (max-width:520px){.bar .wa span{display:none}.bar .wa{padding:10px}.shawl,.shawl img{width:150px}.shawl img{height:225px}.grid{gap:12px}.item h3{font-size:18px}.item div{padding:12px}section{padding-block:60px}}
-@media (prefers-reduced-motion:reduce){.track,.tag,.float{animation:none}.js .reveal:not(.in){opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.track,.tag,.float,.vbg,.scroll span{animation:none}.rise{animation:none;opacity:1;transform:none}.js .reveal:not(.in){opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -115,14 +129,21 @@ footer{padding-block:28px 90px;color:var(--mut);font-size:13px;display:flex;just
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div class="eyebrow">32 Free School Street · New Market</div>
-    <h1>Kolkata's wall of <em>5,000</em> Kashmiri shawls.</h1>
-    <p>Pashmina, kani, embroidered stoles and everyday wraps, straight from the factory outlet. Prices start at ₹100.</p>
-    <div class="ctas">
-      <a class="wa" id="wa-hero" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>See designs on WhatsApp</a>
-      <a class="ghost" href="#collection">Browse the collection ↓</a>
+  <div class="vhero">
+    <video class="vbg" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="vshade"></div>
+    <div class="wrap hero">
+      <div class="eyebrow rise" style="--d:.2s">32 Free School Street · New Market</div>
+      <h1><span class="line"><span class="rise" style="--d:.4s">Woven in Kashmir.</span></span><span class="line"><span class="rise" style="--d:.65s">Wrapped in <em>Kolkata.</em></span></span></h1>
+      <p class="rise" style="--d:.95s">5,000+ pashmina, kani and embroidered shawls, straight from the factory outlet. Prices start at ₹100.</p>
+      <div class="ctas rise" style="--d:1.15s">
+        <a class="wa" id="wa-hero" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>See designs on WhatsApp</a>
+        <a class="ghost" href="#collection">Browse the collection ↓</a>
+      </div>
     </div>
+    <div class="scroll" aria-hidden="true"><span></span></div>
   </div>
 
   <div class="wall" aria-label="Shawls hanging in the shop">
