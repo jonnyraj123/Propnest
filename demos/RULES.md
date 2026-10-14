@@ -22,3 +22,7 @@ Only 2-3 per day, best leads only. Never invent problems.
 # Language for outreach
 - India clients: Hinglish (Hindi in English letters, mix English words). Kolkata: Banglish.
 - Canada, Dubai, US: professional English.
+
+# WhatsApp lead workflow (India)
+- Joni sends Google Maps screenshots (no website). Claude builds an artifact page: one card per shop, unique Hinglish/Banglish message, green button wa.me/<number>?text=... + Copy.
+- If shop replies "bhejo": build a fresh unique demo (like demos/kashmir-shawl-bazar), only verified facts, no invented prices.
