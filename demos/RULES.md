@@ -18,3 +18,7 @@ Only 2-3 per day, best leads only. Never invent problems.
 - Sender: hello@plastrixstudio.com (default). 5 min gap, max 10-15 new/day.
 - Tone: short, polite, standard, honest. Never boring or complicated. Every claim true.
 - Pick leads carefully (real small business, active, reachable, likely to need us).
+
+# Language for outreach
+- India clients: Hinglish (Hindi in English letters, mix English words). Kolkata: Banglish.
+- Canada, Dubai, US: professional English.
