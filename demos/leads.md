@@ -35,3 +35,15 @@
 | Kashmir Cottage | New Market G62 | +91 89108 33810 | Message ready |
 | The Indian Ethnic Co | (brand) | business WhatsApp | Asked to email -> email sent 14 Oct |
 | Muhurth India | (brand) | business WhatsApp | Said no for now |
+
+## India WhatsApp leads (Kashmir/Jammu, batch 2, 14 Oct)
+| Business | Area | WhatsApp | Pitch | Status |
+|---|---|---|---|---|
+| Happy Destination Tour & Travels | Srinagar (Naseem Bagh / Khayam) | +91 97971 63380 (also 60065 08081) | cinematic redesign of happydestinations.in + AI auto-reply | Message ready |
+| Kashmir Kraft | Jammu | +91 97960 85940 | fix kashmirkraft.in (missing images, mobile) + AI auto-reply | Message ready |
+| Kashmir Pashmina Art & Craft | Srinagar | +91 94197 62636 | website + AI auto-reply | Message ready |
+| KASHMIR DREAMS | Lal Chowk | +91 70065 57900 | website | Message ready |
+| Craftastic Cashmere | Dalgate | +91 99060 49023 | website | Message ready |
+| Cashmere Crafts | Dalgate | +91 97971 01058 | has cashmerecraft.in -> AI auto-reply | Message ready |
+| Al Kashmiri Shawls | Kokar Bazar, Lal Chowk | +91 70068 68557 | website | Message ready |
+| Kashmir Crafts Hawal (Wholesale) | Hawal | +91 94190 77855 | website | Google says "may be closed" |
