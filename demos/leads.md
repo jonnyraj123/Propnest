@@ -25,3 +25,13 @@
 | Super Dream Pest Control | Dubai | info@superdreampestcontrol.ae | has site → WhatsApp AI |
 | Expert Pest Control | Dubai | info@expertpestcontrol.ae | has site → WhatsApp AI |
 | Al Waha Hygiene | Dubai | info@alwahahygiene.ae | has site → WhatsApp AI |
+
+## India WhatsApp leads (Kolkata)
+| Business | Area | WhatsApp | Status |
+|---|---|---|---|
+| Kashmir Shawl Bazar | 32 Free School St | +91 98303 08789 | Said "Bhejo" -> demo sent: demos/kashmir-shawl-bazar |
+| Kashmir Kraft Emporium | New Market WB148 | +91 70038 62277 | Message ready |
+| Kashmir Gift House | New Market Shop 85 | +91 99037 81100 | Message ready |
+| Kashmir Cottage | New Market G62 | +91 89108 33810 | Message ready |
+| The Indian Ethnic Co | (brand) | business WhatsApp | Asked to email -> email sent 14 Oct |
+| Muhurth India | (brand) | business WhatsApp | Said no for now |
