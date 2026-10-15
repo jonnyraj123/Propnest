@@ -26,3 +26,7 @@ Only 2-3 per day, best leads only. Never invent problems.
 # WhatsApp lead workflow (India)
 - Joni sends Google Maps screenshots (no website). Claude builds an artifact page: one card per shop, unique Hinglish/Banglish message, green button wa.me/<number>?text=... + Copy.
 - If shop replies "bhejo": build a fresh unique demo (like demos/kashmir-shawl-bazar), only verified facts, no invented prices.
+
+## Demo type for new India leads (from 15 Oct)
+- New leads get a world-class luxury e-commerce demo, not just a WhatsApp-button catalogue: product pages, cart, checkout screen (demo only, no real payment), size/colour options, wishlist, search, premium animation.
+- WhatsApp stays as a secondary "Ask on WhatsApp" option.
