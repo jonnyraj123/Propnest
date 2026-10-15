@@ -47,3 +47,17 @@
 | Cashmere Crafts | Dalgate | +91 97971 01058 | has cashmerecraft.in -> AI auto-reply | Said no |
 | Al Kashmiri Shawls | Kokar Bazar, Lal Chowk | +91 70068 68557 | website | Message ready |
 | Kashmir Crafts Hawal (Wholesale) | Hawal | +91 94190 77855 | website | Google says "may be closed" |
+
+## India WhatsApp leads (batch 3, 15 Oct)
+| Business | Area | WhatsApp | Status |
+|---|---|---|---|
+| Kashmiri Kesar | Pampore | +91 94190 47472 | Message ready (website + AI) |
+| The Wani Shawl Factory | Waripora | +91 91496 69231 | Message ready |
+| Kashmir Collections | Gandhi Nagar, Jammu | +91 97976 60600 | Message ready |
+| Kashmiri Hunar | Gandhi Nagar, Jammu | +91 88996 90909 | Message ready |
+| Navriti Kashmiri Designs | Panjtirthi, Jammu | +91 96222 58263 | Message ready |
+| Bazar Kashur | Safakadal, Srinagar | +91 84939 58585 | Message ready |
+| Crafts Emporium | Dal Lake, Srinagar | +91 94190 46261 | Message ready |
+| Kashmiri Dawat | Pahalgam | 080821 59053 (unusual) | Message ready |
+| Kashmir Art Emporium | New Market, Kolkata | +91 98314 90860 | Message ready |
+| The Cashmere Store | Srinagar | (number not in screenshot) | Shopify site down — good lead, need number |
