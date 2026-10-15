@@ -42,8 +42,8 @@
 | Happy Destination Tour & Travels | Srinagar (Naseem Bagh / Khayam) | +91 97971 63380 (also 60065 08081) | cinematic redesign of happydestinations.in + AI auto-reply | Message ready |
 | Kashmir Kraft | Jammu | +91 97960 85940 | fix kashmirkraft.in (missing images, mobile) + AI auto-reply | Message ready |
 | Kashmir Pashmina Art & Craft | Srinagar | +91 94197 62636 | website + AI auto-reply | Message ready |
-| KASHMIR DREAMS | Lal Chowk | +91 70065 57900 | website | Said "Haa" -> demo built: demos/kashmir-dreams |
-| Craftastic Cashmere | Dalgate | +91 99060 49023 | website | Asked charges -> told from ₹5,000 + free sample offer |
+| KASHMIR DREAMS | Lal Chowk | +91 70065 57900 | website | Demo sent. OK with ₹7,000 (WhatsApp site). Asked: self-edit products (Google Sheet plan), payment gateway, international buyers + USD pricing. Discussing with higher authorities. Next: quote ₹15-20k for international store when ready |
+| Craftastic Cashmere | Dalgate | +91 99060 49023 | website | Asked charges -> told from ₹5,000. Follow-up 15 Oct asking budget |
 | Cashmere Crafts | Dalgate | +91 97971 01058 | has cashmerecraft.in -> AI auto-reply | Said no |
 | Al Kashmiri Shawls | Kokar Bazar, Lal Chowk | +91 70068 68557 | website | Message ready |
 | Kashmir Crafts Hawal (Wholesale) | Hawal | +91 94190 77855 | website | Google says "may be closed" |
