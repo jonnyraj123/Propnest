@@ -88,6 +88,7 @@ h2 em{font-style:italic;color:var(--gold2)}
 .look .num{position:absolute;top:12px;left:14px;font:italic 400 15px var(--display);color:var(--gold2);z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .look .cap{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
 .look .cap b{font:400 18px/1.25 var(--display)}
+.look .cap small{display:block;font-size:12px;letter-spacing:.14em;color:var(--gold)}
 .ask{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold2);transition:all .3s}
 .ask:hover{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
 .ask svg{width:18px;height:18px;fill:currentColor}
@@ -330,7 +331,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 100px;display:flex;justif
 <script>
 const PHONE='919149669231';
 const wa=m=>'https://wa.me/'+PHONE+'?text='+encodeURIComponent(m);
-const askMsg=n=>'Hello, I liked the "'+n+'" on your website. Is it available? Please share price and colours.';
+const BASE=new URL('img/',location.href).href.startsWith('file:')?'https://jonnyraj123.github.io/Propnest/demos/wani-shawl-factory/img/':new URL('img/',location.href).href;
+const CODES={};let cn=0;const code=f=>CODES[f]||(CODES[f]='WSF-'+String(++cn).padStart(2,'0'));
+const askMsg=(n,f)=>'Hello, I liked this piece on your website:\n\n*'+n+'*\nCode: '+code(f)+'\nPhoto: '+BASE+f+'.jpg\n\nIs it available? Please share price and colours.';
 document.querySelectorAll('.js-wa').forEach(a=>{a.href=wa(a.dataset.msg);a.target='_blank';a.rel='noopener'});
 const waSvg='<svg><use href="#wa"/></svg>';
 
@@ -342,7 +345,7 @@ document.getElementById('marq').innerHTML=[...mq,...mq].map(t=>`<span>${t}</span
 const looks=[['8ab650c1','Olive Vine Shawl'],['fcf1a244','Black & Gold Vine Shawl'],['4b63df61','Floral Garden Shawl'],['631720c5','Ivory Shawl, Red Vines'],['6af88087','Mustard Border Shawl'],['64680098','Turquoise Paisley Shawl'],['f4381437','Ivory Hexagon Border Shawl'],['58908ec5','White Shawl, Black Jaal'],['6030553e','Grey Ornate Border Shawl'],['bd92879a','Mushroom Vine Shawl'],['fe4bb39e','Ivory Shawl, Red Lattice'],['29c382e7','Black Embroidered Shawl']];
 const rail=document.getElementById('rail');
 looks.forEach(([f,n],i)=>{const d=document.createElement('figure');d.className='look';
-  d.innerHTML=`<div class="ph"><span class="num">${String(i+1).padStart(2,'0')}</span><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><b>${n}</b><a class="ask" href="${wa(askMsg(n))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
+  d.innerHTML=`<div class="ph"><span class="num">${String(i+1).padStart(2,'0')}</span><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><span><small>${code(f)}</small><b>${n}</b></span><a class="ask" href="${wa(askMsg(n,f))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
   d.querySelector('img').addEventListener('click',()=>openLb(f,n));rail.appendChild(d)});
 
 // collection
@@ -355,11 +358,11 @@ const items=[
 const labels={emb:'Embroidered',pai:'Paisley',flo:'Floral',suit:'Suit'};
 const grid=document.getElementById('grid');
 items.forEach(([f,n,c])=>{const d=document.createElement('figure');d.className='card';d.dataset.c=c;
-  d.innerHTML=`<div class="ph"><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><span><small>${labels[c]}</small><b>${n}</b></span><a class="ask" href="${wa(askMsg(n))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
+  d.innerHTML=`<div class="ph"><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><span><small>${labels[c]} · ${code(f)}</small><b>${n}</b></span><a class="ask" href="${wa(askMsg(n,f))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
   d.querySelector('img').addEventListener('click',()=>openLb(f,n));grid.appendChild(d)});
 // mannequin looks also appear in "Embroidered"/"Paisley"/"Floral" filters
 looks.forEach(([f,n])=>{const c=/Paisley/.test(n)?'pai':/Floral/.test(n)?'flo':'emb';const d=document.createElement('figure');d.className='card hide extra';d.dataset.c=c;
-  d.innerHTML=`<div class="ph"><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><span><small>${labels[c]}</small><b>${n}</b></span><a class="ask" href="${wa(askMsg(n))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
+  d.innerHTML=`<div class="ph"><img src="img/${f}.jpg" alt="${n}" loading="lazy"></div><figcaption class="cap"><span><small>${labels[c]} · ${code(f)}</small><b>${n}</b></span><a class="ask" href="${wa(askMsg(n,f))}" target="_blank" rel="noopener" aria-label="Ask about ${n} on WhatsApp">${waSvg}</a></figcaption>`;
   d.querySelector('img').addEventListener('click',()=>openLb(f,n));grid.appendChild(d)});
 document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
@@ -381,7 +384,7 @@ R.forEach(([t,n,st=5])=>{const q=document.createElement('div');q.className='q';q
 
 // lightbox
 const lb=document.getElementById('lb');
-function openLb(f,n){lb.querySelector('img').src='img/'+f+'.jpg';lb.querySelector('img').alt=n;lb.querySelector('b').textContent=n;lb.querySelector('a').href=wa(askMsg(n));lb.classList.add('open')}
+function openLb(f,n){lb.querySelector('img').src='img/'+f+'.jpg';lb.querySelector('img').alt=n;lb.querySelector('b').textContent=n+'  ·  '+code(f);lb.querySelector('a').href=wa(askMsg(n,f));lb.classList.add('open')}
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('x'))lb.classList.remove('open')});
 addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
 
