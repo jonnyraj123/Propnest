@@ -52,7 +52,7 @@
 | Business | Area | WhatsApp | Status |
 |---|---|---|---|
 | Kashmiri Kesar | Pampore | +91 94190 47472 | Message ready (website + AI) |
-| The Wani Shawl Factory | Waripora | +91 91496 69231 | Message ready |
+| The Wani Shawl Factory | Waripora | +91 91496 69231 | Said yes, sent photos -> demo built: demos/wani-shawl-factory |
 | Kashmir Collections | Gandhi Nagar, Jammu | +91 97976 60600 | Message ready |
 | Kashmiri Hunar | Gandhi Nagar, Jammu | +91 88996 90909 | Message ready |
 | Navriti Kashmiri Designs | Panjtirthi, Jammu | +91 96222 58263 | Message ready |
