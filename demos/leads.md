@@ -61,3 +61,11 @@
 | Kashmiri Dawat | Pahalgam | 080821 59053 (unusual) | Message ready |
 | Kashmir Art Emporium | New Market, Kolkata | +91 98314 90860 | Message ready |
 | The Cashmere Store | Srinagar | (number not in screenshot) | Shopify site down — good lead, need number |
+
+## India WhatsApp leads (batch 4, 15 Oct) — demo type: luxury e-commerce
+| Business | Area | WhatsApp | Status |
+|---|---|---|---|
+| The Royal Threads of Kashmir | Zadibal, Srinagar | +91 70060 22017 | Message ready |
+| Finest Shawls | Khanyar, Srinagar | +91 70069 62973 | Message ready |
+| Kasmira Emporium | Bemina, Srinagar | +91 70064 09583 | Message ready |
+| Hoor the Designer Wear | Nowhatta, Srinagar | +91 88250 60887 | Message ready (has vyaparify page) |
