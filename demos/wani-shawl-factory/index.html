@@ -156,6 +156,26 @@ footer{border-top:1px solid var(--line);padding:26px 0 100px;display:flex;justif
 .lb b{font:400 20px var(--display)}
 .lb .x{position:absolute;top:12px;right:18px;background:none;border:0;color:var(--ivory);font-size:36px;cursor:pointer;line-height:1}
 
+
+/* welcome popup */
+.wel{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:20px;background:rgba(10,7,6,.0);pointer-events:none;transition:background .6s}
+.wel.open{background:rgba(10,7,6,.72);pointer-events:auto;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.wel .box{position:relative;width:min(460px,100%);text-align:center;padding:46px 30px 34px;background:radial-gradient(120% 90% at 50% 0%,#2a1724,#0f0b0a 70%);border:1px solid var(--line);border-radius:6px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);opacity:0;transform:translateY(30px) scale(.96);transition:opacity .7s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.wel.open .box{opacity:1;transform:none}
+.wel .box::before{content:"";position:absolute;inset:10px;border:1px solid rgba(236,210,154,.35);border-radius:3px;pointer-events:none}
+.wel svg.pz{width:120px;height:auto;margin:0 auto 14px;display:block}
+.wel svg.pz path{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400}
+.wel.open svg.pz path{animation:draw 2.2s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.wel .k{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.wel h3{font:400 clamp(30px,7vw,40px)/1.08 var(--display);margin:12px 0 12px}
+.wel h3 em{font-style:italic;color:var(--gold2)}
+.wel p{color:var(--mut);font-size:15px;max-width:34ch;margin:0 auto}
+.wel .st{margin:18px 0 22px;color:var(--gold2);font-size:14px;letter-spacing:.06em}
+.wel .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.wel .x{position:absolute;top:14px;right:16px;background:none;border:0;color:var(--mut);font-size:28px;line-height:1;cursor:pointer;z-index:2}
+.wel .x:hover{color:var(--ivory)}
+
 @media (max-width:980px){
   nav{display:none}
   .grid{grid-template-columns:repeat(3,1fr)}
@@ -289,6 +309,22 @@ footer{border-top:1px solid var(--line);padding:26px 0 100px;display:flex;justif
 
 <a class="fab js-wa" data-msg="Hello, I saw your website and have a question." href="#" aria-label="Chat on WhatsApp"><svg><use href="#wa"/></svg></a>
 
+
+<div class="wel" id="wel" role="dialog" aria-modal="true" aria-labelledby="welT">
+  <div class="box">
+    <button class="x" aria-label="Close">×</button>
+    <svg class="pz" viewBox="0 0 120 60" aria-hidden="true"><path d="M10 44 C22 10 62 6 66 34 C69 54 44 56 42 42 C40 30 56 28 58 38"/><path d="M66 34 C80 46 96 22 112 30"/></svg>
+    <div class="k">Welcome to</div>
+    <h3 id="welT">The Wani <em>Shawl</em> Factory</h3>
+    <p>Handmade Kashmiri shawls, stoles and suits, from Waripora on the road to Gulmarg.</p>
+    <div class="st">★ 4.3 · loved by 130 reviewers on Google</div>
+    <div class="row">
+      <a class="btn gold" href="#runway" data-close>Explore the collection</a>
+      <a class="btn line js-wa" data-msg="Hello, I saw your website. Please show me your latest shawls." href="#"><svg class="wa-ic"><use href="#wa"/></svg>Ask on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
 <div class="lb" id="lb"><button class="x" aria-label="Close">×</button><img alt=""><b></b><a class="btn gold" target="_blank" rel="noopener" href="#"><svg class="wa-ic"><use href="#wa"/></svg>Ask about this piece</a></div>
 
 <script>
@@ -371,6 +407,34 @@ addEventListener('scroll',onScroll,{passive:true});
 addEventListener('resize',()=>{sizeRunway();onScroll()});
 addEventListener('load',()=>{sizeRunway();onScroll()});
 sizeRunway();onScroll();
+
+// welcome popup (once per visit)
+const wel=document.getElementById('wel');
+let seen=false;try{seen=sessionStorage.getItem('wsf_wel')==='1'}catch(e){}
+function closeWel(){wel.classList.remove('open');try{sessionStorage.setItem('wsf_wel','1')}catch(e){}}
+if(!seen)setTimeout(()=>{if(!lb.classList.contains('open'))wel.classList.add('open')},2500);
+wel.addEventListener('click',e=>{if(e.target===wel||e.target.closest('.x')||e.target.closest('[data-close]')||e.target.closest('.js-wa'))closeWel()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeWel()});
+
+// mobile: runway glides slowly right-to-left by itself, pauses while touched
+(function(){
+  if(reduce)return;
+  let clones=false,paused=false,t0,pos=0;
+  function tick(){
+    if(innerWidth<=760){
+      if(!clones){[...rail.children].forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.querySelector('img').addEventListener('click',()=>{const im=k.querySelector('img');openLb(im.src.split('/').pop().replace('.jpg',''),im.alt)});rail.appendChild(k)});clones=true;rail.style.scrollSnapType='none';pos=rail.scrollLeft}
+      if(!paused){const half=rail.scrollWidth/2;pos+=0.45;if(pos>=half)pos-=half;rail.scrollLeft=pos}
+    }
+    requestAnimationFrame(tick)
+  }
+  const pause=()=>{paused=true;clearTimeout(t0)};
+  const resume=()=>{clearTimeout(t0);t0=setTimeout(()=>{pos=rail.scrollLeft;paused=false},2500)};
+  rail.addEventListener('touchstart',pause,{passive:true});
+  rail.addEventListener('touchend',resume,{passive:true});
+  rail.addEventListener('pointerdown',pause);rail.addEventListener('pointerup',resume);
+  requestAnimationFrame(tick);
+})();
+
 const v=document.querySelector('.vbg');v.play&&v.play().catch(()=>{});
 </script>
 </body>
