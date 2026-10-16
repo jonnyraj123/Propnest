@@ -101,3 +101,4 @@ Need number: The Cashmere Store (Srinagar, Shopify site down).
 | Business | Email | Status |
 |---|---|---|
 | RDHAP Connect (rdhapconnect.com, IG rdhapconnect1) | info@rdhapconnect.com | 17 Oct: first email sent (footer shown twice + dated design, free sample homepage offer, no demo link). Their designer is Vision Graphix. Last IG post 1 Oct. |
+| SF Dental Hygiene Society (sf-dhs.wixsite.com, IG sfdentalhygsociety) | sfdentalhygienesociety@yahoo.com | 17 Oct: first email sent (Wix banner + wixsite address, "to the right" broken on mobile, free sample homepage offer). Volunteer society, low budget, possible referral network. |
