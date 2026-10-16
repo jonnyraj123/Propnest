@@ -69,3 +69,30 @@
 | Finest Shawls | Khanyar, Srinagar | +91 70069 62973 | Message ready |
 | Kasmira Emporium | Bemina, Srinagar | +91 70064 09583 | Message ready |
 | Hoor the Designer Wear | Nowhatta, Srinagar | +91 88250 60887 | Message ready (has vyaparify page) |
+
+## NEXT: Noor-e-Kashmir-level luxury e-com demo queue (messaged, no reply yet) — build ONLY when Joni says start
+Exclude: Cashmere Crafts (no), Kashmir Shawl Bazar / KASHMIR DREAMS / Wani (demo done), paying e-com client.
+
+| # | Business | Area | WhatsApp | Note |
+|---|---|---|---|---|
+| 1 | The Royal Threads of Kashmir | Zadibal, Srinagar | +91 70060 22017 | batch 4 |
+| 2 | Finest Shawls | Khanyar, Srinagar | +91 70069 62973 | batch 4 |
+| 3 | Kasmira Emporium | Bemina, Srinagar | +91 70064 09583 | batch 4 |
+| 4 | Hoor the Designer Wear | Nowhatta, Srinagar | +91 88250 60887 | batch 4 |
+| 5 | Craftastic Cashmere | Dalgate | +91 99060 49023 | asked price, then silent — hot |
+| 6 | Al Kashmiri Shawls | Lal Chowk | +91 70068 68557 | batch 2 |
+| 7 | Kashmir Pashmina Art & Craft | Srinagar | +91 94197 62636 | batch 2 |
+| 8 | Kashmir Kraft | Jammu | +91 97960 85940 | batch 2 (has kashmirkraft.in) |
+| 9 | Bazar Kashur | Safakadal, Srinagar | +91 84939 58585 | batch 3 |
+| 10 | Crafts Emporium | Dal Lake, Srinagar | +91 94190 46261 | batch 3 |
+| 11 | Kashmir Collections | Gandhi Nagar, Jammu | +91 97976 60600 | batch 3 |
+| 12 | Kashmiri Hunar | Gandhi Nagar, Jammu | +91 88996 90909 | batch 3 |
+| 13 | Navriti Kashmiri Designs | Panjtirthi, Jammu | +91 96222 58263 | batch 3 |
+| 14 | Kashmir Art Emporium | New Market, Kolkata | +91 98314 90860 | batch 3 |
+| 15 | Kashmir Kraft Emporium | New Market, Kolkata | +91 70038 62277 | Kolkata |
+| 16 | Kashmir Gift House | New Market, Kolkata | +91 99037 81100 | Kolkata |
+| 17 | Kashmir Cottage | New Market, Kolkata | +91 89108 33810 | Kolkata |
+| 18 | Kashmir Crafts Hawal | Hawal | +91 94190 77855 | ⚠ Google: "may be closed" |
+
+Not shawl / doubtful (adapt or skip): Kashmiri Kesar (saffron, +91 94190 47472), Kashmiri Dawat (Pahalgam, food, 080821 59053 odd number), Happy Destination (travel agency).
+Need number: The Cashmere Store (Srinagar, Shopify site down).
