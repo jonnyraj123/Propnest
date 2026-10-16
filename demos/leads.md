@@ -96,3 +96,8 @@ Exclude: Cashmere Crafts (no), Kashmir Shawl Bazar / KASHMIR DREAMS / Wani (demo
 
 Not shawl / doubtful (adapt or skip): Kashmiri Kesar (saffron, +91 94190 47472), Kashmiri Dawat (Pahalgam, food, 080821 59053 odd number), Happy Destination (travel agency).
 Need number: The Cashmere Store (Srinagar, Shopify site down).
+
+## US: RDHAP Connect (California)
+| Business | Email | Status |
+|---|---|---|
+| RDHAP Connect (rdhapconnect.com, IG rdhapconnect1) | info@rdhapconnect.com | 17 Oct: first email sent (footer shown twice + dated design, free sample homepage offer, no demo link). Their designer is Vision Graphix. Last IG post 1 Oct. |
