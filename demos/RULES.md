@@ -35,3 +35,4 @@ Only 2-3 per day, best leads only. Never invent problems.
 - Every paid/e-commerce site must be world-class, cinematic, premium: 3D (Three.js), scroll storytelling, smooth scroll, refined motion, luxury typography. A plain "shop template" look is rejected.
 - Wait for Joni's reference designs before building; match or beat them.
 - Product mockups: use each mockup image exactly as given (never crop or cut a collage into pieces). Show full image (object-fit: contain on product page). One mockup set per product.
+- Gemini mockups: always remove the Gemini sparkle watermark (bottom-right) before placing on the site; keep original size/quality.
