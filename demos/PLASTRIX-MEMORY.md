@@ -207,7 +207,7 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 ## 12. Update 16 Oct night
 - Joni wants it: short replies, ONE step at a time, like the AnimatedWebs setup steps.
 - AnimatedWebs plugin: account made (jonnyrajmollick@gmail.com). Clicking "Allow access" does nothing in Chrome or Edge, so it is their bug. Retry in 1-2 days via Claude app → Customize → Plugins → AnimatedWebs → Connectors → Connect.
-- MotionSites affiliate: about to apply (free; no paid ads). Script and caption in motionsites-affiliate.md.
+- MotionSites affiliate: APPLIED 16 Oct (PayPal rajjonim@gmail.com, FB personal profile). Under review; the referral link will appear on motionsites.ai/affiliates after approval. Script is in motionsites-affiliate.md.
 - Wani: replied "talking with cousin". Follow up 17 Oct if silent.
 - Pending, one at a time: affiliate apply → Wani follow-up → Noor-e-Kashmir client advance → 18-lead demo queue (when Joni says start) → WhatsApp bot token → PayPal KYC → US follow-ups.
 - 17 Oct morning, send to Noor-e-Kashmir client (give Joni again when asked). Send the desktop screen video first, then:
