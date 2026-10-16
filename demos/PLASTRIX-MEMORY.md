@@ -210,3 +210,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - MotionSites affiliate: about to apply (free; no paid ads). Script and caption in motionsites-affiliate.md.
 - Wani: replied "talking with cousin". Follow up 17 Oct if silent.
 - Pending, one at a time: affiliate apply → Wani follow-up → Noor-e-Kashmir client advance → 18-lead demo queue (when Joni says start) → WhatsApp bot token → PayPal KYC → US follow-ups.
+- 17 Oct morning, send to Noor-e-Kashmir client (give Joni again when asked). Send the desktop screen video first, then:
+  "Sir, aapki website maine bahut dil se banayi hai 🙏 Mobile ka link bheja tha. Desktop pe ye aur bhi sundar lagti hai, uski chhoti si video bhej raha hoon. Ek baar mujhe mauka dijiye. Jitne dil se website banayi hai, utne hi dil se aapki online sale badhane ki koshish karunga. Aapke liye ek offer: pehle mahine ka management (₹4,000) bilkul FREE. Bataiye, kab shuru karein? 🙏"
