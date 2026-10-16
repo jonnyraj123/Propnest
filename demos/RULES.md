@@ -30,3 +30,7 @@ Only 2-3 per day, best leads only. Never invent problems.
 ## Demo type for new India leads (from 15 Oct)
 - New leads get a world-class luxury e-commerce demo, not just a WhatsApp-button catalogue: product pages, cart, checkout screen (demo only, no real payment), size/colour options, wishlist, search, premium animation.
 - WhatsApp stays as a secondary "Ask on WhatsApp" option.
+
+## Quality bar (Joni, 16 Oct) — NEVER "normal"
+- Every paid/e-commerce site must be world-class, cinematic, premium: 3D (Three.js), scroll storytelling, smooth scroll, refined motion, luxury typography. A plain "shop template" look is rejected.
+- Wait for Joni's reference designs before building; match or beat them.
