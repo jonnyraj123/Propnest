@@ -102,3 +102,5 @@ Need number: The Cashmere Store (Srinagar, Shopify site down).
 |---|---|---|
 | RDHAP Connect (rdhapconnect.com, IG rdhapconnect1) | info@rdhapconnect.com | 17 Oct: first email sent (footer shown twice + dated design, free sample homepage offer, no demo link). Their designer is Vision Graphix. Last IG post 1 Oct. |
 | SF Dental Hygiene Society (sf-dhs.wixsite.com, IG sfdentalhygsociety) | sfdentalhygienesociety@yahoo.com | 17 Oct: first email sent (Wix banner + wixsite address, "to the right" broken on mobile, free sample homepage offer). Volunteer society, low budget, possible referral network. |
+| Prism Dental Institute, Alyssa Delgado RDH (prismdentalinstitute.com on FreshLearn, IG mrsalyssardh) | alyssa.delgado@prismdentalinstitute.com | 17 Oct: first email sent ("© © 2024" footer, FreshLearn badge, free sample homepage linking to existing FreshLearn courses). Speaking at MDTA 10/23. GOOD lead (paid CE courses). |
+| Maryam Shamuel RDH, Las Vegas (IG talkbiofilmtome) | no email (rdhmag address is NOT hers) | No personal website. Joni to DM on Instagram (personal brand site offer). |
