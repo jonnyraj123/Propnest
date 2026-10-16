@@ -20,6 +20,7 @@
 - **Goal:** paying clients fast, without spending his own money.
 
 ## 2. How to talk to Joni (MOST IMPORTANT)
+- **HARD LIMIT: max 5-6 short lines per reply. Only main points. No extra explanation, no warnings list, no file paths unless asked. Joni has repeated this many times and gets very angry.**
 - **Language and length:**
   - Always reply in Bengali.
   - Keep it very short and point-wise, main points only.
