@@ -41,3 +41,12 @@ Only 2-3 per day, best leads only. Never invent problems.
 - ALWAYS remove the Gemini logo/watermark from every image and video before using it. No exceptions.
 - Keep image/video quality as high as possible (no visible compression, upscale carefully, sharp text).
 - Every site must be a full, useful website (all real sections), not just a pretty hero.
+
+## INSTAGRAM REEL WORKFLOW (Joni approved 17 Oct: "this is the work")
+Whenever Joni says Instagram / post a website, do this every time:
+1. Pick a category and a story concept (a scroll-driven 3D/cinematic website).
+2. Give Joni exact Gemini prompts: a character (green screen) + walk/action video (green screen, 9:16) + 2-4 background scenes (16:9). Same character description in every prompt.
+3. Remove every Gemini watermark, chroma-key the character to transparent WebP frames, and build a FULL website (scroll-driven hero where the character moves with scroll, then real sections: offers/cards, how it works, gallery, reviews, FAQ, form, footer). Deploy it to demos/<name>/.
+4. Record the DESKTOP site scrolling (1440x900) and composite it inside a laptop mockup on a 9:16 reel (headline on top, PLASTRIX STUDIO + "DM SITE" CTA at the bottom). Save to demos/instagram/.
+5. Give the caption and hashtags.
+Reference: demos/wanderly + demos/instagram/07-wanderly-laptop-reel.mp4
