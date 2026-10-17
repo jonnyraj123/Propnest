@@ -36,3 +36,8 @@ Only 2-3 per day, best leads only. Never invent problems.
 - Wait for Joni's reference designs before building; match or beat them.
 - Product mockups: use each mockup image exactly as given (never crop or cut a collage into pieces). Show full image (object-fit: contain on product page). One mockup set per product.
 - Gemini mockups: always remove the Gemini sparkle watermark (bottom-right) before placing on the site; keep original size/quality.
+
+## Standing rules (Joni, 17 Oct)
+- ALWAYS remove the Gemini logo/watermark from every image and video before using it. No exceptions.
+- Keep image/video quality as high as possible (no visible compression, upscale carefully, sharp text).
+- Every site must be a full, useful website (all real sections), not just a pretty hero.
