@@ -51,37 +51,51 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
 .btn:hover{background-position:100% 0;transform:translateY(-2px)}
 .btn.ghost{background:rgba(7,6,10,.35);color:var(--gold2);clip-path:none;border:1px solid var(--gold);backdrop-filter:blur(6px)}.btn.ghost:hover{background:rgba(217,164,65,.15)}
 .btn .ar{transition:transform .3s}.btn:hover .ar{transform:translateX(5px)}
-/* ===== HERO ===== */
-#hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:#07050a}
-#hero video,#hero .poster{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;will-change:transform}
-#hero .poster{background:url(media/hero-poster.jpg) center/cover}
-#hero .night{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,22,.97) 0%,rgba(10,10,30,.86) 22%,rgba(20,12,10,.25) 50%,rgba(8,5,3,.35) 72%,rgba(5,3,2,.96) 100%)}
-#hero .warm{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(70% 60% at 50% 70%,rgba(255,160,60,.55),transparent 70%)}
-#stars{position:absolute;inset:0;pointer-events:none}
-#moon{position:absolute;right:7%;top:10%;width:min(190px,17vw);aspect-ratio:1;border-radius:50%;pointer-events:none;background:url(img/moon.webp) center/cover;box-shadow:0 0 50px 14px rgba(255,236,190,.28),0 0 180px 70px rgba(255,214,140,.14);will-change:transform}
-.fire{position:absolute;bottom:-4%;width:min(520px,40vw);height:auto;mix-blend-mode:screen;pointer-events:none;opacity:.9;filter:saturate(1.2)}
-.fire.l{left:-8%}.fire.r{right:-8%;transform:scaleX(-1)}
-#hero .hc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px 120px}
-#hero .k{font-family:Cinzel;font-size:12.5px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold2)}
-#hero h1{font-family:Cinzel;font-weight:900;font-size:clamp(70px,13vw,220px);line-height:.92;letter-spacing:.12em;padding-left:.12em;margin:16px 0 6px;filter:drop-shadow(0 10px 50px rgba(0,0,0,.75))}
-#hero h1 span{display:inline-block;background:linear-gradient(180deg,#fff6dc 0%,var(--gold2) 42%,#9c6a1c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.orn{display:flex;align-items:center;gap:16px;width:min(560px,80vw);color:var(--gold2)}
+/* ===== HERO (cinematic still + live layers) ===== */
+#hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:#06070f}
+#hero .base{position:absolute;inset:-4%;background:url(img/hero.webp) center 62%/cover;will-change:transform;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{scale:1}to{scale:1.07}}
+#hero .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,5,14,.75) 0%,rgba(4,5,14,.1) 22%,transparent 45%,rgba(8,5,2,.35) 66%,rgba(6,4,2,.97) 100%),radial-gradient(90% 70% at 50% 58%,transparent 40%,rgba(3,2,1,.6) 100%)}
+#hero .glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(60% 50% at 50% 70%,rgba(255,170,70,.7),transparent 70%)}
+#stars,#embers{position:absolute;inset:0;pointer-events:none}
+.fog{position:absolute;left:-30%;right:-30%;height:42%;bottom:6%;pointer-events:none;opacity:.55;mix-blend-mode:screen;
+ background:radial-gradient(40% 50% at 20% 60%,rgba(230,170,100,.35),transparent 70%),radial-gradient(35% 45% at 60% 70%,rgba(220,160,90,.3),transparent 70%),radial-gradient(30% 40% at 90% 55%,rgba(240,180,110,.3),transparent 70%);
+ filter:blur(18px);animation:fog 38s linear infinite alternate}
+.fog.f2{bottom:-4%;height:30%;opacity:.45;animation-duration:26s;animation-direction:alternate-reverse}
+@keyframes fog{to{transform:translateX(18%)}}
+.fire{position:absolute;bottom:-3%;width:min(460px,34vw);height:auto;mix-blend-mode:screen;pointer-events:none;opacity:.95;filter:saturate(1.25) brightness(1.1)}
+.fire.l{left:-6%}.fire.r{right:-6%;transform:scaleX(-1)}
+#hero .hc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 190px}
+#hero h1{font-family:Cinzel;font-weight:500;font-size:clamp(38px,5.6vw,92px);line-height:1.05;letter-spacing:.1em;color:#fbf1dc;text-shadow:0 4px 30px rgba(0,0,0,.9),0 0 60px rgba(0,0,0,.6)}
+#hero h1 .w{display:inline-block}
+#hero h1 .w b{font-weight:500;font-size:1.2em}
+.orn{display:flex;align-items:center;gap:16px;width:min(640px,82vw);color:var(--gold2);margin-top:14px}
 .orn:before,.orn:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}.orn:after{transform:scaleX(-1)}
-.orn svg{width:18px;height:26px}
-#hero .tl{font-family:Fraunces;font-style:italic;font-size:clamp(19px,2.1vw,30px);color:var(--sand);margin-top:12px;text-shadow:0 2px 20px rgba(0,0,0,.8)}
-#hero .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;justify-content:center}
-.icards{position:absolute;left:clamp(18px,4vw,52px);right:clamp(18px,4vw,52px);bottom:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.ic{position:relative;height:132px;border:1px solid rgba(217,164,65,.42);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:16px 22px;text-align:left;transition:border-color .4s,transform .4s}
+.orn svg{width:18px;height:26px;filter:drop-shadow(0 0 8px var(--gold))}
+#hero .tl{font-family:Cinzel;font-size:clamp(14px,1.35vw,20px);letter-spacing:.12em;color:var(--sand);margin-top:12px;text-shadow:0 2px 16px rgba(0,0,0,.95)}
+#hero .cta{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+.btn.gold{clip-path:none;padding:17px 30px;box-shadow:0 0 30px rgba(244,212,138,.35),inset 0 0 0 1px rgba(255,240,200,.5)}
+.mouse{width:24px;height:38px;border:1.5px solid rgba(244,212,138,.7);border-radius:12px;position:relative;margin:0 auto 10px}
+.mouse:after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--gold2);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(12px)}}
+#hero .scr{position:absolute;left:50%;bottom:184px;transform:translateX(-50%);text-align:center;font-family:Cinzel;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+#hero .scr:after{content:"⌄";display:block;font-size:16px;color:var(--gold2);margin-top:2px}
+.icards{position:absolute;left:clamp(18px,3.4vw,52px);right:clamp(18px,3.4vw,52px);bottom:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ic{position:relative;height:164px;border:1px solid rgba(217,164,65,.5);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;gap:10px;padding:20px 24px;text-align:left;transition:border-color .4s,transform .4s,box-shadow .4s;background:#0b0805}
 .ic .im{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s}
-.ic:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,6,10,.94),rgba(7,6,10,.25));transition:opacity .4s}
-.ic:hover{border-color:var(--gold2);transform:translateY(-5px)}.ic:hover .im{transform:scale(1.1)}.ic:hover:before{opacity:.7}
+.ic:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,6,4,.9) 25%,rgba(8,6,4,.15) 70%)}
+.ic:hover{border-color:var(--gold2);transform:translateY(-6px);box-shadow:0 20px 50px -20px rgba(244,212,138,.5)}.ic:hover .im{transform:scale(1.1)}
 .ic>small,.ic>b,.ic>i{position:relative;z-index:2}
-.ic small{font-family:Cinzel;color:var(--gold2);font-size:13px;letter-spacing:.2em}
-.ic b{font-family:Cinzel;font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase}
-.ic i{font-style:normal;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:13px}
-#hero .scr{position:absolute;left:50%;bottom:178px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
-#hero .scr i{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:drip 2s infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.ic small{font-family:Cinzel;color:var(--sand);font-size:14px;letter-spacing:.1em}
+.ic b{font-family:Cinzel;font-weight:500;font-size:16px;letter-spacing:.14em;text-transform:uppercase;max-width:60%;line-height:1.3;padding-bottom:10px;border-bottom:1px solid var(--gold);width:fit-content}
+.ic i{font-style:normal;width:36px;height:36px;border:1px solid var(--sand);border-radius:50%;display:grid;place-items:center;color:var(--sand);font-size:14px;margin-top:auto;transition:background .3s,color .3s}
+.ic:hover i{background:var(--gold2);color:#111}
+.brand small{display:block;font-family:Cinzel;font-size:9px;letter-spacing:.42em;color:var(--sand);margin-top:3px;font-weight:500}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .sep{width:1px;height:34px;background:rgba(217,164,65,.5)}
+.nbtn{font-family:Cinzel;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--gold);padding:13px 24px;transition:background .3s,color .3s}
+.nbtn:hover{background:var(--gold);color:#111}
+.nlinks{font-family:Cinzel;text-transform:none!important;letter-spacing:.06em!important;font-size:15px!important}
 /* ===== FLY (scroll-scrubbed 4K aerial) ===== */
 #fly{position:relative;height:460vh}
 #fly .fs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#07050a}
@@ -126,8 +140,16 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
 #finale p{margin:22px 0 34px;font-size:18px;color:var(--sand)}
 #finale.on{pointer-events:auto}
 @media(max-width:900px){
- #moon{width:96px;right:7%;top:11%}.fire{width:70vw;bottom:-2%}.fire.l{left:-30%}.fire.r{right:-30%}
- .icards{display:none}#hero .hc{padding-bottom:40px}#hero .scr{bottom:40px}#hero .k{letter-spacing:.24em;font-size:10.5px}
+ #hero{height:auto;min-height:0}
+ #hero .base{background-image:url(img/hero-p.webp);background-position:center 30%;bottom:auto;height:106svh}
+ #hero .shade{background:linear-gradient(180deg,rgba(4,5,14,.6) 0%,transparent 25%,rgba(8,5,2,.45) 58%,rgba(6,4,2,1) 92%)}
+ .fire{width:85vw;bottom:auto;top:calc(100svh - 40vw)}.fire.l{left:-42%}.fire.r{right:-42%}
+ #hero .hc{position:relative;height:100svh;padding:70px 18px 110px;justify-content:flex-end}
+ #hero h1{font-size:34px;letter-spacing:.05em}#hero .tl{font-size:13px}
+ #hero .cta{margin-top:24px}#hero .cta .btn{padding:14px 20px;font-size:11px}
+ #hero .scr{top:calc(100svh - 80px);bottom:auto}#hero .scr .mouse{display:none}
+ .icards{position:relative;left:auto;right:auto;bottom:auto;grid-template-columns:1fr;gap:12px;padding:10px 18px 40px}.ic{height:118px}
+ .brand .sep,.brand small{display:none}.nbtn{padding:10px 12px;font-size:9.5px;letter-spacing:.14em}
  #fly .ft,#fly .ft.r{left:20px;right:20px;text-align:left;bottom:14vh}
  .chap,.chap.r{left:20px;right:20px;width:auto;top:auto;bottom:90px;transform:none}
 }
@@ -287,24 +309,23 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
   <div id="enter"><button class="btn" id="enterBtn">Enter ancient Egypt <span class="ar">→</span></button><p>Sound on for the full experience</p></div></div>
 </div>
 <div id="cur"></div>
-<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>SAHRA</a><div class="nlinks"><a href="#expeditions">Expeditions</a><a href="#mysteries">Mysteries</a><a href="#decoder">Hieroglyphs</a><a href="#guide">How it works</a><a href="#faq">FAQ</a></div><a class="btn" href="#book">Reserve <span class="ar">→</span></a></nav>
+<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110" style="width:46px"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg><span class="sep"></span><span class="bt">SAHRA<small>Echoes of Egypt</small></span></a><div class="nlinks"><a href="#fly">Explore</a><a href="#journey">Temples</a><a href="#mysteries">Mythology</a><a href="#expeditions">The Journey</a></div><a class="nbtn" href="#book">Enter the world ↗</a></nav>
 
 <section id="hero"><a id="top"></a>
- <div class="poster"></div>
- <video id="hv" muted loop playsinline autoplay preload="auto" poster="media/hero-poster.jpg"></video>
- <div class="night"></div><canvas id="stars"></canvas><div id="moon"></div><div class="warm"></div>
+ <div class="base" id="hbase"></div><canvas id="stars"></canvas><div class="glow"></div>
+ <div class="fog"></div><div class="fog f2"></div>
  <video class="fire l" src="media/fire.mp4" muted loop playsinline autoplay></video><video class="fire r" src="media/fire.mp4" muted loop playsinline autoplay></video>
- <div class="hc"><div class="k">Egypt after dark · Private expeditions</div>
-  <h1 id="ttl"><span>S</span><span>A</span><span>H</span><span>R</span><span>A</span></h1>
+ <canvas id="embers"></canvas><div class="shade"></div>
+ <div class="hc"><h1 id="ttl"><span class="w"><b>W</b>ALK</span> <span class="w"><b>B</b>ETWEEN</span> <span class="w"><b>W</b>ORLDS</span></h1>
   <div class="orn"><svg viewBox="0 0 18 26"><path d="M9 11C4 8 5 1 9 1s5 7 0 10Zm0 0v14M2 13h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-  <p class="tl">Walk between worlds. Five thousand years of secrets, one night.</p>
-  <div class="cta"><a class="btn" href="#expeditions">Begin your journey <span class="ar">→</span></a><a class="btn ghost" href="#mysteries">Discover the myths</a></div>
+  <p class="tl">A living journey through the mysteries of ancient Egypt</p>
+  <div class="cta"><a class="btn gold" href="#fly">Begin your journey <span class="ar">→</span></a><a class="btn ghost" href="#mysteries">Discover the myths</a></div>
  </div>
- <div class="scr"><i></i>Scroll to descend</div>
+ <div class="scr"><div class="mouse"></div>Scroll to descend</div>
  <div class="icards">
-  <a class="ic" href="#mysteries"><div class="im" style="background-image:url(img/tomb-m.webp)"></div><small>01</small><b>The hidden tomb</b><i>→</i></a>
-  <a class="ic" href="#expeditions"><div class="im" style="background-image:url(img/sphinx-night-m.webp)"></div><small>02</small><b>Giza by moonlight</b><i>→</i></a>
-  <a class="ic" href="#decoder"><div class="im" style="background-image:url(img/karnak-m.webp)"></div><small>03</small><b>Language of the gods</b><i>→</i></a>
+  <a class="ic" href="#mysteries"><div class="im" style="background-image:url(img/tomb-p.webp);background-position:60% 50%"></div><small>01</small><b>The hidden tomb</b><i>→</i></a>
+  <a class="ic" href="#expeditions"><div class="im" style="background-image:url(img/mask.webp);background-position:70% 40%"></div><small>02</small><b>The pharaoh's legacy</b><i>→</i></a>
+  <a class="ic" href="#decoder"><div class="im" style="background-image:url(img/columns.webp);background-position:50% 30%"></div><small>03</small><b>Temple of the sun</b><i>→</i></a>
  </div>
 </section>
 
@@ -320,15 +341,15 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="stage" id="stage">
   <div class="scene" id="s1"><div class="ph" style="background-image:url(img/desert.webp)"></div></div>
   <div class="scene" id="s2"><div class="ph" style="background-image:url(img/sphinx-night.webp);background-position:50% 30%"></div></div>
-  <div class="scene" id="s3"><div class="ph" style="background-image:url(img/karnak.webp)"></div></div>
+  <div class="scene" id="s3"><div class="ph" style="background-image:url(img/temple.webp)"></div></div>
   <div class="scene" id="s4"><div class="ph" style="background-image:url(img/tomb.webp)"></div></div>
   <div class="rays"></div><canvas id="jfx"></canvas><div class="vig"></div><div class="ring" id="ring"></div>
   <div class="chap" id="c1"><div class="eb">Chapter I · The Endless Sands</div><h2>The desert <em>keeps</em> its oldest stories.</h2><p>Ride out at dusk with Bedouin guides and watch the eclipse-red sky burn over the dunes.</p><div class="tag"><span>Camel caravan</span><span>Dune sunset</span><span>Desert camp</span></div></div>
   <div class="chap r" id="c2"><div class="eb">Chapter II · Giza by Starlight</div><h2>Stand before the <em>Sphinx</em> under the Milky Way.</h2><p>After closing, the plateau is yours, and an Egyptologist tells you what the books leave out.</p><div class="tag"><span>After-hours access</span><span>Private Egyptologist</span></div></div>
-  <div class="chap" id="c3"><div class="eb">Chapter III · Avenue of Sphinxes</div><h2>Walk where the <em>pharaohs</em> walked.</h2><p>Karnak by torchlight: a mile of ram-headed sphinxes beneath a sky so dark you can see the galaxy.</p><div class="tag"><span>Torch-lit walk</span><span>Luxor</span><span>Stargazing</span></div></div>
+  <div class="chap" id="c3"><div class="eb">Chapter III · Temple of the Sun</div><h2>Walk where the <em>pharaohs</em> walked.</h2><p>Columns as tall as trees, carved with gods and kings, glowing gold as the sun goes down over Luxor.</p><div class="tag"><span>Karnak</span><span>Luxor</span><span>Golden hour</span></div></div>
   <div class="chap r" id="c4"><div class="eb">Chapter IV · The Sealed Tomb</div><h2>Some doors open <em>only once.</em></h2><p>Descend into painted burial chambers where the colors still look wet after 3,000 years.</p><div class="tag"><span>Valley of the Kings</span><span>Rare tombs</span></div></div>
   <div id="finale"><svg class="eye" viewBox="0 0 200 110"><path id="fEye" d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><h2>The secrets are <em>waiting.</em></h2><p>Private night expeditions through ancient Egypt.</p><a class="btn" href="#expeditions">Choose your expedition <span class="ar">→</span></a></div>
-  <div id="route"><div class="ln"><i id="rfill"></i><b id="rdot"></b></div><div class="st"><span>Sahara</span><span>Giza</span><span>Karnak</span><span>The Tomb</span></div></div>
+  <div id="route"><div class="ln"><i id="rfill"></i><b id="rdot"></b></div><div class="st"><span>Sahara</span><span>Giza</span><span>Temple</span><span>The Tomb</span></div></div>
  </div>
 </section>
 
@@ -338,8 +359,8 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="jhead"><div class="rv"><div class="kick">Signature expeditions</div><h2 class="h2">Three nights. <em>Three</em> legends.</h2></div><p class="lead rv">Every expedition includes a private Egyptologist, after-hours access, five-star Nile-side stays and transfers in vintage Land Cruisers.</p></div>
  <div class="cards">
   <div class="card rv"><div class="ph" style="background-image:url(img/giza-night-m.webp)"></div><span class="days">4 nights</span><div class="glare"></div><div class="bd"><h3>Moon over Giza</h3><div class="where">Giza · Saqqara · Cairo</div><div class="row"><div class="pr"><small>from</small><b>$2,490</b></div><div class="go"><span>→</span></div></div></div></div>
-  <div class="card rv"><div class="ph" style="background-image:url(img/karnak-m.webp)"></div><span class="days">5 nights</span><div class="glare"></div><div class="bd"><h3>Torches of Karnak</h3><div class="where">Luxor · Karnak · Nile cruise</div><div class="row"><div class="pr"><small>from</small><b>$3,180</b></div><div class="go"><span>→</span></div></div></div></div>
-  <div class="card rv"><div class="ph" style="background-image:url(img/tomb-m.webp)"></div><span class="days">7 nights</span><div class="glare"></div><div class="bd"><h3>The Sealed Tomb</h3><div class="where">Valley of the Kings · Abydos</div><div class="row"><div class="pr"><small>from</small><b>$4,750</b></div><div class="go"><span>→</span></div></div></div></div>
+  <div class="card rv"><div class="ph" style="background-image:url(img/columns.webp)"></div><span class="days">5 nights</span><div class="glare"></div><div class="bd"><h3>Torches of Karnak</h3><div class="where">Luxor · Karnak · Nile cruise</div><div class="row"><div class="pr"><small>from</small><b>$3,180</b></div><div class="go"><span>→</span></div></div></div></div>
+  <div class="card rv"><div class="ph" style="background-image:url(img/tomb-p.webp)"></div><span class="days">7 nights</span><div class="glare"></div><div class="bd"><h3>The Sealed Tomb</h3><div class="where">Valley of the Kings · Abydos</div><div class="row"><div class="pr"><small>from</small><b>$4,750</b></div><div class="go"><span>→</span></div></div></div></div>
  </div>
 </div></section>
 
@@ -349,9 +370,9 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="mgrid">
   <div class="mc rv"><div class="bg" style="background-image:url(img/giza-night-m.webp)"></div><div class="in"><div class="no">01</div><h4>The Perfect Pyramid</h4><p>2.3 million blocks aligned to true north within a fraction of a degree. Nobody knows exactly how.</p></div></div>
   <div class="mc rv"><div class="bg" style="background-image:url(img/sphinx-night-m.webp)"></div><div class="in"><div class="no">02</div><h4>The Sphinx's Face</h4><p>Whose face is carved into the Sphinx? Historians still argue about it.</p></div></div>
-  <div class="mc rv"><div class="bg" style="background-image:url(img/karnak-m.webp)"></div><div class="in"><div class="no">03</div><h4>Orion's Belt</h4><p>The three Giza pyramids mirror the stars of Orion's Belt. A coincidence?</p></div></div>
-  <div class="mc rv"><div class="bg" style="background-image:url(img/tomb-m.webp)"></div><div class="in"><div class="no">04</div><h4>The Boy King</h4><p>Tutankhamun's tomb was found almost untouched after 3,245 years, and so was its curse legend.</p></div></div>
-  <div class="mc rv"><div class="bg" style="background-image:url(img/desert-m.webp)"></div><div class="in"><div class="no">05</div><h4>The Lost Oasis</h4><p>Ancient texts describe a white city hidden in the sand. Explorers are still looking.</p></div></div>
+  <div class="mc rv"><div class="bg" style="background-image:url(img/columns.webp)"></div><div class="in"><div class="no">03</div><h4>Orion's Belt</h4><p>The three Giza pyramids mirror the stars of Orion's Belt. A coincidence?</p></div></div>
+  <div class="mc rv"><div class="bg" style="background-image:url(img/tomb-p.webp)"></div><div class="in"><div class="no">04</div><h4>The Boy King</h4><p>Tutankhamun's tomb was found almost untouched after 3,245 years, and so was its curse legend.</p></div></div>
+  <div class="mc rv"><div class="bg" style="background-image:url(img/desert-p.webp)"></div><div class="in"><div class="no">05</div><h4>The Lost Oasis</h4><p>Ancient texts describe a white city hidden in the sand. Explorers are still looking.</p></div></div>
  </div></div></section>
 
 <section class="blk" id="decoder"><div class="wrap dec">
@@ -426,15 +447,14 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const cl=x=>Math.max(0,Math.min(1,x)),seg=(t,a,b)=>cl((t-a)/(b-a)),ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=x=>1-Math.pow(1-cl(x),3),lerp=(a,b,k)=>a+(b-a)*k;
 const mob=matchMedia('(max-width:900px)').matches;
 /* ===== preload: scroll frames ===== */
-const FN=150,fly=[];let loaded=0,ready=false;const FDIR=mob?'img/fly2m':'img/fly2';
+const FN=120,fly=[];let loaded=0,ready=false;const FDIR=mob?'img/fly3p':'img/fly3';
 const showEnter=()=>{if(ready)return;ready=true;$('#gload').style.display='none';$('#enter').classList.add('on')};
 for(let i=0;i<FN;i++){const im=new Image();im.decoding='async';im.src=`${FDIR}/f${String(i+1).padStart(3,'0')}.webp`;im.onload=im.onerror=()=>{loaded++;const p=Math.round(loaded/FN*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Unsealing the tomb… ${p}%`;if(loaded===FN)setTimeout(showEnter,300)};fly[i]=im}
 setTimeout(showEnter,10000);
-const hv=$('#hv');hv.src=mob?'media/hero-m.mp4':'media/hero.mp4';hv.play().catch(()=>{});
 /* enter: open gate + start music (browsers only allow sound after a click) */
 let entered=false;
 function enter(){if(entered)return;entered=true;$('#gate').classList.add('open');setTimeout(()=>$('#gate').classList.add('gone'),1700);document.body.style.overflow='';startMusic();
- letters.forEach((s,i)=>s.animate([{opacity:0,transform:'translateY(80px) scale(.85)',filter:'blur(16px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1500,delay:500+i*120,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'}))}
+ letters.forEach((s,i)=>s.animate([{opacity:0,transform:'translateY(50px)',filter:'blur(14px)',letterSpacing:'.5em'},{opacity:1,transform:'none',filter:'blur(0)',letterSpacing:'.1em'}],{duration:1600,delay:500+i*220,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'}));$$('#hero .orn,#hero .tl,#hero .cta,.ic').forEach((el,i)=>el.animate([{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'none'}],{duration:1200,delay:1300+i*160,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'}))}
 document.body.style.overflow='hidden';
 $('#enterBtn').addEventListener('click',enter);
 /* ===== star field (hero + fly) ===== */
@@ -442,7 +462,14 @@ function starField(cv,n,top){const c=cv.getContext('2d');let W,H,S=[];
  const rs=()=>{const d=Math.min(devicePixelRatio||1,2);W=cv.width=cv.offsetWidth*d;H=cv.height=cv.offsetHeight*d;S=[];for(let i=0;i<n;i++)S.push({x:Math.random()*W,y:Math.pow(Math.random(),1.8)*H*top,r:(Math.random()*1.3+.3)*d,p:Math.random()*6,s:Math.random()*.002+.0008})};rs();addEventListener('resize',rs);
  return (t,a=1,shoot)=>{c.clearRect(0,0,W,H);for(const q of S){const tw=.45+.55*Math.sin(t*q.s+q.p);c.globalAlpha=a*tw*(1-q.y/(H*top))*.95;c.fillStyle='#fff6e0';c.beginPath();c.arc(q.x,q.y,q.r,0,7);c.fill()}
   if(shoot){const k=(t%7000)/1100;if(k<1){const x=W*(.15+.5*((t/7000|0)%3)/2)+k*W*.25,y=H*.08+k*H*.12;const g=c.createLinearGradient(x,y,x-W*.08,y-H*.04);g.addColorStop(0,`rgba(255,240,210,${a*(1-k)})`);g.addColorStop(1,'rgba(255,240,210,0)');c.globalAlpha=1;c.strokeStyle=g;c.lineWidth=2;c.beginPath();c.moveTo(x,y);c.lineTo(x-W*.08,y-H*.04);c.stroke()}}c.globalAlpha=1}}
-const heroStars=starField($('#stars'),mob?140:260,.55),flyStars=starField($('#flyStars'),mob?90:180,.4);
+const heroStars=starField($('#stars'),mob?120:220,.45),flyStars=starField($('#flyStars'),mob?90:180,.4);
+/* rising embers */
+const ec=$('#embers'),ex=ec.getContext('2d');let EW,EH;const EM=[];
+function ers(){const d=Math.min(devicePixelRatio||1,2);EW=ec.width=ec.offsetWidth*d;EH=ec.height=ec.offsetHeight*d}ers();addEventListener('resize',ers);
+for(let i=0;i<(mob?40:90);i++)EM.push({x:Math.random(),y:Math.random(),v:Math.random()*.0009+.0003,r:Math.random()*2.2+.6,w:Math.random()*6,side:Math.random()});
+function embers(t){ex.clearRect(0,0,EW,EH);for(const e of EM){e.y-=e.v;if(e.y<0){e.y=1;e.x=e.side<.5?Math.random()*.3:.7+Math.random()*.3}
+ const x=(e.x+Math.sin(t*.001+e.w)*.012)*EW,y=e.y*EH,a=Math.min(1,e.y*1.6)*(.5+.5*Math.sin(t*.006+e.w));
+ const g=ex.createRadialGradient(x,y,0,x,y,e.r*4);g.addColorStop(0,`rgba(255,200,110,${a})`);g.addColorStop(1,'rgba(255,120,30,0)');ex.fillStyle=g;ex.beginPath();ex.arc(x,y,e.r*4,0,7);ex.fill()}}
 /* hero mouse parallax */
 let mx=0,my=0,smx=0,smy=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
 /* ===== fly canvas ===== */
@@ -457,8 +484,9 @@ function flyStep(p,t){drawFly(p*(FN-1));flyStars(t,1-seg(p,.75,1),true);
  [['#ft1',.30,.58],['#ft2',.64,.92]].forEach(([id,a,b])=>{const k=out(seg(p,a,a+.07))*(1-ease(seg(p,b-.06,b)));const el=$(id);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*40}px)`;el.style.filter=`blur(${(1-k)*8}px)`});
  $('#flyc').style.filter=`brightness(${1-seg(p,.9,1)*.75})`}
 /* ===== journey: eye/circle reveals between night scenes ===== */
-const J=$('#journey');let sp=0;const letters=$$('#ttl span');const eyeP=$('#fEye');
+const J=$('#journey');let sp=0;const letters=$$('#ttl .w');const eyeP=$('#fEye');
 const SCN=[$('#s1'),$('#s2'),$('#s3'),$('#s4')],PH=SCN.map(s=>s.querySelector('.ph'));
+if(mob)PH.forEach((ph,i)=>{ph.style.backgroundImage=`url(img/${['desert','sphinx-night','temple','tomb'][i]}-p.webp)`;ph.style.backgroundPosition='center'});
 const jc=$('#jfx'),jx=jc.getContext('2d');let JW,JH;const P=[];
 function jrs(){JW=jc.width=innerWidth;JH=jc.height=innerHeight}jrs();addEventListener('resize',jrs);
 for(let i=0;i<(mob?60:120);i++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.4,s:Math.random()*.5+.15,o:Math.random()*.6+.2,w:Math.random()*6});
@@ -476,14 +504,14 @@ function journey(p,t){
  const f=out(seg(p,.91,.97));$('#finale').style.opacity=f;$('#finale').classList.toggle('on',f>.5);eyeP.style.strokeDashoffset=600*(1-ease(seg(p,.9,.98)));
  PH[3].style.filter=`brightness(${1-f*.45})`;
  const rp=seg(p,.03,.9);$('#rfill').style.width=rp*100+'%';$('#rdot').style.left=rp*100+'%';$('#route').style.opacity=out(seg(p,.02,.06))*(1-ease(seg(p,.9,.94)));
- jx.clearRect(0,0,JW,JH);const tomb=p>.78,col=tomb?'255,190,110':p>.3&&p<.75?'235,230,255':'255,205,140';
+ jx.clearRect(0,0,JW,JH);const tomb=p>.78,col=tomb?'255,190,110':p>.3&&p<.5?'235,230,255':'255,205,140';
  P.forEach(q=>{const wind=tomb?.15:1;const x=((q.x-p*q.s*3*wind-t*.00003*q.s*wind)%1+1)%1*JW,y=((q.y+Math.sin(t*.0005+q.w)*.015-(tomb?t*.00002*q.s:0))%1+1)%1*JH;
   jx.fillStyle=`rgba(${col},${q.o*(.6+.4*Math.sin(t*.003+q.w))})`;jx.beginPath();jx.arc(x,y,q.r,0,7);jx.fill()})}
 const prog=el=>{const r=el.getBoundingClientRect();return [cl(-r.top/(el.offsetHeight-innerHeight)),r]};
 function tick(t){
  smx+=(mx-smx)*.06;smy+=(my-smy)*.06;
  const hr=$('#hero').getBoundingClientRect();if(hr.bottom>0){const k=cl(-hr.top/hr.height);heroStars(t,1,true);
-  hv.style.transform=`translate3d(${smx*-18}px,${smy*-12+k*120}px,0) scale(${1+k*.08})`;$('#moon').style.transform=`translate3d(${smx*30}px,${smy*20+k*-60}px,0)`;$('#hero .hc').style.transform=`translateY(${k*-140}px)`;$('#hero .hc').style.opacity=1-k*1.3}
+  embers(t);$('#hbase').style.transform=`translate3d(${smx*-22}px,${smy*-14+k*140}px,0)`;$('#hero .hc').style.transform=`translateY(${k*-120}px)`;$('#hero .hc').style.opacity=1-k*1.4}
  const [fp,fr]=prog(FL);fsp+=window.__snap?(fp-fsp):(fp-fsp)*.12;if(fr.top<innerHeight&&fr.bottom>0)flyStep(fsp,t);
  const [jp,jr]=prog(J);sp+=window.__snap?(jp-sp):(jp-sp)*.1;if(jr.top<innerHeight&&jr.bottom>0)journey(sp,t);
  const ar=$('.arch');if(ar){const r=ar.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)ar.querySelector('.aim').style.transform=`translateY(${(r.top/innerHeight-.5)*-60}px) scale(1.05)`}
