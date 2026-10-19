@@ -50,3 +50,11 @@ Whenever Joni says Instagram / post a website, do this every time:
 4. Record the DESKTOP site scrolling (1440x900) and composite it inside a laptop mockup on a 9:16 reel (headline on top, PLASTRIX STUDIO + "DM SITE" CTA at the bottom). Save to demos/instagram/.
 5. Give the caption and hashtags.
 Reference: demos/wanderly + demos/instagram/07-wanderly-laptop-reel.mp4
+
+## EVERY NEW SITE = EXTRAORDINARY (Joni, 19 Oct — he has repeated this many times, never make him say it again)
+- Think like an award-winning studio: every site must make people go "wow". Never normal, never template-looking.
+- Always plan SCROLL-DRIVEN VIDEO: cinematic Veo clips (camera fly-through, door opening, reveal) turned into frame sequences that play forward/back with scroll, from the top of the page to the middle.
+- Always give Joni the FULL set of Gemini/Veo prompts at once (images + videos), numbered, with which image to attach to which video.
+- Add theme music (generated with Web Audio, toggle button) when it fits the theme.
+- Add at least 2 signature interactions per site (e.g. hieroglyph decoder, torch-light reveal, tilt cards, scramble text).
+- Remove Gemini watermark from everything, max quality, test desktop + mobile before showing.
