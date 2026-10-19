@@ -17,16 +17,28 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .cz{font-family:Cinzel,Georgia,serif}
 ::selection{background:var(--gold);color:var(--night)}
-/* loader */
-#loader{position:fixed;inset:0;z-index:100;background:var(--night);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity 1s ease,visibility 1s}
-#loader.done{opacity:0;visibility:hidden}
-#loader svg{width:120px;height:auto}
-#loader svg path{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.4s ease forwards}
+/* gate */
+#gate{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;pointer-events:auto}
+#gate .half{position:absolute;left:0;right:0;height:50.5%;background:#050403;transition:transform 1.6s cubic-bezier(.7,0,.2,1)}
+#gate .half.t{top:0;border-bottom:1px solid rgba(217,164,65,.0)}#gate .half.b{bottom:0}
+#gate .half:after{content:"";position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);opacity:0;transition:opacity .6s}
+#gate .half.t:after{bottom:0}#gate .half.b:after{top:0}
+#gate.open .half.t{transform:translateY(-101%)}#gate.open .half.b{transform:translateY(101%)}
+#gate.open .half:after{opacity:1}
+#gate .gc{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;transition:opacity .7s,transform 1s}
+#gate.open .gc{opacity:0;transform:scale(1.15)}
+#gate.gone{visibility:hidden}
+#gate svg{width:130px}
+#gate svg path{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.6s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-#loader .lg{font-family:Cinzel;font-weight:700;font-size:clamp(30px,5vw,52px);letter-spacing:.5em;padding-left:.5em;color:var(--gold2)}
-#loader .bar{width:min(300px,70vw);height:1px;background:rgba(217,164,65,.2);overflow:hidden}
-#loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,transparent,var(--gold2));transition:width .2s}
-#loader small{font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
+#gate .lg{font-family:Cinzel;font-weight:700;font-size:clamp(30px,5vw,54px);letter-spacing:.5em;padding-left:.5em;color:var(--gold2)}
+#gate .bar{width:min(280px,70vw);height:1px;background:rgba(217,164,65,.2);overflow:hidden}
+#gate .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,transparent,var(--gold2));transition:width .25s}
+#gate small{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute)}
+#enter{opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .8s,transform .8s}
+#enter.on{opacity:1;pointer-events:auto;transform:none}
+#enter .btn{padding:17px 36px;font-size:13px}
+#enter p{margin-top:14px;text-align:center;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,4vw,52px);transition:background .5s,padding .5s,border-color .5s;border-bottom:1px solid transparent}
 nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14px;padding-bottom:14px;border-color:rgba(217,164,65,.18)}
@@ -37,82 +49,88 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
 .nlinks a:after{content:"";position:absolute;left:50%;right:50%;bottom:-8px;height:1px;background:var(--gold);transition:left .3s,right .3s}.nlinks a:hover:after{left:0;right:0}
 .btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:14px 26px;font-family:Cinzel;font-weight:700;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--night);background:linear-gradient(100deg,#b9842c,var(--gold2) 45%,#c8912f);background-size:200% 100%;border:0;cursor:pointer;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background-position .6s,transform .3s}
 .btn:hover{background-position:100% 0;transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:var(--gold2);box-shadow:inset 0 0 0 1px var(--gold)}
+.btn.ghost{background:rgba(7,6,10,.35);color:var(--gold2);clip-path:none;border:1px solid var(--gold);backdrop-filter:blur(6px)}.btn.ghost:hover{background:rgba(217,164,65,.15)}
 .btn .ar{transition:transform .3s}.btn:hover .ar{transform:translateX(5px)}
-/* ===== fly-through (scroll-scrubbed video) ===== */
-#fly{position:relative;height:420vh}
-#fly .fs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05060c}
-#flyc{position:absolute;inset:0;width:100%;height:100%}
-#fly .fv{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 45%,rgba(3,2,6,.75) 100%),linear-gradient(180deg,rgba(3,2,6,.55),transparent 30%,transparent 70%,rgba(3,2,6,.85))}
-#fly .ft{position:absolute;left:50%;bottom:12vh;transform:translateX(-50%);text-align:center;opacity:0;width:min(760px,90vw)}
-#fly .ft .eb{font-family:Cinzel;font-size:12px;letter-spacing:.42em;color:var(--gold2);text-transform:uppercase}
-#fly .ft h2{font-family:Cinzel;font-weight:700;font-size:clamp(30px,4.2vw,62px);line-height:1.08;margin-top:14px;text-shadow:0 6px 40px rgba(0,0,0,.7)}
-#fly .ft h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
-#flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 55%,#ffe2a0,#d9a441 40%,#2a1606);opacity:0;pointer-events:none;mix-blend-mode:screen}
-/* ===== golden door (scroll-scrubbed) ===== */
-#door{position:relative;height:360vh}
-#door .ds{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0a0704}
-#doorc{position:absolute;inset:0;width:100%;height:100%}
-#door .dv{position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 90% at 50% 50%,transparent 40%,rgba(5,3,2,.8) 100%)}
-#door .dt{position:absolute;left:50%;top:14vh;transform:translateX(-50%);text-align:center;width:min(820px,90vw);opacity:0}
-#door .dt .eb{font-family:Cinzel;font-size:12px;letter-spacing:.42em;color:var(--gold2);text-transform:uppercase}
-#door .dt h2{font-family:Cinzel;font-weight:700;font-size:clamp(28px,4vw,58px);line-height:1.1;margin-top:14px;text-shadow:0 6px 40px rgba(0,0,0,.8)}
-#door .dt h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
-#door #finale h2,#door #finale p{text-shadow:0 4px 30px rgba(60,30,0,.9)}
-#door #finale:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 50%,rgba(20,10,2,.75),transparent)}
-/* intro chapter cards (hero) */
-.icards{position:absolute;left:clamp(18px,4vw,52px);right:clamp(18px,4vw,52px);bottom:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.ic{position:relative;height:150px;border:1px solid rgba(217,164,65,.4);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:18px 22px;text-align:left;background-size:cover;background-position:center;transition:border-color .4s,transform .4s}
-.ic:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,10,.92),rgba(7,6,10,.35));transition:opacity .4s}
-.ic:hover{border-color:var(--gold2);transform:translateY(-4px)}.ic:hover:before{opacity:.6}
-.ic>*{position:relative}
+/* ===== HERO ===== */
+#hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:#07050a}
+#hero video,#hero .poster{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;will-change:transform}
+#hero .poster{background:url(media/hero-poster.jpg) center/cover}
+#hero .night{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,22,.97) 0%,rgba(10,10,30,.86) 22%,rgba(20,12,10,.25) 50%,rgba(8,5,3,.35) 72%,rgba(5,3,2,.96) 100%)}
+#hero .warm{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(70% 60% at 50% 70%,rgba(255,160,60,.55),transparent 70%)}
+#stars{position:absolute;inset:0;pointer-events:none}
+#moon{position:absolute;right:7%;top:10%;width:min(190px,17vw);aspect-ratio:1;border-radius:50%;pointer-events:none;background:url(img/moon.webp) center/cover;box-shadow:0 0 50px 14px rgba(255,236,190,.28),0 0 180px 70px rgba(255,214,140,.14);will-change:transform}
+.fire{position:absolute;bottom:-4%;width:min(520px,40vw);height:auto;mix-blend-mode:screen;pointer-events:none;opacity:.9;filter:saturate(1.2)}
+.fire.l{left:-8%}.fire.r{right:-8%;transform:scaleX(-1)}
+#hero .hc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px 120px}
+#hero .k{font-family:Cinzel;font-size:12.5px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold2)}
+#hero h1{font-family:Cinzel;font-weight:900;font-size:clamp(70px,13vw,220px);line-height:.92;letter-spacing:.12em;padding-left:.12em;margin:16px 0 6px;filter:drop-shadow(0 10px 50px rgba(0,0,0,.75))}
+#hero h1 span{display:inline-block;background:linear-gradient(180deg,#fff6dc 0%,var(--gold2) 42%,#9c6a1c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.orn{display:flex;align-items:center;gap:16px;width:min(560px,80vw);color:var(--gold2)}
+.orn:before,.orn:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}.orn:after{transform:scaleX(-1)}
+.orn svg{width:18px;height:26px}
+#hero .tl{font-family:Fraunces;font-style:italic;font-size:clamp(19px,2.1vw,30px);color:var(--sand);margin-top:12px;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+#hero .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+.icards{position:absolute;left:clamp(18px,4vw,52px);right:clamp(18px,4vw,52px);bottom:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ic{position:relative;height:132px;border:1px solid rgba(217,164,65,.42);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:16px 22px;text-align:left;transition:border-color .4s,transform .4s}
+.ic .im{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s}
+.ic:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,6,10,.94),rgba(7,6,10,.25));transition:opacity .4s}
+.ic:hover{border-color:var(--gold2);transform:translateY(-5px)}.ic:hover .im{transform:scale(1.1)}.ic:hover:before{opacity:.7}
+.ic>small,.ic>b,.ic>i{position:relative;z-index:2}
 .ic small{font-family:Cinzel;color:var(--gold2);font-size:13px;letter-spacing:.2em}
-.ic b{font-family:Cinzel;font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
-.ic i{font-style:normal;width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:14px}
-@media(max-width:900px){.icards{display:none}#door .dt{top:12vh}}
-/* ===== journey ===== */
-#journey{position:relative;height:760vh}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--night)}
-.scene{position:absolute;inset:-5%;background-size:cover;background-position:center;will-change:transform,opacity}
-#sDesert{background:url(img/desert.webp) center/cover,radial-gradient(40% 40% at 50% 30%,#ff9a3d,#7a3410 40%,#1a0c06 75%)}
-#sGiza{background:url(img/giza.webp) center/cover,radial-gradient(30% 30% at 50% 20%,#dcd6c8,#2a2a44 45%,#0a0a16 80%)}
-#sKarnak{background:url(img/karnak.webp) center/cover,linear-gradient(180deg,#0b1430,#1a1f3a 50%,#5a3a1c)}
-#sTomb{background:url(img/tomb.webp) center/cover,radial-gradient(50% 50% at 50% 55%,#b8781f,#3a1e08 50%,#0c0603 85%)}
-.grade{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light}
-.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(5,3,2,.7) 100%),linear-gradient(180deg,rgba(5,3,2,.55) 0%,transparent 24%,transparent 68%,rgba(5,3,2,.7) 100%)}
-#sandfx{position:absolute;inset:0;pointer-events:none}
-#hero{position:absolute;inset:0;pointer-events:none}
-#walker{position:absolute;left:28%;bottom:6vh;height:34vh;transform-origin:50% 100%;filter:drop-shadow(0 0 28px rgba(244,212,138,.18)) drop-shadow(0 16px 20px rgba(0,0,0,.55))}
-#shadow{position:absolute;left:28%;bottom:5.2vh;width:36vh;height:2.6vh;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.7),transparent);transform:translateX(-50%)}
-.chap{position:absolute;right:clamp(18px,7vw,120px);top:50%;width:min(560px,46vw);transform:translateY(-50%);opacity:0;will-change:transform,opacity}
-.chap:before{content:"";position:absolute;inset:-80px -100px;z-index:-1;background:radial-gradient(closest-side,rgba(5,3,2,.62),transparent);pointer-events:none}
-.chap .eb{font-family:Cinzel;font-size:12px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold2);display:flex;align-items:center;gap:14px}
-.chap .eb:before{content:"";width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
-.chap h2{font-family:Cinzel;font-weight:700;font-size:clamp(36px,4.8vw,74px);line-height:1.02;letter-spacing:.01em;margin:20px 0;text-shadow:0 6px 40px rgba(0,0,0,.6)}
-.chap h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2);letter-spacing:0}
-.chap p{font-size:clamp(15px,1.2vw,18px);line-height:1.7;max-width:440px;color:rgba(243,233,214,.9);text-shadow:0 2px 20px rgba(0,0,0,.6)}
-.chap .tag{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
-.chap .tag span{padding:8px 14px;border:1px solid rgba(217,164,65,.45);background:rgba(10,7,4,.35);backdrop-filter:blur(8px);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand)}
-#intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px}
-#intro .k{font-family:Cinzel;font-size:12.5px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold2)}
-#intro h1{font-family:Cinzel;font-weight:900;font-size:clamp(66px,14vw,230px);line-height:.9;letter-spacing:.12em;padding-left:.12em;margin:18px 0 14px;filter:drop-shadow(0 10px 40px rgba(0,0,0,.6))}
-#intro h1 span{display:inline-block;background:linear-gradient(180deg,#fff3d1 0%,var(--gold2) 40%,#a8721f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-#intro p{font-family:Fraunces;font-style:italic;font-size:clamp(18px,2vw,27px);color:var(--sand)}
-#intro .scr{margin-top:46px;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
-#intro .scr i{width:1px;height:54px;background:linear-gradient(180deg,var(--gold),transparent);animation:drip 2s infinite}
+.ic b{font-family:Cinzel;font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+.ic i{font-style:normal;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:13px}
+#hero .scr{position:absolute;left:50%;bottom:178px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
+#hero .scr i{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:drip 2s infinite}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-#route{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:min(620px,84vw);font-family:Cinzel;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--sand)}
+/* ===== FLY (scroll-scrubbed 4K aerial) ===== */
+#fly{position:relative;height:460vh}
+#fly .fs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#07050a}
+#flyc{position:absolute;inset:0;width:100%;height:100%}
+#fly .sky{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,22,.92) 0%,rgba(10,9,26,.6) 24%,transparent 46%,transparent 70%,rgba(5,3,2,.85) 100%)}
+#fly .vg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 55%,transparent 45%,rgba(3,2,2,.8) 100%)}
+#flyStars{position:absolute;inset:0;pointer-events:none}
+.lens{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(28% 20% at var(--lx,70%) 18%,rgba(255,214,150,.35),transparent 70%)}
+#fly .ft{position:absolute;left:clamp(20px,7vw,120px);bottom:16vh;max-width:min(640px,86vw);opacity:0}
+#fly .ft.r{left:auto;right:clamp(20px,7vw,120px);text-align:right}
+.eb{font-family:Cinzel;font-size:12px;letter-spacing:.42em;color:var(--gold2);text-transform:uppercase}
+#fly .ft h2,.chap h2{font-family:Cinzel;font-weight:700;font-size:clamp(34px,4.6vw,72px);line-height:1.04;margin-top:16px;text-shadow:0 6px 40px rgba(0,0,0,.75)}
+#fly .ft h2 em,.chap h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
+#fly .ft p,.chap p{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(243,233,214,.9);margin-top:16px;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+#bigword{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Cinzel;font-weight:900;font-size:clamp(80px,19vw,330px);letter-spacing:.2em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(244,212,138,.55);opacity:0;pointer-events:none}
+/* ===== JOURNEY (night chapters, eye-shaped reveals) ===== */
+#journey{position:relative;height:620vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05040a}
+.scene{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.scene .ph{position:absolute;inset:-6%;background-size:cover;background-position:center;will-change:transform}
+#jfx{position:absolute;inset:0;pointer-events:none}
+.rays{position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;opacity:.35;background:repeating-conic-gradient(from 200deg at 70% -10%,rgba(255,215,150,.12) 0 2deg,transparent 2deg 7deg);animation:rays 30s linear infinite}
+@keyframes rays{to{transform:rotate(6deg)}}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(5,3,2,.75) 100%),linear-gradient(180deg,rgba(5,3,2,.6) 0%,transparent 24%,transparent 62%,rgba(5,3,2,.8) 100%)}
+.ring{position:absolute;left:50%;top:50%;border:1px solid var(--gold2);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;box-shadow:0 0 30px rgba(244,212,138,.6),inset 0 0 30px rgba(244,212,138,.4)}
+.chap{position:absolute;left:clamp(20px,7vw,120px);top:50%;width:min(560px,86vw);transform:translateY(-50%);opacity:0;will-change:transform,opacity}
+.chap.r{left:auto;right:clamp(20px,7vw,120px)}
+.chap:before{content:"";position:absolute;inset:-80px -100px;z-index:-1;background:radial-gradient(closest-side,rgba(5,3,2,.66),transparent);pointer-events:none}
+.chap .eb{display:flex;align-items:center;gap:14px}.chap .eb:before{content:"";width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.chap .tag{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+.chap .tag span{padding:8px 14px;border:1px solid rgba(217,164,65,.45);background:rgba(10,7,4,.4);backdrop-filter:blur(8px);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand)}
+#route{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:min(620px,84vw);font-family:Cinzel;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--sand)}
 #route .ln{position:relative;height:1px;background:rgba(217,164,65,.3);margin-bottom:14px}
 #route .ln i{position:absolute;left:0;top:0;height:100%;background:var(--gold2)}
 #route .ln b{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;transform:rotate(45deg);background:var(--gold2);box-shadow:0 0 18px var(--gold)}
 #route .st{display:flex;justify-content:space-between;opacity:.85}
-#finale{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;padding:0 20px;pointer-events:none}
-#finale .eye{width:min(150px,30vw);margin-bottom:20px}
-#finale .eye path{fill:none;stroke:var(--gold2);stroke-width:3;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600}
-#finale h2{font-family:Cinzel;font-weight:700;font-size:clamp(40px,6.4vw,104px);line-height:1;letter-spacing:.04em;text-shadow:0 10px 50px rgba(0,0,0,.6)}
+#finale{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;padding:0 20px;pointer-events:none;background:radial-gradient(70% 60% at 50% 50%,rgba(5,3,2,.55),transparent)}
+#finale .eye{width:min(170px,34vw);margin-bottom:22px}
+#finale .eye path{fill:none;stroke:var(--gold2);stroke-width:3;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;filter:drop-shadow(0 0 10px var(--gold))}
+#finale h2{font-family:Cinzel;font-weight:700;font-size:clamp(40px,6.4vw,104px);line-height:1;letter-spacing:.04em;text-shadow:0 10px 50px rgba(0,0,0,.7)}
 #finale h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2);letter-spacing:0}
 #finale p{margin:22px 0 34px;font-size:18px;color:var(--sand)}
 #finale.on{pointer-events:auto}
+@media(max-width:900px){
+ #moon{width:96px;right:7%;top:11%}.fire{width:70vw;bottom:-2%}.fire.l{left:-30%}.fire.r{right:-30%}
+ .icards{display:none}#hero .hc{padding-bottom:40px}#hero .scr{bottom:40px}#hero .k{letter-spacing:.24em;font-size:10.5px}
+ #fly .ft,#fly .ft.r{left:20px;right:20px;text-align:left;bottom:14vh}
+ .chap,.chap.r{left:20px;right:20px;width:auto;top:auto;bottom:90px;transform:none}
+}
 /* ===== content ===== */
 section.blk{padding:clamp(90px,11vw,160px) clamp(18px,5vw,64px);position:relative}
 .wrap{max-width:1220px;margin:0 auto;position:relative}
@@ -189,6 +207,10 @@ section.blk{padding:clamp(90px,11vw,160px) clamp(18px,5vw,64px);position:relativ
 .step .n{font-family:Cinzel;font-weight:900;font-size:34px;color:var(--gold);line-height:1;min-width:52px}
 .step b{font-family:Cinzel;font-size:18px;letter-spacing:.05em}
 .step p{color:var(--mute);margin-top:6px;line-height:1.6;font-size:15px}
+.arch{position:relative;height:min(620px,80vh);border-radius:300px 300px 0 0;overflow:hidden;border:1px solid rgba(217,164,65,.45)}
+.arch .aim{position:absolute;inset:-8%;background-size:cover;background-position:50% 60%;will-change:transform}
+.arch:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,6,10,.8))}
+.aring{position:absolute;inset:14px;border-radius:290px 290px 0 0;border:1px solid rgba(244,212,138,.35);z-index:2}
 /* torch gallery */
 .torch{position:relative;height:clamp(460px,70vh,720px);overflow:hidden;border:1px solid rgba(217,164,65,.22);margin-top:56px;cursor:none;background:#050403}
 .torch .lit{position:absolute;inset:0;background:url(img/tomb.webp) center/cover,radial-gradient(50% 50% at 50% 55%,#b8781f,#3a1e08 50%,#0c0603 85%);-webkit-mask:radial-gradient(circle 190px at var(--tx,50%) var(--ty,50%),#000 0%,rgba(0,0,0,.85) 40%,transparent 100%);mask:radial-gradient(circle 190px at var(--tx,50%) var(--ty,50%),#000 0%,rgba(0,0,0,.85) 40%,transparent 100%)}
@@ -216,8 +238,8 @@ section.blk{padding:clamp(90px,11vw,160px) clamp(18px,5vw,64px);position:relativ
 .qa .an p{padding-bottom:24px;max-width:700px}
 /* booking */
 .book{margin:0 clamp(12px,3vw,40px);overflow:hidden;position:relative;border:1px solid rgba(217,164,65,.3)}
-.book .bgimg{position:absolute;inset:0;background:url(img/giza.webp) center/cover;opacity:.28}
-.book:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,10,.95),rgba(7,6,10,.6));z-index:1}
+.book .bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.book:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,10,.92),rgba(7,6,10,.35));z-index:1}
 .book .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(7,6,10,.55);border:1px solid rgba(217,164,65,.3);backdrop-filter:blur(14px);padding:30px}
 form label{display:flex;flex-direction:column;gap:8px;font-family:Cinzel;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand2)}
@@ -240,20 +262,17 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 #snd .eq{display:flex;gap:3px;align-items:flex-end;height:14px}#snd .eq i{width:2px;height:4px;background:var(--gold2);transition:height .2s}
 #snd.on .eq i{animation:eq .9s ease-in-out infinite alternate}#snd.on .eq i:nth-child(2){animation-delay:.2s}#snd.on .eq i:nth-child(3){animation-delay:.45s}#snd.on .eq i:nth-child(4){animation-delay:.1s}
 @keyframes eq{from{height:3px}to{height:14px}}
-@media(max-width:900px){#snd{bottom:70px;padding:10px 14px}#fly .ft{bottom:22vh}}
+@media(max-width:900px){#snd{top:74px;bottom:auto;right:14px;padding:8px 12px;font-size:9.5px}}
 @media(max-width:900px){
  .nlinks{display:none}nav .btn{padding:12px 16px;font-size:11px}
- #walker{left:50%;height:22vh;bottom:10vh}#shadow{left:50%;bottom:9.4vh;width:24vh}
- #intro .k{letter-spacing:.24em;font-size:10.5px}
  .chap:before{inset:-30px -20px}
- .chap{left:20px;right:20px;width:auto;top:96px;transform:none}
- .chap h2{font-size:34px;margin:12px 0}
+ .chap h2,#fly .ft h2{font-size:32px}
  .chap p{font-size:15px}
  .stats{grid-template-columns:repeat(2,1fr);row-gap:30px}
  .cards,.revs{grid-template-columns:1fr}
  .mgrid{grid-template-columns:1fr;gap:12px}.mc{height:260px}.mc p{max-height:160px;opacity:1;margin-top:10px}
  .dec,.guide,.book .inner{grid-template-columns:1fr}
- .mascot{min-height:360px}
+ .arch{height:460px}
  form{grid-template-columns:1fr}
  .fgrid{grid-template-columns:1fr 1fr}
  #route{bottom:18px;font-size:9px;letter-spacing:.14em}
@@ -262,44 +281,63 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 </style>
 </head>
 <body>
-<div id="loader"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><div class="lg">SAHRA</div><div class="bar"><i id="lbar"></i></div><small id="lpct">Opening the tomb… 0%</small></div>
+<div id="gate"><div class="half t"></div><div class="half b"></div>
+ <div class="gc"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><div class="lg">SAHRA</div>
+  <div id="gload"><div class="bar"><i id="lbar"></i></div><small id="lpct" style="display:block;text-align:center;margin-top:14px">Unsealing the tomb… 0%</small></div>
+  <div id="enter"><button class="btn" id="enterBtn">Enter ancient Egypt <span class="ar">→</span></button><p>Sound on for the full experience</p></div></div>
+</div>
 <div id="cur"></div>
-<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>SAHRA</a><div class="nlinks"><a href="#expeditions">Expeditions</a><a href="#mysteries">Mysteries</a><a href="#decoder">Hieroglyphs</a><a href="#guide">Your guide</a><a href="#faq">FAQ</a></div><a class="btn" href="#book">Reserve <span class="ar">→</span></a></nav>
+<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>SAHRA</a><div class="nlinks"><a href="#expeditions">Expeditions</a><a href="#mysteries">Mysteries</a><a href="#decoder">Hieroglyphs</a><a href="#guide">How it works</a><a href="#faq">FAQ</a></div><a class="btn" href="#book">Reserve <span class="ar">→</span></a></nav>
 
-<section id="fly"><a id="top"></a>
- <div class="fs"><canvas id="flyc"></canvas><canvas id="flyDust" style="position:absolute;inset:0;pointer-events:none"></canvas><div class="fv"></div>
-  <div id="intro"><div class="k">Egypt after dark · Private expeditions</div><h1 id="ttl"><span>S</span><span>A</span><span>H</span><span>R</span><span>A</span></h1><p>Five thousand years of secrets. One night to see them.</p><div class="scr"><i></i>Scroll to enter the pyramid</div><div class="icards"><a class="ic" href="#mysteries" style="background-image:url(img/tomb-m.webp)"><small>01</small><b>The hidden tomb</b><i>→</i></a><a class="ic" href="#expeditions" style="background-image:url(img/giza-m.webp)"><small>02</small><b>Giza by moonlight</b><i>→</i></a><a class="ic" href="#decoder" style="background-image:url(img/karnak-m.webp)"><small>03</small><b>Language of the gods</b><i>→</i></a></div></div>
-  <div class="ft" id="ft1"><div class="eb">Giza · After closing</div><h2>When the gates close, <em>the pyramid opens.</em></h2></div>
-  <div class="ft" id="ft2"><div class="eb">Inside the Great Pyramid</div><h2>Torches. Gold. <em>Silence.</em></h2></div>
-  <div id="flash"></div>
+<section id="hero"><a id="top"></a>
+ <div class="poster"></div>
+ <video id="hv" muted loop playsinline autoplay preload="auto" poster="media/hero-poster.jpg"></video>
+ <div class="night"></div><canvas id="stars"></canvas><div id="moon"></div><div class="warm"></div>
+ <video class="fire l" src="media/fire.mp4" muted loop playsinline autoplay></video><video class="fire r" src="media/fire.mp4" muted loop playsinline autoplay></video>
+ <div class="hc"><div class="k">Egypt after dark · Private expeditions</div>
+  <h1 id="ttl"><span>S</span><span>A</span><span>H</span><span>R</span><span>A</span></h1>
+  <div class="orn"><svg viewBox="0 0 18 26"><path d="M9 11C4 8 5 1 9 1s5 7 0 10Zm0 0v14M2 13h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+  <p class="tl">Walk between worlds. Five thousand years of secrets, one night.</p>
+  <div class="cta"><a class="btn" href="#expeditions">Begin your journey <span class="ar">→</span></a><a class="btn ghost" href="#mysteries">Discover the myths</a></div>
+ </div>
+ <div class="scr"><i></i>Scroll to descend</div>
+ <div class="icards">
+  <a class="ic" href="#mysteries"><div class="im" style="background-image:url(img/tomb-m.webp)"></div><small>01</small><b>The hidden tomb</b><i>→</i></a>
+  <a class="ic" href="#expeditions"><div class="im" style="background-image:url(img/sphinx-night-m.webp)"></div><small>02</small><b>Giza by moonlight</b><i>→</i></a>
+  <a class="ic" href="#decoder"><div class="im" style="background-image:url(img/karnak-m.webp)"></div><small>03</small><b>Language of the gods</b><i>→</i></a>
+ </div>
+</section>
+
+<section id="fly">
+ <div class="fs"><canvas id="flyc"></canvas><div class="sky"></div><canvas id="flyStars"></canvas><div class="lens" id="lens"></div><div class="vg"></div>
+  <div id="bigword">GIZA</div>
+  <div class="ft" id="ft1"><div class="eb">Giza plateau · 2560 BC</div><h2>Built to <em>outlast</em> time itself.</h2><p>2.3 million stone blocks, aligned to true north. Fly in with us as the sun goes down.</p></div>
+  <div class="ft r" id="ft2"><div class="eb">The last wonder standing</div><h2>When the gates close, <em>the pyramids are yours.</em></h2></div>
  </div>
 </section>
 
 <section id="journey">
  <div class="stage" id="stage">
-  <div class="scene" id="sDesert"></div><div class="scene" id="sGiza"></div><div class="scene" id="sKarnak"></div><div class="scene" id="sTomb"></div>
-  <div class="grade" id="grade"></div><canvas id="sandfx"></canvas>
-  <div id="hero"><div id="shadow"></div><canvas id="walker" width="679" height="573"></canvas></div>
-  <div class="vig"></div>
-  <div class="chap" id="c1"><div class="eb">Chapter I · The Endless Sands</div><h2>The desert <em>keeps</em> its oldest stories.</h2><p>Ride out at dusk with Bedouin guides, watch the sky burn gold over the dunes, and follow the same stars the caravans used for millennia.</p><div class="tag"><span>Camel caravan</span><span>Dune sunset</span><span>Desert camp</span></div></div>
-  <div class="chap" id="c2"><div class="eb">Chapter II · Giza by Moonlight</div><h2>Stand before the <em>Sphinx</em> when the crowds are gone.</h2><p>After closing, the plateau is yours. The Great Pyramid glows under the moon while an Egyptologist tells you what the books leave out.</p><div class="tag"><span>After-hours access</span><span>Private Egyptologist</span><span>Full moon dates</span></div></div>
-  <div class="chap" id="c3"><div class="eb">Chapter III · Avenue of Sphinxes</div><h2>Walk where the <em>pharaohs</em> walked.</h2><p>Karnak by torchlight: a mile of ram-headed sphinxes, columns as tall as trees and a sky so dark you can see the Milky Way over Luxor.</p><div class="tag"><span>Torch-lit walk</span><span>Luxor</span><span>Stargazing</span></div></div>
-  <div class="chap" id="c4"><div class="eb">Chapter IV · The Sealed Tomb</div><h2>Some doors open <em>only once.</em></h2><p>Descend into painted burial chambers in the Valley of the Kings, where the colors still look wet after 3,000 years.</p><div class="tag"><span>Valley of the Kings</span><span>Rare tombs</span><span>Small groups of 8</span></div></div>
+  <div class="scene" id="s1"><div class="ph" style="background-image:url(img/desert.webp)"></div></div>
+  <div class="scene" id="s2"><div class="ph" style="background-image:url(img/sphinx-night.webp);background-position:50% 30%"></div></div>
+  <div class="scene" id="s3"><div class="ph" style="background-image:url(img/karnak.webp)"></div></div>
+  <div class="scene" id="s4"><div class="ph" style="background-image:url(img/tomb.webp)"></div></div>
+  <div class="rays"></div><canvas id="jfx"></canvas><div class="vig"></div><div class="ring" id="ring"></div>
+  <div class="chap" id="c1"><div class="eb">Chapter I · The Endless Sands</div><h2>The desert <em>keeps</em> its oldest stories.</h2><p>Ride out at dusk with Bedouin guides and watch the eclipse-red sky burn over the dunes.</p><div class="tag"><span>Camel caravan</span><span>Dune sunset</span><span>Desert camp</span></div></div>
+  <div class="chap r" id="c2"><div class="eb">Chapter II · Giza by Starlight</div><h2>Stand before the <em>Sphinx</em> under the Milky Way.</h2><p>After closing, the plateau is yours, and an Egyptologist tells you what the books leave out.</p><div class="tag"><span>After-hours access</span><span>Private Egyptologist</span></div></div>
+  <div class="chap" id="c3"><div class="eb">Chapter III · Avenue of Sphinxes</div><h2>Walk where the <em>pharaohs</em> walked.</h2><p>Karnak by torchlight: a mile of ram-headed sphinxes beneath a sky so dark you can see the galaxy.</p><div class="tag"><span>Torch-lit walk</span><span>Luxor</span><span>Stargazing</span></div></div>
+  <div class="chap r" id="c4"><div class="eb">Chapter IV · The Sealed Tomb</div><h2>Some doors open <em>only once.</em></h2><p>Descend into painted burial chambers where the colors still look wet after 3,000 years.</p><div class="tag"><span>Valley of the Kings</span><span>Rare tombs</span></div></div>
+  <div id="finale"><svg class="eye" viewBox="0 0 200 110"><path id="fEye" d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><h2>The secrets are <em>waiting.</em></h2><p>Private night expeditions through ancient Egypt.</p><a class="btn" href="#expeditions">Choose your expedition <span class="ar">→</span></a></div>
   <div id="route"><div class="ln"><i id="rfill"></i><b id="rdot"></b></div><div class="st"><span>Sahara</span><span>Giza</span><span>Karnak</span><span>The Tomb</span></div></div>
  </div>
 </section>
-
-<section id="door"><div class="ds"><canvas id="doorc"></canvas><div class="dv"></div>
-  <div class="dt" id="dt1"><div class="eb">Chapter V · The Golden Door</div><h2>Beyond this door, <em>no one</em> has stood for 3,000 years.</h2></div>
-  <div id="finale"><svg class="eye" viewBox="0 0 200 110"><path id="fEye" d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><h2>The secrets are <em>waiting.</em></h2><p>Private night expeditions through ancient Egypt.</p><a class="btn" href="#expeditions">Choose your expedition <span class="ar">→</span></a></div>
- </div></section>
 
 <div class="stats"><div class="rv"><b data-n="4600">0</b><span>Years of history</span></div><div class="rv"><b data-n="8">0</b><span>Guests per group</span></div><div class="rv"><b data-n="27">0</b><span>Private sites</span></div><div class="rv"><b>4.9★</b><span>Guest rating</span></div></div>
 
 <section class="blk" id="expeditions"><div class="wrap">
  <div class="jhead"><div class="rv"><div class="kick">Signature expeditions</div><h2 class="h2">Three nights. <em>Three</em> legends.</h2></div><p class="lead rv">Every expedition includes a private Egyptologist, after-hours access, five-star Nile-side stays and transfers in vintage Land Cruisers.</p></div>
  <div class="cards">
-  <div class="card rv"><div class="ph" style="background-image:url(img/giza-m.webp)"></div><span class="days">4 nights</span><div class="glare"></div><div class="bd"><h3>Moon over Giza</h3><div class="where">Giza · Saqqara · Cairo</div><div class="row"><div class="pr"><small>from</small><b>$2,490</b></div><div class="go"><span>→</span></div></div></div></div>
+  <div class="card rv"><div class="ph" style="background-image:url(img/giza-night-m.webp)"></div><span class="days">4 nights</span><div class="glare"></div><div class="bd"><h3>Moon over Giza</h3><div class="where">Giza · Saqqara · Cairo</div><div class="row"><div class="pr"><small>from</small><b>$2,490</b></div><div class="go"><span>→</span></div></div></div></div>
   <div class="card rv"><div class="ph" style="background-image:url(img/karnak-m.webp)"></div><span class="days">5 nights</span><div class="glare"></div><div class="bd"><h3>Torches of Karnak</h3><div class="where">Luxor · Karnak · Nile cruise</div><div class="row"><div class="pr"><small>from</small><b>$3,180</b></div><div class="go"><span>→</span></div></div></div></div>
   <div class="card rv"><div class="ph" style="background-image:url(img/tomb-m.webp)"></div><span class="days">7 nights</span><div class="glare"></div><div class="bd"><h3>The Sealed Tomb</h3><div class="where">Valley of the Kings · Abydos</div><div class="row"><div class="pr"><small>from</small><b>$4,750</b></div><div class="go"><span>→</span></div></div></div></div>
  </div>
@@ -309,8 +347,8 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 
 <section class="blk mys" id="mysteries"><div class="wrap"><div class="rv" style="text-align:center"><div class="kick" style="justify-content:center">Unsolved</div><h2 class="h2">Five mysteries <em>you'll stand inside.</em></h2></div>
  <div class="mgrid">
-  <div class="mc rv"><div class="bg" style="background-image:url(img/giza-m.webp)"></div><div class="in"><div class="no">01</div><h4>The Perfect Pyramid</h4><p>2.3 million blocks aligned to true north within a fraction of a degree. Nobody knows exactly how.</p></div></div>
-  <div class="mc rv"><div class="bg" style="background-image:url(img/giza-m.webp);background-position:60% 80%"></div><div class="in"><div class="no">02</div><h4>The Sphinx's Face</h4><p>Whose face is carved into the Sphinx? Historians still argue about it.</p></div></div>
+  <div class="mc rv"><div class="bg" style="background-image:url(img/giza-night-m.webp)"></div><div class="in"><div class="no">01</div><h4>The Perfect Pyramid</h4><p>2.3 million blocks aligned to true north within a fraction of a degree. Nobody knows exactly how.</p></div></div>
+  <div class="mc rv"><div class="bg" style="background-image:url(img/sphinx-night-m.webp)"></div><div class="in"><div class="no">02</div><h4>The Sphinx's Face</h4><p>Whose face is carved into the Sphinx? Historians still argue about it.</p></div></div>
   <div class="mc rv"><div class="bg" style="background-image:url(img/karnak-m.webp)"></div><div class="in"><div class="no">03</div><h4>Orion's Belt</h4><p>The three Giza pyramids mirror the stars of Orion's Belt. A coincidence?</p></div></div>
   <div class="mc rv"><div class="bg" style="background-image:url(img/tomb-m.webp)"></div><div class="in"><div class="no">04</div><h4>The Boy King</h4><p>Tutankhamun's tomb was found almost untouched after 3,245 years, and so was its curse legend.</p></div></div>
   <div class="mc rv"><div class="bg" style="background-image:url(img/desert-m.webp)"></div><div class="in"><div class="no">05</div><h4>The Lost Oasis</h4><p>Ancient texts describe a white city hidden in the sand. Explorers are still looking.</p></div></div>
@@ -332,8 +370,8 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 </div></section>
 
 <section class="blk" id="guide" style="background:linear-gradient(180deg,var(--night),#0d0906 50%,var(--night))"><div class="wrap guide">
- <div class="mascot rv"><div class="ring"></div><div class="sun"></div><img src="img/char.webp" alt="Bastet, the SAHRA guide cat" loading="lazy"></div>
- <div><div class="rv"><div class="kick">Your guide</div><h2 class="h2">Follow <em>Bastet</em> into the dark.</h2><p class="lead">In ancient Egypt cats were sacred guardians. Ours will walk you through every step, from your first message to your last night on the Nile.</p></div>
+ <div class="arch rv"><div class="aim" style="background-image:url(img/pyramid-lantern-m.webp)"></div><div class="aring"></div></div>
+ <div><div class="rv"><div class="kick">How it works</div><h2 class="h2">We hold the <em>keys</em> to the dark.</h2><p class="lead">Night permits, private Egyptologists and doors that stay closed to day visitors. We take care of every step, from your first message to your last night on the Nile.</p></div>
   <div class="steps">
    <div class="step rv"><div class="n">I</div><div><b>Choose your legend</b><p>Pick an expedition or tell us which mysteries you want to see. It takes two minutes.</p></div></div>
    <div class="step rv"><div class="n">II</div><div><b>We unlock the doors</b><p>We arrange after-hours permits, your private Egyptologist and every hotel and transfer.</p></div></div>
@@ -360,7 +398,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
   <div class="qa rv"><button>When is the best time to go?<i><span>+</span></i></button><div class="an"><p>October to April has the coolest nights. We plan Giza visits around the full moon whenever we can.</p></div></div>
  </div></div></section>
 
-<section class="blk book" id="book"><div class="bgimg"></div><div class="wrap inner">
+<section class="blk book" id="book"><video class="bgv" src="media/sunset.mp4" muted loop playsinline autoplay preload="none"></video><div class="wrap inner">
  <div class="rv"><div class="kick">Reserve</div><h2 class="h2">Your night in <em>ancient Egypt</em> starts here.</h2><p class="lead">Tell us when you'd like to travel. An expedition designer replies within 24 hours with your private itinerary.</p></div>
  <form id="bf" class="rv">
   <label class="full">Your name<input required placeholder="Alex Morgan"></label>
@@ -380,83 +418,78 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="big">SAHRA</div>
  <div class="legal"><span>© 2026 SAHRA. Concept website by <a href="https://plastrixstudio.com" style="text-decoration:underline">Plastrix Studio</a> · brand and content are fictional.</span><span>Made under the desert stars.</span></div>
 </div></footer>
-<button id="snd" aria-label="Play Egyptian music"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Play music</span></button>
+<button id="snd" aria-label="Play Egyptian music"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Sound off</span></button>
 <div id="toast">Your request has been sealed. Expect our reply within 24 hours 𓂀</div>
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const cl=x=>Math.max(0,Math.min(1,x)),seg=(t,a,b)=>cl((t-a)/(b-a)),ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=x=>1-Math.pow(1-cl(x),3),lerp=(a,b,k)=>a+(b-a)*k;
 const mob=matchMedia('(max-width:900px)').matches;
-const SC=['Desert','Giza','Karnak','Tomb'];
-if(mob)SC.forEach(n=>{const el=$('#s'+n);el.style.backgroundImage=getComputedStyle(el).backgroundImage.replace(`${n.toLowerCase()}.webp`,`${n.toLowerCase()}-m.webp`)});
-/* preload fly-through + walk frames */
-const N=120,FN=150,frames=[],fly=[];let loaded=0;const TOT=N+FN;
-const done=()=>{$('#loader').classList.add('done');start()};
-const onL=()=>{loaded++;const p=Math.round(loaded/TOT*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Opening the tomb… ${p}%`;if(loaded===TOT)setTimeout(done,500)};
-for(let i=0;i<FN;i++){const im=new Image();im.decoding='async';im.src=`img/fly/f${String(i+1).padStart(3,'0')}.webp`;im.onload=im.onerror=onL;fly[i]=im}
-for(let i=0;i<N;i++){const im=new Image();im.decoding='async';im.src=`img/walk/w${String(i).padStart(3,'0')}.webp`;im.onload=im.onerror=onL;frames[i]=im}
-setTimeout(()=>{if(!$('#loader').classList.contains('done'))done()},12000);
-/* fly-through canvas (cover fit, hi-dpi) */
+/* ===== preload: scroll frames ===== */
+const FN=150,fly=[];let loaded=0,ready=false;const FDIR=mob?'img/fly2m':'img/fly2';
+const showEnter=()=>{if(ready)return;ready=true;$('#gload').style.display='none';$('#enter').classList.add('on')};
+for(let i=0;i<FN;i++){const im=new Image();im.decoding='async';im.src=`${FDIR}/f${String(i+1).padStart(3,'0')}.webp`;im.onload=im.onerror=()=>{loaded++;const p=Math.round(loaded/FN*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Unsealing the tomb… ${p}%`;if(loaded===FN)setTimeout(showEnter,300)};fly[i]=im}
+setTimeout(showEnter,10000);
+const hv=$('#hv');hv.src=mob?'media/hero-m.mp4':'media/hero.mp4';hv.play().catch(()=>{});
+/* enter: open gate + start music (browsers only allow sound after a click) */
+let entered=false;
+function enter(){if(entered)return;entered=true;$('#gate').classList.add('open');setTimeout(()=>$('#gate').classList.add('gone'),1700);document.body.style.overflow='';startMusic();
+ letters.forEach((s,i)=>s.animate([{opacity:0,transform:'translateY(80px) scale(.85)',filter:'blur(16px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1500,delay:500+i*120,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'}))}
+document.body.style.overflow='hidden';
+$('#enterBtn').addEventListener('click',enter);
+/* ===== star field (hero + fly) ===== */
+function starField(cv,n,top){const c=cv.getContext('2d');let W,H,S=[];
+ const rs=()=>{const d=Math.min(devicePixelRatio||1,2);W=cv.width=cv.offsetWidth*d;H=cv.height=cv.offsetHeight*d;S=[];for(let i=0;i<n;i++)S.push({x:Math.random()*W,y:Math.pow(Math.random(),1.8)*H*top,r:(Math.random()*1.3+.3)*d,p:Math.random()*6,s:Math.random()*.002+.0008})};rs();addEventListener('resize',rs);
+ return (t,a=1,shoot)=>{c.clearRect(0,0,W,H);for(const q of S){const tw=.45+.55*Math.sin(t*q.s+q.p);c.globalAlpha=a*tw*(1-q.y/(H*top))*.95;c.fillStyle='#fff6e0';c.beginPath();c.arc(q.x,q.y,q.r,0,7);c.fill()}
+  if(shoot){const k=(t%7000)/1100;if(k<1){const x=W*(.15+.5*((t/7000|0)%3)/2)+k*W*.25,y=H*.08+k*H*.12;const g=c.createLinearGradient(x,y,x-W*.08,y-H*.04);g.addColorStop(0,`rgba(255,240,210,${a*(1-k)})`);g.addColorStop(1,'rgba(255,240,210,0)');c.globalAlpha=1;c.strokeStyle=g;c.lineWidth=2;c.beginPath();c.moveTo(x,y);c.lineTo(x-W*.08,y-H*.04);c.stroke()}}c.globalAlpha=1}}
+const heroStars=starField($('#stars'),mob?140:260,.55),flyStars=starField($('#flyStars'),mob?90:180,.4);
+/* hero mouse parallax */
+let mx=0,my=0,smx=0,smy=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+/* ===== fly canvas ===== */
 const fc=$('#flyc'),fx=fc.getContext('2d');let lastFly=-1;
 function fsz(){const d=Math.min(devicePixelRatio||1,2);fc.width=innerWidth*d;fc.height=innerHeight*d;lastFly=-1}fsz();addEventListener('resize',fsz);
-function drawFly(f){f=Math.max(0,Math.min(FN-1,Math.round(f)));if(f===lastFly)return;const im=fly[f];if(!(im&&im.complete&&im.naturalWidth))return;
- const W=fc.width,H=fc.height,r=Math.max(W/im.naturalWidth,H/im.naturalHeight)*1.04,w=im.naturalWidth*r,h=im.naturalHeight*r;fx.drawImage(im,(W-w)/2,(H-h)/2,w,h);lastFly=f}
-/* golden door frames */
-const DN=119,door=[];for(let i=0;i<DN;i++){const im=new Image();im.decoding='async';im.src=`img/door/d${String(i+1).padStart(3,'0')}.webp`;door[i]=im}
-const dcv=$('#doorc'),dctx=dcv.getContext('2d');let lastD=-1;
-function dsz(){const d=Math.min(devicePixelRatio||1,2);dcv.width=innerWidth*d;dcv.height=innerHeight*d;lastD=-1}dsz();addEventListener('resize',dsz);
-function drawCover(ctx,cv,im){const W=cv.width,H=cv.height,r=Math.max(W/im.naturalWidth,H/im.naturalHeight)*1.03,w=im.naturalWidth*r,h=im.naturalHeight*r;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
-const DR=$('#door');let dtp=0,dsp=0;
-function doorStep(p){let f=Math.round(seg(p,.08,.82)*(DN-1));if(f!==lastD){let k=f;while(k>0&&!(door[k].complete&&door[k].naturalWidth))k--;if(door[k].complete&&door[k].naturalWidth){drawCover(dctx,dcv,door[k]);lastD=f}}
- const k=out(seg(p,.04,.14))*(1-ease(seg(p,.4,.5)));$('#dt1').style.opacity=k;$('#dt1').style.transform=`translateX(-50%) translateY(${(1-k)*30}px)`;
- const fz=out(seg(p,.84,.95));$('#finale').style.opacity=fz;$('#finale').classList.toggle('on',fz>.5);eyeP.style.strokeDashoffset=600*(1-ease(seg(p,.84,.97)))}
-const FL=$('#fly');let ftp=0,fsp=0;
-function flyStep(p){
- drawFly(p*(FN-1));
- const io=1-ease(seg(p,0,.14));$('#intro').style.opacity=io;$('#intro').style.transform=`translateY(${-(1-io)*80}px) scale(${1+(1-io)*.08})`;$('#intro').style.filter=`blur(${(1-io)*10}px)`;
- [['#ft1',.30,.56],['#ft2',.64,.88]].forEach(([id,a,b])=>{const k=out(seg(p,a,a+.07))*(1-ease(seg(p,b-.06,b)));const el=$(id);el.style.opacity=k;el.style.transform=`translateX(-50%) translateY(${(1-k)*30}px)`;el.style.filter=`blur(${(1-k)*6}px)`});
- $('#flash').style.opacity=ease(seg(p,.9,1))*.85;
-}
-const wc=$('#walker'),wx=wc.getContext('2d');let lastF=-1;
-function drawFrame(f){f=Math.max(0,Math.min(N-1,f|0));if(f===lastF)return;const im=frames[f];if(im&&im.complete&&im.naturalWidth){wx.clearRect(0,0,wc.width,wc.height);wx.drawImage(im,0,0,wc.width,wc.height);lastF=f}}
-/* blowing sand + gold dust */
-const dc=$('#sandfx'),dx=dc.getContext('2d');let DW,DH;const P=[];
-function rs(){DW=dc.width=innerWidth;DH=dc.height=innerHeight}rs();addEventListener('resize',rs);
-for(let i=0;i<(mob?60:110);i++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.4,s:Math.random()*.5+.15,o:Math.random()*.55+.15,w:Math.random()*6});
-/* journey */
-const J=$('#journey');let tp=0,sp=0;
-const letters=$$('#ttl span');
-const grades=[[255,150,60],[150,170,255],[90,120,255],[255,160,60]];
-const eyeP=$('#fEye');
+function drawCover(ctx,cv,im,z=1.02){const W=cv.width,H=cv.height,r=Math.max(W/im.naturalWidth,H/im.naturalHeight)*z,w=im.naturalWidth*r,h=im.naturalHeight*r;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
+function drawFly(f){f=Math.max(0,Math.min(FN-1,Math.round(f)));if(f===lastFly)return;let k=f;while(k>0&&!(fly[k].complete&&fly[k].naturalWidth))k--;const im=fly[k];if(!(im.complete&&im.naturalWidth))return;drawCover(fx,fc,im);lastFly=f}
+const FL=$('#fly');let fsp=0;
+function flyStep(p,t){drawFly(p*(FN-1));flyStars(t,1-seg(p,.75,1),true);
+ $('#lens').style.setProperty('--lx',(70-p*30)+'%');
+ const bw=out(seg(p,.02,.18))*(1-ease(seg(p,.22,.34)));$('#bigword').style.opacity=bw*.9;$('#bigword').style.letterSpacing=(.2+p*.6)+'em';
+ [['#ft1',.30,.58],['#ft2',.64,.92]].forEach(([id,a,b])=>{const k=out(seg(p,a,a+.07))*(1-ease(seg(p,b-.06,b)));const el=$(id);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*40}px)`;el.style.filter=`blur(${(1-k)*8}px)`});
+ $('#flyc').style.filter=`brightness(${1-seg(p,.9,1)*.75})`}
+/* ===== journey: eye/circle reveals between night scenes ===== */
+const J=$('#journey');let sp=0;const letters=$$('#ttl span');const eyeP=$('#fEye');
+const SCN=[$('#s1'),$('#s2'),$('#s3'),$('#s4')],PH=SCN.map(s=>s.querySelector('.ph'));
+const jc=$('#jfx'),jx=jc.getContext('2d');let JW,JH;const P=[];
+function jrs(){JW=jc.width=innerWidth;JH=jc.height=innerHeight}jrs();addEventListener('resize',jrs);
+for(let i=0;i<(mob?60:120);i++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.4,s:Math.random()*.5+.15,o:Math.random()*.6+.2,w:Math.random()*6});
+const REV=[[.22,.32],[.47,.57],[.72,.82]];
 function journey(p,t){
- const op=[1,ease(seg(p,.24,.32)),ease(seg(p,.48,.56)),ease(seg(p,.72,.80))];
- const pans=[[0,.32],[.24,.56],[.48,.80],[.72,1]];
- SC.forEach((n,i)=>{const el=$('#s'+n),k=seg(p,pans[i][0],pans[i][1]);el.style.opacity=op[i];el.style.transform=`translate3d(${-k*6}%,0,0) scale(${1.08+k*.07})`});
- let g=grades[0];for(let i=1;i<4;i++)g=g.map((v,j)=>lerp(v,grades[i][j],op[i]));
- $('#stage').style.filter=`brightness(${1+(1-ease(seg(p,0,.05)))*.8})`;$('#grade').style.background=`radial-gradient(90% 70% at 70% 30%,rgba(${g.map(Math.round).join(',')},.5),transparent 70%)`;
- const walkP=seg(p,.06,.95);drawFrame(walkP*(N-1));
- const enter=out(seg(p,.02,.12)),exit=ease(seg(p,.93,1)),baseL=mob?50:28;
- wc.style.left=`${lerp(baseL-30,baseL,enter)+exit*(mob?60:45)}%`;wc.style.transform='translateX(-50%)';
- $('#shadow').style.left=wc.style.left;wc.style.opacity=enter*(1-exit);$('#shadow').style.opacity=enter*(1-exit);
- [['#c1',.05,.25],['#c2',.32,.49],['#c3',.56,.73],['#c4',.80,.97]].forEach(([id,s,e])=>{const k=out(seg(p,s,s+.04))*(1-ease(seg(p,e-.03,e)));const el=$(id);el.style.opacity=k;
-  el.style.transform=(mob?'':'translateY(-50%) ')+`translateY(${(1-k)*40}px)`;el.style.filter=`blur(${(1-k)*8}px)`});
- const rp=seg(p,.06,.9);$('#rfill').style.width=rp*100+'%';$('#rdot').style.left=rp*100+'%';$('#route').style.opacity=out(seg(p,.05,.1))*(1-ease(seg(p,.9,.95)));
- dx.clearRect(0,0,DW,DH);const tomb=op[3]>.5,night=op[1]>.5&&!tomb;
- const col=tomb?'255,190,110':night?'230,225,255':'255,200,140';
- P.forEach((q,i)=>{const wind=tomb?.15:1;const x=((q.x-p*q.s*3*wind-t*.00003*q.s*wind)%1+1)%1*DW,y=(q.y+Math.sin(t*.0005+q.w)*.015-(tomb?t*.00002*q.s%1:0)+1)%1*DH;
-  dx.fillStyle=`rgba(${col},${q.o*(.6+.4*Math.sin(t*.003+q.w))})`;dx.beginPath();dx.arc(x,y,q.r,0,7);dx.fill()});
-}
+ const D=Math.hypot(innerWidth,innerHeight);
+ SCN.forEach((el,i)=>{let r=i===0?1:ease(seg(p,REV[i-1][0],REV[i-1][1]));
+  el.style.clipPath=i===0?'none':`circle(${r*D*.62}px at 50% 50%)`;el.style.visibility=r>0?'visible':'hidden';
+  const lo=i===0?0:REV[i-1][0],hi=i===3?1:REV[i][1],k=seg(p,lo,hi);
+  PH[i].style.transform=`scale(${1.16-k*.1}) translate3d(${(i%2?1:-1)*(k-.5)*3}%,${(k-.5)*-2}%,0)`});
+ const ringK=REV.map(([a,b])=>seg(p,a,b)).find(k=>k>0&&k<1);const rg=$('#ring');
+ if(ringK!==undefined){const r=ease(ringK)*D*1.24;rg.style.width=rg.style.height=r+'px';rg.style.opacity=Math.sin(ringK*Math.PI)}else rg.style.opacity=0;
+ [['#c1',.03,.22],['#c2',.30,.47],['#c3',.55,.72],['#c4',.80,.9]].forEach(([id,s,e])=>{const k=out(seg(p,s,s+.05))*(1-ease(seg(p,e-.04,e)));const el=$(id);el.style.opacity=k;
+  el.style.transform=(mob?'':'translateY(-50%) ')+`translateY(${(1-k)*50}px)`;el.style.filter=`blur(${(1-k)*10}px)`});
+ const f=out(seg(p,.91,.97));$('#finale').style.opacity=f;$('#finale').classList.toggle('on',f>.5);eyeP.style.strokeDashoffset=600*(1-ease(seg(p,.9,.98)));
+ PH[3].style.filter=`brightness(${1-f*.45})`;
+ const rp=seg(p,.03,.9);$('#rfill').style.width=rp*100+'%';$('#rdot').style.left=rp*100+'%';$('#route').style.opacity=out(seg(p,.02,.06))*(1-ease(seg(p,.9,.94)));
+ jx.clearRect(0,0,JW,JH);const tomb=p>.78,col=tomb?'255,190,110':p>.3&&p<.75?'235,230,255':'255,205,140';
+ P.forEach(q=>{const wind=tomb?.15:1;const x=((q.x-p*q.s*3*wind-t*.00003*q.s*wind)%1+1)%1*JW,y=((q.y+Math.sin(t*.0005+q.w)*.015-(tomb?t*.00002*q.s:0))%1+1)%1*JH;
+  jx.fillStyle=`rgba(${col},${q.o*(.6+.4*Math.sin(t*.003+q.w))})`;jx.beginPath();jx.arc(x,y,q.r,0,7);jx.fill()})}
+const prog=el=>{const r=el.getBoundingClientRect();return [cl(-r.top/(el.offsetHeight-innerHeight)),r]};
 function tick(t){
- const drr=DR.getBoundingClientRect();dtp=cl(-drr.top/(DR.offsetHeight-innerHeight));dsp+=window.__snap?(dtp-dsp):(dtp-dsp)*.12;if(Math.abs(dtp-dsp)<.0001)dsp=dtp;if(drr.top<innerHeight&&drr.bottom>0)doorStep(dsp);
- const fr=FL.getBoundingClientRect();ftp=cl(-fr.top/(FL.offsetHeight-innerHeight));fsp+=window.__snap?(ftp-fsp):(ftp-fsp)*.12;if(Math.abs(ftp-fsp)<.0001)fsp=ftp;if(fr.bottom>0)flyStep(fsp);
- const r=J.getBoundingClientRect(),H=J.offsetHeight-innerHeight;
- tp=cl(-r.top/H);sp+=window.__snap?(tp-sp):(tp-sp)*.1;if(Math.abs(tp-sp)<.0001)sp=tp;
- if(r.bottom>0)journey(sp,t);
+ smx+=(mx-smx)*.06;smy+=(my-smy)*.06;
+ const hr=$('#hero').getBoundingClientRect();if(hr.bottom>0){const k=cl(-hr.top/hr.height);heroStars(t,1,true);
+  hv.style.transform=`translate3d(${smx*-18}px,${smy*-12+k*120}px,0) scale(${1+k*.08})`;$('#moon').style.transform=`translate3d(${smx*30}px,${smy*20+k*-60}px,0)`;$('#hero .hc').style.transform=`translateY(${k*-140}px)`;$('#hero .hc').style.opacity=1-k*1.3}
+ const [fp,fr]=prog(FL);fsp+=window.__snap?(fp-fsp):(fp-fsp)*.12;if(fr.top<innerHeight&&fr.bottom>0)flyStep(fsp,t);
+ const [jp,jr]=prog(J);sp+=window.__snap?(jp-sp):(jp-sp)*.1;if(jr.top<innerHeight&&jr.bottom>0)journey(sp,t);
+ const ar=$('.arch');if(ar){const r=ar.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)ar.querySelector('.aim').style.transform=`translateY(${(r.top/innerHeight-.5)*-60}px) scale(1.05)`}
  requestAnimationFrame(tick)}
-function start(){
- letters.forEach((s,i)=>{s.animate([{opacity:0,transform:'translateY(70px) scale(.9)',filter:'blur(14px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1400,delay:200+i*110,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'})});
- requestAnimationFrame(tick)}
-addEventListener('scroll',()=>{$('#nav').classList.toggle('solid',scrollY>FL.offsetHeight+J.offsetHeight+DR.offsetHeight-innerHeight*.9)},{passive:true});
+requestAnimationFrame(tick);
+addEventListener('scroll',()=>{$('#nav').classList.toggle('solid',scrollY>innerHeight*.9)},{passive:true});
 /* cursor glow */
 const cur=$('#cur');addEventListener('pointermove',e=>{cur.style.transform=`translate(${e.clientX}px,${e.clientY}px)`},{passive:true});
 /* reveal */
@@ -499,10 +532,12 @@ function sched(){const bt=60/84/2;while(nextBeat<AC.currentTime+.3){const s=beat
  if(s%2===0&&Math.random()<.62){const deg=[0,1,2,3,4,3,2,1,0,5,4,2][(beatN/2+phrase)%12|0];pluck(D*HJ[deg]*(Math.random()<.25?2:1),nextBeat,.14)}
  if(beatN%32===0){phrase=Math.random()*12|0;ney(D*2*HJ[[4,5,7,2][Math.random()*4|0]],nextBeat+.2,bt*14)}
  nextBeat+=bt;beatN++}}
-$('#snd').addEventListener('click',()=>{if(!AC)initAudio();musicOn=!musicOn;const t=AC.currentTime;
+function startMusic(){if(musicOn)return;toggleMusic()}
+function toggleMusic(){if(!AC)initAudio();musicOn=!musicOn;const t=AC.currentTime;
  if(musicOn){AC.resume();nextBeat=t+.1;master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(.7,t,.6);timer=setInterval(sched,80)}
  else{master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(0,t,.3);setTimeout(()=>{if(!musicOn)clearInterval(timer)},1200)}
- $('#snd').classList.toggle('on',musicOn);$('#sndT').textContent=musicOn?'Music on':'Play music'});
+ $('#snd').classList.toggle('on',musicOn);$('#sndT').textContent=musicOn?'Sound on':'Sound off'}
+$('#snd').addEventListener('click',toggleMusic);
 </script>
 </body>
 </html>
