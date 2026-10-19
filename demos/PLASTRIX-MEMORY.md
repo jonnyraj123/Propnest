@@ -217,3 +217,10 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - 17 Oct: PayPal video KYC SUBMITTED. PayPal says review in 2-3 days. Canara bank linked. Use Invoicing to bill clients after approval.
 - Joni's rule (17 Oct, strict): answer ONLY what he asks. Do not bring up other pending tasks or old plans unless he asks.
 - 18 Oct LinkedIn setup DONE: profile verified (DigiLocker), US headline, About, Services page (remote, contact for pricing, open profile), Featured (plastrixstudio.com + Wanderly), Experience (Founder, Plastrix Studio, Jan 2023), banner (demos/resume/linkedin-banner.jpg), first post (Wanderly reel). Resume PDF: demos/resume/Joni-Raj-Mollick-Resume.pdf. NEXT: daily routine of 10 US connections + 5 job applications + comments; apply to N4 Studio (Deel form).
+
+## MR Fashion client (19 Oct)
+- Demo live: jonnyraj123.github.io/Propnest/demos/mr-fashion/ (client liked it). Deal: ₹5,000 for site; domain+hosting paid by client separately; Facebook campaign = separate charge. Small changes free.
+- If client backs out, Joni will say "MR Fashion বন্ধ করো" → take site offline (keep code in archive branch).
+- If confirmed: buy domain (mrfashion.com taken; mrfashionindia.com / shopmrfashion.com free) + hosting, go live.
+- TO BUILD WHEN JONI SAYS: private admin panel (phone home-screen app, password, no link on site): pick category (Shirt/T-shirt/Polo/Jeans, add new), name + price once, "Add colour" per colour (name + photo), Save → appears on site with colour swatches; edit/delete.
+- Pricing advice for next clients: simple site ₹8–10k, e-commerce + admin ₹12–15k.
