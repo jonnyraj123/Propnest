@@ -39,6 +39,16 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
 .btn:hover{background-position:100% 0;transform:translateY(-2px)}
 .btn.ghost{background:transparent;color:var(--gold2);box-shadow:inset 0 0 0 1px var(--gold)}
 .btn .ar{transition:transform .3s}.btn:hover .ar{transform:translateX(5px)}
+/* ===== fly-through (scroll-scrubbed video) ===== */
+#fly{position:relative;height:420vh}
+#fly .fs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05060c}
+#flyc{position:absolute;inset:0;width:100%;height:100%}
+#fly .fv{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 45%,rgba(3,2,6,.75) 100%),linear-gradient(180deg,rgba(3,2,6,.55),transparent 30%,transparent 70%,rgba(3,2,6,.85))}
+#fly .ft{position:absolute;left:50%;bottom:12vh;transform:translateX(-50%);text-align:center;opacity:0;width:min(760px,90vw)}
+#fly .ft .eb{font-family:Cinzel;font-size:12px;letter-spacing:.42em;color:var(--gold2);text-transform:uppercase}
+#fly .ft h2{font-family:Cinzel;font-weight:700;font-size:clamp(30px,4.2vw,62px);line-height:1.08;margin-top:14px;text-shadow:0 6px 40px rgba(0,0,0,.7)}
+#fly .ft h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
+#flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 55%,#ffe2a0,#d9a441 40%,#2a1606);opacity:0;pointer-events:none;mix-blend-mode:screen}
 /* ===== journey ===== */
 #journey{position:relative;height:760vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--night)}
@@ -209,7 +219,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 #snd .eq{display:flex;gap:3px;align-items:flex-end;height:14px}#snd .eq i{width:2px;height:4px;background:var(--gold2);transition:height .2s}
 #snd.on .eq i{animation:eq .9s ease-in-out infinite alternate}#snd.on .eq i:nth-child(2){animation-delay:.2s}#snd.on .eq i:nth-child(3){animation-delay:.45s}#snd.on .eq i:nth-child(4){animation-delay:.1s}
 @keyframes eq{from{height:3px}to{height:14px}}
-@media(max-width:900px){#snd{bottom:70px;padding:10px 14px}}
+@media(max-width:900px){#snd{bottom:70px;padding:10px 14px}#fly .ft{bottom:22vh}}
 @media(max-width:900px){
  .nlinks{display:none}nav .btn{padding:12px 16px;font-size:11px}
  #walker{left:50%;height:30vh;bottom:9vh}#shadow{left:50%;bottom:8.4vh;width:17vh}
@@ -235,13 +245,21 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 <div id="cur"></div>
 <nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>SAHRA</a><div class="nlinks"><a href="#expeditions">Expeditions</a><a href="#mysteries">Mysteries</a><a href="#decoder">Hieroglyphs</a><a href="#guide">Your guide</a><a href="#faq">FAQ</a></div><a class="btn" href="#book">Reserve <span class="ar">→</span></a></nav>
 
-<section id="journey"><a id="top"></a>
+<section id="fly"><a id="top"></a>
+ <div class="fs"><canvas id="flyc"></canvas><canvas id="flyDust" style="position:absolute;inset:0;pointer-events:none"></canvas><div class="fv"></div>
+  <div id="intro"><div class="k">Egypt after dark · Private expeditions</div><h1 id="ttl"><span>S</span><span>A</span><span>H</span><span>R</span><span>A</span></h1><p>Five thousand years of secrets. One night to see them.</p><div class="scr"><i></i>Scroll to enter the pyramid</div></div>
+  <div class="ft" id="ft1"><div class="eb">Giza · After closing</div><h2>When the gates close, <em>the pyramid opens.</em></h2></div>
+  <div class="ft" id="ft2"><div class="eb">Inside the Great Pyramid</div><h2>Torches. Gold. <em>Silence.</em></h2></div>
+  <div id="flash"></div>
+ </div>
+</section>
+
+<section id="journey">
  <div class="stage" id="stage">
   <div class="scene" id="sDesert"></div><div class="scene" id="sGiza"></div><div class="scene" id="sKarnak"></div><div class="scene" id="sTomb"></div>
   <div class="grade" id="grade"></div><canvas id="sandfx"></canvas>
   <div id="hero"><div id="shadow"></div><canvas id="walker" width="540" height="960"></canvas></div>
   <div class="vig"></div>
-  <div id="intro"><div class="k">Egypt after dark · Private expeditions</div><h1 id="ttl"><span>S</span><span>A</span><span>H</span><span>R</span><span>A</span></h1><p>Five thousand years of secrets. One night to see them.</p><div class="scr"><i></i>Scroll to follow the cat</div></div>
   <div class="chap" id="c1"><div class="eb">Chapter I · The Endless Sands</div><h2>The desert <em>keeps</em> its oldest stories.</h2><p>Ride out at dusk with Bedouin guides, watch the sky burn gold over the dunes, and follow the same stars the caravans used for millennia.</p><div class="tag"><span>Camel caravan</span><span>Dune sunset</span><span>Desert camp</span></div></div>
   <div class="chap" id="c2"><div class="eb">Chapter II · Giza by Moonlight</div><h2>Stand before the <em>Sphinx</em> when the crowds are gone.</h2><p>After closing, the plateau is yours. The Great Pyramid glows under the moon while an Egyptologist tells you what the books leave out.</p><div class="tag"><span>After-hours access</span><span>Private Egyptologist</span><span>Full moon dates</span></div></div>
   <div class="chap" id="c3"><div class="eb">Chapter III · Avenue of Sphinxes</div><h2>Walk where the <em>pharaohs</em> walked.</h2><p>Karnak by torchlight: a mile of ram-headed sphinxes, columns as tall as trees and a sky so dark you can see the Milky Way over Luxor.</p><div class="tag"><span>Torch-lit walk</span><span>Luxor</span><span>Stargazing</span></div></div>
@@ -346,12 +364,25 @@ const cl=x=>Math.max(0,Math.min(1,x)),seg=(t,a,b)=>cl((t-a)/(b-a)),ease=x=>{x=cl
 const mob=matchMedia('(max-width:900px)').matches;
 const SC=['Desert','Giza','Karnak','Tomb'];
 if(mob)SC.forEach(n=>{const el=$('#s'+n);el.style.backgroundImage=getComputedStyle(el).backgroundImage.replace(`${n.toLowerCase()}.webp`,`${n.toLowerCase()}-m.webp`)});
-/* preload walk frames */
-const N=120,frames=[];let loaded=0;
+/* preload fly-through + walk frames */
+const N=120,FN=150,frames=[],fly=[];let loaded=0;const TOT=N+FN;
 const done=()=>{$('#loader').classList.add('done');start()};
-for(let i=0;i<N;i++){const im=new Image();im.decoding='async';im.src=`img/walk/w${String(i).padStart(3,'0')}.webp`;
- im.onload=im.onerror=()=>{loaded++;const p=Math.round(loaded/N*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Opening the tomb… ${p}%`;if(loaded===N)setTimeout(done,500)};frames[i]=im}
-setTimeout(()=>{if(!$('#loader').classList.contains('done'))done()},9000);
+const onL=()=>{loaded++;const p=Math.round(loaded/TOT*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Opening the tomb… ${p}%`;if(loaded===TOT)setTimeout(done,500)};
+for(let i=0;i<FN;i++){const im=new Image();im.decoding='async';im.src=`img/fly/f${String(i+1).padStart(3,'0')}.webp`;im.onload=im.onerror=onL;fly[i]=im}
+for(let i=0;i<N;i++){const im=new Image();im.decoding='async';im.src=`img/walk/w${String(i).padStart(3,'0')}.webp`;im.onload=im.onerror=onL;frames[i]=im}
+setTimeout(()=>{if(!$('#loader').classList.contains('done'))done()},12000);
+/* fly-through canvas (cover fit, hi-dpi) */
+const fc=$('#flyc'),fx=fc.getContext('2d');let lastFly=-1;
+function fsz(){const d=Math.min(devicePixelRatio||1,2);fc.width=innerWidth*d;fc.height=innerHeight*d;lastFly=-1}fsz();addEventListener('resize',fsz);
+function drawFly(f){f=Math.max(0,Math.min(FN-1,Math.round(f)));if(f===lastFly)return;const im=fly[f];if(!(im&&im.complete&&im.naturalWidth))return;
+ const W=fc.width,H=fc.height,r=Math.max(W/im.naturalWidth,H/im.naturalHeight)*1.04,w=im.naturalWidth*r,h=im.naturalHeight*r;fx.drawImage(im,(W-w)/2,(H-h)/2,w,h);lastFly=f}
+const FL=$('#fly');let ftp=0,fsp=0;
+function flyStep(p){
+ drawFly(p*(FN-1));
+ const io=1-ease(seg(p,0,.14));$('#intro').style.opacity=io;$('#intro').style.transform=`translateY(${-(1-io)*80}px) scale(${1+(1-io)*.08})`;$('#intro').style.filter=`blur(${(1-io)*10}px)`;
+ [['#ft1',.30,.56],['#ft2',.64,.88]].forEach(([id,a,b])=>{const k=out(seg(p,a,a+.07))*(1-ease(seg(p,b-.06,b)));const el=$(id);el.style.opacity=k;el.style.transform=`translateX(-50%) translateY(${(1-k)*30}px)`;el.style.filter=`blur(${(1-k)*6}px)`});
+ $('#flash').style.opacity=ease(seg(p,.9,1))*.85;
+}
 const wc=$('#walker'),wx=wc.getContext('2d');let lastF=-1;
 function drawFrame(f){f=Math.max(0,Math.min(N-1,f|0));if(f===lastF)return;const im=frames[f];if(im&&im.complete&&im.naturalWidth){wx.clearRect(0,0,wc.width,wc.height);wx.drawImage(im,0,0,wc.width,wc.height);lastF=f}}
 /* blowing sand + gold dust */
@@ -368,13 +399,12 @@ function journey(p,t){
  const pans=[[0,.32],[.24,.56],[.48,.80],[.72,1]];
  SC.forEach((n,i)=>{const el=$('#s'+n),k=seg(p,pans[i][0],pans[i][1]);el.style.opacity=op[i];el.style.transform=`translate3d(${-k*6}%,0,0) scale(${1.08+k*.07})`});
  let g=grades[0];for(let i=1;i<4;i++)g=g.map((v,j)=>lerp(v,grades[i][j],op[i]));
- $('#grade').style.background=`radial-gradient(90% 70% at 70% 30%,rgba(${g.map(Math.round).join(',')},.5),transparent 70%)`;
+ $('#stage').style.filter=`brightness(${1+(1-ease(seg(p,0,.05)))*.8})`;$('#grade').style.background=`radial-gradient(90% 70% at 70% 30%,rgba(${g.map(Math.round).join(',')},.5),transparent 70%)`;
  const walkP=seg(p,.06,.95);drawFrame(walkP*(N-1));
  const enter=out(seg(p,.02,.12)),exit=ease(seg(p,.90,.99)),baseL=mob?50:28;
  wc.style.left=`${lerp(baseL-30,baseL,enter)+exit*(mob?60:45)}%`;wc.style.transform='translateX(-50%)';
  $('#shadow').style.left=wc.style.left;wc.style.opacity=enter*(1-exit);$('#shadow').style.opacity=enter*(1-exit);
- const io=1-ease(seg(p,0,.06));$('#intro').style.opacity=io;$('#intro').style.transform=`translateY(${-(1-io)*60}px)`;
- [['#c1',.08,.25],['#c2',.32,.49],['#c3',.56,.73],['#c4',.80,.90]].forEach(([id,s,e])=>{const k=out(seg(p,s,s+.04))*(1-ease(seg(p,e-.03,e)));const el=$(id);el.style.opacity=k;
+ [['#c1',.05,.25],['#c2',.32,.49],['#c3',.56,.73],['#c4',.80,.90]].forEach(([id,s,e])=>{const k=out(seg(p,s,s+.04))*(1-ease(seg(p,e-.03,e)));const el=$(id);el.style.opacity=k;
   el.style.transform=(mob?'':'translateY(-50%) ')+`translateY(${(1-k)*40}px)`;el.style.filter=`blur(${(1-k)*8}px)`});
  const f=out(seg(p,.92,.98));$('#finale').style.opacity=f;$('#finale').classList.toggle('on',f>.5);eyeP.style.strokeDashoffset=600*(1-ease(seg(p,.91,.99)));
  const rp=seg(p,.06,.9);$('#rfill').style.width=rp*100+'%';$('#rdot').style.left=rp*100+'%';$('#route').style.opacity=out(seg(p,.05,.1))*(1-ease(seg(p,.9,.95)));
@@ -384,6 +414,7 @@ function journey(p,t){
   dx.fillStyle=`rgba(${col},${q.o*(.6+.4*Math.sin(t*.003+q.w))})`;dx.beginPath();dx.arc(x,y,q.r,0,7);dx.fill()});
 }
 function tick(t){
+ const fr=FL.getBoundingClientRect();ftp=cl(-fr.top/(FL.offsetHeight-innerHeight));fsp+=window.__snap?(ftp-fsp):(ftp-fsp)*.12;if(Math.abs(ftp-fsp)<.0001)fsp=ftp;if(fr.bottom>0)flyStep(fsp);
  const r=J.getBoundingClientRect(),H=J.offsetHeight-innerHeight;
  tp=cl(-r.top/H);sp+=window.__snap?(tp-sp):(tp-sp)*.1;if(Math.abs(tp-sp)<.0001)sp=tp;
  if(r.bottom>0)journey(sp,t);
@@ -391,7 +422,7 @@ function tick(t){
 function start(){
  letters.forEach((s,i)=>{s.animate([{opacity:0,transform:'translateY(70px) scale(.9)',filter:'blur(14px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1400,delay:200+i*110,easing:'cubic-bezier(.2,.7,.2,1)',fill:'both'})});
  requestAnimationFrame(tick)}
-addEventListener('scroll',()=>{$('#nav').classList.toggle('solid',scrollY>J.offsetHeight-innerHeight*.9)},{passive:true});
+addEventListener('scroll',()=>{$('#nav').classList.toggle('solid',scrollY>FL.offsetHeight+J.offsetHeight-innerHeight*.9)},{passive:true});
 /* cursor glow */
 const cur=$('#cur');addEventListener('pointermove',e=>{cur.style.transform=`translate(${e.clientX}px,${e.clientY}px)`},{passive:true});
 /* reveal */
