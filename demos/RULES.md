@@ -58,3 +58,8 @@ Reference: demos/wanderly + demos/instagram/07-wanderly-laptop-reel.mp4
 - Add theme music (generated with Web Audio, toggle button) when it fits the theme.
 - Add at least 2 signature interactions per site (e.g. hieroglyph decoder, torch-light reveal, tilt cards, scramble text).
 - Remove Gemini watermark from everything, max quality, test desktop + mobile before showing.
+
+## SAHRA lesson (Joni, 19 Oct): rejected as "third class"
+- Do NOT add a mascot/character unless Joni asks for it; it must have a real role in the story.
+- Never upscale 720p AI video for full-screen scroll; use 1080p/4K sources only (Pexels/Pixabay 4K stock or 1080p AI).
+- Sections must not cut in before a video finishes; mobile must look as good as desktop.
