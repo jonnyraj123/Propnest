@@ -204,6 +204,12 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 #toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,200%);visibility:hidden;background:#140f09;border:1px solid var(--gold);color:var(--gold2);padding:16px 26px;z-index:90;transition:transform .5s cubic-bezier(.2,.7,.2,1);font-size:14.5px;letter-spacing:.04em}
 #toast.on{transform:translate(-50%,0);visibility:visible}
 #cur{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(217,164,65,.07),transparent 65%);transition:opacity .4s}
+#snd{position:fixed;right:clamp(16px,3vw,36px);bottom:clamp(16px,3vw,36px);z-index:60;display:flex;align-items:center;gap:12px;padding:12px 18px;background:rgba(7,6,10,.7);border:1px solid rgba(217,164,65,.5);backdrop-filter:blur(12px);color:var(--gold2);font-family:Cinzel;font-size:11px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:border-color .3s}
+#snd:hover{border-color:var(--gold2)}
+#snd .eq{display:flex;gap:3px;align-items:flex-end;height:14px}#snd .eq i{width:2px;height:4px;background:var(--gold2);transition:height .2s}
+#snd.on .eq i{animation:eq .9s ease-in-out infinite alternate}#snd.on .eq i:nth-child(2){animation-delay:.2s}#snd.on .eq i:nth-child(3){animation-delay:.45s}#snd.on .eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{from{height:3px}to{height:14px}}
+@media(max-width:900px){#snd{bottom:70px;padding:10px 14px}}
 @media(max-width:900px){
  .nlinks{display:none}nav .btn{padding:12px 16px;font-size:11px}
  #walker{left:50%;height:30vh;bottom:9vh}#shadow{left:50%;bottom:8.4vh;width:17vh}
@@ -331,6 +337,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="big">SAHRA</div>
  <div class="legal"><span>© 2026 SAHRA. Concept website by <a href="https://plastrixstudio.com" style="text-decoration:underline">Plastrix Studio</a> · brand and content are fictional.</span><span>Made under the desert stars.</span></div>
 </div></footer>
+<button id="snd" aria-label="Play Egyptian music"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Play music</span></button>
 <div id="toast">Your request has been sealed. Expect our reply within 24 hours 𓂀</div>
 
 <script>
@@ -409,6 +416,28 @@ $$('.qa button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElem
 /* form */
 $('#bf').addEventListener('submit',e=>{e.preventDefault();$('#toast').classList.add('on');setTimeout(()=>$('#toast').classList.remove('on'),3800);e.target.reset()});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();scrollTo({top:t.getBoundingClientRect().top+scrollY-(a.getAttribute('href')==='#top'?0:70),behavior:'smooth'})}));
+
+/* ===== Egyptian ambient music (generated live, Hijaz scale: oud plucks + ney + frame drum + drone) ===== */
+let AC=null,master=null,musicOn=false,nextBeat=0,beatN=0,timer=null;
+const D=146.83,HJ=[1,16/15,5/4,4/3,3/2,8/5,9/5,2];
+function pluck(f,t,v=.18){const o=AC.createOscillator(),o2=AC.createOscillator(),g=AC.createGain(),fl=AC.createBiquadFilter();o.type='sawtooth';o2.type='triangle';o.frequency.value=f;o2.frequency.value=f*2.003;fl.type='lowpass';fl.frequency.setValueAtTime(3200,t);fl.frequency.exponentialRampToValueAtTime(400,t+.6);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.005);g.gain.exponentialRampToValueAtTime(.0008,t+1.4);o.connect(fl);o2.connect(fl);fl.connect(g);g.connect(master);g.connect(rev);o.start(t);o2.start(t);o.stop(t+1.5);o2.stop(t+1.5)}
+function ney(f,t,d){const o=AC.createOscillator(),g=AC.createGain(),l=AC.createOscillator(),lg=AC.createGain(),n=AC.createBufferSource(),nf=AC.createBiquadFilter(),ng=AC.createGain();o.type='sine';o.frequency.value=f;l.frequency.value=5;lg.gain.value=f*.012;l.connect(lg);lg.connect(o.frequency);n.buffer=noise;nf.type='bandpass';nf.frequency.value=f*2;nf.Q.value=3;ng.gain.value=.05;n.connect(nf);nf.connect(ng);ng.connect(g);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+.35);g.gain.setValueAtTime(.09,t+d-.4);g.gain.linearRampToValueAtTime(0,t+d);o.connect(g);g.connect(rev);g.connect(master);[o,l,n].forEach(x=>{x.start(t);x.stop(t+d+.1)})}
+function drum(t,low){const o=AC.createOscillator(),g=AC.createGain();o.frequency.setValueAtTime(low?110:320,t);o.frequency.exponentialRampToValueAtTime(low?52:180,t+.12);g.gain.setValueAtTime(low?.5:.16,t);g.gain.exponentialRampToValueAtTime(.001,t+(low?.35:.09));o.connect(g);g.connect(master);o.start(t);o.stop(t+.4)}
+let noise,rev,drone=[];
+function initAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+ noise=AC.createBuffer(1,AC.sampleRate*2,AC.sampleRate);const nd=noise.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+ rev=AC.createConvolver();const ir=AC.createBuffer(2,AC.sampleRate*3.5,AC.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.6)}rev.buffer=ir;const rg=AC.createGain();rg.gain.value=.55;rev.connect(rg);rg.connect(master);
+ [D/2,D/2*1.5,D/4].forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),fl=AC.createBiquadFilter();o.type='sawtooth';o.frequency.value=f;o.detune.value=i*3;fl.type='lowpass';fl.frequency.value=380;g.gain.value=.05;o.connect(fl);fl.connect(g);g.connect(master);g.connect(rev);o.start();drone.push(o)})}
+const RH=[[1,1],[0,0],[0,0],[1,0],[0,0],[1,0],[1,1],[0,0]];/* maqsum-style: 1=hit, second=low dum */
+let phrase=0;
+function sched(){const bt=60/84/2;while(nextBeat<AC.currentTime+.3){const s=beatN%8,r=RH[s];if(r[0])drum(nextBeat,r[1]);
+ if(s%2===0&&Math.random()<.62){const deg=[0,1,2,3,4,3,2,1,0,5,4,2][(beatN/2+phrase)%12|0];pluck(D*HJ[deg]*(Math.random()<.25?2:1),nextBeat,.14)}
+ if(beatN%32===0){phrase=Math.random()*12|0;ney(D*2*HJ[[4,5,7,2][Math.random()*4|0]],nextBeat+.2,bt*14)}
+ nextBeat+=bt;beatN++}}
+$('#snd').addEventListener('click',()=>{if(!AC)initAudio();musicOn=!musicOn;const t=AC.currentTime;
+ if(musicOn){AC.resume();nextBeat=t+.1;master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(.7,t,.6);timer=setInterval(sched,80)}
+ else{master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(0,t,.3);setTimeout(()=>{if(!musicOn)clearInterval(timer)},1200)}
+ $('#snd').classList.toggle('on',musicOn);$('#sndT').textContent=musicOn?'Music on':'Play music'});
 </script>
 </body>
 </html>
