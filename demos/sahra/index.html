@@ -96,23 +96,60 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
 .nbtn{font-family:Cinzel;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--gold);padding:13px 24px;transition:background .3s,color .3s}
 .nbtn:hover{background:var(--gold);color:#111}
 .nlinks{font-family:Cinzel;text-transform:none!important;letter-spacing:.06em!important;font-size:15px!important}
-/* ===== FLY (scroll-scrubbed 4K aerial) ===== */
-#fly{position:relative;height:460vh}
-#fly .fs{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#07050a}
-#flyc{position:absolute;inset:0;width:100%;height:100%}
-#fly .sky{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,22,.92) 0%,rgba(10,9,26,.6) 24%,transparent 46%,transparent 70%,rgba(5,3,2,.85) 100%)}
-#fly .vg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 55%,transparent 45%,rgba(3,2,2,.8) 100%)}
-#flyStars{position:absolute;inset:0;pointer-events:none}
-.lens{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(28% 20% at var(--lx,70%) 18%,rgba(255,214,150,.35),transparent 70%)}
-#fly .ft{position:absolute;left:clamp(20px,7vw,120px);bottom:16vh;max-width:min(640px,86vw);opacity:0}
-#fly .ft.r{left:auto;right:clamp(20px,7vw,120px);text-align:right}
 .eb{font-family:Cinzel;font-size:12px;letter-spacing:.42em;color:var(--gold2);text-transform:uppercase}
-#fly .ft h2,.chap h2{font-family:Cinzel;font-weight:700;font-size:clamp(34px,4.6vw,72px);line-height:1.04;margin-top:16px;text-shadow:0 6px 40px rgba(0,0,0,.75)}
-#fly .ft h2 em,.chap h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
-#fly .ft p,.chap p{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(243,233,214,.9);margin-top:16px;text-shadow:0 2px 20px rgba(0,0,0,.7)}
-#bigword{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Cinzel;font-weight:900;font-size:clamp(80px,19vw,330px);letter-spacing:.2em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(244,212,138,.55);opacity:0;pointer-events:none}
+/* ===== STORY (user film in 3D frame + ambilight) ===== */
+#story{position:relative;min-height:100vh;padding:clamp(80px,9vw,130px) clamp(18px,5vw,64px);overflow:hidden;background:radial-gradient(80% 60% at 70% 50%,#1a1430,#07060a 70%)}
+#story .amb{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(60px) saturate(1.5) brightness(.75);opacity:.85;transform:scale(1.1)}
+#story .ambshade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,10,.92) 0%,rgba(7,6,10,.55) 45%,rgba(7,6,10,.2) 100%),linear-gradient(180deg,#07060a,transparent 18%,transparent 82%,#07060a)}
+.swrap{position:relative;max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.chlist{list-style:none;margin-top:34px;display:flex;flex-direction:column;gap:6px;counter-reset:c}
+.chlist li{display:flex;gap:18px;align-items:flex-start;padding:12px 16px;border-left:1px solid rgba(217,164,65,.2);cursor:pointer;transition:background .4s,border-color .4s,transform .4s;position:relative}
+.chlist li .n{font-family:Cinzel;font-weight:700;color:rgba(217,164,65,.55);min-width:38px;font-size:15px;transition:color .4s}
+.chlist li b{font-family:Cinzel;font-size:15.5px;letter-spacing:.08em;color:rgba(243,233,214,.6);transition:color .4s}
+.chlist li p{font-size:14px;line-height:1.55;color:var(--mute);max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .5s,margin .5s}
+.chlist li.on{border-left:2px solid var(--gold2);background:linear-gradient(90deg,rgba(255,150,50,.14),transparent);transform:translateX(6px)}
+.chlist li.on .n,.chlist li.on b{color:var(--gold2)}.chlist li.on p{max-height:60px;opacity:1;margin-top:6px}
+.chlist li:hover b{color:var(--ink)}
+.sstage{position:relative;perspective:1400px;display:flex;justify-content:center}
+.frame{position:relative;width:min(380px,30vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;transform-style:preserve-3d;transform:rotateY(-14deg) rotateX(4deg);transition:transform .25s ease-out;
+ box-shadow:0 0 0 1px rgba(244,212,138,.55),0 0 0 8px rgba(20,14,8,.85),0 0 0 9px rgba(217,164,65,.5),0 60px 120px -30px rgba(0,0,0,.9),0 0 120px rgba(255,150,50,.25)}
+.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fshine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);background-size:250% 100%;background-position:var(--sx,100%) 0;mix-blend-mode:screen}
+.frame .cap{position:absolute;left:18px;right:18px;bottom:30px;font-family:Cinzel;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);text-shadow:0 2px 12px #000;transition:opacity .5s}
+.sbar{position:absolute;left:18px;right:18px;bottom:16px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}.sbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ember),var(--gold2))}
+.fglow{position:absolute;left:50%;bottom:-40px;width:70%;height:80px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,140,40,.55),transparent);filter:blur(20px);pointer-events:none}
+/* ===== premium 3D buttons + orange click glow ===== */
+.btn{transform-style:preserve-3d;box-shadow:0 1px 0 rgba(255,245,210,.6) inset,0 -3px 0 rgba(120,70,10,.55) inset,0 6px 0 #6e4710,0 14px 30px -6px rgba(255,140,40,.45);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background-position .6s;clip-path:none!important;border-radius:4px}
+.btn:hover{transform:translateY(-3px) rotateX(8deg);box-shadow:0 1px 0 rgba(255,245,210,.7) inset,0 -3px 0 rgba(120,70,10,.55) inset,0 9px 0 #6e4710,0 22px 40px -6px rgba(255,140,40,.6)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(255,245,210,.5) inset,0 2px 0 #6e4710,0 6px 16px -4px rgba(255,140,40,.5)}
+.btn:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;transition:background-position .9s;pointer-events:none}
+.btn:hover:before{background-position:-20% 0}
+.btn.ghost,.nbtn{box-shadow:0 0 0 1px var(--gold) inset,0 6px 0 rgba(110,71,16,.6),0 14px 30px -10px rgba(255,140,40,.3);border:0}
+.btn.ghost:hover{box-shadow:0 0 0 1px var(--gold2) inset,0 9px 0 rgba(110,71,16,.7),0 22px 40px -10px rgba(255,140,40,.5)}
+.lit-burst{position:fixed;width:20px;height:20px;margin:-10px;border-radius:50%;pointer-events:none;z-index:95;background:radial-gradient(circle,rgba(255,190,90,.95),rgba(255,120,30,.55) 35%,rgba(255,90,20,0) 70%);mix-blend-mode:screen;animation:burst .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes burst{to{transform:scale(28);opacity:0}}
+#pageGlow{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 1.4s ease;background:radial-gradient(60% 50% at var(--gx,50%) var(--gy,50%),rgba(255,120,30,.28),transparent 70%);mix-blend-mode:screen}
+#pageGlow.on{opacity:1;transition:opacity .15s}
+.glowup{animation:glowup 1.2s ease-out}
+@keyframes glowup{0%{box-shadow:0 0 0 0 rgba(255,140,40,.9),0 0 80px 30px rgba(255,140,40,.6)}100%{box-shadow:0 0 0 18px rgba(255,140,40,0),0 0 0 0 rgba(255,140,40,0)}}
+.tilt{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+/* richer palette: lapis + gold */
+.mys{background:radial-gradient(70% 60% at 50% 0%,#14204a,var(--night) 70%)!important}
+#decoder{background:radial-gradient(60% 70% at 85% 50%,rgba(31,79,168,.22),transparent 70%)}
+.stats{background:linear-gradient(90deg,#0c0907,#121a36 50%,#0c0907)!important}
+.torch .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.05)}
+.torch .dark{position:absolute;inset:0;background:#050302;-webkit-mask:radial-gradient(circle 230px at var(--tx,50%) var(--ty,50%),transparent 0%,rgba(0,0,0,.35) 45%,#000 100%);mask:radial-gradient(circle 230px at var(--tx,50%) var(--ty,50%),transparent 0%,rgba(0,0,0,.35) 45%,#000 100%)}
+@media(max-width:900px){
+ #story{padding:80px 18px}.swrap{grid-template-columns:1fr}
+ .sstage{order:-1}.frame{width:min(86vw,420px);transform:none}.fglow{display:none}
+ .chlist li p{max-height:60px;opacity:1;margin-top:6px}.chlist li{padding:10px 12px}
+ #story .ambshade{background:linear-gradient(180deg,#07060a,rgba(7,6,10,.55) 15%,rgba(7,6,10,.75) 60%,#07060a)}
+}
+.chap h2{font-family:Cinzel;font-weight:700;font-size:clamp(34px,4.6vw,72px);line-height:1.04;margin-top:16px;text-shadow:0 6px 40px rgba(0,0,0,.75)}
+.chap h2 em{font-family:Fraunces;font-style:italic;font-weight:400;color:var(--gold2)}
+.chap p{font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:rgba(243,233,214,.9);margin-top:16px;text-shadow:0 2px 20px rgba(0,0,0,.7)}
 /* ===== JOURNEY (night chapters, eye-shaped reveals) ===== */
-#journey{position:relative;height:620vh}
+#journey{position:relative;height:520vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05040a}
 .scene{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
 .scene .ph{position:absolute;inset:-6%;background-size:cover;background-position:center;will-change:transform}
@@ -150,7 +187,6 @@ nav.solid{background:rgba(7,6,10,.72);backdrop-filter:blur(16px);padding-top:14p
  #hero .scr{top:calc(100svh - 80px);bottom:auto}#hero .scr .mouse{display:none}
  .icards{position:relative;left:auto;right:auto;bottom:auto;grid-template-columns:1fr;gap:12px;padding:10px 18px 40px}.ic{height:118px}
  .brand .sep,.brand small{display:none}.nbtn{padding:10px 12px;font-size:9.5px;letter-spacing:.14em}
- #fly .ft,#fly .ft.r{left:20px;right:20px;text-align:left;bottom:14vh}
  .chap,.chap.r{left:20px;right:20px;width:auto;top:auto;bottom:90px;transform:none}
 }
 /* ===== content ===== */
@@ -288,7 +324,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 @media(max-width:900px){
  .nlinks{display:none}nav .btn{padding:12px 16px;font-size:11px}
  .chap:before{inset:-30px -20px}
- .chap h2,#fly .ft h2{font-size:32px}
+ .chap h2{font-size:32px}
  .chap p{font-size:15px}
  .stats{grid-template-columns:repeat(2,1fr);row-gap:30px}
  .cards,.revs{grid-template-columns:1fr}
@@ -303,13 +339,14 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 </style>
 </head>
 <body>
+<div id="pageGlow"></div>
 <div id="gate"><div class="half t"></div><div class="half b"></div>
  <div class="gc"><svg viewBox="0 0 200 110"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96"/></svg><div class="lg">SAHRA</div>
   <div id="gload"><div class="bar"><i id="lbar"></i></div><small id="lpct" style="display:block;text-align:center;margin-top:14px">Unsealing the tomb… 0%</small></div>
   <div id="enter"><button class="btn" id="enterBtn">Enter ancient Egypt <span class="ar">→</span></button><p>Sound on for the full experience</p></div></div>
 </div>
 <div id="cur"></div>
-<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110" style="width:46px"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg><span class="sep"></span><span class="bt">SAHRA<small>Echoes of Egypt</small></span></a><div class="nlinks"><a href="#fly">Explore</a><a href="#journey">Temples</a><a href="#mysteries">Mythology</a><a href="#expeditions">The Journey</a></div><a class="nbtn" href="#book">Enter the world ↗</a></nav>
+<nav id="nav"><a class="brand" href="#top"><svg viewBox="0 0 200 110" style="width:46px"><path d="M10 40 Q100 -10 190 40 M10 52 Q100 5 190 52 Q100 100 10 52 M100 52 m-16 0 a16 16 0 1 0 32 0 a16 16 0 1 0 -32 0 M92 66 L80 104 M120 66 Q150 90 128 104 Q112 108 116 96" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg><span class="sep"></span><span class="bt">SAHRA<small>Echoes of Egypt</small></span></a><div class="nlinks"><a href="#story">Explore</a><a href="#journey">Temples</a><a href="#mysteries">Mythology</a><a href="#expeditions">The Journey</a></div><a class="nbtn" href="#book">Enter the world ↗</a></nav>
 
 <section id="hero"><a id="top"></a>
  <div class="base" id="hbase"></div><canvas id="stars"></canvas><div class="glow"></div>
@@ -319,7 +356,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="hc"><h1 id="ttl"><span class="w"><b>W</b>ALK</span> <span class="w"><b>B</b>ETWEEN</span> <span class="w"><b>W</b>ORLDS</span></h1>
   <div class="orn"><svg viewBox="0 0 18 26"><path d="M9 11C4 8 5 1 9 1s5 7 0 10Zm0 0v14M2 13h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
   <p class="tl">A living journey through the mysteries of ancient Egypt</p>
-  <div class="cta"><a class="btn gold" href="#fly">Begin your journey <span class="ar">→</span></a><a class="btn ghost" href="#mysteries">Discover the myths</a></div>
+  <div class="cta"><a class="btn gold" href="#story">Begin your journey <span class="ar">→</span></a><a class="btn ghost" href="#mysteries">Discover the myths</a></div>
  </div>
  <div class="scr"><div class="mouse"></div>Scroll to descend</div>
  <div class="icards">
@@ -329,11 +366,11 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  </div>
 </section>
 
-<section id="fly">
- <div class="fs"><canvas id="flyc"></canvas><div class="sky"></div><canvas id="flyStars"></canvas><div class="lens" id="lens"></div><div class="vg"></div>
-  <div id="bigword">GIZA</div>
-  <div class="ft" id="ft1"><div class="eb">Giza plateau · 2560 BC</div><h2>Built to <em>outlast</em> time itself.</h2><p>2.3 million stone blocks, aligned to true north. Fly in with us as the sun goes down.</p></div>
-  <div class="ft r" id="ft2"><div class="eb">The last wonder standing</div><h2>When the gates close, <em>the pyramids are yours.</em></h2></div>
+<section id="story">
+ <video class="amb" id="amb" src="media/story-blur.mp4" muted loop playsinline preload="none"></video><div class="ambshade"></div>
+ <div class="swrap">
+  <div class="stext"><div class="kick">The legend · Chapter by chapter</div><h2 class="h2">A story told <em>in gold.</em></h2><ol class="chlist" id="chlist"><li data-t="0" class="on"><span class="n">I</span><div><b>The Procession</b><p>Torches line the avenue as the priestess walks to the temple.</p></div></li><li data-t="4"><span class="n">II</span><div><b>Written in Gold</b><p>The old words begin to glow on her skin.</p></div></li><li data-t="8"><span class="n">III</span><div><b>The Living Walls</b><p>One touch, and the hieroglyphs wake up.</p></div></li><li data-t="16"><span class="n">IV</span><div><b>The Sacred Scarab</b><p>Khepri rises, carrying the sun on golden wings.</p></div></li><li data-t="20"><span class="n">V</span><div><b>The Pharaoh's Oath</b><p>A promise sealed in gold before the gods.</p></div></li><li data-t="28"><span class="n">VI</span><div><b>Hall of Judgement</b><p>The floor is a map of the afterlife.</p></div></li><li data-t="36"><span class="n">VII</span><div><b>The Eye of Ra</b><p>Ra sees everything, even what you hide.</p></div></li><li data-t="44"><span class="n">VIII</span><div><b>The Queen Awakens</b><p>And the last queen of the night takes her throne.</p></div></li></ol></div>
+  <div class="sstage" id="sstage"><div class="frame" id="sframe"><video id="sv" src="media/story.mp4" poster="media/story-poster.jpg" muted loop playsinline preload="metadata"></video><div class="fshine"></div><div class="cap" id="scap">The Procession</div><div class="sbar"><i id="sbar"></i></div></div><div class="fglow"></div></div>
  </div>
 </section>
 
@@ -401,7 +438,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 </div></section>
 
 <section class="blk" id="tomb" style="padding-top:0"><div class="wrap"><div class="rv"><div class="kick">Inside the tomb</div><h2 class="h2">Bring your own <em>light.</em></h2><p class="lead">Move your torch across the wall. This is how the burial chambers looked to the first explorers who opened them.</p></div>
- <div class="torch rv" id="torch"><div class="dim"></div><div class="lit"></div><div class="flame"></div><div class="cap">Move to explore ↔</div></div>
+ <div class="torch rv" id="torch"><video class="vid" src="media/wall.mp4" muted loop playsinline autoplay preload="none"></video><div class="dark"></div><div class="flame"></div><div class="cap">Move to explore ↔</div></div>
 </div></section>
 
 <section class="blk" id="stories"><div class="wrap"><div class="rv"><div class="kick">Guest stories</div><h2 class="h2">Told by those <em>who went in.</em></h2></div>
@@ -446,11 +483,10 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const cl=x=>Math.max(0,Math.min(1,x)),seg=(t,a,b)=>cl((t-a)/(b-a)),ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},out=x=>1-Math.pow(1-cl(x),3),lerp=(a,b,k)=>a+(b-a)*k;
 const mob=matchMedia('(max-width:900px)').matches;
-/* ===== preload: scroll frames ===== */
-const FN=120,fly=[];let loaded=0,ready=false;const FDIR=mob?'img/fly3p':'img/fly3';
-const showEnter=()=>{if(ready)return;ready=true;$('#gload').style.display='none';$('#enter').classList.add('on')};
-for(let i=0;i<FN;i++){const im=new Image();im.decoding='async';im.src=`${FDIR}/f${String(i+1).padStart(3,'0')}.webp`;im.onload=im.onerror=()=>{loaded++;const p=Math.round(loaded/FN*100);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Unsealing the tomb… ${p}%`;if(loaded===FN)setTimeout(showEnter,300)};fly[i]=im}
-setTimeout(showEnter,10000);
+/* ===== preload hero ===== */
+let ready=false;const showEnter=()=>{if(ready)return;ready=true;$('#gload').style.display='none';$('#enter').classList.add('on')};
+{const im=new Image();let p=0;const iv=setInterval(()=>{p=Math.min(p+7,im.complete&&im.naturalWidth?100:90);$('#lbar').style.width=p+'%';$('#lpct').textContent=`Unsealing the tomb… ${p}%`;if(p>=100){clearInterval(iv);setTimeout(showEnter,250)}},90);im.src=mob?'img/hero-p.webp':'img/hero.webp'}
+setTimeout(showEnter,8000);
 /* enter: open gate + start music (browsers only allow sound after a click) */
 let entered=false;
 function enter(){if(entered)return;entered=true;$('#gate').classList.add('open');setTimeout(()=>$('#gate').classList.add('gone'),1700);document.body.style.overflow='';startMusic();
@@ -462,7 +498,7 @@ function starField(cv,n,top){const c=cv.getContext('2d');let W,H,S=[];
  const rs=()=>{const d=Math.min(devicePixelRatio||1,2);W=cv.width=cv.offsetWidth*d;H=cv.height=cv.offsetHeight*d;S=[];for(let i=0;i<n;i++)S.push({x:Math.random()*W,y:Math.pow(Math.random(),1.8)*H*top,r:(Math.random()*1.3+.3)*d,p:Math.random()*6,s:Math.random()*.002+.0008})};rs();addEventListener('resize',rs);
  return (t,a=1,shoot)=>{c.clearRect(0,0,W,H);for(const q of S){const tw=.45+.55*Math.sin(t*q.s+q.p);c.globalAlpha=a*tw*(1-q.y/(H*top))*.95;c.fillStyle='#fff6e0';c.beginPath();c.arc(q.x,q.y,q.r,0,7);c.fill()}
   if(shoot){const k=(t%7000)/1100;if(k<1){const x=W*(.15+.5*((t/7000|0)%3)/2)+k*W*.25,y=H*.08+k*H*.12;const g=c.createLinearGradient(x,y,x-W*.08,y-H*.04);g.addColorStop(0,`rgba(255,240,210,${a*(1-k)})`);g.addColorStop(1,'rgba(255,240,210,0)');c.globalAlpha=1;c.strokeStyle=g;c.lineWidth=2;c.beginPath();c.moveTo(x,y);c.lineTo(x-W*.08,y-H*.04);c.stroke()}}c.globalAlpha=1}}
-const heroStars=starField($('#stars'),mob?120:220,.45),flyStars=starField($('#flyStars'),mob?90:180,.4);
+const heroStars=starField($('#stars'),mob?120:220,.45),_x=0;
 /* rising embers */
 const ec=$('#embers'),ex=ec.getContext('2d');let EW,EH;const EM=[];
 function ers(){const d=Math.min(devicePixelRatio||1,2);EW=ec.width=ec.offsetWidth*d;EH=ec.height=ec.offsetHeight*d}ers();addEventListener('resize',ers);
@@ -472,17 +508,6 @@ function embers(t){ex.clearRect(0,0,EW,EH);for(const e of EM){e.y-=e.v;if(e.y<0)
  const g=ex.createRadialGradient(x,y,0,x,y,e.r*4);g.addColorStop(0,`rgba(255,200,110,${a})`);g.addColorStop(1,'rgba(255,120,30,0)');ex.fillStyle=g;ex.beginPath();ex.arc(x,y,e.r*4,0,7);ex.fill()}}
 /* hero mouse parallax */
 let mx=0,my=0,smx=0,smy=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
-/* ===== fly canvas ===== */
-const fc=$('#flyc'),fx=fc.getContext('2d');let lastFly=-1;
-function fsz(){const d=Math.min(devicePixelRatio||1,2);fc.width=innerWidth*d;fc.height=innerHeight*d;lastFly=-1}fsz();addEventListener('resize',fsz);
-function drawCover(ctx,cv,im,z=1.02){const W=cv.width,H=cv.height,r=Math.max(W/im.naturalWidth,H/im.naturalHeight)*z,w=im.naturalWidth*r,h=im.naturalHeight*r;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
-function drawFly(f){f=Math.max(0,Math.min(FN-1,Math.round(f)));if(f===lastFly)return;let k=f;while(k>0&&!(fly[k].complete&&fly[k].naturalWidth))k--;const im=fly[k];if(!(im.complete&&im.naturalWidth))return;drawCover(fx,fc,im);lastFly=f}
-const FL=$('#fly');let fsp=0;
-function flyStep(p,t){drawFly(p*(FN-1));flyStars(t,1-seg(p,.75,1),true);
- $('#lens').style.setProperty('--lx',(70-p*30)+'%');
- const bw=out(seg(p,.02,.18))*(1-ease(seg(p,.22,.34)));$('#bigword').style.opacity=bw*.9;$('#bigword').style.letterSpacing=(.2+p*.6)+'em';
- [['#ft1',.30,.58],['#ft2',.64,.92]].forEach(([id,a,b])=>{const k=out(seg(p,a,a+.07))*(1-ease(seg(p,b-.06,b)));const el=$(id);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*40}px)`;el.style.filter=`blur(${(1-k)*8}px)`});
- $('#flyc').style.filter=`brightness(${1-seg(p,.9,1)*.75})`}
 /* ===== journey: eye/circle reveals between night scenes ===== */
 const J=$('#journey');let sp=0;const letters=$$('#ttl .w');const eyeP=$('#fEye');
 const SCN=[$('#s1'),$('#s2'),$('#s3'),$('#s4')],PH=SCN.map(s=>s.querySelector('.ph'));
@@ -512,7 +537,6 @@ function tick(t){
  smx+=(mx-smx)*.06;smy+=(my-smy)*.06;
  const hr=$('#hero').getBoundingClientRect();if(hr.bottom>0){const k=cl(-hr.top/hr.height);heroStars(t,1,true);
   embers(t);$('#hbase').style.transform=`translate3d(${smx*-22}px,${smy*-14+k*140}px,0)`;$('#hero .hc').style.transform=`translateY(${k*-120}px)`;$('#hero .hc').style.opacity=1-k*1.4}
- const [fp,fr]=prog(FL);fsp+=window.__snap?(fp-fsp):(fp-fsp)*.12;if(fr.top<innerHeight&&fr.bottom>0)flyStep(fsp,t);
  const [jp,jr]=prog(J);sp+=window.__snap?(jp-sp):(jp-sp)*.1;if(jr.top<innerHeight&&jr.bottom>0)journey(sp,t);
  const ar=$('.arch');if(ar){const r=ar.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)ar.querySelector('.aim').style.transform=`translateY(${(r.top/innerHeight-.5)*-60}px) scale(1.05)`}
  requestAnimationFrame(tick)}
@@ -543,29 +567,28 @@ $$('.qa button').forEach(b=>b.addEventListener('click',()=>{const q=b.parentElem
 $('#bf').addEventListener('submit',e=>{e.preventDefault();$('#toast').classList.add('on');setTimeout(()=>$('#toast').classList.remove('on'),3800);e.target.reset()});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();scrollTo({top:t.getBoundingClientRect().top+scrollY-(a.getAttribute('href')==='#top'?0:70),behavior:'smooth'})}));
 
-/* ===== Egyptian ambient music (generated live, Hijaz scale: oud plucks + ney + frame drum + drone) ===== */
-let AC=null,master=null,musicOn=false,nextBeat=0,beatN=0,timer=null;
-const D=146.83,HJ=[1,16/15,5/4,4/3,3/2,8/5,9/5,2];
-function pluck(f,t,v=.18){const o=AC.createOscillator(),o2=AC.createOscillator(),g=AC.createGain(),fl=AC.createBiquadFilter();o.type='sawtooth';o2.type='triangle';o.frequency.value=f;o2.frequency.value=f*2.003;fl.type='lowpass';fl.frequency.setValueAtTime(3200,t);fl.frequency.exponentialRampToValueAtTime(400,t+.6);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.005);g.gain.exponentialRampToValueAtTime(.0008,t+1.4);o.connect(fl);o2.connect(fl);fl.connect(g);g.connect(master);g.connect(rev);o.start(t);o2.start(t);o.stop(t+1.5);o2.stop(t+1.5)}
-function ney(f,t,d){const o=AC.createOscillator(),g=AC.createGain(),l=AC.createOscillator(),lg=AC.createGain(),n=AC.createBufferSource(),nf=AC.createBiquadFilter(),ng=AC.createGain();o.type='sine';o.frequency.value=f;l.frequency.value=5;lg.gain.value=f*.012;l.connect(lg);lg.connect(o.frequency);n.buffer=noise;nf.type='bandpass';nf.frequency.value=f*2;nf.Q.value=3;ng.gain.value=.05;n.connect(nf);nf.connect(ng);ng.connect(g);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+.35);g.gain.setValueAtTime(.09,t+d-.4);g.gain.linearRampToValueAtTime(0,t+d);o.connect(g);g.connect(rev);g.connect(master);[o,l,n].forEach(x=>{x.start(t);x.stop(t+d+.1)})}
-function drum(t,low){const o=AC.createOscillator(),g=AC.createGain();o.frequency.setValueAtTime(low?110:320,t);o.frequency.exponentialRampToValueAtTime(low?52:180,t+.12);g.gain.setValueAtTime(low?.5:.16,t);g.gain.exponentialRampToValueAtTime(.001,t+(low?.35:.09));o.connect(g);g.connect(master);o.start(t);o.stop(t+.4)}
-let noise,rev,drone=[];
-function initAudio(){AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
- noise=AC.createBuffer(1,AC.sampleRate*2,AC.sampleRate);const nd=noise.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
- rev=AC.createConvolver();const ir=AC.createBuffer(2,AC.sampleRate*3.5,AC.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.6)}rev.buffer=ir;const rg=AC.createGain();rg.gain.value=.55;rev.connect(rg);rg.connect(master);
- [D/2,D/2*1.5,D/4].forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),fl=AC.createBiquadFilter();o.type='sawtooth';o.frequency.value=f;o.detune.value=i*3;fl.type='lowpass';fl.frequency.value=380;g.gain.value=.05;o.connect(fl);fl.connect(g);g.connect(master);g.connect(rev);o.start();drone.push(o)})}
-const RH=[[1,1],[0,0],[0,0],[1,0],[0,0],[1,0],[1,1],[0,0]];/* maqsum-style: 1=hit, second=low dum */
-let phrase=0;
-function sched(){const bt=60/84/2;while(nextBeat<AC.currentTime+.3){const s=beatN%8,r=RH[s];if(r[0])drum(nextBeat,r[1]);
- if(s%2===0&&Math.random()<.62){const deg=[0,1,2,3,4,3,2,1,0,5,4,2][(beatN/2+phrase)%12|0];pluck(D*HJ[deg]*(Math.random()<.25?2:1),nextBeat,.14)}
- if(beatN%32===0){phrase=Math.random()*12|0;ney(D*2*HJ[[4,5,7,2][Math.random()*4|0]],nextBeat+.2,bt*14)}
- nextBeat+=bt;beatN++}}
+/* ===== music: Anubis Arise (StockTune), soft background level ===== */
+const bgm=new Audio('media/anubis.mp3');bgm.loop=true;bgm.volume=0;bgm.preload='auto';let musicOn=false,fadeT;
+function fadeTo(v,ms){clearInterval(fadeT);const st=bgm.volume,t0=performance.now();fadeT=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms);bgm.volume=st+(v-st)*k;if(k>=1){clearInterval(fadeT);if(v===0)bgm.pause()}},40)}
 function startMusic(){if(musicOn)return;toggleMusic()}
-function toggleMusic(){if(!AC)initAudio();musicOn=!musicOn;const t=AC.currentTime;
- if(musicOn){AC.resume();nextBeat=t+.1;master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(.7,t,.6);timer=setInterval(sched,80)}
- else{master.gain.cancelScheduledValues(t);master.gain.setTargetAtTime(0,t,.3);setTimeout(()=>{if(!musicOn)clearInterval(timer)},1200)}
- $('#snd').classList.toggle('on',musicOn);$('#sndT').textContent=musicOn?'Sound on':'Sound off'}
+function toggleMusic(){musicOn=!musicOn;if(musicOn){bgm.play().catch(()=>{});fadeTo(.22,2500)}else fadeTo(0,700);$('#snd').classList.toggle('on',musicOn);$('#sndT').textContent=musicOn?'Sound on':'Sound off'}
 $('#snd').addEventListener('click',toggleMusic);
+/* ===== story film ===== */
+const sv=$('#sv'),amb=$('#amb'),LI=$$('#chlist li'),TS=LI.map(l=>+l.dataset.t);
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){sv.play().catch(()=>{});amb.play().catch(()=>{})}else{sv.pause();amb.pause()}}),{threshold:.25}).observe($('#story'));
+let curCh=0;sv.addEventListener('timeupdate',()=>{const t=sv.currentTime;if(Math.abs(amb.currentTime-t)>.4)amb.currentTime=t;$('#sbar').style.width=(t/sv.duration*100)+'%';
+ let k=0;TS.forEach((x,i)=>{if(t>=x)k=i});if(k!==curCh){curCh=k;LI.forEach((l,i)=>l.classList.toggle('on',i===k));const c=$('#scap');c.style.opacity=0;setTimeout(()=>{c.textContent=LI[k].querySelector('b').textContent;c.style.opacity=1},250)}});
+LI.forEach((l,i)=>l.addEventListener('click',()=>{sv.currentTime=TS[i]+.05;sv.play()}));
+const sf=$('#sframe');
+if(!mob){$('#sstage').addEventListener('pointermove',e=>{const r=sf.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sf.style.transform=`rotateY(${x*24-6}deg) rotateX(${-y*14+2}deg) scale(1.03)`;sf.style.setProperty('--sx',(50-x*100)+'%')});
+ $('#sstage').addEventListener('pointerleave',()=>{sf.style.transform=''})}
+/* ===== 3D tilt on cards & buttons ===== */
+if(!mob)$$('.ic,.mc,.step,.rev,.gl,.btn,.nbtn').forEach(el=>{el.classList.add('tilt');el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;const m=el.classList.contains('btn')||el.classList.contains('nbtn')?10:7;el.style.transform=`perspective(700px) rotateY(${x*m}deg) rotateX(${-y*m}deg) translateY(-4px)`});el.addEventListener('pointerleave',()=>{el.style.transform=''})});
+/* ===== orange glow from behind on every click ===== */
+const PG=$('#pageGlow');let pgT;
+addEventListener('pointerdown',e=>{const b=document.createElement('div');b.className='lit-burst';b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);setTimeout(()=>b.remove(),950);
+ PG.style.setProperty('--gx',e.clientX+'px');PG.style.setProperty('--gy',e.clientY+'px');PG.classList.add('on');clearTimeout(pgT);pgT=setTimeout(()=>PG.classList.remove('on'),180);
+ const t=e.target.closest('.btn,.nbtn,.ic,.card,.mc,.gl,.step,.qa,.rev,.chlist li,#snd');if(t){t.classList.remove('glowup');void t.offsetWidth;t.classList.add('glowup')}},{passive:true});
 </script>
 </body>
 </html>
