@@ -224,3 +224,29 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - If confirmed: buy domain (mrfashion.com taken; mrfashionindia.com / shopmrfashion.com free) + hosting, go live.
 - TO BUILD WHEN JONI SAYS: private admin panel (phone home-screen app, password, no link on site): pick category (Shirt/T-shirt/Polo/Jeans, add new), name + price once, "Add colour" per colour (name + photo), Save → appears on site with colour swatches; edit/delete.
 - Pricing advice for next clients: simple site ₹8–10k, e-commerce + admin ₹12–15k.
+
+## LATEST STATE (20 Oct) — read this first in a new session
+**How to talk to Joni:** Bengali, very short (5–6 lines), one step at a time, answer ONLY what he asks, explain "why" in one line, honest. Hinglish for India clients, English for US/CA/UAE. Never ask for passwords/OTP/bank numbers. Never send claude.ai links to clients. All quality rules are in demos/RULES.md (read it too).
+
+**Live demos (GitHub Pages, branch ccr-7117943e-suhwf8):**
+- Wanderly (scroll travel): jonnyraj123.github.io/Propnest/demos/wanderly/
+- SAHRA (Egypt 3D, enter gate + Anubis Arise music, story film, 3D buttons, orange click glow): .../demos/sahra/
+- MR Fashion (Indian e-com, colour variants, cart, checkout, thank-you card, WhatsApp order, silk video hero + model video): .../demos/mr-fashion/
+- Reels: demos/instagram/ (08 = SAHRA laptop mockup, 09 = SAHRA in real laptop photo, posted on LinkedIn 20 Oct).
+
+**MR Fashion client:** ₹5,000 site deal. Client hesitant about ₹1,000 advance for the admin app; Joni sent soft message ("advance = slot booking"). Admin app (phone, password, category + name + price + colours/photos → auto on site) — build ONLY when client agrees. If client drops: "MR Fashion বন্ধ করো" → take offline.
+
+**LinkedIn (main channel for US clients):**
+- Profile done: headline, About, Services (+ suggest adding E-commerce Development, WordPress Design), skills (incl. WordPress, WooCommerce, Figma, SEO, GSAP, Web Development), Experience = Founder & Lead Web Developer, Plastrix Studio (Jan 2023), banner, Open to Work = VISIBLE to everyone; titles Web/Front End/Web Designer/WordPress/Creative Developer; locations Kolkata, US, UAE, California, Canada; Remote; Full-time+Contract+Part-time.
+- Featured: plastrixstudio.com + Wanderly. Joni wants to ADD later: (1) a Figma design of a premium site, (2) a new modern 3D animation website. (Not SAHRA.)
+- Resume for US: demos/resume/Joni-Raj-Mollick-Resume-US.pdf (1 page, no photo).
+- Rate: say $25–30 USD/hr now (35 CAD earlier ≈ $25). Raise to $35–45 after 3–4 jobs.
+- N4 Studio Digital Designer (Deel): applied 19 Oct → REJECTED 20 Oct (generic). Lesson: avoid Senior/Lead/Hybrid/PHP-heavy jobs; target freelance/contract web dev, Entry/Associate.
+- Daily routine: 15–20 connection requests to US web/marketing agency OWNERS (search "agency owner web design", People, United States). Notes only for best leads (free = 5 notes/month; ALL 5 USED for Oct: Adam Delong, Andre Fox, Carsten Frasier, Seth Gilmore, Travis Dulaney). Note text: "Hi [Name], great to connect with a fellow web pro! I build custom websites, e-commerce stores and animated/3D web experiences. Happy to help with overflow projects. Work: plastrixstudio.com – Joni". Skip students and #OpenToWork people. Sent ~40 so far (18 + 20 Oct). Find them: Network → Manage → Invitations → Sent.
+- When someone accepts: write them a short English intro message offering overflow/white-label help. Comment helpful (not "nice post") on agency owners' posts.
+- LinkedIn job alerts on; RemoteHunter/Jobfinder/Wiraa = reposters, skip. Never pay to apply.
+- Cannot automate LinkedIn (account-ban risk) — Joni clicks, I guide.
+
+**Money:** PayPal KYC submitted 17 Oct, "2–3 days", no issues by 20 Oct; if not approved after 21 Oct → PayPal app / Help & Contact.
+
+**Media sourcing:** I can download free 4K Pexels videos/photos myself (www.pexels.com/download/video/ID/ → videos.pexels.com). Use instead of Joni's Gemini credits. Remove Gemini watermark always.
