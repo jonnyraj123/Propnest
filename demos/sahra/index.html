@@ -414,7 +414,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
 
 <section class="blk" id="decoder"><div class="wrap dec">
  <div class="rv"><div class="kick">Hieroglyph decoder</div><h2 class="h2">Read the <em>language</em> of the gods.</h2><p class="lead">Hover over a symbol (or tap it on your phone) to reveal what it meant to the scribes of the pharaohs.</p>
-  <div class="tablet" style="margin-top:34px"><div class="word" id="dWord">𓂀 · · ·</div><div class="mean" id="dMean">Choose a symbol to decode it.</div><div class="hint">Translated by your Egyptologist</div></div></div>
+  <div class="tablet" style="margin-top:34px"><div class="word" id="dWord">· · · · ·</div><div class="mean" id="dMean">Choose a symbol to decode it.</div><div class="hint">Translated by your Egyptologist</div></div></div>
  <div class="glyphs rv" id="glyphs">
   <div class="gl" data-w="WEDJAT" data-m="The Eye of Horus: protection, healing and royal power."><svg viewBox="0 0 64 64"><path d="M6 28 Q32 10 58 28 Q32 46 6 28Z M26 28a6 6 0 1 0 12 0a6 6 0 1 0-12 0 M28 34 L22 50 M38 34 Q48 44 40 50"/></svg><small>Eye</small></div>
   <div class="gl" data-w="ANKH" data-m="The key of life. Gods hold it to the lips of pharaohs."><svg viewBox="0 0 64 64"><path d="M32 30 C20 22 22 6 32 6 C42 6 44 22 32 30Z M32 30 V58 M18 34 H46"/></svg><small>Life</small></div>
@@ -477,7 +477,7 @@ footer .big{font-family:Cinzel;font-weight:900;font-size:clamp(70px,17vw,260px);
  <div class="legal"><span>© 2026 SAHRA. Concept website by <a href="https://plastrixstudio.com" style="text-decoration:underline">Plastrix Studio</a> · brand and content are fictional.</span><span>Made under the desert stars.</span></div>
 </div></footer>
 <button id="snd" aria-label="Play Egyptian music"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Sound off</span></button>
-<div id="toast">Your request has been sealed. Expect our reply within 24 hours 𓂀</div>
+<div id="toast">Your request has been sealed. Expect our reply within 24 hours ✦</div>
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -553,7 +553,7 @@ $$('[data-n]').forEach(el=>co.observe(el));
 /* card tilt + glare */
 $$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.transform=`rotateY(${(x-.5)*10}deg) rotateX(${(.5-y)*10}deg) translateY(-6px)`;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});c.addEventListener('pointerleave',()=>c.style.transform='')});
 /* hieroglyph decoder (scramble reveal) */
-const GL='𓀀𓁐𓂀𓃒𓄿𓅓𓆣𓇳𓈖𓉐𓊖𓋹𓌳𓍿𓎛𓏏';let dt;
+const GL='ΔΣΞΦΨΩΛΠ◆◇△▽✦';let dt;
 function decode(el){$$('.gl').forEach(g=>g.classList.toggle('on',g===el));const w=el.dataset.w,m=el.dataset.m;let k=0;clearInterval(dt);$('#dMean').style.opacity=0;
  dt=setInterval(()=>{k++;$('#dWord').textContent=[...w].map((c,i)=>i<k/2?c:GL[Math.random()*GL.length|0]).join('');if(k/2>=w.length){clearInterval(dt);$('#dWord').textContent=w;$('#dMean').textContent=m;$('#dMean').style.transition='opacity .6s';$('#dMean').style.opacity=1}},40)}
 $$('.gl').forEach(g=>{g.addEventListener('pointerenter',()=>decode(g));g.addEventListener('click',()=>decode(g))});
