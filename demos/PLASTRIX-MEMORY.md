@@ -250,3 +250,10 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 **Money:** PayPal KYC submitted 17 Oct, "2–3 days", no issues by 20 Oct; if not approved after 21 Oct → PayPal app / Help & Contact.
 
 **Media sourcing:** I can download free 4K Pexels videos/photos myself (www.pexels.com/download/video/ID/ → videos.pexels.com). Use instead of Joni's Gemini credits. Remove Gemini watermark always.
+
+## 21-22 Oct
+- Joni rule: answer ONLY the main point, very short. Old name = Rahul (now Joni) — answer just "তোমার পুরোনো নাম ছিল রাহুল".
+- Re-enabled live: demos/kashmir-dreams (client re-checking) + demos/noor-e-kashmir (shown as full e-com sample). Suggested ₹15-20k for full store.
+- LinkedIn outreach (white-label/overflow msg with plastrixstudio.com + sahra + wanderly links): messaged Jeff Boob, Sandy Gomez, Ashleigh Barnard, Johnny Digges (free messages); connect sent to Elaine Robinson (Smiling Web Design), Mariam Ali (Citizen, Manager of Websites). Wait for replies.
+- Target only agency OWNERS/managers; skip #OpenToWork, employees, job reposters (Torentify, Wiraa, RemoteHunter), hybrid/US-work-authorization jobs.
+- LinkedIn Service Requests need Premium; skipped (Indian low-budget leads). Don't take ₹0 trial (auto-charge risk).
