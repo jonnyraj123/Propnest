@@ -65,3 +65,8 @@ Reference: demos/wanderly + demos/instagram/07-wanderly-laptop-reel.mp4
 - Sections must not cut in before a video finishes; mobile must look as good as desktop.
 - MEDIA SOURCE (19 Oct): I can fetch free 4K videos/photos from Pexels myself (videos.pexels.com / images.pexels.com via www.pexels.com/download/video/ID/ redirect). Do this instead of asking Joni for Gemini credits. Grade to the theme with ffmpeg curves.
 - Music must start on entry: use an "Enter" gate button (browsers block sound before a click), keep a small sound on/off toggle.
+
+## NEW IDEA EVERY SITE (Joni, 22 Oct)
+- Every new website must bring a fresh, never-seen scroll idea, not a copy of any reference.
+- Reference idea Joni liked (puffer jacket): on SCROLL the next colour variant flies in from the corner, the product swaps and the whole page colour changes; then the product stays pinned while scroll tells its story (materials → how it's made → final product) with 3D motion; then features, gallery, reviews, CTA, premium footer. Works for any product.
+- Use such references only as inspiration level; invent a new signature scroll concept for each site.
