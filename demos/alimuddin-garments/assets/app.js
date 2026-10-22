@@ -55,7 +55,7 @@
   if (hdr) hdr.outerHTML = `
   <div class="top-strip">Wholesale only · Minimum <b>${S.moq} pieces</b> per design · Sizes 16 to XL · 3 colours per design</div>
   <header class="hdr"><div class="wrap hdr-in">
-    <a class="logo" href="index.html" aria-label="ALIMUDDIN Garments home"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
+    <a class="logo" href="index.html" aria-label="ALIMUDDIN Garments home"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>Garments</small></span></a>
     <nav class="nav" aria-label="Main">${navItems.map(([h, t, k]) => `<a href="${h}" class="${page === k ? 'on' : ''}">${t}</a>`).join('')}</nav>
     <div class="hdr-act">
       <a class="icon-btn" href="shop.html" aria-label="Search products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
@@ -71,9 +71,10 @@
   const waSvg = '<svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4Z"/></svg>';
   const ftr = $('#ftr');
   if (ftr) ftr.outerHTML = `
-  <footer class="foot"><div class="wrap">
+  <footer class="foot"><video autoplay muted loop playsinline preload="none" poster="media/glow-poster.jpg" aria-hidden="true"><source src="media/glow.mp4" type="video/mp4"></video><div class="wrap">
+    <div class="join-row"><h3><span class="script">Stay in the loop!</span>New designs every week on WhatsApp</h3><a class="btn btn-white" href="${wa('Hi ALIMUDDIN Garments, please send me your new designs. My shop name is: ')}" target="_blank" rel="noopener">💬 Join our WhatsApp list</a></div>
     <div class="foot-top">
-      <div><a class="logo" href="index.html"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
+      <div><a class="logo" href="index.html"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>Garments</small></span></a>
         <p style="margin-top:16px;max-width:360px">Wholesale kidswear for shops — frocks, skirt sets, co-ords, bell-bottom sets, boys sets and dungarees. Every design comes in 3 colours.</p></div>
       <div class="foot-links"><h4>Shop</h4>${CATS.map(c => `<a href="shop.html?cat=${c.id}">${c.name}</a>`).join('')}</div>
       <div class="foot-links"><h4>Visit / Call</h4><p>${S.address}</p><a href="tel:+91${S.phones[0].replace(/\s/g, '')}">📞 ${S.phones[0]}</a><a href="tel:+91${S.phones[1].replace(/\s/g, '')}">📞 ${S.phones[1]}</a><a href="${wa('Hi ALIMUDDIN Garments, I want to see your wholesale collection.')}" target="_blank" rel="noopener">💬 WhatsApp us</a></div>
@@ -115,9 +116,7 @@
   /* ---------- gift popup (3.5 s after first visit in a session) ---------- */
   document.body.insertAdjacentHTML('beforeend', `
   <div class="gift" id="gift" role="dialog" aria-modal="true" aria-labelledby="giftT"><div class="gift-bg" data-gclose></div>
-    <div class="gift-card"><div class="gift-cover"></div><div class="gift-lid"><span class="rv"></span><span class="rh"></span>
-      <svg class="bow" viewBox="0 0 90 60"><path d="M45 30C30 5 5 5 8 22s27 10 37 8Z" fill="#e8c46c" stroke="#9a7224" stroke-width="2"/><path d="M45 30c15-25 40-25 37-8S55 32 45 30Z" fill="#e8c46c" stroke="#9a7224" stroke-width="2"/><circle cx="45" cy="30" r="8" fill="#c79a3b"/></svg></div>
-      <button class="gift-x" data-gclose aria-label="Close">✕</button>
+    <div class="gift-card">      <button class="gift-x" data-gclose aria-label="Close">✕</button>
       <div class="emoji">🎁</div><p class="eyebrow" style="justify-content:center">For shop owners</p>
       <h3 id="giftT">New designs, <em>first</em> to you</h3>
       <p>Get our newest kidswear designs on WhatsApp as soon as they arrive — with prices and the 3-colour chart.</p>
@@ -128,7 +127,7 @@
   function closeGift() { gift.classList.remove('on', 'open'); }
   gift.addEventListener('click', e => { if (e.target.closest('[data-gclose]')) closeGift(); });
   let seen = false; try { seen = sessionStorage.getItem('ag_gift'); } catch (e) {}
-  if (!seen && page !== 'thanks') setTimeout(() => { try { sessionStorage.setItem('ag_gift', 1); } catch (e) {} gift.classList.add('on'); setTimeout(() => gift.classList.add('open'), reduce ? 0 : 450); }, 3500);
+  if (!seen && page !== 'thanks') setTimeout(() => { try { sessionStorage.setItem('ag_gift', 1); } catch (e) {} gift.classList.add('on'); }, 3500);
 
   /* ---------- smooth scroll ---------- */
   let lenis = null;
@@ -146,7 +145,7 @@
   const spark = (x, y, n) => { if (reduce) return; for (let i = 0; i < n; i++) { const s = document.createElement('i'); s.className = 'spark'; s.style.left = x + 'px'; s.style.top = y + 'px'; const a = Math.random() * 6.28, d = 14 + Math.random() * 40; s.style.setProperty('--dx', Math.cos(a) * d + 'px'); s.style.setProperty('--dy', Math.sin(a) * d + 18 + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 900); } };
 
   const confetti = (x = innerWidth / 2, y = innerHeight / 3, n = 60) => {
-    if (reduce) return; const cols = ['#c9a24b', '#f1d891', '#8a6420', '#17120f', '#ecd3cc', '#fff4d6'];
+    if (reduce) return; const cols = ['#e8798f', '#f7cdd6', '#6cc5b5', '#ffd6df', '#f6c453', '#ffffff'];
     for (let i = 0; i < n; i++) {
       const c = document.createElement('i'); c.className = 'confetti'; c.style.background = cols[i % cols.length]; c.style.left = x + 'px'; c.style.top = y + 'px'; document.body.appendChild(c);
       const a = Math.random() * Math.PI * 2, v = 120 + Math.random() * 260;
@@ -154,12 +153,23 @@
     }
   };
 
+  /* ---------- wishlist ---------- */
+  const wishes = () => store.get('ag_wish', []);
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-wish]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const w = wishes(), id = b.dataset.wish, on = !w.includes(id);
+    store.set('ag_wish', on ? [...w, id] : w.filter(x => x !== id));
+    document.querySelectorAll(`[data-wish="${id}"]`).forEach(x => x.classList.toggle('on', on));
+    toast(on ? '💗 Saved to your wishlist' : 'Removed from wishlist');
+  });
+
   /* ---------- product card ---------- */
   const card = p => `
     <a class="card rv" href="product.html?id=${p.id}">
-      <div class="card-img">${p.tag ? `<span class="tag ${p.tag}">${p.tag}</span>` : ''}<img src="${img(p.img[0], 1)}" alt="${p.name}" loading="lazy">${p.img[1] ? `<img src="${img(p.img[1], 1)}" alt="" loading="lazy">` : ''}<span class="moq-b">MOQ ${S.moq} pcs</span></div>
+      <div class="card-img">${p.tag ? `<span class="tag ${p.tag}">${p.tag}</span>` : ''}<img src="${img(p.img[0], 1)}" alt="${p.name}" loading="lazy">${p.img[1] ? `<img src="${img(p.img[1], 1)}" alt="" loading="lazy">` : ''}<span class="moq-b">MOQ ${S.moq} pcs</span><button class="wish ${wishes().includes(p.id) ? 'on' : ''}" data-wish="${p.id}" aria-label="Save ${p.name}"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.3 3.3 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.7 0 6 3.8 4.5 7.3C19.5 16.4 12 21 12 21Z"/></svg></button></div>
       <div class="card-b">${p.code ? `<span class="code">CODE ${p.code}</span>` : `<span class="code">${catName(p.cat).toUpperCase()}</span>`}<h3>${p.name}</h3>
-        <div class="row">${priceHTML(p)}<span class="dots">${p.colours.slice(0, 4).map(c => `<i style="background:${swatch(c)}"></i>`).join('')}</span></div></div>
+        <div class="row">${priceHTML(p)}<span class="dots">${p.colours.slice(0, 4).map(c => `<i style="background:${swatch(c)}"></i>`).join('')}</span></div><span class="card-add">Select sizes →</span></div>
     </a>`;
   const tilt = (root = document) => {
     if (!fine || reduce) return;
