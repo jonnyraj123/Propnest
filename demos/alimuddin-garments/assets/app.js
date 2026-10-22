@@ -144,8 +144,6 @@
 
   /* ---------- gold sparkle trail (desktop) + tap burst (touch) ---------- */
   const spark = (x, y, n) => { if (reduce) return; for (let i = 0; i < n; i++) { const s = document.createElement('i'); s.className = 'spark'; s.style.left = x + 'px'; s.style.top = y + 'px'; const a = Math.random() * 6.28, d = 14 + Math.random() * 40; s.style.setProperty('--dx', Math.cos(a) * d + 'px'); s.style.setProperty('--dy', Math.sin(a) * d + 18 + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 900); } };
-  if (fine) { let last = 0; addEventListener('pointermove', e => { const t = performance.now(); if (t - last > 45) { last = t; spark(e.clientX, e.clientY, 1); } }); }
-  else addEventListener('pointerdown', e => spark(e.clientX, e.clientY, 8));
 
   const confetti = (x = innerWidth / 2, y = innerHeight / 3, n = 60) => {
     if (reduce) return; const cols = ['#8cc63f', '#e2718b', '#c79a3b', '#f3dc97', '#f8c8d2', '#3f7a23'];

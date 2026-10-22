@@ -398,3 +398,15 @@ em{font-style:italic;color:var(--rose)}
   *,*:before,*:after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
   .rv{opacity:1;transform:none}
 }
+
+/* product page sizing fixes */
+.pd>*,.cart-grid>*,.split>*{min-width:0}
+.main-img{max-height:620px;aspect-ratio:auto;height:min(620px,72vh)}
+.pd h1{overflow-wrap:anywhere}
+@media (max-width:900px){
+  .gal{display:flex;flex-direction:column;gap:10px}
+  .main-img{height:auto;aspect-ratio:1/1;max-height:none}
+  .thumbs{order:2}
+  .pd h1{font-size:28px}
+  .facts b{font-size:17px}
+}
