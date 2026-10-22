@@ -610,3 +610,9 @@ main.wrap>.page-hero{margin:0 calc(var(--pad) * -1)}
 .gift-note{font-size:13px;color:var(--muted)!important;margin-top:12px}
 .gift-card .btn{margin-top:14px;min-height:46px;font-size:14px}
 .gift-card .btn svg{fill:#fff}
+
+/* rupee prices: clear lining numbers, never old-style */
+.price,.sum b,.sum .tot,.citem .r b,.ptable b,.facts b,.ty-sum b,.ty-sum span,.prog p b,#bagTotal{font-family:var(--fb)!important;font-weight:900;font-variant-numeric:lining-nums tabular-nums;letter-spacing:0}
+.sum .tot b{font-size:26px;color:var(--rose)}
+.sum .tot span{font-family:var(--fd)}
+.price{font-size:17px}
