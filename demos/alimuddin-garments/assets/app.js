@@ -117,10 +117,11 @@
   document.body.insertAdjacentHTML('beforeend', `
   <div class="gift" id="gift" role="dialog" aria-modal="true" aria-labelledby="giftT"><div class="gift-bg" data-gclose></div>
     <div class="gift-card">      <button class="gift-x" data-gclose aria-label="Close">✕</button>
-      <div class="emoji">🎁</div><p class="eyebrow" style="justify-content:center">For shop owners</p>
-      <h3 id="giftT">New designs, <em>first</em> to you</h3>
-      <p>Get our newest kidswear designs on WhatsApp as soon as they arrive — with prices and the 3-colour chart.</p>
-      <a class="btn btn-wa" href="${wa('Hi ALIMUDDIN Garments, please add me to your new designs list. My shop name is: ')}" target="_blank" rel="noopener" data-gclose>${waSvg.replace('<svg', '<svg width="22" height="22"')} Send me new designs</a>
+      <div class="emoji">🎀</div><p class="eyebrow" style="justify-content:center">Welcome to ALIMUDDIN Garments</p>
+      <h3 id="giftT">Wholesale kidswear, <em>made simple</em></h3>
+      <ul class="gift-pts"><li>📦 Minimum <b>25 pieces</b> per design</li><li>🎨 Mix any sizes &amp; all <b>3 colours</b></li><li>💬 Order confirmed on <b>WhatsApp</b></li></ul>
+      <p class="gift-note">New designs arrive every week — get them first.</p>
+      <a class="btn btn-leaf" href="${wa('Hi ALIMUDDIN Garments, please send me your new designs. My shop name is: ')}" target="_blank" rel="noopener" data-gclose>${waSvg.replace('<svg', '<svg width="20" height="20"')} Get new designs on WhatsApp</a>
       <button class="gift-later" data-gclose>Maybe later</button>
     </div></div>`);
   const gift = $('#gift');
