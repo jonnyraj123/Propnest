@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Montage Traders · Fishing, Camping & Aquariums · Srinagar</title>
+<meta name="description" content="Montage Traders, Lal Mandi, Srinagar — camping tents, fishing rods, waders, life jackets, aquariums and ornamental fish. Order on WhatsApp.">
+<link rel="preload" as="image" href="media/hero.jpg">
+</head>
+<body data-page="home">
+
+<div class="intro" id="intro" role="dialog" aria-label="Welcome to Montage Traders">
+  <video id="introVid" autoplay muted loop playsinline preload="auto" poster="media/hero.jpg">
+    <source src="media/hero-m.mp4" type="video/mp4" media="(max-width: 760px)"><source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="door l" aria-hidden="true"></div>
+  <div class="door r" aria-hidden="true"></div>
+</div>
+<template id="glassT">
+  <div class="glass">
+    <div class="coord">34.08° N, 74.80° E<span>SRINAGAR</span></div>
+    <div class="kicker">JAMMU &amp; KASHMIR</div>
+    <h1>MONTAGE</h1>
+    <div class="sub">TRADERS</div>
+    <div class="rule">✦</div>
+    <q>Everything for the mountains, the rivers and the lakes of Kashmir.</q>
+    <div class="facts4">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b>Visit</b><small>Lal Mandi, opp. Agriculture Complex</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20 10 8l4 6 3-4 4 10Z"/></svg><span><b>Camping</b><small>Tents 2 to 8 person, chairs</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20 19 4M15 4h4v4"/><circle cx="6" cy="18" r="2"/></svg><span><b>Fishing</b><small>Rods, combos, waders, jackets</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M8 13c2-2 4-2 6 0-2 2-4 2-6 0Z"/></svg><span><b>Aquariums</b><small>12″ to 60″ &amp; ornamental fish</small></span></div>
+    </div>
+    <button class="btn btn-or" data-enter>Explore the store →</button>
+    <span class="hint">or scroll to enter</span>
+  </div>
+</template>
+
+<div id="hdr"></div>
+<main>
+  <section class="hero" aria-label="Welcome">
+    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="media/hero.jpg">
+      <source src="media/hero-m.mp4" type="video/mp4" media="(max-width: 760px)"><source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-in">
+      <p class="eyebrow">Lal Mandi · Srinagar</p>
+      <h1>Gear up for <em>Kashmir's wild.</em></h1>
+      <p>Tents, fishing rods, waders and aquariums — tested by the lakes and mountains we live next to.</p>
+      <div class="row"><a class="btn btn-or" href="shop.html">Shop now →</a><a class="btn btn-glass" href="#treks">Plan a trip</a></div>
+      <div class="hero-pills"><span>⛺ Tents from ₹1,050</span><span>🎣 Rods from ₹430</span><span>🐠 Aquariums 12″–60″</span></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="trust">
+      <div><i>🏔️</i><span><b>Local shop</b><small>Lal Mandi, Srinagar</small></span></div>
+      <div><i>🏷️</i><span><b>Clear prices</b><small>Same as in the shop</small></span></div>
+      <div><i>💬</i><span><b>WhatsApp help</b><small>Ask before you buy</small></span></div>
+      <div><i>🚚</i><span><b>Delivery</b><small>Across J&amp;K</small></span></div>
+    </div>
+  </div>
+
+  <section class="sec" aria-labelledby="catT">
+    <div class="wrap">
+      <div class="sh rv"><div><p class="eyebrow">Shop by category</p><h2 id="catT">What's your <em>next adventure?</em></h2></div><p class="muted">Five shelves, one shop — everything you need from the campsite to the riverbank.</p></div>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <section class="sec snow" style="padding-top:clamp(50px,7vw,90px)" aria-labelledby="bestT">
+    <div class="wrap">
+      <div class="sh rv"><div><p class="eyebrow">Most loved</p><h2 id="bestT">Best sellers this <em>season</em></h2></div><a class="btn btn-line" href="shop.html">View all →</a></div>
+      <div class="grid" id="best"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="treks" aria-labelledby="trekT">
+    <div class="wrap">
+      <div class="sh rv"><div><p class="eyebrow">Trek &amp; camp Kashmir</p><h2 id="trekT">Pick a trail, <em>we'll pack the bag.</em></h2></div><p class="muted">Popular trips around Srinagar and the gear people usually take. Tap any item to see it.</p></div>
+      <div class="treks">
+        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 90 30l50 50 60-70 90 80 40-30 70 60Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">Overnight camp</p><h3>Sonamarg</h3><p>Meadows, glacier views and a night under the stars.</p><div class="packs"><a href="product.html?id=dome-tent">⛺ Dome tent</a><a href="product.html?id=folding-chair">🪑 Folding chair</a></div></div>
+        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 70 50l60 40 70-80 80 70 50-30 70 70Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">Alpine lakes</p><h3>Tarsar–Marsar</h3><p>Multi-day trek past turquoise lakes and high passes.</p><div class="packs"><a href="product.html?id=dome-tent">⛺ 2-person tent</a><a href="product.html?id=jianggan">🎣 Travel rod</a></div></div>
+        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 100 40l40 30 70-60 70 60 50-20 70 70Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">River &amp; lake fishing</p><h3>Gangbal &amp; Lidder</h3><p>Cold, clear water — the angler's Kashmir.</p><div class="packs"><a href="product.html?id=rod-combo">🎣 Rod combo</a><a href="product.html?id=wader">🥾 Wader</a><a href="product.html?id=life-jacket">🦺 Life jacket</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec snow" aria-labelledby="fishT">
+    <div class="wrap split">
+      <div class="pic rv"><img src="img/rod-tele.webp" alt="Telescopic fishing rod with reel, line and float" loading="lazy"></div>
+      <div class="rv">
+        <p class="eyebrow">For anglers</p>
+        <h2 id="fishT">Rods for every <em>river &amp; lake</em></h2>
+        <p class="muted">Jianggan, Shimano, Semi Corban, Diao Wong and 2-piece combos from Shakespeare, ChangJin and more — from beginner sets to serious gear.</p>
+        <div class="chips"><a href="product.html?id=jianggan">Jianggan <b>₹550</b></a><a href="product.html?id=semi-corban">Semi Corban <b>₹430</b></a><a href="product.html?id=shimano-rod">Shimano <b>₹750</b></a><a href="product.html?id=rod-combo">Combos <b>₹530</b></a></div>
+        <div class="row"><a class="btn btn-navy" href="shop.html?cat=rods">Shop fishing rods →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="aquaT">
+    <div class="wrap split rev">
+      <div class="pic rv"><img src="img/aquarium.webp" alt="Planted glass aquarium with driftwood and fish" loading="lazy"></div>
+      <div class="rv">
+        <p class="eyebrow">Aquariums &amp; fish</p>
+        <h2 id="aquaT">Bring the lake <em>home</em></h2>
+        <p class="muted">Glass aquariums from 12 to 60 inches, plus goldfish, angelfish, tetras and more. Ask us about setting up your tank.</p>
+        <div class="chips"><span>12″ <b>₹3,500</b></span><span>24″ <b>₹7,000</b></span><span>40″ <b>₹23,000</b></span><span>60″ <b>₹44,000</b></span></div>
+        <div class="row"><a class="btn btn-navy" href="shop.html?cat=aqua">Shop aquariums →</a><a class="btn btn-line" href="product.html?id=fish">Ornamental fish</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec snow" aria-labelledby="visitT">
+    <div class="wrap">
+      <div class="sh rv"><div><p class="eyebrow">Visit us</p><h2 id="visitT">Come see it <em>in person</em></h2></div></div>
+      <div class="visit">
+        <div class="vcards rv" id="vcards"></div>
+        <div class="map rv"><iframe title="Map to Montage Traders" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Lal+Mandi,+Srinagar+190008&output=embed"></iframe></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+<script>
+(() => {
+  const { $, $$, img, card, watch, wa } = MT;
+  $('#cats').innerHTML = CATS.map(c => `<a class="cat rv" href="shop.html?cat=${c.id}"><img src="${img(c.img, 1)}" alt="" loading="lazy"><b>${c.name}</b><small>${PRODUCTS.filter(p => p.cat === c.id).length} items</small></a>`).join('');
+  $('#best').innerHTML = ['dome-tent', 'rod-combo', 'wader', 'aquarium', 'jianggan', 'life-jacket', 'folding-chair', 'fish'].map(id => card(MT.byId(id))).join('');
+  $('#vcards').innerHTML = `<a href="${wa('Hi Montage Traders!')}" target="_blank" rel="noopener"><i>💬</i><span>WhatsApp<small>${SHOP.phones[1]}</small></span></a><a href="tel:+919419008168"><i>📞</i><span>Call<small>${SHOP.phones[0]}</small></span></a><a href="${SHOP.map}" target="_blank" rel="noopener"><i>📍</i><span>Shop<small>${SHOP.address}</small></span></a><a href="${SHOP.instagram}" target="_blank" rel="noopener"><i>📸</i><span>Instagram<small>@montagetraders69</small></span></a>`;
+  watch();
+
+  /* intro: glass poster splits open like two doors */
+  const intro = $('#intro'), vid = $('#introVid'), doors = $$('.door', intro);
+  const t = $('#glassT').content;
+  doors.forEach(d => d.appendChild(t.cloneNode(true)));
+  let seen = false; try { seen = sessionStorage.getItem('mt_intro'); } catch (e) {}
+  const ready = () => document.body.classList.add('ready');
+  if (seen) { intro.classList.add('gone'); ready(); return; }
+  document.body.classList.add('lock');
+  let opened = false;
+  const open = () => {
+    if (opened) return; opened = true;
+    try { sessionStorage.setItem('mt_intro', 1); } catch (e) {}
+    doors.forEach(d => d.style.backgroundImage = 'url(media/hero.jpg)');
+    const hv = $('#heroVid'); try { hv.currentTime = vid.currentTime; } catch (e) {}
+    setTimeout(() => { intro.classList.add('open'); document.body.classList.remove('lock'); window.scrollTo(0, 0); setTimeout(ready, 450); }, 60);
+    setTimeout(() => intro.classList.add('gone'), MT.reduce ? 0 : 1350);
+  };
+  intro.addEventListener('click', e => { if (e.target.closest('[data-enter]')) open(); });
+  addEventListener('wheel', e => { if (e.deltaY > 8) open(); }, { passive: true });
+  let ty = null; addEventListener('touchstart', e => ty = e.touches[0].clientY, { passive: true });
+  addEventListener('touchmove', e => { if (ty !== null && ty - e.touches[0].clientY > 40) open(); }, { passive: true });
+  addEventListener('keydown', e => { if (['Enter', ' ', 'ArrowDown', 'PageDown'].includes(e.key) && !opened) { e.preventDefault(); open(); } });
+})();
+</script>
+</body>
+</html>

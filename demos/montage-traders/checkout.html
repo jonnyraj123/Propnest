@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Checkout · Montage Traders</title>
+</head>
+<body data-page="cart">
+<div id="hdr"></div>
+<main>
+  <section class="ph"><div class="wrap"><p class="eyebrow" style="justify-content:center">Step 2 of 2</p><h1>Your <em>details</em></h1><p>We use these only to confirm and deliver your order.</p></div></section>
+  <div class="wrap cart-grid">
+    <form class="panel" id="f" novalidate><div class="form">
+      <div class="fld"><label for="nm">Full name *</label><input id="nm" autocomplete="name" required></div>
+      <div class="fld"><label for="ph">Mobile / WhatsApp *</label><input id="ph" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile" required></div>
+      <div class="fld full"><label for="ad">Address *</label><textarea id="ad" rows="3" autocomplete="street-address" required></textarea></div>
+      <div class="fld"><label for="ct">City *</label><input id="ct" autocomplete="address-level2" value="Srinagar" required></div>
+      <div class="fld"><label for="pn">PIN code *</label><input id="pn" inputmode="numeric" maxlength="6" autocomplete="postal-code" required></div>
+      <div class="fld full"><label>Delivery</label><div class="radios">
+        <label><input type="radio" name="dl" value="Pick up from shop" checked>🏬 Pick up<small>Lal Mandi shop</small></label>
+        <label><input type="radio" name="dl" value="Home delivery (Srinagar)">🛵 Srinagar delivery<small>Within the city</small></label>
+        <label><input type="radio" name="dl" value="Courier (outside Srinagar)">🚚 Courier<small>J&amp;K and India</small></label></div></div>
+      <div class="fld full"><label>Payment</label><div class="radios">
+        <label><input type="radio" name="py" value="Cash on delivery" checked>💵 Cash<small>On delivery / pick up</small></label>
+        <label><input type="radio" name="py" value="UPI">📱 UPI<small>GPay / PhonePe / Paytm</small></label>
+        <label><input type="radio" name="py" value="Bank transfer">🏦 Bank<small>NEFT / IMPS</small></label></div></div>
+      <div class="fld full"><label for="nt">Note (optional)</label><textarea id="nt" rows="2" placeholder="Trip dates, sizes, anything else…"></textarea></div>
+    </div>
+    <p id="err" style="color:#c0392b;font-weight:700;margin-top:12px" hidden>Please fill the fields marked *. Mobile needs 10 digits and PIN 6 digits.</p>
+    <button class="btn btn-or" type="submit" style="width:100%;margin-top:18px">Place order →</button></form>
+    <aside class="sum" id="sum"></aside>
+  </div>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+<script>
+(() => {
+  const { $, img, rupee, Cart, store } = MT;
+  const items = Cart.all(); if (!items.length) { location.replace('cart.html'); return; }
+  const t = Cart.totals();
+  $('#sum').innerHTML = `<h3>Your order</h3>${items.map(x => { const l = Cart.line(x); return `<div class="ln" style="align-items:center"><span style="display:flex;gap:10px;align-items:center"><img src="${img(l.p.img[0], 1)}" alt="" style="width:44px;height:44px;border-radius:10px;object-fit:cover">${l.p.name}<br><small style="display:inline;margin:0">${l.label} × ${x.q}</small></span><b>${l.price ? rupee(l.total) : '—'}</b></div>`; }).join('')}<div class="ln tot"><span>Total</span><b>${rupee(t.total)}</b></div>`;
+  $('#f').addEventListener('submit', e => {
+    e.preventDefault(); const v = id => $('#' + id).value.trim(), ph = v('ph').replace(/\D/g, '').slice(-10);
+    const bad = !v('nm') || !v('ad') || !v('ct') || ph.length !== 10 || !/^\d{6}$/.test(v('pn'));
+    $('#err').hidden = !bad; if (bad) return;
+    const no = 'MT' + Date.now().toString().slice(-6);
+    store.set('mt_last', { no, nm: v('nm'), ph, ad: v('ad'), ct: v('ct'), pn: v('pn'), nt: v('nt'), dl: $('input[name=dl]:checked').value, py: $('input[name=py]:checked').value, items, t });
+    Cart.save([]); location.href = 'thankyou.html';
+  });
+})();
+</script>
+</body>
+</html>

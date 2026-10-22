@@ -265,3 +265,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - 22 Oct ALIMUDDIN feedback (Joni NOT happy yet; wait for his go before work): no tap/sparkle effect; product photos standard size, nothing cut on phone (fixed); hero needs better video + zoom-out text reveal; new 3D gold "MA" monogram logo like their visiting card (prompt given); colours -> card style black + gold + ivory + light blush, drop green; replace "Colour A/B/C" with real colour names when client sends. Joni will discuss more before restart.
 
 - 22 Oct ALIMUDDIN v3: white+blush pink theme (#e8798f), Playfair + Dancing Script, single hero image (kids + dress form), trust bar, promo cards, wide sofa banner -> shop, footer glow video, simple popup, wishlist hearts. Still B2B MOQ 25.
+
+- 22 Oct: Montage Traders (Lal Mandi Srinagar; fishing/camping/aquariums; ph 9419008168 / 9906761488; IG montagetraders69; lead via KASHMIR DREAMS contact) retail e-com demo live at demos/montage-traders/. Glass-poster intro that splits like doors, real prices from their IG price lists, cart+checkout+WhatsApp. Demo WhatsApp = 9906761488 (confirm). Images = Joni ChatGPT/Gemini.
