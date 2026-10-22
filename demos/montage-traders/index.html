@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1">
+<link rel="stylesheet" href="assets/style.css?v=2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
 <title>Montage Traders · Fishing, Camping & Aquariums · Srinagar</title>
 <meta name="description" content="Montage Traders, Lal Mandi, Srinagar — camping tents, fishing rods, waders, life jackets, aquariums and ornamental fish. Order on WhatsApp.">
@@ -81,11 +81,8 @@
   <section class="sec" id="treks" aria-labelledby="trekT">
     <div class="wrap">
       <div class="sh rv"><div><p class="eyebrow">Trek &amp; camp Kashmir</p><h2 id="trekT">Pick a trail, <em>we'll pack the bag.</em></h2></div><p class="muted">Popular trips around Srinagar and the gear people usually take. Tap any item to see it.</p></div>
-      <div class="treks">
-        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 90 30l50 50 60-70 90 80 40-30 70 60Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">Overnight camp</p><h3>Sonamarg</h3><p>Meadows, glacier views and a night under the stars.</p><div class="packs"><a href="product.html?id=dome-tent">⛺ Dome tent</a><a href="product.html?id=folding-chair">🪑 Folding chair</a></div></div>
-        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 70 50l60 40 70-80 80 70 50-30 70 70Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">Alpine lakes</p><h3>Tarsar–Marsar</h3><p>Multi-day trek past turquoise lakes and high passes.</p><div class="packs"><a href="product.html?id=dome-tent">⛺ 2-person tent</a><a href="product.html?id=jianggan">🎣 Travel rod</a></div></div>
-        <div class="trek rv"><svg class="mtn" viewBox="0 0 400 120"><path d="M0 120 100 40l40 30 70-60 70 60 50-20 70 70Z" fill="#fff"/></svg><p class="eyebrow" style="color:#ffd2b0">River &amp; lake fishing</p><h3>Gangbal &amp; Lidder</h3><p>Cold, clear water — the angler's Kashmir.</p><div class="packs"><a href="product.html?id=rod-combo">🎣 Rod combo</a><a href="product.html?id=wader">🥾 Wader</a><a href="product.html?id=life-jacket">🦺 Life jacket</a></div></div>
-      </div>
+      <div class="treks" id="treksG"></div>
+      <div class="more-places rv" id="moreP"></div>
     </div>
   </section>
 
@@ -127,14 +124,17 @@
 </main>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=1"></script>
-<script src="assets/app.js?v=1"></script>
+<script src="assets/data.js?v=2"></script>
+<script src="assets/app.js?v=2"></script>
 <script>
 (() => {
   const { $, $$, img, card, watch, wa } = MT;
   $('#cats').innerHTML = CATS.map(c => `<a class="cat rv" href="shop.html?cat=${c.id}"><img src="${img(c.img, 1)}" alt="" loading="lazy"><b>${c.name}</b><small>${PRODUCTS.filter(p => p.cat === c.id).length} items</small></a>`).join('');
   $('#best').innerHTML = ['dome-tent', 'rod-combo', 'wader', 'aquarium', 'jianggan', 'life-jacket', 'folding-chair', 'fish'].map(id => card(MT.byId(id))).join('');
   $('#vcards').innerHTML = `<a href="${wa('Hi Montage Traders!')}" target="_blank" rel="noopener"><i>💬</i><span>WhatsApp<small>${SHOP.phones[1]}</small></span></a><a href="tel:+919419008168"><i>📞</i><span>Call<small>${SHOP.phones[0]}</small></span></a><a href="${SHOP.map}" target="_blank" rel="noopener"><i>📍</i><span>Shop<small>${SHOP.address}</small></span></a><a href="${SHOP.instagram}" target="_blank" rel="noopener"><i>📸</i><span>Instagram<small>@montagetraders69</small></span></a>`;
+  const packName = { 'dome-tent': '⛺ Tent', 'folding-chair': '🪑 Chair', 'jianggan': '🎣 Travel rod', 'rod-combo': '🎣 Rod combo', 'wader': '🥾 Wader', 'life-jacket': '🦺 Life jacket', 'tackle-kit': '🪝 Tackle kit' };
+  $('#treksG').innerHTML = TREKS.map(t => `<article class="trek rv"><img class="bg" src="img/${t.img}-s.webp" alt="${t.name}, Kashmir" loading="lazy"><a class="cover" href="trek.html?id=${t.id}" aria-label="Explore ${t.name}"></a><p class="eyebrow" style="color:#ffd2b0">${t.type}</p><h3>${t.name}</h3><p>${t.line}</p><div class="packs">${t.pack.slice(0, 3).map(id => `<a href="product.html?id=${id}">${packName[id]}</a>`).join('')}</div><a class="more" href="trek.html?id=${t.id}">Explore trip →</a></article>`).join('');
+  $('#moreP').innerHTML = '<b>Also popular</b>' + MORE_PLACES.map(([n, d]) => `<a href="${wa(`Hi Montage Traders, I am going to ${n}. What gear should I take?`)}" target="_blank" rel="noopener" title="${d}">${n}</a>`).join('');
   watch();
 
   /* intro: glass poster splits open like two doors */

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Trip · Montage Traders</title>
+</head>
+<body data-page="home">
+<div id="hdr"></div>
+<main id="tm"></main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=2"></script>
+<script src="assets/app.js?v=2"></script>
+<script>
+(() => {
+  const { $, byId, card, watch, wa } = MT;
+  const t = TREKS.find(x => x.id === new URLSearchParams(location.search).get('id')) || TREKS[0];
+  document.title = t.name + ' · Trip guide · Montage Traders';
+  const others = TREKS.filter(x => x.id !== t.id);
+  $('#tm').innerHTML = `
+  <section class="th"><img src="img/${t.img}.webp" alt="${t.name}, Kashmir"><div class="wrap"><p class="eyebrow">${t.type} · Kashmir</p><h1>${t.name}</h1><p>${t.line}</p></div></section>
+  <div class="wrap"><div class="tfacts">${t.facts.map(([k, v]) => `<div><small>${k}</small><b>${v}</b></div>`).join('')}</div>
+    <div class="tbody">
+      <div class="rv"><p class="eyebrow">About the trip</p><h2>Why go to <em>${t.name}</em></h2>${t.about.map(p => `<p>${p}</p>`).join('')}
+        <h2 style="font-size:clamp(24px,2.6vw,32px);margin-top:26px">How <em>Montage Traders</em> helps</h2>
+        <div class="serv"><div><i>🎒</i><b>Full kit in one shop</b><small>Tents, rods, waders, jackets and chairs under one roof.</small></div><div><i>💬</i><b>Packing advice</b><small>Tell us your dates on WhatsApp — we'll suggest what to carry.</small></div><div><i>🏬</i><b>Pick up on the way</b><small>Collect from Lal Mandi, Srinagar before you head out.</small></div></div></div>
+      <aside class="tips rv"><h3>Quick tips</h3><ul>${t.tips.map(x => `<li>${x}</li>`).join('')}</ul>
+        <a class="btn btn-or" style="width:100%;margin-top:18px" href="${wa(`Hi Montage Traders, I am planning a trip to ${t.name}. Please help me with the gear list.`)}" target="_blank" rel="noopener">💬 Plan my ${t.name} kit</a></aside>
+    </div>
+    <section style="padding-bottom:40px"><div class="sh"><div><p class="eyebrow">Pack for ${t.name}</p><h2 style="color:var(--navy)">Gear for <em>this trip</em></h2></div><a class="btn btn-line" href="shop.html">All gear →</a></div><div class="grid">${t.pack.map(id => card(byId(id))).join('')}</div></section>
+    <section style="padding:40px 0 10px"><div class="sh"><div><p class="eyebrow">More trips</p><h2 style="color:var(--navy)">Explore <em>more of Kashmir</em></h2></div></div>
+      <div class="treks">${others.map(o => `<a class="trek rv" href="trek.html?id=${o.id}"><img class="bg" src="img/${o.img}-s.webp" alt="" loading="lazy"><p class="eyebrow" style="color:#ffd2b0">${o.type}</p><h3>${o.name}</h3><p>${o.line}</p><span class="more">Explore trip →</span></a>`).join('')}</div>
+      <div class="more-places"><b>Also popular</b>${MORE_PLACES.map(([n, d, id]) => `<a href="${wa(`Hi Montage Traders, I am going to ${n}. What gear should I take?`)}" target="_blank" rel="noopener" title="${d}">${n}</a>`).join('')}</div></section>
+  </div>`;
+  watch();
+})();
+</script>
+</body>
+</html>

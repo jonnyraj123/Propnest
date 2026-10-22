@@ -51,3 +51,36 @@ window.PRODUCTS = [
   { id: 'fish', name: 'Ornamental Fish', cat: 'aqua', img: ['fish'], label: 'Type', v: [['Goldfish, angelfish, tetras & more', null]],
     about: 'Healthy ornamental fish for your aquarium. Stock changes often — message us to see what is in today.' }
 ];
+
+/* Trips around Srinagar — general travel info, gear links point to real products above. */
+window.TREKS = [
+  { id: 'sonamarg', name: 'Sonamarg', img: 'sonamarg', type: 'Overnight camp', tint: '#3f6a8f',
+    line: 'Meadows, glacier views and a night under the stars.',
+    facts: [['Best time', 'May – October'], ['Trip type', 'Camping & day hikes'], ['Level', 'Easy'], ['From', 'Srinagar by road']],
+    about: ['Sonamarg — the “meadow of gold” — sits beside the Sindh river with snow peaks all around. It is one of the easiest places from Srinagar to pitch a tent and wake up to glacier views.',
+      'Most visitors walk up towards Thajiwas glacier, camp by the river, or use Sonamarg as the starting point for the Great Lakes trek.'],
+    pack: ['dome-tent', 'folding-chair', 'life-jacket', 'jianggan'],
+    tips: ['Nights are cold even in summer — carry warm layers', 'Pitch your tent on flat, high ground away from the river', 'Keep a rain cover handy; weather changes fast'] },
+  { id: 'tarsar', name: 'Tarsar–Marsar', img: 'tarsar', type: 'Alpine lakes trek', tint: '#4f7f7a',
+    line: 'Multi-day trek past turquoise lakes and high passes.',
+    facts: [['Best time', 'July – September'], ['Trip type', 'Multi-day trek'], ['Level', 'Moderate'], ['Starts near', 'Aru, Pahalgam']],
+    about: ['Tarsar and Marsar are twin alpine lakes in the Aru valley. The trek crosses green meadows, shepherd camps and a high pass with views over both lakes.',
+      'It is a camping trek — you carry or hire a tent for several nights, so light, waterproof gear matters.'],
+    pack: ['dome-tent', 'jianggan', 'folding-chair', 'tackle-kit'],
+    tips: ['A light 2-person tent saves weight on long days', 'Start early — afternoons can bring rain', 'Carry a basic first-aid kit and water purifier'] },
+  { id: 'gangbal', name: 'Gangbal & Lidder', img: 'gangbal', type: 'River & lake fishing', tint: '#7b6aa0',
+    line: 'Cold, clear water — the angler’s Kashmir.',
+    facts: [['Best time', 'April – October'], ['Trip type', 'Fishing & trekking'], ['Level', 'Easy to moderate'], ['Note', 'Fishing permit needed']],
+    about: ['Gangbal lake lies below Mount Harmukh, reached by trek from Naranag. The Lidder river flows through Pahalgam — both are loved by anglers for their cold, clear water.',
+      'Fishing in Kashmir’s rivers and lakes needs a permit from the J&K Fisheries Department, so arrange it before your trip.'],
+    pack: ['rod-combo', 'wader', 'life-jacket', 'tackle-kit'],
+    tips: ['Get your fishing permit before you go', 'Waders keep you dry and warm in snow-fed rivers', 'Always wear a life jacket near deep or fast water'] }
+];
+/* Other popular places — listed for the demo without photos. */
+window.MORE_PLACES = [
+  ['Pahalgam', 'Lidder valley, Betaab and Aru — base for many treks', 'dome-tent'],
+  ['Gulmarg', 'Gondola rides, meadows in summer and snow in winter', 'dome-tent'],
+  ['Dal Lake', 'Shikara rides and houseboats in Srinagar', 'life-jacket'],
+  ['Doodhpathri', 'Quiet green meadows and streams', 'folding-chair'],
+  ['Gurez', 'Remote valley along the Kishanganga river', 'dome-tent']
+];
