@@ -257,3 +257,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - LinkedIn outreach (white-label/overflow msg with plastrixstudio.com + sahra + wanderly links): messaged Jeff Boob, Sandy Gomez, Ashleigh Barnard, Johnny Digges (free messages); connect sent to Elaine Robinson (Smiling Web Design), Mariam Ali (Citizen, Manager of Websites). Wait for replies.
 - Target only agency OWNERS/managers; skip #OpenToWork, employees, job reposters (Torentify, Wiraa, RemoteHunter), hybrid/US-work-authorization jobs.
 - LinkedIn Service Requests need Premium; skipped (Indian low-budget leads). Don't take ₹0 trial (auto-charge risk).
+
+- 22 Oct: BRIKA (brick-built chronograph concept) demo live at demos/brika/. Scroll colour swap (Citrus/Cobalt/Noir Gold, page colour changes), 5-step pinned "making" story (exploded parts, dial, hands drop, bezel seal, tested), live-time dial with city picker, shop + bag drawer, FAQ. Assets = Joni ChatGPT/Gemini images + 1 Gemini hero video (watermarks removed).
