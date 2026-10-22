@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
 <title>Montage Traders · Fishing, Camping & Aquariums · Srinagar</title>
 <meta name="description" content="Montage Traders, Lal Mandi, Srinagar — camping tents, fishing rods, waders, life jackets, aquariums and ornamental fish. Order on WhatsApp.">
@@ -137,8 +137,8 @@
 </main>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=5"></script>
-<script src="assets/app.js?v=5"></script>
+<script src="assets/data.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
 <script>
 (() => {
   const { $, $$, img, card, watch, wa } = MT;
@@ -198,6 +198,14 @@
   renderPlanner();
 
   $('#support').innerHTML = [['💬', 'Packing advice', 'Send your dates on WhatsApp — we reply with a list.'], ['🏬', 'Pick up on the way', 'Collect at Lal Mandi before you leave Srinagar.'], ['🎣', 'Permit reminder', 'Fishing in Kashmir needs a J&K Fisheries permit.'], ['🐠', 'Aquarium set-up help', 'Tell us your room size — we suggest the tank.']].map(([i, b, t], k) => `<div class="gl rv" style="transition-delay:${k * 80}ms"><i>${i}</i><b>${b}</b><small>${t}</small></div>`).join('');
+  /* glossy glow follows the finger / mouse on support cards */
+  $$('.support .gl').forEach(c => {
+    const at = e => { const r = c.getBoundingClientRect(), p = e.touches ? e.touches[0] : e; c.style.setProperty('--gx', ((p.clientX - r.left) / r.width * 100) + '%'); c.style.setProperty('--gy', ((p.clientY - r.top) / r.height * 100) + '%'); };
+    c.addEventListener('pointermove', at);
+    c.addEventListener('touchstart', e => { at(e); $$('.support .gl.lit').forEach(x => x !== c && x.classList.remove('lit')); c.classList.remove('lit'); void c.offsetWidth; c.classList.add('lit'); }, { passive: true });
+    c.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') c.classList.remove('lit'); });
+    c.addEventListener('click', () => { if (!c.classList.contains('lit')) { $$('.support .gl.lit').forEach(x => x.classList.remove('lit')); c.classList.add('lit'); } });
+  });
   watch();
 
   /* trip story popup */
