@@ -179,6 +179,7 @@
     });
   };
 
+  document.addEventListener('touchstart', () => {}, { passive: true });
   window.AG = { $, $$, reduce, fine, img, byId, catName, unit, rupee, priceHTML, swatch, wa, Cart, card, tilt, watch, toast, confetti, spark, store, lenis: () => lenis, updateCount };
   addEventListener('DOMContentLoaded', () => { watch(); tilt(); });
   if (document.readyState !== 'loading') { watch(); tilt(); }

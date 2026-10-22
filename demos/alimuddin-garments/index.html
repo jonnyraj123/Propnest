@@ -16,7 +16,7 @@
 <div id="hdr"></div>
 <main>
   <section class="hero2" aria-label="Welcome">
-    <img src="img/b/hero.webp" srcset="img/b/hero-m.webp 900w, img/b/hero.webp 1672w" sizes="(max-width: 760px) 100vw, 1380px" alt="Happy kids playing in a pink kidswear boutique" fetchpriority="high">
+    <div class="h-slides" id="hSlides"><img src="img/b/hero.webp" srcset="img/b/hero-m.webp 900w, img/b/hero.webp 1672w" sizes="(max-width: 760px) 100vw, 1380px" alt="Happy kids playing in a pink kidswear boutique" class="on" fetchpriority="high"><img src="img/b/hero2.webp" srcset="img/b/hero2-m.webp 900w, img/b/hero2.webp 1672w" sizes="(max-width: 760px) 100vw, 1380px" alt="Girl with a pink balloon and boy blowing bubbles" class="" loading="lazy"><img src="img/b/hero3.webp" srcset="img/b/hero3-m.webp 900w, img/b/hero3.webp 1672w" sizes="(max-width: 760px) 100vw, 1380px" alt="Kids opening pink gift boxes of new clothes" class="" loading="lazy"><i class="h-veil"></i></div>
     <span class="doodle" style="left:6%;top:12%"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6L12 2Z"/></svg></span><span class="doodle" style="left:40%;top:16%;animation-delay:1s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.3 3.3 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.7 0 6 3.8 4.5 7.3C19.5 16.4 12 21 12 21Z"/></svg></span><span class="doodle" style="left:30%;bottom:12%;animation-delay:2s"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6L12 2Z"/></svg></span>
     <div class="hero2-t">
       <span class="tag-pill">New Arrivals</span>
@@ -87,6 +87,19 @@
   $('#cats').innerHTML = CATS.map((c, i) => `<a class="cat rv" style="transition-delay:${i * 60}ms" href="shop.html?cat=${c.id}"><span class="cat-img"><img src="${img(first[c.id].img[0], 1)}" alt="${c.name}" loading="lazy"></span><span>${c.name}<small>${counts(c.id)} designs</small></span></a>`).join('');
   $('#newGrid').innerHTML = PRODUCTS.filter(p => p.tag).slice(0, 8).map(card).join('');
   watch(); tilt();
+
+  /* hero: only the photo slides (right to left) every 4 s; text stays still */
+  const hs = [...document.querySelectorAll('#hSlides img')], veil = document.querySelector('.h-veil');
+  let hi = 0;
+  if (!AG.reduce && hs.length > 1) setInterval(() => {
+    if (document.hidden) return;
+    const cur = hs[hi], nxt = hs[(hi + 1) % hs.length];
+    nxt.classList.add('in'); void nxt.offsetWidth;
+    cur.classList.add('out'); cur.classList.remove('on'); nxt.classList.remove('in'); nxt.classList.add('on');
+    veil.classList.remove('flash'); void veil.offsetWidth; veil.classList.add('flash');
+    setTimeout(() => cur.classList.remove('out'), 1300);
+    hi = (hi + 1) % hs.length;
+  }, 4000);
 })();
 </script>
 </body>
