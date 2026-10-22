@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
 <title>Montage Traders · Fishing, Camping & Aquariums · Srinagar</title>
 <meta name="description" content="Montage Traders, Lal Mandi, Srinagar — camping tents, fishing rods, waders, life jackets, aquariums and ornamental fish. Order on WhatsApp.">
@@ -64,10 +64,23 @@
     </div>
   </div>
 
-  <section class="sec" aria-labelledby="catT">
+  <section class="plan" id="plan" aria-labelledby="planT">
+    <div class="plan-bg" aria-hidden="true"><img src="img/gangbal.webp" alt="" class="on" data-s="0"><img src="img/tarsar.webp" alt="" data-s="1" loading="lazy"><img src="img/sonamarg.webp" alt="" data-s="2" loading="lazy"><img src="img/winter.webp" alt="" data-s="3" loading="lazy"></div>
     <div class="wrap">
-      <div class="sh rv"><div><p class="eyebrow">Shop by category</p><h2 id="catT">What's your <em>next adventure?</em></h2></div><p class="muted">Five shelves, one shop — everything you need from the campsite to the riverbank.</p></div>
-      <div class="cats" id="cats"></div>
+      <div class="plan-head rv"><p class="eyebrow">Full guide · Full support</p><h2 id="planT">Plan your Kashmir trip — <em>we'll pack the bag.</em></h2><p>Pick a season, tell us what you're doing, and get a ready kit with real shop prices.</p></div>
+      <div class="plan-grid">
+        <div class="gl season rv">
+          <div class="seg" role="tablist" aria-label="Season" id="seasonTabs"></div>
+          <div class="season-body" id="seasonBody" aria-live="polite"></div>
+        </div>
+        <div class="gl planner rv">
+          <div class="pq"><span>1 · What are you planning?</span><div class="chipset" id="qAct"></div></div>
+          <div class="pq"><span id="qGrpL">2 · How many people?</span><div class="chipset" id="qGrp"></div></div>
+          <div class="pq" id="qDayW"><span>3 · How many days?</span><div class="chipset" id="qDay"></div></div>
+          <div class="kit" id="kit" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="support" id="support"></div>
     </div>
   </section>
 
@@ -124,17 +137,67 @@
 </main>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=4"></script>
-<script src="assets/app.js?v=4"></script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/app.js?v=5"></script>
 <script>
 (() => {
   const { $, $$, img, card, watch, wa } = MT;
-  $('#cats').innerHTML = CATS.map(c => `<a class="cat rv" href="shop.html?cat=${c.id}"><img src="${img(c.img, 1)}" alt="" loading="lazy"><b>${c.name}</b><small>${PRODUCTS.filter(p => p.cat === c.id).length} items</small></a>`).join('');
   $('#best').innerHTML = ['dome-tent', 'rod-combo', 'wader', 'aquarium', 'jianggan', 'life-jacket', 'folding-chair', 'fish'].map(id => card(MT.byId(id))).join('');
   $('#vcards').innerHTML = `<a href="${wa('Hi Montage Traders!')}" target="_blank" rel="noopener"><i>💬</i><span>WhatsApp<small>${SHOP.phones[1]}</small></span></a><a href="tel:+919419008168"><i>📞</i><span>Call<small>${SHOP.phones[0]}</small></span></a><a href="${SHOP.map}" target="_blank" rel="noopener"><i>📍</i><span>Shop<small>${SHOP.address}</small></span></a><a href="${SHOP.instagram}" target="_blank" rel="noopener"><i>📸</i><span>Instagram<small>@montagetraders69</small></span></a>`;
   const packName = { 'dome-tent': '⛺ Tent', 'folding-chair': '🪑 Chair', 'jianggan': '🎣 Travel rod', 'rod-combo': '🎣 Rod combo', 'wader': '🥾 Wader', 'life-jacket': '🦺 Life jacket', 'tackle-kit': '🪝 Tackle kit' };
   $('#treksG').innerHTML = TREKS.map(t => `<article class="trek rv"><img class="bg" src="img/${t.img}-s.webp" alt="${t.name}, Kashmir" loading="lazy"><a class="cover" href="trek.html?id=${t.id}" data-trip="${t.id}" aria-label="Explore ${t.name}"></a><p class="eyebrow" style="color:#ffd2b0">${t.type}</p><h3>${t.name}</h3><p>${t.line}</p><div class="packs">${t.pack.slice(0, 3).map(id => `<a href="product.html?id=${id}">${packName[id]}</a>`).join('')}</div><a class="more" href="trek.html?id=${t.id}" data-trip="${t.id}">Read the story →</a></article>`).join('');
   $('#moreP').innerHTML = '<b>Also popular</b>' + MORE_PLACES.map(([n, d]) => `<a href="${wa(`Hi Montage Traders, I am going to ${n}. What gear should I take?`)}" target="_blank" rel="noopener" title="${d}">${n}</a>`).join('');
+  watch();
+
+  /* ===== trip planner + seasons ===== */
+  const SEASONS = [
+    { n: 'Spring', m: 'Mar – May', where: 'Gangbal & Lidder, Pahalgam', wx: 'Cool days, cold nights, rivers running full', pack: ['rod-combo', 'wader', 'dome-tent'], line: 'The rivers wake up — a favourite time for anglers.' },
+    { n: 'Summer', m: 'Jun – Aug', where: 'Tarsar–Marsar, Sonamarg', wx: 'Pleasant days, chance of afternoon rain', pack: ['dome-tent', 'folding-chair', 'jianggan'], line: 'Trek season — meadows, alpine lakes and long evenings.' },
+    { n: 'Autumn', m: 'Sep – Nov', where: 'Sonamarg, Doodhpathri', wx: 'Clear skies, golden colours, crisp nights', pack: ['dome-tent', 'folding-chair', 'life-jacket'], line: 'Quiet trails and clear views — perfect for a weekend camp.' },
+    { n: 'Winter', m: 'Dec – Feb', where: 'Gulmarg', wx: 'Snow and freezing nights', pack: ['dome-tent', 'aquarium', 'fish'], line: 'Snow trips with an experienced guide — or bring the lake home.' }
+  ];
+  const sb = $('#seasonBody'), bgs = $$('.plan-bg img');
+  $('#seasonTabs').innerHTML = SEASONS.map((x, i) => `<button role="tab" data-si="${i}" class="${i ? '' : 'on'}" aria-selected="${!i}">${x.n}</button>`).join('');
+  const short = { 'rod-combo': '🎣 Rod combo', wader: '🥾 Wader', 'dome-tent': '⛺ Tent', 'folding-chair': '🪑 Chair', jianggan: '🎣 Travel rod', 'life-jacket': '🦺 Life jacket', aquarium: '🐠 Aquarium', fish: '🐟 Fish' };
+  const showSeason = i => {
+    const x = SEASONS[i];
+    $$('#seasonTabs button').forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-selected', k === i); });
+    bgs.forEach(im => im.classList.toggle('on', +im.dataset.s === i));
+    sb.innerHTML = `<p class="months">${x.m}</p><h3>${x.n} in Kashmir</h3><p class="sl">${x.line}</p>
+      <div class="sf"><div><small>Where to go</small><b>${x.where}</b></div><div><small>Weather</small><b>${x.wx}</b></div></div>
+      <small class="pk">Pack</small><div class="packs">${x.pack.map(id => `<a href="product.html?id=${id}">${short[id]}</a>`).join('')}</div>`;
+    sb.classList.remove('in'); void sb.offsetWidth; sb.classList.add('in');
+  };
+  $('#seasonTabs').addEventListener('click', e => { const b = e.target.closest('[data-si]'); if (b) showSeason(+b.dataset.si); });
+  showSeason(0);
+
+  const ACT = [['camp', '⛺ Camping'], ['fish', '🎣 Fishing'], ['trek', '🥾 Trek'], ['aqua', '🐠 Aquarium at home']];
+  const GRP = ['1–2', '3–4', '5+'], ROOM = ['Desk / small', 'Living room', 'Big feature'], DAYS = ['1 day', '2–3 days', 'A week'];
+  const st = { a: 'camp', g: 0, d: 1 };
+  const chips = (el, arr, key) => { $(el).innerHTML = arr.map((v, i) => { const val = Array.isArray(v) ? v[0] : i, lab = Array.isArray(v) ? v[1] : v; return `<button data-k="${key}" data-v="${val}" class="${String(st[key]) === String(val) ? 'on' : ''}">${lab}</button>`; }).join(''); };
+  const kitFor = () => {
+    const { a, g, d } = st, tentV = [0, 1, 2][g], ppl = [2, 4, 6][g], L = [];
+    if (a === 'camp') { L.push(['dome-tent', tentV, 1], ['folding-chair', 0, ppl]); if (d >= 1) L.push(['life-jacket', 0, 1]); if (d === 2) L.push(['jianggan', 0, 1]); }
+    if (a === 'fish') { const r = [1, 2, 3][g]; L.push(['rod-combo', 0, r], ['tackle-kit', 0, 1], ['wader', 0, 1], ['life-jacket', 0, r]); if (d >= 1) L.push(['dome-tent', tentV, 1]); }
+    if (a === 'trek') { L.push(['dome-tent', g === 0 ? 0 : tentV, 1]); if (d >= 1) L.push(['jianggan', 0, 1]); if (d === 2) L.push(['tackle-kit', 0, 1], ['folding-chair', 0, 1]); }
+    if (a === 'aqua') { L.push(['aquarium', [0, 3, 5][g], 1], ['fish', 0, 1]); }
+    return L;
+  };
+  const renderPlanner = () => {
+    chips('#qAct', ACT, 'a'); chips('#qGrp', st.a === 'aqua' ? ROOM : GRP, 'g'); chips('#qDay', DAYS, 'd');
+    $('#qGrpL').textContent = st.a === 'aqua' ? '2 · How big is the space?' : '2 · How many people?';
+    $('#qDayW').hidden = st.a === 'aqua';
+    const L = kitFor(); let tot = 0, ask = 0;
+    const rows = L.map(([id, vi, q], i) => { const p = MT.byId(id), [lab, pr] = p.v[vi]; if (pr) tot += pr * q; else ask++;
+      return `<li style="--d:${i * 70}ms"><img src="${img(p.img[0], 1)}" alt=""><span><b>${p.name}</b><small>${lab}${q > 1 ? ' · × ' + q : ''}</small></span><em class="num">${pr ? MT.rupee(pr * q) : 'Ask'}</em></li>`; }).join('');
+    $('#kit').innerHTML = `<div class="kit-h"><span>Your kit</span><b class="num">${MT.rupee(tot)}${ask ? ' <small>+ ask</small>' : ''}</b></div><ul>${rows}</ul>
+      <div class="kit-a"><button class="btn btn-or" id="kitAdd">Add all to cart</button><a class="btn btn-glass" target="_blank" rel="noopener" href="${wa('Hi Montage Traders, please check this kit for me:\n' + L.map(([id, vi, q]) => { const p = MT.byId(id); return `• ${p.name} — ${p.v[vi][0]} × ${q}`; }).join('\n'))}">💬 Send list on WhatsApp</a></div>`;
+    $('#kitAdd').onclick = () => { L.forEach(([id, vi, q]) => MT.Cart.add(id, vi, q)); MT.toast('✅ Kit added to your cart <a href="cart.html">View cart</a>'); };
+  };
+  document.addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (!b) return; const k = b.dataset.k; st[k] = k === 'a' ? b.dataset.v : +b.dataset.v; if (k === 'a') st.g = Math.min(st.g, 2); renderPlanner(); });
+  renderPlanner();
+
+  $('#support').innerHTML = [['💬', 'Packing advice', 'Send your dates on WhatsApp — we reply with a list.'], ['🏬', 'Pick up on the way', 'Collect at Lal Mandi before you leave Srinagar.'], ['🎣', 'Permit reminder', 'Fishing in Kashmir needs a J&K Fisheries permit.'], ['🐠', 'Aquarium set-up help', 'Tell us your room size — we suggest the tank.']].map(([i, b, t], k) => `<div class="gl rv" style="transition-delay:${k * 80}ms"><i>${i}</i><b>${b}</b><small>${t}</small></div>`).join('');
   watch();
 
   /* trip story popup */
