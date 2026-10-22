@@ -29,7 +29,7 @@
 
   const logo = `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#0c2744"/><path d="M6 33 17 18l6 8 5-6 14 13Z" fill="#eef4f8"/><path d="m17 18 3.5 4.7-2.2-.6L17 24l-1.4-2.4-2.1.9Z" fill="#fff"/><path d="M8 37c5-3 10-3 16 0s11 3 16 0" stroke="#f07a2a" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg><span class="logo-t">MONTAGE<small>TRADERS</small></span>`;
   const page = document.body.dataset.page;
-  const nav = [['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['shop.html?cat=tents', 'Camping', 'x'], ['shop.html?cat=aqua', 'Aquariums', 'y'], ['contact.html', 'Visit Us', 'contact']];
+  const nav = [['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['shop.html?cat=tents', 'Camping', 'x'], ['shop.html?cat=aqua', 'Aquariums', 'y'], ['about.html', 'About', 'about'], ['contact.html', 'Visit Us', 'contact']];
   const waSvg = '<svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4Z"/></svg>';
 
   $('#hdr') && ($('#hdr').outerHTML = `
@@ -53,7 +53,7 @@
     <div class="foot-top">
       <div><a class="logo" href="index.html">${logo}</a><p style="margin-top:14px;max-width:360px">Fishing, camping and aquarium gear in the heart of Srinagar — tents, rods, waders, life jackets, aquariums and ornamental fish.</p></div>
       <div class="foot-links"><h4>SHOP</h4>${CATS.map(c => `<a href="shop.html?cat=${c.id}">${c.name}</a>`).join('')}</div>
-      <div class="foot-links"><h4>VISIT</h4><p>${S.address}</p><a href="tel:+91${S.phones[0].replace(/\s/g, '')}">📞 ${S.phones[0]}</a><a href="tel:+91${S.phones[1].replace(/\s/g, '')}">📞 ${S.phones[1]}</a><a href="${S.instagram}" target="_blank" rel="noopener">📸 @montagetraders69</a></div>
+      <div class="foot-links"><h4>VISIT</h4><a href="about.html">About Montage Traders</a><p>${S.address}</p><a href="tel:+91${S.phones[0].replace(/\s/g, '')}">📞 ${S.phones[0]}</a><a href="tel:+91${S.phones[1].replace(/\s/g, '')}">📞 ${S.phones[1]}</a><a href="${S.instagram}" target="_blank" rel="noopener">📸 @montagetraders69</a></div>
     </div>
     <div class="pay-row"><b>We accept</b><span class="pay" style="color:#097939">UPI</span><span class="pay">G&nbsp;Pay</span><span class="pay" style="color:#5f259f">PhonePe</span><span class="pay" style="color:#00a6e0">Paytm</span><span class="pay" style="color:#1a1f71;font-style:italic">VISA</span><span class="pay" style="color:#0a3a7a">RuPay</span><span class="pay">💵 Cash on Delivery</span></div>
     <div class="legal"><button data-pol="shipping">Shipping &amp; Delivery</button><button data-pol="returns">Returns &amp; Exchange</button><button data-pol="terms">Terms &amp; Conditions</button><button data-pol="privacy">Privacy Policy</button><span class="copy">© ${new Date().getFullYear()} Montage Traders · Site by <a href="https://plastrixstudio.com" target="_blank" rel="noopener" style="text-decoration:underline">Plastrix Studio</a></span></div>
