@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233a2340'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f3dc97' font-family='Georgia' font-weight='700'%3EAG%3C/text%3E%3C/svg%3E">
+<title>Order List · ALIMUDDIN Garments</title>
+</head>
+<body data-page="cart">
+<div id="hdr"></div>
+<main class="wrap">
+  <section class="page-hero" style="padding-bottom:20px"><p class="eyebrow" style="justify-content:center">Step 2 of 3</p><h1>Your <em>order list</em></h1></section>
+  <div id="box"></div>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(() => {
+  const { $, img, rupee, Cart, catName } = AG;
+  const render = () => {
+    const items = Cart.all().filter(it => AG.byId(it.id));
+    if (!items.length) { $('#box').innerHTML = `<div class="empty"><div class="big">🛍️</div><h2>Your order list is empty</h2><p class="muted" style="margin:10px 0 24px">Open any design and fill its size chart to add it here.</p><a class="btn btn-leaf" href="shop.html">Browse designs</a></div>`; return; }
+    const t = Cart.totals();
+    $('#box').innerHTML = `<div class="cart-grid"><div>${items.map(it => { const l = Cart.line(it), p = l.p;
+        const lines = Object.entries(it.q).filter(([, v]) => v).map(([k, v]) => { const [c, s] = k.split('|'); return `<span>${c} · ${s} × ${v}</span>`; }).join('');
+        return `<article class="citem rv"><img src="${img(p.img[0], 1)}" alt="${p.name}"><div><small class="muted" style="font-weight:800;font-size:12px">${p.code ? 'CODE ' + p.code : catName(p.cat).toUpperCase()}</small><h3>${p.name}</h3><div class="lines">${lines}</div></div>
+          <div class="r"><b>${l.priced && l.total ? rupee(l.total) : 'Price on WhatsApp'}</b><span style="font-weight:800">${l.pcs} pcs</span><span><a class="lnk" href="product.html?id=${p.id}">Edit</a> · <button class="lnk" data-rm="${p.id}">Remove</button></span></div></article>`; }).join('')}</div>
+      <aside class="sum"><h3>Summary</h3>
+        <div class="ln"><span>Designs</span><b>${t.designs}</b></div>
+        <div class="ln"><span>Total pieces</span><b>${t.pcs}</b></div>
+        <div class="ln tot"><span>Estimate</span><b>${t.total ? rupee(t.total) : '—'}</b></div>
+        ${t.ask ? `<small>➕ ${t.ask} design${t.ask > 1 ? 's' : ''} priced on WhatsApp — not included in the estimate.</small>` : ''}
+        <a class="btn btn-leaf" href="checkout.html">Continue to details →</a>
+        <a class="btn btn-ghost" href="shop.html">Add more designs</a>
+        <small>No payment now. We confirm stock, final price and delivery with you on WhatsApp.</small>
+      </aside></div>`;
+    AG.watch();
+  };
+  document.addEventListener('click', e => { const b = e.target.closest('[data-rm]'); if (b) { Cart.remove(b.dataset.rm); render(); } });
+  render();
+})();
+</script>
+</body>
+</html>

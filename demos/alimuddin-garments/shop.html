@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233a2340'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f3dc97' font-family='Georgia' font-weight='700'%3EAG%3C/text%3E%3C/svg%3E">
+<title>Shop Wholesale Kidswear · ALIMUDDIN Garments</title>
+<meta name="description" content="Browse all wholesale kidswear designs by category.">
+</head>
+<body data-page="shop">
+<div id="hdr"></div>
+<main>
+  <section class="page-hero">
+    <video autoplay muted loop playsinline preload="none" poster="media/glow-poster.jpg"><source src="media/glow.mp4" type="video/mp4"></video>
+    <div class="wrap"><p class="eyebrow" style="justify-content:center">The catalogue</p><h1 id="shopT">All <em>designs</em></h1><p>Open any design to fill the size &amp; colour chart. Minimum 25 pieces per design.</p></div>
+  </section>
+  <div class="wrap">
+    <div class="tools">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
+      <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="sr">Search</span><input id="q" type="search" placeholder="Search name or code…"></label>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="grid" id="grid" style="margin:18px 0 20px"></div>
+    <div class="empty" id="none" hidden><div class="big">🧺</div><h3>No designs found</h3><p class="muted">Try another word or category.</p></div>
+  </div>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(() => {
+  const { $, $$, card, tilt, watch } = AG;
+  const params = new URLSearchParams(location.search);
+  let cat = params.get('cat') || 'all', q = '';
+  $('#tabs').innerHTML = [{ id: 'all', name: 'All', icon: '✨' }, ...CATS].map(c => `<button role="tab" data-c="${c.id}">${c.icon} ${c.name}</button>`).join('');
+  const render = () => {
+    const list = PRODUCTS.filter(p => (cat === 'all' || p.cat === cat) && (!q || (p.name + ' ' + (p.code || '')).toLowerCase().includes(q)));
+    $('#grid').innerHTML = list.map(card).join('');
+    $('#none').hidden = !!list.length;
+    $('#count').textContent = list.length + (list.length === 1 ? ' design' : ' designs');
+    $('#shopT').innerHTML = cat === 'all' ? 'All <em>designs</em>' : AG.catName(cat).replace(/(\S+)$/, '<em>$1</em>');
+    $$('#tabs button').forEach(b => { const on = b.dataset.c === cat; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+    watch(); tilt();
+  };
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cat = b.dataset.c; history.replaceState(null, '', cat === 'all' ? 'shop.html' : 'shop.html?cat=' + cat); render(); });
+  $('#q').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); render(); });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -259,3 +259,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - LinkedIn Service Requests need Premium; skipped (Indian low-budget leads). Don't take ₹0 trial (auto-charge risk).
 
 - 22 Oct: BRIKA (brick-built chronograph concept) demo live at demos/brika/. Scroll colour swap (Citrus/Cobalt/Noir Gold, page colour changes), 5-step pinned "making" story (exploded parts, dial, hands drop, bezel seal, tested), live-time dial with city picker, shop + bag drawer, FAQ. Assets = Joni ChatGPT/Gemini images + 1 Gemini hero video (watermarks removed).
+
+- 22 Oct: ALIMUDDIN Garments (wholesale kidswear, V-109 S.A. Farooquie Rd Kolkata-18, WA 9330634663, MOQ 25) B2B demo live at demos/alimuddin-garments/. 8 pages (home, shop, product, cart, checkout, thankyou, about, contact), size x colour grid, order sent via WhatsApp, gift popup after 3.5s, glass policy popups. Prices from client chat: skirt sets 26-30 Rs200 / 32-34 Rs230 / XL Rs260; kurta sets 16-18 Rs130; Happy frock Rs110; baby shirt-pant Rs60 half / Rs70 full; others "Price on WhatsApp". Excluded GUCCI + Little Fashionistas + Spider-Man photos.

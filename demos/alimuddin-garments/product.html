@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233a2340'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f3dc97' font-family='Georgia' font-weight='700'%3EAG%3C/text%3E%3C/svg%3E">
+<title>Design · ALIMUDDIN Garments</title>
+<meta name="description" content="Wholesale kidswear design with size and colour chart.">
+</head>
+<body data-page="shop">
+<div id="hdr"></div>
+<main class="wrap">
+  <div class="pd" id="pd"></div>
+  <section style="padding-bottom:30px"><div class="sec-h"><div><p class="eyebrow">Pairs well on the rack</p><h2>You may also <em>like</em></h2></div></div><div class="grid" id="more"></div></section>
+</main>
+<div class="zoom" id="zoom" role="dialog" aria-label="Zoomed photo"><img alt=""></div>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(() => {
+  const { $, $$, img, byId, catName, unit, rupee, priceHTML, swatch, wa, Cart, card, tilt, watch, toast, confetti } = AG;
+  const MOQ = SHOP.moq;
+  const p = byId(new URLSearchParams(location.search).get('id')) || PRODUCTS[0];
+  document.title = p.name + ' · ALIMUDDIN Garments';
+  const q = Object.assign({}, Cart.get(p.id));
+  const key = (c, s) => c + '|' + s;
+  const priceRows = p.priceBySize
+    ? Object.entries(p.priceBySize).reduce((a, [s, v]) => { const l = a[a.length - 1]; if (l && l.v === v) l.s.push(s); else a.push({ s: [s], v }); return a; }, []).map(r => `<span>Size ${r.s.length > 1 ? r.s[0] + '–' + r.s[r.s.length - 1] : r.s[0]}: <b>${rupee(r.v)}</b></span>`).join('')
+    : p.price ? `<span>All sizes: <b>${rupee(p.price)}</b> / pc</span>` : `<span>Price shared on WhatsApp with the colour chart</span>`;
+
+  $('#pd').innerHTML = `
+    <div class="gal">
+      <div class="thumbs" role="tablist" aria-label="Photos">${p.img.map((n, i) => `<button class="${i ? '' : 'on'}" data-i="${i}" aria-label="Photo ${i + 1}"><img src="${img(n, 1)}" alt=""></button>`).join('')}</div>
+      <div class="main-img" id="mainImg"><img src="${img(p.img[0])}" alt="${p.name}"></div>
+    </div>
+    <div>
+      <p class="crumbs"><a href="index.html">Home</a> / <a href="shop.html?cat=${p.cat}">${catName(p.cat)}</a></p>
+      ${p.code ? `<span class="pd-code">CODE ${p.code}</span>` : ''}
+      <h1>${p.name}</h1>
+      ${priceHTML(p)}
+      <div class="ptable">${priceRows}</div>
+      ${p.note ? `<p class="note">${p.note}</p>` : ''}
+      <div class="facts"><div><b>${MOQ}</b>min. pieces</div><div><b>${p.sizes[0]}–${p.sizes[p.sizes.length - 1]}</b>sizes</div><div><b>${p.colours.length}</b>colours</div></div>
+      <div class="matrix-w">
+        <h3>Fill your size &amp; colour chart</h3>
+        <p class="muted" style="font-size:14px">Mix any sizes and colours. Minimum ${MOQ} pieces for this design.</p>
+        <div class="mx-scroll"><table class="mx"><thead><tr><th></th>${p.sizes.map(s => `<th>${s}</th>`).join('')}</tr></thead><tbody>
+          ${p.colours.map(c => `<tr><th class="c"><span style="display:inline-flex;align-items:center;gap:6px"><i style="width:14px;height:14px;border-radius:50%;background:${swatch(c)};display:inline-block;box-shadow:0 0 0 1px rgba(0,0,0,.12)"></i>${c}</span></th>${p.sizes.map(s => `<td><span class="qty"><button data-d="-1" data-k="${key(c, s)}" aria-label="Less ${c} size ${s}">−</button><input inputmode="numeric" value="${q[key(c, s)] || 0}" data-k="${key(c, s)}" aria-label="${c} size ${s} pieces"><button data-d="1" data-k="${key(c, s)}" aria-label="More ${c} size ${s}">+</button></span></td>`).join('')}</tr>`).join('')}
+        </tbody></table></div>
+        <div class="quick"><button data-fill="1">+1 of every size &amp; colour</button><button data-fill="2">+2 of every size &amp; colour</button><button data-fill="0">Clear</button></div>
+        <div class="prog"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#f0e6d6" stroke-width="7"/><circle id="ringC" cx="32" cy="32" r="27" fill="none" stroke="url(#rg)" stroke-width="7" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .5s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#8cc63f"/><stop offset="1" stop-color="#c79a3b"/></linearGradient></defs></svg><b id="ringN">0</b></div><p id="progT"></p></div>
+        <div class="add-row"><button class="btn btn-leaf" id="addBtn" disabled>Add to order list</button><a class="btn btn-wa" id="askBtn" target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+      </div>
+      <div class="desc">
+        <details open><summary>About this design</summary><p>${p.name} from our ${catName(p.cat).toLowerCase()} range. Comes in a ${p.colours.length}-colour chart${p.colours[0] === 'Colour A' ? ' — colour photos are shared on WhatsApp' : ': ' + p.colours.join(', ')}. Sizes ${p.sizes.join(', ')}.</p></details>
+        <details><summary>Wholesale terms</summary><ul><li>Minimum ${MOQ} pieces per design (mix sizes &amp; colours)</li><li>Order is confirmed on WhatsApp after a stock check</li><li>Payment by UPI or bank transfer after confirmation</li></ul></details>
+        <details><summary>Delivery</summary><p>Pick up from our Kolkata shop, or we send by courier / transport anywhere in India. Charges are confirmed before dispatch.</p></details>
+      </div>
+    </div>`;
+
+  /* gallery + zoom */
+  const main = $('#mainImg img');
+  $('.thumbs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('.thumbs button').forEach(x => x.classList.toggle('on', x === b)); main.style.opacity = 0; setTimeout(() => { main.src = img(p.img[+b.dataset.i]); main.style.opacity = 1; }, 180); });
+  const zoom = $('#zoom');
+  $('#mainImg').addEventListener('click', () => { $('img', zoom).src = main.src; zoom.classList.add('on'); });
+  zoom.addEventListener('click', () => zoom.classList.remove('on'));
+  if (AG.fine) { $('#mainImg').addEventListener('pointermove', e => { const r = e.currentTarget.getBoundingClientRect(); main.style.transformOrigin = `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`; main.style.transform = 'scale(1.6)'; }); $('#mainImg').addEventListener('pointerleave', () => main.style.transform = ''); }
+
+  /* matrix */
+  let celebrated = Cart.pcs(q) >= MOQ;
+  const sync = () => {
+    $$('.mx input').forEach(i => { const v = q[i.dataset.k] || 0; if (+i.value !== v) i.value = v; i.parentElement.classList.toggle('has', v > 0); });
+    const n = Cart.pcs(q); let tot = 0, priced = true;
+    Object.entries(q).forEach(([k, v]) => { const u = unit(p, k.split('|')[1]); if (u) tot += u * v; else if (v) priced = false; });
+    $('#ringN').textContent = n;
+    $('#ringC').style.strokeDashoffset = 169.6 * (1 - Math.min(n / MOQ, 1));
+    const ok = n >= MOQ, t = $('#progT');
+    t.className = ok ? 'ok' : '';
+    t.innerHTML = ok ? `🎉 ${n} pieces ready${priced && tot ? ` · <b>${rupee(tot)}</b>` : ''}` : `Add <b>${MOQ - n}</b> more piece${MOQ - n === 1 ? '' : 's'} to reach the minimum of ${MOQ}${priced && tot ? ` · ${rupee(tot)} so far` : ''}`;
+    $('#addBtn').disabled = !ok;
+    $('#addBtn').textContent = Cart.all().some(x => x.id === p.id) ? 'Update order list' : 'Add to order list';
+    if (ok && !celebrated) { celebrated = true; const r = $('.ring').getBoundingClientRect(); confetti(r.left + 32, r.top + 32, 40); }
+    if (!ok) celebrated = false;
+    $('#askBtn').href = wa(`Hi ALIMUDDIN Garments, please share price & colour chart for: ${p.name}${p.code ? ' (Code ' + p.code + ')' : ''}`);
+  };
+  const setK = (k, v) => { v = Math.max(0, Math.min(999, parseInt(v) || 0)); if (v) q[k] = v; else delete q[k]; };
+  $('.mx').addEventListener('click', e => { const b = e.target.closest('button[data-d]'); if (!b) return; setK(b.dataset.k, (q[b.dataset.k] || 0) + +b.dataset.d); sync(); });
+  $('.mx').addEventListener('input', e => { if (e.target.dataset.k) { setK(e.target.dataset.k, e.target.value.replace(/\D/g, '')); sync(); } });
+  $('.mx').addEventListener('focusin', e => { if (e.target.tagName === 'INPUT') e.target.select(); });
+  $('.quick').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const f = +b.dataset.fill; p.colours.forEach(c => p.sizes.forEach(s => { const k = key(c, s); setK(k, f ? (q[k] || 0) + f : 0); })); sync(); });
+  $('#addBtn').addEventListener('click', () => { Cart.set(p.id, q); sync(); toast(`✅ Added ${Cart.pcs(q)} pcs to your order list <a href="cart.html">View list</a>`); });
+  sync();
+
+  /* related */
+  $('#more').innerHTML = PRODUCTS.filter(x => x.cat === p.cat && x.id !== p.id).concat(PRODUCTS.filter(x => x.cat !== p.cat && x.tag)).slice(0, 4).map(card).join('');
+  watch(); tilt();
+})();
+</script>
+</body>
+</html>
