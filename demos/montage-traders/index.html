@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3">
+<link rel="stylesheet" href="assets/style.css?v=4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
 <title>Montage Traders · Fishing, Camping & Aquariums · Srinagar</title>
 <meta name="description" content="Montage Traders, Lal Mandi, Srinagar — camping tents, fishing rods, waders, life jackets, aquariums and ornamental fish. Order on WhatsApp.">
@@ -112,14 +112,6 @@
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0" aria-labelledby="abT">
-    <div class="wrap"><div class="teaser rv"><img src="img/gangbal-s.webp" alt="Alpine lake in Kashmir" loading="lazy"><div>
-      <p class="eyebrow" style="color:#ffd2b0">About Montage Traders</p><h2 id="abT">A real shop in <em>Srinagar</em></h2>
-      <p>Fishing, camping, aquariums and aquaculture gear at Lal Mandi — with honest advice for your next trip.</p>
-      <ul><li>✓ Tents &amp; camping supplies</li><li>✓ Rods, waders &amp; life jackets</li><li>✓ Aquariums, fish &amp; aquaculture</li></ul>
-      <div class="row"><a class="btn btn-or" href="about.html">More about us →</a></div></div></div></div>
-  </section>
-
   <section class="sec snow" aria-labelledby="visitT">
     <div class="wrap">
       <div class="sh rv"><div><p class="eyebrow">Visit us</p><h2 id="visitT">Come see it <em>in person</em></h2></div></div>
@@ -132,8 +124,8 @@
 </main>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=3"></script>
-<script src="assets/app.js?v=3"></script>
+<script src="assets/data.js?v=4"></script>
+<script src="assets/app.js?v=4"></script>
 <script>
 (() => {
   const { $, $$, img, card, watch, wa } = MT;
@@ -141,9 +133,27 @@
   $('#best').innerHTML = ['dome-tent', 'rod-combo', 'wader', 'aquarium', 'jianggan', 'life-jacket', 'folding-chair', 'fish'].map(id => card(MT.byId(id))).join('');
   $('#vcards').innerHTML = `<a href="${wa('Hi Montage Traders!')}" target="_blank" rel="noopener"><i>💬</i><span>WhatsApp<small>${SHOP.phones[1]}</small></span></a><a href="tel:+919419008168"><i>📞</i><span>Call<small>${SHOP.phones[0]}</small></span></a><a href="${SHOP.map}" target="_blank" rel="noopener"><i>📍</i><span>Shop<small>${SHOP.address}</small></span></a><a href="${SHOP.instagram}" target="_blank" rel="noopener"><i>📸</i><span>Instagram<small>@montagetraders69</small></span></a>`;
   const packName = { 'dome-tent': '⛺ Tent', 'folding-chair': '🪑 Chair', 'jianggan': '🎣 Travel rod', 'rod-combo': '🎣 Rod combo', 'wader': '🥾 Wader', 'life-jacket': '🦺 Life jacket', 'tackle-kit': '🪝 Tackle kit' };
-  $('#treksG').innerHTML = TREKS.map(t => `<article class="trek rv"><img class="bg" src="img/${t.img}-s.webp" alt="${t.name}, Kashmir" loading="lazy"><a class="cover" href="trek.html?id=${t.id}" aria-label="Explore ${t.name}"></a><p class="eyebrow" style="color:#ffd2b0">${t.type}</p><h3>${t.name}</h3><p>${t.line}</p><div class="packs">${t.pack.slice(0, 3).map(id => `<a href="product.html?id=${id}">${packName[id]}</a>`).join('')}</div><a class="more" href="trek.html?id=${t.id}">Explore trip →</a></article>`).join('');
+  $('#treksG').innerHTML = TREKS.map(t => `<article class="trek rv"><img class="bg" src="img/${t.img}-s.webp" alt="${t.name}, Kashmir" loading="lazy"><a class="cover" href="trek.html?id=${t.id}" data-trip="${t.id}" aria-label="Explore ${t.name}"></a><p class="eyebrow" style="color:#ffd2b0">${t.type}</p><h3>${t.name}</h3><p>${t.line}</p><div class="packs">${t.pack.slice(0, 3).map(id => `<a href="product.html?id=${id}">${packName[id]}</a>`).join('')}</div><a class="more" href="trek.html?id=${t.id}" data-trip="${t.id}">Read the story →</a></article>`).join('');
   $('#moreP').innerHTML = '<b>Also popular</b>' + MORE_PLACES.map(([n, d]) => `<a href="${wa(`Hi Montage Traders, I am going to ${n}. What gear should I take?`)}" target="_blank" rel="noopener" title="${d}">${n}</a>`).join('');
   watch();
+
+  /* trip story popup */
+  document.body.insertAdjacentHTML('beforeend', '<div class="tpop" id="tpop" role="dialog" aria-modal="true" aria-labelledby="tpT"><div class="tpop-bg" data-tclose></div><div class="tpop-box"><button class="tpop-x" data-tclose aria-label="Close">✕</button><div id="tpC"></div></div></div>');
+  const tpop = $('#tpop'), price = id => { const p = MT.byId(id), v = p.v.filter(x => x[1]).map(x => x[1]); return v.length ? MT.rupee(Math.min(...v)) : 'Ask'; };
+  const openTrip = id => {
+    const t = TREKS.find(x => x.id === id); if (!t) return;
+    $('#tpC').innerHTML = `<div class="tp-hero"><img src="img/${t.img}.webp" alt="${t.name}, Kashmir"><div><p class="eyebrow" style="color:#ffd2b0">${t.type}</p><h2 id="tpT">${t.name}</h2><p>${t.line}</p></div></div>
+      <div class="tp-body"><div class="tp-facts">${t.facts.map(([k, v]) => `<div><small>${k}</small><b>${v}</b></div>`).join('')}</div>
+      <h3>The story</h3>${t.about.map(p => `<p>${p}</p>`).join('')}
+      <h3>How Montage Traders helps</h3><div class="tp-serv"><div>🎒 <b>Full kit in one shop</b> — tents, rods, waders, jackets &amp; chairs.</div><div>💬 <b>Packing advice</b> — send your dates on WhatsApp.</div><div>🏬 <b>Pick up on the way</b> — Lal Mandi, Srinagar.</div></div>
+      <h3>Gear for this trip</h3><div class="tp-gear">${t.pack.map(id => { const p = MT.byId(id); return `<a href="product.html?id=${id}"><img src="img/${p.img[0]}-s.webp" alt=""><span>${p.name}<b>${price(id) === 'Ask' ? 'Price on WhatsApp' : 'from ' + price(id)}</b></span></a>`; }).join('')}</div>
+      <h3>Quick tips</h3><ul class="tp-tips">${t.tips.map(x => `<li>${x}</li>`).join('')}</ul>
+      <div class="row"><a class="btn btn-or" href="${wa(`Hi Montage Traders, I am planning a trip to ${t.name}. Please help me with the gear list.`)}" target="_blank" rel="noopener">💬 Plan my ${t.name} kit</a><a class="btn btn-line" href="shop.html">Shop all gear</a></div></div>`;
+    tpop.classList.add('on'); $('.tpop-box').scrollTop = 0; document.body.classList.add('lock');
+  };
+  const closeTrip = () => { tpop.classList.remove('on'); document.body.classList.remove('lock'); };
+  document.addEventListener('click', e => { const a = e.target.closest('[data-trip]'); if (a) { e.preventDefault(); openTrip(a.dataset.trip); } if (e.target.closest('[data-tclose]')) closeTrip(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeTrip(); });
 
   /* intro: glass poster splits open like two doors */
   const intro = $('#intro'), vid = $('#introVid'), doors = $$('.door', intro);
