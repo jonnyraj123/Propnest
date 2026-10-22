@@ -55,7 +55,7 @@
   if (hdr) hdr.outerHTML = `
   <div class="top-strip">Wholesale only · Minimum <b>${S.moq} pieces</b> per design · Sizes 16 to XL · 3 colours per design</div>
   <header class="hdr"><div class="wrap hdr-in">
-    <a class="logo" href="index.html" aria-label="ALIMUDDIN Garments home"><span class="logo-mark">AG</span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
+    <a class="logo" href="index.html" aria-label="ALIMUDDIN Garments home"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
     <nav class="nav" aria-label="Main">${navItems.map(([h, t, k]) => `<a href="${h}" class="${page === k ? 'on' : ''}">${t}</a>`).join('')}</nav>
     <div class="hdr-act">
       <a class="icon-btn" href="shop.html" aria-label="Search products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
@@ -73,7 +73,7 @@
   if (ftr) ftr.outerHTML = `
   <footer class="foot"><div class="wrap">
     <div class="foot-top">
-      <div><a class="logo" href="index.html"><span class="logo-mark">AG</span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
+      <div><a class="logo" href="index.html"><span class="logo-mark"><span>MA</span></span><span class="logo-t">ALIMUDDIN<small>GARMENTS</small></span></a>
         <p style="margin-top:16px;max-width:360px">Wholesale kidswear for shops — frocks, skirt sets, co-ords, bell-bottom sets, boys sets and dungarees. Every design comes in 3 colours.</p></div>
       <div class="foot-links"><h4>Shop</h4>${CATS.map(c => `<a href="shop.html?cat=${c.id}">${c.name}</a>`).join('')}</div>
       <div class="foot-links"><h4>Visit / Call</h4><p>${S.address}</p><a href="tel:+91${S.phones[0].replace(/\s/g, '')}">📞 ${S.phones[0]}</a><a href="tel:+91${S.phones[1].replace(/\s/g, '')}">📞 ${S.phones[1]}</a><a href="${wa('Hi ALIMUDDIN Garments, I want to see your wholesale collection.')}" target="_blank" rel="noopener">💬 WhatsApp us</a></div>
@@ -146,7 +146,7 @@
   const spark = (x, y, n) => { if (reduce) return; for (let i = 0; i < n; i++) { const s = document.createElement('i'); s.className = 'spark'; s.style.left = x + 'px'; s.style.top = y + 'px'; const a = Math.random() * 6.28, d = 14 + Math.random() * 40; s.style.setProperty('--dx', Math.cos(a) * d + 'px'); s.style.setProperty('--dy', Math.sin(a) * d + 18 + 'px'); document.body.appendChild(s); setTimeout(() => s.remove(), 900); } };
 
   const confetti = (x = innerWidth / 2, y = innerHeight / 3, n = 60) => {
-    if (reduce) return; const cols = ['#8cc63f', '#e2718b', '#c79a3b', '#f3dc97', '#f8c8d2', '#3f7a23'];
+    if (reduce) return; const cols = ['#c9a24b', '#f1d891', '#8a6420', '#17120f', '#ecd3cc', '#fff4d6'];
     for (let i = 0; i < n; i++) {
       const c = document.createElement('i'); c.className = 'confetti'; c.style.background = cols[i % cols.length]; c.style.left = x + 'px'; c.style.top = y + 'px'; document.body.appendChild(c);
       const a = Math.random() * Math.PI * 2, v = 120 + Math.random() * 260;

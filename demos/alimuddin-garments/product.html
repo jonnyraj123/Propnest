@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233a2340'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f3dc97' font-family='Georgia' font-weight='700'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f0c0b'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f3dc97' font-family='Georgia' font-weight='700'%3EMA%3C/text%3E%3C/svg%3E">
 <title>Design · ALIMUDDIN Garments</title>
 <meta name="description" content="Wholesale kidswear design with size and colour chart.">
 </head>
@@ -54,7 +54,7 @@
           ${p.colours.map(c => `<tr><th class="c"><span style="display:inline-flex;align-items:center;gap:6px"><i style="width:14px;height:14px;border-radius:50%;background:${swatch(c)};display:inline-block;box-shadow:0 0 0 1px rgba(0,0,0,.12)"></i>${c}</span></th>${p.sizes.map(s => `<td><span class="qty"><button data-d="-1" data-k="${key(c, s)}" aria-label="Less ${c} size ${s}">−</button><input inputmode="numeric" value="${q[key(c, s)] || 0}" data-k="${key(c, s)}" aria-label="${c} size ${s} pieces"><button data-d="1" data-k="${key(c, s)}" aria-label="More ${c} size ${s}">+</button></span></td>`).join('')}</tr>`).join('')}
         </tbody></table></div>
         <div class="quick"><button data-fill="1">+1 of every size &amp; colour</button><button data-fill="2">+2 of every size &amp; colour</button><button data-fill="0">Clear</button></div>
-        <div class="prog"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#f0e6d6" stroke-width="7"/><circle id="ringC" cx="32" cy="32" r="27" fill="none" stroke="url(#rg)" stroke-width="7" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .5s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#8cc63f"/><stop offset="1" stop-color="#c79a3b"/></linearGradient></defs></svg><b id="ringN">0</b></div><p id="progT"></p></div>
+        <div class="prog"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#f0e6d6" stroke-width="7"/><circle id="ringC" cx="32" cy="32" r="27" fill="none" stroke="url(#rg)" stroke-width="7" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .5s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#8a6420"/><stop offset="1" stop-color="#f1d891"/></linearGradient></defs></svg><b id="ringN">0</b></div><p id="progT"></p></div>
         <div class="add-row"><button class="btn btn-leaf" id="addBtn" disabled>Add to order list</button><a class="btn btn-wa" id="askBtn" target="_blank" rel="noopener">Ask on WhatsApp</a></div>
       </div>
       <div class="desc">
