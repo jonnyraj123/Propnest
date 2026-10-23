@@ -42,6 +42,7 @@
   - Don't write "Namaste ji".
   - Don't promise times like "1-2 din". Joni scolded about this.
 - **Closing line used:** "Mera naam Joni Raj Mollick hai… Kya aap interested hain? 🙏"
+- **Signature rule:** In every client message always sign as **"Joni Raj"** (জনিরাজ), never only "Joni".
 
 ## 4. Demo quality rules (Joni is strict)
 - **Uniqueness:** every demo must be 100% unique (concept, layout, fonts, colours, animation). Never reuse a theme with only the name swapped.
