@@ -287,5 +287,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
   - Kolkata: Banglish (Bengali in English letters). If their page itself uses Bengali script, write fully in Bengali script.
   - Rest of India: Hinglish (Hindi in English letters), mixing in English lines where natural.
   - Everywhere outside Kolkata in India (incl. South India): ALWAYS Hinglish. Do not switch to full English. (Joni corrected this.)
-- First message to an unknown number must be SHORT (5-7 lines). A stranger will not read a long message.
+- **FIRST MESSAGE = 3-4 LINES MAX (Joni got very angry about long messages, repeatedly).** Only a curiosity hook + one benefit + "want to know more?". Give details ONLY if they reply. A stranger will not read a long message.
 - Joni wants Claude to also find leads itself (businesses with no / weak website).
