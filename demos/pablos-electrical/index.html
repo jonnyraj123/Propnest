@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All In One Electrical · Tampa</title>
+<meta name="description" content="All In One Electrical Repairs & Installations — licensed electrician in Tampa, FL. EC13014461.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+<style>
+/* Concept: a neon sign on a Tampa night wall. The tubes buzz to life one by one. */
+:root{--wall:#0e0b10;--fg:#f5eefc;--mut:#9d93a8;--pink:#ff3fa4;--cyan:#33e6ff;--lime:#c6ff4a;
+--neon:"Tilt Neon",system-ui,sans-serif;--body:"Outfit",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--wall);color:var(--fg);font:300 17px/1.6 var(--body);
+background-image:linear-gradient(rgba(255,255,255,.025) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.025) 2px,transparent 2px);background-size:84px 34px,84px 68px}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:12px}
+.logo{font:800 15px var(--body);letter-spacing:.24em;text-transform:uppercase}
+.logo b{color:var(--cyan)}
+.tube{font:500 15px var(--body);text-decoration:none;padding:11px 20px;border:2px solid var(--cyan);border-radius:999px;color:var(--cyan);box-shadow:0 0 12px rgba(51,230,255,.5),inset 0 0 12px rgba(51,230,255,.3);transition:background .2s,color .2s}
+.tube:hover{background:var(--cyan);color:var(--wall)}
+.tube.p{border-color:var(--pink);color:var(--pink);box-shadow:0 0 14px rgba(255,63,164,.55),inset 0 0 12px rgba(255,63,164,.3)}
+.tube.p:hover{background:var(--pink);color:var(--wall)}
+.hero{text-align:center;padding:70px 0 90px}
+.sign{font:400 clamp(52px,11vw,150px)/.95 var(--neon);display:flex;flex-direction:column;align-items:center}
+.sign span{color:#3a2c40;transition:color .1s,text-shadow .1s}
+.sign .l1.on{color:#ffe1f1;text-shadow:0 0 6px var(--pink),0 0 18px var(--pink),0 0 42px var(--pink),0 0 90px rgba(255,63,164,.6)}
+.sign .l2.on{color:#e3fbff;text-shadow:0 0 6px var(--cyan),0 0 18px var(--cyan),0 0 42px var(--cyan),0 0 90px rgba(51,230,255,.6)}
+.sign .l2.on.buzz{animation:buzz 7s infinite}
+@keyframes buzz{0%,92%,96%,100%{opacity:1}93%,95%{opacity:.35}}
+.open{display:inline-flex;align-items:center;gap:10px;font:500 13px var(--body);letter-spacing:.3em;color:var(--lime);margin-bottom:34px;text-shadow:0 0 10px var(--lime)}
+.open i{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+.hero p{color:var(--mut);max-width:40ch;margin:34px auto 30px;font-size:19px}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+section{padding:80px 0}
+h2{font:800 clamp(30px,5vw,56px)/1 var(--body);letter-spacing:-.03em;margin-bottom:38px}
+h2 span{font-family:var(--neon);font-weight:400;color:var(--pink);text-shadow:0 0 16px rgba(255,63,164,.7)}
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{border:1px solid #2b2232;border-radius:22px;padding:30px;background:rgba(255,255,255,.02);transition:border-color .3s,box-shadow .3s}
+.card:hover{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 0 34px -6px var(--c)}
+.card h3{font:400 30px var(--neon);color:var(--c);margin-bottom:6px}
+.card p{color:var(--mut)}
+.final{text-align:center;border:2px solid var(--pink);border-radius:30px;padding:64px 22px;box-shadow:0 0 30px -8px var(--pink),inset 0 0 30px -12px var(--pink)}
+.final .num{font:400 clamp(38px,8vw,92px) var(--neon);color:#e3fbff;text-shadow:0 0 18px var(--cyan);text-decoration:none;display:block;margin:4px 0 26px}
+footer{padding:30px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:13px}
+@media (max-width:720px){.svc{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sign .l2.on.buzz{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">All In One<b>·</b>Electrical</div>
+  <a class="tube" href="tel:+19294366368">(929) 436-6368</a>
+</header>
+
+<div class="hero">
+  <div class="open"><i></i>OPEN FOR CALLS · TAMPA</div>
+  <h1 class="sign" aria-label="Lights on. Problems off.">
+    <span class="l1" aria-hidden="true">Lights on.</span>
+    <span class="l2" aria-hidden="true">Problems off.</span>
+  </h1>
+  <p>Repairs and installations, all in one call. Pablo and his licensed team light up Tampa homes.</p>
+  <div class="ctas"><a class="tube p" href="tel:+19294366368">Call Pablo now</a><a class="tube" href="#svc">What we do</a></div>
+</div>
+
+<section id="svc">
+  <h2>Everything <span>electric.</span></h2>
+  <div class="svc">
+    <div class="card" style="--c:var(--pink)"><h3>Repairs</h3><p>Outlets, switches, breakers and mystery outages.</p></div>
+    <div class="card" style="--c:var(--cyan)"><h3>Lighting</h3><p>Indoor, outdoor, recessed and fixture installs.</p></div>
+    <div class="card" style="--c:var(--lime)"><h3>Ceiling fans</h3><p>New fans and replacements, mounted solid.</p></div>
+    <div class="card" style="--c:var(--pink)"><h3>Installations</h3><p>New circuits, panels and appliance hookups.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="final">
+    <h2 style="margin-bottom:8px">Something sparking? Call.</h2>
+    <a class="num" href="tel:+19294366368">(929) 436-6368</a>
+    <a class="tube p" href="tel:+19294366368">Get a free quote</a>
+  </div>
+</section>
+
+<footer><span>© All In One Electrical · Tampa, FL · EC13014461</span><span>Demo design by Plastrix Studio</span></footer>
+</div>
+<script>
+const l1=document.querySelector('.l1'),l2=document.querySelector('.l2');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){l1.classList.add('on');l2.classList.add('on')}else{
+const flick=(el,t,done)=>{[0,90,160,300,380].forEach((d,i)=>setTimeout(()=>el.classList.toggle('on',i%2===0),t+d));setTimeout(()=>{el.classList.add('on');done&&done()},t+520)};
+flick(l1,400);flick(l2,1300,()=>l2.classList.add('buzz'))}
+</script>
+</body>
+</html>
