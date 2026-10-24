@@ -44,6 +44,8 @@
 - **Closing line used:** "Mera naam Joni Raj Mollick hai… Kya aap interested hain? 🙏"
 - **Signature rule:** In every client message always sign as **"Joni Raj"** (জনিরাজ), never only "Joni".
 - **Outreach style:** Messages must be short and make the client curious/interested (hook on their business, one clear benefit, free demo, portfolio link). Length is not important; impact is.
+- **Indian clients: keep messages VERY short** (long messages annoy them and they will not read).
+- **Outreach workflow:** 1) Write the draft message. 2) Below it, give a Bengali meaning so Joni knows what it says. 3) Wait for his OK. 4) Only then make the WhatsApp link.
 
 ## 4. Demo quality rules (Joni is strict)
 - **Uniqueness:** every demo must be 100% unique (concept, layout, fonts, colours, animation). Never reuse a theme with only the name swapped.
