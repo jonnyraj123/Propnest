@@ -274,3 +274,17 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 
 - 22 Oct: Montage Traders (Lal Mandi Srinagar; fishing/camping/aquariums; ph 9419008168 / 9906761488; IG montagetraders69; lead via KASHMIR DREAMS contact) retail e-com demo live at demos/montage-traders/. Glass-poster intro that splits like doors, real prices from their IG price lists, cart+checkout+WhatsApp. Demo WhatsApp = 9906761488 (confirm). Images = Joni ChatGPT/Gemini.
 - **Upwork:** Profile set up (Joni Raj M., $15/hr). Cannot buy Connects yet: Joni has only a RuPay card (tried, failed). Waiting for a Visa/Mastercard from the bank. Until then focus on link-based applying (LinkedIn Easy Apply, worldwide remote) and direct client outreach.
+
+## Outreach message formula (Joni's standing rule, 24 Oct 2026)
+1. Warm, human opening, like one person talking to another (build a connection). Never stiff or corporate.
+2. Praise something real and specific about THEIR business.
+3. Explain lightly why THEY need a website, from their customers' point of view.
+4. Offer a free demo website; make clear it costs nothing, and if they like it we talk further.
+5. Portfolio link (plastrixstudio.com): "if you want to see my work".
+6. Sign "Joni Raj".
+- Length: medium at most. Say everything, but never long or boring.
+- Language by location (judge from the Instagram account):
+  - Kolkata: Banglish (Bengali in English letters). If their page itself uses Bengali script, write fully in Bengali script.
+  - Rest of India: Hinglish (Hindi in English letters), mixing in English lines where natural.
+  - South India / abroad: English if Hindi is unlikely.
+- Joni wants Claude to also find leads itself (businesses with no / weak website).
