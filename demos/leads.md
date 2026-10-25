@@ -110,13 +110,13 @@ Need number: The Cashmere Store (Srinagar, Shopify site down).
 ## US batch 4 (26 Oct) — email, mobile-site problems checked at 390px
 | Business | City | Email | Phone | Problem seen | Status |
 |---|---|---|---|---|---|
-| Houston Auto Details | Houston TX | houstonautodetails713@gmail.com | 832-873-6645 | Wix site, blank black hero + menu cut off on phone | Draft |
-| Pressure Mobile Car Wash | Houston TX | pressuremobilewash@gmail.com | 832-294-8411 | Wix, headline/menu cut off on phone | Draft |
-| The Luxe Wash | Houston TX | theluxewash@gmail.com | (346) 239-0609 | hero text cut off on phone | Draft |
-| DJK Cleaning Service (Stephanie Tucker) | Fairburn/Atlanta GA | stephanietuckercleaning@gmail.com | (470) 669-3738 | name + menu cut off on phone | Draft |
-| Austin Gardeners | Hutto/Austin TX | austingardeners@gmail.com | 512-845-1531 | menu + hero cut off on phone | Draft |
-| Modern Edge Dallas Barbershop | Dallas TX | modernedgedallas@gmail.com | 214-948-0388 | Wix, headline cut off on phone | Draft |
-| The Players Club Barbershop | Dallas TX | theplayersclubdallas@gmail.com | (214) 244-8282 | only a Square booking page, no real site | Draft |
-| Premier Barber Lounge | Dallas TX | premierbarberlounge400@gmail.com | (214) 484-2401 | site almost empty (~60 words) | Draft |
-| Old East Dallas Barbershop | Dallas TX | oedbarbershop@gmail.com | (214) 560-7327 | only a Square store page | Draft |
-| Atlanta Cleaning Services | Brookhaven GA | atlcleaningservices1@gmail.com | (678) 350-8386 | no website, only Nextdoor | Draft |
+| Houston Auto Details | Houston TX | houstonautodetails713@gmail.com | 832-873-6645 | Wix site, blank black hero + menu cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| Pressure Mobile Car Wash | Houston TX | pressuremobilewash@gmail.com | 832-294-8411 | Wix, headline/menu cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| The Luxe Wash | Houston TX | theluxewash@gmail.com | (346) 239-0609 | hero text cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| DJK Cleaning Service (Stephanie Tucker) | Fairburn/Atlanta GA | stephanietuckercleaning@gmail.com | (470) 669-3738 | name + menu cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| Austin Gardeners | Hutto/Austin TX | austingardeners@gmail.com | 512-845-1531 | menu + hero cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| Modern Edge Dallas Barbershop | Dallas TX | modernedgedallas@gmail.com | 214-948-0388 | Wix, headline cut off on phone | Email sent 26 Oct (rajjonim@gmail.com) |
+| The Players Club Barbershop | Dallas TX | theplayersclubdallas@gmail.com | (214) 244-8282 | only a Square booking page, no real site | Email sent 26 Oct (rajjonim@gmail.com) |
+| Premier Barber Lounge | Dallas TX | premierbarberlounge400@gmail.com | (214) 484-2401 | site almost empty (~60 words) | Email sent 26 Oct (rajjonim@gmail.com) |
+| Old East Dallas Barbershop | Dallas TX | oedbarbershop@gmail.com | (214) 560-7327 | only a Square store page | Email sent 26 Oct (rajjonim@gmail.com) |
+| Atlanta Cleaning Services | Brookhaven GA | atlcleaningservices1@gmail.com | (678) 350-8386 | no website, only Nextdoor | Email sent 26 Oct (rajjonim@gmail.com) |
