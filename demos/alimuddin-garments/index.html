@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Dancing+Script:wght@600;700&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=7">
+<link rel="stylesheet" href="assets/style.css?v=9">
 <link rel="icon" href="img/b/fav.png">
 <title>M.A ALIMUDDIN Garments · Wholesale Kidswear Kolkata</title>
 <meta name="description" content="M.A ALIMUDDIN Garments — Little Stars wholesale kidswear from Kolkata — frocks, skirt sets, co-ords, bell-bottom sets, boys sets and dungarees. Minimum 25 pieces per design, 3 colours each.">
@@ -34,6 +34,13 @@
       <div><i>💵</i><span><b>Cash on Delivery</b><small>Or pay with PhonePe</small></span></div>
     </div>
   </div>
+
+  <section class="sec" style="padding-bottom:0" aria-labelledby="szT">
+    <div class="wrap">
+      <div class="sh-c rv"><p class="eyebrow" style="justify-content:center">Easy size chart</p><h2 id="szT">Our <em>sizes</em></h2><p>3 size groups · every design in 3 colours</p></div>
+      <div class="rv" id="szG"></div>
+    </div>
+  </section>
 
   <section class="sec" aria-labelledby="catT">
     <div class="wrap">
@@ -89,8 +96,8 @@
 </main>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=7"></script>
-<script src="assets/app.js?v=7"></script>
+<script src="assets/data.js?v=9"></script>
+<script src="assets/app.js?v=9"></script>
 <script>
 (() => {
   const { $, img, card, tilt, watch } = AG;
@@ -98,6 +105,7 @@
   const counts = c => PRODUCTS.filter(p => p.cat === c).length;
   $('#cats').innerHTML = CATS.map((c, i) => `<a class="cat rv" style="transition-delay:${i * 60}ms" href="shop.html?cat=${c.id}"><span class="cat-img"><img src="${img(first[c.id].img[0], 1)}" alt="${c.name}" loading="lazy"></span><span>${c.name}<small>${counts(c.id)} designs</small></span></a>`).join('');
   $('#newGrid').innerHTML = PRODUCTS.filter(p => p.tag).slice(0, 8).map(card).join('');
+  $('#szG').innerHTML = AG.sizeGuide();
   watch(); tilt();
 
   /* re-order banner for returning shops */

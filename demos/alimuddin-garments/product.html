@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Dancing+Script:wght@600;700&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=7">
+<link rel="stylesheet" href="assets/style.css?v=9">
 <link rel="icon" href="img/b/fav.png">
 <title>Design · M.A ALIMUDDIN Garments</title>
 <meta name="description" content="Wholesale kidswear design with size and colour chart.">
@@ -20,8 +20,8 @@
 <div class="zoom" id="zoom" role="dialog" aria-label="Zoomed photo"><img alt=""></div>
 <div id="ftr"></div>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/data.js?v=7"></script>
-<script src="assets/app.js?v=7"></script>
+<script src="assets/data.js?v=9"></script>
+<script src="assets/app.js?v=9"></script>
 <script>
 (() => {
   const { $, $$, img, byId, catName, swatch, wa, card, tilt, watch, toast, confetti, store, contactBtns, payCard, openModal } = AG;
@@ -44,7 +44,7 @@
       <div class="rate-box"><h4>Best wholesale rate on call</h4><p>Call or WhatsApp us for today's price and the colour chart of this design.</p>
         <div class="perk-chips"><span>💵 Cash on Delivery</span><span>📱 PhonePe</span><span>🎨 3 colours</span><span>📦 Min. ${MOQ} pcs</span></div>
         ${contactBtns(p, true)}</div>
-      <div class="facts"><div><b>${MOQ}</b>min. pieces</div><div><b>${p.sizes[0]}–${p.sizes[p.sizes.length - 1]}</b>sizes</div><div><b>${p.colours.length}</b>colours</div></div>
+      <div class="sizes-box"><h4>Sizes in this design</h4>${AG.sizeGuide(p)}<p>Every size comes in <b>${p.colours.length} colours</b>. Mix any sizes &amp; colours — minimum <b>${MOQ} pieces</b>.</p></div>
       <div class="matrix-w">
         <h3>Make your order chart</h3>
         <p class="muted" style="font-size:14px">Mix any sizes and colours. Minimum ${MOQ} pieces for this design. Not sure? Tap <b>Smart ${MOQ} pack</b> for a ready-to-sell mix.</p>

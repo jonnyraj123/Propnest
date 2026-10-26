@@ -16,6 +16,7 @@
   const icoWa = '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4Z"/></svg>';
   const icoFb = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9Z"/></svg>';
   const icoIg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+  const sizeGuide = p => `<div class="sg">${SIZE_GROUPS.map(g => { const have = p ? g.sizes.filter(s => p.sizes.includes(s)) : g.sizes; return `<div class="sg-i${p && !have.length ? ' off' : ''}"><i>${g.icon}</i><b>${g.name}</b><span>Size ${p && have.length && have.length < g.sizes.length ? have.join(', ') : g.range}</span></div>`; }).join('')}</div>`;
   const askText = p => `Hi M.A ALIMUDDIN Garments, please share the wholesale price & colour chart for: ${p.name}${p.code ? ' (Code ' + p.code + ')' : ''}`;
   const contactBtns = (p, big) => `<span class="cbtns${big ? ' big' : ''}"><a class="cb call" href="tel:${S.call}" aria-label="Call M.A ALIMUDDIN Garments">${icoCall}<span>Call</span></a><a class="cb wa" href="${wa(askText(p))}" target="_blank" rel="noopener" aria-label="Ask about ${p.name} on WhatsApp">${icoWa}<span>WhatsApp</span></a></span>`;
   const socials = cls => `<span class="socials ${cls || ''}"><a href="${S.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${icoFb}</a><a href="${S.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${icoIg}</a><a href="https://wa.me/${S.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">${icoWa}</a></span>`;
@@ -36,7 +37,7 @@
   const navItems = [['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['about.html', 'How Wholesale Works', 'about'], ['contact.html', 'Contact', 'contact']];
   const hdr = $('#hdr');
   if (hdr) hdr.outerHTML = `
-  <div class="top-strip">Wholesale only · Minimum <b>${S.moq} pieces</b> per design · <b>Cash on Delivery</b> · Pay with PhonePe</div>
+  <div class="top-strip">Wholesale only · Min. <b>${S.moq} pcs</b> per design · Sizes <b>16 – 34</b> · 3 colours · <b>Cash on Delivery</b></div>
   <header class="hdr"><div class="wrap hdr-in">
     <a class="logo" href="index.html" aria-label="M.A ALIMUDDIN Garments home"><img class="logo-img" src="img/b/logo-ma.webp" alt="" width="52" height="52"><span class="logo-t">M.A ALIMUDDIN<small>Garments</small></span></a>
     <nav class="nav" aria-label="Main">${navItems.map(([h, t, k]) => `<a href="${h}" class="${page === k ? 'on' : ''}">${t}</a>`).join('')}</nav>
@@ -171,7 +172,7 @@
   };
 
   document.addEventListener('touchstart', () => {}, { passive: true });
-  window.AG = { $, $$, reduce, fine, img, byId, catName, swatch, wa, card, tilt, watch, toast, confetti, spark, store, lenis: () => lenis, contactBtns, perksHTML, payCard, socials, openModal, askText, icoCall, icoWa };
+  window.AG = { $, $$, reduce, fine, img, byId, catName, swatch, wa, card, tilt, watch, toast, confetti, spark, store, lenis: () => lenis, contactBtns, perksHTML, payCard, sizeGuide, socials, openModal, askText, icoCall, icoWa };
   addEventListener('DOMContentLoaded', () => { watch(); tilt(); });
   if (document.readyState !== 'loading') { watch(); tilt(); }
 })();
