@@ -5,7 +5,9 @@ window.SHOP = {
   tagline: 'Little Stars Wholesale Kidswear',
   whatsapp: '919330634663',
   call: '+919330634663',
-  phonepe: '93306 34663',
+  pay: '62903 20193',
+  email: 'maalimuddin786@gmail.com',
+  qr: '', // payment QR image, e.g. 'img/b/pay-qr.webp'
   phones: ['93306 34663', '87776 26556'],
   address: 'V-109, S.A. Farooquie Road, Kolkata – 700018 (Near Union Bank)',
   map: 'https://www.google.com/maps/search/?api=1&query=S.A.+Farooquie+Road+Kolkata+700018',

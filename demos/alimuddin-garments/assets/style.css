@@ -718,3 +718,6 @@ main.wrap>.page-hero{margin:0 calc(var(--pad) * -1)}
 .sizes-box p{font-size:14px;margin-top:10px;color:var(--muted)}
 .sizes-box p b{color:var(--ink)}
 .sg-i span{white-space:nowrap}
+.pp-qr{text-align:center;margin:4px 0 12px}
+.pp-qr img{width:min(220px,70%);margin:0 auto;border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+.pp-qr small{display:block;margin-top:6px;font-size:12px;font-weight:700;color:var(--muted)}
