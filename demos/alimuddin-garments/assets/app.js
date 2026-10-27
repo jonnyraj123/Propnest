@@ -59,7 +59,7 @@
     <div class="join-row"><h3><span class="script">Stay in the loop!</span>New designs every week on WhatsApp</h3><a class="btn btn-white" href="${wa('Hi M.A ALIMUDDIN Garments, please send me your new designs. My shop name is: ')}" target="_blank" rel="noopener">💬 Join our WhatsApp list</a></div>
     <div class="foot-top">
       <div><a class="logo" href="index.html"><img class="logo-img" src="img/b/logo-ma.webp" alt="" width="52" height="52" loading="lazy"><span class="logo-t">M.A ALIMUDDIN<small>Garments</small></span></a>
-        <p style="margin-top:16px;max-width:360px">Wholesale kidswear for shops — frocks, skirt sets, co-ords, bell-bottom sets, boys sets and dungarees. Every design comes in 3 colours.</p>${socials('foot-soc')}</div>
+        <p style="margin-top:16px;max-width:360px">Wholesale kidswear for shops — frocks, skirt sets, co-ords, bell-bottom sets, baby sets and dungarees. Every design comes in 3 colours.</p>${socials('foot-soc')}</div>
       <div class="foot-links"><h4>Shop</h4>${CATS.map(c => `<a href="shop.html?cat=${c.id}">${c.name}</a>`).join('')}</div>
       <div class="foot-links"><h4>Visit / Call</h4><p>${S.address}</p><a href="tel:+91${S.phones[0].replace(/\s/g, '')}">📞 ${S.phones[0]}</a><a href="tel:+91${S.phones[1].replace(/\s/g, '')}">📞 ${S.phones[1]}</a><a href="${wa('Hi M.A ALIMUDDIN Garments, I want to see your wholesale collection.')}" target="_blank" rel="noopener">💬 WhatsApp us</a><a href="mailto:${S.email}">✉️ ${S.email}</a></div>
     </div>
