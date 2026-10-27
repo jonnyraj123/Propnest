@@ -292,3 +292,19 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - **Lead screenshot workflow (no questions to Joni):** For every screenshot: 1) check if they already have a website (bio links + Google); 2) check if money can reach India (skip sanctioned countries: Iran, Russia etc.); 3) if OK, directly write the short message (+ WhatsApp link if a number exists); 4) if not worth it, just say "বাদ দাও" with 1-3 short reasons. Skip: big chains/franchises, sites already good, non-businesses, sanctioned countries, shops already on Etsy/Shopify-type stores.
 - **EMAIL LINK RULE (Joni was very angry):** Gmail connector rewrites every URL in plain text into an ugly https://www.google.com/url?q=... link. ALWAYS send emails with `htmlBody` and the site as anchor text: <a href="https://plastrixstudio.com">plastrixstudio.com</a>. Never put a raw URL in `body`. Test-send to self first if unsure.
 - **EMAIL LINK UPDATE (tested 26 Oct):** Even htmlBody anchors, http/https/www variants, bare text domains, and drafts all get wrapped by the connector into google.com/url (no signature), so clicking shows Google's "Redirect Notice" page. It can NOT be fixed from the connector. So: never put plastrixstudio.com (or any URL) in emails sent via connector. Sign as "Joni Raj / Plastrix Studio" only. If a link is needed, Joni sends it from the Gmail app.
+
+- **MESSAGE STYLE TEMPLATE (Joni wrote this himself, 27 Oct — follow this exact tone and shape for every outreach message):**
+  ```
+  Namaste ji 🙏
+
+  Main Joni Raj, Kolkata se web designer hoon.
+
+  Aapke Facebook page par brighthimachal.com dekha, lekin website open nahi ho rahi thi. Isliye socha aapse contact karun.
+
+  Main aapke travel business ke liye packages aur direct WhatsApp booking ke saath ek free sample website bana sakta hoon. Aapko pasand aaye tabhi aage baat karenge — koi pressure nahi.
+
+  Mera work: plastrixstudio.com
+
+  — Joni Raj
+  ```
+  Rules from it: greeting → who I am (1 line) → what I noticed, polite, no blaming ("isliye socha aapse contact karun") → offer tailored to their business (specific features) + free + "pasand aaye tabhi… koi pressure nahi" → "Mera work: plastrixstudio.com" → "— Joni Raj". Short but complete, soft and respectful. Translate the same shape to Banglish / English by location.
