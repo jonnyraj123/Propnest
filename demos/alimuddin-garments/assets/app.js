@@ -23,7 +23,7 @@
   const payCard = () => `<div class="pp-card"><div class="pp-h"><span class="pp-logo">पे</span><div><b>Pay by PhonePe · Paytm · UPI</b><small>Only after we confirm your price</small></div></div>
       <div class="pp-num"><span>Payment number (PhonePe / Paytm / GPay / UPI)</span><b>${S.pay}</b><button type="button" class="pp-copy" data-copy="${S.pay.replace(/\s/g, '')}">Copy</button></div>${S.qr ? `<div class="pp-qr"><img src="${S.qr}" alt="Scan to pay M.A ALIMUDDIN Garments" loading="lazy"><small>Scan with PhonePe, Paytm or any UPI app</small></div>` : ''}
       <ol class="pp-steps"><li>Send your order on WhatsApp</li><li>We confirm price &amp; stock</li><li>Pay to ${S.pay} by PhonePe, Paytm or any UPI app <em>or</em> choose Cash on Delivery</li><li>Send the payment screenshot on WhatsApp</li></ol></div>`;
-  const SW = { Navy: '#1f2a5a', Olive: '#8a8a2a', Purple: '#7a4bb0', Wine: '#6d1f3a', 'Bottle Green': '#1e5a46', Brown: '#8a5a3a', Blue: '#4b7bd0', Pink: '#f3a2bd', Mint: '#a6e0c9', Lilac: '#c9a8e6', Yellow: '#f5d34b', Maroon: '#7a1f2e', Rust: '#b0543a', Mauve: '#9a7390', Peach: '#f7b996', Aqua: '#6fd4d0', Orange: '#f08a3c', Teal: '#2a9d9a', Mustard: '#d7a531', Green: '#79b04a', Rose: '#d77a8f', Grey: '#8c8c8c', Red: '#d23b3b', Sky: '#6fb8ec', Sage: '#94b8a0' };
+  const SW = { Navy: '#1f2a5a', Olive: '#8a8a2a', Purple: '#7a4bb0', Wine: '#6d1f3a', 'Bottle Green': '#1e5a46', Brown: '#8a5a3a', Blue: '#4b7bd0', Pink: '#f3a2bd', Mint: '#a6e0c9', Lilac: '#c9a8e6', Yellow: '#f5d34b', Maroon: '#7a1f2e', Rust: '#b0543a', Mauve: '#9a7390', Peach: '#f7b996', Aqua: '#6fd4d0', Orange: '#f08a3c', Teal: '#2a9d9a', Mustard: '#d7a531', Green: '#79b04a', Rose: '#d77a8f', Grey: '#8c8c8c', Red: '#d23b3b', Sky: '#6fb8ec', Sage: '#94b8a0', 'Rani Pink': '#d6337a', Lime: '#b7d334', Wine: '#5e1f33', 'Dark Brown': '#4e3424' };
   const swatch = c => SW[c] || ['#f3a2bd', '#a6e0c9', '#f5d34b'][['Colour A', 'Colour B', 'Colour C'].indexOf(c)] || '#ddd';
   const wa = text => `https://wa.me/${S.whatsapp}?text=${encodeURIComponent(text)}`;
   const store = {
@@ -37,7 +37,7 @@
   const navItems = [['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['about.html', 'How Wholesale Works', 'about'], ['contact.html', 'Contact', 'contact']];
   const hdr = $('#hdr');
   if (hdr) hdr.outerHTML = `
-  <div class="top-strip">Wholesale only · Min. <b>${S.moq} pcs</b> per design · Sizes <b>16 – 34</b> · 3 colours · <b>Cash on Delivery</b></div>
+  <div class="top-strip">Wholesale only · Min. <b>${S.moq} pcs</b> per design · Sizes <b>16 – XXL</b> · 3 colours · <b>Cash on Delivery</b></div>
   <header class="hdr"><div class="wrap hdr-in">
     <a class="logo" href="index.html" aria-label="M.A ALIMUDDIN Garments home"><img class="logo-img" src="img/b/logo-ma.webp" alt="" width="52" height="52"><span class="logo-t">M.A ALIMUDDIN<small>Garments</small></span></a>
     <nav class="nav" aria-label="Main">${navItems.map(([h, t, k]) => `<a href="${h}" class="${page === k ? 'on' : ''}">${t}</a>`).join('')}</nav>
@@ -109,7 +109,7 @@
     <div class="gift-card">      <button class="gift-x" data-gclose aria-label="Close">✕</button>
       <img class="gift-logo" src="img/b/logo-ma.webp" alt="M.A ALIMUDDIN Garments" width="96" height="96"><p class="eyebrow" style="justify-content:center">Welcome to M.A ALIMUDDIN Garments</p>
       <h3 id="giftT">Wholesale kidswear, <em>made simple</em></h3>
-      <ul class="gift-pts"><li>📦 Minimum <b>25 pieces</b> per design</li><li>🎨 Mix any sizes &amp; all <b>3 colours</b></li><li>💵 <b>Cash on Delivery</b> or PhonePe</li><li>💬 Best rate on <b>call / WhatsApp</b></li></ul>
+      <ul class="gift-pts"><li>📦 Minimum <b>24 pieces</b> per design</li><li>🎨 Mix any sizes &amp; all <b>3 colours</b></li><li>💵 <b>Cash on Delivery</b> or PhonePe</li><li>💬 Best rate on <b>call / WhatsApp</b></li></ul>
       <p class="gift-note">New designs arrive every week — get them first.</p>
       <a class="btn btn-leaf" href="${wa('Hi M.A ALIMUDDIN Garments, please send me your new designs. My shop name is: ')}" target="_blank" rel="noopener" data-gclose>${waSvg.replace('<svg', '<svg width="20" height="20"')} Get new designs on WhatsApp</a>
       <button class="gift-later" data-gclose>Maybe later</button>

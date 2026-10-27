@@ -13,17 +13,18 @@ window.SHOP = {
   map: 'https://www.google.com/maps/search/?api=1&query=S.A.+Farooquie+Road+Kolkata+700018',
   facebook: 'https://www.facebook.com/share/14sLNyNakYf/',
   instagram: 'https://www.instagram.com/ma_alimuddin',
-  moq: 25
+  moq: 24
 };
 
-/* Sizes the shop sells: small 16–18, regular 20–30, big 32–34. Every design has a 3-colour chart. */
+/* Sizes the shop sells: small 16–18, regular 20–30, big 32–34, XL, XXL. Every design has a 3-colour chart. */
 const SMALL = ['16', '18'];
 const REG = ['20', '22', '24', '26', '28', '30'];
 const SKIRT = ['26', '28', '30', '32', '34'];
+const BIG = ['26', '28', '30', '32', '34', 'XL', 'XXL'];
 window.SIZE_GROUPS = [
   { id: 'small', name: 'Small', range: '16–18', sizes: SMALL, icon: '🧸' },
   { id: 'regular', name: 'Regular', range: '20–30', sizes: ['20', '22', '24', '26', '28', '30'], icon: '🎀' },
-  { id: 'big', name: 'Big', range: '32–34', sizes: ['32', '34'], icon: '👗' }
+  { id: 'big', name: 'Big', range: '32–XXL', sizes: ['32', '34', 'XL', 'XXL'], icon: '👗' }
 ];
 const ABC = ['Colour A', 'Colour B', 'Colour C'];
 
@@ -32,7 +33,6 @@ window.CATS = [
   { id: 'bell', name: 'Bell-Bottom Sets', icon: '👖' },
   { id: 'coord', name: 'Co-ord Sets', icon: '🌸' },
   { id: 'frock', name: 'Frocks', icon: '👗' },
-  { id: 'boys', name: 'Boys Sets', icon: '🧢' },
   { id: 'baby', name: 'Baby Sets', icon: '🍼' },
   { id: 'dung', name: 'Dungarees', icon: '🧸' }
 ];
@@ -84,6 +84,13 @@ window.PRODUCTS = [
   { id: 'purple-check-skirt', name: 'Purple Sparkle Check Skirt Set', cat: 'coord', img: [36], sizes: REG, colours: ABC },
 
   // Frocks
+  // New frocks with salwar / leggings — sizes 26–30, 32/34, XL, XXL
+  { id: 'bolero-yellow', name: 'Bolero Jacket Frock & Salwar (Yellow chart)', cat: 'frock', img: [90], sizes: BIG, colours: ['Mustard', 'Rani Pink', 'Lime'], tag: 'New' },
+  { id: 'bolero-lilac', name: 'Bolero Jacket Frock & Salwar (Lilac chart)', cat: 'frock', img: [91], sizes: BIG, colours: ['Lilac', 'Peach', 'Aqua'], tag: 'New' },
+  { id: 'nice-wine', name: "It's Nice Sling-Bag Frock & Leggings (Wine chart)", cat: 'frock', img: [92], sizes: BIG, colours: ['Wine', 'Navy', 'Olive'], tag: 'New' },
+  { id: 'nice-mustard', name: "It's Nice Sling-Bag Frock & Leggings (Mustard chart)", cat: 'frock', img: [93], sizes: BIG, colours: ['Mustard', 'Maroon', 'Grey'], tag: 'New' },
+
+
   { id: 'happy-frock', name: 'Happy Tulle Frock', cat: 'frock', img: [79], sizes: REG, colours: ['Pink', 'Mint', 'Lilac', 'Yellow'], tag: 'Bestseller' },
   { id: 'f-obia1', code: 'OBI A 1', name: 'Floral Pleated Frock & Leggings', cat: 'frock', img: [27], sizes: REG, colours: ABC },
   { id: 'f-obia3', code: 'OBI A 3', name: 'Magenta Pleated Frock', cat: 'frock', img: [16], sizes: REG, colours: ABC },
@@ -95,15 +102,20 @@ window.PRODUCTS = [
   { id: 'ruffle-frock', name: 'Layered Ruffle Frock', cat: 'frock', img: [2], sizes: REG, colours: ABC },
   { id: 'red-floral-frock', name: 'Red Floral Frock & Leggings', cat: 'frock', img: [3], sizes: REG, colours: ABC },
 
-  // Boys sets
-  { id: 'kurta-embro', name: 'Embroidered Kurta & Mirror Pant', cat: 'boys', img: [71], sizes: SMALL, colours: ['Brown', 'Maroon', 'Purple'], tag: 'Festive' },
-  { id: 'kurta-geo', name: 'Geometric Kurta & Pant Set', cat: 'boys', img: [74], sizes: SMALL, colours: ['Rust', 'Mauve', 'Olive'] },
-  { id: 'sequin-boys', name: 'Sequin Shirt & Dhoti Pant', cat: 'boys', img: [34], sizes: REG, colours: ['Yellow', 'Peach', 'Aqua'], tag: 'Festive' },
-  { id: 'white-orange', name: 'Sequin Shirt & Shimmer Pant', cat: 'boys', img: [25], sizes: REG, colours: ['Orange', 'Maroon', 'Teal'] },
-  { id: 'stripe-boys', name: 'Smile Stripe Shirt & Shorts', cat: 'boys', img: [28], sizes: REG, colours: ['Maroon', 'Mustard', 'Green'] },
-  { id: 'rose-boys', name: 'Rose Print Shirt & Shorts', cat: 'boys', img: [46], sizes: REG, colours: ['Orange', 'Pink', 'Aqua'] },
+  // Boys sets (listed under Co-ord Sets)
+  { id: 'kurta-embro', name: 'Embroidered Kurta & Mirror Pant', cat: 'coord', img: [71], sizes: SMALL, colours: ['Brown', 'Maroon', 'Purple'], tag: 'Festive' },
+  { id: 'kurta-geo', name: 'Geometric Kurta & Pant Set', cat: 'coord', img: [74], sizes: SMALL, colours: ['Rust', 'Mauve', 'Olive'] },
+  { id: 'sequin-boys', name: 'Sequin Shirt & Dhoti Pant', cat: 'coord', img: [34], sizes: REG, colours: ['Yellow', 'Peach', 'Aqua'], tag: 'Festive' },
+  { id: 'white-orange', name: 'Sequin Shirt & Shimmer Pant', cat: 'coord', img: [25], sizes: REG, colours: ['Orange', 'Maroon', 'Teal'] },
+  { id: 'stripe-boys', name: 'Smile Stripe Shirt & Shorts', cat: 'coord', img: [28], sizes: REG, colours: ['Maroon', 'Mustard', 'Green'] },
+  { id: 'rose-boys', name: 'Rose Print Shirt & Shorts', cat: 'coord', img: [46], sizes: REG, colours: ['Orange', 'Pink', 'Aqua'] },
 
   // Baby / girls sets
+  // New baby frocks with leggings — sizes 16–18
+  { id: 'pinafore-maroon', name: 'Bow Pinafore Frock & Leggings (Maroon chart)', cat: 'baby', img: [94], sizes: SMALL, colours: ['Maroon', 'Sage', 'Brown'], tag: 'New' },
+  { id: 'pinafore-brown', name: 'Bow Pinafore Frock & Leggings (Brown chart)', cat: 'baby', img: [95], sizes: SMALL, colours: ['Brown', 'Pink', 'Dark Brown'], tag: 'New' },
+  { id: 'collar-pocket-frock', name: 'Collar Pocket Frock & Leggings', cat: 'baby', img: [96, 97], sizes: SMALL, colours: ['Brown', 'Purple', 'Olive'], tag: 'New' },
+  { id: 'jacket-frock-maroon', name: 'Button Jacket Frock & Leggings', cat: 'baby', img: [98], sizes: SMALL, colours: ['Maroon', 'Teal', 'Grey'], tag: 'New' },
   { id: 'pinafore', name: 'Pinafore Top & Pant Set', cat: 'baby', img: [72], sizes: SMALL, colours: ['Rose', 'Brown', 'Teal'] },
   { id: 'floral-jacket', name: 'Floral Jacket & Pant Set', cat: 'baby', img: [73], sizes: SMALL, colours: ['Grey', 'Blue', 'Pink'] },
   { id: 'mama-set', name: 'Mama Print Top & Pant Set', cat: 'baby', img: [75], sizes: SMALL, colours: ABC },
