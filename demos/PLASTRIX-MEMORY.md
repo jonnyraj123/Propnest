@@ -308,3 +308,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
   — Joni Raj
   ```
   Rules from it: greeting → who I am (1 line) → what I noticed, polite, no blaming ("isliye socha aapse contact karun") → offer tailored to their business (specific features) + free + "pasand aaye tabhi… koi pressure nahi" → "Mera work: plastrixstudio.com" → "— Joni Raj". Short but complete, soft and respectful. Translate the same shape to Banglish / English by location.
+
+- **HOSTINGER LIMIT (28 Oct):** Joni's Hostinger Premium plan shows Websites 3/3 (plastrixstudio.com, shopsohag.com, maalimuddingarments.com). FULL. Plan expires 2027-06-27. New client sites → host free on Netlify and point the Hostinger-bought domain to it (or upgrade plan). Do not say "25 sites".
