@@ -310,3 +310,6 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
   Rules from it: greeting → who I am (1 line) → what I noticed, polite, no blaming ("isliye socha aapse contact karun") → offer tailored to their business (specific features) + free + "pasand aaye tabhi… koi pressure nahi" → "Mera work: plastrixstudio.com" → "— Joni Raj". Short but complete, soft and respectful. Translate the same shape to Banglish / English by location.
 
 - **HOSTINGER LIMIT (28 Oct):** Joni's Hostinger Premium plan shows Websites 3/3 (plastrixstudio.com, shopsohag.com, maalimuddingarments.com). FULL. Plan expires 2027-06-27. New client sites → host free on Netlify and point the Hostinger-bought domain to it (or upgrade plan). Do not say "25 sites".
+
+- **INDIA WHATSAPP MESSAGE (approved 30 Oct):** West Bengal Bengali speakers → Banglish; everyone else in India → Hinglish (Hindi in English letters). Never proper English. Very simple, respectful, not salesy, no flattery. Shape:
+  "Namaste ji 🙏 / Main Joni Raj, Kolkata se web designer hoon. / Aapki website dekhi, [simple problem]. Isliye socha aapse ek baar baat karun. / Main aapke [clinic/salon] ke liye ek free sample website bana sakta hoon. Pasand aaye tabhi aage baat karenge, koi pressure nahi. / Mera kaam: plastrixstudio.com / — Joni Raj"
