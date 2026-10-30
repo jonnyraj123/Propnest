@@ -318,3 +318,10 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 
 - **QUALITY BAR (30 Oct):** Every client sample/hero must look at least as cinematic as the MotionSites "Serene" template (full-screen video hero, Instrument Serif glow heading, liquid-glass nav, parallax clouds/rainbow). Anything less = useless. Plan: one real cinematic video per business type (Joni makes with Gemini, I write prompts), reused per category; client photos/name/colors on top.
 - **SAMPLE TEMPLATE DECISION (30 Oct):** Base = MotionSites "Serene" hero (full-screen video, glow serif heading, liquid-glass nav, white pill CTA). Only the hero is used for before/after GIFs. Background video = free stock (Pexels/Pixabay/Mixkit/Coverr), 4–5 per business type, never same video for two shops in the same city. ALWAYS use the client's current website colours. Font: soft serif for spa/salon/clinic, bold sans for barber/cleaning.
+
+## Lesson (30 Oct) — sample emails went out blurry, no video
+- Gmail connector can't attach video or big files (base64 is pasted by hand; >5 KB often fails). So 13 emails went with tiny blurry still images.
+- BEFORE sending any email batch: tell Joni the limits first (what the client will actually see), show one test email to Joni, wait for OK.
+- Never shrink the image to make sending work. If quality can't be kept, stop and tell Joni.
+- Never send the next file/step unasked. One thing at a time, wait for Joni.
+- Videos for all 13 samples are ready in sample-kit/out/<id>/before_after.mp4 — send only to clients who reply.
