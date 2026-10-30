@@ -313,3 +313,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 
 - **INDIA WHATSAPP MESSAGE (approved 30 Oct):** West Bengal Bengali speakers → Banglish; everyone else in India → Hinglish (Hindi in English letters). Never proper English. Very simple, respectful, not salesy, no flattery. Shape:
   "Namaste ji 🙏 / Main Joni Raj, Kolkata se web designer hoon. / Aapki website dekhi, [simple problem]. Isliye socha aapse ek baar baat karun. / Main aapke [clinic/salon] ke liye ek free sample website bana sakta hoon. Pasand aaye tabhi aage baat karenge, koi pressure nahi. / Mera kaam: plastrixstudio.com / — Joni Raj"
+
+- **HARD RULE (30 Oct, Joni insisted):** NEVER start any work (building, generating, sending) until Joni explicitly says "start / shuru koro / kaj koro". Until then only look and give a short opinion. Keep replies very short.
