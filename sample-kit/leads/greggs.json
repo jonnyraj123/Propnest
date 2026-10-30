@@ -1,0 +1,22 @@
+{
+ "id": "greggs",
+ "name": "Greggs Cleaning Services",
+ "city": "Raleigh \u00b7 North Carolina",
+ "website": "https://customs4less.wixsite.com/greggscleaning",
+ "kicker": "Raleigh \u00b7 North Carolina",
+ "line1": "Quality cleaning",
+ "line2": "you can depend on.",
+ "sub": "Home and office cleaning across Raleigh, with a customized quote for every space.",
+ "phone": "(919) 679-2311",
+ "accent": "#2f7fae",
+ "video": "cleaning_43373",
+ "style": "bold",
+ "cta": "Get a quote",
+ "services": [
+  "Home cleaning",
+  "Office",
+  "Custom quote"
+ ],
+ "template": "serene",
+ "photos": []
+}

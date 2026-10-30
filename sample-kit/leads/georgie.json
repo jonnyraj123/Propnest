@@ -1,0 +1,22 @@
+{
+ "id": "georgie",
+ "name": "Georgie Liz Bakery",
+ "city": "Austin \u00b7 Texas",
+ "website": "https://georgielizbakery.wixsite.com/georgie-liz-bakery",
+ "kicker": "Custom cakes \u00b7 Austin",
+ "line1": "Cakes made",
+ "line2": "just for you.",
+ "sub": "Custom cakes baked by hand in Austin, for birthdays, weddings and every sweet moment in between.",
+ "phone": "Austin, TX",
+ "accent": "#c07a7a",
+ "video": "cake_41120",
+ "style": "serif",
+ "cta": "Order a cake",
+ "services": [
+  "Custom cakes",
+  "Birthdays",
+  "Weddings"
+ ],
+ "template": "serene",
+ "photos": []
+}
