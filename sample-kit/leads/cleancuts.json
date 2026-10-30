@@ -1,0 +1,29 @@
+{
+ "id": "cleancuts",
+ "template": "barber",
+ "name": "Clean Cuts Barbershop",
+ "city": "Toronto · Ontario",
+ "website": "https://cleancutstoronto.com",
+ "kicker": "Danforth Ave · Toronto",
+ "line1": "Clean fades.",
+ "line2": "Every time.",
+ "sub": "Clean fades, beard work and line-ups on the Danforth. Book your chair online in seconds.",
+ "phone": "(416) 693-4833",
+ "accent": "#f15a29",
+ "bg_photo": 0,
+ "photos": [
+  {
+   "file": "cleancuts/a.jpg",
+   "label": "Fade & Beard"
+  },
+  {
+   "file": "cleancuts/b.jpg",
+   "label": "Classic Cut"
+  }
+ ],
+ "services": [
+  "Fades",
+  "Beard work",
+  "Line-ups"
+ ]
+}
