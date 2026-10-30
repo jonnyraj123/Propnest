@@ -1,6 +1,36 @@
-{"id":"sfb","template":"barber","name":"San Francisco Barbershop","city":"Dallas · Texas","website":"https://sfbofdallas.com",
-"kicker":"Walnut St · Dallas","line1":"Sharp fades.","line2":"Zero wait.",
-"sub":"Precision cuts, tapers and beard work by barbers who take their time. Book your chair online in seconds.",
-"phone":"(469) 941-4052","accent":"#fd5a1e","bg_photo":1,
-"photos":[{"file":"sfb/a.jpg","label":"Skin Fade"},{"file":"sfb/b.jpg","label":"Beard Sculpt"},{"file":"sfb/c.jpg","label":"The Shop"}],
-"services":["Fades","Tapers","Beard work"]}
+{
+ "id": "sfb",
+ "template": "serene",
+ "name": "San Francisco Barbershop",
+ "city": "Dallas · Texas",
+ "website": "https://sfbofdallas.com",
+ "kicker": "Walnut St · Dallas",
+ "line1": "Sharp fades.",
+ "line2": "Zero wait.",
+ "sub": "Precision cuts, tapers and beard work by barbers who take their time. Book your chair online in seconds.",
+ "phone": "(469) 941-4052",
+ "accent": "#fd5a1e",
+ "bg_photo": 1,
+ "photos": [
+  {
+   "file": "sfb/a.jpg",
+   "label": "Skin Fade"
+  },
+  {
+   "file": "sfb/b.jpg",
+   "label": "Beard Sculpt"
+  },
+  {
+   "file": "sfb/c.jpg",
+   "label": "The Shop"
+  }
+ ],
+ "services": [
+  "Fades",
+  "Tapers",
+  "Beard work"
+ ],
+ "video": "barber_43222",
+ "cta": "Book your chair",
+ "style": "bold"
+}

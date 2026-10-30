@@ -1,6 +1,6 @@
 {
  "id": "cleancuts",
- "template": "barber",
+ "template": "serene",
  "name": "Clean Cuts Barbershop",
  "city": "Toronto · Ontario",
  "website": "https://cleancutstoronto.com",
@@ -25,5 +25,8 @@
   "Fades",
   "Beard work",
   "Line-ups"
- ]
+ ],
+ "video": "barber_40608",
+ "cta": "Book appointment",
+ "style": "bold"
 }

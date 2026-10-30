@@ -51,7 +51,25 @@ def build_page(lead, src_dir, out):
         bg_css = f"url(p{bgi}.jpg) center/cover"
     else:
         bg_css = f"radial-gradient(60% 70% at 70% 40%,{lead['accent']}55,transparent 70%),#111"
+    if lead.get('video'):
+        shutil.copy(os.path.join(KIT, 'videos', lead['video'] + '.webm'), os.path.join(out, 'bg.webm'))
+    words = (lead['line1'] + ' |' + lead['line2']).split()
+    heading, italic = [], False
+    for i, w in enumerate(words):
+        if w.startswith('|'):
+            italic, w = True, w[1:]
+            heading.append('<br>')
+        word = f'<em>{esc(w)}</em>' if italic else esc(w)
+        heading.append(f"<span class='w' style='animation-delay:{1.3 + i * 0.14:.2f}s'>{word}</span>")
+    serif = lead.get('style', 'serif') == 'serif'
+    fill_extra = {
+        'heading': ' '.join(heading).replace(' <br> ', '<br>'),
+        'font': "400 1em 'Instrument Serif',serif" if serif else "400 1em Anton,sans-serif",
+        'hsize': '118px' if serif else '104px',
+        'cta': esc(lead.get('cta', 'Book now')),
+    }
     fill = {
+        **fill_extra,
         'name': esc(lead['name']), 'city': esc(lead['city']), 'kicker': esc(lead['kicker']),
         'line1': esc(lead['line1']), 'line2': esc(lead['line2']), 'sub': esc(lead['sub']),
         'phone': esc(lead['phone']), 'accent': lead['accent'], 'bg_css': bg_css,
