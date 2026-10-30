@@ -315,3 +315,5 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
   "Namaste ji 🙏 / Main Joni Raj, Kolkata se web designer hoon. / Aapki website dekhi, [simple problem]. Isliye socha aapse ek baar baat karun. / Main aapke [clinic/salon] ke liye ek free sample website bana sakta hoon. Pasand aaye tabhi aage baat karenge, koi pressure nahi. / Mera kaam: plastrixstudio.com / — Joni Raj"
 
 - **HARD RULE (30 Oct, Joni insisted):** NEVER start any work (building, generating, sending) until Joni explicitly says "start / shuru koro / kaj koro". Until then only look and give a short opinion. Keep replies very short.
+
+- **QUALITY BAR (30 Oct):** Every client sample/hero must look at least as cinematic as the MotionSites "Serene" template (full-screen video hero, Instrument Serif glow heading, liquid-glass nav, parallax clouds/rainbow). Anything less = useless. Plan: one real cinematic video per business type (Joni makes with Gemini, I write prompts), reused per category; client photos/name/colors on top.
