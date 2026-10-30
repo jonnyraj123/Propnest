@@ -1,0 +1,22 @@
+{
+ "id": "ccp",
+ "name": "Calgary Cleaning Pros",
+ "city": "Calgary · Alberta",
+ "website": "https://calgarycleaningpros.ca",
+ "kicker": "Insured & bonded · Calgary",
+ "line1": "No deposit.",
+ "line2": "Just clean.",
+ "sub": "Home and office cleaning across Calgary. Pay when you are happy. Instant online quote.",
+ "phone": "(587) 897-5194",
+ "accent": "#4ba0e8",
+ "video": "cleaning_21380",
+ "style": "bold",
+ "cta": "Instant quote",
+ "services": [
+  "Residential",
+  "Commercial",
+  "Deep clean"
+ ],
+ "template": "serene",
+ "photos": []
+}

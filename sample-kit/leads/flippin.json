@@ -1,0 +1,22 @@
+{
+ "id": "flippin",
+ "name": "Flippin' Sweets 'n Treats",
+ "city": "Atlanta · Georgia",
+ "website": "https://flippinsweetsntreats.com",
+ "kicker": "Cottage bakery · Atlanta",
+ "line1": "Sweet moments,",
+ "line2": "baked fresh.",
+ "sub": "Custom cookies, cake pops and dessert tables for birthdays, showers and weddings.",
+ "phone": "hello@flippinsweetsntreats.com",
+ "accent": "#4fb6b6",
+ "video": "bakery_3228",
+ "style": "serif",
+ "cta": "Order treats",
+ "services": [
+  "Custom cookies",
+  "Cake pops",
+  "Dessert tables"
+ ],
+ "template": "serene",
+ "photos": []
+}

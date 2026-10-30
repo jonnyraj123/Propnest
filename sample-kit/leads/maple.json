@@ -1,0 +1,22 @@
+{
+ "id": "maple",
+ "name": "Maple Peak Cleaners",
+ "city": "Calgary · Alberta",
+ "website": "https://maplepeakcleaners.ca",
+ "kicker": "Calgary & area",
+ "line1": "Clean at",
+ "line2": "its peak.",
+ "sub": "Eco-friendly residential cleaning in Calgary and area. Free estimates, no contracts.",
+ "phone": "(825) 583-3653",
+ "accent": "#c8102e",
+ "video": "cleaning_43369",
+ "style": "bold",
+ "cta": "Free estimate",
+ "services": [
+  "Standard clean",
+  "Deep clean",
+  "Move-out"
+ ],
+ "template": "serene",
+ "photos": []
+}

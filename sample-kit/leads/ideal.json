@@ -1,0 +1,22 @@
+{
+ "id": "ideal",
+ "name": "Ideal Maids",
+ "city": "Calgary · Alberta",
+ "website": "https://idealmaids.ca",
+ "kicker": "Calgary · Airdrie · Cochrane",
+ "line1": "A spotless home,",
+ "line2": "every visit.",
+ "sub": "Trusted residential, move-out and carpet cleaning across Calgary and surrounding areas.",
+ "phone": "(403) 248-8686",
+ "accent": "#13a6a6",
+ "video": "cleaning_43373",
+ "style": "bold",
+ "cta": "Get a quote",
+ "services": [
+  "Home cleaning",
+  "Move-out",
+  "Carpet"
+ ],
+ "template": "serene",
+ "photos": []
+}

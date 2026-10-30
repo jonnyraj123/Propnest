@@ -1,0 +1,22 @@
+{
+ "id": "soho",
+ "name": "Soho Nail Bar",
+ "city": "Houston · Texas",
+ "website": "https://sohonailbar.net",
+ "kicker": "Katy Freeway · Houston",
+ "line1": "Nails that",
+ "line2": "turn heads.",
+ "sub": "Gel-X, acrylic sets, hand-painted nail art and spa pedicures in a calm, luxe salon.",
+ "phone": "(713) 432-9925",
+ "accent": "#b9806a",
+ "video": "nails_13084",
+ "style": "serif",
+ "cta": "Book a set",
+ "services": [
+  "Gel-X",
+  "Nail art",
+  "Spa pedicure"
+ ],
+ "template": "serene",
+ "photos": []
+}

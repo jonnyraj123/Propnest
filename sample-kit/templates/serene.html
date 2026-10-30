@@ -9,7 +9,7 @@ html,body{height:100%;background:#0a0608;font-family:Inter,sans-serif;color:#fff
 .hero{position:relative;height:100vh;overflow:hidden}
 video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:zoom 12s cubic-bezier(.2,.6,.2,1) forwards}
 @keyframes zoom{to{transform:scale(1)}}
-.shade{position:absolute;inset:0;background:radial-gradient(80% 70% at 50% 45%,rgba(0,0,0,.15),rgba(0,0,0,.65)),linear-gradient(180deg,rgba(0,0,0,.45),transparent 25%,transparent 70%,rgba(0,0,0,.6))}
+.shade{position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 50%,rgba(0,0,0,.45),rgba(0,0,0,.6) 60%,rgba(0,0,0,.75)),linear-gradient(180deg,rgba(0,0,0,.45),transparent 25%,transparent 70%,rgba(0,0,0,.6))}
 .tint{position:absolute;inset:0;background:var(--acc);mix-blend-mode:soft-light;opacity:.35}
 .intro{position:absolute;inset:0;background:#0a0608;z-index:60;animation:intro 1.3s .1s cubic-bezier(.7,0,.2,1) forwards}
 @keyframes intro{to{opacity:0;visibility:hidden}}
@@ -25,7 +25,7 @@ nav.glass{position:absolute;top:22px;left:48px;right:48px;z-index:50;display:fle
 .kick{font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.8);opacity:0;animation:fade 1s 1.2s forwards;margin-bottom:22px}
 h1{font:var(--hf);font-size:{{hsize}};line-height:.92;letter-spacing:-.01em;text-shadow:0 0 40px rgba(255,255,255,.4),0 0 80px rgba(255,255,255,.2),0 0 120px rgba(255,255,255,.1)}
 h1 .w{display:inline-block;opacity:0;filter:blur(16px);transform:translateY(30px);animation:word 1.2s cubic-bezier(.2,.8,.2,1) forwards}
-h1 em{font-style:italic;color:color-mix(in srgb,var(--acc) 55%,#fff)}
+h1 em{font-style:italic;color:color-mix(in srgb,var(--acc) 35%,#fff);text-shadow:0 2px 30px rgba(0,0,0,.6),0 0 60px color-mix(in srgb,var(--acc) 60%,transparent)}
 @keyframes word{to{opacity:1;filter:none;transform:none}}
 .sub{margin-top:26px;max-width:560px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.75);opacity:0;animation:fade 1s 2.3s forwards}
 .cta{display:flex;gap:14px;margin-top:34px;opacity:0;animation:rise .9s 2.6s cubic-bezier(.2,.8,.2,1) forwards}
