@@ -1,0 +1,102 @@
+# Fiverr setup kit — Joni Raj Mollick (Plastrix Studio)
+
+Paste the SCRIPT below into Claude in Chrome (Fiverr tab open). Keep this folder open on the desktop: when Claude asks for a file, pick it from here.
+
+## Files in this folder
+| File | Where it goes |
+|---|---|
+| profile-photo.jpg | Seller profile photo |
+| gig1-image1-cover.jpg, gig1-image2.jpg, gig1-image3.jpg | Gig 1 gallery (cover first) |
+| gig2-image1-cover.jpg, gig2-image2.jpg, gig2-image3.jpg | Gig 2 gallery (cover first) |
+| gig3-image1-cover.jpg, gig3-image2.jpg, gig3-image3.jpg | Gig 3 gallery (cover first) |
+| gig-video.mp4 (41 s) | Gig 1 and Gig 2 video slot |
+
+All gallery images are 1280×769 (Fiverr size). No links, emails or phone numbers are shown in any image (Fiverr does not allow them).
+
+---
+
+## SCRIPT (copy everything below this line)
+
+You are setting up my Fiverr seller account to win US clients fast. Work step by step in this Fiverr tab. Account: Jonnyraj Mollick (username: plastrix), India.
+
+ABOUT ME (use only these facts, never invent reviews, clients or numbers):
+- Joni Raj Mollick, founder of Plastrix Studio, Kolkata, India. Web designer since 2022.
+- I build premium animated & 3D websites (Three.js, GSAP), e-commerce websites, and AI chat agents for websites.
+- Fast delivery, mobile-friendly, US small business focus.
+
+STRICT RULES:
+- Never put any external link, email, phone number or website URL anywhere on Fiverr (Fiverr bans it).
+- Never type passwords and never do ID/phone/payment verification. If Fiverr asks for any of these, STOP and ask me.
+- Before deleting anything, show me the list and wait for my "OK".
+- File uploads: when a photo, image or video is needed, open the upload dialog and tell me the exact file name from my "fiverr-kit" folder (list below). Continue after I say "done".
+- After each step, tell me in short Bengali what you did and what is next.
+
+FILES (in my fiverr-kit folder):
+- profile-photo.jpg = profile photo
+- gig1-image1-cover.jpg, gig1-image2.jpg, gig1-image3.jpg = Gig 1 gallery
+- gig2-image1-cover.jpg, gig2-image2.jpg, gig2-image3.jpg = Gig 2 gallery
+- gig3-image1-cover.jpg, gig3-image2.jpg, gig3-image3.jpg = Gig 3 gallery
+- gig-video.mp4 = video for Gig 1 and Gig 2
+
+STEP 1 - Clean up
+Click "Switch to Selling". Open Gigs (Selling > Gigs). List all existing gigs (active, paused, draft, denied) and show me. After my OK, delete all of them.
+
+STEP 2 - Seller profile (aim for 100%)
+Open my seller profile and set:
+- Display name: Joni Raj Mollick
+- One-liner / headline: Premium Animated & 3D Websites | AI Websites | AI Chat Agents
+- Description:
+"Hi, I'm Joni, founder of Plastrix Studio. Since 2022 I've been building premium animated and 3D websites for small businesses. I combine clean design with smooth motion (GSAP, Three.js) so your site feels high-end and loads fast on every phone. I also build e-commerce websites and AI chat agents that answer your customers 24/7. I focus on US small businesses: salons, restaurants, cleaning, barbers, local shops and startups. Clear communication, fast delivery, and revisions until you're happy. Message me with your business and I'll suggest the best plan."
+- Profile photo: profile-photo.jpg (ask me to pick it).
+- Languages: English (Conversational), Bengali (Native/Bilingual), Hindi (Fluent).
+- Skills: Web Design, Website Development, Landing Page, Animation, Three.js, GSAP, E-commerce Website, AI Chatbot, Responsive Design, UI Design.
+- Occupation: Web Developer, 2022 to present.
+- Portfolio section (if available): add 3 projects using gig1-image2.jpg ("Glass UI outdoor store website"), gig2-image2.jpg ("3D character landing page"), gig1-image3.jpg ("Premium fashion store website"). No links.
+Save. Show me the profile completion %. If something is still missing for 100%, tell me what.
+
+STEP 3 - Gig 1 (category: AI Services > AI Websites & Software)
+Title: I will build a premium animated AI powered website for your business
+Search tags: ai website, animated website, business website, website design, landing page
+Packages (3 packages on):
+- Basic $45 "Starter": 1 premium animated page, mobile responsive, contact form. 3 days, 2 revisions.
+- Standard $120 "Business": up to 5 pages, scroll animations, booking/contact form, basic SEO. 5 days, 3 revisions.
+- Premium $250 "Pro": up to 8 pages, 3D/advanced animations, e-commerce or AI chat agent, speed optimization. 7 days, unlimited revisions.
+Description (short paragraphs + bullets, simple English):
+- Who it's for: US small businesses that want a website that looks premium and brings customers.
+- What you get: custom animated design (no templates), mobile-first, fast loading, contact/booking form, help with text.
+- Why me: animated & 3D websites since 2022 (GSAP, Three.js), fast delivery, clear updates.
+- Process: 1) message me your business 2) I plan the pages 3) design & build 4) revisions & delivery.
+- End: "Message me before ordering so I can suggest the right package."
+FAQ:
+1. How long does it take? - 3 to 7 days depending on the package.
+2. Do you write the content? - I can use your existing text and help improve it.
+3. Will it work on phones? - Yes, every site is built mobile-first.
+Requirements (buyer questions): business name; what you sell/offer; 2-3 websites you like; logo and photos (if any).
+Gallery: gig1-image1-cover.jpg, gig1-image2.jpg, gig1-image3.jpg + video gig-video.mp4.
+Show me the full preview, wait for my OK, then publish.
+
+STEP 4 - Gig 2 (category: Graphics & Design > Web & App Design > Landing Page Design)
+Title: I will design a 3D animated landing page with three js and gsap
+Search tags: 3d website, threejs, gsap animation, landing page, animated website
+Packages:
+- Basic $35: animated hero section. 2 days, 2 revisions.
+- Standard $90: full animated landing page (up to 6 sections). 4 days, 3 revisions.
+- Premium $180: 3D landing page with scroll animations + contact form. 6 days, unlimited revisions.
+Write description, 3 FAQs and requirements in the same style as Gig 1 (focus: product launches, startups, brands that want a "wow" first screen).
+Gallery: gig2-image1-cover.jpg, gig2-image2.jpg, gig2-image3.jpg + video gig-video.mp4.
+Show me the full preview, wait for my OK, then publish.
+
+STEP 5 - Gig 3 (category: AI Services > AI Chatbot)
+Title: I will add an AI chat agent to your website to answer customers 24/7
+Search tags: ai chatbot, ai agent, website chatbot, customer support, lead generation
+Packages:
+- Basic $30: chatbot that answers your FAQs. 2 days, 2 revisions.
+- Standard $70: trained on your website content + collects leads. 3 days, 3 revisions.
+- Premium $140: full AI agent with booking/lead capture and custom style. 5 days, unlimited revisions.
+Write description, 3 FAQs and requirements in the same style (focus: restaurants, salons, shops that miss customer questions after hours).
+Gallery: gig3-image1-cover.jpg, gig3-image2.jpg, gig3-image3.jpg.
+Show me the full preview, wait for my OK, then publish.
+
+STEP 6 - Summary in short Bengali: profile %, the 3 gig links, and my daily routine (stay online, reply within 1 hour, send offers to matching buyer briefs if Fiverr shows them).
+
+Start with STEP 1 now.
