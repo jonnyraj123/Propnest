@@ -9,8 +9,8 @@ Paste the SCRIPT below into Claude in Chrome (Fiverr tab open). Keep this folder
 | gig1-image1-cover.jpg, gig1-image2.jpg, gig1-image3.jpg | Gig 1 gallery (cover first) |
 | gig2-image1-cover.jpg, gig2-image2.jpg, gig2-image3.jpg | Gig 2 gallery (cover first) |
 | gig3-image1-cover.jpg, gig3-image2.jpg, gig3-image3.jpg | Gig 3 gallery (cover first) |
-| gig-video.mp4 (41 s) | Gig 1 and Gig 2 video slot |
-| gig3-video.mp4 (39 s) | Gig 3 video slot (AI agent demo: WhatsApp booking + website chat) |
+| gig-video.mp4 (41 s, 1920×1080) | Gig 1 and Gig 2 video slot |
+| gig3-video.mp4 (39 s, 1920×1080) | Gig 3 video slot (AI agent demo: WhatsApp booking + website chat) |
 
 All gallery images are 1280×769 (Fiverr size). No links, emails or phone numbers are shown in any image (Fiverr does not allow them).
 
