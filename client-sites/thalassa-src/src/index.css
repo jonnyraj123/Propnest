@@ -82,3 +82,14 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+@keyframes kenburns { 0% { transform: scale(1.06) translate(0,0) } 50% { transform: scale(1.14) translate(-1.5%,-1%) } 100% { transform: scale(1.06) translate(0,0) } }
+@keyframes slowspin { from { transform: scale(1.18) rotate(0deg) } to { transform: scale(1.18) rotate(360deg) } }
+@keyframes pan { 0%,100% { object-position: 30% 50% } 50% { object-position: 70% 50% } }
+@keyframes shimmer { 0%,100% { opacity: .25; transform: translateX(-3%) } 50% { opacity: .5; transform: translateX(3%) } }
+@keyframes rock { 0%,100% { transform: translateY(0) rotate(-1.6deg) } 50% { transform: translateY(-10px) rotate(1.4deg) } }
+.kenburns { animation: kenburns 26s ease-in-out infinite; }
+.slowspin { animation: slowspin 140s linear infinite; }
+.pan { animation: pan 30s ease-in-out infinite; }
+.shimmer { animation: shimmer 7s ease-in-out infinite; }
+.rock { animation: rock 5.5s ease-in-out infinite; transform-origin: 50% 85%; }
