@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mira &amp; Cloud · A Tiny Story</title>
+<meta name="description" content="Mira & Cloud: a tiny interactive story about a girl, a white kitten and a very big friendship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="media/hug.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%237ed9b9'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --cream:#FFF7EC; --paper:#FFFDF8; --peach:#FFB89A; --peach2:#FF8E72; --mint:#7ED9B9; --mint2:#3DB892;
+  --lav:#B9A7F5; --sun:#FFD36E; --ink:#3B2F4A; --ink2:#6E6280;
+  --head:'Fredoka',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif; --hand:'Caveat',cursive;
+  --pad:clamp(16px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--cream);overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-weight:600;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+
+/* paw progress */
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:50;background:rgba(59,47,74,.06)}
+.progress i{position:absolute;left:0;top:0;bottom:0;width:100%;transform-origin:left;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--mint),var(--lav),var(--peach))}
+.progress b{position:absolute;top:6px;left:0;font-size:18px;transform:translateX(-50%);transition:left .1s linear}
+
+.top{position:fixed;top:14px;left:var(--pad);right:var(--pad);z-index:40;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.logo{pointer-events:auto;font-family:var(--hand);font-size:30px;color:#fff;text-decoration:none;text-shadow:0 2px 12px rgba(59,47,74,.35);transition:color .4s,text-shadow .4s}
+.top.light .logo{color:var(--ink);text-shadow:none}
+.chip{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;border-radius:999px;
+  background:rgba(255,253,248,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-weight:800;font-size:13px;box-shadow:0 6px 20px rgba(59,47,74,.12)}
+
+/* ---------- cover ---------- */
+.cover{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.cover .bg{position:absolute;inset:-4%;background:url(media/hug.jpg) center 35%/cover;will-change:transform}
+.cover::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(59,47,74,.45),transparent 45%),linear-gradient(180deg,rgba(59,47,74,.05) 30%,rgba(59,47,74,.55) 100%),radial-gradient(ellipse at 75% 20%,rgba(255,211,110,.35),transparent 55%)}
+.cover .copy{position:absolute;left:var(--pad);bottom:clamp(40px,9vh,96px);z-index:3;color:#fff;max-width:640px}
+.kicker{font-family:var(--hand);font-size:clamp(24px,2.6vw,32px);color:var(--sun)}
+.cover h1{font-family:var(--head);font-weight:700;font-size:clamp(64px,9vw,136px);line-height:.9;letter-spacing:-.01em;margin-top:6px;
+  text-shadow:0 6px 40px rgba(59,47,74,.45)}
+.cover h1 .ch{display:inline-block}
+.cover h1 .ln{display:block;white-space:nowrap}
+.cover h1 .amp{font-family:var(--hand);color:var(--mint);font-size:.8em;margin:0 .06em}
+.cover p.sub{margin-top:16px;font-size:clamp(16px,1.6vw,20px);max-width:440px;line-height:1.55;text-shadow:0 2px 12px rgba(59,47,74,.5)}
+.btn{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 26px;min-height:48px;border-radius:999px;
+  background:var(--paper);color:var(--ink);font-family:var(--head);font-weight:600;font-size:17px;text-decoration:none;
+  box-shadow:0 10px 30px rgba(59,47,74,.25);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.btn:hover{transform:translateY(-3px) rotate(-1.5deg)}
+.btn .arr{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+canvas#dust{position:absolute;inset:0;z-index:2;pointer-events:none;width:100%;height:100%}
+
+/* ---------- chapters ---------- */
+.chapter{position:relative;padding:clamp(80px,14vh,150px) var(--pad);display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(28px,5vw,80px);align-items:center;max-width:1400px;margin:0 auto}
+.chapter.flip{grid-template-columns:.9fr 1.25fr}
+.chapter.flip .stage{order:2}
+.stage{position:relative}
+.frame{position:relative;border-radius:30px;overflow:hidden;background:#e9e0d2;aspect-ratio:16/9;
+  box-shadow:0 30px 70px -20px rgba(59,47,74,.35),0 0 0 8px var(--paper),0 0 0 9px rgba(59,47,74,.08);
+  clip-path:inset(12% 12% 12% 12% round 30px);will-change:clip-path,transform}
+.frame video{width:100%;height:100%;object-fit:cover}
+.tape{position:absolute;top:-14px;left:50%;width:120px;height:34px;transform:translateX(-50%) rotate(-3deg);z-index:3;
+  background:rgba(255,211,110,.75);box-shadow:0 2px 6px rgba(59,47,74,.12)}
+.sound{position:absolute;right:16px;bottom:16px;z-index:4}
+.sound[aria-pressed="true"]{background:var(--mint);color:#fff}
+.sticker{position:absolute;z-index:4;font-family:var(--hand);font-size:26px;padding:8px 16px;border-radius:16px;background:var(--paper);
+  box-shadow:0 8px 20px rgba(59,47,74,.18);transform:rotate(-6deg)}
+
+.page{position:relative;background:var(--paper);border-radius:28px;padding:clamp(28px,3.4vw,46px);
+  box-shadow:0 20px 50px -18px rgba(59,47,74,.25);
+  background-image:repeating-linear-gradient(transparent 0 37px,rgba(126,217,185,.18) 37px 38px)}
+.page::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:2px;background:rgba(255,142,114,.25)}
+.num{font-family:var(--hand);font-size:28px;color:var(--peach2)}
+.page h2{font-family:var(--head);font-weight:700;font-size:clamp(36px,4.2vw,58px);line-height:1;margin-top:4px}
+.page h2 em{font-style:normal;color:var(--mint2)}
+.story{margin-top:18px}
+.story p{font-size:clamp(16px,1.35vw,19px);line-height:1.75;color:var(--ink2)}
+.story p+p{margin-top:12px}
+.story b{color:var(--ink)}
+.hint{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--hand);font-size:24px;color:var(--peach2)}
+
+/* chapter backgrounds */
+.band{position:relative;overflow:hidden}
+.band.garden{background:linear-gradient(180deg,var(--cream),#EAF8EF 30%,#EAF8EF 70%,var(--cream))}
+.band.bath{background:linear-gradient(180deg,var(--cream),#EAF1FF 30%,#EEF0FF 70%,var(--cream))}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.55;pointer-events:none}
+
+/* butterfly */
+.fly{position:fixed;left:0;top:0;z-index:30;width:60px;height:60px;pointer-events:none;opacity:0;transition:opacity .4s}
+.fly.on{opacity:1}
+.fly svg{width:100%;height:100%;overflow:visible}
+.fly .w{transform-origin:23px 23px;animation:flap .22s ease-in-out infinite alternate}
+.fly .w.r{animation-delay:.02s}
+@keyframes flap{to{transform:scaleX(.25)}}
+
+/* bubbles */
+.bubbles{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;border-radius:30px}
+.bub{position:absolute;bottom:-60px;border-radius:50%;pointer-events:auto;cursor:pointer;
+  background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95) 0 8%,rgba(255,255,255,.18) 22%,rgba(185,167,245,.18) 60%,rgba(126,217,185,.35) 100%);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75),inset -6px -8px 14px rgba(185,167,245,.35);
+  animation:rise linear forwards}
+@keyframes rise{to{transform:translate(var(--dx),-120vh)}}
+.pop{position:absolute;pointer-events:none;width:10px;height:10px;border-radius:50%;border:2px solid #fff;animation:popr .45s ease-out forwards}
+@keyframes popr{to{transform:scale(6);opacity:0}}
+.count{position:absolute;left:16px;bottom:16px;z-index:4}
+
+/* ending */
+.ending{position:relative;padding:clamp(90px,16vh,170px) var(--pad);text-align:center;overflow:hidden}
+.ending h2{font-family:var(--head);font-weight:700;font-size:clamp(44px,6vw,86px);line-height:1}
+.ending h2 em{font-style:normal;font-family:var(--hand);color:var(--peach2);font-size:1.1em}
+.ending p.sub{margin:16px auto 0;max-width:520px;font-size:18px;line-height:1.7;color:var(--ink2)}
+.polaroids{position:relative;height:clamp(300px,36vw,460px);max-width:1000px;margin:56px auto 0}
+.pol{position:absolute;top:50%;left:50%;width:clamp(220px,30vw,380px);padding:12px 12px 52px;background:var(--paper);border-radius:8px;
+  box-shadow:0 20px 45px -12px rgba(59,47,74,.35);transition:transform .5s cubic-bezier(.3,1.5,.5,1),z-index 0s}
+.pol img{border-radius:4px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.pol span{position:absolute;left:0;right:0;bottom:12px;font-family:var(--hand);font-size:26px}
+.pol:hover{z-index:5}
+.pol.p1{transform:translate(-115%,-52%) rotate(-8deg)}
+.pol.p2{transform:translate(-50%,-48%) rotate(2deg);z-index:2}
+.pol.p3{transform:translate(15%,-52%) rotate(9deg)}
+.pol.p1:hover{transform:translate(-115%,-58%) rotate(-3deg) scale(1.04)}
+.pol.p2:hover{transform:translate(-50%,-54%) rotate(0) scale(1.04)}
+.pol.p3:hover{transform:translate(15%,-58%) rotate(4deg) scale(1.04)}
+.theend{font-family:var(--hand);font-size:clamp(44px,5vw,64px);color:var(--mint2);margin-top:30px}
+footer{padding:28px var(--pad) 36px;text-align:center;font-size:13px;color:var(--ink2)}
+footer a{font-weight:800;text-decoration:none;color:var(--ink)}
+
+.rv{opacity:0;transform:translateY(26px)}
+
+@media (max-width:860px){
+  .chapter,.chapter.flip{grid-template-columns:1fr;gap:22px;padding-top:70px;padding-bottom:70px}
+  .chapter.flip .stage{order:0}
+  .frame{border-radius:22px;box-shadow:0 20px 40px -16px rgba(59,47,74,.35),0 0 0 6px var(--paper)}
+  .bubbles{border-radius:22px}
+  .page::before{left:18px}
+  .sticker{font-size:21px}
+  .polaroids{height:auto;display:flex;flex-direction:column;align-items:center;gap:0}
+  .pol{position:relative;top:auto;left:auto;width:min(82vw,330px);margin-top:-8px}
+  .pol:first-child{margin-top:0}
+  .pol.p1,.pol.p1:hover{transform:rotate(-5deg)}
+  .pol.p2,.pol.p2:hover{transform:rotate(3deg)}
+  .pol.p3,.pol.p3:hover{transform:rotate(-2deg)}
+  .chip.all{width:44px;padding:0;justify-content:center;font-size:0}
+  .chip.all::before{content:"🔈";font-size:18px}
+  .chip.all[aria-pressed="true"]::before{content:"🔊"}
+  .cover .bg{background-image:url(media/hug-m.jpg);background-position:58% 30%}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  .frame{clip-path:none}
+  .btn .arr,.fly .w{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="bar"></i><b id="paw">🐾</b></div>
+<div class="top" id="top"><a class="logo" href="#cover">Mira &amp; Cloud</a><button class="chip all" id="sndAll" aria-pressed="false">🔈 Story sounds off</button></div>
+
+<header class="cover" id="cover">
+  <div class="bg" id="coverBg" role="img" aria-label="Mira, a girl with mint green hair, hugs a fluffy white kitten in her sunny bedroom."></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="copy">
+    <p class="kicker rv">A tiny story about a very big friendship</p>
+    <h1 id="title" aria-label="Mira and Cloud"><span class="ln" aria-hidden="true"><span class="wd">Mira</span> <span class="amp">&amp;</span></span><span class="ln" aria-hidden="true"><span class="wd">Cloud</span></span></h1>
+    <p class="sub rv">One sunny morning, a girl with mint-green hair found the softest friend in the whole wide world.</p>
+    <a class="btn rv" href="#ch1">Open the book <span class="arr">↓</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="band garden" id="ch1" aria-labelledby="h1c">
+    <div class="blob" style="width:340px;height:340px;background:#bff0d8;left:-80px;top:120px"></div>
+    <div class="blob" style="width:280px;height:280px;background:#ffe4a8;right:-60px;bottom:80px"></div>
+    <div class="chapter">
+      <div class="stage">
+        <div class="tape" aria-hidden="true"></div>
+        <div class="frame">
+          <video id="v1" muted loop playsinline preload="metadata" poster="media/v1-poster.jpg" aria-label="Mira and Cloud play on the grass while a yellow butterfly flutters past.">
+            <source src="media/v1.mp4" type="video/mp4"><source src="media/v1.webm" type="video/webm">
+          </video>
+          <button class="chip sound" data-v="v1" aria-pressed="false">🔈 Sound</button>
+        </div>
+        <div class="sticker" style="left:-14px;bottom:-18px;color:var(--mint2)">garden day!</div>
+      </div>
+      <article class="page rv">
+        <p class="num">Chapter one</p>
+        <h2 id="h1c">The <em>butterfly</em> chase</h2>
+        <div class="story">
+          <p>Mira carried <b>Cloud</b> out into the garden, where the grass was warm and the flowers were nodding hello.</p>
+          <p>Then a little yellow butterfly floated by. Cloud's ears went up. His tail went up. And off he bounced, sure that today was the day he would catch one.</p>
+          <p>He didn't. But Mira laughed so hard she fell over, and that was even better.</p>
+        </div>
+        <p class="hint">🦋 Move around, a butterfly is following you</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band bath" id="ch2" aria-labelledby="h2c">
+    <div class="blob" style="width:360px;height:360px;background:#d9d0ff;right:-90px;top:100px"></div>
+    <div class="blob" style="width:260px;height:260px;background:#c9f1e4;left:-60px;bottom:60px"></div>
+    <div class="chapter flip">
+      <div class="stage">
+        <div class="tape" aria-hidden="true" style="background:rgba(185,167,245,.7)"></div>
+        <div class="frame">
+          <video id="v2" muted loop playsinline preload="metadata" poster="media/v2-poster.jpg" aria-label="Mira gives a giggling, soapy Cloud a bubble bath with rubber ducks.">
+            <source src="media/v2.mp4" type="video/mp4"><source src="media/v2.webm" type="video/webm">
+          </video>
+          <div class="bubbles" id="bubbles"></div>
+          <button class="chip count" id="count" aria-live="polite">🫧 0 popped</button>
+          <button class="chip sound" data-v="v2" aria-pressed="false">🔈 Sound</button>
+        </div>
+        <div class="sticker" style="right:-12px;top:-22px;color:#7d68d8;transform:rotate(5deg)">splish splash</div>
+      </div>
+      <article class="page rv">
+        <p class="num">Chapter two</p>
+        <h2 id="h2c">A very <em>bubbly</em> bath</h2>
+        <div class="story">
+          <p>All that chasing made Cloud a little muddy. So Mira filled the tub with warm water, rubber ducks and <b>a mountain of bubbles</b>.</p>
+          <p>Cloud did not like the water. Cloud did like the bubbles. He swatted them, sneezed at them and wore one on his nose like a tiny hat.</p>
+          <p>By the end, the bathroom was wetter than Cloud.</p>
+        </div>
+        <p class="hint">🫧 Tap the bubbles to pop them</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ending" id="end" aria-labelledby="endh">
+    <h2 id="endh" class="rv">And every day after that was <em>an adventure.</em></h2>
+    <p class="sub rv">Warm, fluffy and smelling of bubbles, Cloud curled up in Mira's arms. Best friends, from the very first hug.</p>
+    <div class="polaroids">
+      <figure class="pol p1"><img src="media/v1-poster.jpg" alt="Mira holding Cloud in the garden" loading="lazy"><span>the garden</span></figure>
+      <figure class="pol p2"><img src="media/hug.jpg" alt="Mira hugging Cloud in her bedroom" loading="lazy"><span>the first hug ♡</span></figure>
+      <figure class="pol p3"><img src="media/v2-poster.jpg" alt="Cloud in the bubble bath" loading="lazy"><span>bath time</span></figure>
+    </div>
+    <p class="theend rv">The End</p>
+    <a class="btn rv" href="#cover" style="background:var(--mint);color:#fff">Read it again ↺</a>
+  </section>
+</main>
+<footer>A demo story site · Crafted by <a href="https://plastrixstudio.com" target="_blank" rel="noopener">Plastrix Studio</a></footer>
+
+<div class="fly" id="fly" aria-hidden="true"><svg viewBox="0 0 46 46">
+  <g class="w l"><path d="M23 23 C10 4 0 10 5 20 C8 26 16 26 23 23Z" fill="#FFD36E" stroke="#e9a93a" stroke-width="1.2"/><path d="M23 24 C12 28 6 38 13 40 C18 41 22 33 23 24Z" fill="#FFC14D" stroke="#e9a93a" stroke-width="1.2"/></g>
+  <g class="w r"><path d="M23 23 C36 4 46 10 41 20 C38 26 30 26 23 23Z" fill="#FFD36E" stroke="#e9a93a" stroke-width="1.2"/><path d="M23 24 C34 28 40 38 33 40 C28 41 24 33 23 24Z" fill="#FFC14D" stroke="#e9a93a" stroke-width="1.2"/></g>
+  <rect x="21.6" y="15" width="2.8" height="18" rx="1.4" fill="#5a4630"/></svg></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* title letters */
+  const title = $('#title');
+  title.querySelector('.amp').classList.add('ch');
+  title.querySelectorAll('.wd').forEach(s => {
+    s.innerHTML = [...s.textContent].map(c => `<span class="ch">${c}</span>`).join('');
+  });
+
+  /* progress paw */
+  const bar = $('#bar'), paw = $('#paw'), top = $('#top');
+  const onScroll = () => {
+    const p = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    bar.style.transform = `scaleX(${p})`; paw.style.left = (p * 100) + '%';
+    top.classList.toggle('light', scrollY > innerHeight * .8);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* videos: play only while visible; sound toggles */
+  const vids = $$('video');
+  let soundAll = false;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting && !reduce) v.play().catch(() => {}); else v.pause();
+  }), { threshold: .35 });
+  vids.forEach(v => io.observe(v));
+  if (reduce) vids.forEach(v => v.controls = true);
+  const setSound = (v, on) => {
+    v.muted = !on;
+    const b = document.querySelector(`.sound[data-v="${v.id}"]`);
+    b.setAttribute('aria-pressed', on); b.textContent = on ? '🔊 Sound on' : '🔈 Sound';
+    if (on) v.play().catch(() => {});
+  };
+  $$('.sound').forEach(b => b.addEventListener('click', () => { const v = $('#' + b.dataset.v); setSound(v, v.muted); }));
+  $('#sndAll').addEventListener('click', e => {
+    soundAll = !soundAll; e.currentTarget.setAttribute('aria-pressed', soundAll);
+    e.currentTarget.textContent = soundAll ? '🔊 Story sounds on' : '🔈 Story sounds off';
+    vids.forEach(v => setSound(v, soundAll));
+  });
+
+  /* butterfly follows the pointer in chapter one */
+  const fly = $('#fly');
+  let fx = innerWidth / 2, fy = innerHeight / 2, tx = fx, ty = fy, inGarden = false, lastMove = 0;
+  addEventListener('pointermove', e => { tx = e.clientX + 26; ty = e.clientY - 30; lastMove = performance.now(); }, { passive: true });
+  ScrollTrigger.create({ trigger: '#ch1', start: 'top 60%', end: 'bottom 40%', onToggle: s => { inGarden = s.isActive && !reduce; fly.classList.toggle('on', inGarden); } });
+  (function flyLoop(t) {
+    if (inGarden) {
+      const idle = !fine || t - lastMove > 2500;
+      const gx = idle ? innerWidth * (.5 + Math.sin(t / 1700) * .32) : tx;
+      const gy = idle ? innerHeight * (.45 + Math.sin(t / 900) * .12) : ty;
+      const px = fx, py = fy;
+      fx += (gx - fx) * .05; fy += (gy - fy) * .05 + Math.sin(t / 160) * .9;
+      const ang = Math.max(-35, Math.min(35, (fx - px) * 3));
+      fly.style.transform = `translate(${fx - 30}px,${fy - 30}px) rotate(${ang}deg)`;
+    }
+    requestAnimationFrame(flyLoop);
+  })(0);
+
+  /* bubbles you can pop in chapter two */
+  const box = $('#bubbles'), countBtn = $('#count');
+  let popped = 0, bubbling = false;
+  function bubble() {
+    if (!bubbling || document.hidden) return;
+    const b = document.createElement('button');
+    const s = 22 + Math.random() * 46;
+    b.className = 'bub'; b.setAttribute('aria-label', 'Pop bubble');
+    b.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 92}%;--dx:${(Math.random() - .5) * 120}px;animation-duration:${6 + Math.random() * 5}s`;
+    b.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      const r = box.getBoundingClientRect(), br = b.getBoundingClientRect();
+      const ring = document.createElement('i'); ring.className = 'pop';
+      ring.style.left = (br.left - r.left + br.width / 2 - 5) + 'px'; ring.style.top = (br.top - r.top + br.height / 2 - 5) + 'px';
+      box.append(ring); setTimeout(() => ring.remove(), 460);
+      b.remove(); popped++; countBtn.textContent = `🫧 ${popped} popped`;
+      gsap.fromTo(countBtn, { scale: 1.18 }, { scale: 1, duration: .4, ease: 'back.out(3)' });
+    });
+    b.addEventListener('animationend', () => b.remove());
+    box.append(b);
+  }
+  if (!reduce) {
+    ScrollTrigger.create({ trigger: '#ch2', start: 'top 70%', end: 'bottom 30%', onToggle: s => { bubbling = s.isActive; } });
+    setInterval(bubble, 650);
+  }
+
+  /* sun dust on the cover */
+  const cv = $('#dust'), ctx = cv.getContext('2d');
+  let W, H, motes = [];
+  const size = () => {
+    const d = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    motes = Array.from({ length: W < 700 ? 40 : 80 }, () => ({ x: Math.random() * W, y: Math.random() * H, r: .6 + Math.random() * 2.2, s: .15 + Math.random() * .35, p: Math.random() * 6 }));
+  };
+  size(); addEventListener('resize', size);
+  (function dust(t) {
+    if (!reduce && scrollY < innerHeight) {
+      ctx.clearRect(0, 0, W, H);
+      for (const m of motes) {
+        m.y -= m.s; m.x += Math.sin(t / 1400 + m.p) * .25;
+        if (m.y < -5) { m.y = H + 5; m.x = Math.random() * W; }
+        const a = .35 + Math.sin(t / 600 + m.p) * .3;
+        ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, 6.283); ctx.fillStyle = `rgba(255,236,170,${a})`; ctx.fill();
+      }
+    }
+    requestAnimationFrame(dust);
+  })(0);
+
+  if (reduce) { $$('.rv').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
+
+  /* cover: entrance + parallax */
+  gsap.fromTo('#coverBg', { scale: 1.15 }, { scale: 1, duration: 2.6, ease: 'expo.out' });
+  gsap.from('#title .ch', { yPercent: 120, rotate: () => gsap.utils.random(-25, 25), opacity: 0, duration: 1.1, ease: 'back.out(2.2)', stagger: .05, delay: .25 });
+  gsap.to('.cover .rv', { opacity: 1, y: 0, duration: .9, ease: 'power3.out', stagger: .12, delay: .5 });
+  gsap.to('#coverBg', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#cover', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.cover .copy', { y: -80, opacity: 0, ease: 'none', scrollTrigger: { trigger: '#cover', start: '30% top', end: 'bottom top', scrub: true } });
+
+  /* chapters: frame opens like a page, text rises */
+  $$('.frame').forEach(f => {
+    gsap.to(f, { clipPath: 'inset(0% 0% 0% 0% round 30px)', ease: 'none',
+      scrollTrigger: { trigger: f, start: 'top 90%', end: 'top 35%', scrub: .6 } });
+    gsap.fromTo(f.querySelector('video'), { scale: 1.25 }, { scale: 1, ease: 'none',
+      scrollTrigger: { trigger: f, start: 'top 90%', end: 'bottom 20%', scrub: .6 } });
+  });
+  $$('.sticker').forEach(s => gsap.from(s, { scale: 0, rotate: -40, duration: .8, ease: 'back.out(3)', scrollTrigger: { trigger: s, start: 'top 85%' } }));
+  $$('main .rv, .ending .rv').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  gsap.from('.pol', { opacity: 0, duration: .9, stagger: .15, ease: 'power2.out', scrollTrigger: { trigger: '.polaroids', start: 'top 85%' } });
+  $$('.story p').forEach((p, i) => gsap.from(p, { opacity: 0, x: -14, duration: .7, ease: 'power2.out', scrollTrigger: { trigger: p, start: 'top 90%' } }));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRIKA · Time, built brick by brick</title>
+<meta name="description" content="BRIKA No.01, a chronograph built from 214 glossy bricks. A concept product site by Plastrix Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/w-teal.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-bricks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="ld-num"><span id="ldn">0</span><small>/214 bricks</small></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="BRIKA home"><span class="stud"></span>BRIKA</a>
+  <nav class="links" aria-label="Main">
+    <a href="#colours">Colourways</a><a href="#making">The making</a><a href="#time">Live time</a><a href="#shop">Shop</a>
+  </nav>
+  <button class="bag-btn" id="bagBtn" aria-label="Open bag">Bag <b id="bagCount">0</b></button>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg">
+    <source src="media/hero-m.mp4" type="video/mp4" media="(max-width: 760px)">
+    <source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="dot"></span>BRIKA Chronograph · No.01</p>
+    <h1 class="hero-title" aria-label="Time, built brick by brick.">
+      <span class="ln"><span>Time,</span></span>
+      <span class="ln"><span>built brick</span></span>
+      <span class="ln"><span>by <em>brick.</em></span></span>
+    </h1>
+    <p class="hero-sub">214 glossy bricks. One automatic heart. A chronograph you can almost hear snap together.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid magnetic" href="#shop">Shop No.01</a>
+      <a class="btn btn-ghost magnetic" href="#making">Watch it assemble</a>
+    </div>
+  </div>
+  <div class="hero-meta" aria-hidden="true">
+    <span>42 mm</span><span>214 bricks</span><span>3 colourways</span>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+</section>
+
+<!-- COLOUR SWAP -->
+<section class="swap" id="colours" aria-label="Colourways">
+  <div class="swap-pin">
+    <div class="studs" aria-hidden="true"></div>
+    <div class="swap-copy">
+      <p class="eyebrow"><span class="dot"></span>Colourway <b id="swIdx">01</b>/03</p>
+      <h2 class="swap-name" id="swName">Citrus</h2>
+      <p class="swap-desc" id="swDesc">Teal bezel, orange and sunflower strap. Built for loud summers.</p>
+      <div class="swap-price"><b id="swPrice">$1,290</b><s id="swOld">$1,490</s></div>
+      <div class="sizes" role="radiogroup" aria-label="Case size">
+        <button role="radio" aria-checked="false">38</button><button role="radio" aria-checked="true" class="on">42</button><button role="radio" aria-checked="false">46</button>
+      </div>
+      <div class="swap-btns">
+        <button class="btn btn-solid magnetic" id="swAdd">Add to bag</button>
+        <div class="swatches" aria-label="Jump to colourway">
+          <button data-i="0" aria-label="Citrus" style="--c1:#2fb3a6;--c2:#ff7a2f" class="on"></button>
+          <button data-i="1" aria-label="Cobalt" style="--c1:#1f4fd8;--c2:#ffd21f"></button>
+          <button data-i="2" aria-label="Noir Gold" style="--c1:#141414;--c2:#e3b04b"></button>
+        </div>
+      </div>
+    </div>
+    <div class="swap-stage">
+      <div class="swap-ring" aria-hidden="true"></div>
+      <img class="sw" src="img/w-teal.webp" alt="BRIKA No.01 in Citrus: teal bezel, brick dial, orange and yellow brick strap" width="869" height="1294">
+      <img class="sw" src="img/w-blue.webp" alt="BRIKA No.01 in Cobalt: blue bezel with yellow sub-dials and blue-yellow strap" width="869" height="1294">
+      <img class="sw" src="img/w-gold.webp" alt="BRIKA No.01 in Noir Gold: matte black case with gold bricks" width="869" height="1294">
+    </div>
+    <div class="swap-next" aria-hidden="true"><small>Next</small><img id="swThumb" src="img/w-blue.webp" alt=""></div>
+    <div class="swap-bar" aria-hidden="true"><i id="swBar"></i></div>
+  </div>
+</section>
+
+<!-- MAKING / ASSEMBLY -->
+<section class="making" id="making" aria-label="How BRIKA is made">
+  <div class="mk-pin">
+    <div class="studs dark" aria-hidden="true"></div>
+    <ol class="mk-steps" id="mkSteps">
+      <li class="on"><b>01</b><div><h3>214 bricks</h3><p>Every piece is moulded, polished and checked by hand before it joins the build.</p></div></li>
+      <li><b>02</b><div><h3>The dial, tile by tile</h3><p>Grey, teal and orange tiles are laid around three sub-dials, like a tiny mosaic.</p></div></li>
+      <li><b>03</b><div><h3>Hands, calibrated</h3><p>Hour, minute and the orange seconds hand drop in and are set to the second.</p></div></li>
+      <li><b>04</b><div><h3>Sealed in crystal</h3><p>A domed crystal and the stepped brick bezel lock everything in. Click.</p></div></li>
+      <li><b>05</b><div><h3>Strapped and tested</h3><p>The brick bracelet is linked on, then the watch runs for 72 hours before it ships.</p></div></li>
+    </ol>
+    <div class="mk-stage" id="mkStage">
+      <div class="mk-explode">
+        <img src="img/w-exploded.webp" alt="Exploded view of BRIKA No.01 showing every brick part" width="1010" height="1482" loading="lazy">
+        <span class="tag" style="--x:16%;--y:33%">Crystal</span>
+        <span class="tag" style="--x:38%;--y:52%">Brick dial</span>
+        <span class="tag" style="--x:84%;--y:40%">Pushers</span>
+        <span class="tag" style="--x:62%;--y:6%">Bracelet</span>
+        <span class="tag" style="--x:70%;--y:60%">Case</span>
+      </div>
+      <div class="mk-build">
+        <div class="mk-dialwrap">
+          <img class="mk-dial" src="img/p-dial.webp" alt="" width="839" height="874" loading="lazy">
+          <img class="hand mk-h" data-h="hour" src="img/h-hour.webp" alt="" loading="lazy">
+          <img class="hand mk-m" data-h="minute" src="img/h-minute.webp" alt="" loading="lazy">
+          <img class="hand mk-s" data-h="second" src="img/h-second.webp" alt="" loading="lazy">
+        </div>
+        <img class="mk-bezel" src="img/p-bezel.webp" alt="" width="855" height="809" loading="lazy">
+        <div class="mk-flash"></div>
+        <img class="mk-final" src="img/w-teal.webp" alt="The finished BRIKA No.01" width="869" height="1294" loading="lazy">
+        <div class="mk-badge" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="c" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><text><textPath href="#c">TESTED 72 HOURS · BRICK BY BRICK · </textPath></text></svg><b>72h</b></div>
+      </div>
+      <p class="mk-click" aria-hidden="true">Click.</p>
+    </div>
+    <div class="mk-count" aria-hidden="true"><b id="mkNum">01</b>/05</div>
+  </div>
+</section>
+
+<!-- LIVE TIME -->
+<section class="time" id="time" aria-label="Live time">
+  <div class="time-copy">
+    <p class="eyebrow"><span class="dot"></span>Live, right now</p>
+    <h2>It's <span class="digits" id="digits">00:00:00</span><br><span id="cityLine">where you are.</span></h2>
+    <p class="muted">These are the real BRIKA hands, keeping your time. Pick a city and watch them travel.</p>
+    <div class="cities" id="cities" role="group" aria-label="Pick a city">
+      <button class="on" data-tz="local">You</button>
+      <button data-tz="America/New_York">New York</button>
+      <button data-tz="Europe/London">London</button>
+      <button data-tz="Asia/Dubai">Dubai</button>
+      <button data-tz="Asia/Tokyo">Tokyo</button>
+    </div>
+  </div>
+  <div class="time-stage" id="tStage">
+    <div class="tdial" id="tDial">
+      <img class="tdial-img" src="img/p-dial.webp" alt="BRIKA brick dial showing the live time" width="839" height="874" loading="lazy">
+      <img class="hand" id="tH" src="img/h-hour.webp" alt="" loading="lazy">
+      <img class="hand" id="tM" src="img/h-minute.webp" alt="" loading="lazy">
+      <img class="hand" id="tS" src="img/h-second.webp" alt="" loading="lazy">
+      <div class="tglare" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" aria-label="Specifications">
+  <div class="marquee" aria-hidden="true"><div class="mq-track"><span>BRICK BY BRICK</span><span>★</span><span>BRIKA NO.01</span><span>★</span><span>AUTOMATIC CHRONOGRAPH</span><span>★</span><span>BRICK BY BRICK</span><span>★</span><span>BRIKA NO.01</span><span>★</span><span>AUTOMATIC CHRONOGRAPH</span><span>★</span></div></div>
+  <div class="spec-grid">
+    <div class="spec"><b data-to="214">0</b><span>bricks in every watch</span></div>
+    <div class="spec"><b data-to="42" data-suf=" mm">0</b><span>case, also in 38 and 46</span></div>
+    <div class="spec"><b data-to="72" data-suf=" h">0</b><span>run-in test before shipping</span></div>
+    <div class="spec"><b data-to="3">0</b><span>sub-dials, all working</span></div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop" aria-label="Shop">
+  <div class="sec-head"><p class="eyebrow"><span class="dot"></span>The collection</p><h2>Pick your <em>build.</em></h2></div>
+  <div class="cards">
+    <article class="card tilt" style="--a:#2fb3a6;--b:#ff7a2f">
+      <div class="card-img"><img src="img/w-teal.webp" alt="BRIKA No.01 Citrus" loading="lazy" width="869" height="1294"></div>
+      <div class="card-info"><div><h3>Citrus</h3><p>Teal · Orange · Sunflower</p></div><b>$1,290</b></div>
+      <button class="btn btn-solid add" data-name="Citrus" data-price="1290">Add to bag</button>
+    </article>
+    <article class="card tilt" style="--a:#1f4fd8;--b:#ffd21f">
+      <div class="card-img"><img src="img/w-blue.webp" alt="BRIKA No.01 Cobalt" loading="lazy" width="869" height="1294"></div>
+      <div class="card-info"><div><h3>Cobalt</h3><p>Royal blue · Sunflower</p></div><b>$1,290</b></div>
+      <button class="btn btn-solid add" data-name="Cobalt" data-price="1290">Add to bag</button>
+    </article>
+    <article class="card tilt" style="--a:#3a3a3a;--b:#e3b04b">
+      <div class="card-img"><img src="img/w-gold.webp" alt="BRIKA No.01 Noir Gold" loading="lazy" width="869" height="1294"></div>
+      <div class="card-info"><div><h3>Noir Gold <span class="ltd">Limited</span></h3><p>Matte black · Polished gold</p></div><b>$1,690</b></div>
+      <button class="btn btn-solid add" data-name="Noir Gold" data-price="1690">Add to bag</button>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" aria-label="Questions">
+  <div class="sec-head"><p class="eyebrow"><span class="dot"></span>Good questions</p><h2>Before you <em>snap</em> it on.</h2></div>
+  <div class="qa">
+    <details><summary>Are the bricks really solid?</summary><p>Yes. Each brick is moulded, polished and locked into the case, so nothing comes loose on your wrist.</p></details>
+    <details><summary>Which size should I choose?</summary><p>42 mm fits most wrists. Pick 38 mm for a slim wrist and 46 mm if you like a bold look.</p></details>
+    <details><summary>Can I add or swap bracelet bricks?</summary><p>Yes. Extra links come in the box, and colour packs let you mix your own bracelet.</p></details>
+    <details><summary>How long does shipping take?</summary><p>Every watch runs a 72-hour test first. After that it ships with tracking to your door.</p></details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" aria-label="Join">
+  <h2>Be first for <em>No.02.</em></h2>
+  <p class="muted">One email when the next build drops. Nothing else.</p>
+  <form class="join" id="join"><label class="sr" for="em">Email</label><input id="em" type="email" placeholder="you@email.com" required><button class="btn btn-solid">Notify me</button></form>
+  <p class="join-ok" id="joinOk" hidden>You're on the list. Click.</p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-word" aria-hidden="true"><span>B</span><span>R</span><span>I</span><span>K</span><span>A</span></div>
+  <div class="foot-row">
+    <p>BRIKA is a concept brand. Design and build by <a href="https://plastrixstudio.com" target="_blank" rel="noopener">Plastrix Studio</a>.</p>
+    <nav aria-label="Footer"><a href="#colours">Colourways</a><a href="#making">Making</a><a href="#time">Live time</a><a href="#shop">Shop</a></nav>
+  </div>
+</footer>
+
+<aside class="bag" id="bag" aria-label="Your bag" aria-hidden="true">
+  <div class="bag-head"><h3>Your bag</h3><button id="bagClose" aria-label="Close bag">✕</button></div>
+  <ul id="bagList"></ul>
+  <div class="bag-foot"><span>Total</span><b id="bagTotal">$0</b></div>
+  <button class="btn btn-solid" id="checkout">Checkout</button>
+  <p class="bag-note" id="bagNote" hidden>This is a concept demo, so no payment is taken.</p>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Thank you · Montage Traders</title>
+</head>
+<body data-page="cart">
+<div id="hdr"></div>
+<main class="wrap ty" id="ty"></main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
+<script>
+(() => {
+  const { $, store, byId, rupee, wa } = MT;
+  const o = store.get('mt_last', null);
+  if (!o) { $('#ty').innerHTML = `<h1>No order yet</h1><p class="ty-msg">Your order confirmation will appear here.</p><div class="row"><a class="btn btn-or" href="shop.html">Go to shop</a></div>`; return; }
+  const lines = o.items.map((x, i) => { const p = byId(x.id); if (!p) return ''; const [l, pr] = p.v[x.vi]; return `${i + 1}. ${p.name} — ${l} × ${x.q}${pr ? ' = ' + rupee(pr * x.q) : ''}`; }).join('\n');
+  const msg = `🏔️ *New order ${o.no}*\n\n${lines}\n\n*Total:* ${rupee(o.t.total)}\n*Name:* ${o.nm}\n*Mobile:* ${o.ph}\n*Address:* ${o.ad}, ${o.ct} – ${o.pn}\n*Delivery:* ${o.dl}\n*Payment:* ${o.py}${o.nt ? '\n*Note:* ' + o.nt : ''}`;
+  $('#ty').innerHTML = `<div class="ty-badge"><svg viewBox="0 0 64 64" fill="none"><path d="M16 33l11 11 22-24" stroke="#0c2744" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <p class="eyebrow" style="justify-content:center">Order placed</p><h1>Shukriya, ${o.nm.split(' ')[0]}!</h1><span class="ord">ORDER NO. ${o.no}</span>
+    <p class="ty-msg">Your gear is noted. <b>Last step:</b> tap the button to send this order to us on WhatsApp — we'll confirm stock and delivery right away.</p>
+    <div class="row"><a class="btn btn-wa" href="${wa(msg)}" target="_blank" rel="noopener">💬 Send order on WhatsApp</a><a class="btn btn-line" href="shop.html">Keep shopping</a></div>
+    <div class="panel"><h3 style="font-size:20px;color:var(--navy);margin-bottom:8px">Summary</h3>${o.items.map(x => { const p = byId(x.id); return p ? `<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-weight:700"><span>${p.name} <small class="muted">× ${x.q}</small></span><b class="num">${p.v[x.vi][1] ? rupee(p.v[x.vi][1] * x.q) : '—'}</b></div>` : ''; }).join('')}
+    <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:20px;font-weight:800;color:var(--navy)"><span>Total</span><span class="num">${rupee(o.t.total)}</span></div><p class="muted" style="font-size:13px;margin-top:8px">${o.dl} · ${o.py}</p></div>
+    <p class="muted" style="margin-top:22px;font-weight:700">Have a great trip — and tight lines! 🎣</p>`;
+})();
+</script>
+</body>
+</html>

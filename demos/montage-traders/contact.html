@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Visit Us · Montage Traders</title>
+</head>
+<body data-page="contact">
+<div id="hdr"></div>
+<main>
+  <section class="ph"><div class="wrap"><p class="eyebrow" style="justify-content:center">About &amp; visit</p><h1>Your outdoor shop in <em>Srinagar</em></h1><p>Montage Traders sells aquaculture equipment, fishing and outdoor gear, aquariums and ornamental fish, tents and camping supplies, rods and fishing accessories.</p></div></section>
+  <section class="sec"><div class="wrap visit">
+    <div class="vcards rv" id="vc"></div>
+    <div class="map rv"><iframe title="Map to Montage Traders" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Lal+Mandi,+Srinagar+190008&output=embed"></iframe></div>
+  </div></section>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
+<script>
+MT.$('#vc').innerHTML = `<a href="${MT.wa('Hi Montage Traders!')}" target="_blank" rel="noopener"><i>💬</i><span>WhatsApp<small>${SHOP.phones[1]}</small></span></a><a href="tel:+919419008168"><i>📞</i><span>Call<small>${SHOP.phones[0]}</small></span></a><a href="${SHOP.map}" target="_blank" rel="noopener"><i>📍</i><span>Address<small>${SHOP.address}</small></span></a><a href="${SHOP.instagram}" target="_blank" rel="noopener"><i>📸</i><span>Instagram<small>@montagetraders69</small></span></a>`; MT.watch();
+</script>
+</body>
+</html>

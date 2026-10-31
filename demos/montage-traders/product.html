@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Product · Montage Traders</title>
+</head>
+<body data-page="shop">
+<div id="hdr"></div>
+<main class="wrap">
+  <div class="pd" id="pd"></div>
+  <section style="padding-bottom:20px"><div class="sh"><div><p class="eyebrow">You may also need</p><h2 style="color:var(--navy)">Complete your <em>kit</em></h2></div></div><div class="grid" id="more"></div></section>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
+<script>
+(() => {
+  const { $, $$, img, byId, catName, rupee, wa, Cart, card, watch, toast } = MT;
+  const p = byId(new URLSearchParams(location.search).get('id')) || PRODUCTS[0];
+  document.title = p.name + ' · Montage Traders';
+  let vi = 0, q = 1;
+  $('#pd').innerHTML = `
+    <div class="gal"><div class="main-img"><img id="mainImg" src="${img(p.img[0])}" alt="${p.name}"></div>
+      ${p.img.length > 1 ? `<div class="thumbs">${p.img.map((n, i) => `<button class="${i ? '' : 'on'}" data-i="${i}" aria-label="Photo ${i + 1}"><img src="${img(n, 1)}" alt=""></button>`).join('')}</div>` : ''}</div>
+    <div>
+      <p class="crumbs"><a href="index.html">Home</a> / <a href="shop.html?cat=${p.cat}">${catName(p.cat)}</a></p>
+      <h1>${p.name}</h1>
+      <div id="pr"></div>
+      <p class="opt-l">${p.label}</p>
+      <div class="opts" id="opts">${p.v.map(([l, pr], i) => `<button data-v="${i}" class="${i ? '' : 'on'}">${l}<span>${pr ? rupee(pr) : 'Ask price'}</span></button>`).join('')}</div>
+      <div class="qrow"><span class="qty"><button data-d="-1" aria-label="Less">−</button><input id="qv" value="1" inputmode="numeric" aria-label="Quantity"><button data-d="1" aria-label="More">+</button></span>
+        <button class="btn btn-or" id="add">Add to cart</button></div>
+      <a class="btn btn-wa" id="ask" target="_blank" rel="noopener" style="width:100%;margin-top:10px">💬 Ask on WhatsApp</a>
+      <div class="perks"><div><b>🏬</b>Pick up at Lal Mandi</div><div><b>🚚</b>Delivery across J&amp;K</div><div><b>💵</b>Cash on delivery</div></div>
+      <div class="desc">
+        <details open><summary>About this product</summary><p>${p.about}</p></details>
+        <details><summary>Delivery &amp; payment</summary><ul><li>Order confirmed on WhatsApp after a stock check</li><li>Pay by UPI or cash on delivery</li><li>Pick up from our shop in Srinagar any day it is open</li></ul></details>
+      </div>
+    </div>`;
+  const sync = () => {
+    const [l, pr] = p.v[vi];
+    $('#pr').innerHTML = pr ? `<span class="price">${rupee(pr)}</span>${q > 1 ? ` <span class="muted" style="font-weight:700">× ${q} = ${rupee(pr * q)}</span>` : ''}` : '<span class="price ask">Price on WhatsApp</span>';
+    $$('#opts button').forEach((b, i) => b.classList.toggle('on', i === vi));
+    $('#qv').value = q;
+    $('#ask').href = wa(`Hi Montage Traders, I want: ${p.name} — ${l}${q > 1 ? ' × ' + q : ''}. Is it in stock?`);
+  };
+  $('#opts').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { vi = +b.dataset.v; sync(); } });
+  $('.qty').addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (b) { q = Math.max(1, Math.min(99, q + +b.dataset.d)); sync(); } });
+  $('#qv').addEventListener('input', e => { q = Math.max(1, Math.min(99, parseInt(e.target.value.replace(/\D/g, '')) || 1)); sync(); });
+  $('#add').addEventListener('click', () => { Cart.add(p.id, vi, q); toast(`✅ Added to cart <a href="cart.html">View cart</a>`); });
+  document.addEventListener('click', e => { const b = e.target.closest('.thumbs button'); if (!b) return; $$('.thumbs button').forEach(x => x.classList.toggle('on', x === b)); $('#mainImg').src = img(p.img[+b.dataset.i]); });
+  sync();
+  const rel = { tents: ['folding-chair', 'life-jacket', 'jianggan', 'rod-combo'], rods: ['tackle-kit', 'wader', 'folding-chair', 'rod-combo'], combos: ['tackle-kit', 'wader', 'dome-tent', 'jianggan'], safety: ['rod-combo', 'dome-tent', 'tackle-kit', 'folding-chair'], aqua: ['fish', 'aquarium', 'dome-tent', 'rod-combo'] }[p.cat];
+  $('#more').innerHTML = rel.filter(id => id !== p.id).slice(0, 4).map(id => card(byId(id))).join('');
+  watch();
+})();
+</script>
+</body>
+</html>

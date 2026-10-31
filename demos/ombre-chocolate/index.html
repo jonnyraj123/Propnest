@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ombré · Cacao Atelier</title>
+<meta name="description" content="Ombré Cacao Atelier: single-origin chocolate, tempered by hand. An interactive 3D chocolate experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23140b07'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23d4ad5c' font-family='Georgia' font-style='italic'%3EO%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0f0806; --bg2:#170d09; --ink:#f6eee4; --muted:#c7b6a5; --dim:#8f7c6b;
+  --gold:#d4ad5c; --gold2:#f1d79a; --line:rgba(212,173,92,.22);
+  --serif:'Cormorant',Georgia,serif; --sans:'Montserrat',system-ui,sans-serif;
+  --pad:clamp(20px,5vw,80px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 45%,transparent 40%,rgba(8,4,2,.75) 100%)}
+.grain{position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(4) infinite}
+@keyframes grain{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:60;background:var(--bg);display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+.loader.done{opacity:0;visibility:hidden}
+.loader p{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4vw,44px);color:var(--gold2);letter-spacing:.02em}
+.loader i{display:block;height:1px;width:160px;margin:18px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:sweep 1.4s ease-in-out infinite}
+@keyframes sweep{0%{transform:scaleX(.1)}50%{transform:scaleX(1)}100%{transform:scaleX(.1)}}
+
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:22px var(--pad);transition:background .4s,backdrop-filter .4s}
+header.solid{background:rgba(15,8,6,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.brand{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:600;letter-spacing:.01em}
+.brand small{font-family:var(--sans);font-style:normal;font-size:9.5px;letter-spacing:.42em;color:var(--gold);margin-left:10px;vertical-align:middle}
+nav{display:flex;gap:34px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+nav a{position:relative;padding:6px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s}
+nav a:hover{color:var(--ink)}nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 28px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  border:1px solid var(--gold);color:var(--bg);background:linear-gradient(120deg,var(--gold2),var(--gold) 60%,#a7792f);
+  box-shadow:0 10px 40px rgba(212,173,92,.18);transition:transform .3s,box-shadow .3s;min-height:44px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 50px rgba(212,173,92,.32)}
+.btn.ghost{background:rgba(15,8,6,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);border-color:var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--gold)}
+header .btn{padding:11px 20px}
+
+main{position:relative;z-index:5}
+section{position:relative;min-height:100vh;padding:120px var(--pad);display:flex;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+h1,h2{text-shadow:0 4px 40px rgba(8,4,2,.7);font-family:var(--serif);font-weight:500;line-height:.92;letter-spacing:-.01em}
+h1{font-size:clamp(58px,9.6vw,156px)}
+h2{font-size:clamp(44px,6.4vw,104px)}
+h1 em,h2 em{font-style:italic;color:var(--gold2)}
+.lede{text-shadow:0 2px 18px rgba(8,4,2,.95),0 0 4px rgba(8,4,2,.8);max-width:430px;margin-top:28px;font-size:15px;line-height:1.8;color:var(--muted);font-weight:300}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.split .w>span{display:inline-block}
+
+/* hero */
+.hero{align-items:flex-end;padding-bottom:12vh}
+.hero .copy{max-width:640px}
+.hero .acts{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.scroll-cue{position:absolute;right:var(--pad);bottom:12vh;display:flex;align-items:center;gap:14px;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim)}
+.scroll-cue i{width:1px;height:56px;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* break */
+.break{justify-content:flex-end;text-align:right}
+.break .copy{max-width:520px}
+.break .lede{margin-left:auto}
+.stats{display:flex;gap:44px;justify-content:flex-end;margin-top:44px}
+.stat b{display:block;font-family:var(--serif);font-size:56px;font-weight:500;color:var(--gold2);line-height:1}
+.stat span{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+
+/* collection */
+.collection{flex-direction:column;align-items:stretch;justify-content:center}
+.collection .head{max-width:560px}
+.flavours{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:auto;padding-top:48vh}
+.flav{position:relative;text-align:left;padding:26px 24px 24px;border-radius:22px;border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(255,240,220,.06),rgba(255,240,220,.015));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .4s,transform .4s,background .4s;min-height:44px}
+.flav:hover{transform:translateY(-4px);border-color:rgba(212,173,92,.5)}
+.flav[aria-pressed="true"]{border-color:var(--gold);background:linear-gradient(160deg,rgba(212,173,92,.16),rgba(212,173,92,.03))}
+.flav .sw{width:34px;height:34px;border-radius:50%;margin-bottom:22px;box-shadow:inset 0 -4px 8px rgba(0,0,0,.35),inset 0 3px 6px rgba(255,255,255,.25),0 0 0 1px rgba(255,255,255,.08)}
+.flav h3{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1}
+.flav p{margin-top:10px;font-size:12.5px;line-height:1.6;color:var(--muted);font-weight:300}
+.flav .pct{position:absolute;top:24px;right:22px;font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.flav .price{margin-top:18px;font-size:12px;letter-spacing:.18em;color:var(--ink)}
+
+/* ritual */
+.ritual{justify-content:flex-start}
+.ritual .copy{max-width:520px}
+.steps{list-style:none;margin-top:40px;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.steps b{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold);font-weight:500}
+.steps h4{font-family:var(--serif);font-size:26px;font-weight:500}
+.steps p{font-size:13px;color:var(--muted);line-height:1.7;margin-top:4px;font-weight:300}
+
+/* order */
+.order{justify-content:center;text-align:center;flex-direction:column}
+.order h2{max-width:900px}
+.order .lede{margin:28px auto 0}
+.order .acts{display:flex;gap:14px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+footer{position:relative;z-index:5;padding:40px var(--pad);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);border-top:1px solid var(--line);background:rgba(15,8,6,.6)}
+
+.reveal{opacity:0;transform:translateY(30px)}
+
+@media (max-width:900px){
+  nav{display:none}
+  section{min-height:100svh;padding:110px 20px 70px}
+  .hero{align-items:flex-end;padding-bottom:9vh}
+  .scroll-cue{display:none}
+  .lede{font-size:14px}
+  .break{text-align:left;justify-content:flex-start;align-items:flex-end}
+  .break .lede{margin-left:0}
+  .stats{justify-content:flex-start;gap:28px}
+  .stat b{font-size:42px}
+  .flavours{grid-template-columns:1fr 1fr;padding-top:36vh;gap:12px}
+  .flav{padding:18px 16px}
+  .flav h3{font-size:24px}
+  .flav p{display:none}
+  .flav .pct{top:18px;right:14px}
+  .ritual{align-items:flex-end}
+  footer{flex-direction:column;letter-spacing:.14em}
+  header .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .grain,.loader i,.scroll-cue i{animation:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div class="loader" id="loader"><div><p>Tempering…</p><i></i></div></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="vignette"></div><div class="grain"></div>
+
+<header id="hdr">
+  <a class="brand" href="#top">Ombré<small>CACAO ATELIER</small></a>
+  <nav aria-label="Main"><a href="#origin">Origin</a><a href="#collection">Collection</a><a href="#ritual">Ritual</a></nav>
+  <a class="btn" href="#order">Order</a>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="copy">
+      <p class="eyebrow reveal">Single origin · Hand tempered</p>
+      <h1 class="split" style="margin-top:22px">Melt <em>slowly.</em></h1>
+      <p class="lede reveal">Seventy-two percent Ecuadorian cacao, stone-ground for seventy hours and tempered by hand. Move your cursor, the bar follows you.</p>
+      <div class="acts reveal"><a class="btn" href="#collection">Choose your bar</a><a class="btn ghost" href="#origin">Our cacao</a></div>
+    </div>
+    <div class="scroll-cue"><i></i>Scroll to break</div>
+  </section>
+
+  <section class="break" id="origin">
+    <div class="copy">
+      <p class="eyebrow reveal">The snap</p>
+      <h2 class="split" style="margin-top:22px">Twelve squares, <em>one ritual.</em></h2>
+      <p class="lede reveal">A clean snap means a perfect temper. Every square breaks with a glossy edge and melts at exactly body heat.</p>
+      <div class="stats reveal">
+        <div class="stat"><b>72%</b><span>Cacao</span></div>
+        <div class="stat"><b>70h</b><span>Conched</span></div>
+        <div class="stat"><b>3</b><span>Ingredients</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="collection">
+    <div class="head">
+      <p class="eyebrow reveal">The collection</p>
+      <h2 class="split" style="margin-top:22px">Pick a <em>mood.</em></h2>
+    </div>
+    <div class="flavours" role="group" aria-label="Choose a flavour">
+      <button class="flav reveal" data-f="0" aria-pressed="true"><span class="pct">72%</span><span class="sw" style="background:#3a1d12;display:block"></span><h3>Noir</h3><p>Deep, roasted, a whisper of red fruit.</p><div class="price">₹ 450</div></button>
+      <button class="flav reveal" data-f="1" aria-pressed="false"><span class="pct">45%</span><span class="sw" style="background:#7a4527;display:block"></span><h3>Lait</h3><p>Caramel, cream, toasted hazelnut.</p><div class="price">₹ 420</div></button>
+      <button class="flav reveal" data-f="2" aria-pressed="false"><span class="pct">47%</span><span class="sw" style="background:#a8344d;display:block"></span><h3>Ruby</h3><p>Naturally pink, bright berry acidity.</p><div class="price">₹ 520</div></button>
+      <button class="flav reveal" data-f="3" aria-pressed="false"><span class="pct">32%</span><span class="sw" style="background:#efe2c8;display:block"></span><h3>Blanc</h3><p>Madagascar vanilla, cocoa butter silk.</p><div class="price">₹ 420</div></button>
+    </div>
+  </section>
+
+  <section class="ritual" id="ritual">
+    <div class="copy">
+      <p class="eyebrow reveal">The ritual</p>
+      <h2 class="split" style="margin-top:22px">From bean <em>to bar.</em></h2>
+      <ol class="steps">
+        <li class="reveal"><b>i.</b><div><h4>Harvest</h4><p>Hand-picked pods from one family farm in Manabí.</p></div></li>
+        <li class="reveal"><b>ii.</b><div><h4>Roast</h4><p>Slow, low roast to keep the fruit alive.</p></div></li>
+        <li class="reveal"><b>iii.</b><div><h4>Conche</h4><p>Seventy hours on granite for a silk-smooth melt.</p></div></li>
+        <li class="reveal"><b>iv.</b><div><h4>Temper</h4><p>Cooled on marble by hand for gloss and snap.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="order" id="order">
+    <p class="eyebrow reveal" style="justify-content:center">Gift box · Ships in 48h</p>
+    <h2 class="split" style="margin-top:22px">Some things are worth <em>waiting for.</em></h2>
+    <p class="lede reveal">Order a box of four bars, wrapped by hand in gold foil. Message us and we'll confirm your box within the hour.</p>
+    <div class="acts reveal"><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Order on WhatsApp</a><a class="btn ghost" href="#collection">See the collection</a></div>
+  </section>
+</main>
+<footer><span>© Ombré Cacao Atelier · Demo concept</span><span>Crafted by Plastrix Studio</span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+gsap.registerPlugin(ScrollTrigger);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile = matchMedia('(max-width: 900px)').matches;
+
+/* ---------- WhatsApp order text ---------- */
+let flavour = 0;
+const NAMES = ['Noir 72%', 'Lait 45%', 'Ruby 47%', 'Blanc 32%'];
+const wa = document.getElementById('wa');
+const setWa = () => wa.href = 'https://wa.me/?text=' + encodeURIComponent(`Hello Ombré! I'd like to order a gift box of ${NAMES[flavour]} chocolate.`);
+setWa();
+
+/* ---------- renderer & scene ---------- */
+const canvas = document.getElementById('gl');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0f0806);
+scene.fog = new THREE.Fog(0x0f0806, 9, 22);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(32, innerWidth / innerHeight, 0.1, 60);
+camera.position.set(0, 0, 11);
+
+/* warm studio lights */
+scene.add(new THREE.AmbientLight(0x3a2418, 0.6));
+const key = new THREE.DirectionalLight(0xffe2bf, 2.4); key.position.set(4, 6, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0xd4ad5c, 3.2); rim.position.set(-6, 2, -4); scene.add(rim);
+const fill = new THREE.PointLight(0xff9a5a, 18, 14); fill.position.set(-3, -3, 4); scene.add(fill);
+
+/* ---------- chocolate material ---------- */
+const FLAV = [
+  { c: 0x2b130b, rough: .3, cc: .55 },
+  { c: 0x6a3a20, rough: .32, cc: .5 },
+  { c: 0x9a2c44, rough: .3, cc: .5 },
+  { c: 0xe8d9bf, rough: .42, cc: .3 }
+];
+const choc = new THREE.MeshPhysicalMaterial({
+  color: FLAV[0].c, roughness: FLAV[0].rough, metalness: 0, clearcoat: FLAV[0].cc, clearcoatRoughness: .22,
+  sheen: .4, sheenColor: new THREE.Color(0x7a4a2a), sheenRoughness: .6, envMapIntensity: .32
+});
+const targetColor = new THREE.Color(FLAV[0].c);
+
+/* ---------- the bar: base slab + 4x3 squares, each its own group so it can break ---------- */
+const bar = new THREE.Group();
+scene.add(bar);
+const COLS = 4, ROWS = 3, S = 0.9, GAP = 0.06;
+const W = COLS * S + (COLS - 1) * GAP, H = ROWS * S + (ROWS - 1) * GAP;
+const pieceGeoBase = new RoundedBoxGeometry(S + GAP * .5, S + GAP * .5, 0.22, 4, 0.05);
+const pieceGeoTop = new RoundedBoxGeometry(S * .8, S * .8, 0.2, 5, 0.09);
+const pieces = [];
+for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+  const g = new THREE.Group();
+  const base = new THREE.Mesh(pieceGeoBase, choc);
+  const top = new THREE.Mesh(pieceGeoTop, choc); top.position.z = 0.15;
+  g.add(base, top);
+  const x = -W / 2 + S / 2 + c * (S + GAP), y = -H / 2 + S / 2 + r * (S + GAP);
+  g.position.set(x, y, 0);
+  g.userData = {
+    home: new THREE.Vector3(x, y, 0),
+    away: new THREE.Vector3(x * 1.9 + (Math.random() - .5) * 1.2, y * 2.1 + (Math.random() - .5) * 1.2, (Math.random() - .5) * 3),
+    spin: new THREE.Euler((Math.random() - .5) * 2.4, (Math.random() - .5) * 2.4, (Math.random() - .5) * 1.6)
+  };
+  bar.add(g); pieces.push(g);
+}
+bar.rotation.set(-0.5, 0.45, 0.18);
+
+/* ---------- molten chocolate ribbon (rebuilt each frame from a moving curve) ---------- */
+const ribbonMat = choc.clone();
+ribbonMat.roughness = .2;
+let ribbon = new THREE.Mesh(new THREE.BufferGeometry(), ribbonMat);
+scene.add(ribbon);
+const RN = mobile ? 70 : 110;
+const pts = Array.from({ length: 9 }, () => new THREE.Vector3());
+function updateRibbon(t, spread) {
+  for (let i = 0; i < pts.length; i++) {
+    const k = i / (pts.length - 1);
+    pts[i].set(
+      (k - .5) * 16 * spread,
+      Math.sin(k * 5.2 + t * .7) * 1.1 - 1.6 + Math.cos(k * 2.3 - t * .4) * .5,
+      -2.8 + Math.sin(k * 3.7 + t * .5) * 1.2
+    );
+  }
+  const curve = new THREE.CatmullRomCurve3(pts);
+  const g = new THREE.TubeGeometry(curve, RN, 0.32 + Math.sin(t * .8) * .03, mobile ? 10 : 16, false);
+  ribbon.geometry.dispose(); ribbon.geometry = g;
+}
+
+/* ---------- cocoa dust & gold flecks ---------- */
+const N = mobile ? 380 : 900;
+const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), seed = new Float32Array(N);
+const cA = new THREE.Color(0x6b3a22), cB = new THREE.Color(0xd4ad5c);
+for (let i = 0; i < N; i++) {
+  pos[i * 3] = (Math.random() - .5) * 18; pos[i * 3 + 1] = (Math.random() - .5) * 11; pos[i * 3 + 2] = (Math.random() - .5) * 10 - 1;
+  const c = Math.random() < .18 ? cB : cA; col.set([c.r, c.g, c.b], i * 3); seed[i] = Math.random();
+}
+const dustGeo = new THREE.BufferGeometry();
+dustGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+dustGeo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+const dot = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
+  const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.4, 'rgba(255,255,255,.5)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+  x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); })();
+const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ size: .06, map: dot, vertexColors: true, transparent: true, opacity: .8, depthWrite: false, blending: THREE.AdditiveBlending }));
+scene.add(dust);
+
+/* ---------- state driven by scroll ---------- */
+const st = { x: mobile ? 0 : 2.3, y: mobile ? 1.1 : .2, z: 0, scale: mobile ? .78 : 1, brk: 0, spin: 0, ribbon: 1 };
+const isMobile = mobile;
+function stagePositions() {
+  // where the bar sits for each section (x, y, scale)
+  return isMobile
+    ? { hero: [0, 1.15, .72], origin: [0, 1.1, .68], coll: [0, 1.05, .74], ritual: [0, 3.6, .42], order: [0, 2.75, .5] }
+    : { hero: [2.3, .25, 1], origin: [-2.4, 0, 1], coll: [0, .9, .92], ritual: [2.6, 0, .9], order: [0, 1.5, .78] };
+}
+let SP = stagePositions();
+function bindScroll() {
+  ScrollTrigger.getAll().forEach(t => t.kill());
+  const tl = gsap.timeline({ scrollTrigger: { trigger: 'main', start: 'top top', end: 'bottom bottom', scrub: 1.2 } });
+  tl.to(st, { x: SP.origin[0], y: SP.origin[1], scale: SP.origin[2], brk: 1, spin: 1, duration: 1, ease: 'power2.inOut' })
+    .to(st, { x: SP.coll[0], y: SP.coll[1], scale: SP.coll[2], brk: 0, spin: 2, duration: 1, ease: 'power2.inOut' })
+    .to(st, { x: SP.ritual[0], y: SP.ritual[1], scale: SP.ritual[2], brk: .35, spin: 3, duration: 1, ease: 'power2.inOut' })
+    .to(st, { x: SP.order[0], y: SP.order[1], scale: SP.order[2], brk: 0, spin: 4, ribbon: 1.25, duration: 1, ease: 'power2.inOut' });
+}
+
+/* ---------- pointer ---------- */
+let mx = 0, my = 0, tx = 0, ty = 0;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth * 2 - 1; my = e.clientY / innerHeight * 2 - 1; }, { passive: true });
+addEventListener('deviceorientation', e => { if (e.gamma != null) { mx = Math.max(-1, Math.min(1, e.gamma / 30)); my = Math.max(-1, Math.min(1, (e.beta - 45) / 30)); } });
+
+/* ---------- flavour switch ---------- */
+document.querySelectorAll('.flav').forEach(b => b.addEventListener('click', () => {
+  flavour = +b.dataset.f; setWa();
+  document.querySelectorAll('.flav').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const f = FLAV[flavour];
+  targetColor.setHex(f.c);
+  gsap.to(choc, { roughness: f.rough, clearcoat: f.cc, duration: .8 });
+  gsap.fromTo(st, { brk: .55 }, { brk: 0, duration: 1.1, ease: 'elastic.out(1,.6)' });
+}));
+
+/* ---------- loop ---------- */
+const clock = new THREE.Clock();
+const tmpQ = new THREE.Quaternion(), tmpE = new THREE.Euler();
+function frame() {
+  const t = clock.getElapsedTime();
+  tx += (mx - tx) * .06; ty += (my - ty) * .06;
+
+  choc.color.lerp(targetColor, .06);
+  ribbonMat.color.copy(choc.color).multiplyScalar(.92);
+
+  bar.position.set(st.x, st.y + Math.sin(t * .9) * .08, st.z);
+  bar.scale.setScalar(st.scale);
+  bar.rotation.set(-0.45 + ty * .35 + Math.sin(t * .5) * .05, 0.45 + tx * .6 + st.spin * Math.PI * .5, 0.15 + Math.sin(t * .4) * .04);
+
+  for (const p of pieces) {
+    const u = p.userData, b = st.brk;
+    p.position.lerpVectors(u.home, u.away, b);
+    p.position.z += Math.sin(t * 1.3 + u.home.x * 2) * .06 * b;
+    p.rotation.set(u.spin.x * b, u.spin.y * b, u.spin.z * b);
+  }
+
+  if (!reduce) updateRibbon(t, st.ribbon);
+  ribbon.position.set(tx * -.3, ty * .2, 0);
+
+  const pa = dustGeo.attributes.position.array;
+  for (let i = 0; i < N; i++) {
+    pa[i * 3 + 1] += .0025 + seed[i] * .004;
+    pa[i * 3] += Math.sin(t * .4 + seed[i] * 9) * .0018;
+    if (pa[i * 3 + 1] > 5.5) pa[i * 3 + 1] = -5.5;
+  }
+  dustGeo.attributes.position.needsUpdate = true;
+  dust.rotation.y = tx * .08;
+
+  camera.position.x += (tx * .45 - camera.position.x) * .05;
+  camera.position.y += (-ty * .3 - camera.position.y) * .05;
+  camera.lookAt(0, 0, 0);
+
+  renderer.render(scene, camera);
+  if (!reduce) requestAnimationFrame(frame);
+}
+
+function resize() {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight;
+  camera.fov = innerWidth < innerHeight ? 44 : 32;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', () => { resize(); if (reduce) frame(); });
+resize();
+
+/* ---------- text: split headings into words ---------- */
+document.querySelectorAll('.split').forEach(h => {
+  const walk = n => [...n.childNodes].forEach(c => {
+    if (c.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(w => {
+        if (!w) return;
+        if (/^\s+$/.test(w)) { frag.append(w); return; }
+        const o = document.createElement('span'); o.className = 'w';
+        const i = document.createElement('span'); i.textContent = w; o.append(i); frag.append(o);
+      });
+      c.replaceWith(frag);
+    } else walk(c);
+  });
+  walk(h);
+});
+
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => hdr.classList.toggle('solid', scrollY > 40), { passive: true });
+
+function intro() {
+  document.getElementById('loader').classList.add('done');
+  if (reduce) { updateRibbon(0, 1); frame(); return; }
+  bindScroll();
+  // entrance
+  st.brk = 1.4; st.scale *= .6;
+  gsap.to(st, { brk: 0, scale: SP.hero[2], duration: 2.2, ease: 'expo.out', delay: .2 });
+  document.querySelectorAll('.split').forEach(h => {
+    gsap.from(h.querySelectorAll('.w>span'), {
+      yPercent: 110, rotate: 4, duration: 1.2, ease: 'expo.out', stagger: .06,
+      scrollTrigger: { trigger: h, start: 'top 85%' }
+    });
+  });
+  gsap.utils.toArray('.reveal').forEach(el => gsap.to(el, {
+    opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 90%' }
+  }));
+  frame();
+}
+// wait for fonts so text splitting/measurement is stable
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(intro, 350));
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='%230c2744'/%3E%3Cpath d='M6 33 17 18l6 8 5-6 14 13Z' fill='%23eef4f8'/%3E%3C/svg%3E">
+<title>Shop · Montage Traders</title>
+</head>
+<body data-page="shop">
+<div id="hdr"></div>
+<main>
+  <section class="ph"><div class="wrap"><p class="eyebrow" style="justify-content:center">The store</p><h1 id="shopT">All <em>gear</em></h1><p>Prices as in our Lal Mandi shop. Order online or ask us on WhatsApp.</p></div></section>
+  <div class="wrap">
+    <div class="tools"><div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
+      <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="sr">Search</span><input id="q" type="search" placeholder="Search tents, rods, aquarium…"></label></div>
+    <p class="muted" id="count" style="font-weight:700;margin:6px 0 16px"></p>
+    <div class="grid" id="grid" style="margin-bottom:20px"></div>
+    <div class="empty" id="none" hidden><div class="big">🎣</div><h3>Nothing found</h3><p class="muted">Try another word, or ask us on WhatsApp.</p></div>
+  </div>
+</main>
+<div id="ftr"></div>
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/data.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
+<script>
+(() => {
+  const { $, $$, card, watch } = MT;
+  let cat = new URLSearchParams(location.search).get('cat') || 'all', q = '';
+  $('#tabs').innerHTML = [{ id: 'all', name: 'All' }, ...CATS].map(c => `<button role="tab" data-c="${c.id}">${c.name}</button>`).join('');
+  const render = () => {
+    const list = PRODUCTS.filter(p => (cat === 'all' || p.cat === cat) && (!q || (p.name + ' ' + p.v.map(v => v[0]).join(' ')).toLowerCase().includes(q)));
+    $('#grid').innerHTML = list.map(card).join(''); $('#none').hidden = !!list.length;
+    $('#count').textContent = list.length + (list.length === 1 ? ' product' : ' products');
+    $('#shopT').innerHTML = cat === 'all' ? 'All <em>gear</em>' : MT.catName(cat).replace(/(\S+)$/, '<em>$1</em>');
+    $$('#tabs button').forEach(b => { const on = b.dataset.c === cat; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+    watch();
+  };
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cat = b.dataset.c; history.replaceState(null, '', cat === 'all' ? 'shop.html' : 'shop.html?cat=' + cat); render(); });
+  $('#q').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); render(); });
+  render();
+})();
+</script>
+</body>
+</html>

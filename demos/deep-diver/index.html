@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deep Diver · Nerida 3D Studio</title>
+<meta name="description" content="Meet the Deep Diver, an interactive 3D character by Nerida Studio. Move your cursor and push the button.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,62..125,900&family=Urbanist:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/plate.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2353f0ff'/%3E%3Cstop offset='.5' stop-color='%233b6cff'/%3E%3Cstop offset='1' stop-color='%23ff7a6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+:root{
+  --u:max(calc(100vw / 1440), calc(100vh / 810));
+  --ink:#fff; --muted:#C9D9E6; --aqua:#5FF2FF; --deep:#01050F;
+  --sans:'Urbanist',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--deep);color:var(--ink);overflow:hidden}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.stage{position:fixed;inset:0;overflow:hidden;touch-action:none}
+.frame{position:absolute;width:calc(1440 * var(--u));height:calc(810 * var(--u));
+  left:calc(50% - 720 * var(--u));top:calc(50% - 405 * var(--u))}
+.u{position:absolute}
+
+/* scene layer: everything that belongs to the picture moves together */
+.scene{position:absolute;inset:0;will-change:transform}
+.plate{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.head{left:calc(439.1 * var(--u));top:calc(45 * var(--u));width:calc(562.3 * var(--u));height:calc(517.3 * var(--u));
+  object-fit:fill;opacity:0;transition:opacity .6s ease;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 46%,#000 70%,transparent 99%);
+          mask-image:radial-gradient(ellipse 50% 50% at 50% 46%,#000 70%,transparent 99%)}
+.head.on{opacity:1}
+.helmet{left:calc(470 * var(--u));top:calc(34 * var(--u));width:calc(500 * var(--u));height:calc(500 * var(--u));
+  mix-blend-mode:screen;opacity:0;pointer-events:none;
+  -webkit-mask-image:linear-gradient(#000 84%,transparent 95%);mask-image:linear-gradient(#000 84%,transparent 95%)}
+.seal{left:calc(520 * var(--u));top:calc(440 * var(--u));width:calc(400 * var(--u));height:calc(150 * var(--u));
+  border-radius:50%;background:radial-gradient(closest-side,rgba(140,250,255,.75),rgba(60,200,255,.25) 55%,transparent);
+  mix-blend-mode:screen;opacity:0;pointer-events:none;filter:blur(calc(6 * var(--u)))}
+
+.push{left:calc(678 * var(--u));top:calc(695 * var(--u));width:calc(84 * var(--u));height:calc(84 * var(--u));
+  border-radius:50%;display:grid;place-items:center;text-align:center;
+  font-weight:700;font-size:calc(17 * var(--u));line-height:1;letter-spacing:.02em;color:#fff;
+  text-shadow:0 1px 1px rgba(80,0,0,.45);
+  background:radial-gradient(circle at 38% 30%,#ff9a86 0 12%,#f0523f 38%,#c8281f 72%,#8f160f 100%);
+  box-shadow:0 0 0 calc(4.5 * var(--u)) #6b4a22,0 0 0 calc(6 * var(--u)) rgba(255,255,255,.22),
+    inset 0 calc(-5 * var(--u)) calc(10 * var(--u)) rgba(80,0,0,.45),inset 0 calc(3 * var(--u)) calc(6 * var(--u)) rgba(255,255,255,.35);
+  transition:box-shadow .4s ease}
+.push span{display:block}
+.push[aria-pressed="true"]{box-shadow:0 0 0 calc(4.5 * var(--u)) #6b4a22,0 0 0 calc(6 * var(--u)) rgba(255,255,255,.3),
+  0 0 calc(26 * var(--u)) calc(6 * var(--u)) rgba(255,70,50,.7),0 0 calc(70 * var(--u)) rgba(255,70,50,.45),
+  inset 0 calc(-5 * var(--u)) calc(10 * var(--u)) rgba(80,0,0,.45),inset 0 calc(3 * var(--u)) calc(6 * var(--u)) rgba(255,255,255,.35)}
+.push:focus-visible{outline:2px solid var(--aqua);outline-offset:calc(10 * var(--u))}
+
+canvas.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+/* copy layer */
+.ui{position:absolute;inset:0;pointer-events:none}
+.ui a,.ui button{pointer-events:auto}
+.logo{left:calc(55 * var(--u));top:calc(54 * var(--u));display:flex;align-items:center;gap:calc(12 * var(--u));
+  font-weight:600;font-size:calc(29 * var(--u));letter-spacing:-.01em;text-decoration:none;color:#fff}
+.disc{width:calc(35 * var(--u));height:calc(35 * var(--u));border-radius:50%;flex:none;
+  background:conic-gradient(from 210deg,#5ff2ff,#2fa4ff,#4b5bff,#ff7a6b,#5ff2ff);
+  box-shadow:0 0 calc(18 * var(--u)) rgba(95,242,255,.35)}
+.menu{left:calc(1358 * var(--u));top:calc(55 * var(--u));width:calc(30 * var(--u));height:calc(22 * var(--u));
+  display:flex;flex-direction:column;justify-content:space-between}
+.menu i{display:block;width:calc(25 * var(--u));height:calc(2.5 * var(--u));background:#fff;border-radius:2px}
+.menu i:nth-child(2){width:calc(18 * var(--u));margin-left:auto}
+
+.copy{left:calc(72 * var(--u));top:calc(250 * var(--u));width:calc(410 * var(--u))}
+.eyebrow{display:flex;align-items:center;gap:calc(12 * var(--u));font-weight:700;font-size:calc(16 * var(--u));
+  letter-spacing:.42em;color:var(--muted)}
+.eyebrow::before{content:"";width:calc(28 * var(--u));height:1px;background:var(--aqua);box-shadow:0 0 8px var(--aqua)}
+h1{font-family:'Archivo',sans-serif;font-style:italic;font-weight:900;font-stretch:94%;
+  font-size:calc(112 * var(--u));line-height:.9;letter-spacing:-.02em;margin-top:calc(18 * var(--u));
+  text-shadow:0 0 calc(14 * var(--u)) rgba(255,255,255,.55),0 0 calc(34 * var(--u)) rgba(150,245,255,.55),0 0 calc(70 * var(--u)) rgba(24,200,230,.55)}
+h1 span{display:block}
+.sub{margin-top:calc(22 * var(--u));font-weight:600;font-size:calc(21 * var(--u));line-height:1.35;color:var(--muted)}
+.hint{margin-top:calc(30 * var(--u));display:flex;gap:calc(18 * var(--u));font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(201,217,230,.75)}
+.hint b{display:inline-flex;align-items:center;gap:calc(8 * var(--u));font-weight:600}
+.hint b::before{content:"";width:calc(7 * var(--u));height:calc(7 * var(--u));border-radius:50%;background:var(--aqua);box-shadow:0 0 8px var(--aqua)}
+.hint b+b::before{background:#ff6a55;box-shadow:0 0 8px #ff6a55}
+
+/* depth gauge */
+.gauge{left:calc(1106 * var(--u));top:calc(262 * var(--u));width:calc(262 * var(--u));padding:calc(22 * var(--u)) calc(24 * var(--u));
+  border-radius:calc(22 * var(--u));background:linear-gradient(160deg,rgba(120,220,255,.14),rgba(20,60,110,.10));
+  border:1px solid rgba(160,235,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 20px 60px rgba(0,10,30,.35)}
+.g-l{font-weight:700;font-size:calc(11.5 * var(--u));letter-spacing:.3em;color:var(--muted)}
+.g-n{font-weight:700;font-size:calc(46 * var(--u));line-height:1;margin-top:calc(8 * var(--u));font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.g-n small{font-size:.42em;font-weight:600;color:var(--muted);margin-left:calc(6 * var(--u))}
+.g-bar{position:relative;height:calc(4 * var(--u));border-radius:9px;margin:calc(16 * var(--u)) 0 calc(18 * var(--u));
+  background:linear-gradient(90deg,rgba(95,242,255,.15),rgba(95,242,255,.04))}
+.g-bar i{position:absolute;top:50%;left:0;width:calc(12 * var(--u));height:calc(12 * var(--u));border-radius:50%;
+  background:var(--aqua);box-shadow:0 0 12px var(--aqua);transform:translate(-50%,-50%)}
+.g-row{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:calc(14 * var(--u));color:var(--muted);
+  padding:calc(9 * var(--u)) 0;border-top:1px solid rgba(160,235,255,.12)}
+.g-row b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;gap:calc(8 * var(--u))}
+.st::before{content:"";width:calc(8 * var(--u));height:calc(8 * var(--u));border-radius:50%;background:#ffb347;box-shadow:0 0 8px #ffb347}
+.st.sealed::before{background:#5ff2a0;box-shadow:0 0 10px #5ff2a0}
+
+.cap{bottom:auto;top:calc(745 * var(--u));font-weight:700;font-size:calc(12.2 * var(--u));letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cap.l{left:calc(55 * var(--u))}
+.cap.r{right:calc(55 * var(--u))}
+
+/* cursor */
+.cur,.ring{position:fixed;left:0;top:0;pointer-events:none;z-index:50;border-radius:50%;opacity:0}
+.cur{width:7px;height:7px;margin:-3.5px 0 0 -3.5px;background:#fff}
+.ring{width:44px;height:44px;margin:-22px 0 0 -22px;border:1.5px solid #fff;transition:width .25s,height .25s,margin .25s,background .25s}
+.ring.hot{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,90,70,.12);border-color:#ffb3a6}
+@media (hover:hover) and (pointer:fine){
+  .stage,.stage *{cursor:none!important}
+  .cur,.ring{opacity:1}
+}
+
+/* phones */
+@media (max-width:820px){
+  :root{--u:max(calc(100vw / 1440), calc(72vh / 810))}
+  .frame{top:auto;bottom:0;overflow:hidden}
+  .frame::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(170 * var(--u));
+    background:linear-gradient(var(--deep) 12%,rgba(1,5,15,.6) 55%,transparent);pointer-events:none}
+  .ui{position:fixed}
+  .logo{position:fixed;left:18px;top:max(18px,env(safe-area-inset-top));font-size:20px;gap:9px}
+  .disc{width:26px;height:26px}
+  .menu{position:fixed;left:auto;right:20px;top:max(24px,calc(env(safe-area-inset-top) + 6px));width:24px;height:16px}
+  .menu i{width:22px;height:2px}.menu i:nth-child(2){width:15px}
+  .copy{position:fixed;left:0;right:0;width:auto;top:calc(max(18px,env(safe-area-inset-top)) + 56px);text-align:center;padding:0 16px}
+  .eyebrow{justify-content:center;font-size:12px;letter-spacing:.38em;gap:10px}
+  .eyebrow::before{width:18px}
+  h1{font-size:clamp(40px,13vw,64px);margin-top:8px}
+  h1 span{display:inline-block}
+  h1 span+span{margin-left:.22em}
+  .sub{font-size:15px;margin-top:10px}
+  .hint,.gauge{display:none}
+  .cap{position:fixed;top:auto;bottom:max(16px,env(safe-area-inset-bottom));font-size:10.5px}
+  .cap.l{left:16px}.cap.r{right:16px}
+}
+@media (prefers-reduced-motion:reduce){.head{display:none}}
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+  <div class="frame" id="frame">
+    <div class="scene" id="scene">
+      <picture>
+        <source media="(max-width:820px)" srcset="assets/plate-m.jpg">
+        <img class="plate" src="assets/plate.jpg" alt="A cartoon girl in a cream and coral diving suit stands in front of a glowing coral reef in the deep ocean.">
+      </picture>
+      <video class="u head" id="head" muted playsinline preload="auto" aria-hidden="true"></video>
+      <div class="u seal" id="seal"></div>
+      <img class="u helmet" id="helmet" src="assets/helmet.jpg" alt="">
+      <button class="u push" id="push" type="button" aria-pressed="false" aria-label="Push me: put the diving helmet on"><span>PUSH<br>ME</span></button>
+    </div>
+    <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+    <div class="ui" id="ui">
+      <a class="u logo" href="#" aria-label="Nerida Studio home"><span class="disc"></span>Nerida</a>
+      <button class="u menu" type="button" aria-label="Open menu"><i></i><i></i><i></i></button>
+      <section class="u copy">
+        <p class="eyebrow" id="eyebrow">EXPLORER N°07</p>
+        <h1 id="title"><span>DEEP</span> <span>DIVER</span></h1>
+        <p class="sub" id="sub">Further than the light can reach.</p>
+        <p class="hint" id="hint"><b>Move to look</b><b>Push to dive</b></p>
+      </section>
+      <aside class="u gauge" id="gauge" aria-label="Dive status">
+        <p class="g-l">DEPTH</p>
+        <p class="g-n"><span id="depth">3,200</span><small>m</small></p>
+        <div class="g-bar"><i id="mark"></i></div>
+        <p class="g-row">Pressure <b id="bar">321 bar</b></p>
+        <p class="g-row">Water <b>2.4 °C</b></p>
+        <p class="g-row">Suit <b class="st" id="suit">Open</b></p>
+      </aside>
+      <p class="u cap l" id="capL">3D Interaction</p>
+      <p class="u cap r" id="capR">@nerida.studio</p>
+    </div>
+  </div>
+</main>
+<div class="ring" id="ring"></div><div class="cur" id="cur"></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const stage = $('stage'), frame = $('frame'), scene = $('scene'), head = $('head'),
+        helmet = $('helmet'), seal = $('seal'), push = $('push'), fx = $('fx'),
+        ring = $('ring'), cur = $('cur');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CLIP = head.canPlayType('video/mp4; codecs="avc1.42E01E"') ? 'assets/head.mp4' : 'assets/head.webm';
+
+  /* pointer state, in 0..1 of the frame */
+  let px = .5, py = .5, lastMove = -1e9, mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  const rect = () => frame.getBoundingClientRect();
+  function onMove(e) {
+    mx = e.clientX; my = e.clientY;
+    cur.style.transform = `translate(${mx}px,${my}px)`;
+    const r = rect();
+    px = Math.min(1, Math.max(0, (mx - r.left) / r.width));
+    py = Math.min(1, Math.max(0, (my - r.top) / r.height));
+    lastMove = performance.now();
+  }
+  addEventListener('pointermove', onMove, { passive: true });
+  addEventListener('pointerdown', onMove, { passive: true });
+  push.addEventListener('pointerenter', () => ring.classList.add('hot'));
+  push.addEventListener('pointerleave', () => ring.classList.remove('hot'));
+
+  /* phone tilt also steers the gaze */
+  addEventListener('deviceorientation', e => {
+    if (e.gamma == null) return;
+    px = Math.min(1, Math.max(0, .5 + e.gamma / 50));
+    lastMove = performance.now();
+  });
+
+  /* head clip: load whole file as a blob so seeking is instant */
+  let ready = false, shown = 0, dur = 0;
+  if (!reduce) {
+    const start = src => { head.src = src; head.load(); };
+    fetch(CLIP).then(r => { if (!r.ok) throw 0; return r.blob(); })
+      .then(b => start(URL.createObjectURL(b))).catch(() => start(CLIP));
+    head.addEventListener('loadedmetadata', () => { dur = head.duration - 0.05; shown = dur / 2; ready = true; head.currentTime = shown; });
+    head.addEventListener('seeked', () => head.classList.add('on'), { once: true });
+  }
+
+  /* bubbles */
+  const ctx = fx.getContext('2d');
+  let W = 0, H = 0, dpr = 1;
+  const bubbles = [];
+  function size() {
+    dpr = Math.min(2, devicePixelRatio || 1);
+    const r = rect(); W = r.width; H = r.height;
+    fx.width = W * dpr; fx.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function bubble(x, y, burst) {
+    const s = W / 1440;
+    bubbles.push({ x, y, r: (burst ? 3 + Math.random() * 9 : 2 + Math.random() * 6) * s,
+      vy: -(burst ? 1.4 + Math.random() * 2.4 : .25 + Math.random() * .55) * s * 1.6,
+      vx: burst ? (Math.random() - .5) * 3 * s : 0, ph: Math.random() * 6.28, life: 1, burst });
+  }
+  function seedAmbient() {
+    for (let i = 0; i < 26; i++) bubble(Math.random() * W, Math.random() * H, false);
+  }
+  function drawBubbles() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = bubbles.length - 1; i >= 0; i--) {
+      const b = bubbles[i];
+      b.ph += .03; b.y += b.vy; b.x += b.vx + Math.sin(b.ph) * .25; b.vx *= .97;
+      if (b.burst) b.life -= .006;
+      if (b.y < -20 || b.life <= 0) {
+        bubbles.splice(i, 1);
+        if (!b.burst) bubble(Math.random() * W, H + 10, false);
+        continue;
+      }
+      const a = Math.min(1, b.life) * (b.burst ? .8 : .45);
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.283);
+      ctx.strokeStyle = `rgba(200,250,255,${a})`; ctx.lineWidth = Math.max(.8, b.r * .14); ctx.stroke();
+      ctx.beginPath(); ctx.arc(b.x - b.r * .35, b.y - b.r * .35, b.r * .22, 0, 6.283);
+      ctx.fillStyle = `rgba(255,255,255,${a})`; ctx.fill();
+    }
+  }
+  size(); if (!reduce) seedAmbient();
+  addEventListener('resize', size);
+
+  /* depth gauge */
+  const depthEl = $('depth'), barEl = $('bar'), mark = $('mark');
+  let depth = 3200;
+
+  /* main loop */
+  let sx = 0, sy = 0;
+  function tick(now) {
+    const idle = now - lastMove > 3500;
+    let gx = px, gy = py;
+    if (idle) { gx = .5 + Math.sin(now / 2600) * .32; gy = .5 + Math.sin(now / 3700) * .2; }
+
+    if (ready && dur) {
+      const t = Math.min(1, Math.max(0, (gx - .14) / .72)) * dur;
+      shown += (t - shown) * .14;
+      if (!head.seeking && Math.abs(head.currentTime - shown) > .015) head.currentTime = shown;
+    }
+    if (!reduce) {
+      sx += ((gx - .5) * -10 - sx) * .06; sy += ((gy - .5) * -6 - sy) * .06;
+      const s = W / 1440;
+      scene.style.transform = `translate(${sx * s}px,${sy * s}px) scale(1.02)`;
+      drawBubbles();
+    }
+    rx += (mx - rx) * .55; ry += (my - ry) * .55;
+    ring.style.transform = `translate(${rx}px,${ry}px)`;
+
+    const target = 2900 + gy * 700 + (helmetOn ? 120 : 0);
+    depth += (target - depth) * .05;
+    depthEl.textContent = Math.round(depth).toLocaleString('en-US');
+    barEl.textContent = Math.round(depth / 10 + 1) + ' bar';
+    mark.style.left = ((depth - 2800) / 1000 * 100) + '%';
+    requestAnimationFrame(tick);
+  }
+
+  /* helmet */
+  let helmetOn = false, hAnim = null;
+  push.addEventListener('click', () => {
+    helmetOn = !helmetOn;
+    push.setAttribute('aria-pressed', helmetOn);
+    push.setAttribute('aria-label', helmetOn ? 'Push me: take the diving helmet off' : 'Push me: put the diving helmet on');
+    $('suit').textContent = helmetOn ? 'Sealed' : 'Open';
+    $('suit').classList.toggle('sealed', helmetOn);
+    push.animate([{ transform: 'scale(1)' }, { transform: 'scale(.88)' }, { transform: 'scale(1)' }],
+      { duration: 320, easing: 'cubic-bezier(.3,.7,.4,1)' });
+    const u = W / 1440;
+    if (reduce) { helmet.style.opacity = helmetOn ? 1 : 0; return; }
+    if (hAnim) hAnim.cancel();
+    const frames = [
+      { transform: `translateY(${-70 * u}px) scale(1.04)`, opacity: 0 },
+      { transform: `translateY(${6 * u}px) scale(.995)`, opacity: 1, offset: .72 },
+      { transform: 'translateY(0) scale(1)', opacity: 1 }
+    ];
+    hAnim = helmet.animate(helmetOn ? frames : frames.slice().reverse(),
+      { duration: 720, easing: helmetOn ? 'cubic-bezier(.2,.8,.3,1)' : 'cubic-bezier(.6,0,.8,.3)', fill: 'forwards' });
+    if (helmetOn) {
+      setTimeout(() => {
+        seal.animate([{ opacity: 0, transform: 'scale(.7)' }, { opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(1.25)' }],
+          { duration: 900, easing: 'ease-out' });
+        for (let i = 0; i < 34; i++) bubble((640 + Math.random() * 160) * u, (500 + Math.random() * 40) * u, true);
+      }, 480);
+    } else {
+      for (let i = 0; i < 18; i++) bubble((560 + Math.random() * 320) * u, (120 + Math.random() * 300) * u, true);
+    }
+  });
+
+  /* entrance */
+  if (!reduce) {
+    const E = (el, kf, delay, dur = 800) => el.animate(kf, { duration: dur, delay, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });
+    const drop = [{ opacity: 0, transform: 'translateY(-16px)' }, { opacity: 1, transform: 'none' }];
+    const rise = [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }];
+    E(document.querySelector('.logo'), drop, 100);
+    E(document.querySelector('.menu'), drop, 180);
+    E($('eyebrow'), [{ opacity: 0, letterSpacing: '.9em' }, { opacity: 1, letterSpacing: getComputedStyle($('eyebrow')).letterSpacing }], 350, 1000);
+    E($('title'), [{ opacity: 0, filter: 'blur(14px)', transform: 'translateY(30px)' }, { opacity: 1, filter: 'blur(0)', transform: 'none' }], 520, 1000);
+    E($('sub'), rise, 900); E($('hint'), rise, 1020);
+    E($('gauge'), [{ opacity: 0, transform: 'translateX(24px)' }, { opacity: 1, transform: 'none' }], 1000, 900);
+    E($('capL'), rise, 1150); E($('capR'), rise, 1150);
+    E(push, [{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1.08)', offset: .7 }, { opacity: 1, transform: 'scale(1)' }], 1350, 650);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
