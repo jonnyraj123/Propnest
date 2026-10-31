@@ -67,11 +67,11 @@ export default function HeroScene() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const skyY = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
-  const seaY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
+  const seaY = useTransform(scrollYProgress, [0, 1], ['0%', '6%'])
   const boatY = useTransform(scrollYProgress, [0, 1], [0, 120])
 
   return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden" aria-hidden>
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#1c1580]" aria-hidden>
       <motion.svg style={{ y: skyY }} className="absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
