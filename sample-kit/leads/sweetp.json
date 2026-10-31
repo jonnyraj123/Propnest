@@ -1,0 +1,22 @@
+{
+ "id": "sweetp",
+ "name": "Sweet P Custom Cookies",
+ "city": "San Antonio \u00b7 Texas",
+ "website": "https://sweetpcustomcookie.wixsite.com/sweetp",
+ "kicker": "Custom cookies \u00b7 San Antonio",
+ "line1": "Cookies as sweet",
+ "line2": "as the moment.",
+ "sub": "Hand-decorated custom cookies for parties, showers and gifts, made fresh in San Antonio.",
+ "phone": "(210) 639-8251",
+ "accent": "#b46fc4",
+ "video": "cookies_12400",
+ "style": "serif",
+ "cta": "Order cookies",
+ "services": [
+  "Custom cookies",
+  "Parties",
+  "Gifts"
+ ],
+ "template": "serene",
+ "photos": []
+}

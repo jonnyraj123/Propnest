@@ -1,0 +1,22 @@
+{
+ "id": "azauto",
+ "name": "Auto Detailing Arizona",
+ "city": "Mesa \u00b7 Arizona",
+ "website": "https://autodetailing797.wixsite.com/arizona",
+ "kicker": "Mesa \u00b7 Phoenix area",
+ "line1": "Showroom shine,",
+ "line2": "every time.",
+ "sub": "Professional interior and exterior car detailing in Mesa and the Phoenix area.",
+ "phone": "(602) 373-9279",
+ "accent": "#df3131",
+ "video": "carwash_12726",
+ "style": "bold",
+ "cta": "Book a detail",
+ "services": [
+  "Exterior",
+  "Interior",
+  "Full detail"
+ ],
+ "template": "serene",
+ "photos": []
+}

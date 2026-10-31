@@ -1,0 +1,22 @@
+{
+ "id": "sniffany",
+ "name": "Sniffany's Pet Spa",
+ "city": "Williston \u00b7 Florida",
+ "website": "https://sniffanyspetspa.wixsite.com/website",
+ "kicker": "Pet grooming \u00b7 Williston",
+ "line1": "Happy pets,",
+ "line2": "fresh and fluffy.",
+ "sub": "Gentle, caring grooming that leaves your pet clean, calm and looking their best.",
+ "phone": "(352) 426-9136",
+ "accent": "#3899ec",
+ "video": "pet_1661",
+ "style": "serif",
+ "cta": "Book grooming",
+ "services": [
+  "Bath & brush",
+  "Haircut",
+  "Nail trim"
+ ],
+ "template": "serene",
+ "photos": []
+}
