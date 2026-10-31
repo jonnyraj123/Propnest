@@ -13,27 +13,14 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' as const },
 })
 
-/* ---------- cinema curtain: opens by itself on load ---------- */
+/* ---------- intro: a soft fade from the deep, no panels ---------- */
 function Curtain() {
   const [gone, setGone] = useState(false)
-  useEffect(() => { const t = setTimeout(() => setGone(true), 2600); return () => clearTimeout(t) }, [])
+  useEffect(() => { const t = setTimeout(() => setGone(true), 1800); return () => clearTimeout(t) }, [])
   if (gone) return null
-  const panel = 'absolute top-0 h-full w-1/2 bg-[linear-gradient(90deg,#120a4f,#2a1fae_70%,#3b2fc9)] shadow-[0_0_60px_rgba(0,0,0,.6)]'
   return (
-    <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
-      <motion.div className={`${panel} left-0`} initial={{ x: 0 }} animate={{ x: '-101%' }} transition={{ delay: 1.1, duration: 1.4, ease: [0.76, 0, 0.24, 1] }}>
-        <div className="absolute inset-y-0 right-0 w-px bg-white/30" />
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,.05)_0_2px,transparent_2px_46px)]" />
-      </motion.div>
-      <motion.div className={`${panel} right-0 scale-x-[-1]`} initial={{ x: 0 }} animate={{ x: '101%' }} transition={{ delay: 1.1, duration: 1.4, ease: [0.76, 0, 0.24, 1] }}>
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(255,255,255,.05)_0_2px,transparent_2px_46px)]" />
-      </motion.div>
-      <motion.div className="absolute inset-0 flex flex-col items-center justify-center" initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: [0, 1, 1, 0], scale: 1 }} transition={{ duration: 1.6, times: [0, 0.3, 0.7, 1] }}>
-        <Logo size="lg" />
-        <p className="mt-5 text-4xl font-medium tracking-[6px] md:text-6xl">THALASSA</p>
-        <p className="mt-3 text-xs uppercase tracking-[5px] text-muted-foreground">Deep sea discovery</p>
-      </motion.div>
-    </div>
+    <motion.div className="pointer-events-none fixed inset-0 z-[100] bg-[#0b0830]" aria-hidden
+      initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ delay: 0.2, duration: 1.4, ease: 'easeOut' }} />
   )
 }
 
@@ -90,10 +77,10 @@ function SoundHint({ show, onClick }: { show: boolean; onClick: () => void }) {
   return (
     <AnimatePresence>
       {show && (
-        <motion.button onClick={onClick} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ delay: 2.8 }}
-          className="liquid-glass fixed bottom-5 left-4 z-40 flex items-center gap-2 rounded-full px-4 py-2.5 text-xs tracking-wide md:left-8">
-          <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-accent" /></span>
-          Tap anywhere for ocean sound
+        <motion.button onClick={onClick} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ delay: 1.6 }}
+          className="fixed bottom-5 left-4 z-40 md:left-8">
+          <span className="liquid-glass flex items-center gap-2 rounded-full px-4 py-2.5 text-xs tracking-wide"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-accent" /></span>
+          Tap anywhere for ocean sound</span>
         </motion.button>
       )}
     </AnimatePresence>
@@ -132,10 +119,10 @@ function Hero() {
   return (
     <section ref={ref} id="home" data-zone="surface" className="relative flex min-h-[100svh] flex-col items-center overflow-hidden bg-[#1a2b9e]">
       <motion.div style={{ y: vidY }} className="absolute inset-0">
-        <video className="h-full w-full object-cover object-[58%_50%]" autoPlay muted loop playsInline poster={M + 'hero.webp'}>
+        <motion.video initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 2.6, ease: [0.22, 1, 0.36, 1] }} className="h-full w-full object-cover object-[58%_50%]" autoPlay muted loop playsInline poster={M + 'hero.webp'}>
           <source src={M + 'hero.webm'} type="video/webm" />
           <source src={M + 'hero.mp4'} type="video/mp4" />
-        </video>
+        </motion.video>
       </motion.div>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[65%] bg-[radial-gradient(55%_60%_at_45%_30%,rgba(25,15,110,.42),transparent_70%)]" />
       {/* the boat rides the swell */}
@@ -144,7 +131,7 @@ function Hero() {
       </motion.div>
       <div className="absolute inset-x-0 bottom-0 z-[3] h-40 bg-gradient-to-t from-[#140c55] to-transparent" />
       <motion.div style={{ y: textY }} className="relative z-10 flex w-full max-w-4xl flex-col items-center px-5 pt-28 text-center md:pt-32">
-        <motion.div {...fadeUp(2.2)} className="flex items-center gap-3 rounded-full bg-[#1a0f6e]/35 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
+        <motion.div {...fadeUp(0.8)} className="flex items-center gap-3 rounded-full bg-[#1a0f6e]/35 py-1.5 pl-1.5 pr-4 backdrop-blur-sm">
           <div className="flex -space-x-2">
             {AVATARS.map(([t, c]) => (
               <span key={t} className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#2a1fae] text-[10px] font-bold text-[#1a1050]" style={{ background: c }}>{t}</span>
@@ -152,13 +139,13 @@ function Hero() {
           </div>
           <span className="text-sm text-hero-sub">7,000+ ocean explorers already subscribed</span>
         </motion.div>
-        <motion.h1 {...fadeUp(2.35)} className="mt-6 text-5xl font-medium tracking-[-2px] drop-shadow-[0_4px_30px_rgba(30,15,120,.55)] md:text-7xl lg:text-8xl">
+        <motion.h1 {...fadeUp(0.95)} className="mt-6 text-5xl font-medium tracking-[-2px] drop-shadow-[0_4px_30px_rgba(30,15,120,.55)] md:text-7xl lg:text-8xl">
           Dive into the <span className="font-serif font-normal italic text-[#ffe0ea]">Deep</span>
         </motion.h1>
-        <motion.p {...fadeUp(2.5)} className="mt-6 max-w-xl text-lg text-hero-sub drop-shadow-[0_2px_14px_rgba(30,15,120,.6)]">
+        <motion.p {...fadeUp(1.1)} className="mt-6 max-w-xl text-lg text-hero-sub drop-shadow-[0_2px_14px_rgba(30,15,120,.6)]">
           Weekly dispatches from beneath the waves — new species, ocean science and the medicines the sea is still hiding.
         </motion.p>
-        <motion.div {...fadeUp(2.65)} className="w-full"><EmailForm /></motion.div>
+        <motion.div {...fadeUp(1.25)} className="w-full"><EmailForm /></motion.div>
       </motion.div>
     </section>
   )
