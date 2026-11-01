@@ -325,3 +325,10 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - Never shrink the image to make sending work. If quality can't be kept, stop and tell Joni.
 - Never send the next file/step unasked. One thing at a time, wait for Joni.
 - Videos for all 13 samples are ready in sample-kit/out/<id>/before_after.mp4 — send only to clients who reply.
+
+## THALASSA = APPROVED WORKFLOW (Joni, 1 Nov: "khub pochondo")
+- Joni gives a reference video + a code/prompt (MotionSites style). Keep the code's structure, take look/colours/scenes from the video.
+- NEVER draw scenery/characters with code (SVG/canvas) — Joni rejected it as "bichhiri". All art = Gemini images/videos (give him numbered prompts: ~8 images + 2 Veo videos, chroma-green for objects that move).
+- Code only for motion: hero video loop, cut-out object rocking on waves, scroll-scrubbed dive video (frames), Ken Burns/pan on every still image, floating cards, tilt, bubbles.
+- No click gate / no door-split intro; soft fade-in. Sound starts on first tap; zones (surface waves -> deep rumble), quiet.
+- Reel: reel.html composite (big laptop + small phone, PLASTRIX STUDIO top/bottom, DM "SITE"), record with Xvfb + x11grab 1080x1920 30fps, scroll-behavior:auto in iframes, ocean ambience audio. Ref: demos/instagram/11-thalassa-laptop-reel.mp4, demos/thalassa.
