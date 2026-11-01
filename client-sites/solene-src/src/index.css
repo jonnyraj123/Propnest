@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --bg / --ink / --soft / --deep are set from the active colour in App */
+:root {
+  --bg: 124 141 98;
+  --ink: 25 34 20;
+  --soft: 233 238 225;
+  --deep: 62 76 50;
+  --accent: 255 255 255;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: rgb(var(--soft));
+  color: rgb(var(--ink));
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .9s ease, color .9s ease;
+}
+::selection { background: rgb(var(--ink)); color: rgb(var(--soft)); }
+
+.serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
+.tint { transition: background-color .9s ease, color .9s ease, border-color .9s ease, fill .9s ease; }
+
+.glass {
+  background: rgba(255, 255, 255, .14);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.35), 0 10px 30px -12px rgba(0,0,0,.25);
+  position: relative;
+}
+.glass::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.1) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.35));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.marquee { animation: marquee var(--d, 40s) linear infinite; }
+.marquee-rev { animation: marquee var(--d, 40s) linear infinite reverse; }
+.pause-hover:hover .marquee, .pause-hover:hover .marquee-rev { animation-play-state: paused; }
+
+@keyframes breathe { 0%,100% { transform: scale(1.03) } 50% { transform: scale(1.08) translate(-1%, -.6%) } }
+.breathe { animation: breathe 18s ease-in-out infinite; }
+@keyframes sway { 0%,100% { transform: translateY(0) rotate(0) } 50% { transform: translateY(-6px) rotate(.4deg) } }
+.sway { animation: sway 6s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+.floaty { animation: floaty 5s ease-in-out infinite; }
+
+.grain::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .06; mix-blend-mode: multiply; z-index: 90;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
