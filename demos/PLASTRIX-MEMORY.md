@@ -338,3 +338,7 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 2. Reply with the exact list of Gemini images + Veo videos needed (numbered prompts). Wait for Joni to send them.
 3. ALL objects/scenes (chocolate, ship, ice cream, anything) = generated images/videos. NEVER draw them with code.
 4. Code = international-level premium motion/interaction on top of that media (scroll storytelling, scrubbed video, parallax, Ken Burns, tilt, glass UI, sound zones). Aim to beat the reference, a little different from it.
+
+## DESK REEL (Joni approved 1 Nov) + SYNC RULE
+- Style: Veo desk video (monitor + laptop + phone, green screens, hand on trackpad, static camera) -> key screens, warp site recordings in (comp.py, per-screen regions), 9:16 with blurred bg, white label headline box, PLASTRIX STUDIO + DM "SITE" bottom. Ref: demos/instagram/13-solene-desk-reel.mp4, 14-thalassa-desk-reel.mp4.
+- MUST: all three screens show the SAME section at the SAME moment. Phone must not scroll faster/ahead. Record desktop + mobile in ONE run (same timeline), scroll both by section anchors (same section at same time), and check phone vs monitor frames side by side before delivering.
