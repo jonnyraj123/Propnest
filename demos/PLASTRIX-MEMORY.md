@@ -332,3 +332,9 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 - Code only for motion: hero video loop, cut-out object rocking on waves, scroll-scrubbed dive video (frames), Ken Burns/pan on every still image, floating cards, tilt, bubbles.
 - No click gate / no door-split intro; soft fade-in. Sound starts on first tap; zones (surface waves -> deep rumble), quiet.
 - Reel: reel.html composite (big laptop + small phone, PLASTRIX STUDIO top/bottom, DM "SITE"), record with Xvfb + x11grab 1080x1920 30fps, scroll-behavior:auto in iframes, ocean ambience audio. Ref: demos/instagram/11-thalassa-laptop-reel.mp4, demos/thalassa.
+
+## STANDING RULE for every new site (Joni, 1 Nov) — never forget
+1. Joni sends a reference VIDEO, then a CODE/prompt. Watch the video, take only the IDEA (never copy; must not look like a copy).
+2. Reply with the exact list of Gemini images + Veo videos needed (numbered prompts). Wait for Joni to send them.
+3. ALL objects/scenes (chocolate, ship, ice cream, anything) = generated images/videos. NEVER draw them with code.
+4. Code = international-level premium motion/interaction on top of that media (scroll storytelling, scrubbed video, parallax, Ken Burns, tilt, glass UI, sound zones). Aim to beat the reference, a little different from it.
