@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['"Instrument Serif"', 'serif'] },
-      colors: { bg: v('bg'), ink: v('ink'), soft: v('soft'), deep: v('deep'), accent: v('accent') },
+      colors: { bg: v('bg'), ink: v('ink'), soft: v('soft'), deep: v('deep'), accent: v('accent'), tx: v('text'), onink: v('onink') },
     },
   },
   plugins: [animate],

@@ -8,14 +8,16 @@ export type Shade = {
   soft: string // page background tint
   deep: string // darker tone for buttons/footer
   hex: string // swatch
+  text: string // readable text on the light page
+  onink: string // text on an ink-coloured button
 }
 
 export const SHADES: Shade[] = [
-  { id: 'sage', name: 'Sage', word: 'Sage', line: ['Quiet colour,', 'loud presence.'], bg: '124 141 98', ink: '24 33 19', soft: '236 240 228', deep: '58 72 46', hex: '#7c8d62' },
-  { id: 'blush', name: 'Blush', word: 'Blush', line: ['Soft as silk,', 'sure as you.'], bg: '221 150 157', ink: '66 22 33', soft: '250 236 238', deep: '120 52 66', hex: '#dd969d' },
-  { id: 'terracotta', name: 'Terracotta', word: 'Terra', line: ['Warm days,', 'warmer nights.'], bg: '193 66 30', ink: '255 244 236', soft: '250 233 224', deep: '112 34 14', hex: '#c1421e' },
-  { id: 'butter', name: 'Butter', word: 'Butter', line: ['Golden hour,', 'all day long.'], bg: '243 195 104', ink: '58 41 8', soft: '252 244 224', deep: '128 88 18', hex: '#f3c368' },
-  { id: 'cobalt', name: 'Cobalt', word: 'Cobalt', line: ['Bold blue,', 'made to be seen.'], bg: '2 63 163', ink: '238 243 255', soft: '230 236 250', deep: '4 32 92', hex: '#023fa3' },
+  { id: 'sage', name: 'Sage', word: 'Sage', line: ['Quiet colour,', 'loud presence.'], bg: '124 141 98', ink: '24 33 19', soft: '236 240 228', deep: '58 72 46', hex: '#7c8d62', text: '24 33 19', onink: '236 240 228' },
+  { id: 'blush', name: 'Blush', word: 'Blush', line: ['Soft as silk,', 'sure as you.'], bg: '221 150 157', ink: '66 22 33', soft: '250 236 238', deep: '120 52 66', hex: '#dd969d', text: '66 22 33', onink: '250 236 238' },
+  { id: 'terracotta', name: 'Terracotta', word: 'Terra', line: ['Warm days,', 'warmer nights.'], bg: '193 66 30', ink: '255 244 236', soft: '250 233 224', deep: '112 34 14', hex: '#c1421e', text: '82 26 10', onink: '82 26 10' },
+  { id: 'butter', name: 'Butter', word: 'Butter', line: ['Golden hour,', 'all day long.'], bg: '243 195 104', ink: '58 41 8', soft: '252 244 224', deep: '128 88 18', hex: '#f3c368', text: '58 41 8', onink: '252 244 224' },
+  { id: 'cobalt', name: 'Cobalt', word: 'Cobalt', line: ['Bold blue,', 'made to be seen.'], bg: '2 63 163', ink: '238 243 255', soft: '230 236 250', deep: '4 32 92', hex: '#023fa3', text: '8 26 74', onink: '8 26 74' },
 ]
 
 export const M = './media/'

@@ -30,7 +30,7 @@ function Provider({ children }: { children: ReactNode }) {
   const shade = SHADES[idx]
   useEffect(() => {
     const r = document.documentElement.style
-    r.setProperty('--bg', shade.bg); r.setProperty('--ink', shade.ink); r.setProperty('--soft', shade.soft); r.setProperty('--deep', shade.deep)
+    r.setProperty('--bg', shade.bg); r.setProperty('--ink', shade.ink); r.setProperty('--soft', shade.soft); r.setProperty('--deep', shade.deep); r.setProperty('--text', shade.text); r.setProperty('--onink', shade.onink)
     document.querySelector('meta[name=theme-color]')?.setAttribute('content', `rgb(${shade.bg.split(' ').join(',')})`)
   }, [shade])
   const go = useCallback((i: number, from?: { x: number; y: number }) => {
@@ -66,7 +66,7 @@ function NewsBar() {
   const items = ['NEW · The Silk Bow Set in five shades', 'Free worldwide shipping over $150', 'Hand-dyed mulberry silk', 'Easy 30-day returns', 'Members get 10% off the first order']
   const row = [...items, ...items]
   return (
-    <div className="tint relative z-50 overflow-hidden bg-ink py-2 text-[11px] font-medium uppercase tracking-[3px] text-soft">
+    <div className="tint relative z-50 overflow-hidden bg-tx py-2 text-[11px] font-medium uppercase tracking-[3px] text-soft">
       <div className="marquee flex w-max gap-12 whitespace-nowrap" style={{ ['--d' as string]: '36s' }}>
         {row.map((t, i) => <span key={i} className="flex items-center gap-12">{t}<Sparkles size={11} /></span>)}
       </div>
@@ -81,7 +81,7 @@ function Nav() {
   const n = bag.reduce((s, x) => s + x.qty, 0)
   return (
     <header className={`fixed inset-x-0 top-[34px] z-40 px-4 transition-all duration-500 md:px-10 ${solid ? 'top-3' : ''}`}>
-      <nav className={`tint mx-auto flex max-w-[1400px] items-center justify-between rounded-full px-5 py-3 text-ink md:px-7 ${solid ? 'glass' : ''}`}>
+      <nav className={`tint mx-auto flex max-w-[1400px] items-center justify-between rounded-full px-5 py-3 md:px-7 ${solid ? 'glass text-tx' : 'text-ink'}`}>
         <a href="#top" className="serif text-2xl tracking-[6px] md:text-3xl">SOLÈNE</a>
         <div className="hidden items-center gap-8 text-sm font-medium lg:flex">
           {[['Collection', '#edit'], ['Lookbook', '#lookbook'], ['The Set', '#product'], ['Journal', '#journal']].map(([l, h]) => (
@@ -94,7 +94,7 @@ function Nav() {
           <button aria-label="Open bag" onClick={() => setOpen(true)} className="relative flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-ink/10">
             <ShoppingBag size={18} />
             <AnimatePresence>{n > 0 && (
-              <motion.span key={n} initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-ink px-1 text-[10px] font-bold text-soft">{n}</motion.span>
+              <motion.span key={n} initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-tx px-1 text-[10px] font-bold text-soft">{n}</motion.span>
             )}</AnimatePresence>
           </button>
         </div>
@@ -198,7 +198,7 @@ function Hero() {
       </motion.div>
 
       {/* copy column */}
-      <motion.div style={{ y: textY }} className="absolute left-0 right-0 top-[92px] z-[5] px-5 md:left-10 md:right-auto md:top-[22%] md:w-[30vw] md:max-w-[420px] md:px-0 lg:left-16">
+      <motion.div style={{ y: textY }} className="absolute left-0 right-0 top-[118px] z-[5] px-5 md:left-10 md:right-auto md:top-[22%] md:w-[30vw] md:max-w-[420px] md:px-0 lg:left-16">
         <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[3px]">
           <span>The Silk Bow Set</span><span className="h-px w-8 bg-current" /><span>{String(idx + 1).padStart(2, '0')} / {String(SHADES.length).padStart(2, '0')}</span>
         </div>
@@ -211,7 +211,7 @@ function Hero() {
         </div>
         <p className="mt-4 hidden max-w-sm text-[15px] leading-relaxed opacity-80 md:block">Mulberry silk blouse with a tie-it-your-way bow and fluid wide-leg trousers. One cut, five moods.</p>
         <div className="mt-5 hidden items-center gap-3 md:flex">
-          <Magnetic onClick={() => add({ name: 'Silk Bow Set', shade: shade.name, size: 'M', price: PRICE, img: `${M}model-${shade.id}-s.webp` })} className="tint rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-soft">
+          <Magnetic onClick={() => add({ name: 'Silk Bow Set', shade: shade.name, size: 'M', price: PRICE, img: `${M}model-${shade.id}-s.webp` })} className="tint rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-onink">
             Add to bag — ${PRICE}
           </Magnetic>
           <Magnetic href="#product" className="glass rounded-full px-6 py-3.5 text-sm font-semibold">Details</Magnetic>
@@ -236,7 +236,7 @@ function Hero() {
         </div>
       </div>
       <button onClick={() => add({ name: 'Silk Bow Set', shade: shade.name, size: 'M', price: PRICE, img: `${M}model-${shade.id}-s.webp` })}
-        className="tint absolute bottom-[78px] left-5 z-[6] rounded-full bg-ink px-5 py-3 text-xs font-semibold text-soft md:hidden">Add to bag — ${PRICE}</button>
+        className="tint absolute bottom-[78px] left-5 z-[6] rounded-full bg-ink px-5 py-3 text-xs font-semibold text-onink md:hidden">Add to bag — ${PRICE}</button>
     </section>
   )
 }
@@ -268,7 +268,7 @@ function TiltCard({ s, i }: { s: Shade; i: number }) {
           <p className="mt-0.5 text-sm opacity-60">Blouse + wide-leg trousers</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className={`h-3 w-3 rounded-full ring-2 ring-offset-2 ring-offset-soft transition ${idx === i ? 'ring-ink' : 'ring-transparent'}`} style={{ background: s.hex }} />
+          <span className={`h-3 w-3 rounded-full ring-2 ring-offset-2 ring-offset-soft transition ${idx === i ? 'ring-tx' : 'ring-transparent'}`} style={{ background: s.hex }} />
           <span className="text-[15px] font-semibold">${PRICE}</span>
         </div>
       </div>
@@ -278,7 +278,7 @@ function TiltCard({ s, i }: { s: Shade; i: number }) {
 
 function Edit() {
   return (
-    <section id="edit" className="tint relative bg-soft px-0 py-24 text-ink md:px-10 md:py-32 lg:px-16">
+    <section id="edit" className="tint relative bg-soft px-0 py-24 text-tx md:px-10 md:py-32 lg:px-16">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col items-start justify-between gap-4 px-5 md:flex-row md:items-end md:px-0">
           <div>
@@ -340,7 +340,7 @@ function Product() {
     ['Delivery', 'Free worldwide shipping over $150. Dispatched in 1–2 days. Free 30-day returns.'],
   ]
   return (
-    <section id="product" className="tint relative overflow-hidden bg-soft py-24 text-ink md:py-32">
+    <section id="product" className="tint relative overflow-hidden bg-soft py-24 text-tx md:py-32">
       <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-5 md:px-10 lg:grid-cols-[1fr_1.15fr_1fr] lg:gap-8 lg:px-16">
         {/* left: title + accessories */}
         <div className="order-2 lg:order-1">
@@ -356,7 +356,7 @@ function Product() {
                 <p className="mt-3 text-[13px] font-semibold leading-tight">{a.name}</p>
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-sm font-semibold">${a.price}</span>
-                  <button aria-label={`Add ${a.name}`} onClick={() => add({ name: a.name, shade: 'Butter', size: 'One size', price: a.price, img: a.img })} className="tint flex h-8 w-8 items-center justify-center rounded-full bg-ink text-soft transition hover:scale-110"><Plus size={15} /></button>
+                  <button aria-label={`Add ${a.name}`} onClick={() => add({ name: a.name, shade: 'Butter', size: 'One size', price: a.price, img: a.img })} className="tint flex h-8 w-8 items-center justify-center rounded-full bg-tx text-soft transition hover:scale-110"><Plus size={15} /></button>
                 </div>
               </motion.div>
             ))}
@@ -381,7 +381,7 @@ function Product() {
         <div className="order-3">
           <motion.div {...fadeUp(0.1)} className="flex items-baseline gap-3">
             <span className="text-4xl font-semibold">${PRICE}</span><span className="text-sm line-through opacity-50">$310</span>
-            <span className="tint rounded-full bg-ink px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-soft">-20%</span>
+            <span className="tint rounded-full bg-tx px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-soft">-20%</span>
           </motion.div>
           <motion.p {...fadeUp(0.14)} className="mt-4 text-[15px] leading-relaxed opacity-75">A fluid two-piece in pure mulberry silk. Dressed up with heels, dressed down with sneakers — always effortless.</motion.p>
 
@@ -390,7 +390,7 @@ function Product() {
             <div className="mt-3 flex gap-2.5">
               {SHADES.map((s, i) => (
                 <button key={s.id} aria-label={s.name} onClick={e => go(i, pct(e))}
-                  className={`h-9 w-9 rounded-full ring-2 ring-offset-2 ring-offset-soft transition ${i === idx ? 'scale-110 ring-ink' : 'ring-transparent hover:scale-105'}`} style={{ background: s.hex }} />
+                  className={`h-9 w-9 rounded-full ring-2 ring-offset-2 ring-offset-soft transition ${i === idx ? 'scale-110 ring-tx' : 'ring-transparent hover:scale-105'}`} style={{ background: s.hex }} />
               ))}
             </div>
           </motion.div>
@@ -399,19 +399,19 @@ function Product() {
             <div className="flex items-center justify-between"><p className="text-xs font-semibold uppercase tracking-[2px]">Size</p><a href="#product" className="text-xs underline opacity-70">Size guide</a></div>
             <div className="mt-3 flex gap-2">
               {SIZES.map(s => (
-                <button key={s} onClick={() => setSize(s)} className={`tint h-11 w-11 rounded-full border text-sm font-semibold transition ${size === s ? 'border-ink bg-ink text-soft' : 'border-ink/25 hover:border-ink'}`}>{s}</button>
+                <button key={s} onClick={() => setSize(s)} className={`tint h-11 w-11 rounded-full border text-sm font-semibold transition ${size === s ? 'border-tx bg-tx text-soft' : 'border-tx/25 hover:border-tx'}`}>{s}</button>
               ))}
             </div>
           </motion.div>
 
           <motion.div {...fadeUp(0.26)} className="mt-8 flex gap-3">
-            <div className="flex items-center rounded-full border border-ink/25">
+            <div className="flex items-center rounded-full border border-tx/25">
               <button aria-label="Less" onClick={() => setQty(q => Math.max(1, q - 1))} className="flex h-12 w-11 items-center justify-center"><Minus size={15} /></button>
               <span className="w-6 text-center font-semibold">{qty}</span>
               <button aria-label="More" onClick={() => setQty(q => q + 1)} className="flex h-12 w-11 items-center justify-center"><Plus size={15} /></button>
             </div>
             <Magnetic onClick={() => { for (let k = 0; k < qty; k++) add({ name: 'Silk Bow Set', shade: shade.name, size, price: PRICE, img: `${M}model-${shade.id}-s.webp` }) }}
-              className="tint flex-1 rounded-full bg-ink py-3.5 text-sm font-semibold text-soft">Add to bag</Magnetic>
+              className="tint flex-1 rounded-full bg-tx py-3.5 text-sm font-semibold text-soft">Add to bag</Magnetic>
           </motion.div>
 
           <motion.div {...fadeUp(0.3)} className="mt-6 flex gap-5 text-xs font-medium opacity-75">
@@ -419,9 +419,9 @@ function Product() {
             <span className="flex items-center gap-1.5"><RotateCcw size={15} /> 30-day returns</span>
           </motion.div>
 
-          <motion.div {...fadeUp(0.34)} className="mt-8 border-t border-ink/15 pt-5">
+          <motion.div {...fadeUp(0.34)} className="mt-8 border-t border-tx/15 pt-5">
             <div className="flex gap-5 text-sm font-semibold">
-              {tabs.map(([t], i) => <button key={t} onClick={() => setTab(i)} className={`pb-1 transition ${tab === i ? 'border-b-2 border-ink' : 'opacity-50'}`}>{t}</button>)}
+              {tabs.map(([t], i) => <button key={t} onClick={() => setTab(i)} className={`pb-1 transition ${tab === i ? 'border-b-2 border-tx' : 'opacity-50'}`}>{t}</button>)}
             </div>
             <AnimatePresence mode="wait">
               <motion.p key={tab} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.3 }} className="mt-3 text-sm leading-relaxed opacity-75">{tabs[tab][1]}</motion.p>
@@ -436,7 +436,7 @@ function Product() {
 /* ---------------- Journal (news) ---------------- */
 function Journal() {
   return (
-    <section id="journal" className="tint bg-soft px-5 py-24 text-ink md:px-10 md:py-32 lg:px-16">
+    <section id="journal" className="tint bg-soft px-5 py-24 text-tx md:px-10 md:py-32 lg:px-16">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -478,7 +478,7 @@ function Reviews() {
   )
   const a = REVIEWS.slice(0, 4), b = REVIEWS.slice(4)
   return (
-    <section className="tint pause-hover overflow-hidden bg-soft py-24 text-ink md:py-28">
+    <section className="tint pause-hover overflow-hidden bg-soft py-24 text-tx md:py-28">
       <div className="px-5 text-center">
         <motion.p {...fadeUp()} className="text-[11px] font-semibold uppercase tracking-[3px] opacity-70">4.9 / 5 from 2,400+ women</motion.p>
         <motion.h2 {...fadeUp(0.08)} className="serif mt-3 text-5xl md:text-7xl">Loved by <em>our customers</em></motion.h2>
@@ -541,11 +541,11 @@ function Bag() {
       {open && (
         <>
           <motion.div className="fixed inset-0 z-[80] bg-black/40 backdrop-blur-[2px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setOpen(false); setPlaced(false) }} />
-          <motion.aside className="tint fixed bottom-0 right-0 top-0 z-[85] flex w-full max-w-[420px] flex-col bg-soft text-ink shadow-2xl"
+          <motion.aside className="tint fixed bottom-0 right-0 top-0 z-[85] flex w-full max-w-[420px] flex-col bg-soft text-tx shadow-2xl"
             initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ duration: 0.6, ease }}>
-            <div className="flex items-center justify-between border-b border-ink/10 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-tx/10 px-6 py-5">
               <p className="serif text-3xl">Your bag</p>
-              <button aria-label="Close bag" onClick={() => { setOpen(false); setPlaced(false) }} className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink/10"><X size={18} /></button>
+              <button aria-label="Close bag" onClick={() => { setOpen(false); setPlaced(false) }} className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-tx/10"><X size={18} /></button>
             </div>
             {placed ? (
               <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
@@ -563,7 +563,7 @@ function Bag() {
                       <p className="text-sm font-semibold">{it.name}</p>
                       <p className="text-xs opacity-60">{it.shade} · {it.size}</p>
                       <div className="mt-auto flex items-center justify-between">
-                        <div className="flex items-center gap-2 rounded-full border border-ink/20 px-1">
+                        <div className="flex items-center gap-2 rounded-full border border-tx/20 px-1">
                           <button aria-label="Less" onClick={() => setQty(it.key, it.qty - 1)} className="p-1.5"><Minus size={13} /></button>
                           <span className="text-sm font-semibold">{it.qty}</span>
                           <button aria-label="More" onClick={() => setQty(it.key, it.qty + 1)} className="p-1.5"><Plus size={13} /></button>
@@ -576,10 +576,10 @@ function Bag() {
               </div>
             )}
             {!placed && bag.length > 0 && (
-              <div className="border-t border-ink/10 px-6 py-5">
+              <div className="border-t border-tx/10 px-6 py-5">
                 <div className="flex justify-between text-sm"><span className="opacity-70">Shipping</span><span>{total >= 150 ? 'Free' : '$12'}</span></div>
                 <div className="mt-2 flex justify-between text-lg font-semibold"><span>Total</span><span>${total + (total >= 150 ? 0 : 12)}</span></div>
-                <button onClick={() => setPlaced(true)} className="tint mt-4 w-full rounded-full bg-ink py-4 text-sm font-semibold text-soft transition hover:opacity-90">Checkout</button>
+                <button onClick={() => setPlaced(true)} className="tint mt-4 w-full rounded-full bg-tx py-4 text-sm font-semibold text-soft transition hover:opacity-90">Checkout</button>
               </div>
             )}
           </motion.aside>

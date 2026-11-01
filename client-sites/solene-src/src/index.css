@@ -9,12 +9,14 @@
   --soft: 233 238 225;
   --deep: 62 76 50;
   --accent: 255 255 255;
+  --text: 24 33 19;
+  --onink: 236 240 228;
 }
 
 html { scroll-behavior: smooth; }
 body {
   background: rgb(var(--soft));
-  color: rgb(var(--ink));
+  color: rgb(var(--text));
   font-family: Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
