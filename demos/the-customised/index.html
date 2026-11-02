@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Customised · Custom Cakes in Kolkata</title>
+<meta name="description" content="The Customised: custom theme cakes for birthdays, anniversaries, weddings, baby showers and rice ceremonies in Kolkata. Open 24 hours. Order on WhatsApp.">
+<meta name="theme-color" content="#5c0a18">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/royal.webp"><link rel="preload" as="image" href="img/royal-cut.webp">
+<style>
+:root{
+  --cream:#fbf5ef;--paper:#fffaf6;--text:#2a1216;--muted:#7a5d61;--line:rgba(60,20,28,.12);
+  --wine:#5c0a18;--wine2:#7d1226;--gold:#c99a45;--gold2:#e8c27a;--wa:#1faa59;
+  --ink:#fff1dc;--btn:#d9a441;--btnt:#3b0710;--glass:rgba(255,255,255,.16);
+  --ease:cubic-bezier(.22,.8,.2,1);--fade:.95s;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.serif{font-family:'Bodoni Moda',serif;font-weight:400}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.28em;text-transform:uppercase}
+svg.i{width:18px;height:18px;flex:none}
+
+/* top bar */
+.bar{position:relative;z-index:30;background:#2b050c;color:#e8c27a;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;height:34px;display:flex;align-items:center}
+.bar .track{display:flex;gap:44px;white-space:nowrap;animation:mq 38s linear infinite;padding-left:44px}
+.bar .track span{display:inline-flex;align-items:center;gap:44px}
+.bar .track span::after{content:'✦';color:#8f6a2e}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;top:34px;z-index:40;transition:top .4s var(--ease),background .4s,box-shadow .4s,color var(--fade)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;height:74px;color:var(--ink);transition:color var(--fade)}
+.nav.solid{top:0;background:rgba(255,250,246,.82);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);box-shadow:0 1px 0 var(--line)}
+.nav.solid .in{color:var(--text);height:66px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 4px 14px -4px rgba(0,0,0,.35)}
+.brand b{font-family:'Bodoni Moda',serif;font-weight:500;font-size:21px;letter-spacing:.01em;line-height:1}
+.brand small{display:block;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.75;margin-top:4px}
+.links{display:flex;gap:30px;font-size:14px;font-weight:600}
+.links a{position:relative;opacity:.9}
+.links a::after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+.navcta{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:99px;font-size:13.5px;font-weight:700;background:var(--btn);color:var(--btnt);transition:background var(--fade),color var(--fade),transform .3s}
+.nav.solid .navcta{background:var(--wine);color:#fff}
+.navcta:hover{transform:translateY(-1px)}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:660px;max-height:1100px;overflow:hidden;color:var(--ink);transition:color var(--fade);isolation:isolate}
+.layer{position:absolute;inset:0;opacity:0;transition:opacity var(--fade) ease;z-index:0}
+.layer.on{opacity:1;z-index:1}
+.layer.out{opacity:0;z-index:1}
+.fill{position:absolute;inset:0;background:linear-gradient(var(--t) 0%,var(--t) 72%,var(--f) 86%,var(--f) 100%)}
+.stage{position:absolute;left:0;right:0;top:0;bottom:0;will-change:transform}
+.stage img{position:absolute;bottom:0;height:93%;width:auto;max-width:none;left:57%;transform:translateX(-50%);user-select:none;pointer-events:none}
+.stage .bg{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 90%,transparent 100%),linear-gradient(transparent 0,#000 16%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 90%,transparent 100%),linear-gradient(transparent 0,#000 16%);mask-composite:intersect}
+.word{position:absolute;left:14%;right:0;top:47%;transform:translateY(-50%);text-align:center;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:clamp(120px,21vw,380px);line-height:.9;letter-spacing:-.03em;color:var(--w);white-space:nowrap;pointer-events:none}
+.word span{display:inline-block;transform:translateY(40%);opacity:0;transition:transform 1.1s var(--ease),opacity .9s ease}
+.layer.on .word span{transform:none;opacity:1}
+.layer.out .word span{transform:translateY(-25%);opacity:0;transition-duration:.7s}
+.wordwrap{position:absolute;inset:0;will-change:transform}
+
+.hcopy{position:absolute;z-index:5;left:max(20px,calc(50% - 620px));top:50%;transform:translateY(-44%);width:min(440px,33vw)}
+.hcopy .eyebrow{display:flex;align-items:center;gap:12px;opacity:.85}
+.hcopy .eyebrow i{display:block;width:34px;height:1px;background:currentColor;opacity:.6}
+.hl{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(38px,3.9vw,62px);line-height:1.02;letter-spacing:-.015em;margin:18px 0 18px;min-height:2.06em}
+.hl em{font-style:italic}
+.hl .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hl .ln span{display:block;transition:transform .9s var(--ease),opacity .6s}
+.hl.swap .ln span{transform:translateY(105%);opacity:0;transition-duration:.45s}
+.hsub{font-size:15.5px;line-height:1.65;opacity:.88;max-width:34ch}
+.hbtns{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:50px;padding:0 22px;border-radius:99px;font-weight:700;font-size:14.5px;transition:transform .3s var(--ease),background var(--fade),color var(--fade),border-color var(--fade),box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--btn);color:var(--btnt);box-shadow:0 12px 30px -12px rgba(0,0,0,.45)}
+.btn.ghost{border:1.5px solid currentColor;color:var(--ink)}
+
+.hcard{position:absolute;z-index:5;right:max(20px,calc(50% - 620px));bottom:92px;width:220px;padding:18px 18px 16px;border-radius:22px;color:var(--ink);transition:color var(--fade)}
+.glass{background:var(--glass);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);box-shadow:inset 0 1px 1px rgba(255,255,255,.45),0 18px 40px -20px rgba(0,0,0,.4)}
+.glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.12) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.4));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.hcard .k{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;opacity:.75}
+.hcard .v{font-family:'Bodoni Moda',serif;font-size:24px;margin:8px 0 2px;line-height:1.15}
+.hcard .p{font-size:13.5px;opacity:.85}
+.hcard .p b{font-size:16px}
+.hcard a{margin-top:14px;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;border-top:1px solid currentColor;border-color:rgba(255,255,255,.35);padding-top:12px}
+.hcard a svg{transition:transform .3s}
+.hcard a:hover svg{transform:translateX(4px)}
+
+.swatches{position:absolute;z-index:6;left:50%;bottom:28px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:8px;border-radius:99px}
+.sw{position:relative;height:38px;min-width:38px;border-radius:99px;display:flex;align-items:center;gap:8px;padding:0 5px;transition:background .5s,padding .5s var(--ease)}
+.sw .dot{width:28px;height:28px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),0 2px 8px rgba(0,0,0,.18);flex:none;transition:transform .3s}
+.sw:hover .dot{transform:scale(1.1)}
+.sw .nm{font-size:12.5px;font-weight:700;max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .5s var(--ease),opacity .4s;opacity:0;color:#2a1216}
+.sw.act{background:rgba(255,255,255,.9);padding:0 14px 0 5px}
+.sw.act .nm{max-width:90px;opacity:1}
+.sw .prog{position:absolute;left:14px;right:14px;bottom:3px;height:2px;border-radius:2px;background:rgba(0,0,0,.08);overflow:hidden;opacity:0}
+.sw.act .prog{opacity:1}
+.sw .prog i{display:block;height:100%;width:100%;background:#2a1216;transform-origin:left;transform:scaleX(0)}
+.count{position:absolute;z-index:6;right:max(20px,calc(50% - 620px));bottom:40px;font-size:12px;font-weight:800;letter-spacing:.2em;opacity:.85}
+.scrollhint{position:absolute;z-index:6;left:max(20px,calc(50% - 620px));bottom:40px;font-size:11px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:10px;opacity:.8}
+.scrollhint i{width:1px;height:34px;background:currentColor;position:relative;overflow:hidden;opacity:.6}
+.scrollhint i::after{content:'';position:absolute;left:0;top:-40%;width:100%;height:40%;background:currentColor;animation:drip 2s infinite}
+@keyframes drip{to{top:100%}}
+
+/* intro */
+.intro{padding:110px 0 90px;text-align:center}
+.intro h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.08;letter-spacing:-.015em;max-width:16ch;margin:18px auto 0}
+.intro h2 em{color:var(--wine2)}
+.intro p{max-width:56ch;margin:22px auto 0;color:var(--muted);font-size:16.5px;line-height:1.7}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 18px;text-align:left}
+.fact .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#f6e9dc;color:var(--wine2);margin-bottom:14px}
+.fact b{display:block;font-size:15.5px}
+.fact span{font-size:13.5px;color:var(--muted)}
+
+/* film */
+.film{height:220vh;position:relative}
+.film .pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.film .frame{position:relative;width:62vw;height:62vh;border-radius:32px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(60,10,20,.5);will-change:width,height,border-radius}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.film .shade{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,rgba(30,2,8,.75),transparent 60%),linear-gradient(rgba(30,2,8,.25),transparent 30%)}
+.film .cap{position:absolute;left:0;right:0;bottom:9%;text-align:center;color:#fff3e2;padding:0 20px}
+.film .cap .eyebrow{color:var(--gold2)}
+.film .cap h3{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,5vw,72px);line-height:1.05;margin-top:14px}
+.film .cap h3 em{color:var(--gold2)}
+
+/* occasions */
+.sec{padding:110px 0}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:44px}
+.head h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.04;letter-spacing:-.015em;margin-top:14px}
+.head h2 em{color:var(--wine2)}
+.head p{max-width:40ch;color:var(--muted);line-height:1.7;font-size:15.5px}
+.eyebrow.w{color:var(--wine2)}
+.occ{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.oc{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:3/4;display:block;text-align:left;color:#fff}
+.oc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.oc:hover img{transform:scale(1.07)}
+.oc::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(20,4,8,.62))}
+.oc .t{position:absolute;z-index:2;left:20px;right:20px;bottom:20px}
+.oc .t small{font-size:10.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.9}
+.oc .t b{display:block;font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;line-height:1.1;margin-top:6px}
+.oc .t span{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:700;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* menu */
+.menu{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.tab{height:42px;padding:0 18px;border-radius:99px;border:1px solid var(--line);font-size:14px;font-weight:700;background:#fff;transition:background .3s,color .3s,border-color .3s}
+.tab.act{background:var(--wine);color:#fff;border-color:var(--wine)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s,opacity .4s}
+.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(70,10,20,.35)}
+.card.hide{display:none}
+.card .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#f3e8e0}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),opacity .35s}
+.card:hover .ph img{transform:scale(1.05)}
+.card .tag{position:absolute;left:12px;top:12px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.92);color:var(--wine2);padding:6px 10px;border-radius:99px}
+.card .bd{padding:16px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h4{font-size:16.5px;font-weight:800;line-height:1.25}
+.card .note{font-size:12.5px;color:var(--muted);margin-top:-6px}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}
+.sz{height:32px;padding:0 11px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--muted);transition:all .25s}
+.sz.act{background:#f6e7d6;border-color:#e3c8a6;color:var(--wine)}
+.price{display:flex;align-items:baseline;gap:6px;margin-top:auto}
+.price b{font-weight:800;font-size:19px;color:var(--wine);letter-spacing:-.01em}
+.price small{font-size:12px;color:var(--muted);font-weight:600}
+.wa{display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:14px;background:var(--wine);color:#fff;font-weight:700;font-size:14px;transition:background .3s,transform .3s}
+.wa:hover{background:var(--wine2)}
+.wa:active{transform:scale(.98)}
+.foot-note{margin-top:26px;font-size:13px;color:var(--muted);text-align:center}
+
+/* custom */
+.custom{background:linear-gradient(135deg,#3a0610,#6b0f22 60%,#7d1a26);color:#fff3e2;border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
+.custom::before{content:'';position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(232,194,122,.35),transparent 65%)}
+.custom h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.06;margin-top:14px}
+.custom h2 em{color:var(--gold2)}
+.custom p{margin-top:16px;line-height:1.7;opacity:.85;max-width:40ch}
+.custom .eyebrow{color:var(--gold2)}
+.steps{margin-top:26px;display:grid;gap:12px}
+.steps div{display:flex;gap:14px;align-items:center;font-size:14.5px}
+.steps i{font-style:normal;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(232,194,122,.6);color:var(--gold2);font-weight:800;font-size:13px;flex:none}
+form.cf{position:relative;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:26px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;backdrop-filter:blur(10px)}
+.cf label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.95}
+.cf .full{grid-column:1/-1}
+.cf input,.cf select,.cf textarea{font:inherit;font-size:15px;text-transform:none;letter-spacing:0;font-weight:500;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:14px;height:48px;padding:0 14px;outline:none;width:100%;transition:border-color .3s,background .3s}
+.cf textarea{height:84px;padding:12px 14px;resize:vertical}
+.cf select option{color:#2a1216}
+.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,.55)}
+.cf input:focus,.cf select:focus,.cf textarea:focus{border-color:var(--gold2);background:rgba(255,255,255,.14)}
+.cf ::-webkit-calendar-picker-indicator{filter:invert(1)}
+.cf button{grid-column:1/-1;height:54px;border-radius:16px;background:linear-gradient(135deg,#e8c27a,#c99a45);color:#3b0710;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .3s,box-shadow .3s}
+.cf button:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(232,194,122,.8)}
+.cf .hint{grid-column:1/-1;font-size:12.5px;opacity:.7;text-align:center}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
+.vbig{border-radius:30px;overflow:hidden;position:relative;min-height:420px;color:#fff}
+.vbig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%}
+.vbig::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,4,10,.85) 10%,rgba(40,4,10,.15) 70%)}
+.vbig .t{position:relative;z-index:2;padding:44px;max-width:340px}
+.vbig h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4vw,54px);line-height:1.05;margin-top:14px}
+.vbig h2 em{color:var(--gold2)}
+.vbig .eyebrow{color:var(--gold2)}
+.vbig .open{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:9px 14px;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);font-weight:700;font-size:13.5px}
+.vbig .open::before{content:'';width:8px;height:8px;border-radius:50%;background:#4be08a;box-shadow:0 0 0 4px rgba(75,224,138,.25);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(75,224,138,0)}}
+.vlist{display:grid;gap:12px}
+.vi{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px 20px;transition:transform .3s var(--ease),box-shadow .3s}
+a.vi:hover{transform:translateX(4px);box-shadow:0 16px 30px -24px rgba(70,10,20,.4)}
+.vi .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#f6e9dc;color:var(--wine2);flex:none}
+.vi small{display:block;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.vi b{font-size:16px;font-weight:700;word-break:break-word}
+
+footer{background:#22040a;color:#e9d6c9;padding:60px 0 100px;text-align:center;margin-top:110px}
+footer img{width:72px;height:72px;border-radius:50%;margin:0 auto}
+footer h3{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;margin-top:16px;color:#fff3e2}
+footer p{opacity:.7;margin-top:8px;font-size:14px}
+footer .by{margin-top:28px;font-size:12px;opacity:.5;letter-spacing:.06em}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:50;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(10,90,40,.6);transition:transform .4s var(--ease),opacity .4s;opacity:0;transform:scale(.6);pointer-events:none}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab.show:hover{transform:scale(1.07)}
+.fab svg{width:28px;height:28px}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .hcard{display:none}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .occ{grid-template-columns:repeat(2,1fr)}
+}
+/* ---------- phone ---------- */
+@media (max-width:760px){
+  .wrap{width:calc(100% - 32px)}
+  .links{display:none}
+  .nav .in{height:64px}
+  .brand img{width:38px;height:38px}
+  .brand b{font-size:18px}
+  .navcta{height:40px;padding:0 14px;font-size:13px}
+  .hero{height:auto;min-height:100svh;max-height:none;display:flex;flex-direction:column}
+  .stage{top:auto;height:min(112vw,470px);bottom:0}
+  .stage img{height:100%;left:50%}
+  .brand small{display:none}
+  .stage .bg{-webkit-mask-image:linear-gradient(transparent 0,#000 16%);mask-image:linear-gradient(transparent 0,#000 16%);-webkit-mask-composite:source-over;mask-composite:add}
+  .fill{background:linear-gradient(var(--t),var(--t))}
+  .wordwrap{top:auto;height:min(112vw,470px)}
+  .word{font-size:33vw;top:40%;left:0}
+  .hcopy{position:relative;left:auto;top:auto;transform:none;width:auto;padding:122px 18px 0;z-index:5}
+  .hl{font-size:38px;margin:12px 0 10px}
+  .hsub{font-size:14.5px;max-width:none}
+  .hbtns{margin-top:16px}
+  .btn{height:46px;padding:0 18px;font-size:14px}
+  .hspace{height:min(112vw,470px);flex:none}
+  .swatches{bottom:18px;gap:4px;padding:6px}
+  .sw{height:34px;min-width:34px}
+  .sw .dot{width:24px;height:24px}
+  .sw.act{padding:0 12px 0 5px}
+  .count,.scrollhint{display:none}
+  .intro{padding:80px 0 60px}
+  .facts{gap:10px;margin-top:36px}
+  .fact{padding:16px 14px}
+  .film{height:170vh}
+  .film .frame{width:86vw;height:56vh;border-radius:24px}
+  .sec{padding:80px 0}
+  .head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:30px}
+  .occ{gap:10px}
+  .oc{border-radius:20px}
+  .oc .t{left:14px;right:14px;bottom:14px}
+  .oc .t b{font-size:20px}
+  .oc .t span{display:none}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:0 16px 4px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .card{flex-direction:row;border-radius:20px}
+  .card .ph{width:122px;flex:none;aspect-ratio:auto}
+  .card .tag{display:none}
+  .card .bd{padding:13px 13px 13px 14px;gap:8px}
+  .card h4{font-size:15px}
+  .sz{height:29px;padding:0 9px;font-size:11.5px}
+  .price b{font-size:17px}
+  .wa{height:42px;font-size:13.5px;border-radius:12px}
+  .custom{grid-template-columns:1fr;padding:34px 20px;border-radius:28px;gap:30px}
+  form.cf{grid-template-columns:1fr;padding:18px}
+  .visit{grid-template-columns:1fr}
+  .vbig{min-height:380px}
+  .vbig img{object-position:30% 50%}
+  .vbig .t{max-width:260px}
+  .vbig .t{padding:28px}
+  footer{margin-top:80px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" aria-hidden="true"><div class="track" id="mq"></div></div>
+
+<header class="nav" id="nav">
+  <div class="wrap in">
+    <a class="brand" href="#top"><img src="img/logo.png" alt="The Customised logo"><div><b>The Customised</b><small>Cakes · Events · Celebration</small></div></a>
+    <nav class="links"><a href="#occasions">Occasions</a><a href="#menu">Cakes</a><a href="#custom">Custom order</a><a href="#visit">Contact</a></nav>
+    <a class="navcta" id="navWa" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Order</a>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-label="Featured cakes">
+  <div id="layers"></div>
+  <div class="hcopy">
+    <div class="eyebrow"><span id="hIdx">The Royal Collection</span><i></i><span>Kolkata</span></div>
+    <h1 class="hl" id="hl"><span class="ln"><span id="l1">Love, layered</span></span><span class="ln"><span id="l2"><em>in gold.</em></span></span></h1>
+    <p class="hsub">Custom theme cakes, made exactly the way you imagine them. Birthdays, weddings, baby showers and every celebration in between.</p>
+    <div class="hbtns">
+      <a class="btn main" id="lookWa" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Order this look</a>
+      <a class="btn ghost" href="#menu">See all cakes</a>
+    </div>
+  </div>
+  <div class="hspace"></div>
+  <div class="hcard glass" id="hcard">
+    <div class="k">Perfect for</div>
+    <div class="v" id="hcV">Weddings &amp; anniversaries</div>
+    <div class="p" id="hcP">Starting from <b>₹2,000</b></div>
+    <a href="#menu" id="hcA">See these cakes <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="swatches glass" id="sws" role="tablist" aria-label="Choose a colour"></div>
+  <div class="count"><span id="cNow">03</span> / 05</div>
+  <div class="scrollhint"><i></i>Scroll</div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="eyebrow w rv">Kolkata's custom cake studio</div>
+    <h2 class="rv">Your idea, baked into <em>something beautiful.</em></h2>
+    <p class="rv">From a superhero for a five-year-old to a three-tier cake for your wedding day, every cake is designed around your celebration and finished by hand.</p>
+    <div class="facts">
+      <div class="fact rv"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>Open 24 hours</b><span>Message us any time</span></div>
+      <div class="fact rv"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9Z"/></svg></div><b>Any theme</b><span>Made to your idea</span></div>
+      <div class="fact rv"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div><b>Easy WhatsApp order</b><span>Pick, tap, done</span></div>
+      <div class="fact rv"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><b>Jadavpur · Tollygunge</b><span>Kolkata 700040</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="film" id="film">
+  <div class="pin">
+    <div class="frame" id="frame">
+      <video id="vid" muted loop playsinline preload="metadata" poster="media/cake-poster.jpg">
+        <source src="media/cake.webm" type="video/webm"><source src="media/cake.mp4" type="video/mp4">
+      </video>
+      <div class="shade"></div>
+      <div class="cap" id="cap"><div class="eyebrow">Made by hand</div><h3>Every tier, <em>finished in gold.</em></h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="occasions">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow w rv">Shop by occasion</div><h2 class="rv">A cake for <em>every moment.</em></h2></div>
+      <p class="rv">Tap an occasion to see the cakes made for it. Every design can be changed to your colours, name and theme.</p>
+    </div>
+    <div class="occ">
+      <button class="oc rv" data-go="birthday"><img src="img/blush-sm.webp" alt="" loading="lazy"><div class="t"><small>Birthdays</small><b>Birthday cakes</b><span>See cakes →</span></div></button>
+      <button class="oc rv" data-go="kids"><img src="img/jungle-sm.webp" alt="" loading="lazy"><div class="t"><small>Kids &amp; themes</small><b>Theme cakes</b><span>See cakes →</span></div></button>
+      <button class="oc rv" data-go="love"><img src="img/royal-sm.webp" alt="" loading="lazy"><div class="t"><small>Love</small><b>Anniversary &amp; wedding</b><span>See cakes →</span></div></button>
+      <button class="oc rv" data-go="baby"><img src="img/dream-sm.webp" alt="" loading="lazy"><div class="t"><small>Little ones</small><b>Baby shower &amp; rice ceremony</b><span>See cakes →</span></div></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec menu" id="menu">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow w rv">The cake menu</div><h2 class="rv">Pick a cake. <em>Tap to order.</em></h2></div>
+      <p class="rv">Choose the size and tap the button. Your cake, size and price go straight to us on WhatsApp.</p>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+    <p class="foot-note">Prices shown are starting prices. The final price depends on the design and size you choose.</p>
+  </div>
+</section>
+
+<section class="sec" id="custom">
+  <div class="wrap">
+    <div class="custom rv">
+      <div>
+        <div class="eyebrow">Your own design</div>
+        <h2>Have a cake <em>in your mind?</em></h2>
+        <p>Tell us the occasion, size and date. Send a reference photo in the chat and we will make it for you.</p>
+        <div class="steps">
+          <div><i>1</i>Fill in the details</div>
+          <div><i>2</i>Send it on WhatsApp with your reference photo</div>
+          <div><i>3</i>Pre-book your cake and celebrate</div>
+        </div>
+      </div>
+      <form class="cf" id="cf">
+        <label>Occasion<select id="fOcc"><option>Birthday</option><option>Kids' birthday</option><option>Anniversary</option><option>Wedding / Engagement</option><option>Baby shower</option><option>Rice ceremony</option><option>Other</option></select></label>
+        <label>Size<select id="fSize"><option>1 lb</option><option selected>1.5 lb</option><option>2 lb</option><option>3 lb</option><option>4 lb</option><option>5 lb or more</option><option>Not sure</option></select></label>
+        <label>Date<input type="date" id="fDate"></label>
+        <label>Name on cake<input id="fName" placeholder="e.g. Happy Birthday Riya"></label>
+        <label class="full">Your idea<textarea id="fIdea" placeholder="Theme, colours, number of tiers..."></textarea></label>
+        <button type="submit"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Send on WhatsApp</button>
+        <div class="hint">Opens WhatsApp with your details filled in.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="visit">
+  <div class="visit">
+    <div class="vbig rv">
+      <img src="img/royal-sm.webp" alt="" loading="lazy">
+      <div class="t">
+        <div class="eyebrow">Say hello</div>
+        <h2>Let's make your day <em>sweeter.</em></h2>
+        <div class="open">Open now · 24 hours</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <a class="vi rv" id="vWa" target="_blank" rel="noopener"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div><div><small>WhatsApp</small><b>+91 74499 88948</b></div></a>
+      <a class="vi rv" href="tel:+917449988948"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></div><div><small>Call</small><b>+91 74499 88948</b></div></a>
+      <a class="vi rv" href="https://www.google.com/maps/search/?api=1&query=Tollygunge%2C%20Kolkata%20700040" target="_blank" rel="noopener"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><small>Find us</small><b>Jadavpur · Tollygunge, Kolkata 700040</b></div></a>
+      <a class="vi rv" href="https://instagram.com/thecustomised.in" target="_blank" rel="noopener"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></div><div><small>Instagram</small><b>@thecustomised.in</b></div></a>
+      <a class="vi rv" href="mailto:cakes@thecustamised.in"><div class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><small>Email</small><b>cakes@thecustamised.in</b></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/logo.png" alt="The Customised">
+  <h3>The Customised</h3>
+  <p>Cakes · Events · Celebration · Kolkata</p>
+  <div class="by">Sample website by Plastrix Studio</div>
+</footer>
+
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+
+<script>
+const WA = '917449988948';
+const wa = t => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- shades ---------- */
+const SHADES = [
+  {id:'blush', name:'Blush', word:'Blush', l1:'Sweet as a bow,', l2:'pretty in pink.', col:'#e8a0a8', t:'#e1959d', f:'#e9a2aa', ink:'#4a0f1c', w:'rgba(255,246,247,.88)', btn:'#4a0f1c', btnt:'#ffeef0', glass:'rgba(255,255,255,.2)', perfect:'Birthdays &amp; baby girls', from:'₹999', cat:'birthday', label:'The Blush Collection'},
+  {id:'sky', name:'Sky', word:'Starlit', l1:'Clouds, stars', l2:'&amp; little dreams.', col:'#8cc1e3', t:'#86bbdd', f:'#93c4e6', ink:'#0d3150', w:'rgba(246,251,255,.88)', btn:'#0d3150', btnt:'#eef7ff', glass:'rgba(255,255,255,.2)', perfect:'Kids&rsquo; birthdays', from:'₹999', cat:'kids', label:'The Sky Collection'},
+  {id:'royal', name:'Royal', word:'Royal', l1:'Love, layered', l2:'in gold.', col:'#8c0f20', t:'#4b0109', f:'#6a0712', ink:'#fff1dc', w:'rgba(222,170,80,.85)', btn:'#e2b25c', btnt:'#3b0710', glass:'rgba(255,255,255,.1)', perfect:'Weddings &amp; anniversaries', from:'₹2,000', cat:'love', label:'The Royal Collection'},
+  {id:'jungle', name:'Jungle', word:'Jungle', l1:'Roar into', l2:'the party.', col:'#93bb91', t:'#8bb488', f:'#99bf96', ink:'#133619', w:'rgba(245,252,242,.88)', btn:'#133619', btnt:'#effbea', glass:'rgba(255,255,255,.2)', perfect:'Jungle &amp; theme cakes', from:'₹999', cat:'kids', label:'The Jungle Collection'},
+  {id:'dream', name:'Dream', word:'Dream', l1:'Made of magic,', l2:'dusted in gold.', col:'#b99bcb', t:'#b091bf', f:'#b897c7', ink:'#351650', w:'rgba(252,247,255,.88)', btn:'#351650', btnt:'#f7f0ff', glass:'rgba(255,255,255,.2)', perfect:'Unicorn &amp; baby shower', from:'₹999', cat:'baby', label:'The Dream Collection'},
+];
+const layersEl = document.getElementById('layers'), sws = document.getElementById('sws');
+const imgs = [];
+SHADES.forEach((s, i) => {
+  const L = document.createElement('div');
+  L.className = 'layer'; L.style.setProperty('--t', s.t); L.style.setProperty('--f', s.f); L.style.setProperty('--w', s.w);
+  L.innerHTML = `<div class="fill"></div>
+    <div class="stage"><img class="bg" alt="" src="img/${s.id}.webp" ${i==2?'fetchpriority="high"':'loading="eager"'}></div>
+    <div class="wordwrap"><div class="word" aria-hidden="true">${[...s.word].map((c,k)=>`<span style="transition-delay:${k*45}ms">${c}</span>`).join('')}</div></div>
+    <div class="stage cutst"><img class="cut" alt="${s.name} theme cake" src="img/${s.id}-cut.webp"></div>`;
+  layersEl.appendChild(L);
+  imgs.push([...L.querySelectorAll('img')]);
+  const b = document.createElement('button');
+  b.className = 'sw'; b.setAttribute('role','tab'); b.setAttribute('aria-label', s.name);
+  b.style.setProperty('--c', s.col);
+  b.innerHTML = `<span class="dot"></span><span class="nm">${s.name}</span><span class="prog"><i></i></span>`;
+  b.onclick = () => { go(i, true); };
+  sws.appendChild(b);
+});
+const layers = [...layersEl.children], swb = [...sws.children];
+const hero = document.querySelector('.hero'), hl = document.getElementById('hl');
+let cur = -1, busy = false, timer = null, paused = false, userHold = 0;
+const DUR = 5200;
+
+function ready(i){ return Promise.all(imgs[i].map(im => im.decode ? im.decode().catch(()=>{}) : Promise.resolve())); }
+function applyTheme(s){
+  const r = document.documentElement.style;
+  hero.style.setProperty('--ink', s.ink);
+  r.setProperty('--ink', s.ink); r.setProperty('--btn', s.btn); r.setProperty('--btnt', s.btnt); r.setProperty('--glass', s.glass);
+  document.getElementById('hIdx').textContent = s.label;
+  document.getElementById('hcV').innerHTML = s.perfect;
+  document.getElementById('hcP').innerHTML = 'Starting from <b>' + s.from + '</b>';
+  document.getElementById('cNow').textContent = String(SHADES.indexOf(s)+1).padStart(2,'0');
+  document.getElementById('lookWa').href = wa(`Hello The Customised! 🎂\nI saw the *${s.name}* cake on your website and I'd love something like it.\nOccasion: \nDate: \nSize: \n\nPlease share the details.`);
+  document.getElementById('hcA').dataset.cat = s.cat;
+}
+async function go(i, user){
+  if (i === cur || busy) return;
+  busy = true;
+  if (user){ userHold = Date.now(); }
+  await ready(i);                      // both cake + background decoded → swap in the same frame
+  const s = SHADES[i];
+  hl.classList.add('swap');
+  requestAnimationFrame(() => {
+    layers.forEach((L, k) => { L.classList.toggle('on', k === i); L.classList.toggle('out', k === cur); });
+    swb.forEach((b, k) => b.classList.toggle('act', k === i));
+    applyTheme(s);
+    const old = cur; cur = i;
+    setTimeout(() => { if (old >= 0) layers[old].classList.remove('out'); }, 1000);
+    setTimeout(() => {
+      document.getElementById('l1').innerHTML = s.l1;
+      document.getElementById('l2').innerHTML = '<em>' + s.l2 + '</em>';
+      hl.classList.remove('swap');
+    }, RM ? 0 : 430);
+    restartProg();
+    setTimeout(() => busy = false, 450);
+  });
+}
+let progAnim = null;
+function restartProg(){
+  if (progAnim) progAnim.cancel();
+  const bar = swb[cur].querySelector('.prog i');
+  if (RM) return;
+  progAnim = bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}], {duration: DUR, easing:'linear', fill:'forwards'});
+  if (paused) progAnim.pause();
+  progAnim.onfinish = () => { if (!paused) go((cur + 1) % SHADES.length); };
+}
+hero.addEventListener('mouseenter', () => { paused = true; progAnim && progAnim.pause(); });
+hero.addEventListener('mouseleave', () => { paused = false; progAnim && progAnim.play(); });
+document.addEventListener('visibilitychange', () => { if (!progAnim) return; document.hidden ? progAnim.pause() : (!paused && progAnim.play()); });
+// swipe on phone
+let sx = null;
+hero.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+hero.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) go((cur + (dx < 0 ? 1 : SHADES.length - 1)) % SHADES.length, true); sx = null; });
+// start on Royal (brand colours), preload the rest in the background
+go(2);
+window.addEventListener('load', () => SHADES.forEach((_, i) => ready(i)));
+
+/* hero scroll depth: cake + background move together, the word drifts slower */
+const navEl = document.getElementById('nav'), fabEl = document.getElementById('fab');
+function onScroll(){
+  const y = scrollY, h = hero.offsetHeight;
+  navEl.classList.toggle('solid', y > h - 90);
+  fabEl.classList.toggle('show', y > h * .6);
+  if (!RM && y < h){
+    const p = y / h;
+    layers.forEach(L => {
+      L.querySelectorAll('.stage').forEach(st => st.style.transform = `translateY(${p*14}%) scale(${1 + p*.06})`);
+      L.querySelector('.wordwrap').style.transform = `translateY(${p*30}%)`;
+    });
+  }
+  film();
+}
+addEventListener('scroll', onScroll, {passive:true});
+
+/* film: card grows to full screen as you scroll */
+const filmEl = document.getElementById('film'), frame = document.getElementById('frame'), vid = document.getElementById('vid'), cap = document.getElementById('cap');
+function film(){
+  const r = filmEl.getBoundingClientRect(), total = filmEl.offsetHeight - innerHeight;
+  let p = Math.min(1, Math.max(0, -r.top / (total * .7)));
+  if (RM) p = 1;
+  const mob = innerWidth < 760;
+  const w0 = mob ? 86 : 62, h0 = mob ? 46 : 62, h1 = mob ? 66 : 100;
+  const e = 1 - Math.pow(1 - p, 3);
+  frame.style.width = (w0 + (100 - w0) * e) + 'vw';
+  frame.style.height = (h0 + (h1 - h0) * e) + 'vh';
+  frame.style.borderRadius = (mob ? 24 : 32) * (1 - e) + 'px';
+  cap.style.opacity = Math.min(1, p * 1.6);
+  cap.style.transform = `translateY(${(1 - Math.min(1, p * 1.6)) * 30}px)`;
+}
+new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? vid.play().catch(()=>{}) : vid.pause(); }), {threshold:.15}).observe(filmEl);
+
+/* ---------- menu ---------- */
+const CATS = [['all','All cakes'],['birthday','Birthday'],['kids','Kids & themes'],['love','Anniversary & wedding'],['baby','Baby & rice ceremony']];
+const CAKES = [
+  {id:'anniv', cat:'love', name:'Anniversary Cake', tag:'Love', sizes:[['1 lb','₹500 – 700','anniv1'],['1.5 lb','₹800 – 999','anniv2'],['1.5 – 2 lb','₹1,100 – 1,400','anniv3']]},
+  {id:'hero', cat:'kids', name:'Super Hero Cake', tag:'Kids', sizes:[['1 – 1.5 lb','₹500 – 999','hero1'],['2 – 2.5 lb','₹1,200 – 1,800','hero2'],['3 – 4 lb','₹1,800 – 2,500','hero3']]},
+  {id:'barbie', cat:'birthday', name:'Barbie Theme', tag:'Birthday', from:true, sizes:[['Starting','₹999','barbie']]},
+  {id:'unicorn', cat:'kids', name:'Unicorn Cake', tag:'Kids', sizes:[['1.5 – 2 lb','₹800 – 1,500','unicorn']]},
+  {id:'engagement', cat:'love', name:'Engagement Cake', note:'2 tier', tag:'Love', sizes:[['2 tier','₹2,999','engagement']]},
+  {id:'car', cat:'kids', name:'Car Cake', tag:'Kids', sizes:[['1 – 1.5 lb','₹800 – 1,200','car1'],['2 – 2.5 lb','₹1,500 – 1,999','car2']]},
+  {id:'babyshower', cat:'baby', name:'Baby Shower Cake', tag:'Baby', from:true, sizes:[['Small','₹999','babyshower']]},
+  {id:'rice', cat:'baby', name:'Rice Ceremony Cake', tag:'Annaprashan', sizes:[['1 lb','₹999 – 1,200','rice']]},
+  {id:'wedding', cat:'love', name:'Wedding Cake', tag:'Love', sizes:[['4 lb','₹2,500 – 2,800','wedding']]},
+  {id:'peppa', cat:'kids', name:'Peppa Pig Cake', tag:'Kids', sizes:[['1.5 – 3 lb','₹999 – 1,999','peppa']]},
+  {id:'makeup', cat:'birthday', name:'Make-up Theme', tag:'Birthday', from:true, sizes:[['Starting','₹999','makeup']]},
+  {id:'ricetier', cat:'baby', name:'Rice Ceremony (Tier)', note:'2 tiers', tag:'Annaprashan', sizes:[['2 tier','₹2,999','ricetier']]},
+  {id:'jungle', cat:'kids', name:'Jungle Theme', tag:'Kids', from:true, sizes:[['Starting','₹999','jungle']]},
+  {id:'junglet', cat:'kids', name:'Jungle Theme (Tier)', tag:'Kids', sizes:[['5 lb','₹3,500 – 3,999','junglet']]},
+  {id:'father', cat:'birthday', name:"Father's Birthday", tag:'Birthday', from:true, sizes:[['Starting','₹999','father']]},
+  {id:'mother', cat:'birthday', name:"Mother's Birthday", tag:'Birthday', from:true, sizes:[['Starting','₹999','mother']]},
+  {id:'husband', cat:'birthday', name:"Husband's Birthday", tag:'Birthday', from:true, sizes:[['Starting','₹999','husband']]},
+  {id:'gym', cat:'birthday', name:'Gym Theme', tag:'Birthday', from:true, sizes:[['Starting','₹999','gym']]},
+  {id:'sixmonths', cat:'baby', name:'6 Months Birthday', tag:'Baby', from:true, sizes:[['1.5 lb','₹999','sixmonths']]},
+  {id:'antigravity', cat:'love', name:'Anti-Gravity Cake', tag:'Showstopper', from:true, sizes:[['Starting','₹9,999','antigravity']]},
+];
+const grid = document.getElementById('grid'), tabs = document.getElementById('tabs');
+CATS.forEach(([k, n]) => { const b = document.createElement('button'); b.className = 'tab' + (k === 'all' ? ' act' : ''); b.textContent = n; b.dataset.k = k; b.onclick = () => filter(k); tabs.appendChild(b); });
+CAKES.forEach(c => {
+  const el = document.createElement('article');
+  el.className = 'card rv'; el.dataset.cat = c.cat;
+  const multi = c.sizes.length > 1;
+  el.innerHTML = `<div class="ph"><img src="cakes/${c.sizes[0][2]}.webp" alt="${c.name} by The Customised" loading="lazy"><span class="tag">${c.tag}</span></div>
+    <div class="bd"><h4>${c.name}</h4>${c.note ? `<div class="note">${c.note}</div>` : ''}
+    ${multi ? `<div class="sizes">${c.sizes.map((s,i)=>`<button class="sz${i?'':' act'}" data-i="${i}">${s[0]}</button>`).join('')}</div>` : (c.sizes[0][0] !== 'Starting' ? `<div class="sizes"><span class="sz act">${c.sizes[0][0]}</span></div>` : '')}
+    <div class="price"><b>${c.sizes[0][1]}</b>${c.from ? '<small>starting price</small>' : ''}</div>
+    <a class="wa" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Order on WhatsApp</a></div>`;
+  let sel = 0;
+  const img = el.querySelector('.ph img'), pb = el.querySelector('.price b'), a = el.querySelector('.wa');
+  const upd = () => {
+    const s = c.sizes[sel];
+    a.href = wa(`Hello The Customised! 🎂\nI'd like to order:\n• Cake: *${c.name}*${c.sizes[0][0] !== 'Starting' ? `\n• Size: ${s[0]}` : ''}\n• Price: ${s[1]}${c.from ? ' (starting)' : ''}\n\nOccasion date: \nName on cake: \n\n(Sent from your website)`);
+  };
+  el.querySelectorAll('button.sz').forEach(b => b.onclick = () => {
+    sel = +b.dataset.i;
+    el.querySelectorAll('.sz').forEach(x => x.classList.toggle('act', x === b));
+    pb.textContent = c.sizes[sel][1];
+    const src = 'cakes/' + c.sizes[sel][2] + '.webp';
+    if (!img.src.endsWith(src)) { img.style.opacity = 0; setTimeout(() => { img.src = src; img.onload = () => img.style.opacity = 1; }, 200); }
+    upd();
+  });
+  upd();
+  grid.appendChild(el);
+});
+function filter(k){
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('act', t.dataset.k === k));
+  grid.querySelectorAll('.card').forEach(c => { c.classList.toggle('hide', k !== 'all' && c.dataset.cat !== k); c.classList.add('in'); });
+}
+document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { filter(b.dataset.go); document.getElementById('menu').scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); });
+document.getElementById('hcA').onclick = e => { e.preventDefault(); filter(e.currentTarget.dataset.cat); document.getElementById('menu').scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); };
+
+/* custom form */
+document.getElementById('cf').onsubmit = e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const d = v('fDate') ? new Date(v('fDate')).toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'}) : '';
+  const msg = `Hello The Customised! 🎂\nI'd like a custom cake:\n• Occasion: ${v('fOcc')}\n• Size: ${v('fSize')}${d ? `\n• Date: ${d}` : ''}${v('fName') ? `\n• Name on cake: ${v('fName')}` : ''}${v('fIdea') ? `\n• Idea: ${v('fIdea')}` : ''}\n\nI'll share a reference photo here.`;
+  window.open(wa(msg), '_blank');
+};
+
+/* general WhatsApp links */
+const hi = wa("Hello The Customised! 🎂 I'd like to order a cake.");
+['navWa','fab','vWa'].forEach(id => document.getElementById(id).href = hi);
+
+/* marquee */
+const items = ['Open 24 hours','Custom theme cakes','Birthday · Anniversary · Wedding','Baby shower · Rice ceremony','Order on WhatsApp','Jadavpur · Tollygunge, Kolkata'];
+document.getElementById('mq').innerHTML = [...items, ...items, ...items, ...items].map(t => `<span>${t}</span>`).join('');
+
+/* reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+onScroll();
+</script>
+</body>
+</html>
