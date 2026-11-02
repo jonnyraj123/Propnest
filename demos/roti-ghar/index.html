@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roti Ghar — Ghar Jaisa Khana, Kolkata</title>
+<meta name="description" content="Roti Ghar, Kolkata: fresh home-style pure veg roti, paratha and sabji. Takeaway, home delivery within 2 km and bulk catering. Order on WhatsApp.">
+<meta name="theme-color" content="#1f5a2b">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1f5a2b;--green2:#2e7d3a;--leaf:#eaf3e2;--yellow:#ffc928;--yellow2:#ffe58a;--brown:#7a2e16;--cream:#fff8ea;--ink:#1d1a14;--muted:#6d665a;--line:#eadfc6;--r:22px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Fraunces,Georgia,serif}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;border-radius:999px;font-weight:700;font-size:15px;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:#25d366;color:#08311a;box-shadow:0 10px 24px -10px #25d366}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-call{background:#fff;color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
+.btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:0 10px 24px -12px #e0a400}
+.ico{width:20px;height:20px;flex:none}
+
+/* top strip + nav */
+.strip{background:var(--green);color:#fff;font-size:12.5px;font-weight:600;overflow:hidden;white-space:nowrap}
+.strip .run{display:inline-flex;gap:38px;padding:8px 0;animation:run 26s linear infinite}
+.strip span{display:inline-flex;align-items:center;gap:8px}
+@keyframes run{to{transform:translateX(-50%)}}
+nav{position:sticky;top:0;z-index:40;background:rgba(255,248,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.brand img{width:46px;height:46px}
+.brand b{font-family:Fraunces,serif;font-size:21px;color:var(--brown);line-height:1}
+.brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:3px}
+.links{display:none;gap:26px;font-weight:600;font-size:14.5px}
+.links a:hover{color:var(--green2)}
+.navcall{padding:11px 16px;font-size:14px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:26px 0 40px}
+.hero .wrap{display:grid;gap:26px}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--leaf);color:var(--green);font-weight:700;font-size:13px;padding:8px 14px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2fbf4f;box-shadow:0 0 0 0 #2fbf4f;animation:ping 1.8s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(47,191,79,0)}}
+.hero h1{font-size:clamp(40px,9vw,74px);line-height:1;letter-spacing:-1.5px;margin:16px 0 14px;color:var(--green)}
+.hero h1 em{font-style:italic;color:var(--brown)}
+.hero h1 .hl{position:relative;white-space:nowrap}
+.hero h1 .hl:after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.28em;background:var(--yellow);z-index:-1;border-radius:6px;transform:scaleX(0);transform-origin:left;animation:mark 1s .5s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes mark{to{transform:scaleX(1)}}
+.hero p.lead{font-size:17px;line-height:1.55;color:var(--muted);max-width:520px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-size:13px;font-weight:600}
+.chip i{font-style:normal}
+.pic{position:relative;border-radius:30px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(70,40,10,.6)}
+.pic img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-2%,-1%)}}
+.steam{position:absolute;bottom:38%;width:60px;height:120px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.55),transparent);filter:blur(10px);opacity:0;animation:steam 4.5s ease-in infinite}
+@keyframes steam{0%{opacity:0;transform:translateY(30px) scaleX(.7)}30%{opacity:.75}100%{opacity:0;transform:translateY(-90px) scaleX(1.4)}}
+.badge{position:absolute;background:#fff;border-radius:18px;padding:11px 14px;box-shadow:0 18px 30px -16px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;animation:float 5s ease-in-out infinite}
+.badge small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.badge .big{font-family:Fraunces,serif;font-size:24px;color:var(--green)}
+@keyframes float{50%{transform:translateY(-8px)}}
+.b1{left:12px;bottom:12px}.b2{right:12px;top:12px;animation-delay:-2.5s}
+
+/* section titles */
+section{scroll-margin-top:70px}
+.sec{padding:64px 0}
+.kicker{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--brown)}
+.sec h2{font-size:clamp(32px,6vw,52px);line-height:1.05;letter-spacing:-1px;margin:10px 0 10px;color:var(--green)}
+.sec h2 em{color:var(--brown)}
+.sub{color:var(--muted);font-size:16px;max-width:560px}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:-8px}
+.f{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.f .e{font-size:26px}
+.f b{display:block;margin-top:8px;font-size:15px}
+.f span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+
+/* menu */
+.menu{background:linear-gradient(#fff8ea,#fff3d6)}
+.tabs{display:flex;gap:8px;margin:24px 0 16px;overflow-x:auto;scrollbar-width:none}
+.tab{flex:none;padding:11px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.tab.on{background:var(--green);color:#fff;border-color:var(--green)}
+.list{display:grid;gap:10px}
+.item{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;transition:box-shadow .25s,transform .25s}
+.item:hover{box-shadow:0 16px 30px -22px rgba(80,50,10,.6);transform:translateY(-2px)}
+.em{width:52px;height:52px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:26px;background:var(--leaf)}
+.item .t{flex:1;min-width:0}
+.item .t b{display:block;font-size:16px}
+.item .t small{color:var(--muted);font-size:12.5px}
+.size{display:flex;gap:4px;margin-top:6px}
+.size button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.size button.on{background:var(--yellow);border-color:var(--yellow)}
+.price{font-weight:800;font-size:16px;color:var(--green);min-width:44px;text-align:right}
+.q{display:flex;align-items:center;gap:8px}
+.q button{width:34px;height:34px;border-radius:50%;border:0;background:var(--green);color:#fff;font-size:18px;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.q button.m{background:var(--leaf);color:var(--green)}
+.q span{min-width:18px;text-align:center;font-weight:800}
+.note{margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* order panel */
+.order{background:#fff;border:1px solid var(--line);border-radius:26px;padding:20px;margin-top:22px;box-shadow:0 30px 50px -40px rgba(80,50,10,.6)}
+.order h3{font-size:24px;color:var(--green)}
+.seg{display:flex;background:var(--leaf);border-radius:999px;padding:4px;margin:14px 0}
+.seg button{flex:1;border:0;background:transparent;padding:11px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;color:var(--green)}
+.seg button.on{background:var(--green);color:#fff}
+.field{display:grid;gap:6px;margin-top:10px}
+.field label{font-size:13px;font-weight:700}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:14px;padding:13px 14px;font:inherit;font-size:15px}
+.field textarea{min-height:70px;resize:vertical}
+.check{display:flex;align-items:center;gap:10px;margin-top:12px;font-weight:600;font-size:14px;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--green)}
+.sum{border-top:1px dashed var(--line);margin-top:14px;padding-top:12px;font-size:14px}
+.sum .row{display:flex;justify-content:space-between;margin:4px 0}
+.sum .tot{font-size:20px;font-weight:800;color:var(--green)}
+.order .btn{width:100%;margin-top:14px}
+
+/* bar */
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--green);color:#fff;border-radius:20px;padding:10px 10px 10px 18px;box-shadow:0 20px 40px -14px rgba(20,60,25,.7);transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bar.show{transform:none}
+.bar b{font-size:16px}.bar small{display:block;opacity:.8;font-size:12px}
+.bar .btn{padding:12px 16px;font-size:14px}
+
+/* catering */
+.cater{background:var(--green);color:#fff;position:relative;overflow:hidden}
+.cater h2{color:#fff}.cater h2 em{color:var(--yellow)}
+.cater .sub{color:#d9ead2}
+.cater .kicker{color:var(--yellow2)}
+.who{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:24px 0}
+.who div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px;font-weight:700}
+.who span{display:block;font-size:24px;margin-bottom:6px}
+.cform{background:#fff;color:var(--ink);border-radius:26px;padding:20px}
+.cform .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.leaf{position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,201,40,.35),transparent 70%)}
+
+/* visit */
+.visit .grid{display:grid;gap:14px;margin-top:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card h3{font-size:20px;color:var(--green);margin-bottom:6px}
+.card p{color:var(--muted);line-height:1.55}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:260px}
+.map iframe{width:100%;height:100%;min-height:260px;border:0}
+
+footer{background:#163f1f;color:#cfe1c8;padding:40px 0 110px;text-align:center;font-size:14px}
+footer img{width:64px;margin:0 auto 10px}
+footer b{font-family:Fraunces,serif;color:#fff;font-size:22px}
+footer .made{margin-top:18px;font-size:12px;opacity:.7}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (min-width:860px){
+  .links{display:flex}
+  .hero{padding:50px 0 70px}
+  .hero .wrap{grid-template-columns:1.05fr 1fr;align-items:center;gap:46px}
+  .pic img{aspect-ratio:4/3.3}
+  .feat{grid-template-columns:repeat(4,1fr)}
+  .menuGrid{display:grid;grid-template-columns:1.35fr 1fr;gap:26px;align-items:start}
+  .order{position:sticky;top:86px;margin-top:0}
+  .cater .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .visit .grid{grid-template-columns:1fr 1fr 1.3fr}
+  .bar{left:auto;right:24px;bottom:24px;width:380px}
+  footer{padding-bottom:50px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="strip" aria-hidden="true"><div class="run" id="run"></div></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><img src="img/logo.png" alt="Roti Ghar logo"><div><b>Roti Ghar</b><small>Where Taste meets Tradition</small></div></a>
+    <div class="links"><a href="#menu">Menu</a><a href="#catering">Catering</a><a href="#visit">Visit</a></div>
+    <a class="btn btn-wa navcall" href="#" data-wa="Hi Roti Ghar, I want to order."><svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm5.8 15.7c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8 1 3.9.8a3.3 3.3 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4Z"/></svg>Order</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="tag"><i class="dot"></i>Pure Veg · Ashu Babu Bazar, Kolkata</span>
+      <h1>Ghar jaisa khana,<br><span class="hl"><em>ab aapke paas.</em></span></h1>
+      <p class="lead">Fresh roti, soft paratha and home-style sabji, made to order in 30 minutes. Takeaway, home delivery and bulk catering.</p>
+      <div class="cta">
+        <a class="btn btn-wa" href="#menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M7 12h10M10 18h4"/></svg>See menu & order</a>
+        <a class="btn btn-call" href="tel:+919330830945"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Call now</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><i>🛍️</i>Takeaway</span>
+        <span class="chip"><i>🛵</i>Delivery within 2 km</span>
+        <span class="chip"><i>🌿</i>No onion, no garlic on order</span>
+      </div>
+    </div>
+    <div class="pic reveal">
+      <img src="img/food.webp" alt="Fresh roti, aloo paratha with butter, chole, paneer and dal" fetchpriority="high">
+      <i class="steam" style="left:62%"></i><i class="steam" style="left:72%;animation-delay:-1.6s"></i><i class="steam" style="left:30%;animation-delay:-3s"></i>
+      <div class="badge b1"><span class="big">30</span><div>minutes<small>fresh, made to order</small></div></div>
+      <div class="badge b2">🫓 Roti from ₹5</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap feat">
+  <div class="f reveal"><div class="e">🔥</div><b>Made fresh</b><span>Every order cooked hot</span></div>
+  <div class="f reveal"><div class="e">🥬</div><b>Pure veg</b><span>Home-style taste</span></div>
+  <div class="f reveal"><div class="e">💰</div><b>Affordable</b><span>Full meal under ₹100</span></div>
+  <div class="f reveal"><div class="e">🎉</div><b>Bulk orders</b><span>Events, PG & offices</span></div>
+</div>
+
+<section class="sec menu" id="menu">
+  <div class="wrap">
+    <span class="kicker">Our menu</span>
+    <h2>Pick your plate, <em>we'll do the rest.</em></h2>
+    <p class="sub">Tap + to add. Your full order goes to us on WhatsApp in one tap.</p>
+    <div class="menuGrid">
+      <div>
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-cat="all">All</button>
+          <button class="tab" data-cat="roti">Roti & Paratha</button>
+          <button class="tab" data-cat="sabji">Sabji & Curries</button>
+        </div>
+        <div class="list" id="list"></div>
+        <p class="note">Extra pickle / chutney ₹10 · Half / Full portions for sabji · Prices as per our menu</p>
+      </div>
+      <aside class="order" id="order">
+        <h3>Your order</h3>
+        <div class="seg" id="mode"><button class="on" data-m="Takeaway">🛍️ Takeaway</button><button data-m="Home Delivery">🛵 Delivery</button></div>
+        <div class="field"><label for="nm">Your name</label><input id="nm" placeholder="Name"></div>
+        <div class="field" id="addrBox" hidden><label for="ad">Delivery address (within 2 km)</label><textarea id="ad" placeholder="House, street, landmark"></textarea></div>
+        <label class="check"><input type="checkbox" id="nog"> No onion, no garlic</label>
+        <label class="check"><input type="checkbox" id="pk"> Add extra pickle / chutney (₹10)</label>
+        <div class="sum">
+          <div id="lines"><div class="row" style="color:var(--muted)">Nothing added yet</div></div>
+          <div class="row tot"><span>Total</span><span id="tot">₹0</span></div>
+          <div class="row" id="dnote" style="color:var(--muted);font-size:12.5px" hidden><span>+ small fixed delivery charge</span></div>
+        </div>
+        <button class="btn btn-wa" id="send"><svg class="ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Z"/></svg>Send order on WhatsApp</button>
+        <a class="btn btn-call" style="width:100%;margin-top:8px" href="tel:+919330830945">Or call 93308 30945</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec cater" id="catering">
+  <i class="leaf"></i>
+  <div class="wrap">
+    <div>
+      <span class="kicker">Bulk orders & catering</span>
+      <h2>Fresh roti for <em>50 or 500.</em></h2>
+      <p class="sub">We supply fresh roti, paratha and veg sabji in bulk, cooked the same day.</p>
+      <div class="who">
+        <div><span>🎊</span>Private occasions</div>
+        <div><span>🏠</span>Hostels, PG & mess</div>
+        <div><span>🍽️</span>Restaurants & hotels</div>
+        <div><span>🏢</span>Corporate canteens</div>
+      </div>
+    </div>
+    <form class="cform reveal" id="cform">
+      <h3 class="serif" style="font-size:24px;color:var(--green)">Get a catering quote</h3>
+      <div class="field"><label for="cn">Name</label><input id="cn" required placeholder="Your name"></div>
+      <div class="two">
+        <div class="field"><label for="cp">People</label><input id="cp" type="number" min="10" required placeholder="e.g. 80"></div>
+        <div class="field"><label for="cd">Date</label><input id="cd" type="date" required></div>
+      </div>
+      <div class="field"><label for="ct">Type</label><select id="ct"><option>Private occasion</option><option>Hostel / PG / Mess</option><option>Restaurant / Hotel</option><option>Corporate canteen</option></select></div>
+      <div class="field"><label for="cm">What do you need?</label><textarea id="cm" placeholder="e.g. 400 roti, chole, paneer sabji"></textarea></div>
+      <button class="btn btn-yellow" style="width:100%;margin-top:14px">Send enquiry on WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <span class="kicker">Visit us</span>
+    <h2>Come hungry, <em>leave happy.</em></h2>
+    <div class="grid">
+      <div class="card reveal"><h3>📍 Address</h3><p>13 B Sarba Khan Road, Near Talapark Ashu Babu Bazar, Kolkata 700037<br><small>Landmark: Lozenges Factory, Ashu Babu Bazar</small></p>
+        <a class="btn btn-call" style="margin-top:14px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=13+B+Sarba+Khan+Road+Ashu+Babu+Bazar+Kolkata+700037">Get directions</a></div>
+      <div class="card reveal"><h3>📞 Order & enquiries</h3><p>Call: <a href="tel:+919330830945"><b>93308 30945</b></a><br>WhatsApp: <a href="#" data-wa="Hi Roti Ghar!"><b>74391 97061</b></a><br>Meal ready in 30 minutes</p></div>
+      <div class="map reveal"><iframe loading="lazy" title="Roti Ghar on the map" src="https://www.google.com/maps?q=Sarba+Khan+Road+Ashu+Babu+Bazar+Kolkata+700037&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/logo.png" alt="">
+  <b>Roti Ghar</b>
+  <p style="margin-top:6px">Simple food. Big happiness. · Pure Veg · Kolkata</p>
+  <p class="made">Sample website by Plastrix Studio</p>
+</footer>
+
+<div class="bar" id="bar"><div><b id="bcount">0 items</b><small id="btot">₹0</small></div><a class="btn btn-wa" href="#order">View & send</a></div>
+
+<script>
+const WA='917439197061';
+const MENU=[
+ {id:'roti',n:'Roti',c:'roti',e:'🫓',d:'Fresh tawa roti, per piece',p:5},
+ {id:'plain',n:'Plain Paratha',c:'roti',e:'🥙',d:'Soft layered paratha',p:12},
+ {id:'aloo',n:'Aloo Paratha',c:'roti',e:'🥔',d:'Stuffed with spiced aloo',p:20},
+ {id:'saloo',n:'Special Aloo Paratha',c:'roti',e:'🧈',d:'Extra filling, with butter',p:30},
+ {id:'achari',n:'3-in-1 Achari Cheese Paratha',c:'roti',e:'🧀',d:'Cheese, achari masala, crisp',p:40},
+ {id:'tadka',n:'Tadka',c:'sabji',e:'🍛',d:'Dal tadka',h:50,f:70},
+ {id:'chole',n:'Chole',c:'sabji',e:'🫘',d:'Punjabi style chole',h:60,f:80},
+ {id:'paneer',n:'Paneer Sabji',c:'sabji',e:'🧆',d:'Paneer in rich gravy',h:60,f:80},
+ {id:'soya',n:'Soya Sabji',c:'sabji',e:'🥘',d:'Home-style soya curry',h:60,f:80},
+ {id:'aloodum',n:'Dry Aloo Dum',c:'sabji',e:'🥔',d:'Spicy dry aloo',h:30,f:50},
+];
+const cart={}; const size={}; let mode='Takeaway', cat='all';
+const $=s=>document.querySelector(s);
+const priceOf=m=>m.p??(size[m.id]==='Half'?m.h:m.f);
+function render(){
+  $('#list').innerHTML=MENU.filter(m=>cat==='all'||m.c===cat).map(m=>`
+   <div class="item"><div class="em">${m.e}</div>
+    <div class="t"><b>${m.n}</b><small>${m.d}</small>
+     ${m.h?`<div class="size">${['Half','Full'].map(s=>`<button data-s="${m.id}|${s}" class="${(size[m.id]||'Full')===s?'on':''}">${s} ₹${s==='Half'?m.h:m.f}</button>`).join('')}</div>`:''}</div>
+    <div class="price">₹${priceOf(m)}</div>
+    <div class="q">${cart[m.id]?`<button class="m" data-d="${m.id}" aria-label="Remove one">−</button><span>${cart[m.id]}</span>`:''}<button data-a="${m.id}" aria-label="Add ${m.n}">+</button></div>
+   </div>`).join('');
+  const items=MENU.filter(m=>cart[m.id]);
+  let tot=items.reduce((s,m)=>s+priceOf(m)*cart[m.id],0)+($('#pk').checked?10:0);
+  const count=items.reduce((s,m)=>s+cart[m.id],0);
+  $('#lines').innerHTML=items.length?items.map(m=>`<div class="row"><span>${cart[m.id]} × ${m.n}${m.h?` (${size[m.id]||'Full'})`:''}</span><span>₹${priceOf(m)*cart[m.id]}</span></div>`).join('')+($('#pk').checked?'<div class="row"><span>Extra pickle / chutney</span><span>₹10</span></div>':''):'<div class="row" style="color:var(--muted)">Nothing added yet</div>';
+  $('#tot').textContent='₹'+tot; $('#btot').textContent='₹'+tot+' · '+mode;
+  $('#bcount').textContent=count+(count===1?' item':' items');
+  $('#bar').classList.toggle('show',count>0);
+  $('#dnote').hidden=mode!=='Home Delivery';
+  return {items,tot};
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,a'); if(!t)return;
+  if(t.dataset.a){cart[t.dataset.a]=(cart[t.dataset.a]||0)+1;render();}
+  if(t.dataset.d){cart[t.dataset.d]--; if(!cart[t.dataset.d])delete cart[t.dataset.d]; render();}
+  if(t.dataset.s){const [id,s]=t.dataset.s.split('|'); size[id]=s; render();}
+  if(t.dataset.cat){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t)); cat=t.dataset.cat; render();}
+  if(t.dataset.m){document.querySelectorAll('#mode button').forEach(b=>b.classList.toggle('on',b===t)); mode=t.dataset.m; $('#addrBox').hidden=mode!=='Home Delivery'; render();}
+  if(t.dataset.wa!==undefined){e.preventDefault(); open('https://wa.me/'+WA+'?text='+encodeURIComponent(t.dataset.wa),'_blank');}
+});
+$('#pk').addEventListener('change',render);
+$('#send').addEventListener('click',()=>{
+  const {items,tot}=render();
+  if(!items.length){document.getElementById('menu').scrollIntoView({behavior:'smooth'}); return;}
+  let msg=`Hi Roti Ghar! 🙏 New order:\n\n`+items.map(m=>`• ${cart[m.id]} × ${m.n}${m.h?` (${size[m.id]||'Full'})`:''} = ₹${priceOf(m)*cart[m.id]}`).join('\n');
+  if($('#pk').checked) msg+=`\n• Extra pickle / chutney = ₹10`;
+  msg+=`\n\nTotal: ₹${tot}\nType: ${mode}`;
+  if($('#nog').checked) msg+=`\n🌿 No onion, no garlic please`;
+  if($('#nm').value) msg+=`\nName: ${$('#nm').value}`;
+  if(mode==='Home Delivery'&&$('#ad').value) msg+=`\nAddress: ${$('#ad').value}`;
+  open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+});
+$('#cform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const msg=`Hi Roti Ghar! Catering enquiry:\nName: ${$('#cn').value}\nPeople: ${$('#cp').value}\nDate: ${$('#cd').value}\nType: ${$('#ct').value}\nNeed: ${$('#cm').value||'-'}`;
+  open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+});
+const strip=['🌿 Pure Veg','🔥 Fresh in 30 minutes','🛵 Home delivery within 2 km','🫓 Roti from ₹5','🎉 Bulk orders for events','📞 93308 30945'];
+$('#run').innerHTML=[...strip,...strip].map(s=>`<span>${s}</span>`).join('');
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+render();
+</script>
+</body>
+</html>
