@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>The Customised · Custom Cakes in Kolkata</title>
 <meta name="description" content="The Customised: custom theme cakes for birthdays, anniversaries, weddings, baby showers and rice ceremonies in Kolkata. Open 24 hours. Order on WhatsApp.">
-<meta name="theme-color" content="#5c0a18">
+<meta name="theme-color" content="#b8375f">
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/royal.webp"><link rel="preload" as="image" href="img/royal-cut.webp">
+<link rel="preload" as="image" href="img/blush.webp"><link rel="preload" as="image" href="img/blush-cut.webp">
 <style>
 :root{
-  --cream:#fbf5ef;--paper:#fffaf6;--text:#2a1216;--muted:#7a5d61;--line:rgba(60,20,28,.12);
-  --wine:#5c0a18;--wine2:#7d1226;--gold:#c99a45;--gold2:#e8c27a;--wa:#1faa59;
-  --ink:#fff1dc;--btn:#d9a441;--btnt:#3b0710;--glass:rgba(255,255,255,.16);
+  --cream:#fdf4f5;--paper:#fffafb;--text:#2e1219;--muted:#85606a;--line:rgba(140,40,75,.13);
+  --wine:#b8375f;--wine2:#d0537a;--gold:#c99a45;--gold2:#e8c27a;--wa:#1faa59;
+  --ink:#4a0f1c;--btn:#4a0f1c;--btnt:#ffeef0;--glass:rgba(255,255,255,.2);
   --ease:cubic-bezier(.22,.8,.2,1);--fade:.95s;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -29,10 +29,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 svg.i{width:18px;height:18px;flex:none}
 
 /* top bar */
-.bar{position:relative;z-index:30;background:#2b050c;color:#e8c27a;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;height:34px;display:flex;align-items:center}
+.bar{position:relative;z-index:30;background:#9e2b53;color:#ffe3ec;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;height:34px;display:flex;align-items:center}
 .bar .track{display:flex;gap:44px;white-space:nowrap;animation:mq 38s linear infinite;padding-left:44px}
 .bar .track span{display:inline-flex;align-items:center;gap:44px}
-.bar .track span::after{content:'✦';color:#8f6a2e}
+.bar .track span::after{content:'✦';color:#f3a6bf}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* nav */
@@ -53,7 +53,7 @@ svg.i{width:18px;height:18px;flex:none}
 .navcta:hover{transform:translateY(-1px)}
 
 /* HERO */
-.hero{position:relative;height:100svh;min-height:660px;max-height:1100px;overflow:hidden;color:var(--ink);transition:color var(--fade);isolation:isolate}
+.hero{position:relative;aspect-ratio:16/9;width:100%;min-height:600px;overflow:hidden;color:var(--ink);transition:color var(--fade);isolation:isolate}
 .layer{position:absolute;inset:0;opacity:0;transition:opacity var(--fade) ease;z-index:0}
 .layer.on{opacity:1;z-index:1}
 .layer.out{opacity:0;z-index:1}
@@ -116,7 +116,7 @@ svg.i{width:18px;height:18px;flex:none}
 .intro p{max-width:56ch;margin:22px auto 0;color:var(--muted);font-size:16.5px;line-height:1.7}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
 .fact{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 18px;text-align:left}
-.fact .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#f6e9dc;color:var(--wine2);margin-bottom:14px}
+.fact .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#fde4ea;color:var(--wine2);margin-bottom:14px}
 .fact b{display:block;font-size:15.5px}
 .fact span{font-size:13.5px;color:var(--muted)}
 
@@ -155,9 +155,9 @@ svg.i{width:18px;height:18px;flex:none}
 .tab.act{background:var(--wine);color:#fff;border-color:var(--wine)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s,opacity .4s}
-.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(70,10,20,.35)}
+.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(150,30,70,.35)}
 .card.hide{display:none}
-.card .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#f3e8e0}
+.card .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#f9e6ea}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),opacity .35s}
 .card:hover .ph img{transform:scale(1.05)}
 .card .tag{position:absolute;left:12px;top:12px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.92);color:var(--wine2);padding:6px 10px;border-radius:99px}
@@ -166,7 +166,7 @@ svg.i{width:18px;height:18px;flex:none}
 .card .note{font-size:12.5px;color:var(--muted);margin-top:-6px}
 .sizes{display:flex;gap:6px;flex-wrap:wrap}
 .sz{height:32px;padding:0 11px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--muted);transition:all .25s}
-.sz.act{background:#f6e7d6;border-color:#e3c8a6;color:var(--wine)}
+.sz.act{background:#fde4ea;border-color:#f4b9c9;color:var(--wine)}
 .price{display:flex;align-items:baseline;gap:6px;margin-top:auto}
 .price b{font-weight:800;font-size:19px;color:var(--wine);letter-spacing:-.01em}
 .price small{font-size:12px;color:var(--muted);font-weight:600}
@@ -176,12 +176,12 @@ svg.i{width:18px;height:18px;flex:none}
 .foot-note{margin-top:26px;font-size:13px;color:var(--muted);text-align:center}
 
 /* custom */
-.custom{background:linear-gradient(135deg,#3a0610,#6b0f22 60%,#7d1a26);color:#fff3e2;border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
+.custom{background:linear-gradient(135deg,#8e2349,#c2416b 60%,#de6a8e);color:#fff6f8;border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
 .custom::before{content:'';position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(232,194,122,.35),transparent 65%)}
 .custom h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.06;margin-top:14px}
-.custom h2 em{color:var(--gold2)}
+.custom h2 em{color:#ffe1a8}
 .custom p{margin-top:16px;line-height:1.7;opacity:.85;max-width:40ch}
-.custom .eyebrow{color:var(--gold2)}
+.custom .eyebrow{color:#ffe1a8}
 .steps{margin-top:26px;display:grid;gap:12px}
 .steps div{display:flex;gap:14px;align-items:center;font-size:14.5px}
 .steps i{font-style:normal;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(232,194,122,.6);color:var(--gold2);font-weight:800;font-size:13px;flex:none}
@@ -202,22 +202,22 @@ form.cf{position:relative;background:rgba(255,255,255,.08);border:1px solid rgba
 .visit{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
 .vbig{border-radius:30px;overflow:hidden;position:relative;min-height:420px;color:#fff}
 .vbig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%}
-.vbig::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,4,10,.85) 10%,rgba(40,4,10,.15) 70%)}
+.vbig::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(110,20,50,.82) 10%,rgba(110,20,50,.1) 70%)}
 .vbig .t{position:relative;z-index:2;padding:44px;max-width:340px}
 .vbig h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4vw,54px);line-height:1.05;margin-top:14px}
-.vbig h2 em{color:var(--gold2)}
-.vbig .eyebrow{color:var(--gold2)}
+.vbig h2 em{color:#ffe1a8}
+.vbig .eyebrow{color:#ffe1a8}
 .vbig .open{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:9px 14px;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);font-weight:700;font-size:13.5px}
 .vbig .open::before{content:'';width:8px;height:8px;border-radius:50%;background:#4be08a;box-shadow:0 0 0 4px rgba(75,224,138,.25);animation:pulse 2s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 8px rgba(75,224,138,0)}}
 .vlist{display:grid;gap:12px}
 .vi{display:flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px 20px;transition:transform .3s var(--ease),box-shadow .3s}
-a.vi:hover{transform:translateX(4px);box-shadow:0 16px 30px -24px rgba(70,10,20,.4)}
-.vi .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#f6e9dc;color:var(--wine2);flex:none}
+a.vi:hover{transform:translateX(4px);box-shadow:0 16px 30px -24px rgba(150,30,70,.4)}
+.vi .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#fde4ea;color:var(--wine2);flex:none}
 .vi small{display:block;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .vi b{font-size:16px;font-weight:700;word-break:break-word}
 
-footer{background:#22040a;color:#e9d6c9;padding:60px 0 100px;text-align:center;margin-top:110px}
+footer{background:linear-gradient(#b8375f,#8a2248);color:#ffe9f0;padding:60px 0 100px;text-align:center;margin-top:110px}
 footer img{width:72px;height:72px;border-radius:50%;margin:0 auto}
 footer h3{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;margin-top:16px;color:#fff3e2}
 footer p{opacity:.7;margin-top:8px;font-size:14px}
@@ -246,20 +246,20 @@ footer .by{margin-top:28px;font-size:12px;opacity:.5;letter-spacing:.06em}
   .brand img{width:38px;height:38px}
   .brand b{font-size:18px}
   .navcta{height:40px;padding:0 14px;font-size:13px}
-  .hero{height:auto;min-height:100svh;max-height:none;display:flex;flex-direction:column}
-  .stage{top:auto;height:min(112vw,470px);bottom:0}
-  .stage img{height:100%;left:50%}
+  .hero{aspect-ratio:auto;display:flex;flex-direction:column;padding-bottom:66px}
+  .stage{top:auto;height:56.25vw;bottom:66px}
+  .stage img{height:100%;width:100%;left:0;transform:none}
   .brand small{display:none}
-  .stage .bg{-webkit-mask-image:linear-gradient(transparent 0,#000 16%);mask-image:linear-gradient(transparent 0,#000 16%);-webkit-mask-composite:source-over;mask-composite:add}
-  .fill{background:linear-gradient(var(--t),var(--t))}
-  .wordwrap{top:auto;height:min(112vw,470px)}
-  .word{font-size:33vw;top:40%;left:0}
-  .hcopy{position:relative;left:auto;top:auto;transform:none;width:auto;padding:122px 18px 0;z-index:5}
+  .stage .bg{-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 88%,transparent);mask-image:linear-gradient(transparent 0,#000 14%,#000 88%,transparent);-webkit-mask-composite:source-over;mask-composite:add}
+  .fill{background:linear-gradient(var(--t) 0,var(--t) calc(100% - 66px - 14vw),var(--f) calc(100% - 66px),var(--f) 100%)}
+  .wordwrap{top:auto;bottom:66px;height:56.25vw}
+  .word{font-size:21vw;top:46%;left:0}
+  .hcopy{position:relative;left:auto;top:auto;transform:none;width:auto;padding:118px 18px 4px;z-index:5}
   .hl{font-size:38px;margin:12px 0 10px}
   .hsub{font-size:14.5px;max-width:none}
   .hbtns{margin-top:16px}
   .btn{height:46px;padding:0 18px;font-size:14px}
-  .hspace{height:min(112vw,470px);flex:none}
+  .hspace{height:calc(56.25vw + 8px);flex:none}
   .swatches{bottom:18px;gap:4px;padding:6px}
   .sw{height:34px;min-width:34px}
   .sw .dot{width:24px;height:24px}
@@ -280,15 +280,19 @@ footer .by{margin-top:28px;font-size:12px;opacity:.5;letter-spacing:.06em}
   .tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:0 16px 4px;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
   .tab{flex:none}
-  .grid{grid-template-columns:1fr;gap:12px}
-  .card{flex-direction:row;border-radius:20px}
-  .card .ph{width:122px;flex:none;aspect-ratio:auto}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{border-radius:18px}
   .card .tag{display:none}
-  .card .bd{padding:13px 13px 13px 14px;gap:8px}
-  .card h4{font-size:15px}
-  .sz{height:29px;padding:0 9px;font-size:11.5px}
-  .price b{font-size:17px}
-  .wa{height:42px;font-size:13.5px;border-radius:12px}
+  .card .bd{padding:11px 10px 10px;gap:7px}
+  .card h4{font-size:13.5px}
+  .card .note{font-size:11.5px}
+  .sizes{gap:4px}
+  .sz{height:26px;padding:0 7px;font-size:10.5px}
+  .price{flex-wrap:wrap;gap:2px 5px}
+  .price b{font-size:15px}
+  .price small{font-size:10.5px}
+  .wa{height:38px;font-size:12.5px;border-radius:11px;gap:6px}
+  .wa .x{display:none}
   .custom{grid-template-columns:1fr;padding:34px 20px;border-radius:28px;gap:30px}
   form.cf{grid-template-columns:1fr;padding:18px}
   .visit{grid-template-columns:1fr}
@@ -421,7 +425,7 @@ footer .by{margin-top:28px;font-size:12px;opacity:.5;letter-spacing:.06em}
 <section class="wrap" id="visit">
   <div class="visit">
     <div class="vbig rv">
-      <img src="img/royal-sm.webp" alt="" loading="lazy">
+      <img src="img/blush-sm.webp" alt="" loading="lazy">
       <div class="t">
         <div class="eyebrow">Say hello</div>
         <h2>Let's make your day <em>sweeter.</em></h2>
@@ -534,7 +538,7 @@ let sx = null;
 hero.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
 hero.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) go((cur + (dx < 0 ? 1 : SHADES.length - 1)) % SHADES.length, true); sx = null; });
 // start on Royal (brand colours), preload the rest in the background
-go(2);
+go(0);
 window.addEventListener('load', () => SHADES.forEach((_, i) => ready(i)));
 
 /* hero scroll depth: cake + background move together, the word drifts slower */
@@ -605,7 +609,7 @@ CAKES.forEach(c => {
     <div class="bd"><h4>${c.name}</h4>${c.note ? `<div class="note">${c.note}</div>` : ''}
     ${multi ? `<div class="sizes">${c.sizes.map((s,i)=>`<button class="sz${i?'':' act'}" data-i="${i}">${s[0]}</button>`).join('')}</div>` : (c.sizes[0][0] !== 'Starting' ? `<div class="sizes"><span class="sz act">${c.sizes[0][0]}</span></div>` : '')}
     <div class="price"><b>${c.sizes[0][1]}</b>${c.from ? '<small>starting price</small>' : ''}</div>
-    <a class="wa" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Order on WhatsApp</a></div>`;
+    <a class="wa" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>Order</span><span class="x"> on WhatsApp</span></a></div>`;
   let sel = 0;
   const img = el.querySelector('.ph img'), pb = el.querySelector('.price b'), a = el.querySelector('.wa');
   const upd = () => {
