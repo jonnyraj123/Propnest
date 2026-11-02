@@ -342,3 +342,9 @@ Joni will build a Noor-e-Kashmir-level demo for each and send it on WhatsApp. Th
 ## DESK REEL (Joni approved 1 Nov) + SYNC RULE
 - Style: Veo desk video (monitor + laptop + phone, green screens, hand on trackpad, static camera) -> key screens, warp site recordings in (comp.py, per-screen regions), 9:16 with blurred bg, white label headline box, PLASTRIX STUDIO + DM "SITE" bottom. Ref: demos/instagram/13-solene-desk-reel.mp4, 14-thalassa-desk-reel.mp4.
 - MUST: all three screens show the SAME section at the SAME moment. Phone must not scroll faster/ahead. Record desktop + mobile in ONE run (same timeline), scroll both by section anchors (same section at same time), and check phone vs monitor frames side by side before delivering.
+
+## The Customised (cake, Kolkata) — pending
+- SOLÈNE-style hero: 5 colours (Blush, Sky, Royal maroon+gold, Jungle, Dream lavender).
+- On swatch click, the cake image AND the background colour change at the same moment, perfectly synced.
+- Middle: turntable cake video. Cards → size/name/date → WhatsApp +91 74499 88948 with price.
+- Wait for user's 5 Gemini images + 1 video + "start".
