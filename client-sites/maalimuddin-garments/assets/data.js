@@ -76,7 +76,7 @@ window.PRODUCTS = [
   { id: 'c-240fg', code: '240 FG', name: 'Pink Sequin Shirt & Gold Dhoti Set', cat: 'coord', img: [24], sizes: REG, colours: ABC, tag: 'Festive' },
   { id: 'c-245g', code: '245 G', name: 'Red Sequin Shirt & Gold Dhoti Set', cat: 'coord', img: [44], sizes: REG, colours: ABC, tag: 'Festive' },
   { id: 'c-200zs', code: '200 ZS', name: 'Green Geo Frill Jumpsuit', cat: 'coord', img: [43], sizes: REG, colours: ABC },
-  { id: 'c-220', code: '220', name: 'Wonderful Flower Top & Skirt', cat: 'coord', img: [32], sizes: REG, colours: ABC },
+  { id: 'c-220', code: '220', name: 'Wonderful Flower Top & Skirt', cat: 'coord', img: [32], sizes: REG, colours: ABC, oos: true },
   { id: 'yellow-coord', name: 'Sunny Yellow Textured Co-ord', cat: 'coord', img: [19], sizes: REG, colours: ABC },
   { id: 'love-shorts', name: 'Love Bunny Shorts Set', cat: 'coord', img: [51], sizes: REG, colours: ABC },
   { id: 'peach-salwar', name: 'Peach Sequin Kurti & Salwar', cat: 'coord', img: [53], sizes: REG, colours: ABC },
