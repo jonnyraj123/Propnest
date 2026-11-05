@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VOLT Studio · Premium Fitness</title>
+<meta name="description" content="VOLT Studio — premium fitness studio. Strength, HIIT, yoga and personal training. Join the movement.">
+<meta name="theme-color" content="#0c0a12">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0910;--bg2:#120e1c;--card:rgba(255,255,255,.045);--line:rgba(168,120,255,.16);
+  --text:#efe9fb;--muted:#a79fc0;--vi:#a855f7;--vi2:#7c3aed;--vi3:#c084fc;--glow:#b06bff;
+  --ease:cubic-bezier(.22,.9,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Sora,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(60vw 50vw at 78% 8%,rgba(124,58,237,.30),transparent 60%),
+  radial-gradient(50vw 50vw at 10% 90%,rgba(168,85,247,.22),transparent 60%),var(--bg)}
+.blob{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;will-change:transform}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.display{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:.98}
+.wrap{width:min(1200px,100% - 44px);margin-inline:auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--vi3)}
+svg.i{width:18px;height:18px;flex:none}
+.grad{background:linear-gradient(100deg,#fff 10%,var(--vi3) 55%,var(--vi) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s,box-shadow .4s,padding .4s}
+.nav .in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav.solid{background:rgba(12,10,20,.72);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);box-shadow:0 1px 0 var(--line)}
+.brand{display:flex;align-items:center;gap:11px;font-family:Syne,sans-serif;font-weight:800;font-size:21px;letter-spacing:.02em}
+.logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--vi),var(--vi2));box-shadow:0 0 22px rgba(168,85,247,.6)}
+.logo svg{width:20px;height:20px}
+.links{display:flex;gap:30px;font-size:14px;font-weight:500}
+.links a{color:var(--muted);position:relative;transition:color .3s}
+.links a:hover{color:var(--text)}
+.links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:var(--vi);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:46px;padding:0 22px;border-radius:99px;font-weight:600;font-size:14.5px;transition:transform .3s var(--ease),box-shadow .35s,background .3s}
+.btn.primary{background:linear-gradient(120deg,var(--vi),var(--vi2));color:#fff;box-shadow:0 10px 34px -10px rgba(168,85,247,.8)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -10px rgba(168,85,247,1)}
+.btn.ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn.ghost:hover{border-color:var(--vi);background:rgba(168,85,247,.12)}
+.btn.lg{height:56px;padding:0 30px;font-size:16px}
+
+/* hero */
+.hero{position:relative;padding:140px 0 90px;overflow:hidden}
+.hero .in{position:relative;z-index:2;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:99px;background:rgba(168,85,247,.1);border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--vi3);margin-bottom:26px}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:#4be08a;box-shadow:0 0 0 4px rgba(75,224,138,.2)}
+.hero h1{font-size:clamp(56px,13vw,170px);text-transform:uppercase}
+.hero h1 .l{display:inline-block;opacity:0;transform:translateY(40%);filter:blur(8px)}
+.hero h1 .neon{text-shadow:0 0 24px rgba(176,107,255,.65),0 0 60px rgba(124,58,237,.4);animation:flick 5s ease-in-out infinite}
+@keyframes flick{0%,100%{opacity:1}48%{opacity:.86}50%{opacity:.97}52%{opacity:.88}}
+.hero p.sub{max-width:52ch;margin:24px auto 0;color:var(--muted);font-size:clamp(15px,2vw,18px);line-height:1.6}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.hstats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.hstat b{font-family:Syne,sans-serif;font-size:34px;font-weight:800;display:block}
+.hstat span{font-size:12.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);padding:18px 0;margin-top:70px;overflow:hidden;background:rgba(255,255,255,.015);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .t{display:flex;gap:46px;white-space:nowrap;animation:scroll 32s linear infinite;font-family:Syne,sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.04em}
+.marq .t span{display:inline-flex;gap:46px;align-items:center;color:var(--muted)}
+.marq .t span::after{content:'◆';color:var(--vi)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+section{padding:100px 0}
+.head{max-width:620px;margin-bottom:48px}
+.head h2{font-size:clamp(32px,5vw,54px);margin-top:14px}
+.head p{color:var(--muted);margin-top:14px;font-size:16px;line-height:1.6}
+.center{text-align:center;margin-inline:auto}
+
+/* classes */
+.classes{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cl{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line);isolation:isolate}
+.cl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);z-index:-1}
+.cl:hover img{transform:scale(1.08)}
+.cl::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(10,7,16,.9));z-index:-1}
+.cl .top{display:flex;justify-content:space-between;align-items:center;padding:16px}
+.cl .tag{font-size:11px;font-weight:700;padding:6px 11px;border-radius:99px;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)}
+.cl .bot{position:absolute;bottom:0;left:0;right:0;padding:18px}
+.cl h3{font-family:Syne,sans-serif;font-size:23px;font-weight:700}
+.cl p{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5;opacity:0;max-height:0;transition:opacity .4s,max-height .4s}
+.cl:hover p{opacity:1;max-height:80px}
+
+/* benefits circles */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.ben{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ben .orb{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 35% 30%,rgba(192,132,252,.35),rgba(124,58,237,.12));border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s}
+.ben .orb::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,transparent,var(--vi),transparent);opacity:0;transition:opacity .5s;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 0);mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 0);animation:spin 6s linear infinite}
+.ben:hover .orb{transform:translateY(-6px);box-shadow:0 20px 50px -18px rgba(168,85,247,.7)}
+.ben:hover .orb::before{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ben .orb svg{width:46px;height:46px;color:var(--vi3)}
+.ben b{font-size:16px}.ben span{font-size:13px;color:var(--muted)}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{position:relative;border:1px solid var(--line);border-radius:24px;padding:32px 28px;background:var(--card);display:flex;flex-direction:column;gap:18px;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.plan:hover{transform:translateY(-6px);border-color:rgba(168,85,247,.5);box-shadow:0 30px 70px -40px rgba(168,85,247,.8)}
+.plan.pop{border-color:var(--vi);background:linear-gradient(180deg,rgba(168,85,247,.14),rgba(255,255,255,.02))}
+.plan .badge{position:absolute;top:-12px;left:28px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;background:linear-gradient(120deg,var(--vi),var(--vi2));box-shadow:0 8px 24px -8px rgba(168,85,247,.9)}
+.plan h3{font-family:Syne,sans-serif;font-size:21px;font-weight:700}
+.plan .price{font-family:Syne,sans-serif;font-weight:800;font-size:46px;line-height:1}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:500}
+.plan ul{list-style:none;display:grid;gap:11px;margin-top:4px;flex:1}
+.plan li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted)}
+.plan li svg{color:var(--vi3);margin-top:1px}
+
+/* stats band */
+.band{border-block:1px solid var(--line);background:rgba(255,255,255,.02)}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat b{font-family:Syne,sans-serif;font-size:clamp(34px,5vw,56px);font-weight:800;display:block}
+.stat span{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+
+/* trainers */
+.trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tr{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--card);transition:transform .5s var(--ease),box-shadow .5s}
+.tr:hover{transform:translateY(-6px);box-shadow:0 26px 60px -36px rgba(168,85,247,.7)}
+.tr .ph{aspect-ratio:1;position:relative;overflow:hidden}
+.tr .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.tr:hover .ph img{transform:scale(1.07)}
+.tr .bd{padding:18px 20px 22px}
+.tr h3{font-family:Syne,sans-serif;font-size:19px;font-weight:700}
+.tr span{color:var(--vi3);font-size:13px;font-weight:600}
+.tr p{color:var(--muted);font-size:13.5px;margin-top:10px;line-height:1.5}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.q{border:1px solid var(--line);border-radius:20px;padding:26px;background:var(--card)}
+.q .stars{color:var(--vi3);font-size:15px;letter-spacing:2px}
+.q p{margin:14px 0 18px;line-height:1.6;font-size:15px}
+.q .who{display:flex;align-items:center;gap:12px}
+.q .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--vi),var(--vi2));display:grid;place-items:center;font-weight:700;font-family:Syne,sans-serif}
+.q .who b{font-size:14.5px}.q .who span{font-size:12.5px;color:var(--muted)}
+
+/* CTA */
+.cta-band{position:relative;border:1px solid var(--line);border-radius:30px;padding:60px 40px;text-align:center;overflow:hidden;background:linear-gradient(135deg,rgba(124,58,237,.22),rgba(168,85,247,.08))}
+.cta-band::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.5),transparent 65%);top:-160px;left:50%;transform:translateX(-50%);filter:blur(20px)}
+.cta-band h2{font-size:clamp(30px,5vw,52px);position:relative}
+.cta-band p{color:var(--muted);margin:16px auto 28px;max-width:46ch;position:relative}
+.cta-band .btn{position:relative}
+
+footer{border-top:1px solid var(--line);padding:56px 0 40px;margin-top:40px}
+.fcols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+.fcols .brand{margin-bottom:14px}
+.fcols p{color:var(--muted);font-size:14px;max-width:34ch;line-height:1.6}
+.fcol h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.fcol a{display:block;color:var(--text);font-size:14px;margin-bottom:10px;opacity:.85;transition:opacity .3s,color .3s}
+.fcol a:hover{opacity:1;color:var(--vi3)}
+.fbot{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:13px}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.stg>*{transition-delay:var(--d,0s)}
+
+@media(max-width:1000px){
+  .classes{grid-template-columns:repeat(2,1fr)}
+  .benefits{grid-template-columns:repeat(2,1fr)}
+  .plans{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+  .trainers{grid-template-columns:1fr;max-width:420px;margin-inline:auto}
+  .quotes{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+  .statrow{grid-template-columns:repeat(2,1fr);gap:34px 20px}
+}
+@media(max-width:620px){
+  .wrap{width:calc(100% - 32px)}
+  .links,.nav .in .btn.ghost{display:none}
+  .nav .in{height:64px}
+  .hero{padding:118px 0 70px}
+  section{padding:70px 0}
+  .classes{grid-template-columns:1fr 1fr;gap:12px}
+  .cl p{opacity:1;max-height:80px}
+  .benefits{gap:14px}
+  .ben .orb{width:104px;height:104px}
+  .hstats{gap:26px}
+  .cta-band{padding:44px 22px}
+  .fcols{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}.hero h1 .l{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div class="blob" id="b1" style="width:420px;height:420px;background:#7c3aed;top:-80px;right:-60px"></div>
+<div class="blob" id="b2" style="width:380px;height:380px;background:#a855f7;bottom:20%;left:-120px"></div>
+
+<header class="nav" id="nav"><div class="wrap in">
+  <a class="brand" href="#top"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>VOLT</a>
+  <nav class="links"><a href="#classes">Classes</a><a href="#why">Why VOLT</a><a href="#plans">Pricing</a><a href="#coaches">Coaches</a><a href="#contact">Contact</a></nav>
+  <a class="btn primary" href="#plans">Join now</a>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap in">
+  <div class="pill rv"><span class="dot"></span>Now open · Kolkata's premium studio</div>
+  <h1 class="display" id="h1" aria-label="Train like a VOLT"></h1>
+  <p class="sub rv">Strength, HIIT, yoga and personal coaching under one roof. Train with world-class coaches in a space built to move you.</p>
+  <div class="cta rv">
+    <a class="btn primary lg" href="#plans">Start free trial</a>
+    <a class="btn ghost lg" href="#classes">Explore classes</a>
+  </div>
+  <div class="hstats">
+    <div class="hstat rv"><b data-c="2400">0</b><span>Members</span></div>
+    <div class="hstat rv"><b data-c="18">0</b><span>Coaches</span></div>
+    <div class="hstat rv"><b data-c="40">0</b><span>Weekly classes</span></div>
+  </div>
+</div></section>
+
+<div class="marq"><div class="t"><span>Strength&nbsp;·&nbsp;HIIT&nbsp;·&nbsp;Yoga&nbsp;·&nbsp;Boxing&nbsp;·&nbsp;Pilates&nbsp;·&nbsp;Personal Training</span><span>Strength&nbsp;·&nbsp;HIIT&nbsp;·&nbsp;Yoga&nbsp;·&nbsp;Boxing&nbsp;·&nbsp;Pilates&nbsp;·&nbsp;Personal Training</span></div></div>
+
+<section id="classes"><div class="wrap">
+  <div class="head rv"><div class="eyebrow">Our programs</div><h2 class="display">Find your <span class="grad">movement.</span></h2><p>Four signature programs, each designed to push a different edge — strength, endurance, mobility and calm.</p></div>
+  <div class="classes stg" id="classGrid"></div>
+</div></section>
+
+<section id="why"><div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Why VOLT</div><h2 class="display">More than a gym.</h2></div>
+  <div class="benefits stg">
+    <div class="ben rv"><div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.7-7 10-7 10Z"/></svg></div><b>Expert coaches</b><span>Certified, caring, in your corner</span></div>
+    <div class="ben rv"><div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12H4M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div><b>Smart tracking</b><span>See every rep of your progress</span></div>
+    <div class="ben rv"><div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><circle cx="12" cy="7" r="4"/></svg></div><b>Real community</b><span>Train together, grow together</span></div>
+    <div class="ben rv"><div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></div><b>Open 6am–11pm</b><span>Train on your schedule</span></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap"><div class="statrow stg">
+  <div class="stat rv"><b data-c="2400" data-suf="+">0</b><span>Happy members</span></div>
+  <div class="stat rv"><b data-c="96" data-suf="%">0</b><span>Would recommend</span></div>
+  <div class="stat rv"><b data-c="18">0</b><span>Elite coaches</span></div>
+  <div class="stat rv"><b data-c="5" data-suf="★">0</b><span>Average rating</span></div>
+</div></div></section>
+
+<section id="plans"><div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Membership</div><h2 class="display">Pick your <span class="grad">plan.</span></h2><p class="center">No contracts. Cancel anytime. Start with a 7-day free trial.</p></div>
+  <div class="plans stg">
+    <div class="plan rv"><h3>Starter</h3><div class="price">₹1,499<small>/mo</small></div>
+      <ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Gym floor access</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>8 group classes / month</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Locker &amp; shower</li></ul>
+      <a class="btn ghost" href="#contact">Choose Starter</a></div>
+    <div class="plan pop rv"><div class="badge">Most popular</div><h3>Pro</h3><div class="price">₹2,999<small>/mo</small></div>
+      <ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Everything in Starter</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Unlimited classes</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>2 personal sessions / mo</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Nutrition plan</li></ul>
+      <a class="btn primary" href="#contact">Choose Pro</a></div>
+    <div class="plan rv"><h3>Elite</h3><div class="price">₹4,999<small>/mo</small></div>
+      <ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Everything in Pro</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Unlimited personal training</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Recovery &amp; sauna</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Guest passes</li></ul>
+      <a class="btn ghost" href="#contact">Choose Elite</a></div>
+  </div>
+</div></section>
+
+<section id="coaches"><div class="wrap">
+  <div class="head rv"><div class="eyebrow">The team</div><h2 class="display">Coaches who <span class="grad">care.</span></h2></div>
+  <div class="trainers stg">
+    <div class="tr rv"><div class="ph"><img src="img/trainer1.webp" alt="Coach" loading="lazy"></div><div class="bd"><h3>Aarav Mehta</h3><span>Strength &amp; conditioning</span><p>10 years turning beginners into their strongest selves.</p></div></div>
+    <div class="tr rv"><div class="ph"><img src="img/trainer2.webp" alt="Coach" loading="lazy"></div><div class="bd"><h3>Riya Sharma</h3><span>Yoga &amp; mobility</span><p>Breath-led flows that build calm and flexibility.</p></div></div>
+    <div class="tr rv"><div class="ph"><img src="img/trainer3.webp" alt="Coach" loading="lazy"></div><div class="bd"><h3>Kabir Das</h3><span>HIIT &amp; boxing</span><p>High-energy sessions that burn, build and never bore.</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Loved by members</div><h2 class="display">Real results.</h2></div>
+  <div class="quotes stg">
+    <div class="q rv"><div class="stars">★★★★★</div><p>“Lost 8kg in three months and actually enjoyed it. The coaches remember your name and your goals.”</p><div class="who"><div class="av">S</div><div><b>Sneha R.</b><span>Member · 1 year</span></div></div></div>
+    <div class="q rv"><div class="stars">★★★★★</div><p>“The best studio in the city. Clean, premium, and the energy at 7am classes is unreal.”</p><div class="who"><div class="av">A</div><div><b>Arjun K.</b><span>Member · 8 months</span></div></div></div>
+    <div class="q rv"><div class="stars">★★★★★</div><p>“Personal training here changed how I feel every single day. Worth every rupee.”</p><div class="who"><div class="av">M</div><div><b>Maya T.</b><span>Member · 2 years</span></div></div></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="cta-band rv">
+    <h2 class="display">Your first class is <span class="grad">on us.</span></h2>
+    <p>Book a free 7-day trial today. Walk in, work out, feel the difference — no card needed.</p>
+    <a class="btn primary lg" href="#">Claim free trial</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fcols">
+    <div style="max-width:320px">
+      <a class="brand" href="#top"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>VOLT</a>
+      <p>Kolkata's premium fitness studio. Strength, HIIT, yoga and personal coaching, built to move you.</p>
+    </div>
+    <div class="fcol"><h4>Studio</h4><a href="#classes">Classes</a><a href="#plans">Pricing</a><a href="#coaches">Coaches</a><a href="#why">Why VOLT</a></div>
+    <div class="fcol"><h4>Visit</h4><a href="#">Jadavpur, Kolkata</a><a href="#">Open 6am – 11pm</a><a href="tel:+910000000000">+91 00000 00000</a></div>
+    <div class="fcol"><h4>Follow</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a></div>
+  </div>
+  <div class="fbot"><span>© 2026 VOLT Studio</span><span>Sample website by Plastrix Studio</span></div>
+</div></footer>
+
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* hero word-by-word reveal */
+(function(){
+  const el=document.getElementById('h1'); const words=['Train','like','a','VOLT'];
+  el.innerHTML=words.map((w,i)=>`<span class="l${i===3?' neon grad':''}">${w}</span>`).join(' ');
+  const ls=[...el.querySelectorAll('.l')];
+  ls.forEach((l,i)=>{ if(RM){l.style.opacity=1;l.style.transform='none';l.style.filter='none';return;}
+    l.animate([{opacity:0,transform:'translateY(40%)',filter:'blur(8px)'},{opacity:1,transform:'none',filter:'none'}],{duration:900,delay:200+i*130,easing:'cubic-bezier(.22,.9,.24,1)',fill:'forwards'});});
+})();
+/* class cards */
+const CLASSES=[
+  ['Strength','STR','img/class1.webp','Build raw power with guided lifting and progressive overload.'],
+  ['HIIT Burn','HIIT','img/class2.webp','45 minutes of high-intensity intervals that torch calories.'],
+  ['Flow Yoga','YOGA','img/class3.webp','Breath-led movement for mobility, balance and calm.'],
+  ['Box Fit','BOX','img/class4.webp','Boxing-inspired cardio that builds speed and confidence.'],
+];
+document.getElementById('classGrid').innerHTML=CLASSES.map(c=>`
+  <article class="cl rv"><img src="${c[2]}" alt="${c[0]}" loading="lazy">
+  <div class="top"><span class="tag">${c[1]}</span><span class="tag">55 min</span></div>
+  <div class="bot"><h3>${c[0]}</h3><p>${c[3]}</p></div></article>`).join('');
+/* nav solid */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+/* reveal + stagger + count-up */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('.stg').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--d',(i*0.09)+'s')));
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){count(e.target);cio.unobserve(e.target);}}),{threshold:.6});
+document.querySelectorAll('[data-c]').forEach(el=>cio.observe(el));
+function count(el){const to=+el.dataset.c,suf=el.dataset.suf||'';if(RM){el.textContent=to.toLocaleString('en-IN')+suf;return;}let s=performance.now(),dur=1500;
+  function f(t){let p=Math.min(1,(t-s)/dur);p=1-Math.pow(1-p,3);el.textContent=Math.round(to*p).toLocaleString('en-IN')+suf;if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+/* parallax blobs */
+if(!RM){addEventListener('scroll',()=>{const y=scrollY;document.getElementById('b1').style.transform=`translateY(${y*.12}px)`;document.getElementById('b2').style.transform=`translateY(${y*-.08}px)`;},{passive:true});
+addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);document.getElementById('b1').style.marginLeft=x*30+'px';document.getElementById('b2').style.marginLeft=x*-30+'px';});}
+</script>
+</body>
+</html>
