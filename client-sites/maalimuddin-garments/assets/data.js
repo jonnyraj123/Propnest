@@ -141,5 +141,10 @@ window.PRODUCTS = [
   { id: 'fur-peplum-set', name: 'Fur Peplum Top & Wide Printed Jeans', cat: 'bell', img: [106], sizes: REG, colours: ['Yellow'], tag: 'New' },
   { id: 'chu-denim-set', name: 'Paris Denim Waistcoat 3-Piece Set', cat: 'coord', img: [107, 108, 109], sizes: SMALL, colours: ['Yellow', 'Grey', 'Rani Pink'], tag: 'New' },
   { id: 'fairy-elegance-set', name: 'Fairy Princess Waistcoat 3-Piece Set', cat: 'coord', img: [110, 111, 112], sizes: SMALL, colours: ['Rose', 'Yellow', 'Mint'], tag: 'New' }
-
+,
+  { id: 'city-tee-short', name: 'City Print Tee & Denim Shorts Set', cat: 'coord', img: [113], sizes: SMALL, colours: ['Grey', 'Khaki', 'Rose'], tag: 'New' },
+  { id: 'parrot-tee-short', name: 'Parrot Print Tee & Denim Shorts Set', cat: 'coord', img: [114], sizes: SMALL, colours: ['Peach', 'Mauve', 'Green'], tag: 'New' },
+  { id: 'bunny-tee-short', name: 'Fluffy Bunny Tee & Denim Shorts Set', cat: 'coord', img: [115], sizes: SMALL, colours: ['Light Pink', 'Khaki', 'Mint'], tag: 'New' },
+  { id: 'bird-tee-short', name: 'Patch Tee & Denim Shorts Set', cat: 'coord', img: [116], sizes: SMALL, colours: ['Light Pink', 'Khaki', 'Mint'], tag: 'New' },
+  { id: 'bear-tee-short', name: 'Neon Bear Tee & Denim Shorts Set', cat: 'coord', img: [117], sizes: SMALL, colours: ['Grey', 'Light Pink', 'Mauve'], tag: 'New' }
 ];
