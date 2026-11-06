@@ -128,5 +128,18 @@ window.PRODUCTS = [
   { id: 'dung-six', name: 'Number 6 Dungaree Set', cat: 'dung', img: [4, 5, 18, 52], sizes: REG, colours: ['Green', 'Maroon', 'Brown'] },
   { id: 'dung-graffiti', name: 'Graffiti Print Dungaree Set', cat: 'dung', img: [7, 10], sizes: REG, colours: ABC },
   { id: 'dung-play', name: 'Lets Play Print Dungaree Set', cat: 'dung', img: [33], sizes: REG, colours: ABC },
-  { id: 'dung-luo', name: 'Luo Print Dungaree Set', cat: 'dung', img: [45], sizes: REG, colours: ['Rose', 'Sky', 'Sage'] }
+  { id: 'dung-luo', name: 'Luo Print Dungaree Set', cat: 'dung', img: [45], sizes: REG, colours: ['Rose', 'Sky', 'Sage'] },
+
+  // ---- New premium arrivals (Nov 2026) ----
+  { id: 'pearl-frock-light', name: 'Pearl Bow Ruffle Party Frock', cat: 'frock', img: [99], sizes: REG, colours: ['Pink', 'Peach', 'Sky'], tag: 'New' },
+  { id: 'pearl-frock-deep', name: 'Pearl Bow Ruffle Party Frock', cat: 'frock', img: [100], sizes: REG, colours: ['Purple', 'Magenta', 'Wine'], tag: 'New' },
+  { id: 'furdot-flare', name: 'Fur-Dot Top & Flared Denim Set', cat: 'bell', img: [101], sizes: REG, colours: ['Yellow'], tag: 'New' },
+  { id: 'bear-floral-bell', name: 'Floral Charm Shirt & Flared Jeans', cat: 'bell', img: [102], sizes: REG, colours: ['Mauve'], tag: 'New' },
+  { id: 'call-fashion-bell', name: 'Comic Print Shirt & Wide Jeans', cat: 'bell', img: [103], sizes: REG, colours: ['White'], tag: 'New' },
+  { id: 'square-nice-bell', name: 'Square Print Shirt & Flared Jeans', cat: 'bell', img: [104], sizes: REG, colours: ['Cream'], tag: 'New' },
+  { id: 'tiedye-fashion-bell', name: 'Tie-Dye Shirt & Wide Jeans', cat: 'bell', img: [105], sizes: REG, colours: ['Pink'], tag: 'New' },
+  { id: 'fur-peplum-set', name: 'Fur Peplum Top & Wide Printed Jeans', cat: 'bell', img: [106], sizes: REG, colours: ['Yellow'], tag: 'New' },
+  { id: 'chu-denim-set', name: 'Paris Denim Waistcoat 3-Piece Set', cat: 'coord', img: [107, 108, 109], sizes: SMALL, colours: ['Yellow', 'Grey', 'Rani Pink'], tag: 'New' },
+  { id: 'fairy-elegance-set', name: 'Fairy Princess Waistcoat 3-Piece Set', cat: 'coord', img: [110, 111, 112], sizes: SMALL, colours: ['Rose', 'Yellow', 'Mint'], tag: 'New' }
+
 ];
