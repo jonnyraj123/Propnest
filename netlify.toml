@@ -1,3 +1,7 @@
 [build]
   publish = "client-sites/maalimuddin-garments"
   command = ""
+
+[functions]
+  directory = "client-sites/maalimuddin-garments/netlify/functions"
+  node_bundler = "esbuild"

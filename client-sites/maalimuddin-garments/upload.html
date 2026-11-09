@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Product Upload · M.A ALIMUDDIN Garments</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="img/b/fav.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--g:#1f7a4d;--g2:#15603b;--ink:#20323a;--muted:#6a7c84;--line:#e3ebe7;--bg:#f4f8f5}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:0 0 60px}
+header{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;padding:22px 18px;position:sticky;top:0;z-index:10}
+header b{font-size:20px}header small{display:block;opacity:.85;font-size:13px;margin-top:3px}
+.wrap{max-width:520px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 6px 20px -16px rgba(0,0,0,.3)}
+label{display:block;font-weight:700;font-size:15px;margin:2px 0 8px}
+.hint{font-size:13px;color:var(--muted);margin:-4px 0 12px}
+input,select{width:100%;font-size:16px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--g)}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.ph{position:relative;aspect-ratio:1;border:2px dashed #bcd3c6;border-radius:14px;display:grid;place-items:center;overflow:hidden;background:#f0f6f2}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph .x{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:0;font-size:16px;line-height:26px}
+.add{font-size:34px;color:#8fb8a0;font-weight:300}
+.add span{display:block;font-size:12px;font-weight:700;color:#7a9b89}
+.colrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.btn{width:100%;height:56px;border:0;border-radius:16px;font-size:17px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--g),var(--g2));box-shadow:0 10px 24px -12px rgba(31,122,77,.8)}
+.btn:disabled{opacity:.6}
+.msg{padding:14px;border-radius:12px;font-weight:600;font-size:15px;margin-bottom:14px;display:none}
+.msg.ok{background:#e4f7ec;color:#166c43;display:block}
+.msg.err{background:#fdeaea;color:#b42323;display:block}
+.gate{max-width:360px;margin:60px auto;padding:0 18px}
+.gate .card{text-align:center}
+.lock{font-size:40px}
+.step{font-size:13px;color:var(--muted);margin-top:4px}
+.spin{display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:s .8s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <div class="card">
+    <div class="lock">🔒</div>
+    <b style="font-size:19px;display:block;margin:10px 0 4px">M.A ALIMUDDIN Garments</b>
+    <div class="hint">Product upload — enter your password</div>
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="btn" style="margin-top:12px" onclick="unlock()">Open</button>
+    <div id="gerr" class="step" style="color:#b42323"></div>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+<header><div class="wrap" style="padding:0"><b>Add a new product</b><small>Photo tulun · naam din · colour din · Submit</small></div></header>
+<div class="wrap">
+  <div id="msg" class="msg"></div>
+
+  <div class="card">
+    <label>1. Product-er photo <span style="color:#b42323">*</span></label>
+    <div class="hint">Phone theke photo tulun ba gallery theke din. 1–4 ta photo.</div>
+    <div class="photos" id="photos">
+      <label class="ph" id="addbtn"><span class="add">+<span>Add photo</span></span><input id="file" type="file" accept="image/*" multiple hidden></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>2. Product-er naam <span style="color:#b42323">*</span></label>
+    <input id="name" placeholder="e.g. Pink Party Frock" autocomplete="off">
+  </div>
+
+  <div class="card">
+    <label>3. Category <span style="color:#b42323">*</span></label>
+    <select id="cat">
+      <option value="frock">Frocks (frock)</option>
+      <option value="skirt">Skirt Sets</option>
+      <option value="bell">Bell-Bottom Sets (jeans)</option>
+      <option value="coord">Co-ord Sets</option>
+      <option value="baby">Baby Sets</option>
+      <option value="dung">Dungarees</option>
+    </select>
+    <label style="margin-top:14px">Size group</label>
+    <select id="sizes">
+      <option value="regular">Regular (20–30)</option>
+      <option value="small">Small (16–18)</option>
+      <option value="skirt">Skirt (26–34)</option>
+      <option value="big">Big (32–XXL)</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <label>4. Colours (up to 3)</label>
+    <div class="hint">Je colour-gulo ache sei colour bachun. Na dile automatic 3-colour chart hobe.</div>
+    <div class="colrow" id="colrow"></div>
+  </div>
+
+  <button id="submit" class="btn" onclick="submit()">✓ Submit — Add to website</button>
+  <div class="step" style="text-align:center;margin-top:12px">Submit korle ~1 minute-e website-e live hoye jabe.</div>
+</div>
+</div>
+
+<script>
+const COLOURS=['Pink','Light Pink','Rose','Rani Pink','Magenta','Peach','Maroon','Wine','Purple','Lilac','Mauve','Blue','Navy','Sky','Aqua','Teal','Mint','Green','Olive','Lime','Yellow','Mustard','Orange','Rust','Brown','Khaki','Grey','Red','White','Cream','Black'];
+const api='/.netlify/functions/add-product';
+let pw='';
+// build colour selects
+document.getElementById('colrow').innerHTML=[0,1,2].map(i=>`<select id="col${i}"><option value="">— colour ${i+1} —</option>${COLOURS.map(c=>`<option>${c}</option>`).join('')}</select>`).join('');
+
+function unlock(){ pw=document.getElementById('pw').value.trim(); if(!pw){document.getElementById('gerr').textContent='Password din';return;}
+  try{localStorage.setItem('maa_pw',pw);}catch(e){}
+  document.getElementById('gate').style.display='none'; document.getElementById('app').style.display='block'; }
+try{const s=localStorage.getItem('maa_pw'); if(s){document.getElementById('pw').value=s;}}catch(e){}
+
+// photos
+const files=[]; // {full:base64, small:base64, url}
+const photos=document.getElementById('photos'), addbtn=document.getElementById('addbtn');
+document.getElementById('file').addEventListener('change', async e=>{
+  for(const f of e.target.files){ if(files.length>=4) break; const r=await shrink(f); files.push(r); }
+  e.target.value=''; render();
+});
+function render(){
+  [...photos.querySelectorAll('.thumb')].forEach(x=>x.remove());
+  files.forEach((f,i)=>{ const d=document.createElement('div'); d.className='ph thumb'; d.innerHTML=`<img src="${f.url}"><button class="x" onclick="del(${i})">✕</button>`; photos.insertBefore(d,addbtn); });
+  addbtn.style.display=files.length>=4?'none':'grid';
+}
+function del(i){ files.splice(i,1); render(); }
+function shrink(file){ return new Promise(res=>{ const img=new Image(); img.onload=()=>{
+  const mk=(max,q)=>{ let w=img.width,h=img.height; const s=Math.min(1,max/Math.max(w,h)); w=Math.round(w*s); h=Math.round(h*s);
+    const c=document.createElement('canvas'); c.width=w;c.height=h; c.getContext('2d').drawImage(img,0,0,w,h);
+    return c.toDataURL('image/webp',q); };
+  const fullD=mk(1000,.82), smallD=mk(500,.78);
+  res({ full:fullD.split(',')[1], small:smallD.split(',')[1], url:fullD }); };
+  img.src=URL.createObjectURL(file); }); }
+
+async function submit(){
+  const msg=document.getElementById('msg'), btn=document.getElementById('submit');
+  const name=document.getElementById('name').value.trim();
+  const cat=document.getElementById('cat').value, sizes=document.getElementById('sizes').value;
+  const colours=[0,1,2].map(i=>document.getElementById('col'+i).value).filter(Boolean);
+  msg.className='msg'; msg.style.display='none';
+  if(!files.length){ show('err','Please add at least one photo.'); return; }
+  if(!name){ show('err','Please enter the product name.'); return; }
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>Uploading...';
+  try{
+    const r=await fetch(api,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw,name,cat,sizes,colours,images:files.map(f=>({full:f.full,small:f.small}))})});
+    const d=await r.json();
+    if(!r.ok||d.error) throw new Error(d.error||'Failed');
+    show('ok','✓ Done! "'+name+'" added. It will be live on the website in about 1 minute.');
+    files.length=0; render(); document.getElementById('name').value=''; [0,1,2].forEach(i=>document.getElementById('col'+i).value='');
+    window.scrollTo(0,0);
+  }catch(e){ show('err','✕ '+e.message); }
+  btn.disabled=false; btn.innerHTML='✓ Submit — Add to website';
+}
+function show(t,m){ const msg=document.getElementById('msg'); msg.className='msg '+t; msg.textContent=m; msg.style.display='block'; }
+</script>
+</body>
+</html>
